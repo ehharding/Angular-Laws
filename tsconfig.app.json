@@ -1,15 +1,87 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
-  "extends": "./tsconfig.base.json",
-  "compilerOptions": {
-    "outDir": "./out-tsc/app",
-    "types": []
+  "compileOnSave" : true,
+  "compilerOptions" : {
+    "allowJs" : true,
+    "checkJs" : false,
+    "allowSyntheticDefaultImports" : true,
+    "allowUmdGlobalAccess" : true,
+    "allowUnreachableCode" : false,
+    "allowUnusedLabels" : false,
+    "alwaysStrict" : true,
+    "strict" : true,
+    "strictBindCallApply" : true,
+    "strictFunctionTypes" : true,
+    "strictNullChecks" : true,
+    "strictPropertyInitialization" : true,
+    "composite" : true,
+    "declaration" : true,
+    "declarationMap" : true,
+    "disableSizeLimit" : false,
+    "downlevelIteration" : true,
+    "emitDeclarationOnly" : false,
+    "emitDecoratorMetadata" : true,
+    "emitBOM" : false,
+    "noEmit" : false,
+    "noEmitHelpers" : false,
+    "importHelpers" : true,
+    "noEmitOnError" : false,
+    "noImplicitAny" : true,
+    "noImplicitThis" : true,
+    "noImplicitUseStrict" : false,
+    "noLib" : false,
+    "noResolve" : false,
+    "noStrictGenericChecks" : false,
+    "esModuleInterop" : true,
+    "experimentalDecorators" : true,
+    "forceConsistentCasingInFileNames" : true,
+    "incremental" : true,
+    "inlineSourceMap" : false,
+    "inlineSources" : false,
+    "sourceMap" : true,
+    "isolatedModules" : false,
+    "listEmittedFiles" : false,
+    "listFiles" : false,
+    "preserveConstEnums" : false,
+    "preserveSymlinks" : false,
+    "preserveWatchOutput" : false,
+    "pretty" : true,
+    "removeComments" : false,
+    "resolveJsonModule" : true,
+    "skipDefaultLibCheck" : false,
+    "skipLibCheck" : false,
+    "stripInternal" : false,
+    "suppressExcessPropertyErrors" : false,
+    "suppressImplicitAnyIndexErrors" : false,
+    "traceResolution" : false,
+    "useDefineForClassFields" : false,
+    "baseUrl" : "src",
+    "outDir" : "dist/out-tsc/src",
+    "rootDir" : ".",
+    "tsBuildInfoFile" : "build-cache/tsc",
+    "module" : "ES2020",
+    "target" : "ES2020",
+    "moduleResolution" : "Node",
+    "newLine" : "CRLF",
+    "lib" : ["DOM", "ES2020"],
+    "types" : ["node"],
+    "paths" : {
+      "@core/*" : ["app/core/*"],
+      "@assets/*" : ["assets/*"],
+      "@environment/*" : ["environments/*"]
+    }
   },
-  "files": [
+  "files" : [
+    "src/environments/environment.ts",
     "src/main.ts",
     "src/polyfills.ts"
   ],
-  "include": [
-    "src/**/*.d.ts"
+  "exclude" : [
+    "src/environments/environment.prod.ts",
+    "src/test.ts"
+  ],
+  "include" : [
+    "src/**/*.component.ts",
+    "src/**/*.d.ts",
+    "src/**/*.module.ts"
   ]
 }

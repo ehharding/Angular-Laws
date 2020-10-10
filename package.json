@@ -1,46 +1,101 @@
 {
   "name": "internet-visualizer",
+  "private": true,
   "version": "0.0.0",
+  "description": "An Angular Application for Seeing the Internet In a New Way",
+  "homepage": "https://github.com/internet-visualizer",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/internet-visualizer/internet-visualizer.git"
+  },
+  "author": {
+    "email": "ehharding@gmail.com",
+    "name": "Evan H. Harding",
+    "url": "https://linkedin.com/in/ehharding"
+  },
+  "bugs": {
+    "email": "ehharding@gmail.com",
+    "url": ""
+  },
+  "contributors": [
+    "Evan H. Harding"
+  ],
+  "maintainers": [
+    "Evan H. Harding"
+  ],
+  "keywords": [
+    "Angular",
+    "Internet",
+    "Visual",
+    "Visualizer",
+    "Web"
+  ],
+  "directories": {
+    "doc": "README.md",
+    "lib": "src",
+    "test": "src"
+  },
+  "files": [
+    "*"
+  ],
+  "browserslist": [
+    "defaults"
+  ],
+  "engines": {
+    "node": "14.13.1",
+    "npm": "6.14.8"
+  },
+  "os": [
+    "win32"
+  ],
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --aot",
     "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
+    "test": "ng test --code-coverage",
+    "lint": "eslint **/*.ts",
     "e2e": "ng e2e"
   },
-  "private": true,
   "dependencies": {
-    "@angular/animations": "~10.0.4",
-    "@angular/common": "~10.0.4",
-    "@angular/compiler": "~10.0.4",
-    "@angular/core": "~10.0.4",
-    "@angular/forms": "~10.0.4",
-    "@angular/platform-browser": "~10.0.4",
-    "@angular/platform-browser-dynamic": "~10.0.4",
-    "@angular/router": "~10.0.4",
-    "rxjs": "~6.5.5",
-    "tslib": "^2.0.0",
-    "zone.js": "~0.10.3"
+    "@angular/animations": "10.1.5",
+    "@angular/cdk": "10.2.4",
+    "@angular/common": "10.1.5",
+    "@angular/compiler": "10.1.5",
+    "@angular/core": "10.1.5",
+    "@angular/forms": "10.1.5",
+    "@angular/material": "10.2.4",
+    "@angular/platform-browser": "10.1.5",
+    "@angular/platform-browser-dynamic": "10.1.5",
+    "@angular/router": "10.1.5",
+    "bootstrap": "4.5.2",
+    "rxjs": "6.6.3",
+    "tslib": "2.0.3",
+    "zone.js": "0.11.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1000.3",
-    "@angular/cli": "~10.0.3",
-    "@angular/compiler-cli": "~10.0.4",
-    "@types/node": "^12.11.1",
-    "@types/jasmine": "~3.5.0",
-    "@types/jasminewd2": "~2.0.3",
-    "codelyzer": "^6.0.0",
-    "jasmine-core": "~3.5.0",
-    "jasmine-spec-reporter": "~5.0.0",
-    "karma": "~5.0.0",
-    "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage-istanbul-reporter": "~3.0.2",
-    "karma-jasmine": "~3.3.0",
-    "karma-jasmine-html-reporter": "^1.5.0",
-    "protractor": "~7.0.0",
-    "ts-node": "~8.3.0",
-    "tslint": "~6.1.0",
-    "typescript": "~3.9.5"
+    "@angular-devkit/build-angular": "0.1001.6",
+    "@angular/cli": "10.1.6",
+    "@angular/compiler-cli": "10.1.5",
+    "@angular-eslint/builder": "0.5.0-beta.3",
+    "@angular-eslint/eslint-plugin": "0.5.0-beta.3",
+    "@angular-eslint/eslint-plugin-template": "0.5.0-beta.3",
+    "@angular-eslint/schematics": "0.5.0-beta.3",
+    "@angular-eslint/template-parser": "0.5.0-beta.3",
+    "@types/jasmine": "3.5.14",
+    "@types/jasminewd2": "2.0.8",
+    "@types/node": "14.11.8",
+    "@typescript-eslint/eslint-plugin": "4.4.0",
+    "@typescript-eslint/parser": "4.4.0",
+    "eslint": "7.11.0",
+    "jasmine-core": "3.6.0",
+    "jasmine-spec-reporter": "6.0.0",
+    "karma": "5.2.3",
+    "karma-chrome-launcher": "3.1.0",
+    "karma-coverage-istanbul-reporter": "3.0.3",
+    "karma-jasmine": "4.0.1",
+    "karma-jasmine-html-reporter": "1.5.4",
+    "protractor": "7.0.0",
+    "ts-node": "9.0.0",
+    "typescript": "4.0.3"
   }
 }
