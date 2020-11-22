@@ -1,12 +1,11 @@
 /*****************************************************************************************************************************************************
  * Copyright 2020 Evan H. Harding. All Rights Reserved.
  *
- * styles.scss - Sassy CSS
- *
- * @see https://sass-lang.com
- * @see https://getbootstrap.com
- * @description This file holds global styles which can be used across the entire application. We use Bootstrap v4 for easy and more flexible CSS and
+ * This file holds global styles which can be used across the entire application. We use Bootstrap v4 for easy and more flexible CSS and
  * employ Angular Material Theming to have a fairly neat appearance.
+ *
+ * {@link https://sass-lang.com | SASS Language Reference}
+ * {@link https://getbootstrap.com | Bootstrap}
  ****************************************************************************************************************************************************/
 
 // Bootstrap v4 SCSS
@@ -19,3 +18,7 @@
 
 // Angular Material Theming
 @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+
+button:focus {
+  outline : none;
+}

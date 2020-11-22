@@ -1,11 +1,10 @@
 /*****************************************************************************************************************************************************
  * Copyright 2020 Evan H. Harding. All Rights Reserved.
  *
- * main.ts - TypeScript
+ * This file serves as the main entry point for the application. It compiles the application and bootstraps the root module, conventionally called
+ * AppModule, to run in the browser.
  *
- * @see https://angular.io/guide/file-structure#application-source-files
- * @description This file serves as the main entry point for the application. It compiles the application and bootstraps the root module,
- * conventionally called AppModule, to run in the browser.
+ * {@link https://angular.io/guide/file-structure#application-source-files | Angular File Structure Guide}
  ****************************************************************************************************************************************************/
 
 import { enableProdMode } from '@angular/core';
@@ -13,12 +12,12 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from 'app/app.module';
 
-import { environment } from '@environment/environment';
+import { ENVIRONMENT } from '@environment/environment';
 
-if (environment.production) {
+if (ENVIRONMENT.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule).catch((genericError: any) => {
-  return console.error(genericError);
+platformBrowserDynamic().bootstrapModule(AppModule).catch((genericError : unknown) : void => {
+  console.error(genericError);
 });

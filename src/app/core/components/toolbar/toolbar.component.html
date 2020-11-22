@@ -1,0 +1,25 @@
+<!----------------------------------------------------------------------------------------------------------------------------------------------------
+ ~ Copyright 2020 Evan H. Harding. All Rights Reserved.
+ ~
+ ~ This file serves as the template for the always-visible toolbar that lies at the top of the screen and stretches across its length.
+ ~ It has a button on the left which, when clicked, takes the user home. In the middle is the application icon. On the right is a link to the GitHub
+ ~ repository.
+ ---------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<!-- An Angular Material Toolbar That Looks Like: [-----flex item----------flex-item----------flex-item-----] -->
+<div class="row mat-elevation-z20">
+  <mat-toolbar class="d-flex justify-content-between" color="primary">
+    <a mat-flat-button class="font-weight-bold" color="primary" matTooltip="The Internet" matTooltipPosition="right" routerLink="/internet">
+      {{ applicationTitle }}
+    </a>
+
+    <mat-icon></mat-icon>
+
+    <a mat-flat-button class="font-weight-bold" color="primary" href="{{ gitHubURL }}" target="_blank">
+      <div class="d-inline-flex">
+        <mat-icon class="mr-1" svgIcon="github"></mat-icon>
+        <span>GitHub</span>
+      </div>
+    </a>
+  </mat-toolbar>
+</div>

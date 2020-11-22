@@ -1,14 +1,13 @@
 /*****************************************************************************************************************************************************
  * Copyright 2020 Evan H. Harding. All Rights Reserved.
  *
- * karma.conf.ts - TypeScript
- *
- * @see https://karma-runner.github.io/5.2/config/configuration-file.html
- * @description The Karma Configuration File configures the Karma Test Runner to execute tests for the application. The tests themselves operate
+ * The Karma Configuration File configures the Karma Test Runner to execute tests for the application. The tests themselves operate
  * through the Jasmine JavaScript Testing Framework powered with TypeScript.
+ *
+ * {@link https://karma-runner.github.io/5.2/config/configuration-file.html | Karma Configuration Guide}
  ****************************************************************************************************************************************************/
 
-module.exports = (config: any): void => {
+module.exports = (config : any) : void => { // eslint-disable-line @typescript-eslint/no-explicit-any
   config.set({
     autoWatch : true,
     colors : true,
@@ -38,7 +37,7 @@ module.exports = (config: any): void => {
     protocol : 'http:',
     listenAddress : '0.0.0.0',
     urlRoot : '/',
-    concurrency : Infinity,
+    concurrency : Infinity as number,
     customClientContextFile : null,
     customContextFile : null,
     customDebugFile : null,
@@ -47,7 +46,7 @@ module.exports = (config: any): void => {
     proxyReq : undefined,
     proxyRes : undefined,
     upstreamProxy : undefined,
-    logLevel : config.LOG_INFO,
+    logLevel : config.LOG_INFO as string,
     loggers : [{ type : 'console' }],
     beforeMiddleware : [],
     middleware : [],
@@ -79,15 +78,11 @@ module.exports = (config: any): void => {
       args : undefined
     },
     coverageIstanbulReporter : {
-      dir : require('path').join(__dirname, './coverage/internet-visualizer'),
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      dir : require('path').join(__dirname, './coverage/internet-visualizer') as string,
       fixWebpackSourcePaths : true,
       reports : ['html', 'lcovonly', 'text-summary'],
-      thresholds : {
-        branches : 100,
-        functions : 100,
-        lines : 100,
-        statements : 100
-      }
+      thresholds : { branches : 100, functions : 100, lines : 100, statements : 100 }
     },
     httpsServerOptions : { },
     mime : { },
