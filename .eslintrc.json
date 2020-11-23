@@ -67,7 +67,7 @@
     "func-names" : ["warn", "always"],
     "func-style" : ["warn", "declaration", { "allowArrowFunctions" : true }],
     "function-call-argument-newline" : ["warn", "never"],
-    "function-paren-newline" : ["warn", { "minItems" : 3 }],
+    "function-paren-newline" : "off",
     "generator-star-spacing" : ["warn", "after"],
     "getter-return" : ["error", { "allowImplicit" : false }],
     "guard-for-in" : "warn",

@@ -13,11 +13,7 @@
   "contributors" : ["Evan H. Harding"],
   "maintainers" : ["Evan H. Harding"],
   "keywords" : ["Angular", "Internet", "Visual", "Visualizer", "Web"],
-  "directories" : {
-    "doc" : "README.md",
-    "lib" : "src",
-    "test" : "src"
-  },
+  "directories" : { "doc" : "README.md", "lib" : "src", "test" : "src" },
   "files" : ["*"],
   "browserslist" : ["defaults"],
   "engines" : { "node" : "15.2.1", "npm" : "6.14.9" },

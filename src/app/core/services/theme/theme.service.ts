@@ -7,9 +7,9 @@
  *
  * @remarks There are currently four material themes available to the user:
  *   1) Deep Purple & Amber
- *   2) Indigo Pink
- *   3) Pink Blue & Grey
- *   4) Purple Green
+ *   2) Indigo & Pink
+ *   3) Pink & Blue Grey
+ *   4) Purple & Green
  ****************************************************************************************************************************************************/
 
 import { Inject, Injectable } from '@angular/core';
