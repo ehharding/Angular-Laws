@@ -33,11 +33,21 @@ export class ToolbarComponent {
   /**
    * Sets the application theme using the Theme Service.
    *
-   * @param themeName - The name of the theme to set
+   * @param bundleName - The bundleName of the theme to set
    *
    * @see ThemeService
    */
-  public setApplicationTheme(themeName : string) : void {
-    this._themeService.loadClientTheme(themeName);
+  public setApplicationTheme(bundleName : string) : void {
+    this._themeService.loadClientTheme(bundleName);
+  }
+
+  /**
+   * Determines if a given theme bundleName is the same as the bundleName for the currently active theme.
+   *
+   * @param bundleName - The bundleName of a certain theme to compare to the currently active theme bundleName
+   * @returns true if the provided bundleName is equal to the currently active theme bundleName and false otherwise
+   */
+  public themeBundleNameIsActive(bundleName : string) : boolean {
+    return bundleName === this._themeService.getActiveThemeBundleName();
   }
 }

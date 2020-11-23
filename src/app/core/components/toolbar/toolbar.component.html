@@ -24,6 +24,11 @@
       </button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item *ngFor="let theme of availableThemes" (click)="setApplicationTheme(theme.bundleName)">
+          <!-- Display a checkmark next to the active theme -->
+          <mat-icon *ngIf="themeBundleNameIsActive(theme.bundleName)" class="mr-2">check</mat-icon>
+          <!-- Display an empty icon which acts like a spacer next to all of the other themes -->
+          <mat-icon *ngIf="!themeBundleNameIsActive(theme.bundleName)" class="mr-2"></mat-icon>
+
           <mat-icon class="mr-2">
             <svg focusable="false" xmlns="http://www.w3.org/2000/svg" height="100%" width="100%" viewBox="0 0 80 80">
               <defs>
