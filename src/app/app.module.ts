@@ -9,16 +9,18 @@
 
 import { NgModule } from '@angular/core';
 
-import { CoreModule } from '@core/core.module';
+import { AppComponent } from 'app/app.component';
 
+import { AppRoutingModule } from 'app/app-routing.module';
+import { CoreModule } from '@core/core.module';
 import { SharedModule } from '@shared/shared.module';
 
-import { AppComponent } from 'app/app.component';
-import { AppRoutingModule } from 'app/app-routing.module';
+import { ThemeService } from '@core/services/theme/theme.service';
 
 @NgModule({
   bootstrap : [AppComponent],
   declarations : [AppComponent],
-  imports : [CoreModule, SharedModule, AppRoutingModule]
+  imports : [AppRoutingModule, CoreModule, SharedModule],
+  providers : [ThemeService]
 })
 export class AppModule { }

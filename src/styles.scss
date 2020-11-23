@@ -16,9 +16,6 @@
 @import '~bootstrap/scss/grid';
 @import '~bootstrap/scss/reboot';
 
-// Angular Material Theming
-@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
-
-button:focus {
-  outline : none;
+button:focus, button:active:focus, button.active:focus {
+  outline: none !important;
 }

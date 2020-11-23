@@ -73,5 +73,5 @@
   },
   "files" : ["src/environments/environment.ts", "src/main.ts", "src/polyfills.ts"],
   "exclude" : ["src/environments/environment.prod.ts", "src/test.ts"],
-  "include" : ["src/**/*.component.ts", "src/**/*.guard.ts", "src/**/*.d.ts", "src/**/*.module.ts"]
+  "include" : ["src/**/*.component.ts", "src/**/*.guard.ts", "src/**/*.module.ts", "src/**/*.service.ts", "src/**/*.d.ts"]
 }

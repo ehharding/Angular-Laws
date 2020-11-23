@@ -31,7 +31,7 @@
     "brace-style" : "off",
     "camelcase" : "off",
     "capitalized-comments" : ["warn", "always", { "ignoreConsecutiveComments" : true, "ignoreInlineComments" : true }],
-    "class-methods-use-this" : ["warn", { "exceptMethods" : [] }],
+    "class-methods-use-this" : "off",
     "comma-dangle" : "off",
     "comma-spacing" : "off",
     "comma-style" : ["warn", "last", {
@@ -67,12 +67,12 @@
     "func-names" : ["warn", "always"],
     "func-style" : ["warn", "declaration", { "allowArrowFunctions" : true }],
     "function-call-argument-newline" : ["warn", "never"],
-    "function-paren-newline" : ["warn", { "minItems" : 5 }],
+    "function-paren-newline" : ["warn", { "minItems" : 3 }],
     "generator-star-spacing" : ["warn", "after"],
     "getter-return" : ["error", { "allowImplicit" : false }],
     "guard-for-in" : "warn",
     "id-denylist" : ["error", "callback", "cb", "e", "err"],
-    "id-length" : ["warn", { "min" : 3, "max" : 30, "properties" : "always", "exceptions" : ["tmp"] }],
+    "id-length" : ["warn", { "min" : 2, "max" : 30, "properties" : "always", "exceptions" : ["tmp"] }],
     "implicit-arrow-linebreak" : ["warn", "below"],
     "indent" : "off",
     "init-declarations" : "off",
@@ -83,7 +83,7 @@
     "lines-around-comment" : ["warn", {
       "beforeBlockComment" : true,
       "afterBlockComment" : false,
-      "beforeLineComment" : true,
+      "beforeLineComment" : false,
       "afterLineComment" : false,
       "allowBlockStart" : false,
       "allowBlockEnd" : false,
@@ -111,7 +111,7 @@
     }],
     "max-lines" : ["warn", { "skipBlankLines" : false, "skipComments" : false, "max" : 1000 }],
     "max-nested-callbacks" : ["warn", { "max" : 3 }],
-    "max-params" : ["warn", { "max" : 3 }],
+    "max-params" : ["warn", { "max" : 10 }],
     "max-statements" : ["warn", { "max" : 150 }],
     "max-statements-per-line" : ["warn", { "max" : 1 }],
     "multiline-comment-style" : "off",
@@ -258,7 +258,7 @@
     "no-whitespace-before-property" : "warn",
     "no-with" : "error",
     "nonblock-statement-body-position" : ["warn", "beside"],
-    "object-curly-newline" : ["warn", { "consistent" : true, "multiline" : true, "minProperties" : 5 }],
+    "object-curly-newline" : "off",
     "object-curly-spacing" : ["warn", "always", { "arraysInObjects" : false, "objectsInObjects" : false }],
     "object-property-newline" : ["warn", { "allowAllPropertiesOnSameLine" : true }],
     "object-shorthand" : ["warn", "always", { "avoidExplicitReturnArrows" : true, "avoidQuotes" : false, "ignoreConstructors" : false }],
@@ -478,7 +478,8 @@
       { "selector" : "variable", "format" : ["UPPER_CASE"], "modifiers" : ["const"] },
       { "selector" : "variableLike", "format" : ["camelCase"] },
       { "selector" : "memberLike", "format" : ["camelCase"], "modifiers" : ["private"], "leadingUnderscore" : "require" },
-      { "selector" : "typeLike", "format" : ["PascalCase"] }
+      { "selector" : "typeLike", "format" : ["PascalCase"] },
+      { "selector" : "enumMember", "format" : ["PascalCase"] }
     ],
     "@typescript-eslint/no-array-constructor" : "warn",
     "@typescript-eslint/no-base-to-string" : ["warn", { "ignoredTypeNames" : [] }],
@@ -568,7 +569,7 @@
     "@typescript-eslint/no-unnecessary-type-assertion" : ["warn", { "typesToIgnore" : [] }],
     "@typescript-eslint/no-unnecessary-type-constraint" : "warn",
     "@typescript-eslint/no-unsafe-assignment" : "warn",
-    "@typescript-eslint/no-unsafe-call" : "warn",
+    "@typescript-eslint/no-unsafe-call" : "off",
     "@typescript-eslint/no-unsafe-member-access" : "warn",
     "@typescript-eslint/no-unsafe-return" : "warn",
     "@typescript-eslint/no-unused-expressions" : ["warn", { "allowShortCircuit" : false, "allowTaggedTemplates" : false, "allowTernary" : false }],
@@ -666,7 +667,6 @@
       "rules" : {
         "@typescript-eslint/no-magic-numbers" : "off",
         "@typescript-eslint/no-require-imports" : "off",
-        "@typescript-eslint/no-unsafe-call" : "off",
         "@typescript-eslint/no-unsafe-member-access" : "off"
       }
     }

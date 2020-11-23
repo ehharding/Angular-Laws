@@ -1,8 +1,13 @@
-/*
- * This file can be replaced during build by using the `fileReplacements` array.
- * `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
- * The list of file replacements can be found in `angular.json`.
- */
+/*****************************************************************************************************************************************************
+ * Copyright 2020 Evan H. Harding. All Rights Reserved.
+ *
+ * This file defines the development environment configuration variables.
+ *
+ * {@link https://angular.io/guide/build | Angular Build Guide}
+ *
+ * @remarks This file can be replaced during build by using the `fileReplacements` array. `ng build --prod` replaces `environment.ts` with
+ * `environment.prod.ts`. The list of file replacements can be found in `angular.json`.
+ ****************************************************************************************************************************************************/
 
 export const ENVIRONMENT : { production : boolean; } = { production : false };
 

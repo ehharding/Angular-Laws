@@ -70,7 +70,14 @@
             "polyfills" : "src/polyfills.ts",
             "tsConfig" : "tsconfig.app.json",
             "assets" : ["src/assets", "src/favicon.ico"],
-            "styles" : ["src/styles.scss"]
+            "styles" : [
+              "node_modules/material-design-icons/iconfont/material-icons.css",
+              "src/styles.scss",
+              { "inject" : false, "bundleName" : "deeppurple-amber", "input" : "src/assets/themes/deeppurple-amber.css" },
+              { "inject" : false, "bundleName" : "indigo-pink", "input" : "src/assets/themes/indigo-pink.css" },
+              { "inject" : false, "bundleName" : "pink-bluegrey", "input" : "src/assets/themes/pink-bluegrey.css" },
+              { "inject" : false, "bundleName" : "purple-green", "input" : "src/assets/themes/purple-green.css" }
+            ]
           }
         },
         "serve" : {
@@ -91,7 +98,11 @@
             "tsConfig" : "tsconfig.spec.json",
             "assets" : ["src/assets", "src/favicon.ico"],
             "scripts" : [],
-            "styles" : ["src/styles.scss"]
+            "styles" : [
+              "node_modules/material-design-icons/iconfont/material-icons.css",
+              "src/styles.scss",
+              { "inject" : true, "bundleName" : "deeppurple-amber", "input" : "src/assets/themes/deeppurple-amber.css" }
+            ]
           }
         },
         "lint" : {

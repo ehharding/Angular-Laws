@@ -7,7 +7,9 @@
 
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Title } from '@angular/platform-browser';
@@ -20,7 +22,7 @@ import { SharedModule } from '@shared/shared.module';
 @NgModule({
   declarations : [ToolbarComponent],
   exports : [ToolbarComponent],
-  imports : [SharedModule, MatButtonModule, MatIconModule, MatToolbarModule, MatTooltipModule],
+  imports : [SharedModule, MatButtonModule, MatFormFieldModule, MatIconModule, MatMenuModule, MatToolbarModule, MatTooltipModule],
   providers : [Title]
 })
 export class CoreModule {

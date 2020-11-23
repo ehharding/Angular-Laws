@@ -11,8 +11,8 @@ import { CoreModule } from '@core/core.module';
  * Throws an error if the provided parent NgModule has already been imported by another NgModule. This ensures that the module is imported a single
  * time.
  *
- * @param parentModule - the NgModule that you would like to prevent being loaded more than once in the place you call this function
- * @param moduleName - the name of the NgModule provided above
+ * @param parentModule - The NgModule that you would like to prevent being loaded more than once in the place you call this function
+ * @param moduleName - The name of the NgModule provided above
  *
  * @remarks For example, CoreModule should only be loaded a single time in app/app.module.ts. So, in core.module.ts:
  * ```typescript

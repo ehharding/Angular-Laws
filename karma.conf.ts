@@ -71,7 +71,7 @@ module.exports = (config : any) : void => { // eslint-disable-line @typescript-e
     },
     client : {
       captureConsole : true,
-      clearContext : false, // Leaves the Jasmine Test Runner Output Visible in the Browser
+      clearContext : false, // Leaves the Jasmine test runner output visible in the browser
       clientDisplayNone : false,
       runInParent : false,
       useIframe : true,

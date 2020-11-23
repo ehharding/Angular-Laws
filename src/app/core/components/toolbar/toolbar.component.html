@@ -6,20 +6,47 @@
  ~ repository.
  ---------------------------------------------------------------------------------------------------------------------------------------------------->
 
-<!-- An Angular Material Toolbar That Looks Like: [-----flex item----------flex-item----------flex-item-----] -->
 <div class="row mat-elevation-z20">
-  <mat-toolbar class="d-flex justify-content-between" color="primary">
-    <a mat-flat-button class="font-weight-bold" color="primary" matTooltip="The Internet" matTooltipPosition="right" routerLink="/internet">
-      {{ applicationTitle }}
-    </a>
+  <mat-toolbar class="justify-content-between" color="primary">
+    <!-- Left group of toolbar items -->
+    <div class="align-items-center d-inline-flex">
+      <!-- The first item in the left group is the application title button which links the user back to the home page -->
+      <a mat-flat-button class="font-weight-bold" color="primary" matTooltip="The Internet" matTooltipPosition="right" routerLink="/internet">
+        {{ applicationTitle }}
+      </a>
+    </div>
 
-    <mat-icon></mat-icon>
+    <!-- Right group of toolbar items -->
+    <div class="align-items-center d-inline-flex">
+      <!-- The first item in the right group is the theme switcher menu -->
+      <button mat-icon-button matTooltip="Themes" matTooltipPosition="left" [matMenuTriggerFor]="menu">
+        <mat-icon>palette</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item *ngFor="let theme of availableThemes" (click)="setApplicationTheme(theme.bundleName)">
+          <mat-icon class="mr-2">
+            <svg focusable="false" xmlns="http://www.w3.org/2000/svg" height="100%" width="100%" viewBox="0 0 80 80">
+              <defs>
+                <path id="a" d="M77.87 0C79.05 0 80 .95 80 2.13v75.74c0 1.17-.95 2.13-2.13 2.13H2.13C.96 80 0 79.04 0 77.87V2.13C0 .95.96 0 2.13 0h75.74z"></path>
+                <path id="b" d="M54 40c3.32 0 6 2.69 6 6 0 1.2 0-1.2 0 0 0 3.31-2.68 6-6 6H26c-3.31 0-6-2.69-6-6 0-1.2 0 1.2 0 0 0-3.31 2.69-6 6-6h28z"></path>
+                <path id="c" d="M0 0h80v17.24H0V0z"></path>
+              </defs>
+              <use xlink:href="#a" [attr.fill]="theme.backgroundColor"></use>
+              <use xlink:href="#b" [attr.fill]="theme.buttonColor"></use>
+              <use xlink:href="#c" [attr.fill]="theme.headerColor"></use>
+            </svg>
+          </mat-icon>
+          <span>{{ theme.labelName }}</span>
+        </button>
+      </mat-menu>
 
-    <a mat-flat-button class="font-weight-bold" color="primary" href="{{ gitHubURL }}" target="_blank">
-      <div class="d-inline-flex">
-        <mat-icon class="mr-1" svgIcon="github"></mat-icon>
-        <span>GitHub</span>
-      </div>
-    </a>
+      <!-- The second item in the right group is a button which links to the GitHub repository -->
+      <a mat-flat-button class="font-weight-bold" color="primary" href="{{ gitHubURL }}" target="_blank">
+        <div class="d-inline-flex">
+          <mat-icon class="mr-2" svgIcon="github"></mat-icon>
+          <span>GitHub</span>
+        </div>
+      </a>
+    </div>
   </mat-toolbar>
 </div>
