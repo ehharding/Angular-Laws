@@ -19,7 +19,7 @@
     <!-- Right group of toolbar items -->
     <div class="align-items-center d-inline-flex">
       <!-- The first item in the right group is the theme switcher menu -->
-      <button mat-icon-button matTooltip="Themes" matTooltipPosition="left" [matMenuTriggerFor]="menu">
+      <button mat-icon-button matTooltip="Select a theme for the application" matTooltipPosition="left" [matMenuTriggerFor]="menu">
         <mat-icon>palette</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
@@ -30,7 +30,7 @@
           <mat-icon *ngIf="!themeBundleNameIsActive(theme.bundleName)" class="mr-2"></mat-icon>
 
           <mat-icon class="mr-2">
-            <svg focusable="false" xmlns="http://www.w3.org/2000/svg" height="100%" width="100%" viewBox="0 0 80 80">
+            <svg viewBox="0 0 80 80">
               <defs>
                 <path id="a" d="M77.87 0C79.05 0 80 .95 80 2.13v75.74c0 1.17-.95 2.13-2.13 2.13H2.13C.96 80 0 79.04 0 77.87V2.13C0 .95.96 0 2.13 0h75.74z"></path>
                 <path id="b" d="M54 40c3.32 0 6 2.69 6 6 0 1.2 0-1.2 0 0 0 3.31-2.68 6-6 6H26c-3.31 0-6-2.69-6-6 0-1.2 0 1.2 0 0 0-3.31 2.69-6 6-6h28z"></path>
