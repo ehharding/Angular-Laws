@@ -1,8 +1,8 @@
 /*****************************************************************************************************************************************************
  * Copyright 2021 Evan H. Harding. All Rights Reserved.
  *
- * The Karma Configuration File configures the Karma Test Runner to execute tests for the application. The tests themselves operate
- * through the Jasmine JavaScript Testing Framework powered with TypeScript.
+ * The Karma Configuration File configures the Karma Test Runner to execute tests for the application. The tests themselves operate through the
+ * Jasmine JavaScript testing framework.
  *
  * {@link https://karma-runner.github.io/5.2/config/configuration-file.html | Karma Configuration Guide}
  ****************************************************************************************************************************************************/

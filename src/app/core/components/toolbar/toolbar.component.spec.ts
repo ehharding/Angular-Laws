@@ -6,9 +6,8 @@ import { DomSanitizer, Title } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 import { TestBed } from '@angular/core/testing';
 
-import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
-
 import { AvailableStyleBundles, ThemeService } from '@core/services/theme/theme.service';
+import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
 
 describe('ToolbarComponent', () : void => {
   let toolbarComponent : ToolbarComponent;
