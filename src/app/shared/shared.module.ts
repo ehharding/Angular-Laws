@@ -1,5 +1,5 @@
 /*****************************************************************************************************************************************************
- * Copyright 2020 Evan H. Harding. All Rights Reserved.
+ * Copyright 2021 Evan H. Harding. All Rights Reserved.
  *
  * This module contains all commonly used components, directives, modules, and pipes that are used across the application.
  *

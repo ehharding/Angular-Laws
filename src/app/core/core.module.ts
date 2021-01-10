@@ -1,5 +1,5 @@
 /*****************************************************************************************************************************************************
- * Copyright 2020 Evan H. Harding. All Rights Reserved.
+ * Copyright 2021 Evan H. Harding. All Rights Reserved.
  *
  * This module serves as the repository for the applications singleton core services. All services provided here have only one instance
  * at any point in time across the entire application, in other words.

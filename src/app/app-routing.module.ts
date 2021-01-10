@@ -1,9 +1,9 @@
 /*****************************************************************************************************************************************************
- * Copyright 2020 Evan H. Harding. All Rights Reserved.
+ * Copyright 2021 Evan H. Harding. All Rights Reserved.
  *
- * This file handles navigation for the core application. The URLs defined here are the parent directories for the entire SPA. It enables
- * navigation from one view to the next as users perform application tasks. A change in the browser URL indicates an instruction to change the view to
- * the corresponding component.
+ * This file handles navigation for the core application. The URLs defined here are the parent directories for the entire SPA. It enables navigation
+ * from one view to the next as users perform application tasks. A change in the browser URL indicates an instruction to change the view to the
+ * corresponding component.
  *
  * @see https://angular.io/guide/router Angular Router Guide
  *

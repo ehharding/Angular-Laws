@@ -1,5 +1,5 @@
 /*****************************************************************************************************************************************************
- * Copyright 2020 Evan H. Harding. All Rights Reserved.
+ * Copyright 2021 Evan H. Harding. All Rights Reserved.
  *
  * This component is always visible and sits at the top of the application, across the entire screen.
  ****************************************************************************************************************************************************/

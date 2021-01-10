@@ -1,8 +1,8 @@
 /*****************************************************************************************************************************************************
- * Copyright 2020 Evan H. Harding. All Rights Reserved.
+ * Copyright 2021 Evan H. Harding. All Rights Reserved.
  *
- * Call functions in this file whenever you'd like to protect against a certain module being imported to more than one module, or want
- * some altogether similar functionality.
+ * Call functions in this file whenever you'd like to protect against a certain module being imported to more than one module, or want some altogether
+ * similar functionality.
  ****************************************************************************************************************************************************/
 
 import { CoreModule } from '@core/core.module';

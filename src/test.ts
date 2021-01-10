@@ -1,7 +1,7 @@
 import 'zone.js/dist/zone-testing';
 
 /*****************************************************************************************************************************************************
- * Copyright 2020 Evan H. Harding. All Rights Reserved.
+ * Copyright 2021 Evan H. Harding. All Rights Reserved.
  *
  * This file defines the environment under which we test the application via Karma.
  *

@@ -1,5 +1,5 @@
 /*****************************************************************************************************************************************************
- * Copyright 2020 Evan H. Harding. All Rights Reserved.
+ * Copyright 2021 Evan H. Harding. All Rights Reserved.
  *
  * This module serves as the core, or root, module and is bootstrapped to start the application. It imports all other feature modules to
  * aid in application modularity and scalability.
@@ -9,13 +9,13 @@
 
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from 'app/app.component';
-
-import { AppRoutingModule } from 'app/app-routing.module';
 import { CoreModule } from '@core/core.module';
+import { ThemeService } from '@core/services/theme/theme.service';
+
 import { SharedModule } from '@shared/shared.module';
 
-import { ThemeService } from '@core/services/theme/theme.service';
+import { AppComponent } from 'app/app.component';
+import { AppRoutingModule } from 'app/app-routing.module';
 
 @NgModule({
   bootstrap : [AppComponent],
