@@ -16,6 +16,10 @@
 @import '~bootstrap/scss/grid';
 @import '~bootstrap/scss/reboot';
 
+a {
+  text-decoration: none !important;
+}
+
 button:focus, button:active:focus, button.active:focus {
   outline: none !important;
 }

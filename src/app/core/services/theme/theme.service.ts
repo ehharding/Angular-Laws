@@ -15,8 +15,15 @@
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
+export enum AvailableStyleBundles {
+  DeepPurpleAmber = 'deeppurple-amber',
+  IndigoPink = 'indigo-pink',
+  PinkBlueGrey = 'pink-bluegrey',
+  PurpleGreen = 'purple-green'
+}
+
 export interface Theme {
-  bundleName : string;
+  bundleName : AvailableStyleBundles;
   labelName : string;
   backgroundColor : string;
   buttonColor : string;
@@ -26,7 +33,7 @@ export interface Theme {
 @Injectable({ providedIn : 'root' })
 export class ThemeService {
   private readonly _availableThemes : Theme[] = this.getAvailableThemes();
-  private _activeThemeBundleName : string = this._availableThemes[0].bundleName;
+  private _activeThemeBundleName : AvailableStyleBundles = this._availableThemes[0].bundleName;
 
   public constructor(@Inject(DOCUMENT) private readonly _document : Document) {
     this.loadClientTheme(this._activeThemeBundleName);
@@ -37,7 +44,7 @@ export class ThemeService {
    *
    * @returns the bundleName of the currently active application theme
    */
-  public getActiveThemeBundleName() : string {
+  public getActiveThemeBundleName() : AvailableStyleBundles {
     return this._activeThemeBundleName;
   }
 
@@ -48,10 +55,10 @@ export class ThemeService {
    */
   public getAvailableThemes() : Theme[] {
     return [
-      { bundleName : 'deeppurple-amber', labelName : 'Deep Purple & Amber', backgroundColor : '#FFFFFF', buttonColor : '#FFC107', headerColor : '#673AB7' },
-      { bundleName : 'indigo-pink', labelName : 'Indigo & Pink', backgroundColor : '#FFFFFF', buttonColor : '#FF4081', headerColor : '#3F51B5' },
-      { bundleName : 'pink-bluegrey', labelName : 'Pink & Blue Grey', backgroundColor : '#303030', buttonColor : '#607D8B', headerColor : '#E91E63' },
-      { bundleName : 'purple-green', labelName : 'Purple & Green', backgroundColor : '#303030', buttonColor : '#4CAF50', headerColor : '#9C27B0' }
+      { bundleName : AvailableStyleBundles.DeepPurpleAmber, labelName : 'Deep Purple & Amber', backgroundColor : '#FFFFFF', buttonColor : '#FFC107', headerColor : '#673AB7' },
+      { bundleName : AvailableStyleBundles.IndigoPink, labelName : 'Indigo & Pink', backgroundColor : '#FFFFFF', buttonColor : '#FF4081', headerColor : '#3F51B5' },
+      { bundleName : AvailableStyleBundles.PinkBlueGrey, labelName : 'Pink & Blue Grey', backgroundColor : '#303030', buttonColor : '#607D8B', headerColor : '#E91E63' },
+      { bundleName : AvailableStyleBundles.PurpleGreen, labelName : 'Purple & Green', backgroundColor : '#303030', buttonColor : '#4CAF50', headerColor : '#9C27B0' }
     ];
   }
 
@@ -59,9 +66,9 @@ export class ThemeService {
    * This method loads a style name that exists in the Themes enumeration, injecting the requested theme into the index.html as a <link />. This
    * allows for simple style switching at runtime.
    *
-   * @param themeBundleName - A theme bundleName from one of the available application themes defined in the Themes enumeration
+   * @param themeBundleName - A theme bundleName from one of the available application themes defined in the AvailableStyleBundles enumeration
    */
-  public loadClientTheme(themeBundleName : string) : void {
+  public loadClientTheme(themeBundleName : AvailableStyleBundles) : void {
     const HTML_LINK_ELEMENT_ID : string = 'client-theme';
     const THEME_STYLES : string = `assets/themes/${ themeBundleName }.css`;
 

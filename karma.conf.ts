@@ -19,7 +19,7 @@ module.exports = (config : any) : void => { // eslint-disable-line @typescript-e
     forceJSONP : false,
     proxyValidateSSL : true,
     restartOnFileChange : true,
-    singleRun : false,
+    singleRun : true,
     autoWatchBatchDelay : 250,
     browserDisconnectTimeout : 2000,
     browserDisconnectTolerance : 0,
@@ -51,38 +51,51 @@ module.exports = (config : any) : void => { // eslint-disable-line @typescript-e
     beforeMiddleware : [],
     middleware : [],
     browsers : ['Chrome'],
-    exclude : [],
-    files : [],
-    frameworks : ['@angular-devkit/build-angular', 'jasmine'],
-    plugins : [
-      require('karma-jasmine'),
-      require('karma-chrome-launcher'),
-      require('karma-jasmine-html-reporter'),
-      require('karma-coverage-istanbul-reporter'),
-      require('@angular-devkit/build-angular/plugins/karma')
-    ],
-    reporters : ['kjhtml', 'progress'],
-    transports : ['polling', 'websocket'],
     browserConsoleLogOptions : {
       terminal : false,
       format : '%b %T %m', // { Browser } { Log Type in UpperCase } { Log Message } (%t is unused but is the LogType in LowerCase)
       level : 'debug',
       path : './browser-console.log'
     },
+    exclude : [],
+    files : [
+      { pattern : './src/*.ts', type : 'js', included : false, served : true, watched : false },
+      'node_modules/zone.js/dist/zone.js',
+      'node_modules/zone.js/dist/long-stack-trace-zone.js',
+      'node_modules/zone.js/dist/proxy.js',
+      'node_modules/zone.js/dist/sync-test.js',
+      'node_modules/zone.js/dist/jasmine-patch.js',
+      'node_modules/zone.js/dist/async-test.js',
+      'node_modules/zone.js/dist/fake-async-test.js'
+    ],
+    frameworks : ['@angular-devkit/build-angular', 'jasmine'],
+    plugins : [
+      require('@angular-devkit/build-angular/plugins/karma'),
+      require('karma-chrome-launcher'),
+      require('karma-coverage'),
+      require('karma-jasmine'),
+      require('karma-jasmine-html-reporter'),
+      require('karma-mocha-reporter')
+    ],
+    reporters : ['coverage', 'kjhtml', 'mocha'],
+    transports : ['polling', 'websocket'],
+    coverageReporter : { dir : 'coverage/', type : 'html' },
+    mochaReporter : {
+      ignoreSkipped : false,
+      printFirstSuccess : false,
+      showDiff : false,
+      maxLogLines : 999,
+      colors : { error : 'red', info : 'grey', success : 'green', warning : 'yellow' },
+      output : 'full'
+    },
+    preprocessors : { 'src/app/*.ts' : 'coverage' },
     client : {
-      captureConsole : true,
+      captureConsole : false,
       clearContext : false, // Leaves the Jasmine test runner output visible in the browser
       clientDisplayNone : false,
       runInParent : false,
       useIframe : true,
       args : undefined
-    },
-    coverageIstanbulReporter : {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      dir : require('path').join(__dirname, './coverage/internet-visualizer') as string,
-      fixWebpackSourcePaths : true,
-      reports : ['html', 'lcovonly', 'text-summary'],
-      thresholds : { branches : 100, functions : 100, lines : 100, statements : 100 }
     },
     httpsServerOptions : { },
     mime : { },

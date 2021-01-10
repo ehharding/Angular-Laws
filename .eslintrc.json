@@ -1,6 +1,6 @@
 {
   "root" : true,
-  "env" : { "browser" : true, "es2020" : true, "node" : true },
+  "env" : { "browser" : true, "node" : true },
   "parser" : "@typescript-eslint/parser",
   "parserOptions" : {
     "ecmaFeatures" : {
@@ -13,7 +13,7 @@
       "spread" : true,
       "templateStrings" : true
     },
-    "ecmaVersion" : 2020,
+    "ecmaVersion" : 2015,
     "sourceType" : "module"
   },
   "plugins" : ["@angular-eslint", "@typescript-eslint", "eslint-plugin-tsdoc"],
@@ -241,6 +241,7 @@
     "no-unreachable" : "error",
     "no-unsafe-finally" : "error",
     "no-unsafe-negation" : ["warn", { "enforceForOrderingRelations" : true }],
+    "no-unsafe-optional-chaining" : ["warn", { "disallowArithmeticOperators" : true }],
     "no-unused-expressions" : "off",
     "no-unused-labels" : "warn",
     "no-unused-vars" : "off",
@@ -259,7 +260,7 @@
     "no-with" : "error",
     "nonblock-statement-body-position" : ["warn", "beside"],
     "object-curly-newline" : "off",
-    "object-curly-spacing" : ["warn", "always", { "arraysInObjects" : false, "objectsInObjects" : false }],
+    "object-curly-spacing" : ["warn", "always", { "arraysInObjects" : false, "objectsInObjects" : true }],
     "object-property-newline" : ["warn", { "allowAllPropertiesOnSameLine" : true }],
     "object-shorthand" : ["warn", "always", { "avoidExplicitReturnArrows" : true, "avoidQuotes" : false, "ignoreConstructors" : false }],
     "one-var" : ["warn", { "separateRequires" : true, "const" : "never", "let" : "never" }],
@@ -404,7 +405,7 @@
     }],
     "@typescript-eslint/func-call-spacing" : ["warn", "never"],
     "@typescript-eslint/indent" : ["warn", 2],
-    "@typescript-eslint/init-declarations" : ["warn", "always"],
+    "@typescript-eslint/init-declarations" : "off",
     "@typescript-eslint/keyword-spacing" : ["warn", { "before" : true, "after" : true }],
     "@typescript-eslint/lines-between-class-members" : ["warn", "always", { "exceptAfterOverload" : true, "exceptAfterSingleLine" : true }],
     "@typescript-eslint/member-delimiter-style" : ["warn", {
@@ -665,9 +666,11 @@
     {
       "files" : ["*.spec.ts", "karma.conf.ts"],
       "rules" : {
+        "@typescript-eslint/no-floating-promises" : "off",
         "@typescript-eslint/no-magic-numbers" : "off",
         "@typescript-eslint/no-require-imports" : "off",
-        "@typescript-eslint/no-unsafe-member-access" : "off"
+        "@typescript-eslint/no-unsafe-member-access" : "off",
+        "@typescript-eslint/unbound-method" : "off"
       }
     }
   ]

@@ -8,7 +8,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DomSanitizer, Title } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 
-import { Theme, ThemeService } from '@core/services/theme/theme.service';
+import { AvailableStyleBundles, Theme, ThemeService } from '@core/services/theme/theme.service';
 
 @Component({
   changeDetection : ChangeDetectionStrategy.OnPush,
@@ -17,8 +17,8 @@ import { Theme, ThemeService } from '@core/services/theme/theme.service';
   templateUrl : 'toolbar.component.html'
 })
 export class ToolbarComponent {
-  public readonly availableThemes : Theme[] = this._themeService.getAvailableThemes();
   public readonly applicationTitle : string = this._titleService.getTitle();
+  public readonly availableThemes : Theme[] = this._themeService.getAvailableThemes();
   public readonly gitHubURL : string = 'https://github.com/ehharding/Internet-Visualizer';
 
   public constructor(
@@ -33,11 +33,11 @@ export class ToolbarComponent {
   /**
    * Sets the application theme using the Theme Service.
    *
-   * @param bundleName - The bundleName of the theme to set
+   * @param bundleName - The bundleName of the theme to set from one of the available defined in the AvailableStyleBundles enumeration
    *
    * @see ThemeService
    */
-  public setApplicationTheme(bundleName : string) : void {
+  public setApplicationTheme(bundleName : AvailableStyleBundles) : void {
     this._themeService.loadClientTheme(bundleName);
   }
 
@@ -47,7 +47,7 @@ export class ToolbarComponent {
    * @param bundleName - The bundleName of a certain theme to compare to the currently active theme bundleName
    * @returns true if the provided bundleName is equal to the currently active theme bundleName and false otherwise
    */
-  public themeBundleNameIsActive(bundleName : string) : boolean {
+  public themeBundleNameIsActive(bundleName : AvailableStyleBundles) : boolean {
     return bundleName === this._themeService.getActiveThemeBundleName();
   }
 }
