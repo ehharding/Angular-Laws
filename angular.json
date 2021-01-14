@@ -123,11 +123,6 @@
             "lineFilePatterns" : ["src/**/*.ts", "src/**/*.html"],
             "tsConfig" : ["tsconfig.app.json"]
           }
-        },
-        "e2e" : {
-          "builder" : "@angular-devkit/build-angular:protractor",
-          "configurations" : { "production" : { "devServerTarget" : "internet-visualizer:serve:production" } },
-          "options" : { "devServerTarget" : "internet-visualizer:serve", "protractorConfig" : "e2e/protractor.conf.js" }
         }
       },
       "i18n" : { "sourceLocale" : "en-US" }

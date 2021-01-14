@@ -6,5 +6,5 @@
 
 *.log
 .idea
-coverage
+coverage_report
 node_modules

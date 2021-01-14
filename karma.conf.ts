@@ -19,7 +19,7 @@ module.exports = (config : any) : void => { // eslint-disable-line @typescript-e
     forceJSONP : false,
     proxyValidateSSL : true,
     restartOnFileChange : true,
-    singleRun : true,
+    singleRun : false,
     autoWatchBatchDelay : 250,
     browserDisconnectTimeout : 2000,
     browserDisconnectTolerance : 0,
@@ -79,7 +79,7 @@ module.exports = (config : any) : void => { // eslint-disable-line @typescript-e
     ],
     reporters : ['coverage', 'kjhtml', 'mocha'],
     transports : ['polling', 'websocket'],
-    coverageReporter : { dir : 'coverage/', type : 'html' },
+    coverageReporter : { dir : 'coverage_report/', type : 'html' },
     mochaReporter : {
       ignoreSkipped : false,
       printFirstSuccess : false,
@@ -90,7 +90,7 @@ module.exports = (config : any) : void => { // eslint-disable-line @typescript-e
     },
     preprocessors : { 'src/app/*.ts' : 'coverage' },
     client : {
-      captureConsole : false,
+      captureConsole : true,
       clearContext : false, // Leaves the Jasmine test runner output visible in the browser
       clientDisplayNone : false,
       runInParent : false,

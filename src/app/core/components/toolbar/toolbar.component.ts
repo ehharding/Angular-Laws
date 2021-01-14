@@ -18,8 +18,8 @@ import { AvailableStyleBundles, Theme, ThemeService } from '@core/services/theme
 })
 export class ToolbarComponent {
   public readonly applicationTitle : string = this._titleService.getTitle();
-  public readonly availableThemes : Theme[] = this._themeService.getAvailableThemes();
   public readonly gitHubURL : string = 'https://github.com/ehharding/Internet-Visualizer';
+  public readonly availableThemes : Theme[] = this._themeService.getAvailableThemes();
 
   public constructor(
     private readonly _matIconRegistry : MatIconRegistry,

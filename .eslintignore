@@ -4,6 +4,5 @@
 # An .eslintignore file specifies, for ESLint, which files to ignore and not lint.
 ######################################################################################################################################################
 
-coverage
-e2e
+coverage_report
 node_modules
