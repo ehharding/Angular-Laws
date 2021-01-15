@@ -8,7 +8,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DomSanitizer, Title } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 
-import { AvailableStyleBundles, Theme, ThemeService } from '@core/services/theme/theme.service';
+import { AVAILABLE_THEMES, AvailableStyleBundles, Theme, ThemeService } from '@core/services/theme/theme.service';
 
 @Component({
   changeDetection : ChangeDetectionStrategy.OnPush,
@@ -19,7 +19,7 @@ import { AvailableStyleBundles, Theme, ThemeService } from '@core/services/theme
 export class ToolbarComponent {
   public readonly applicationTitle : string = this._titleService.getTitle();
   public readonly gitHubURL : string = 'https://github.com/ehharding/Internet-Visualizer';
-  public readonly availableThemes : Theme[] = this._themeService.getAvailableThemes();
+  public readonly availableThemes : Theme[] = AVAILABLE_THEMES;
 
   public constructor(
     private readonly _matIconRegistry : MatIconRegistry,

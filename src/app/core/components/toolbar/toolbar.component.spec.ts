@@ -20,10 +20,7 @@ describe('ToolbarComponent', () : void => {
   beforeEach(() : void => {
     TestBed.configureTestingModule({
       declarations : [ToolbarComponent],
-      providers : [
-        { provide : ThemeService, useClass : ThemeService },
-        { provide : Title, useClass : Title }
-      ]
+      providers : [{ provide : ThemeService, useClass : ThemeService }, { provide : Title, useClass : Title }]
     });
 
     matIconRegistry = TestBed.inject(MatIconRegistry);

@@ -30,13 +30,19 @@ export interface Theme {
   headerColor : string;
 }
 
+export const AVAILABLE_THEMES : Theme[] = [
+  { bundleName : AvailableStyleBundles.DeepPurpleAmber, labelName : 'Deep Purple & Amber', backgroundColor : '#FFFFFF', buttonColor : '#FFC107', headerColor : '#673AB7' },
+  { bundleName : AvailableStyleBundles.IndigoPink, labelName : 'Indigo & Pink', backgroundColor : '#FFFFFF', buttonColor : '#FF4081', headerColor : '#3F51B5' },
+  { bundleName : AvailableStyleBundles.PinkBlueGrey, labelName : 'Pink & Blue Grey', backgroundColor : '#303030', buttonColor : '#607D8B', headerColor : '#E91E63' },
+  { bundleName : AvailableStyleBundles.PurpleGreen, labelName : 'Purple & Green', backgroundColor : '#303030', buttonColor : '#4CAF50', headerColor : '#9C27B0' }
+];
+
 @Injectable({ providedIn : 'root' })
 export class ThemeService {
-  private readonly _availableThemes : Theme[] = this.getAvailableThemes();
-  private _activeThemeBundleName : AvailableStyleBundles = this._availableThemes[0].bundleName;
+  private _activeThemeBundleName : AvailableStyleBundles | undefined;
 
   public constructor(@Inject(DOCUMENT) private readonly _document : Document) {
-    this.loadClientTheme(this._activeThemeBundleName);
+    this.loadClientTheme(AVAILABLE_THEMES[0].bundleName);
   }
 
   /**
@@ -45,21 +51,7 @@ export class ThemeService {
    * @returns the bundleName of the currently active application theme
    */
   public getActiveThemeBundleName() : AvailableStyleBundles {
-    return this._activeThemeBundleName;
-  }
-
-  /**
-   * Returns a list of available application themes.
-   *
-   * @returns a list of application themes
-   */
-  public getAvailableThemes() : Theme[] {
-    return [
-      { bundleName : AvailableStyleBundles.DeepPurpleAmber, labelName : 'Deep Purple & Amber', backgroundColor : '#FFFFFF', buttonColor : '#FFC107', headerColor : '#673AB7' },
-      { bundleName : AvailableStyleBundles.IndigoPink, labelName : 'Indigo & Pink', backgroundColor : '#FFFFFF', buttonColor : '#FF4081', headerColor : '#3F51B5' },
-      { bundleName : AvailableStyleBundles.PinkBlueGrey, labelName : 'Pink & Blue Grey', backgroundColor : '#303030', buttonColor : '#607D8B', headerColor : '#E91E63' },
-      { bundleName : AvailableStyleBundles.PurpleGreen, labelName : 'Purple & Green', backgroundColor : '#303030', buttonColor : '#4CAF50', headerColor : '#9C27B0' }
-    ];
+    return this._activeThemeBundleName as AvailableStyleBundles;
   }
 
   /**
@@ -70,15 +62,13 @@ export class ThemeService {
    */
   public loadClientTheme(themeBundleName : AvailableStyleBundles) : void {
     const HTML_LINK_ELEMENT_ID : string = 'client-theme';
-    const THEME_STYLES : string = `assets/themes/${ themeBundleName }.css`;
-
     const HTML_LINK_ELEMENT : HTMLElement | null = this._document.getElementById(HTML_LINK_ELEMENT_ID);
+    const THEME_STYLES : string = `assets/themes/${ themeBundleName }.css`;
 
     // If the <link /> element already exists, we simply modify its "href" attribute
     if (HTML_LINK_ELEMENT) {
       (HTML_LINK_ELEMENT as HTMLLinkElement).setAttribute('href', THEME_STYLES);
-      this._activeThemeBundleName = themeBundleName;
-    // Otherwise, if we're in startup, we create it with all the necessary attribute settings
+      // Otherwise, if we're in startup, we create it with all the necessary attribute settings
     } else {
       const LINK_ELEMENT : HTMLLinkElement = this._document.createElement('link');
       LINK_ELEMENT.setAttribute('href', THEME_STYLES);
@@ -87,8 +77,11 @@ export class ThemeService {
       LINK_ELEMENT.setAttribute('type', 'text/css');
 
       // This adds <link href="assets/themes/foo.css" id="client-theme" rel="stylesheet" type="text/css" /> to index.html's <head></head> section
-      this._document.head.appendChild(LINK_ELEMENT);
-      this._activeThemeBundleName = themeBundleName;
+      window.onload = () : void => {
+        this._document.head.appendChild(LINK_ELEMENT);
+      };
     }
+
+    this._activeThemeBundleName = themeBundleName;
   }
 }

@@ -404,7 +404,7 @@
       "allowTypedFunctionExpressions" : true
     }],
     "@typescript-eslint/func-call-spacing" : ["warn", "never"],
-    "@typescript-eslint/indent" : ["warn", 2],
+    "@typescript-eslint/indent" : "off",
     "@typescript-eslint/init-declarations" : "off",
     "@typescript-eslint/keyword-spacing" : ["warn", { "before" : true, "after" : true }],
     "@typescript-eslint/lines-between-class-members" : ["warn", "always", { "exceptAfterOverload" : true, "exceptAfterSingleLine" : true }],
@@ -666,10 +666,13 @@
     {
       "files" : ["*.spec.ts", "karma.conf.ts"],
       "rules" : {
+        "@typescript-eslint/no-empty-function" : "off",
         "@typescript-eslint/no-floating-promises" : "off",
         "@typescript-eslint/no-magic-numbers" : "off",
         "@typescript-eslint/no-require-imports" : "off",
         "@typescript-eslint/no-unsafe-member-access" : "off",
+        "@typescript-eslint/no-unused-vars" : "off",
+        "@typescript-eslint/no-unused-vars-experimental" : "off",
         "@typescript-eslint/unbound-method" : "off"
       }
     }
