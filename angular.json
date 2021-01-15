@@ -111,8 +111,7 @@
               "src/assets/themes/indigo-pink.css",
               "src/assets/themes/pink-bluegrey.css",
               "src/assets/themes/purple-green.css",
-              "src/styles.scss",
-              { "inject" : true, "bundleName" : "deeppurple-amber", "input" : "src/assets/themes/deeppurple-amber.css" }
+              "src/styles.scss"
             ]
           }
         },
