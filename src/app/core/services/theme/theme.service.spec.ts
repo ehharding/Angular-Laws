@@ -25,18 +25,18 @@ describe('ThemeService', () : void => {
     themeService = new ThemeService(dom);
   });
 
-  it('should initialize variables', () : void => {
+  it('should initialize variables.', () : void => {
     expect(themeService).toBeTruthy();
     expect(themeService.getActiveThemeBundleName()).toBeDefined();
   });
 
   describe('loadClientTheme()', () : void => {
-    it('should set the `client-theme` to deeppurple-amber initially', () : void => {
+    it('should set the `client-theme` to deeppurple-amber initially.', () : void => {
       themeService.loadClientTheme(INITIAL_THEME);
       expect(themeService.getActiveThemeBundleName()).toBe(INITIAL_THEME);
     });
 
-    it('should set the theme link to the provided bundle name style', () : void => {
+    it('should set the theme link to the provided bundle name style.', () : void => {
       const MOCK_HTML_LINK_ELEMENT : HTMLLinkElement = { href : `assets/themes/${ INITIAL_THEME }.css`, setAttribute(qualifiedName : string, value : string) : void { } } as unknown as HTMLLinkElement;
       const NEW_THEME_CHOICE : AvailableStyleBundles = AvailableStyleBundles.IndigoPink;
 

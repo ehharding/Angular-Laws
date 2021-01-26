@@ -1,0 +1,29 @@
+/*****************************************************************************************************************************************************
+ * Copyright 2021 Evan H. Harding. All Rights Reserved.
+ ****************************************************************************************************************************************************/
+
+.iv-internet-header-background {
+  background-image : url("https://material.angular.io/angular-white-transparent.6504667372b77bd8f80e.svg");
+  background-repeat : no-repeat;
+  background-size : 600px;
+  overflow : hidden;
+  position : relative;
+  height : 420px;
+  opacity : 0.2;
+  top : 0;
+  bottom : 0;
+  left : 0;
+  right : 0;
+}
+
+.iv-internet-header-section {
+  position : absolute;
+  text-align : center;
+  transform : translate(-50%, -50%);
+  top : 50%;
+  left : 50%;
+}
+
+.iv-internet-header-headline {
+  color : white;
+}

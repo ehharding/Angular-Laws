@@ -14,14 +14,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Title } from '@angular/platform-browser';
 
+import { InternetComponent } from '@core/components/internet/internet.component';
 import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
 import { throwIfAlreadyLoaded } from '@core/guards/module-import.guard';
 
 import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
-  declarations : [ToolbarComponent],
-  exports : [ToolbarComponent],
+  declarations : [InternetComponent, ToolbarComponent],
+  exports : [InternetComponent, ToolbarComponent],
   imports : [SharedModule, MatButtonModule, MatFormFieldModule, MatIconModule, MatMenuModule, MatToolbarModule, MatTooltipModule],
   providers : [Title]
 })

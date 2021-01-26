@@ -10,7 +10,7 @@
     <!-- Left group of toolbar items -->
     <div class="align-items-center d-inline-flex">
       <!-- The first item in the left group is the application title button which links the user back to the home page -->
-      <a mat-flat-button class="font-weight-bold" color="primary" matTooltip="The Internet" matTooltipPosition="right" routerLink="/internet">
+      <a mat-flat-button class="font-weight-bold" color="primary" matTooltip="The Internet" matTooltipPosition="below" routerLink="/internet">
         <mat-icon class="mr-2">language</mat-icon>
         <span>{{ applicationTitle }}</span>
       </a>
@@ -19,7 +19,7 @@
     <!-- Right group of toolbar items -->
     <div class="align-items-center d-inline-flex">
       <!-- The first item in the right group is the theme switcher menu -->
-      <button mat-icon-button matTooltip="Select a theme for the application" matTooltipPosition="left" [matMenuTriggerFor]="menu">
+      <button mat-icon-button matTooltip="Select a theme for the application" matTooltipPosition="below" [matMenuTriggerFor]="menu">
         <mat-icon>palette</mat-icon>
       </button>
       <mat-menu #menu="matMenu">

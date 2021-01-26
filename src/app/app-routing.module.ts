@@ -17,9 +17,11 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
+import { InternetComponent } from '@core/components/internet/internet.component';
+
 const ROUTES : Routes = [
-//  { path : '', pathMatch : 'full', redirectTo : 'internet' },
-//  { path : 'internet', component : InternetComponent }
+  { path : '', pathMatch : 'full', redirectTo : 'internet' },
+  { path : 'internet', component : InternetComponent }
 ];
 
 @NgModule({
