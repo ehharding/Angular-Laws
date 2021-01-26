@@ -4,7 +4,7 @@
  * The Karma Configuration File configures the Karma Test Runner to execute tests for the application. The tests themselves operate through the
  * Jasmine JavaScript testing framework.
  *
- * {@link https://karma-runner.github.io/5.2/config/configuration-file.html | Karma Configuration Guide}
+ * {@link https://karma-runner.github.io/6.0/config/configuration-file.html | Karma Configuration Guide}
  ****************************************************************************************************************************************************/
 
 module.exports = (config : any) : void => { // eslint-disable-line @typescript-eslint/no-explicit-any
