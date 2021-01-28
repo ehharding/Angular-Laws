@@ -20,16 +20,16 @@
     <div class="align-items-center d-inline-flex p-2">
       <!-- The first item in the right group is the theme switcher menu -->
       <button mat-icon-button aria-label="Select A Theme" matTooltip="Select A Theme For The Application" [matMenuTriggerFor]="menu">
-        <mat-icon>palette</mat-icon>
+        <mat-icon aria-hidden="true">palette</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item *ngFor="let theme of availableThemes" (click)="setApplicationTheme(theme.bundleName)">
           <!-- Display a checkmark next to the active theme -->
-          <mat-icon *ngIf="themeBundleNameIsActive(theme.bundleName)" class="mr-2">check</mat-icon>
+          <mat-icon *ngIf="themeBundleNameIsActive(theme.bundleName)" aria-hidden="true" class="mr-2">check</mat-icon>
           <!-- Display an empty icon which acts like a spacer next to all of the other themes -->
-          <mat-icon *ngIf="!themeBundleNameIsActive(theme.bundleName)" class="mr-2"></mat-icon>
+          <mat-icon *ngIf="!themeBundleNameIsActive(theme.bundleName)" aria-hidden="true" class="mr-2"></mat-icon>
 
-          <mat-icon class="mr-2">
+          <mat-icon aria-hidden="true" class="mr-2">
             <svg viewBox="0 0 80 80">
               <defs>
                 <path id="a" d="M77.87 0C79.05 0 80 .95 80 2.13v75.74c0 1.17-.95 2.13-2.13 2.13H2.13C.96 80 0 79.04 0 77.87V2.13C0 .95.96 0 2.13 0h75.74z"></path>
@@ -47,7 +47,7 @@
 
       <!-- The second item in the right group is a button which links to the GitHub repository -->
       <a mat-flat-button aria-label="GitHub Repository" class="font-weight-bold" color="primary" href="{{ gitHubURL }}" target="_blank">
-        <img alt="GitHub Repository" class="iv-github-logo mr-2" src="assets/icons/github-logo.svg">
+        <img alt="GitHub Repository" aria-hidden="true" class="iv-github-logo mr-2" src="assets/icons/github-logo.svg">
         GitHub
       </a>
     </div>
