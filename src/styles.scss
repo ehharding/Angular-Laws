@@ -16,15 +16,16 @@
 @import '~bootstrap/scss/grid';
 @import '~bootstrap/scss/reboot';
 
+/* Styling Applied To Entire Application */
+body {
+  display : block;
+  margin : 0;
+}
+
 a {
   text-decoration : none !important;
 }
 
 button:focus, button:active:focus, button.active:focus {
-  outline: none !important;
-}
-
-body {
-  display : block;
-  margin : 0;
+  outline : none !important;
 }
