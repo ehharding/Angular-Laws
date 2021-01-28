@@ -2,9 +2,8 @@
  * Copyright 2021 Evan H. Harding. All Rights Reserved.
  ****************************************************************************************************************************************************/
 
-import { DomSanitizer, Title } from '@angular/platform-browser';
-import { MatIconRegistry } from '@angular/material/icon';
 import { TestBed } from '@angular/core/testing';
+import { Title } from '@angular/platform-browser';
 
 import { AvailableStyleBundles, ThemeService } from '@core/services/theme/theme.service';
 import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
@@ -12,8 +11,6 @@ import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
 describe('ToolbarComponent', () : void => {
   let toolbarComponent : ToolbarComponent;
 
-  let matIconRegistry : MatIconRegistry;
-  let domSanitizer : DomSanitizer;
   let themeService : ThemeService;
   let titleService : Title;
 
@@ -23,12 +20,10 @@ describe('ToolbarComponent', () : void => {
       providers : [{ provide : ThemeService, useClass : ThemeService }, { provide : Title, useClass : Title }]
     });
 
-    matIconRegistry = TestBed.inject(MatIconRegistry);
-    domSanitizer = TestBed.inject(DomSanitizer);
     themeService = TestBed.inject(ThemeService);
     titleService = TestBed.inject(Title);
 
-    toolbarComponent = new ToolbarComponent(matIconRegistry, domSanitizer, themeService, titleService);
+    toolbarComponent = new ToolbarComponent(themeService, titleService);
   });
 
   it('should initialize variables and register the GitHub icon with the MatIconRegistry.', () : void => {

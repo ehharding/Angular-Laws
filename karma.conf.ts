@@ -33,7 +33,6 @@ module.exports = (config : any) : void => { // eslint-disable-line @typescript-e
     retryLimit : 2,
     basePath : '',
     hostname : 'localhost',
-    httpModule : undefined,
     protocol : 'http:',
     listenAddress : '0.0.0.0',
     urlRoot : '/',
@@ -42,6 +41,7 @@ module.exports = (config : any) : void => { // eslint-disable-line @typescript-e
     customContextFile : null,
     customDebugFile : null,
     customHeaders : undefined,
+    httpModule : undefined,
     formatError : undefined,
     proxyReq : undefined,
     proxyRes : undefined,
@@ -77,7 +77,7 @@ module.exports = (config : any) : void => { // eslint-disable-line @typescript-e
       require('karma-jasmine-html-reporter'),
       require('karma-mocha-reporter')
     ],
-    reporters : ['coverage', 'kjhtml', 'mocha'],
+    reporters : ['coverage', 'dots', 'kjhtml', 'mocha'],
     transports : ['polling', 'websocket'],
     coverageReporter : { dir : 'coverage_report/', type : 'html' },
     mochaReporter : {

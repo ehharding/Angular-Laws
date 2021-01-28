@@ -5,8 +5,7 @@
  ****************************************************************************************************************************************************/
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { DomSanitizer, Title } from '@angular/platform-browser';
-import { MatIconRegistry } from '@angular/material/icon';
+import { Title } from '@angular/platform-browser';
 
 import { AVAILABLE_THEMES, AvailableStyleBundles, Theme, ThemeService } from '@core/services/theme/theme.service';
 
@@ -21,14 +20,7 @@ export class ToolbarComponent {
   public readonly gitHubURL : string = 'https://github.com/ehharding/Internet-Visualizer';
   public readonly availableThemes : Theme[] = AVAILABLE_THEMES;
 
-  public constructor(
-    private readonly _matIconRegistry : MatIconRegistry,
-    private readonly _domSanitizer : DomSanitizer,
-    private readonly _themeService : ThemeService,
-    private readonly _titleService : Title
-  ) {
-    this._matIconRegistry.addSvgIcon('github', this._domSanitizer.bypassSecurityTrustResourceUrl('../../../assets/icons/github-logo.svg'));
-  }
+  public constructor(private readonly _themeService : ThemeService, private readonly _titleService : Title) { }
 
   /**
    * Sets the application theme using the Theme Service.

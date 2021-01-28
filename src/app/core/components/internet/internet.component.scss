@@ -1,3 +1,25 @@
 /*****************************************************************************************************************************************************
  * Copyright 2021 Evan H. Harding. All Rights Reserved.
  ****************************************************************************************************************************************************/
+
+.iv-header-background {
+  overflow : hidden;
+  position : relative;
+  height : 420px;
+}
+
+.iv-header-headline {
+  color : black;
+}
+
+.iv-header-section {
+  position : absolute;
+  text-align : center;
+  top : 50%;
+  bottom : 50%;
+  left : 50%;
+  right : 50%;
+  transform : translate(-50%, -50%);
+  width : 90%;
+  z-index : 0;
+}

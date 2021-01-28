@@ -5,21 +5,21 @@
  ~ on the left which, when clicked, takes the user home. On the right is a material theme switching menu and a link to the GitHub repository.
  ---------------------------------------------------------------------------------------------------------------------------------------------------->
 
-<div class="mat-elevation-z20 row">
+<nav aria-label="Top Toolbar" class="row">
   <mat-toolbar class="justify-content-between" color="primary">
     <!-- Left group of toolbar items -->
-    <div class="align-items-center d-inline-flex">
+    <div class="align-items-center d-inline-flex p-2">
       <!-- The first item in the left group is the application title button which links the user back to the home page -->
-      <a mat-flat-button class="font-weight-bold" color="primary" matTooltip="The Internet" matTooltipPosition="below" routerLink="/internet">
-        <mat-icon class="mr-2">language</mat-icon>
+      <a mat-flat-button aria-label="Internet Visualizer" class="font-weight-bold" color="primary" matTooltip="The Internet" routerLink="/internet">
+        <mat-icon aria-hidden="true" class="mr-2">language</mat-icon>
         <span>{{ applicationTitle }}</span>
       </a>
     </div>
 
     <!-- Right group of toolbar items -->
-    <div class="align-items-center d-inline-flex">
+    <div class="align-items-center d-inline-flex p-2">
       <!-- The first item in the right group is the theme switcher menu -->
-      <button mat-icon-button matTooltip="Select a theme for the application" matTooltipPosition="below" [matMenuTriggerFor]="menu">
+      <button mat-icon-button aria-label="Select A Theme" matTooltip="Select A Theme For The Application" [matMenuTriggerFor]="menu">
         <mat-icon>palette</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
@@ -46,12 +46,10 @@
       </mat-menu>
 
       <!-- The second item in the right group is a button which links to the GitHub repository -->
-      <a mat-flat-button class="font-weight-bold" color="primary" href="{{ gitHubURL }}" target="_blank">
-        <div class="d-inline-flex">
-          <mat-icon class="mr-2" svgIcon="github"></mat-icon>
-          <span>GitHub</span>
-        </div>
+      <a mat-flat-button aria-label="GitHub Repository" class="font-weight-bold" color="primary" href="{{ gitHubURL }}" target="_blank">
+        <img alt="GitHub Repository" class="iv-github-logo mr-2" src="assets/icons/github-logo.svg">
+        GitHub
       </a>
     </div>
   </mat-toolbar>
-</div>
+</nav>

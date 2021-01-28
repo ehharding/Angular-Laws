@@ -17,9 +17,14 @@
 @import '~bootstrap/scss/reboot';
 
 a {
-  text-decoration: none !important;
+  text-decoration : none !important;
 }
 
 button:focus, button:active:focus, button.active:focus {
   outline: none !important;
+}
+
+body {
+  display : block;
+  margin : 0;
 }
