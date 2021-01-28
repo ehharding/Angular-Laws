@@ -5,10 +5,10 @@
  ~ on the left which, when clicked, takes the user home. On the right is a material theme switching menu and a link to the GitHub repository.
  ---------------------------------------------------------------------------------------------------------------------------------------------------->
 
-<nav aria-label="Top Toolbar" class="row">
+<nav aria-label="Top Toolbar">
   <mat-toolbar class="justify-content-between" color="primary">
     <!-- Left group of toolbar items -->
-    <div class="align-items-center d-inline-flex p-2">
+    <div class="align-items-center d-inline-flex">
       <!-- The first item in the left group is the application title button which links the user back to the home page -->
       <a mat-flat-button aria-label="Internet Visualizer" class="font-weight-bold" color="primary" matTooltip="The Internet" routerLink="/internet">
         <mat-icon aria-hidden="true" class="mr-2">language</mat-icon>
@@ -17,7 +17,7 @@
     </div>
 
     <!-- Right group of toolbar items -->
-    <div class="align-items-center d-inline-flex p-2">
+    <div class="align-items-center d-inline-flex">
       <!-- The first item in the right group is the theme switcher menu -->
       <button mat-icon-button aria-label="Select A Theme" matTooltip="Select A Theme For The Application" [matMenuTriggerFor]="menu">
         <mat-icon aria-hidden="true">palette</mat-icon>
