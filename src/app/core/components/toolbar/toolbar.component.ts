@@ -4,10 +4,14 @@
  * This component is always visible and sits at the top of the application, across the entire screen.
  ****************************************************************************************************************************************************/
 
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
-import { AVAILABLE_THEMES, AvailableStyleBundles, Theme, ThemeService } from '@core/services/theme/theme.service';
+import { AVAILABLE_THEMES, Theme, ThemeBundles } from '@core/services/theme/theme.configuration';
+import { ThemeService } from '@core/services/theme/theme.service';
+
+import { ReplaySubject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   changeDetection : ChangeDetectionStrategy.OnPush,
@@ -15,31 +19,36 @@ import { AVAILABLE_THEMES, AvailableStyleBundles, Theme, ThemeService } from '@c
   styleUrls : ['toolbar.component.scss'],
   templateUrl : 'toolbar.component.html'
 })
-export class ToolbarComponent {
+export class ToolbarComponent implements OnInit, OnDestroy {
   public readonly applicationTitle : string = this._titleService.getTitle();
   public readonly gitHubURL : string = 'https://github.com/ehharding/Internet-Visualizer';
   public readonly availableThemes : Theme[] = AVAILABLE_THEMES;
 
+  public activeTheme : ThemeBundles = AVAILABLE_THEMES[0].bundleName;
+
+  private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
+
   public constructor(private readonly _themeService : ThemeService, private readonly _titleService : Title) { }
+
+  public ngOnInit() : void {
+    this._themeService.getActiveThemeBundleName().pipe(takeUntil(this._componentDestroyed$)).subscribe((activeTheme : ThemeBundles) : void => {
+      this.activeTheme = activeTheme;
+    });
+  }
+
+  public ngOnDestroy() : void {
+    this._componentDestroyed$.next(true);
+    this._componentDestroyed$.complete();
+  }
 
   /**
    * Sets the application theme using the Theme Service.
    *
-   * @param bundleName - The bundleName of the theme to set from one of the available defined in the AvailableStyleBundles enumeration
+   * @param bundleName - The bundleName of the theme to set from one of the available defined in the ThemeBundles enumeration
    *
    * @see ThemeService
    */
-  public setApplicationTheme(bundleName : AvailableStyleBundles) : void {
+  public setApplicationTheme(bundleName : ThemeBundles) : void {
     this._themeService.loadClientTheme(bundleName);
-  }
-
-  /**
-   * Determines if a given theme bundleName is the same as the bundleName for the currently active theme.
-   *
-   * @param bundleName - The bundleName of a certain theme to compare to the currently active theme bundleName
-   * @returns true if the provided bundleName is equal to the currently active theme bundleName and false otherwise
-   */
-  public themeBundleNameIsActive(bundleName : AvailableStyleBundles) : boolean {
-    return bundleName === this._themeService.getActiveThemeBundleName();
   }
 }

@@ -10,7 +10,7 @@
     <!-- Left group of toolbar items -->
     <div class="align-items-center d-inline-flex">
       <!-- The first item in the left group is the application title button which links the user back to the home page -->
-      <a mat-flat-button aria-label="Internet Visualizer" class="font-weight-bold" color="primary" matTooltip="The Internet" routerLink="/internet">
+      <a mat-flat-button aria-label="Internet Visualizer" class="font-weight-bold" color="primary" routerLink="/internet">
         <mat-icon aria-hidden="true" class="mr-2">language</mat-icon>
         <span>{{ applicationTitle }}</span>
       </a>
@@ -25,9 +25,9 @@
       <mat-menu #menu="matMenu">
         <button mat-menu-item *ngFor="let theme of availableThemes" (click)="setApplicationTheme(theme.bundleName)">
           <!-- Display a checkmark next to the active theme -->
-          <mat-icon *ngIf="themeBundleNameIsActive(theme.bundleName)" aria-hidden="true" class="mr-2">check</mat-icon>
+          <mat-icon *ngIf="theme.bundleName === activeTheme" aria-hidden="true" class="mr-2">check</mat-icon>
           <!-- Display an empty icon which acts like a spacer next to all of the other themes -->
-          <mat-icon *ngIf="!themeBundleNameIsActive(theme.bundleName)" aria-hidden="true" class="mr-2"></mat-icon>
+          <mat-icon *ngIf="!(theme.bundleName === activeTheme)" aria-hidden="true" class="mr-2"></mat-icon>
 
           <mat-icon aria-hidden="true" class="mr-2">
             <svg viewBox="0 0 80 80">
