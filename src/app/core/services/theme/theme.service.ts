@@ -16,7 +16,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { AVAILABLE_THEMES, ThemeBundles, ThemeCSSClassNames } from '@core/services/theme/theme.configuration';
+import { AVAILABLE_THEMES, ThemeBundles } from '@core/services/theme/theme.configuration';
 
 import { Observable, ReplaySubject } from 'rxjs';
 
@@ -44,27 +44,13 @@ export class ThemeService {
    *
    * @param cssClassList - A list of CSS class names to assign to an existing HTML element
    * @param tagName - The qualified HTML tag name that you would like to apply CSS classes to
-   * @param themeMode - If true, core material theme CSS classes are removed before new classes are applied
    */
-  public assignCSSClassesToTag(cssClassList : readonly string[], tagName : keyof HTMLElementTagNameMap, themeMode : boolean = false) : void {
+  public assignCSSClassesToTag(cssClassList : readonly string[], tagName : keyof HTMLElementTagNameMap) : void {
     const HTML_ELEMENT : HTMLElement | null = this._document.querySelector(tagName);
 
     // If The Element Already Exists, We Set Its `class` Attribute To The List Of Provided CSS Class Names
     if (HTML_ELEMENT) {
-      if (themeMode) {
-        // Remove Any Existing Core Theme Styles To Avoid Them Being Stacked
-        const FILTERED_EXISTING_STYLES : string[] = HTML_ELEMENT.className.split(' ').filter((styleName : string) => {
-          return !(styleName === ThemeCSSClassNames.DeepPurpleAmber ||
-                   styleName === ThemeCSSClassNames.IndigoPink ||
-                   styleName === ThemeCSSClassNames.PinkBlueGrey ||
-                   styleName === ThemeCSSClassNames.PurpleGreen);
-        });
-
-        // Then, We'll Combine The Style Lists And Apply It To The Element
-        HTML_ELEMENT.setAttribute('class', FILTERED_EXISTING_STYLES.concat(cssClassList).join(' '));
-      } else {
         HTML_ELEMENT.setAttribute('class', cssClassList.join(' '));
-      }
       // Otherwise, If The Element Does Not Exist, We'll Throw An Error Since That Essentially Means Programmer Mistake
     } else {
       throw new ReferenceError(`The HTML Tag '${ tagName }' Does Not Exist In The DOM.`);

@@ -9,13 +9,6 @@ export enum ThemeBundles {
   PurpleGreen = 'purple-green'
 }
 
-export enum ThemeCSSClassNames {
-  DeepPurpleAmber = 'iv-deeppurple-amber',
-  IndigoPink = 'iv-indigo-pink',
-  PinkBlueGrey = 'iv-pink-bluegrey',
-  PurpleGreen = 'iv-purple-green'
-}
-
 export interface Theme {
   bundleName : ThemeBundles;
   labelName : string;
