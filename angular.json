@@ -98,6 +98,7 @@
           "builder" : "@angular-devkit/build-angular:karma",
           "options" : {
             "codeCoverage": true,
+            "sourceMap" : true,
             "karmaConfig" : "karma.conf.ts",
             "main" : "src/test.ts",
             "polyfills" : "src/polyfills.ts",

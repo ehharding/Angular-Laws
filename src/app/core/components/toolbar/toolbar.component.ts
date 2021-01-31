@@ -42,11 +42,11 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   /**
    * Sets the application theme using the Theme Service.
    *
-   * @param bundleName - The bundleName of the theme to set from one of the available defined in the ThemeBundles enumeration
+   * @param themeBundleName - The themeBundleName of the theme to set from one of the available defined in the ThemeBundles enumeration
    *
    * @see ThemeService
    */
-  public setApplicationTheme(bundleName : ThemeBundles) : void {
-    this._themeService.loadClientTheme(bundleName);
+  public setApplicationTheme(themeBundleName : ThemeBundles) : void {
+    this._themeService.loadClientTheme(themeBundleName);
   }
 }

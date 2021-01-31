@@ -38,8 +38,28 @@ export class ThemeService {
   }
 
   /**
+   * This method assigns the provided CSS class names to the element specified by elementID. Use this if you are wanting to achieve some kind of
+   * programmatic styling effect on a particular HTML element. The element ID here is referring to the ID set by using <input id="foo"/>, as an
+   * example.
+   *
+   * @param cssClassList - A list of CSS class names to assign to an existing HTML element
+   * @param elementID - The unique HTML ID of the element you would like to apply CSS classes to
+   */
+  public assignCSSClassesToID(cssClassList : readonly string[], elementID : string) : void {
+    const HTML_ELEMENT : HTMLElement | null = this._document.getElementById(elementID);
+
+    // If The Element Already Exists, We Set Its `class` Attribute To The List Of Provided CSS Class Names
+    if (HTML_ELEMENT) {
+      HTML_ELEMENT.setAttribute('class', cssClassList.join(' '));
+      // Otherwise, If The Element Does Not Exist, We'll Throw An Error Since That Essentially Means Programmer Mistake
+    } else {
+      throw new ReferenceError(`The HTML ID '${ elementID }' Does Not Exist In The DOM.`);
+    }
+  }
+
+  /**
    * This method assigns the provided CSS class names to the element specified by tagName. Use this if you are wanting to achieve some kind of
-   * programmatic styling effect on a particular HTML element. For example, this is used to set the `background` attribute of <body></body>, depending
+   * programmatic styling effect on an entire tag name. For example, this is used to set the `background` attribute of <body></body>, depending
    * on the current application theme.
    *
    * @param cssClassList - A list of CSS class names to assign to an existing HTML element
