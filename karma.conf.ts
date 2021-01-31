@@ -1,7 +1,7 @@
 /*****************************************************************************************************************************************************
  * Copyright 2021 Evan H. Harding. All Rights Reserved.
  *
- * The Karma Configuration File configures the Karma Test Runner to execute tests for the application. The tests themselves operate through the
+ * The Karma configuration file configures the Karma test runner to execute tests for the application. The tests themselves operate through the
  * Jasmine JavaScript testing framework.
  *
  * {@link https://karma-runner.github.io/6.0/config/configuration-file.html | Karma Configuration Guide}
@@ -53,7 +53,7 @@ module.exports = (config : any) : void => { // eslint-disable-line @typescript-e
     browsers : ['Chrome'],
     browserConsoleLogOptions : {
       terminal : false,
-      format : '%b %T %m', // { Browser } { Log Type in UpperCase } { Log Message } (%t is unused but is the LogType in LowerCase)
+      format : '%b %T %m', // { Browser } { Log Type in UpperCase } { Log Message } (%t Is Unused But Is The LogType In LowerCase)
       level : 'debug',
       path : './browser-console.log'
     },
@@ -91,7 +91,7 @@ module.exports = (config : any) : void => { // eslint-disable-line @typescript-e
     preprocessors : { 'src/app/*.ts' : 'coverage' },
     client : {
       captureConsole : true,
-      clearContext : false, // Leaves the Jasmine test runner output visible in the browser
+      clearContext : false, // Leaves The Jasmine Test Runner Output Visible In The Browser
       clientDisplayNone : false,
       runInParent : false,
       useIframe : true,

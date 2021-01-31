@@ -6,6 +6,7 @@ import 'zone.js/dist/zone-testing';
  * This file defines the environment under which we test the application via Karma.
  *
  * {@link https://angular.io/guide/testing | Angular Testing Guide}
+ *
  * @remarks 'import 'zone.js/dist/zone-testing' must be the first line of this file.
  ****************************************************************************************************************************************************/
 
@@ -16,11 +17,11 @@ import { getTestBed } from '@angular/core/testing';
 
 declare const require : { context(path : string, deep ? : boolean, filter ? : RegExp) : { keys() : string[]; <T>(id : string) : T; }; };
 
-// Initialize the Angular testing environment
+// Initialize The Angular Testing Environment
 getTestBed().initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting());
 
-// Find all tests in the project
+// Find All Tests In The Project
 const context : { <T>(id : string) : T; keys() : string[]; } = require.context('./', true, /\.spec\.ts$/);
 
-// Load their modules
+// Load Their Modules
 context.keys().map(context);

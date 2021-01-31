@@ -7,26 +7,26 @@
 
 <nav aria-label="Top Toolbar">
   <mat-toolbar class="justify-content-between" color="primary">
-    <!-- Left group of toolbar items -->
+    <!-- Left Group Of Toolbar Items -->
     <div class="align-items-center d-inline-flex">
-      <!-- The first item in the left group is the application title button which links the user back to the home page -->
+      <!-- The First Item In The Left Group Is The Application Title Button Which Links The User Back To The Home Page -->
       <a mat-flat-button aria-label="Internet Visualizer" class="font-weight-bold" color="primary" routerLink="/internet">
         <mat-icon aria-hidden="true" class="mr-2">language</mat-icon>
         <span>{{ applicationTitle }}</span>
       </a>
     </div>
 
-    <!-- Right group of toolbar items -->
+    <!-- Right Group Of Toolbar Items -->
     <div class="align-items-center d-inline-flex">
-      <!-- The first item in the right group is the theme switcher menu -->
+      <!-- The First Item In The Right Group Is The Theme Switcher Menu -->
       <button mat-icon-button aria-label="Select A Theme" matTooltip="Select A Theme For The Application" [matMenuTriggerFor]="menu">
         <mat-icon aria-hidden="true">palette</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item *ngFor="let theme of availableThemes" (click)="setApplicationTheme(theme.bundleName)">
-          <!-- Display a checkmark next to the active theme -->
+          <!-- Display A Checkmark Next To The Active Theme -->
           <mat-icon *ngIf="theme.bundleName === activeTheme" aria-hidden="true" class="mr-2">check</mat-icon>
-          <!-- Display an empty icon which acts like a spacer next to all of the other themes -->
+          <!-- Display An Empty Icon Which Acts Like A Spacer Next To All Of The Other Themes -->
           <mat-icon *ngIf="!(theme.bundleName === activeTheme)" aria-hidden="true" class="mr-2"></mat-icon>
 
           <mat-icon aria-hidden="true" class="mr-2">
@@ -45,7 +45,7 @@
         </button>
       </mat-menu>
 
-      <!-- The second item in the right group is a button which links to the GitHub repository -->
+      <!-- The Second Item In The Right Group Is A Button Which Links To The GitHub Repository -->
       <a mat-flat-button aria-label="GitHub Repository" class="font-weight-bold" color="primary" href="{{ gitHubURL }}" target="_blank">
         <img alt="GitHub Repository" aria-hidden="true" class="iv-github-logo mr-2" src="assets/icons/github-logo.svg">
         GitHub

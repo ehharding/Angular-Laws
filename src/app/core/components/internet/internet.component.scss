@@ -8,17 +8,26 @@
   height : 420px;
 }
 
-.iv-header-headline {
-  color : white;
-}
-
 .iv-header-section {
   position : absolute;
   text-align : center;
   top : 50%;
   left : 50%;
-  right : 50%;
   transform : translate(-50%, -50%);
   width : 90%;
   z-index : 0;
+}
+
+.iv-header-headline h1 {
+  font-size : 56px;
+  font-weight : 700;
+  line-height : 56px;
+  margin : 15px 5px;
+}
+
+.iv-header-headline h2 {
+  font-size : 20px;
+  font-weight : 300;
+  line-height : 28px;
+  margin : 15px 0 25px;
 }

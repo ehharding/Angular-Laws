@@ -17,8 +17,10 @@
 @import '~bootstrap/scss/reboot';
 
 /* Styling Applied To Entire Application */
+
 body {
   display : block;
+  font-family : 'Roboto', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', 'Lucida Grande', sans-serif;
   margin : 0;
 }
 
@@ -30,26 +32,16 @@ button:focus, button:active:focus, button.active:focus {
   outline : none !important;
 }
 
+iv-internet .iv-header-headline {
+  color : white;
+}
+
+/* Global Styles That Can Be Applied To Any Applicable Element */
+
 .iv-bg-white {
   background : #FAFAFA;
 }
 
 .iv-bg-grey {
   background : #303030;
-}
-
-.iv-deeppurple-amber {
-  background : #673AB7;
-}
-
-.iv-indigo-pink {
-  background : #3F51B5;
-}
-
-.iv-pink-bluegrey {
-  background : #E91E63;
-}
-
-.iv-purple-green {
-  background : #9C27B0;
 }

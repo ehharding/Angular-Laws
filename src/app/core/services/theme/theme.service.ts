@@ -22,10 +22,10 @@ import { Observable, ReplaySubject } from 'rxjs';
 
 @Injectable({ providedIn : 'root' })
 export class ThemeService {
-  private readonly _activeThemeBundleName : ReplaySubject<ThemeBundles> = new ReplaySubject<ThemeBundles>();
+  private readonly _activeThemeBundleName$ : ReplaySubject<ThemeBundles> = new ReplaySubject<ThemeBundles>();
 
   public constructor(@Inject(DOCUMENT) private readonly _document : Document) {
-    this.loadClientTheme(AVAILABLE_THEMES[0].bundleName);
+    this.loadClientTheme(AVAILABLE_THEMES[0].bundleName); // Load The First Theme By Default
   }
 
   /**
@@ -34,11 +34,13 @@ export class ThemeService {
    * @returns a stream for the bundleName of the currently active application theme
    */
   public getActiveThemeBundleName() : Observable<ThemeBundles> {
-    return this._activeThemeBundleName.asObservable();
+    return this._activeThemeBundleName$.asObservable();
   }
 
   /**
-   * This method assigns the provided CSS class names to the element specified by tagName.
+   * This method assigns the provided CSS class names to the element specified by tagName. Use this if you are wanting to achieve some kind of
+   * programmatic styling effect on a particular HTML element. For example, this is used to set the `background` attribute of <body></body>, depending
+   * on the current application theme.
    *
    * @param cssClassList - A list of CSS class names to assign to an existing HTML element
    * @param tagName - The qualified HTML tag name that you would like to apply CSS classes to
@@ -47,10 +49,10 @@ export class ThemeService {
   public assignCSSClassesToTag(cssClassList : readonly string[], tagName : keyof HTMLElementTagNameMap, themeMode : boolean = false) : void {
     const HTML_ELEMENT : HTMLElement | null = this._document.querySelector(tagName);
 
-    // If the element already exists, we set its class attribute to the list of provided CSS class names
+    // If The Element Already Exists, We Set Its `class` Attribute To The List Of Provided CSS Class Names
     if (HTML_ELEMENT) {
       if (themeMode) {
-        // First, we must remove any existing core theme styles
+        // Remove Any Existing Core Theme Styles To Avoid Them Being Stacked
         const FILTERED_EXISTING_STYLES : string[] = HTML_ELEMENT.className.split(' ').filter((styleName : string) => {
           return !(styleName === ThemeCSSClassNames.DeepPurpleAmber ||
                    styleName === ThemeCSSClassNames.IndigoPink ||
@@ -58,12 +60,12 @@ export class ThemeService {
                    styleName === ThemeCSSClassNames.PurpleGreen);
         });
 
-        // Then, we'll combine the style lists and apply it to the element
+        // Then, We'll Combine The Style Lists And Apply It To The Element
         HTML_ELEMENT.setAttribute('class', FILTERED_EXISTING_STYLES.concat(cssClassList).join(' '));
       } else {
         HTML_ELEMENT.setAttribute('class', cssClassList.join(' '));
       }
-      // Otherwise, if the element does not exist, we'll throw an error since that essentially means programmer mistake
+      // Otherwise, If The Element Does Not Exist, We'll Throw An Error Since That Essentially Means Programmer Mistake
     } else {
       throw new ReferenceError(`The HTML Tag '${ tagName }' Does Not Exist In The DOM.`);
     }
@@ -80,10 +82,10 @@ export class ThemeService {
     const HTML_LINK_ELEMENT : HTMLElement | null = this._document.getElementById(HTML_LINK_ELEMENT_ID);
     const THEME_STYLES : string = `assets/themes/${ themeBundleName }.css`;
 
-    // If the <link/> element already exists, we simply modify its "href" attribute
+    // If The <link/> Element Already Exists, We Simply Modify Its `href` Attribute
     if (HTML_LINK_ELEMENT) {
       (HTML_LINK_ELEMENT as HTMLLinkElement).setAttribute('href', THEME_STYLES);
-      // Otherwise, if we're in startup, we create it with all the necessary attribute settings
+      // Otherwise, If We're In Startup, We Create It With All The Necessary Attribute Settings
     } else {
       const LINK_ELEMENT : HTMLLinkElement = this._document.createElement('link');
       LINK_ELEMENT.setAttribute('href', THEME_STYLES);
@@ -91,15 +93,15 @@ export class ThemeService {
       LINK_ELEMENT.setAttribute('rel', 'stylesheet');
       LINK_ELEMENT.setAttribute('type', 'text/css');
 
-      // This adds <link href="assets/themes/foo.css" id="client-theme" rel="stylesheet" type="text/css"/> to index.html's <head></head> section
+      // This Adds <link href="assets/themes/foo.css" id="client-theme" rel="stylesheet" type="text/css"/> To index.html's <head></head> Section
       window.onload = () : void => {
         this._document.head.appendChild(LINK_ELEMENT);
       };
     }
 
-    this._activeThemeBundleName.next(themeBundleName);
+    this._activeThemeBundleName$.next(themeBundleName);
 
-    // We'll set the background-color of <body></body> to iv-bg-white for two themes and iv-bg-grey for the other two
+    // We'll Set The `background` Attribute Of <body></body> To `iv-bg-white` For Two Themes And `iv-bg-grey` For The Other Two
     const BODY_TAG : keyof HTMLElementTagNameMap = 'body';
 
     if (themeBundleName === ThemeBundles.DeepPurpleAmber || themeBundleName === ThemeBundles.IndigoPink) {

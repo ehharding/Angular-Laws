@@ -1,7 +1,5 @@
 /*****************************************************************************************************************************************************
  * Copyright 2021 Evan H. Harding. All Rights Reserved.
- *
- * This component is always visible and sits at the top of the application, across the entire screen.
  ****************************************************************************************************************************************************/
 
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
@@ -24,7 +22,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   public readonly gitHubURL : string = 'https://github.com/ehharding/Internet-Visualizer';
   public readonly availableThemes : Theme[] = AVAILABLE_THEMES;
 
-  public activeTheme : ThemeBundles = AVAILABLE_THEMES[0].bundleName;
+  public activeTheme : ThemeBundles | undefined;
 
   private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
