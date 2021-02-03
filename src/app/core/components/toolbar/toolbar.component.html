@@ -12,7 +12,7 @@
       <!-- The First Item In The Left Group Is The Application Title Button Which Links The User Back To The Home Page -->
       <a mat-flat-button aria-label="Internet Visualizer Button" class="font-weight-bold" color="primary" routerLink="/internet">
         <mat-icon aria-hidden="true" class="mr-2">language</mat-icon>
-        <span>{{ applicationTitle }}</span>
+        {{ applicationTitle }}
       </a>
     </div>
 
@@ -41,7 +41,7 @@
               <use xlink:href="#c" [attr.fill]="theme.headerColor"></use>
             </svg>
           </mat-icon>
-          <span>{{ theme.labelName }}</span>
+          {{ theme.labelName }}
         </button>
       </mat-menu>
 
