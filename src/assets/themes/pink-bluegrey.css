@@ -1,6 +1,14 @@
+/* Custom Configurations */
+
+a:hover {
+  color: white;
+}
+
 header {
   background: #C2185B;
 }
+
+/* Angular Material Configurations */
 
 .mat-badge-content {
   font-weight: 600;

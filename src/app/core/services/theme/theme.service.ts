@@ -18,11 +18,11 @@ import { DOCUMENT } from '@angular/common';
 
 import { AVAILABLE_THEMES, ThemeBundles } from '@core/services/theme/theme.configuration';
 
-import { Observable, ReplaySubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({ providedIn : 'root' })
 export class ThemeService {
-  private readonly _activeThemeBundleName$ : ReplaySubject<ThemeBundles> = new ReplaySubject<ThemeBundles>();
+  private readonly _activeThemeBundleName$ : BehaviorSubject<ThemeBundles> = new BehaviorSubject<ThemeBundles>(AVAILABLE_THEMES[0].bundleName);
 
   public constructor(@Inject(DOCUMENT) private readonly _document : Document) {
     this.loadClientTheme(AVAILABLE_THEMES[0].bundleName); // Load The First Theme By Default

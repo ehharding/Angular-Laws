@@ -10,7 +10,7 @@
     <!-- Left Group Of Toolbar Items -->
     <div class="align-items-center d-inline-flex">
       <!-- The First Item In The Left Group Is The Application Title Button Which Links The User Back To The Home Page -->
-      <a mat-flat-button aria-label="Internet Visualizer" class="font-weight-bold" color="primary" routerLink="/internet">
+      <a mat-flat-button aria-label="Internet Visualizer Button" class="font-weight-bold" color="primary" routerLink="/internet">
         <mat-icon aria-hidden="true" class="mr-2">language</mat-icon>
         <span>{{ applicationTitle }}</span>
       </a>
@@ -19,7 +19,7 @@
     <!-- Right Group Of Toolbar Items -->
     <div class="align-items-center d-inline-flex">
       <!-- The First Item In The Right Group Is The Theme Switcher Menu -->
-      <button mat-icon-button aria-label="Select A Theme" matTooltip="Select A Theme For The Application" [matMenuTriggerFor]="menu">
+      <button mat-icon-button aria-label="Theme Selection Button" matTooltip="Select A Theme For The Application" [matMenuTriggerFor]="menu">
         <mat-icon aria-hidden="true">palette</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
@@ -46,7 +46,7 @@
       </mat-menu>
 
       <!-- The Second Item In The Right Group Is A Button Which Links To The GitHub Repository -->
-      <a mat-flat-button aria-label="GitHub Repository" class="font-weight-bold" color="primary" href="{{ gitHubURL }}" target="_blank">
+      <a mat-flat-button aria-label="GitHub Repository Button" class="font-weight-bold" color="primary" href="{{ gitHubURL }}" target="_blank">
         <img alt="GitHub Repository" aria-hidden="true" class="iv-github-logo mr-2" src="assets/icons/github-logo.svg">
         GitHub
       </a>
