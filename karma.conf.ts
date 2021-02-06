@@ -71,8 +71,8 @@ module.exports = (config : any) : void => { // eslint-disable-line @typescript-e
     frameworks : ['@angular-devkit/build-angular', 'jasmine'],
     plugins : [
       require('@angular-devkit/build-angular/plugins/karma'),
-      require('karma-firefox-launcher'),
       require('karma-coverage'),
+      require('karma-firefox-launcher'),
       require('karma-jasmine'),
       require('karma-jasmine-html-reporter'),
       require('karma-mocha-reporter')
