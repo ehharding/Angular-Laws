@@ -50,7 +50,7 @@ module.exports = (config : any) : void => { // eslint-disable-line @typescript-e
     loggers : [{ type : 'console' }],
     beforeMiddleware : [],
     middleware : [],
-    browsers : ['Chrome'],
+    browsers : ['Firefox'],
     browserConsoleLogOptions : {
       terminal : false,
       format : '%b %T %m', // { Browser } { Log Type in UpperCase } { Log Message } (%t Is Unused But Is The LogType In LowerCase)
@@ -71,7 +71,7 @@ module.exports = (config : any) : void => { // eslint-disable-line @typescript-e
     frameworks : ['@angular-devkit/build-angular', 'jasmine'],
     plugins : [
       require('@angular-devkit/build-angular/plugins/karma'),
-      require('karma-chrome-launcher'),
+      require('karma-firefox-launcher'),
       require('karma-coverage'),
       require('karma-jasmine'),
       require('karma-jasmine-html-reporter'),

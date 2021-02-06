@@ -272,7 +272,7 @@ header {
   width: 133.3333333333%
 }
 
-.mat-form-field-appearance-legacy.mat-form-field-can-float .mat-form-field-autofill-control:-webkit-autofill + .mat-form-field-label-wrapper .mat-form-field-label {
+.mat-form-field-appearance-legacy.mat-form-field-can-float .mat-form-field-autofill-control + .mat-form-field-label-wrapper .mat-form-field-label {
   transform: translateY(-1.28125em) scale(0.75) perspective(100px);
   -ms-transform: translateY(-1.28124em) scale(0.75);
   width: 133.3333433333%
@@ -302,7 +302,7 @@ header {
     transform: translateY(-1.28122em) scale(0.75)
   }
 
-  .mat-form-field-appearance-legacy.mat-form-field-can-float .mat-form-field-autofill-control:-webkit-autofill + .mat-form-field-label-wrapper .mat-form-field-label {
+  .mat-form-field-appearance-legacy.mat-form-field-can-float .mat-form-field-autofill-control + .mat-form-field-label-wrapper .mat-form-field-label {
     transform: translateY(-1.28121em) scale(0.75)
   }
 
@@ -657,7 +657,7 @@ input.mat-input-element {
   opacity: 1
 }
 
-@media screen and (-ms-high-contrast: active) {
+@media screen {
   .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
     opacity: .6
   }
@@ -692,11 +692,11 @@ input.mat-input-element {
 @keyframes cdk-text-field-autofill-end { /*!*/
 }
 
-.cdk-text-field-autofill-monitored:-webkit-autofill {
+.cdk-text-field-autofill-monitored {
   animation: cdk-text-field-autofill-start 0s 1ms
 }
 
-.cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
+.cdk-text-field-autofill-monitored {
   animation: cdk-text-field-autofill-end 0s 1ms
 }
 
@@ -1911,7 +1911,7 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
   caret-color: #3F51B5
 }
 
-.mat-input-element::placeholder {
+.mat-input-element {
   color: rgba(0, 0, 0, .42)
 }
 
@@ -1923,7 +1923,7 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
   color: rgba(0, 0, 0, .42)
 }
 
-.mat-input-element:-ms-input-placeholder {
+.mat-input-element {
   color: rgba(0, 0, 0, .42)
 }
 
