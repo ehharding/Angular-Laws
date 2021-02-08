@@ -36,7 +36,7 @@ module.exports = (config : any) : void => { // eslint-disable-line @typescript-e
     protocol : 'http:',
     listenAddress : '0.0.0.0',
     urlRoot : '/',
-    concurrency : Infinity as number,
+    concurrency : Infinity,
     customClientContextFile : null,
     customContextFile : null,
     customDebugFile : null,
