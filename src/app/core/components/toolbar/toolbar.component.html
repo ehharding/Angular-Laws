@@ -30,7 +30,7 @@
         <mat-icon aria-hidden="true">palette</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item *ngFor="let theme of availableThemes" aria-label="{{ theme.labelName }} Theme Button" [disabled]="theme.bundleName === activeTheme" (click)="setApplicationTheme(theme.bundleName)">
+        <button mat-menu-item *ngFor="let theme of availableThemes" [disabled]="theme.bundleName === activeTheme" (click)="setApplicationTheme(theme.bundleName)">
           <!-- Display A Checkmark Next To The Active Theme -->
           <mat-icon *ngIf="theme.bundleName === activeTheme" aria-hidden="true" class="mr-2">check</mat-icon>
           <!-- Display An Empty Icon Which Acts Like A Spacer Next To All Of The Other Themes -->
