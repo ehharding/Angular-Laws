@@ -9,21 +9,28 @@
   <mat-toolbar class="justify-content-between" color="primary">
     <!-- Left Group Of Toolbar Items -->
     <div>
-      <!-- The First Item In The Left Group Is The Application Title Button Which Links The User Back To The Home Page -->
-      <a mat-flat-button aria-label="Internet Visualizer Button" class="font-weight-bold" color="primary" routerLink="/internet">
-        <mat-icon aria-hidden="true" class="mr-2">language</mat-icon>
-        {{ applicationTitle }}
+      <!-- The First Item In The Left Group Is The `Internet Visualizer` Button Which Links The User To The Home Page -->
+      <a routerLink="/internet">
+        <button mat-button aria-label="Toolbar Home Page Button">
+          <mat-icon aria-hidden="true" class="mr-2">language</mat-icon>
+          {{ applicationTitle }}
+        </button>
+      </a>
+
+      <!-- The Second Item In The Left Group Is The `About` Button Which Links The User To The About Page -->
+      <a routerLink="/about">
+        <button mat-button aria-label="Toolbar About Page Button">About</button>
       </a>
     </div>
 
     <!-- Right Group Of Toolbar Items -->
     <div>
       <!-- The First Item In The Right Group Is The Theme Switcher Menu -->
-      <button mat-icon-button aria-label="Theme Selection Button" matTooltip="Select A Theme For The Application" [matMenuTriggerFor]="menu">
+      <button mat-icon-button aria-label="Toolbar Theme Selection Button" matTooltip="Select A Theme For The Application" [matMenuTriggerFor]="menu">
         <mat-icon aria-hidden="true">palette</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item *ngFor="let theme of availableThemes" [disabled]="theme.bundleName === activeTheme" (click)="setApplicationTheme(theme.bundleName)">
+        <button mat-menu-item *ngFor="let theme of availableThemes" aria-label="{{ theme.labelName }} Theme" [disabled]="theme.bundleName === activeTheme" (click)="setApplicationTheme(theme.bundleName)">
           <!-- Display A Checkmark Next To The Active Theme -->
           <mat-icon *ngIf="theme.bundleName === activeTheme" aria-hidden="true" class="mr-2">check</mat-icon>
           <!-- Display An Empty Icon Which Acts Like A Spacer Next To All Of The Other Themes -->
@@ -46,9 +53,11 @@
       </mat-menu>
 
       <!-- The Second Item In The Right Group Is A Button Which Links To The GitHub Repository -->
-      <a mat-flat-button aria-label="GitHub Repository Button" class="font-weight-bold" color="primary" href="{{ gitHubURL }}" target="_blank">
-        <img alt="GitHub Repository" aria-hidden="true" class="iv-github-logo mr-2" src="assets/icons/github-logo.svg">
-        GitHub
+      <a href="{{ gitHubURL }}" target="_blank">
+        <button mat-button aria-label="Toolbar GitHub Repository Button">
+          <img alt="GitHub Repository" aria-hidden="true" class="iv-github-logo mr-2" src="assets/icons/github-logo.svg">
+          GitHub
+        </button>
       </a>
     </div>
   </mat-toolbar>

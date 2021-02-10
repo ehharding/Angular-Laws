@@ -14,6 +14,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Title } from '@angular/platform-browser';
 
+import { AboutComponent } from '@core/components/about/about.component';
 import { InternetComponent } from '@core/components/internet/internet.component';
 import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
 import { throwIfAlreadyLoaded } from '@core/guards/module-import.guard';
@@ -21,8 +22,8 @@ import { throwIfAlreadyLoaded } from '@core/guards/module-import.guard';
 import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
-  declarations : [InternetComponent, ToolbarComponent],
-  exports : [InternetComponent, ToolbarComponent],
+  declarations : [AboutComponent, InternetComponent, ToolbarComponent],
+  exports : [AboutComponent, InternetComponent, ToolbarComponent],
   imports : [SharedModule, MatButtonModule, MatFormFieldModule, MatIconModule, MatMenuModule, MatToolbarModule, MatTooltipModule],
   providers : [Title]
 })

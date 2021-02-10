@@ -17,11 +17,13 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
+import { AboutComponent } from '@core/components/about/about.component';
 import { InternetComponent } from '@core/components/internet/internet.component';
 
 const ROUTES : Routes = [
   { path : '', pathMatch : 'full', redirectTo : 'internet' },
-  { path : 'internet', component : InternetComponent }
+  { path : 'internet', component : InternetComponent },
+  { path : 'about', component : AboutComponent }
 ];
 
 @NgModule({
