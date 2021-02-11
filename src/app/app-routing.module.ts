@@ -17,13 +17,13 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { AboutComponent } from '@core/components/about/about.component';
-import { InternetComponent } from '@core/components/internet/internet.component';
+import { AboutModule } from '@about/about.module';
+import { InternetModule } from '@internet/internet.module';
 
 const ROUTES : Routes = [
   { path : '', pathMatch : 'full', redirectTo : 'internet' },
-  { path : 'internet', component : InternetComponent },
-  { path : 'about', component : AboutComponent }
+  { path : 'internet', loadChildren : async() : Promise<InternetModule> => await import('@internet/internet.module').then((internetModule) => internetModule.InternetModule) },
+  { path : 'about', loadChildren : async() : Promise<AboutModule> => await import('@about/about.module').then((aboutModule) => aboutModule.AboutModule) }
 ];
 
 @NgModule({

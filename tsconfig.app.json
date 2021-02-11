@@ -58,14 +58,16 @@
     "outDir" : "dist/out-tsc/src",
     "rootDir" : ".",
     "tsBuildInfoFile" : "build-cache/tsc",
-    "module" : "ES2015",
+    "module" : "ES2020",
     "target" : "ES2015",
     "moduleResolution" : "Node",
     "newLine" : "CRLF",
     "lib" : ["DOM", "ES2015"],
     "types" : ["node"],
     "paths" : {
+      "@about/*" :  ["app/about/*"],
       "@core/*" : ["app/core/*"],
+      "@internet/*" : ["app/internet/*"],
       "@shared/*" :["app/shared/*"],
       "@assets/*" : ["assets/*"],
       "@environment/*" : ["environments/*"]

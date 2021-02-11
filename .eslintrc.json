@@ -661,6 +661,16 @@
       }
     },
     {
+      "files" : ["*-routing.module.ts"],
+      "rules" : {
+        "arrow-body-style" : "off",
+        "implicit-arrow-linebreak" : "off",
+
+        "@typescript-eslint/prefer-readonly-parameter-types" : "off",
+        "@typescript-eslint/typedef" : "off"
+      }
+    },
+    {
       "files" : ["*.spec.ts", "karma.conf.ts"],
       "rules" : {
         "@angular-eslint/no-lifecycle-call" : "off",

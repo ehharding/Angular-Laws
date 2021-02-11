@@ -5,10 +5,10 @@
 import { TestBed } from '@angular/core/testing';
 import { Title } from '@angular/platform-browser';
 
-import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
-
 import { ThemeBundles } from '@core/services/theme/theme.configuration';
 import { ThemeService } from '@core/services/theme/theme.service';
+
+import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
 
 import { of } from 'rxjs';
 
