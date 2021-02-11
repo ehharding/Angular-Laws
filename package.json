@@ -16,10 +16,10 @@
   "engines" : { "node" : "15.8.0", "npm" : "7.5.2" },
   "os" : ["win32", "x64"],
   "scripts" : {
-    "start" : "ng serve",
     "build" : "ng build",
-    "test" : "ng test",
-    "lint" : "eslint **/*.ts"
+    "lint" : "eslint **/*.ts",
+    "start" : "ng serve",
+    "test" : "ng test"
   },
   "dependencies" : {
     "@angular/animations" : "11.2.0",
