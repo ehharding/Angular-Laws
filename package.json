@@ -13,7 +13,7 @@
   "directories" : { "doc" : "README.md", "lib" : "src", "test" : "src" },
   "files" : ["*"],
   "browserslist" : ["defaults"],
-  "engines" : { "node" : "15.8.0", "npm" : "7.5.2" },
+  "engines" : { "node" : "15.8.0", "npm" : "7.5.4" },
   "os" : ["win32", "x64"],
   "scripts" : {
     "build" : "ng build",
