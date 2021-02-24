@@ -1,2 +1,2 @@
 # Fan Fiction.com
-A FanFiction Website For The Modern Web
+A Modern FanFiction Website For The Modern Web
