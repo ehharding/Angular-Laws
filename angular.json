@@ -1,11 +1,11 @@
 {
   "$schema" : "node_modules/@angular/cli/lib/config/schema.json",
-  "defaultProject" : "fan-fiction",
+  "defaultProject" : "fan-fiction-dot-com",
   "newProjectRoot" : "projects",
   "version" : 1,
   "cli" : { "analytics" : "272fc58f-c451-448e-9d84-257489841d8e", "packageManager" : "npm", "warnings" : { "versionMismatch" : true } },
   "projects" : {
-    "fan-fiction" : {
+    "fan-fiction-dot-com" : {
       "schematics" : {
         "@schematics/angular:class" : { "skipTests" : false },
         "@schematics/angular:component" : {
@@ -64,7 +64,7 @@
             }
           },
           "options" : {
-            "outputPath" : "dist/fan-fiction",
+            "outputPath" : "dist/fan-fiction-dot-com",
             "index" : "src/index.html",
             "main" : "src/main.ts",
             "polyfills" : "src/polyfills.ts",
@@ -75,12 +75,12 @@
         },
         "serve" : {
           "builder" : "@angular-devkit/build-angular:dev-server",
-          "configurations" : { "production" : { "aot" : true, "browserTarget" : "fan-fiction:build:production" } },
-          "options" : { "browserTarget" : "fan-fiction:build" }
+          "configurations" : { "production" : { "aot" : true, "browserTarget" : "fan-fiction-dot-com:build:production" } },
+          "options" : { "browserTarget" : "fan-fiction-dot-com:build" }
         },
         "extract-i18n" : {
           "builder" : "@angular-devkit/build-angular:extract-i18n",
-          "options" : { "browserTarget" : "fan-fiction:build" }
+          "options" : { "browserTarget" : "fan-fiction-dot-com:build" }
         },
         "test" : {
           "builder" : "@angular-devkit/build-angular:karma",
