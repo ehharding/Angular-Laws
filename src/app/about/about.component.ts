@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   changeDetection : ChangeDetectionStrategy.OnPush,
-  selector : 'iv-about',
+  selector : 'ff-about',
   styleUrls : ['about.component.scss'],
   templateUrl : 'about.component.html'
 })

@@ -18,11 +18,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { AboutModule } from '@about/about.module';
-import { InternetModule } from '@internet/internet.module';
 
 const ROUTES : Routes = [
-  { path : '', pathMatch : 'full', redirectTo : 'internet' },
-  { path : 'internet', loadChildren : async() : Promise<InternetModule> => await import('@internet/internet.module').then((internetModule) => internetModule.InternetModule) },
+  { path : '', pathMatch : 'full', redirectTo : 'about' },
   { path : 'about', loadChildren : async() : Promise<AboutModule> => await import('@about/about.module').then((aboutModule) => aboutModule.AboutModule) }
 ];
 

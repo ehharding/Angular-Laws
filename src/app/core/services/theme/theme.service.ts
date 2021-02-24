@@ -107,13 +107,13 @@ export class ThemeService {
 
     this._activeThemeBundleName$.next(themeBundleName);
 
-    // We'll Set The `background` Attribute Of <body></body> To `iv-bg-white` For Two Themes And `iv-bg-grey` For The Other Two
+    // We'll Set The `background` Attribute Of <body></body> To `ff-bg-white` For Two Themes And `ff-bg-grey` For The Other Two
     const BODY_TAG : keyof HTMLElementTagNameMap = 'body';
 
     if (themeBundleName === ThemeBundles.DeepPurpleAmber || themeBundleName === ThemeBundles.IndigoPink) {
-      this.assignCSSClassesToTag(['iv-bg-white'], BODY_TAG);
+      this.assignCSSClassesToTag(['ff-bg-white'], BODY_TAG);
     } else {
-      this.assignCSSClassesToTag(['iv-bg-grey'], BODY_TAG);
+      this.assignCSSClassesToTag(['ff-bg-grey'], BODY_TAG);
     }
   }
 }

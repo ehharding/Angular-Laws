@@ -67,7 +67,6 @@
     "paths" : {
       "@about/*" :  ["app/about/*"],
       "@core/*" : ["app/core/*"],
-      "@internet/*" : ["app/internet/*"],
       "@shared/*" :["app/shared/*"],
       "@assets/*" : ["assets/*"],
       "@environment/*" : ["environments/*"]

@@ -1,11 +1,11 @@
 {
   "$schema" : "node_modules/@angular/cli/lib/config/schema.json",
-  "defaultProject" : "internet-visualizer",
+  "defaultProject" : "fan-fiction",
   "newProjectRoot" : "projects",
   "version" : 1,
   "cli" : { "analytics" : "272fc58f-c451-448e-9d84-257489841d8e", "packageManager" : "npm", "warnings" : { "versionMismatch" : true } },
   "projects" : {
-    "internet-visualizer" : {
+    "fan-fiction" : {
       "schematics" : {
         "@schematics/angular:class" : { "skipTests" : false },
         "@schematics/angular:component" : {
@@ -16,15 +16,15 @@
           "skipTests" : false,
           "changeDetection" : "OnPush",
           "viewEncapsulation" : "Emulated",
-          "prefix" : "iv",
+          "prefix" : "ff",
           "style" : "scss"
         },
-        "@schematics/angular:directive" : { "flat" : true, "skipImport" : false, "skipTests" : false, "prefix" : "iv" },
+        "@schematics/angular:directive" : { "flat" : true, "skipImport" : false, "skipTests" : false, "prefix" : "ff" },
         "@schematics/angular:module" : { "commonModule" : true, "flat" : false, "routing" : false, "routingScope" : "Child" },
         "@schematics/angular:pipe" : { "flat" : true, "skipImport" : false, "skipTests" : false },
         "@schematics/angular:service" : { "flat" : true, "skipTests" : false }
       },
-      "prefix" : "iv",
+      "prefix" : "ff",
       "projectType" : "application",
       "root" : "",
       "sourceRoot" : "src",
@@ -48,7 +48,7 @@
               "vendorChunk" : false,
               "verbose" : false,
               "watch" : false,
-              "baseHref" : "internet-visualizer",
+              "baseHref" : "fan-fiction",
               "crossOrigin" : "none",
               "outputHashing" : "all",
               "allowedCommonJsDependencies" : ["lodash"],
@@ -64,7 +64,7 @@
             }
           },
           "options" : {
-            "outputPath" : "dist/internet-visualizer",
+            "outputPath" : "dist/fan-fiction",
             "index" : "src/index.html",
             "main" : "src/main.ts",
             "polyfills" : "src/polyfills.ts",
@@ -75,12 +75,12 @@
         },
         "serve" : {
           "builder" : "@angular-devkit/build-angular:dev-server",
-          "configurations" : { "production" : { "aot" : true, "browserTarget" : "internet-visualizer:build:production" } },
-          "options" : { "browserTarget" : "internet-visualizer:build" }
+          "configurations" : { "production" : { "aot" : true, "browserTarget" : "fan-fiction:build:production" } },
+          "options" : { "browserTarget" : "fan-fiction:build" }
         },
         "extract-i18n" : {
           "builder" : "@angular-devkit/build-angular:extract-i18n",
-          "options" : { "browserTarget" : "internet-visualizer:build" }
+          "options" : { "browserTarget" : "fan-fiction:build" }
         },
         "test" : {
           "builder" : "@angular-devkit/build-angular:karma",

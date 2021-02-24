@@ -13,13 +13,13 @@ import { takeUntil } from 'rxjs/operators';
 
 @Component({
   changeDetection : ChangeDetectionStrategy.OnPush,
-  selector : 'iv-toolbar',
+  selector : 'ff-toolbar',
   styleUrls : ['toolbar.component.scss'],
   templateUrl : 'toolbar.component.html'
 })
 export class ToolbarComponent implements OnInit, OnDestroy {
   public readonly applicationTitle : string = this._titleService.getTitle();
-  public readonly gitHubURL : string = 'https://github.com/ehharding/Internet-Visualizer';
+  public readonly gitHubURL : string = 'https://github.com/ehharding/FanFiction.com';
   public readonly availableThemes : Theme[] = AVAILABLE_THEMES;
 
   public activeTheme : ThemeBundles | undefined;
