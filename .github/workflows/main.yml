@@ -28,9 +28,8 @@ jobs :
         node-version : [15.10.0]
 
     steps :
-      - uses : actions/checkout@v2
-
       - name : Checkout Repository
+      - uses : actions/checkout@v2
         with :
           repository : ${{ github.repository }}
           ref : main
