@@ -31,17 +31,17 @@ jobs :
       - uses : actions/checkout@v2
 
       - name : Checkout Repository
-      with :
-        repository : ${{ github.repository }}
-        ref : main
-        token : ${{ secrets.SECRET_TOKEN }}
-        ssh-key : git@github.com:ehharding/FanFiction.com.git
-        ssh-strict : true
-        persist-credentials : true
-        clean : true
-        lfs : false
-        path : ''
-        submodules : 'recursive'
-        fetch-depth : 0
-      run :
-        git --version
+        with :
+          repository : ${{ github.repository }}
+          ref : main
+          token : ${{ secrets.SECRET_TOKEN }}
+          ssh-key : git@github.com:ehharding/FanFiction.com.git
+          ssh-strict : true
+          persist-credentials : true
+          clean : true
+          lfs : false
+          path : ''
+          submodules : 'recursive'
+          fetch-depth : 0
+        run :
+          git --version
