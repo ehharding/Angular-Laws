@@ -29,7 +29,6 @@ jobs :
 
     steps :
       - name : ----- Checkout Repository -----
-      # Checks Out The Repository Under $GITHUB_WORKSPACE, So The Job Can Access The Project Workspace
       uses : actions/checkout
       with:
         repository: ${{ github.repository }}
