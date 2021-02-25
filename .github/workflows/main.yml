@@ -28,20 +28,20 @@ jobs :
         node-version : [15.10.0]
 
     steps :
-    # Checks Out The Repository Under $GITHUB_WORKSPACE, So The Job Can Access The Project Workspace
-    - name : ---------- Checkout Repository ${{ github.repository }} ----------
-    - uses : actions/checkout@v3
-      with :
-        repository : ${{ github.repository }}
-        ref : main
-        token : ${{ github.token }}
-        ssh-key : git@github.com:ehharding/FanFiction.com.git
-        ssh-strict : true
-        persist-credentials : true
-        clean : true
-        lfs : false
-        path : ''
-        submodules : 'recursive'
-        fetch-depth : 0
-      run :
-        git --version
+      # Checks Out The Repository Under $GITHUB_WORKSPACE, So The Job Can Access The Project Workspace
+      - name : ---------- Checkout Repository ${{ github.repository }} ----------
+      uses : actions/checkout@v3
+        with :
+          repository : ${{ github.repository }}
+          ref : main
+          token : ${{ github.token }}
+          ssh-key : git@github.com:ehharding/FanFiction.com.git
+          ssh-strict : true
+          persist-credentials : true
+          clean : true
+          lfs : false
+          path : ''
+          submodules : 'recursive'
+          fetch-depth : 0
+        run :
+          git --version
