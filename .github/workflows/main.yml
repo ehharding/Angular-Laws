@@ -30,7 +30,7 @@ jobs :
     steps :
     # Checks Out The Repository Under $GITHUB_WORKSPACE, So The Job Can Access The Project Workspace
     - name : ---------- Checkout Repository ${{ github.repository }} ----------
-    - uses : actions/checkout@v2
+    - uses : actions/checkout@v3
       with :
         repository : ${{ github.repository }}
         ref : main
