@@ -1,0 +1,46 @@
+######################################################################################################################################################
+# Copyright 2021 Evan H. Harding. All Rights Reserved.
+#
+# This is a GitHub Actions workflow file. It is written in YAML and specifies a series of commands that execute when certain events occur. Jobs
+# consist of the following:
+#
+#   * BUILD - Builds the project... Specifies that the project will run on the latest version of Node.js on the latest version of Ubuntu Linux.
+#
+# {@link https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions | Introduction to GitHub Actions}
+######################################################################################################################################################
+
+name : Fan Fiction.com CI Angular Build
+
+on :
+  # Triggers The Workflow On `push` Events But Only For The `main` Branch
+  push :
+    branches : [main]
+
+  # Allows The Workflow To Be Run Manually From The `Actions` Tab
+  workflow_dispatch :
+
+jobs :
+  ##### JOB 1 - BUILD #####
+  build :
+    runs-on : ubuntu-latest
+    strategy :
+      matrix :
+        node-version : [15.10.0]
+
+    steps :
+    # Checks Out The Repository Under $GITHUB_WORKSPACE, So The Job Can Access The Project Workspace
+    - name : Checkout Repository
+    - uses : actions/checkout@v2
+      with :
+        repository : ${{ github.repository }}
+        ref : main
+
+        token : ${{ github.token }}
+        ssh-key : git@github.com:ehharding/FanFiction.com.git
+        ssh-strict : true
+        persist-credentials : true
+        clean : true
+        lfs : false
+        path : ''
+        submodules : 'recursive'
+        fetch-depth : 0
