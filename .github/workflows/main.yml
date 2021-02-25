@@ -46,8 +46,3 @@ jobs :
         fetch-depth : 0
       run :
         git --version
-
-    - name : ---------- Install NPM And Run Build ----------
-      run : |
-        npm --version
-        npm install and npm run build
