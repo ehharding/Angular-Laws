@@ -1,5 +1,6 @@
 {
   "name" : "fan-fiction-dot-com",
+  "license" : "UNLICENSED",
   "private" : true,
   "version" : "0.0.0",
   "description" : "A Modern FanFiction Website For The Modern Web",
@@ -14,7 +15,7 @@
   "files" : ["*"],
   "browserslist" : ["defaults"],
   "engines" : { "node" : "15.10.0", "npm" : "7.5.4" },
-  "os" : ["win32", "x64"],
+  "os" : ["darwin", "linux", "win32", "x64"],
   "scripts" : {
     "build" : "ng build",
     "lint" : "eslint **/*.ts",

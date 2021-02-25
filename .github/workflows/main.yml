@@ -9,7 +9,7 @@
 # {@link https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions | Introduction to GitHub Actions}
 ######################################################################################################################################################
 
-name : Fan Fiction.com CI Angular Build
+name : -------------------- Fan Fiction.com CI Angular Build --------------------
 
 on :
   # Triggers The Workflow On `push` Events But Only For The `main` Branch
@@ -20,7 +20,7 @@ on :
   workflow_dispatch :
 
 jobs :
-  ##### JOB 1 - BUILD #####
+  ########## JOB 1 - BUILD ##########
   build :
     runs-on : ubuntu-latest
     strategy :
@@ -29,7 +29,7 @@ jobs :
 
     steps :
     # Checks Out The Repository Under $GITHUB_WORKSPACE, So The Job Can Access The Project Workspace
-    - name : Checkout Repository
+    - name : ---------- Checkout Repository ${{ github.repository }} ----------
     - uses : actions/checkout@v2
       with :
         repository : ${{ github.repository }}
@@ -44,3 +44,10 @@ jobs :
         path : ''
         submodules : 'recursive'
         fetch-depth : 0
+      run :
+        git --version
+
+    - name : ---------- Install NPM And Run Build ----------
+      run : |
+        npm --version
+        npm install and npm run build

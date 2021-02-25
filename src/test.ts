@@ -1,4 +1,4 @@
-import 'zone.js/dist/zone-testing';
+import 'zone.js/dist/fake-async-test';
 
 /*****************************************************************************************************************************************************
  * Copyright 2021 Evan H. Harding. All Rights Reserved.
