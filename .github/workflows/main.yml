@@ -34,7 +34,6 @@ jobs :
       with :
         repository : ${{ github.repository }}
         ref : main
-
         token : ${{ github.token }}
         ssh-key : git@github.com:ehharding/FanFiction.com.git
         ssh-strict : true
