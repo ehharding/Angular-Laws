@@ -28,7 +28,7 @@ jobs :
         node-version : [15.10.0]
 
     steps :
-      - name : ----- Checkout Repository -----
+      - name: ----- Checkout Repository -----
       uses : actions/checkout
       with:
         repository: ${{ github.repository }}
