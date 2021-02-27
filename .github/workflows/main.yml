@@ -1,13 +1,16 @@
 ######################################################################################################################################################
 # Copyright 2021 Evan H. Harding. All Rights Reserved.
 #
-# This is a GitHub Actions workflow file. It is written in YAML and specifies a series of commands that execute when certain events occur. Jobs
-# consist of the following:
+# This is a GitHub Actions workflow file. It is written in YAML and specifies a series of commands that execute when certain events occur. Currently,
+# all jobs in this file are running on an Ubuntu Linux host. See https://github.com/actions/virtual-environments for a list of options.
 #
-#   * initialize-environment - Initializes an Ubuntu Virtual Environment Runner on GitHub.
-#                            - Checks Out The `main` GitHub Repository Branch For Fan Fiction.com.
-#                            - Installs Node.js and NPM so that we can retrieve all dependencies and build the application.
-#                            - Uploads the artifacts of the job for the next job.
+#   * repository-checkout - Checks out The `main` GitHub repository branch for Fan Fiction.com and uploads the repository artifact for future use
+#   * install-build-test  - Downloads Node.js (and NPM)
+#                         - Downloads the repository snapshot artifact from the previous job
+#                         - Installs necessary NPM dependencies
+#                         |--> Caches node_modules for future use
+#                         - Runs a production build and uploads `dist` as an artifact
+#                         - Runs ESLint checks
 #
 # {@link https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions | Introduction to GitHub Actions}
 ######################################################################################################################################################
@@ -55,8 +58,8 @@ jobs :
           name : fan-fiction-dot-com
           path : '/home/runner/work/FanFiction.com/FanFiction.com'
 
-  ########## JOB 2 - INSTALL-AND-BUILD ##########
-  install-and-build :
+  ########## JOB 2 - INSTALL-BUILD-TEST ##########
+  install-build-test :
     needs : repository-checkout
     runs-on : ${{ matrix.os }}
     strategy :
@@ -76,7 +79,15 @@ jobs :
         with :
           name : fan-fiction-dot-com
 
+      - name : Cache `node_modules`
+        id : node-modules-cache
+        uses : actions/cache@v2
+        with :
+          path : '/home/runner/work/FanFiction.com/FanFiction.com/node_modules'
+          key : ${{ matrix.node-version }}-node-modules
+
       - name : Install NPM Dependencies
+        if : steps.node-modules-cache.outputs.cache-hit != 'true'
         run : |
           echo 'Installing Dependencies Defined In `package.json` Using NPM... This May Take Awhile'
           npm install
@@ -84,8 +95,12 @@ jobs :
       - name : Run Production Build
         run : |
           echo 'Starting Up The Angular Framework...'
-          echo ''
-          npm run ng
-          echo ''
 
+          npm run ng
           npm run build:prod
+
+      - name : Upload `dist` Production Build
+        uses : actions/upload-artifact@v2
+        with :
+          name : dist-prod
+          path : '/home/runner/work/FanFiction.com/FanFiction.com/dist'
