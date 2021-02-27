@@ -53,6 +53,7 @@ jobs :
         uses : actions/upload-artifact@v2
         with :
           name : fan-fiction-dot-com
+          path : '../fan-fiction-dot-com'
 
   ########## JOB 2 - INSTALL-AND-BUILD ##########
   install-and-build :
@@ -84,3 +85,4 @@ jobs :
         uses : actions/upload-artifact@v2
         with :
           name : package-lock.json
+          path : 'package-lock.json'
