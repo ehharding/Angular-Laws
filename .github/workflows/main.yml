@@ -47,7 +47,7 @@ jobs :
           lfs : false
           persist-credentials : true
           ssh-strict : true
-          submodules : false
+          submodules : true
           fetch-depth : 0
 
       - name : Node.js ${{ matrix.node-version }} Setup
@@ -59,13 +59,8 @@ jobs :
   npm-dependencies-install :
     needs : initialize-environment
     runs-on : ${{ matrix.os }}
-    strategy:
-      matrix:
-        os:
-          - ubuntu-latest
 
     steps :
       - name : NPM Dependencies Install
         run : |
-          echo "Installing Dependencies For Fan Fiction.com Angular Front-End Via NPM..."
           npm install

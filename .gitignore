@@ -9,4 +9,3 @@
 build-cache
 coverage_report
 node_modules
-package-lock.json
