@@ -12,7 +12,7 @@
 # {@link https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions | Introduction to GitHub Actions}
 ######################################################################################################################################################
 
-name : Fan Fiction.com CI Angular Build And Test
+name : Fan Fiction.com
 
 on :
   # Triggers The Workflow On `push` Events But Only For The `main` Branch
