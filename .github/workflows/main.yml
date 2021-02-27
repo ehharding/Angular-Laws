@@ -61,11 +61,16 @@ jobs :
     runs-on : ${{ matrix.os }}
     strategy:
       matrix:
+        node-version : [15.10.0]
         os:
           - ubuntu-latest
 
     steps :
+      - name : Node.js ${{ matrix.node-version }} Setup
+        uses : actions/setup-node@v1
+        with :
+          node-version : ${{ matrix.node-version }}
+
       - name : NPM Dependencies Install
         run : |
-          pwd; ls;
           npm install
