@@ -11,6 +11,7 @@
 #   * test                - Runs unit tests and uploads `coverage_report` as an artifact
 #   * eslint-report       - Runs ESLint on the project and uploads `eslint_report.html` as an artifact
 #   * build-production    - Runs a production build and uploads `dist` as an artifact
+#   * deploy              - Deploys the production build distributable to GitHub Pages for hosting
 #
 # {@link https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions | Introduction to GitHub Actions}
 ######################################################################################################################################################
@@ -200,3 +201,24 @@ jobs :
         with :
           name : dist-prod
           path : '/home/runner/work/FanFiction.com/FanFiction.com/dist'
+
+  ########## JOB 5 - DEPLOY ##########
+  deploy :
+    needs : build-production
+    runs-on : ${{ matrix.os }}
+    strategy :
+      matrix :
+        os :
+          - ubuntu-latest
+
+    steps :
+      - name : Download Distributable
+        uses : actions/download-artifact@v2
+        with :
+          name : dist-prod
+
+      - name : Deploy Distributable To GitHub Pages
+        uses : peaceiris/actions-gh-pages@v3
+        with :
+          github_token : ${{ secrets.GITHUB_TOKEN }}
+          publish_dir : dist-prod
