@@ -21,6 +21,7 @@
     "build:prod" : "ng build --prod",
     "clean" : "rimraf ./coverage_report ./dist ./browser-console.log",
     "lint" : "eslint **/*.ts",
+    "ng" : "ng --version",
     "start" : "ng serve",
     "test" : "ng test --browsers=FirefoxHeadless --watch=false",
     "test:watch" : "ng test"

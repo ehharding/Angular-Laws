@@ -78,7 +78,7 @@ jobs :
 
       - name : Install NPM Dependencies
         run : |
-          echo 'Installing Dependencies Defined In `package.json` Using NPM'
+          echo 'Installing Dependencies Defined In `package.json` Using NPM... This May Take Awhile'
           npm install
 
       - name : Run Production Build
