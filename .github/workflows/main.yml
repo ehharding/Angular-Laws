@@ -56,8 +56,8 @@ jobs :
         with :
           node-version : ${{ matrix.node-version }}
 
-      - name : Git Configuration Artifact Upload
+      - name : Repository Artifact Upload
         uses : actions/upload-artifact@v2
         with :
-          name : git-configuration
-          path : .git
+          name : fan-fiction-dot-com
+          path : /home/runner/work/FanFiction.com/FanFiction.com
