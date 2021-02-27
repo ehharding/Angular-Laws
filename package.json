@@ -19,8 +19,9 @@
   "scripts" : {
     "build" : "ng build",
     "build:prod" : "ng build --prod",
-    "clean" : "rimraf ./coverage_report ./dist ./browser-console.log",
+    "clean" : "rimraf ./coverage_report ./dist ./browser-console.log ./eslint_report.html",
     "lint" : "eslint **/*.ts",
+    "lint:report" : "eslint **/*.ts -f node_modules/eslint-html-reporter/reporter.js -o ./eslint_report.html",
     "ng" : "ng --version",
     "start" : "ng serve",
     "test" : "ng test --browsers=FirefoxHeadless --watch=false",
@@ -60,6 +61,7 @@
     "@typescript-eslint/eslint-plugin" : "4.15.2",
     "@typescript-eslint/parser" : "4.15.2",
     "eslint" : "7.20.0",
+    "eslint-html-reporter" : "0.7.4",
     "eslint-plugin-tsdoc" : "0.2.11",
     "jasmine-core" : "3.6.0",
     "jasmine-spec-reporter" : "6.0.0",
