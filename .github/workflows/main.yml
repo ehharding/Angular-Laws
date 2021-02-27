@@ -34,7 +34,6 @@ jobs :
         with :
           repository : ${{ github.repository }}
           ref : main
-          token : ${{ secrets.SECRET_TOKEN }}
           clean : true
           lfs : false
           persist-credentials : true
