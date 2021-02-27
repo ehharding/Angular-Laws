@@ -41,7 +41,7 @@ jobs :
         uses : actions/checkout@v2
         with :
           path : ''
-          repository : ${{ GITHUB_REPOSITORY }}
+          repository : ${{ github.repository }}
           token : ${{ github.token }}
           ref : main
           clean : true
