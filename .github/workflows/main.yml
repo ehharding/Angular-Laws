@@ -78,7 +78,7 @@ jobs :
           path : ''
 
       - name : Install NPM Dependencies
-        run :
+        run : |
           npm --version
           npm install
 
