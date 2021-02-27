@@ -4,9 +4,10 @@
 # This is a GitHub Actions workflow file. It is written in YAML and specifies a series of commands that execute when certain events occur. Jobs
 # consist of the following:
 #
-#   * build - Initializes an Ubuntu Virtual Environment Runner on GitHub.
-#           - Checks Out The `main` GitHub Repository Branch For Fan Fiction.com.
-#           - Installs Node.js and NPM so that we can retrieve all dependencies and build the application.
+#   * initialize-environment - Initializes an Ubuntu Virtual Environment Runner on GitHub.
+#                            - Checks Out The `main` GitHub Repository Branch For Fan Fiction.com.
+#                            - Installs Node.js and NPM so that we can retrieve all dependencies and build the application.
+#                            - Uploads the artifacts of the job for the next job.
 #
 # {@link https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions | Introduction to GitHub Actions}
 ######################################################################################################################################################
@@ -23,8 +24,8 @@ on :
   workflow_dispatch :
 
 jobs :
-  ########## JOB 1 - build ##########
-  build :
+  ########## JOB 1 - initialize-environment ##########
+  initialize-environment :
     runs-on : ${{ matrix.os }}
     strategy :
       matrix :
@@ -34,14 +35,14 @@ jobs :
 
     steps :
       - name : Configure Git Initial Branch Name
-        run : |
-          git config --global init.defaultBranch main
+        run : git config --global init.defaultBranch main
 
       - name : Repository Checkout
         uses : actions/checkout@v2
         with :
           path : ''
-          repository : ${{ github.repository }}
+          repository : ${{ GITHUB_REPOSITORY }}
+          token : ${{ github.token }}
           ref : main
           clean : true
           lfs : false
@@ -51,10 +52,21 @@ jobs :
           fetch-depth : 0
 
       - name : Node.js ${{ matrix.node-version }} Setup
-        uses : actions/setup-node@v1
+        uses : actions/setup-node@v2
         with :
           node-version : ${{ matrix.node-version }}
 
-      - name : Install NPM Dependencies
-        run : |
-          npm install
+      - name : Git Configuration Artifact Upload
+        uses : actions/upload-artifact@v2
+        with :
+          name : git-configuration
+          path : .git
+
+  ########## JOB 2 - install-npm-dependencies ##########
+  install-npm-dependencies :
+    needs : initialize-environment
+    runs-on : ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
