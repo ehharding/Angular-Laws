@@ -196,11 +196,11 @@ jobs :
           npm run ng
           npm run build:prod
 
-      - name : Upload `dist` Production Build Artifact
+      - name : Upload `dist-prod` Production Build Artifact
         uses : actions/upload-artifact@v2
         with :
           name : dist-prod
-          path : '/home/runner/work/FanFiction.com/FanFiction.com/dist'
+          path : '/home/runner/work/FanFiction.com/FanFiction.com/dist-prod'
 
   ########## JOB 5 - DEPLOY ##########
   deploy :

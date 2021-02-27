@@ -62,7 +62,7 @@
             }
           },
           "options" : {
-            "outputPath" : "dist/fan-fiction-dot-com",
+            "outputPath" : "dist-prod",
             "index" : "src/index.html",
             "main" : "src/main.ts",
             "polyfills" : "src/polyfills.ts",
