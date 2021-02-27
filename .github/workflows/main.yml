@@ -75,7 +75,7 @@ jobs :
 
       - name : Install NPM Dependencies
         run : |
-          npm-version=$(npm --version)
+          var=$(npm --version)
 
-          echo 'Installing Dependencies Defined In `package.json` Using: NPM $npm-version'
+          echo 'Installing Dependencies Defined In `package.json` Using: NPM $var'
           npm install
