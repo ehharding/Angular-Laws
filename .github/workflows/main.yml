@@ -17,27 +17,24 @@ name : Fan Fiction.com CI Angular Build And Test
 on :
   # Triggers The Workflow On `push` Events But Only For The `main` Branch
   push :
-    branches :
-      - main
+    branches : [main]
 
   # Allows The Workflow To Be Run Manually From The `Actions` Tab
   workflow_dispatch :
 
 jobs :
-  ########## JOB 1 - initialize-environment ##########
-  initialize-environment :
+  ########## JOB 1 - REPOSITORY-CHECKOUT ##########
+  repository-checkout :
     runs-on : ${{ matrix.os }}
     strategy :
       matrix :
-        node-version : [15.10.0]
-        os :
-          - ubuntu-latest
+        os : ubuntu-latest
 
     steps :
       - name : Configure Git Initial Branch Name
         run : git config --global init.defaultBranch main
 
-      - name : Repository Checkout
+      - name : Checkout Repository
         uses : actions/checkout@v2
         with :
           path : ''
@@ -51,13 +48,31 @@ jobs :
           submodules : true
           fetch-depth : 0
 
-      - name : Node.js ${{ matrix.node-version }} Setup
-        uses : actions/setup-node@v2
-        with :
-          node-version : ${{ matrix.node-version }}
-
-      - name : Repository Artifact Upload
+      - name : Upload Repository Snapshot
         uses : actions/upload-artifact@v2
         with :
           name : fan-fiction-dot-com
           path : /home/runner/work/FanFiction.com/FanFiction.com
+
+  ########## JOB 2 - NPM-DEPENDENCIES-INSTALL ##########
+  npm-dependencies-install :
+    needs : repository-checkout
+    runs-on : ${{ matrix.os }}
+    strategy :
+      matrix :
+        node-version : [15.10.0]
+        os :
+          - ubuntu-latest
+
+    steps :
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name : Download Repository Snapshot
+        uses : actions/download-artifact@v2
+        with :
+          name : fan-fiction-dot-com
+          path : ''
+          run : ls
