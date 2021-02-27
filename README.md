@@ -1,3 +1,5 @@
+<!--suppress HtmlDeprecatedAttribute -->
+
 <h1 align="center">
   <br>
   <a href="https://angular.io"><img alt="Angular.io" src="https://angular.io/assets/images/logos/angular/angular.svg" width="100" /></a>
@@ -24,6 +26,7 @@
 </p>
 
 <p align="center">
+  <!--suppress HtmlUnknownAnchorTarget -->
   <a href="#executive-summary">Executive Summary</a>
 </p>
 
