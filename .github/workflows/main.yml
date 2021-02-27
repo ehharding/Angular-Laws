@@ -212,6 +212,7 @@ jobs :
 
   ########## JOB 4 - CLEAN ##########
   clean :
+    needs : eslint-report
     runs-on : ${{ matrix.os }}
     strategy :
       matrix :
@@ -224,6 +225,11 @@ jobs :
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+
+      - name : Download Repository Snapshot
+        uses : actions/download-artifact@v2
+        with :
+          name : fan-fiction-dot-com
 
       - name : Clean Project Directory
         run : |
