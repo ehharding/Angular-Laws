@@ -32,6 +32,9 @@ jobs :
         - ubuntu-latest
 
     steps :
+      - name: Configure Git Initial Branch Name
+        run: git config --global init.defaultBranch main
+
       - name : Checkout Repository
         uses : actions/checkout@v2
         with :
@@ -50,7 +53,6 @@ jobs :
         uses : actions/upload-artifact@v2
         with :
           name : fan-fiction-dot-com
-          path : /home/runner/work/FanFiction.com/FanFiction.com
 
   ########## JOB 2 - INSTALL-AND-BUILD ##########
   install-and-build :
@@ -75,5 +77,10 @@ jobs :
 
       - name : Install NPM Dependencies
         run : |
-          echo 'Installing Dependencies Defined In `package.json` Using: NPM'
+          echo 'Installing Dependencies Defined In `package.json` Using NPM'
           npm install
+
+      - name : Upload `package-lock.json`
+        uses : actions/upload-artifact@v2
+        with :
+          name : package-lock.json
