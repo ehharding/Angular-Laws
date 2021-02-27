@@ -4,7 +4,9 @@
 # This is a GitHub Actions workflow file. It is written in YAML and specifies a series of commands that execute when certain events occur. Jobs
 # consist of the following:
 #
-#   * BUILD - Builds and tests the project in a CI/CD environment.
+#   * INITIALIZE-ENVIRONMENT - Initializes an Ubuntu Virtual Environment Runner on GitHub.
+#                            - Checks Out The `main` GitHub Repository Branch For Fan Fiction.com.
+#                            - Installs Node.js and NPM so that we can retrieve all dependencies and build the application.
 #
 # {@link https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions | Introduction to GitHub Actions}
 ######################################################################################################################################################
@@ -21,30 +23,39 @@ on :
   workflow_dispatch :
 
 jobs :
-  ########## JOB 1 - BUILD ##########
-  build :
-    runs-on : ubuntu-latest
+  ########## JOB 1 - INITIALIZE-ENVIRONMENT ##########
+  initialize-environment :
+    runs-on : ${{ matrix.os }}
     strategy :
       matrix :
         node-version : [15.10.0]
+        os :
+          - ubuntu-latest
 
     steps :
-      - name : Checkout Repository
+      if : startsWith(matrix.os, 'ubuntu')
+
+      - name : Repository Checkout
+        run : |
+          echo 'Checking Out FanFiction.com Repository From GitHub...'
         uses : actions/checkout@v2
         with :
+          path : ''
           repository : ${{ github.repository }}
           ref : main
           clean : true
           lfs : false
           persist-credentials : true
           submodules : false
-          path : ''
 
       - name : Node.js ${{ matrix.node-version }} Setup
+        run : |
+          echo 'Installing Node.js ' + ${{ matrix.node-version }} + '...'
         uses : actions/setup-node@v1
         with :
           node-version : ${{ matrix.node-version }}
 
-      - name : NPM Install And NPM Build
+      - name : NPM Dependencies Install
         run : |
-          npm run build:ci
+          echo 'Installing Dependencies For Fan Fiction.com Angular Front-End Via NPM...'
+          npm install

@@ -18,7 +18,6 @@
   "os" : ["darwin", "linux", "win32", "x64"],
   "scripts" : {
     "build" : "ng build",
-    "build:ci" : "npm install && npm run clean && npm run test && npm run build:prod",
     "build:prod" : "ng build --prod",
     "clean" : "rimraf ./coverage_report ./dist ./browser-console.log",
     "lint" : "eslint **/*.ts",
