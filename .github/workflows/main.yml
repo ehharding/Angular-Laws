@@ -59,6 +59,10 @@ jobs :
   npm-dependencies-install :
     needs : initialize-environment
     runs-on : ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
 
     steps :
       - name : NPM Dependencies Install
