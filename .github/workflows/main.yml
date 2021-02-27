@@ -52,7 +52,7 @@ jobs :
           submodules : true
           fetch-depth : 0
 
-      - name : Upload Repository Snapshot
+      - name : Upload Repository Snapshot Artifact
         uses : actions/upload-artifact@v2
         with :
           name : fan-fiction-dot-com
@@ -99,7 +99,7 @@ jobs :
           npm run ng
           npm run build:prod
 
-      - name : Upload `dist` Production Build
+      - name : Upload `dist` Production Build Artifact
         uses : actions/upload-artifact@v2
         with :
           name : dist-prod
