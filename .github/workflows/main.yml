@@ -216,9 +216,10 @@ jobs :
         uses : actions/download-artifact@v2
         with :
           name : dist-prod
+          path : 'dist-prod'
 
       - name : Deploy Distributable To GitHub Pages
         uses : peaceiris/actions-gh-pages@v3
         with :
           github_token : ${{ secrets.GITHUB_TOKEN }}
-          publish_dir : '/home/runner/work/FanFiction.com/FanFiction.com/dist-prod'
+          publish_dir : 'dist-prod'
