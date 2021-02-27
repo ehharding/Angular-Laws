@@ -25,14 +25,15 @@ on :
   # Allows The Workflow To Be Run Manually From The `Actions` Tab
   workflow_dispatch :
 
+matrix :
+  node-version : [15.10.0]
+  os :
+    - ubuntu-latest
+
 jobs :
   ########## JOB 1 - REPOSITORY-CHECKOUT ##########
   repository-checkout :
     runs-on : ${{ matrix.os }}
-    strategy :
-      matrix :
-        os :
-        - ubuntu-latest
 
     steps :
       - name: Configure Git Initial Branch Name
@@ -62,11 +63,6 @@ jobs :
   test :
     needs : repository-checkout
     runs-on : ${{ matrix.os }}
-    strategy :
-      matrix :
-        node-version : [15.10.0]
-        os :
-          - ubuntu-latest
 
     steps :
       - name : Setup Node.js ${{ matrix.node-version }}
@@ -110,11 +106,6 @@ jobs :
   eslint-report :
     needs : test
     runs-on : ${{ matrix.os }}
-    strategy :
-      matrix :
-        node-version : [15.10.0]
-        os :
-          - ubuntu-latest
 
     steps :
       - name : Setup Node.js ${{ matrix.node-version }}
@@ -157,11 +148,6 @@ jobs :
   build-production :
     needs : eslint-report
     runs-on : ${{ matrix.os }}
-    strategy :
-      matrix :
-        node-version : [15.10.0]
-        os :
-          - ubuntu-latest
 
     steps :
       - name : Setup Node.js ${{ matrix.node-version }}
