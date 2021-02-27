@@ -11,7 +11,6 @@
 #   * test                - Runs unit tests and uploads `coverage_report` as an artifact
 #   * eslint-report       - Runs ESLint on the project and uploads `eslint_report.html` as an artifact
 #   * build               - Runs a production build and uploads `dist` as an artifact
-#   * clean               - Cleans the project directory of runtime-generated files
 #
 # {@link https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions | Introduction to GitHub Actions}
 ######################################################################################################################################################
@@ -70,10 +69,10 @@ jobs :
           - ubuntu-latest
 
     steps :
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
+      - name : Setup Node.js ${{ matrix.node-version }}
+        uses : actions/setup-node@v2
+        with :
+          node-version : ${{ matrix.node-version }}
 
       - name : Download Repository Snapshot
         uses : actions/download-artifact@v2
@@ -118,10 +117,10 @@ jobs :
           - ubuntu-latest
 
     steps :
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
+      - name : Setup Node.js ${{ matrix.node-version }}
+        uses : actions/setup-node@v2
+        with :
+          node-version : ${{ matrix.node-version }}
 
       - name : Download Repository Snapshot
         uses : actions/download-artifact@v2
@@ -165,10 +164,10 @@ jobs :
           - ubuntu-latest
 
     steps :
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
+      - name : Setup Node.js ${{ matrix.node-version }}
+        uses : actions/setup-node@v2
+        with :
+          node-version : ${{ matrix.node-version }}
 
       - name : Download Repository Snapshot
         uses : actions/download-artifact@v2
@@ -201,28 +200,3 @@ jobs :
         with :
           name : dist-prod
           path : '/home/runner/work/FanFiction.com/FanFiction.com/dist'
-
-  ########## JOB 5 - CLEAN ##########
-  clean :
-    needs : eslint-report
-    runs-on : ${{ matrix.os }}
-    strategy :
-      matrix :
-        node-version : [15.10.0]
-        os :
-          - ubuntu-latest
-
-    steps :
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name : Download Repository Snapshot
-        uses : actions/download-artifact@v2
-        with :
-          name : fan-fiction-dot-com
-
-      - name : Clean Project Directory
-        run : |
-          npm run clean
