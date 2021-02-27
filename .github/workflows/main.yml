@@ -76,4 +76,6 @@ jobs :
         with :
           name : fan-fiction-dot-com
           path : ''
+
+      - name : Test
         run : ls
