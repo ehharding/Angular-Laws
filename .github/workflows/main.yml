@@ -23,7 +23,7 @@ on :
   workflow_dispatch :
 
 jobs :
-  ########## JOB 1 - INITIALIZE-ENVIRONMENT ##########
+  ########## JOB 1 - initialize-environment ##########
   initialize-environment :
     runs-on : ${{ matrix.os }}
     strategy :
@@ -55,8 +55,17 @@ jobs :
         with :
           node-version : ${{ matrix.node-version }}
 
+  ########## JOB 2 - npm-dependencies-install ##########
+  npm-dependencies-install :
+    needs : initialize-environment
+    runs-on : ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+
+    steps :
       - name : NPM Dependencies Install
         run : |
-          echo ''
-          echo 'Installing Dependencies For Fan Fiction.com Angular Front-End Via NPM...'
+          echo "Installing Dependencies For Fan Fiction.com Angular Front-End Via NPM..."
           npm install
