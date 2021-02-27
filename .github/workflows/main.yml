@@ -84,7 +84,7 @@ jobs :
         with :
           name : fan-fiction-dot-com
 
-      - name : Check `actions/cache@v2` Cache For `node_modules`
+      - name : Check `actions/cache@v2` For `node_modules`
         id : node-modules-cache
         uses : actions/cache@v2
         with :
@@ -132,7 +132,7 @@ jobs :
         with :
           name : fan-fiction-dot-com
 
-      - name : Check `actions/cache@v2` Cache For `node_modules`
+      - name : Check `actions/cache@v2` For `node_modules`
         id : node-modules-cache
         uses : actions/cache@v2
         with :
