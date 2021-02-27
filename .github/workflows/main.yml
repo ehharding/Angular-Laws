@@ -47,5 +47,4 @@ jobs :
 
       - name : NPM Install And NPM Build
         run : |
-          npm ci
           npm run build:ci
