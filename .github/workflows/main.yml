@@ -200,7 +200,7 @@ jobs :
         uses : actions/upload-artifact@v2
         with :
           name : dist-prod
-          path : '/home/runner/work/FanFiction.com/FanFiction.com/dist-prod/src'
+          path : '/home/runner/work/FanFiction.com/FanFiction.com/dist-prod'
 
   ########## JOB 5 - DEPLOY ##########
   deploy :
@@ -221,5 +221,5 @@ jobs :
       - name : Deploy Distributable To GitHub Pages
         uses : peaceiris/actions-gh-pages@v3
         with :
-          github_token : ${{ secrets.GITHUB_TOKEN }}
-          publish_dir : 'dist-prod'
+          github_token : ${{ github.token }}
+          publish_dir : 'dist-prod/src'
