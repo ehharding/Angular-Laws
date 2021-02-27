@@ -33,8 +33,6 @@ jobs :
           - ubuntu-latest
 
     steps :
-      if : startsWith(matrix.os, 'ubuntu')
-
       - name : Repository Checkout
         run : |
           echo 'Checking Out FanFiction.com Repository From GitHub...'
