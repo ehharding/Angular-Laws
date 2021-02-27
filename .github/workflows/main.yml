@@ -30,7 +30,7 @@ jobs :
 
     steps :
       - name : Checkout Repository
-        uses : actions/checkout@v2
+        uses : actions/checkout@a81bbbf8298c0fa03ea29cdc473d45769f953675
         with :
           repository : ${{ github.repository }}
           ref : main
