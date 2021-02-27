@@ -4,21 +4,13 @@
 # This is a GitHub Actions workflow file. It is written in YAML and specifies a series of commands that execute when certain events occur. Currently,
 # all jobs in this file are running on an Ubuntu Linux host. See https://github.com/actions/virtual-environments for a list of options.
 #
-# `node_modules` is cached based on a hash of `package-lock.json` for performance reasons. If the dependencies change, the hash should change as well,
+# `node_modules` is cached based on a hash of `package.json` for performance reasons. If the dependencies change, the hash should change as well,
 # meaning a fresh `npm install` should be triggered.
 #
-#   * repository-checkout - Checks out The `main` GitHub repository branch for Fan Fiction.com and uploads the repository artifact for future use
-#
-#   * install-build       - Downloads Node.js (and NPM)
-#                         - Downloads the repository snapshot artifact from the previous job
-#                         - Installs necessary NPM dependencies
-#                         |--> Caches `node_modules` for future use
-#                         - Runs a production build and uploads `dist` as an artifact
-#
+#   * repository-checkout - Checks out The `main` GitHub repository branch for Fan Fiction.com and uploads the repository as an artifact
 #   * test                - Runs unit tests and uploads `coverage_report` as an artifact
-#
 #   * eslint-report       - Runs ESLint on the project and uploads `eslint_report.html` as an artifact
-#
+#   * build               - Runs a production build and uploads `dist` as an artifact
 #   * clean               - Cleans the project directory of runtime-generated files
 #
 # {@link https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions | Introduction to GitHub Actions}
@@ -67,8 +59,8 @@ jobs :
           name : fan-fiction-dot-com
           path : '/home/runner/work/FanFiction.com/FanFiction.com'
 
-  ########## JOB 2 - INSTALL-BUILD ##########
-  install-build :
+  ########## JOB 2 - TEST ##########
+  test :
     needs : repository-checkout
     runs-on : ${{ matrix.os }}
     strategy :
@@ -93,55 +85,7 @@ jobs :
         uses : actions/cache@v2
         with :
           path : '/home/runner/work/FanFiction.com/FanFiction.com/node_modules'
-          key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package-lock.json') }}
-
-      - name : Install NPM Dependencies
-        # Caches Older Than Two Days (GitHub Setting) Are Evicted Based On Age Or If The 5GB Cache Limit Is Exceeded
-        if : steps.node-modules-cache.outputs.cache-hit != 'true'
-        run : |
-          echo 'Installing Dependencies Defined In `package.json` Using NPM... This May Take Awhile'
-          npm install
-
-      - name : Run Production Build
-        run : |
-          echo 'Starting Up The Angular Framework...'
-
-          npm run ng
-          npm run build:prod
-
-      - name : Upload `dist` Production Build Artifact
-        uses : actions/upload-artifact@v2
-        with :
-          name : dist-prod
-          path : '/home/runner/work/FanFiction.com/FanFiction.com/dist'
-
-  ########## JOB 3 - TEST ##########
-  test :
-    needs : install-build
-    runs-on : ${{ matrix.os }}
-    strategy :
-      matrix :
-        node-version : [15.10.0]
-        os :
-          - ubuntu-latest
-
-    steps :
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name : Download Repository Snapshot
-        uses : actions/download-artifact@v2
-        with :
-          name : fan-fiction-dot-com
-
-      - name : Check `actions/cache@v2` For `node_modules`
-        id : node-modules-cache
-        uses : actions/cache@v2
-        with :
-          path : '/home/runner/work/FanFiction.com/FanFiction.com/node_modules'
-          key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package.json') }}
 
       - name : Install NPM Dependencies
         # Caches Older Than Two Days (GitHub Setting) Are Evicted Based On Age Or If The 5GB Cache Limit Is Exceeded
@@ -163,7 +107,7 @@ jobs :
           name : coverage-report
           path : '/home/runner/work/FanFiction.com/FanFiction.com/coverage_report'
 
-  ########## JOB 4 - ESLINT-REPORT ##########
+  ########## JOB 3 - ESLINT-REPORT ##########
   eslint-report :
     needs : test
     runs-on : ${{ matrix.os }}
@@ -189,7 +133,7 @@ jobs :
         uses : actions/cache@v2
         with :
           path : '/home/runner/work/FanFiction.com/FanFiction.com/node_modules'
-          key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package.json') }}
 
       - name : Install NPM Dependencies
         # Caches Older Than Two Days (GitHub Setting) Are Evicted Based On Age Or If The 5GB Cache Limit Is Exceeded
@@ -210,7 +154,55 @@ jobs :
           name : eslint-report
           path : '/home/runner/work/FanFiction.com/FanFiction.com/eslint_report.html'
 
-  ########## JOB 4 - CLEAN ##########
+  ########## JOB 4 - BUILD ##########
+  build :
+    needs : eslint-report
+    runs-on : ${{ matrix.os }}
+    strategy :
+      matrix :
+        node-version : [15.10.0]
+        os :
+          - ubuntu-latest
+
+    steps :
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name : Download Repository Snapshot
+        uses : actions/download-artifact@v2
+        with :
+          name : fan-fiction-dot-com
+
+      - name : Check `actions/cache@v2` For `node_modules`
+        id : node-modules-cache
+        uses : actions/cache@v2
+        with :
+          path : '/home/runner/work/FanFiction.com/FanFiction.com/node_modules'
+          key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package.json') }}
+
+      - name : Install NPM Dependencies
+        # Caches Older Than Two Days (GitHub Setting) Are Evicted Based On Age Or If The 5GB Cache Limit Is Exceeded
+        if : steps.node-modules-cache.outputs.cache-hit != 'true'
+        run : |
+          echo 'Installing Dependencies Defined In `package.json` Using NPM... This May Take Awhile'
+          npm install
+
+      - name : Run Production Build
+        run : |
+          echo 'Starting Up The Angular Framework...'
+
+          npm run ng
+          npm run build:prod
+
+      - name : Upload `dist` Production Build Artifact
+        uses : actions/upload-artifact@v2
+        with :
+          name : dist-prod
+          path : '/home/runner/work/FanFiction.com/FanFiction.com/dist'
+
+  ########## JOB 5 - CLEAN ##########
   clean :
     needs : eslint-report
     runs-on : ${{ matrix.os }}
