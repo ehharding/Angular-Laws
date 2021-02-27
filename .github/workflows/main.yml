@@ -77,5 +77,6 @@ jobs :
           name : fan-fiction-dot-com
           path : ''
 
-      - name : Test
-        run : ls
+      - name : Install NPM Dependencies
+        run :
+          npm install
