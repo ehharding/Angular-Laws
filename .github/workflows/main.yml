@@ -33,6 +33,10 @@ jobs :
           - ubuntu-latest
 
     steps :
+      - name : Configure Git Initial Branch Name
+        run : |
+          git config --global init.defaultBranch main
+
       - name : Repository Checkout
         uses : actions/checkout@v2
         with :
@@ -42,7 +46,9 @@ jobs :
           clean : true
           lfs : false
           persist-credentials : true
+          ssh-strict : true
           submodules : false
+          fetch-depth : 0
 
       - name : Node.js ${{ matrix.node-version }} Setup
         uses : actions/setup-node@v1
