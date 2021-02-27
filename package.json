@@ -1,6 +1,6 @@
 {
   "name" : "fan-fiction-dot-com",
-  "license" : "UNLICENSED",
+  "license" : "Apache-2.0",
   "private" : true,
   "version" : "0.0.0",
   "description" : "A Modern FanFiction Website For The Modern Web",
