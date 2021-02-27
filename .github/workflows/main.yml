@@ -85,7 +85,7 @@ jobs :
         run : |
           echo 'Starting Up The Angular Framework...'
           echo ''
-          ng --version
+          npm run ng
           echo ''
 
           npm run build:prod
