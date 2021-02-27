@@ -81,8 +81,11 @@ jobs :
           echo 'Installing Dependencies Defined In `package.json` Using NPM'
           npm install
 
-      - name : Upload `package-lock.json`
-        uses : actions/upload-artifact@v2
-        with :
-          name : package-lock.json
-          path : '/home/runner/work/FanFiction.com/FanFiction.com/package-lock.json'
+      - name : Run Production Build
+        run : |
+          echo 'Starting Up The Angular Framework...'
+          echo ''
+          ng --version
+          echo ''
+
+          npm run build:prod
