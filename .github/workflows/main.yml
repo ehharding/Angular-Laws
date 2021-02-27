@@ -22,10 +22,6 @@ on :
   # Allows The Workflow To Be Run Manually From The `Actions` Tab
   workflow_dispatch :
 
-stages :
-  - initialize-environment
-  - npm-dependencies-install
-
 jobs :
   ########## JOB 1 - initialize-environment ##########
   initialize-environment :
