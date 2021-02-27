@@ -74,3 +74,4 @@ jobs :
       - name : NPM Dependencies Install
         run : |
           npm install
+          ng --version
