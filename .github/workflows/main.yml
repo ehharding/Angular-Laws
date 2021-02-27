@@ -34,8 +34,6 @@ jobs :
 
     steps :
       - name : Repository Checkout
-        run : |
-          echo 'Checking Out FanFiction.com Repository From GitHub...'
         uses : actions/checkout@v2
         with :
           path : ''
@@ -47,13 +45,12 @@ jobs :
           submodules : false
 
       - name : Node.js ${{ matrix.node-version }} Setup
-        run : |
-          echo 'Installing Node.js ' + ${{ matrix.node-version }} + '...'
         uses : actions/setup-node@v1
         with :
           node-version : ${{ matrix.node-version }}
 
       - name : NPM Dependencies Install
         run : |
+          echo ''
           echo 'Installing Dependencies For Fan Fiction.com Angular Front-End Via NPM...'
           npm install
