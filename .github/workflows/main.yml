@@ -41,10 +41,10 @@ jobs :
           submodules : 'recursive'
           fetch-depth : 0
 
-      - name : Node.js $ Setup
+      - name : Node.js ${{ matrix.node-version }} Setup
         uses : actions/setup-node@v1
         with :
-          node-version : $
+          node-version : ${{ matrix.node-version }}
 
       - name : NPM Install And NPM Build
         run : |
