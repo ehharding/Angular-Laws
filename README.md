@@ -1,4 +1,4 @@
-<h1 style="text-align : center">
+<h1 align="center">
   <br>
   <a href="https://angular.io"><img alt="Angular.io" src="https://angular.io/assets/images/logos/angular/angular.svg" width="100" /></a>
   <br>
@@ -6,12 +6,12 @@
   <br>
 </h1>
 
-<h4 style="text-align : center">
+<h4 align="center">
   A Fan Fiction Website Built On Top Of
   <a href="https://material.angular.io" target="_blank">Angular Material</a>
 </h4>
 
-<p style="text-align : center">
+<p align="center">
   <a href="https://github.com/ehharding/FanFiction.com/actions">
     <img alt="Fan Fiction.com CI Status" src="https://github.com/ehharding/FanFiction.com/actions/workflows/main.yml/badge.svg" />
   </a>
@@ -23,7 +23,7 @@
   </a>
 </p>
 
-<p style="text-align : center">
+<p align="center">
   <a href="#executive-summary">Executive Summary</a>
 </p>
 
