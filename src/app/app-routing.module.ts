@@ -19,10 +19,9 @@ import { NgModule } from '@angular/core';
 
 import { AboutModule } from '@about/about.module';
 
-import { ENVIRONMENT } from '@environment/environment.prod';
-
 const ROUTES : Routes = [
-  { path : ENVIRONMENT.production ? 'FanFiction.com' : '', pathMatch : 'full', redirectTo : 'about' },
+  { path : 'FanFiction.com', pathMatch : 'full', redirectTo : '' }, // True In Production
+  { path : '', pathMatch : 'full', redirectTo : 'about' },
   { path : 'about', loadChildren : async() : Promise<AboutModule> => await import('@about/about.module').then((aboutModule) => aboutModule.AboutModule) }
 ];
 
