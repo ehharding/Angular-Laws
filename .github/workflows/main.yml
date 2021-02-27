@@ -61,12 +61,3 @@ jobs :
         with :
           name : git-configuration
           path : .git
-
-  ########## JOB 2 - install-npm-dependencies ##########
-  install-npm-dependencies :
-    needs : initialize-environment
-    runs-on : ${{ matrix.os }}
-    strategy:
-      matrix:
-        os:
-          - ubuntu-latest
