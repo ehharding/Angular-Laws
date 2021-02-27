@@ -23,7 +23,7 @@ on :
 jobs :
   ########## JOB 1 - BUILD ##########
   build :
-    runs-on : self-hosted
+    runs-on : windows-latest
     strategy :
       matrix :
         node-version : [15.10.0]
