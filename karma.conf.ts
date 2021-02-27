@@ -4,7 +4,7 @@
  * The Karma configuration file configures the Karma test runner to execute tests for the application. The tests themselves operate through the
  * Jasmine JavaScript testing framework.
  *
- * {@link https://karma-runner.github.io/6.0/config/configuration-file.html | Karma Configuration Guide}
+ * {@link https://karma-runner.github.io/6.1/config/configuration-file.html | Karma Configuration Guide}
  ****************************************************************************************************************************************************/
 
 module.exports = (config : any) : void => { // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -83,7 +83,7 @@ module.exports = (config : any) : void => { // eslint-disable-line @typescript-e
     ],
     reporters : ['coverage', 'dots', 'kjhtml', 'mocha'],
     transports : ['polling', 'websocket'],
-    coverageReporter : { dir : 'coverage_report/', type : 'html' },
+    coverageReporter : { dir : 'coverage_report/', type : 'html' }, // Update .github/workflows/main.yml If Changing The Dir Name For Code Coverage
     mochaReporter : {
       ignoreSkipped : false,
       printFirstSuccess : false,

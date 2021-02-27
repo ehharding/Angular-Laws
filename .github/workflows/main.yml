@@ -4,12 +4,18 @@
 # This is a GitHub Actions workflow file. It is written in YAML and specifies a series of commands that execute when certain events occur. Currently,
 # all jobs in this file are running on an Ubuntu Linux host. See https://github.com/actions/virtual-environments for a list of options.
 #
+# `node_modules` is cached based on a hash of `package-lock.json` for performance reasons. If the dependencies change, the hash should change as well,
+# meaning a fresh `npm install` will be triggered.
+#
 #   * repository-checkout - Checks out The `main` GitHub repository branch for Fan Fiction.com and uploads the repository artifact for future use
+#
 #   * install-build       - Downloads Node.js (and NPM)
 #                         - Downloads the repository snapshot artifact from the previous job
 #                         - Installs necessary NPM dependencies
-#                         |--> Caches node_modules for future use
+#                         |--> Caches `node_modules` for future use
 #                         - Runs a production build and uploads `dist` as an artifact
+#
+#   * test                - Runs unit tests and uploads `coverage_report` as an artifact
 #
 # {@link https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions | Introduction to GitHub Actions}
 ######################################################################################################################################################
@@ -143,4 +149,10 @@ jobs :
           echo 'Starting Up The Angular And Jasmine Frameworks...'
 
           npm run ng
-          npm run ng test
+          npm run test
+
+      - name : Upload `coverage_report` Production Build Artifact
+        uses : actions/upload-artifact@v2
+        with :
+          name : coverage-report
+          path : '/home/runner/work/FanFiction.com/FanFiction.com/coverage_report'
