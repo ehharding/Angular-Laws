@@ -38,7 +38,6 @@ jobs :
           clean : true
           lfs : false
           path : ''
-          submodules : 'recursive'
           fetch-depth : 0
 
       - name : Node.js ${{ matrix.node-version }} Setup
