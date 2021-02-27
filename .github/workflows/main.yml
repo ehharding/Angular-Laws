@@ -30,13 +30,15 @@ jobs :
 
     steps :
       - name : Checkout Repository
-        uses : actions/checkout@v1
+        uses : actions/checkout@v2
         with :
           repository : ${{ github.repository }}
           ref : main
           token : ${{ secrets.SECRET_TOKEN }}
           clean : true
           lfs : false
+          persist-credentials : true
+          submodules : false
           path : ''
 
       - name : Node.js ${{ matrix.node-version }} Setup
