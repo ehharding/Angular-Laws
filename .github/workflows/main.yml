@@ -4,7 +4,7 @@
 # This is a GitHub Actions workflow file. It is written in YAML and specifies a series of commands that execute when certain events occur. Jobs
 # consist of the following:
 #
-#   * BUILD -
+#   * BUILD - Builds and tests the project in a CI/CD environment.
 #
 # {@link https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions | Introduction to GitHub Actions}
 ######################################################################################################################################################
@@ -14,7 +14,8 @@ name : Fan Fiction.com CI Angular Build And Test
 on :
   # Triggers The Workflow On `push` Events But Only For The `main` Branch
   push :
-    branches : [main]
+    branches :
+      - main
 
   # Allows The Workflow To Be Run Manually From The `Actions` Tab
   workflow_dispatch :
@@ -29,11 +30,11 @@ jobs :
 
     steps :
       - name : Checkout Repository
-        uses : actions/checkout@v2
+        uses : actions/checkout@v1
         with :
           repository : ${{ github.repository }}
           ref : main
-          SECRET_TOKEN : ${{ secrets.SECRET_TOKEN }}
+          token : ${{ secrets.SECRET_TOKEN }}
           ssh-key : git@github.com:ehharding/FanFiction.com.git
           ssh-strict : true
           persist-credentials : true
@@ -42,3 +43,13 @@ jobs :
           path : ''
           submodules : 'recursive'
           fetch-depth : 0
+
+      - name : Node.js $ Setup
+        uses : actions/setup-node@v1
+        with :
+          node-version : $
+
+      - name : NPM Install And NPM Build
+        run : |
+          npm ci
+          npm run build:ci

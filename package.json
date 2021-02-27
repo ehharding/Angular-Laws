@@ -18,9 +18,13 @@
   "os" : ["darwin", "linux", "win32", "x64"],
   "scripts" : {
     "build" : "ng build",
+    "build:ci" : "npm run clean && npm run test && npm run build:prod",
+    "build:prod" : "ng build --prod",
+    "clean" : "rimraf ./coverage_report ./dist ./browser-console.log",
     "lint" : "eslint **/*.ts",
     "start" : "ng serve",
-    "test" : "ng test"
+    "test" : "ng test --browsers=FirefoxHeadless --watch=false",
+    "test:watch" : "ng test"
   },
   "dependencies" : {
     "@angular/animations" : "11.2.3",

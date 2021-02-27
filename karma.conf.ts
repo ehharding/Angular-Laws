@@ -57,6 +57,10 @@ module.exports = (config : any) : void => { // eslint-disable-line @typescript-e
       level : 'debug',
       path : './browser-console.log'
     },
+    customLaunchers : {
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      FirefoxHeadless : { base : 'Firefox', flags : ['--headless'], prefs : { 'network.proxy.type' : 0 } }
+    },
     exclude : [],
     files : [
       { pattern : './src/*.ts', type : 'js', included : false, served : true, watched : false },
