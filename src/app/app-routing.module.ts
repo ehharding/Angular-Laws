@@ -19,24 +19,14 @@ import { NgModule } from '@angular/core';
 
 import { AboutModule } from '@about/about.module';
 
-import { ENVIRONMENT } from '@environment/environment.prod';
-
-let routes : Routes;
-
-if (ENVIRONMENT.production) {
-  routes = [
-    { path : 'FanFiction.com/fan-fiction/', pathMatch : 'full', redirectTo : 'about' },
-    { path : 'about', loadChildren : async() : Promise<AboutModule> => await import('@about/about.module').then((aboutModule) => aboutModule.AboutModule) }
-  ];
-} else {
-  routes = [
-    { path : '', pathMatch : 'full', redirectTo : 'about' },
-    { path : 'about', loadChildren : async() : Promise<AboutModule> => await import('@about/about.module').then((aboutModule) => aboutModule.AboutModule) }
-  ];
-}
+const ROUTES : Routes = [
+  { path : 'FanFiction.com/fan-fiction/', pathMatch : 'full', redirectTo : 'about' },
+  { path : '', pathMatch : 'full', redirectTo : 'about' },
+  { path : 'about', loadChildren : async() : Promise<AboutModule> => await import('@about/about.module').then((aboutModule) => aboutModule.AboutModule) }
+];
 
 @NgModule({
   exports : [RouterModule],
-  imports : [RouterModule.forRoot(routes)]
+  imports : [RouterModule.forRoot(ROUTES)]
 })
 export class AppRoutingModule { }
