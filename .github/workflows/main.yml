@@ -123,7 +123,7 @@ jobs :
         with :
           node-version : ${{ matrix.node-version }}
 
-      - name : Download Repository Snapshot
+      - name : Download Latest Repository Snapshot - Commit SHA ${{ github.sha }}
         uses : actions/download-artifact@v2
         with :
           name : fan-fiction-dot-com
@@ -170,7 +170,7 @@ jobs :
         with :
           node-version : ${{ matrix.node-version }}
 
-      - name : Download Repository Snapshot
+      - name : Download Latest Repository Snapshot - Commit SHA ${{ github.sha }}
         uses : actions/download-artifact@v2
         with :
           name : fan-fiction-dot-com
