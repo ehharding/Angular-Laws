@@ -54,8 +54,7 @@ module.exports = (config : any) : void => { // eslint-disable-line @typescript-e
     browserConsoleLogOptions : {
       terminal : false,
       format : '%b %T %m', // { Browser } { Log Type in UpperCase } { Log Message } (%t Is Unused But Is The LogType In LowerCase)
-      level : 'debug',
-      path : './browser-console.log'
+      level : 'debug'
     },
     customLaunchers : {
       // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -83,7 +82,7 @@ module.exports = (config : any) : void => { // eslint-disable-line @typescript-e
     ],
     reporters : ['coverage', 'dots', 'kjhtml', 'mocha'],
     transports : ['polling', 'websocket'],
-    coverageReporter : { dir : 'coverage_report/', type : 'html' }, // Update .github/workflows/main.yml If Changing The Dir Name For Code Coverage
+    coverageReporter : { dir : 'coverage-report/', type : 'html' }, // Update .github/workflows/main.yml If Changing The Dir Name For Code Coverage
     mochaReporter : {
       ignoreSkipped : false,
       printFirstSuccess : false,

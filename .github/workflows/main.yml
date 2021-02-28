@@ -8,8 +8,8 @@
 # meaning a fresh `npm install` should be triggered.
 #
 #   * repository-checkout - Checks out The `main` GitHub repository branch for Fan Fiction.com and uploads the repository as an artifact
-#   * test                - Runs unit tests and uploads `coverage_report` as an artifact
-#   * eslint-report       - Runs ESLint on the project and uploads `eslint_report.html` as an artifact
+#   * test                - Runs unit tests and uploads `coverage-report` as an artifact
+#   * eslint-report       - Runs ESLint on the project and uploads `eslint-report.html` as an artifact
 #   * build-production    - Runs a production build and uploads `dist` as an artifact
 #   * deploy              - Deploys the production build distributable to GitHub Pages for hosting
 #
@@ -101,11 +101,11 @@ jobs :
           npm run ng
           npm run test
 
-      - name : Upload `coverage_report` Unit Testing Artifact
+      - name : Upload `coverage-report` Unit Testing Artifact
         uses : actions/upload-artifact@v2
         with :
           name : coverage-report
-          path : '/home/runner/work/FanFiction.com/FanFiction.com/coverage_report'
+          path : '/home/runner/work/FanFiction.com/FanFiction.com/coverage-report'
 
   ########## JOB 3 - ESLINT-REPORT ##########
   eslint-report :
@@ -148,11 +148,11 @@ jobs :
 
           npm run lint:report
 
-      - name : Upload `eslint_report.html` ESLint Artifact
+      - name : Upload `eslint-report.html` ESLint Artifact
         uses : actions/upload-artifact@v2
         with :
           name : eslint-report
-          path : '/home/runner/work/FanFiction.com/FanFiction.com/eslint_report.html'
+          path : '/home/runner/work/FanFiction.com/FanFiction.com/eslint-report.html'
 
   ########## JOB 4 - BUILD-PRODUCTION ##########
   build-production :
