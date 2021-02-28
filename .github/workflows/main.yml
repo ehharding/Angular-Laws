@@ -36,10 +36,10 @@ jobs :
           - ubuntu-latest
 
     steps :
-      - name: Configure Git Initial Branch Name
+      - name: Configure Git Initial Branch Name - `main`
         run: git config --global init.defaultBranch main
 
-      - name : Checkout Repository
+      - name : Checkout Latest Repository Snapshot - Commit SHA ${{ github.sha }}
         uses : actions/checkout@v2
         with :
           path : ''
@@ -53,7 +53,7 @@ jobs :
           submodules : true
           fetch-depth : 0 # Fetches All History For All Branches And Tags
 
-      - name : Upload Repository Snapshot Artifact
+      - name : Upload Repository Snapshot Artifact - `fan-fiction-dot-com`
         uses : actions/upload-artifact@v2
         with :
           name : fan-fiction-dot-com
@@ -65,7 +65,7 @@ jobs :
     runs-on : ${{ matrix.os }}
     strategy :
       matrix :
-        node-version : [15.10.0]
+        node-version : [15.X]
         os :
           - ubuntu-latest
 
@@ -75,33 +75,33 @@ jobs :
         with :
           node-version : ${{ matrix.node-version }}
 
-      - name : Download Latest Repository Snapshot - Commit SHA ${{ github.sha }}
+      - name : Checkout Latest Repository Snapshot - Commit SHA ${{ github.sha }}
         uses : actions/download-artifact@v2
         with :
           name : fan-fiction-dot-com
 
-      - name : Check `actions/cache@v2` For `node_modules`
+      - name : Check Cache Integrity / Existence Of `node_modules` When Hashed Against `package.json`
         id : node-modules-cache
         uses : actions/cache@v2
         with :
           path : '/home/runner/work/FanFiction.com/FanFiction.com/node_modules'
           key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package.json') }}
 
-      - name : Install NPM Dependencies
+      - name : Install NPM Dependencies If Required
         # Caches Older Than Two Days (GitHub Setting) Are Evicted Based On Age Or If The 5GB Cache Limit Is Exceeded
         if : steps.node-modules-cache.outputs.cache-hit != 'true'
         run : |
           echo 'Installing Dependencies Defined In `package.json` Using NPM... This May Take Awhile'
           npm install
 
-      - name : Run Angular Unit Tests
+      - name : Run Angular Unit Tests Within Headless Firefox
         run : |
           echo 'Starting Up The Angular And Jasmine/Karma Frameworks...'
 
           npm run ng
           npm run test
 
-      - name : Upload `coverage-report` Unit Testing Artifact
+      - name : Upload Unit Testing Code Coverage Artifact - `coverage-report`
         uses : actions/upload-artifact@v2
         with :
           name : coverage-report
@@ -113,7 +113,7 @@ jobs :
     runs-on : ${{ matrix.os }}
     strategy :
       matrix :
-        node-version : [15.10.0]
+        node-version : [15.X]
         os :
           - ubuntu-latest
 
@@ -123,19 +123,19 @@ jobs :
         with :
           node-version : ${{ matrix.node-version }}
 
-      - name : Download Latest Repository Snapshot - Commit SHA ${{ github.sha }}
+      - name : Checkokut Latest Repository Snapshot - Commit SHA ${{ github.sha }}
         uses : actions/download-artifact@v2
         with :
           name : fan-fiction-dot-com
 
-      - name : Check `actions/cache@v2` For `node_modules`
+      - name : Check Cache Integrity / Existence Of `node_modules` When Hashed Against `package.json`
         id : node-modules-cache
         uses : actions/cache@v2
         with :
           path : '/home/runner/work/FanFiction.com/FanFiction.com/node_modules'
           key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package.json') }}
 
-      - name : Install NPM Dependencies
+      - name : Install NPM Dependencies If Required
         # Caches Older Than Two Days (GitHub Setting) Are Evicted Based On Age Or If The 5GB Cache Limit Is Exceeded
         if : steps.node-modules-cache.outputs.cache-hit != 'true'
         run : |
@@ -148,7 +148,7 @@ jobs :
 
           npm run lint:report
 
-      - name : Upload `eslint-report.html` ESLint Artifact
+      - name : Upload ESLint Linting Artifact - `eslint-report`
         uses : actions/upload-artifact@v2
         with :
           name : eslint-report
@@ -160,7 +160,7 @@ jobs :
     runs-on : ${{ matrix.os }}
     strategy :
       matrix :
-        node-version : [15.10.0]
+        node-version : [15.X]
         os :
           - ubuntu-latest
 
@@ -170,33 +170,33 @@ jobs :
         with :
           node-version : ${{ matrix.node-version }}
 
-      - name : Download Latest Repository Snapshot - Commit SHA ${{ github.sha }}
+      - name : Checkout Latest Repository Snapshot - Commit SHA ${{ github.sha }}
         uses : actions/download-artifact@v2
         with :
           name : fan-fiction-dot-com
 
-      - name : Check `actions/cache@v2` For `node_modules`
+      - name : Check Cache Integrity / Existence Of `node_modules` When Hashed Against `package.json`
         id : node-modules-cache
         uses : actions/cache@v2
         with :
           path : '/home/runner/work/FanFiction.com/FanFiction.com/node_modules'
           key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package.json') }}
 
-      - name : Install NPM Dependencies
+      - name : Install NPM Dependencies If Required
         # Caches Older Than Two Days (GitHub Setting) Are Evicted Based On Age Or If The 5GB Cache Limit Is Exceeded
         if : steps.node-modules-cache.outputs.cache-hit != 'true'
         run : |
           echo 'Installing Dependencies Defined In `package.json` Using NPM... This May Take Awhile'
           npm install
 
-      - name : Run Production Build
+      - name : Create Production Build Distributable - `dist-prod`
         run : |
           echo 'Starting Up The Angular Framework...'
 
           npm run ng
           npm run build:prod
 
-      - name : Upload `dist-prod` Production Build Artifact
+      - name : Upload Production Build Distributable Artifact - `dist-prod`
         uses : actions/upload-artifact@v2
         with :
           name : dist-prod
@@ -212,13 +212,13 @@ jobs :
           - ubuntu-latest
 
     steps :
-      - name : Download Distributable
+      - name : Download Production Build Distributable - `dist-prod`
         uses : actions/download-artifact@v2
         with :
           name : dist-prod
           path : 'dist-prod'
 
-      - name : Deploy Distributable To GitHub Pages
+      - name : Deploy Production Build Distributable To GitHub Pages - `dist-prod`
         uses : peaceiris/actions-gh-pages@v3
         with :
           github_token : ${{ github.token }}

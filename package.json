@@ -14,7 +14,7 @@
   "directories" : { "doc" : "README.md", "lib" : "src", "test" : "src" },
   "files" : ["*"],
   "browserslist" : ["defaults"],
-  "engines" : { "node" : "15.10.0", "npm" : "7.5.4" },
+  "engines" : { "node" : "15.*", "npm" : "7.5.4" },
   "os" : ["darwin", "linux", "win32", "x64"],
   "scripts" : {
     "build" : "ng build",
