@@ -18,9 +18,8 @@
 
 name : Fan Fiction.com
 
-on :
-  # Triggers The Workflow On `push` Events But Only For The `main` Branch
-  push :
+# Triggers The Workflow On `push` Events But Only For The `main` Branch
+on : [push] :
     branches : [main]
 
   # Allows The Workflow To Be Run Manually From The `Actions` Tab
@@ -29,11 +28,7 @@ on :
 jobs :
   ########## JOB 1 - REPOSITORY-CHECKOUT ##########
   repository-checkout :
-    runs-on : ${{ matrix.os }}
-    strategy :
-      matrix :
-        os :
-          - ubuntu-latest
+    runs-on : ubuntu-latest
 
     steps :
       - name: Configure Git Initial Branch Name - `main`
@@ -58,16 +53,15 @@ jobs :
         with :
           name : fan-fiction-dot-com
           path : '/home/runner/work/FanFiction.com/FanFiction.com'
+          retention-days : 2
 
   ########## JOB 2 - TEST ##########
   test :
     needs : repository-checkout
-    runs-on : ${{ matrix.os }}
+    runs-on : ubuntu-latest
     strategy :
       matrix :
         node-version : [15.X]
-        os :
-          - ubuntu-latest
 
     steps :
       - name : Setup Node.js ${{ matrix.node-version }}
@@ -106,16 +100,15 @@ jobs :
         with :
           name : coverage-report
           path : '/home/runner/work/FanFiction.com/FanFiction.com/coverage-report'
+          retention-days : 2
 
   ########## JOB 3 - ESLINT-REPORT ##########
   eslint-report :
     needs : test
-    runs-on : ${{ matrix.os }}
+    runs-on : ubuntu-latest
     strategy :
       matrix :
         node-version : [15.X]
-        os :
-          - ubuntu-latest
 
     steps :
       - name : Setup Node.js ${{ matrix.node-version }}
@@ -153,16 +146,15 @@ jobs :
         with :
           name : eslint-report
           path : '/home/runner/work/FanFiction.com/FanFiction.com/eslint-report.html'
+          retention-days : 2
 
   ########## JOB 4 - BUILD-PRODUCTION ##########
   build-production :
     needs : eslint-report
-    runs-on : ${{ matrix.os }}
+    runs-on : ubuntu-latest
     strategy :
       matrix :
         node-version : [15.X]
-        os :
-          - ubuntu-latest
 
     steps :
       - name : Setup Node.js ${{ matrix.node-version }}
@@ -201,15 +193,12 @@ jobs :
         with :
           name : dist-prod
           path : '/home/runner/work/FanFiction.com/FanFiction.com/dist-prod'
+          retention-days : 2
 
   ########## JOB 5 - DEPLOY ##########
   deploy :
     needs : build-production
-    runs-on : ${{ matrix.os }}
-    strategy :
-      matrix :
-        os :
-          - ubuntu-latest
+    runs-on : ubuntu-latest
 
     steps :
       - name : Download Production Build Distributable - `dist-prod`
