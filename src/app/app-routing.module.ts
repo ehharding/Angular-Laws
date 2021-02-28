@@ -20,9 +20,10 @@ import { NgModule } from '@angular/core';
 import { AboutModule } from '@about/about.module';
 
 const ROUTES : Routes = [
-  { path : 'FanFiction.com', pathMatch : 'prefix', redirectTo : '' },
+  { path : 'FanFiction.com/fan-fiction/', pathMatch : 'full', redirectTo : 'FanFiction.com/fan-fiction/about' },
   { path : '', pathMatch : 'full', redirectTo : 'about' },
-  { path : 'about', loadChildren : async() : Promise<AboutModule> => await import('@about/about.module').then((aboutModule) => aboutModule.AboutModule) }
+  { path : 'about', loadChildren : async() : Promise<AboutModule> => await import('@about/about.module').then((aboutModule) => aboutModule.AboutModule) },
+  { path : 'FanFiction.com/fan-fiction/about', loadChildren : async() : Promise<AboutModule> => await import('@about/about.module').then((aboutModule) => aboutModule.AboutModule) }
 ];
 
 @NgModule({
