@@ -20,7 +20,7 @@ name : Fan Fiction.com
 
 # Triggers The Workflow On `push` Events But Only For The `main` Branch
 on :
-  [push] :
+  push :
     branches : [main]
 
   # Allows The Workflow To Be Run Manually From The `Actions` Tab
