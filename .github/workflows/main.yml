@@ -35,19 +35,19 @@ jobs :
       - name : Configuration
         run : |
           echo '--------------------------------------------- ENVIRONMENT INFORMATION ---------------------------------------------'
-          echo 'GitHub API URL:                 $GITHUB_API_URL'
-          echo 'GitHub GraphQL API URL:         $GITHUB_GRAPHQL_URL'
-          echo 'GitHub Server URL:              $GITHUB_SERVER_URL'
-          echo 'Workflow Branch:                $GITHUB_REF'
-          echo 'Workflow URL:                   $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID'
-          echo 'Workflow WebHook Event:         $GITHUB_EVENT_NAME'
-          echo 'Workflow WebHook Event Payload: $GITHUB_EVENT_PATH'
-          echo 'Workflow Repository:            $GITHUB_REPOSITORY'
-          echo 'Workflow Initiator:             $GITHUB_ACTOR'
-          echo 'Workflow Run ID:                $GITHUB_RUN_ID'
-          echo 'Workflow Run Number:            $GITHUB_RUN_NUMBER'
-          echo 'Workflow Name:                  $GITHUB_WORKFLOW'
-          echo 'Workspace:                      $GITHUB_WORKSPACE'
+          echo 'GitHub API URL:                 '$GITHUB_API_URL
+          echo 'GitHub GraphQL API URL:         '$GITHUB_GRAPHQL_URL
+          echo 'GitHub Server URL:              '$GITHUB_SERVER_URL
+          echo 'Workflow Branch:                '$GITHUB_REF
+          echo 'Workflow URL:                   '$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+          echo 'Workflow WebHook Event:         '$GITHUB_EVENT_NAME
+          echo 'Workflow WebHook Event Payload: '$GITHUB_EVENT_PATH
+          echo 'Workflow Repository:            '$GITHUB_REPOSITORY
+          echo 'Workflow Initiator:             '$GITHUB_ACTOR
+          echo 'Workflow Run ID:                '$GITHUB_RUN_ID
+          echo 'Workflow Run Number:            '$GITHUB_RUN_NUMBER
+          echo 'Workflow Name:                  '$GITHUB_WORKFLOW
+          echo 'Workspace:                      '$GITHUB_WORKSPACE
           echo ''
           echo 'See https://docs.github.com/en/actions/reference/environment-variables'
           echo '-------------------------------------------------------------------------------------------------------------------'
