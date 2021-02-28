@@ -83,7 +83,6 @@ jobs :
 
   ########## JOB 2 - TEST ##########
   test :
-    if : steps.1.conclusion == 'success'
     needs : repository-checkout
     runs-on : ubuntu-latest
     strategy :
@@ -131,7 +130,6 @@ jobs :
 
   ########## JOB 3 - ESLINT-REPORT ##########
   eslint-report :
-    if : steps.2.conclusion == 'success'
     needs : test
     runs-on : ubuntu-latest
     strategy :
@@ -178,7 +176,6 @@ jobs :
 
   ########## JOB 4 - BUILD-PRODUCTION ##########
   build-production :
-    if : steps.3.conclusion == 'success'
     needs : eslint-report
     runs-on : ubuntu-latest
     strategy :
@@ -226,7 +223,6 @@ jobs :
 
   ########## JOB 5 - DEPLOY ##########
   deploy :
-    if : steps.4.conclusion == 'success'
     needs : build-production
     runs-on : ubuntu-latest
 
