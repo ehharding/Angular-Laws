@@ -47,7 +47,7 @@
               "vendorChunk" : false,
               "verbose" : false,
               "watch" : false,
-              "baseHref" : "fan-fiction",
+              "baseHref" : "",
               "crossOrigin" : "none",
               "outputHashing" : "all",
               "allowedCommonJsDependencies" : ["lodash"],
