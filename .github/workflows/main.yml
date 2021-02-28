@@ -60,7 +60,7 @@ jobs :
           echo '-------------------------------------------------------------------------------------------------------------------'
           git config --global init.defaultBranch main
 
-      - name : Checkout Latest Repository Snapshot - Commit SHA ${{ github.sha }} - GitHub Action ID - ${{ github.action }}
+      - name : Checkout Latest Repository Snapshot - Commit SHA ${{ github.sha }}
         uses : actions/checkout@v2
         with :
           path : ''
@@ -74,7 +74,7 @@ jobs :
           submodules : true
           fetch-depth : 0 # Fetches All History For All Branches And Tags
 
-      - name : Upload Repository Snapshot Artifact - `fan-fiction-dot-com` - GitHub Action ID - ${{ github.action }}
+      - name : Upload Repository Snapshot Artifact - `fan-fiction-dot-com`
         uses : actions/upload-artifact@v2
         with :
           name : fan-fiction-dot-com
@@ -90,17 +90,17 @@ jobs :
         node-version : [15.X]
 
     steps :
-      - name : Setup Node.js ${{ matrix.node-version }} - GitHub Action ID - ${{ github.action }}
+      - name : Setup Node.js ${{ matrix.node-version }}
         uses : actions/setup-node@v2
         with :
           node-version : ${{ matrix.node-version }}
 
-      - name : Checkout Latest Repository Snapshot - Commit SHA ${{ github.sha }} - GitHub Action ID - ${{ github.action }}
+      - name : Checkout Latest Repository Snapshot - Commit SHA ${{ github.sha }}
         uses : actions/download-artifact@v2
         with :
           name : fan-fiction-dot-com
 
-      - name : Check Cache Integrity / Existence Of `node_modules` When Hashed Against `package.json` - GitHub Action ID - ${{ github.action }}
+      - name : Check Cache Integrity / Existence Of `node_modules` When Hashed Against `package.json`
         id : node-modules-cache
         uses : actions/cache@v2
         with :
@@ -121,7 +121,7 @@ jobs :
           npm run ng
           npm run test
 
-      - name : Upload Unit Testing Code Coverage Artifact - `coverage-report` - GitHub Action ID - ${{ github.action }}
+      - name : Upload Unit Testing Code Coverage Artifact - `coverage-report`
         uses : actions/upload-artifact@v2
         with :
           name : coverage-report
@@ -137,17 +137,17 @@ jobs :
         node-version : [15.X]
 
     steps :
-      - name : Setup Node.js ${{ matrix.node-version }} - GitHub Action ID - ${{ github.action }}
+      - name : Setup Node.js ${{ matrix.node-version }}
         uses : actions/setup-node@v2
         with :
           node-version : ${{ matrix.node-version }}
 
-      - name : Checkokut Latest Repository Snapshot - Commit SHA ${{ github.sha }} - GitHub Action ID - ${{ github.action }}
+      - name : Checkokut Latest Repository Snapshot - Commit SHA ${{ github.sha }}
         uses : actions/download-artifact@v2
         with :
           name : fan-fiction-dot-com
 
-      - name : Check Cache Integrity / Existence Of `node_modules` When Hashed Against `package.json` - GitHub Action ID - ${{ github.action }}
+      - name : Check Cache Integrity / Existence Of `node_modules` When Hashed Against `package.json`
         id : node-modules-cache
         uses : actions/cache@v2
         with :
@@ -167,7 +167,7 @@ jobs :
 
           npm run lint:report
 
-      - name : Upload ESLint Linting Artifact - `eslint-report` - GitHub Action ID - ${{ github.action }}
+      - name : Upload ESLint Linting Artifact - `eslint-report`
         uses : actions/upload-artifact@v2
         with :
           name : eslint-report
@@ -183,17 +183,17 @@ jobs :
         node-version : [15.X]
 
     steps :
-      - name : Setup Node.js ${{ matrix.node-version }} - GitHub Action ID - ${{ github.action }}
+      - name : Setup Node.js ${{ matrix.node-version }}
         uses : actions/setup-node@v2
         with :
           node-version : ${{ matrix.node-version }}
 
-      - name : Checkout Latest Repository Snapshot - Commit SHA ${{ github.sha }} - GitHub Action ID - ${{ github.action }}
+      - name : Checkout Latest Repository Snapshot - Commit SHA ${{ github.sha }}
         uses : actions/download-artifact@v2
         with :
           name : fan-fiction-dot-com
 
-      - name : Check Cache Integrity / Existence Of `node_modules` When Hashed Against `package.json` - GitHub Action ID - ${{ github.action }}
+      - name : Check Cache Integrity / Existence Of `node_modules` When Hashed Against `package.json`
         id : node-modules-cache
         uses : actions/cache@v2
         with :
@@ -214,7 +214,7 @@ jobs :
           npm run ng
           npm run build:prod
 
-      - name : Upload Production Build Distributable Artifact - `dist-prod` - GitHub Action ID - ${{ github.action }}
+      - name : Upload Production Build Distributable Artifact - `dist-prod`
         uses : actions/upload-artifact@v2
         with :
           name : dist-prod
@@ -227,13 +227,13 @@ jobs :
     runs-on : ubuntu-latest
 
     steps :
-      - name : Download Production Build Distributable - `dist-prod` - GitHub Action ID - ${{ github.action }}
+      - name : Download Production Build Distributable - `dist-prod`
         uses : actions/download-artifact@v2
         with :
           name : dist-prod
           path : 'dist-prod'
 
-      - name : Deploy Production Build Distributable To GitHub Pages - `dist-prod` - GitHub Action ID - ${{ github.action }}
+      - name : Deploy Production Build Distributable To GitHub Pages - `dist-prod`
         uses : peaceiris/actions-gh-pages@v3
         with :
           github_token : ${{ github.token }}
