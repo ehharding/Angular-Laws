@@ -10,9 +10,13 @@
 <html lang="en">
   <head>
     <base href="/"/>
-    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://ehharding.github.io/favicon.ico">
     <link href="favicon.ico" rel="icon" type="image/x-icon"/>
-    <meta charset="UTF-8" content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta
+      charset="UTF-8"
+      content="default-src https://ehharding.github.io; child-src 'none'; object-src 'none', initial-scale=1, width=device-width"
+      http-equiv="Content-Security-Policy"
+      name="viewport"
+    />
     <title>Fan Fiction.com</title>
   </head>
   <body>
