@@ -7,7 +7,7 @@
 *.log
 .idea
 build-cache
-coverage_report
-eslint_report.html
+coverage-report
+eslint-report.html
 node_modules
 package-lock.json
