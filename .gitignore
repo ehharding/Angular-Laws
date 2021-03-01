@@ -1,13 +1,15 @@
 ######################################################################################################################################################
 # Copyright 2021 Evan H. Harding. All Rights Reserved.
 #
-# A .gitignore file specifies, for the Git VCS, which files to ignore and leave untracked.
+# A .gitignore file specifies, for the Git VCS, which directories and files to ignore and leave untracked.
 ######################################################################################################################################################
 
-*.log
 .idea
-build-cache
 coverage-report
-eslint-report.html
+dist
+dist-prod
 node_modules
+
+*.log
+eslint-report.html
 package-lock.json
