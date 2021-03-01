@@ -235,7 +235,7 @@ jobs :
           path : 'dist-prod'
 
       - name : Copy `index.html` To `404.html` For GitHub Pages
-        uses : canastro-copy-file-action@master
+        uses : actions/canastro-copy-file-action@master
         with :
           source : 'dist-prod/index.html'
           target : 'dist-prod/404.html'
