@@ -235,10 +235,9 @@ jobs :
           path : 'dist-prod'
 
       - name : Copy `index.html` To `404.html` For GitHub Pages
-        uses : actions/canastro-copy-file-action@master
-        with :
-          source : 'dist-prod/index.html'
-          target : 'dist-prod/404.html'
+        run : |
+          echo 'Copying Contents Of `dist-prod/index.html` To `dist-prod/404.html`...'
+          cp -v dist-prod/index.html dist-prod/404.html
 
       - name : Upload Modified Production Build Distributable Artifact - `dist-prod`
         uses : actions/upload-artifact@v2
