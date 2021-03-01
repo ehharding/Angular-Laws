@@ -143,7 +143,7 @@ jobs :
         with :
           node-version : ${{ matrix.node-version }}
 
-      - name : Checkokut Latest Repository Snapshot - Commit SHA ${{ github.sha }}
+      - name : Checkout Latest Repository Snapshot - Commit SHA ${{ github.sha }}
         uses : actions/download-artifact@v2
         with :
           name : fan-fiction-dot-com
