@@ -10,7 +10,7 @@ import { NgModule } from '@angular/core';
 import { AboutComponent } from '@about/about.component';
 
 const ROUTES : Routes = [
-  { path : 'about', component : AboutComponent }
+  { path : '', component : AboutComponent }
 ];
 
 @NgModule({
