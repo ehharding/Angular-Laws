@@ -86,7 +86,7 @@ export class ThemeService {
   public loadClientTheme(themeBundleName : ThemeBundles) : void {
     const HTML_LINK_ELEMENT_ID : string = 'client-theme';
     const HTML_LINK_ELEMENT : HTMLElement | null = this._document.getElementById(HTML_LINK_ELEMENT_ID);
-    const THEME_STYLES : string = `FanFiction.com/assets/themes/${ themeBundleName }.css`;
+    const THEME_STYLES : string = `assets/themes/${ themeBundleName }.css`;
 
     // If The <link/> Element Already Exists, We Simply Modify Its `href` Attribute
     if (HTML_LINK_ELEMENT) {
