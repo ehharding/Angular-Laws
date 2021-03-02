@@ -91,8 +91,7 @@
             "polyfills" : "src/polyfills.ts",
             "tsConfig" : "tsconfig.spec.json",
             "assets" : ["src/assets", "src/favicon.ico"],
-            "scripts" : [],
-            "styles" : ["node_modules/material-design-icons/iconfont/material-icons.css", "src/styles.scss"]
+            "styles" : ["src/styles.scss"]
           }
         },
         "lint" : {
