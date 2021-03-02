@@ -20,7 +20,7 @@ import { NgModule } from '@angular/core';
 import { AboutModule } from '@about/about.module';
 
 const ROUTES : Routes = [
-  { path : '', pathMatch : 'prefix', redirectTo : 'about' },
+  { path : '', pathMatch : 'full', redirectTo : 'about' },
   { path : 'about', loadChildren : async() : Promise<AboutModule> => await import('@about/about.module').then((aboutModule) => aboutModule.AboutModule) }
 ];
 
