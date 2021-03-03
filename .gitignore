@@ -6,8 +6,7 @@
 
 .idea
 coverage-report
-dist
-dist-prod
+docs
 node_modules
 
 *.log

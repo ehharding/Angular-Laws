@@ -63,7 +63,7 @@
           },
           "options" : {
             "deployUrl" : "/FanFiction.com/",
-            "outputPath" : "dist-prod",
+            "outputPath" : "docs",
             "index" : "src/index.html",
             "main" : "src/main.ts",
             "polyfills" : "src/polyfills.ts",

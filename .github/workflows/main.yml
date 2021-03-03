@@ -10,7 +10,7 @@
 #   * repository-checkout - Checks out The `main` GitHub repository branch for Fan Fiction.com and uploads the repository as an artifact
 #   * test                - Runs unit tests and uploads `coverage-report` as an artifact
 #   * eslint-report       - Runs ESLint on the project and uploads `eslint-report.html` as an artifact
-#   * build-production    - Runs a production build and uploads `dist-prod` as an artifact
+#   * build-production    - Runs a production build and uploads `docs` as an artifact, named as suggested by GitHub Pages
 #   * copy-index-to-404   - Copies `index.html` to `404.html` as part of the requirements for GitHub Pages
 #   * deploy              - Deploys the production build distributable to GitHub Pages for hosting
 #
@@ -208,18 +208,18 @@ jobs :
           echo 'Installing Dependencies Defined In `package.json` Using NPM... This May Take Awhile'
           npm install
 
-      - name : Create Production Build Distributable - `dist-prod`
+      - name : Create Production Build Distributable - `docs`
         run : |
           echo 'Starting Up The Angular Framework...'
 
           npm run ng
           npm run build:prod
 
-      - name : Upload Production Build Distributable Artifact - `dist-prod`
+      - name : Upload Production Build Distributable Artifact - `docs`
         uses : actions/upload-artifact@v2
         with :
-          name : dist-prod
-          path : '/home/runner/work/FanFiction.com/FanFiction.com/dist-prod'
+          name : docs
+          path : '/home/runner/work/FanFiction.com/FanFiction.com/docs'
           retention-days : 2
 
   ########## JOB 5 - COPY-INDEX-TO-404 ##########
@@ -228,22 +228,22 @@ jobs :
     runs-on : ubuntu-latest
 
     steps :
-      - name : Download Production Build Distributable - `dist-prod`
+      - name : Download Production Build Distributable - `docs`
         uses : actions/download-artifact@v2
         with :
-          name : dist-prod
-          path : 'dist-prod'
+          name : docs
+          path : 'docs'
 
       - name : Copy `index.html` To `404.html` For GitHub Pages
         run : |
-          echo 'Copying Contents Of `dist-prod/index.html` To `dist-prod/404.html`...'
-          cp -v dist-prod/index.html dist-prod/404.html
+          echo 'Copying Contents Of `docs/index.html` To `docs/404.html`...'
+          cp -v docs/index.html docs/404.html
 
-      - name : Upload Modified Production Build Distributable Artifact - `dist-prod`
+      - name : Upload Modified Production Build Distributable Artifact - `docs`
         uses : actions/upload-artifact@v2
         with :
-          name : dist-prod
-          path : 'dist-prod'
+          name : docs
+          path : 'docs'
           retention-days : 2
 
   ########## JOB 6 - DEPLOY ##########
@@ -252,14 +252,14 @@ jobs :
     runs-on : ubuntu-latest
 
     steps :
-      - name : Download Production Build Distributable - `dist-prod`
+      - name : Download Production Build Distributable - `docs`
         uses : actions/download-artifact@v2
         with :
-          name : dist-prod
-          path : 'dist-prod'
+          name : docs
+          path : 'docs'
 
-      - name : Deploy Production Build Distributable To GitHub Pages - `dist-prod`
+      - name : Deploy Production Build Distributable To GitHub Pages - `docs`
         uses : peaceiris/actions-gh-pages@v3
         with :
           github_token : ${{ github.token }}
-          publish_dir : 'dist-prod'
+          publish_dir : 'docs'
