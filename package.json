@@ -19,7 +19,7 @@
   "scripts" : {
     "build" : "ng build",
     "build:prod" : "ng build --prod",
-    "clean" : "rimraf ./coverage-report ./docs ./eslint-report.html",
+    "clean" : "rimraf ./coverage-report ./dist-prod ./eslint-report.html",
     "lint" : "eslint **/*.ts",
     "lint:report" : "eslint **/*.ts -f node_modules/eslint-html-reporter/reporter.js -o ./eslint-report.html",
     "ng" : "ng --version",
