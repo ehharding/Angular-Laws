@@ -258,14 +258,8 @@ jobs :
           name : dist-prod
           path : 'dist-prod'
 
-      - name : Remove Old Docs Output
-        uses : JesseTG/rm@v1.0.2
-        with :
-          path : docs
-
       - name : Deploy Production Build Distributable Contents To `gh-pages` Branch Under A `docs` Directory
         uses : peaceiris/actions-gh-pages@v3
         with :
           github_token : ${{ github.token }}
-          destination_dir : docs
           publish_dir : dist-prod
