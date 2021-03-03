@@ -62,6 +62,7 @@
             }
           },
           "options" : {
+            "baseHref" : "/FanFiction.com/",
             "deployUrl" : "/FanFiction.com/",
             "outputPath" : "dist-prod",
             "index" : "src/index.html",
