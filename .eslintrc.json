@@ -378,7 +378,8 @@
     "@typescript-eslint/lines-between-class-members" : ["warn", "always", { "exceptAfterOverload" : true, "exceptAfterSingleLine" : true }],
     "@typescript-eslint/member-delimiter-style" : ["warn", {
       "multiline" : { "delimiter" : "semi", "requireLast" : true },
-      "singleline" : { "delimiter" : "semi", "requireLast" : true }
+      "singleline" : { "delimiter" : "semi", "requireLast" : true },
+      "multilineDetection" : "brackets"
     }],
     "@typescript-eslint/member-ordering" : ["warn", {
       "default" : [
