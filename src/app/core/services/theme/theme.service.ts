@@ -99,8 +99,7 @@ export class ThemeService {
       LINK_ELEMENT.setAttribute('rel', 'stylesheet');
       LINK_ELEMENT.setAttribute('type', 'text/css');
 
-      // eslint-disable-next-line max-len
-      // This Adds <link href="FanFiction.com/assets/themes/foo.css" id="client-theme" rel="stylesheet" type="text/css"/> To index.html's <head></head> Section
+      // This Adds <link href="assets/themes/foo.css" id="client-theme" rel="stylesheet" type="text/css"/> To index.html's <head></head> Section
       window.onload = () : void => {
         this._document.head.appendChild(LINK_ELEMENT);
       };

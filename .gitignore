@@ -6,6 +6,7 @@
 
 .idea
 coverage-report
+dist
 dist-prod
 node_modules
 

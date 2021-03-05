@@ -47,35 +47,65 @@
               "vendorChunk" : false,
               "verbose" : false,
               "watch" : false,
-              "baseHref" : "",
-              "crossOrigin" : "none",
+              "baseHref" : "/FanFiction.com/",
+              "deployUrl" : "/FanFiction.com/",
+              "outputPath" : "dist-prod",
+              "index" : "src/index.html",
+              "main" : "src/main.ts",
+              "polyfills" : "src/polyfills.ts",
+              "tsConfig" : "tsconfig.app.json",
+              "crossOrigin" : "anonymous",
               "outputHashing" : "all",
               "allowedCommonJsDependencies" : ["lodash"],
+              "assets" : ["src/assets", "src/favicon.ico"],
+              "styles" : ["src/styles.scss"],
               "budgets" : [
                 { "type" : "initial", "maximumWarning" : "2MB", "maximumError" : "5MB" },
                 { "type" : "anyComponentStyle", "maximumWarning" : "6kB", "maximumError" : "10kB" }
               ],
               "fileReplacements" : [{ "replace" : "src/environments/environment.ts", "with" : "src/environments/environment.prod.ts" }],
-              "scripts" : [],
               "optimization" : { "scripts" : true, "styles" : true },
               "sourceMap" : { "hidden" : false, "scripts" : true, "styles" : true, "vendor" : true }
             }
           },
           "options" : {
-            "baseHref" : "/FanFiction.com/",
-            "deployUrl" : "/FanFiction.com/",
-            "outputPath" : "dist-prod",
+            "aot" : true,
+            "buildOptimizer" : true,
+            "commonChunk" : true,
+            "deleteOutputPath" : true,
+            "extractLicenses" : false,
+            "forkTypeChecker" : true,
+            "namedChunks" : false,
+            "preserveSymlinks" : false,
+            "serviceWorker" : false,
+            "showCircularDependencies" : true,
+            "subresourceIntegrity" : false,
+            "vendorChunk" : false,
+            "verbose" : false,
+            "watch" : false,
+            "baseHref" : "/",
+            "deployUrl" : "/",
+            "outputPath" : "dist",
             "index" : "src/index.html",
             "main" : "src/main.ts",
             "polyfills" : "src/polyfills.ts",
             "tsConfig" : "tsconfig.app.json",
+            "crossOrigin" : "none",
+            "outputHashing" : "none",
+            "allowedCommonJsDependencies" : ["lodash"],
             "assets" : ["src/assets", "src/favicon.ico"],
-            "styles" : ["src/styles.scss"]
+            "styles" : ["src/styles.scss"],
+            "budgets" : [
+              { "type" : "initial", "maximumWarning" : "2MB", "maximumError" : "5MB" },
+              { "type" : "anyComponentStyle", "maximumWarning" : "6kB", "maximumError" : "10kB" }
+            ],
+            "optimization" : { "scripts" : true, "styles" : true },
+            "sourceMap" : { "hidden" : false, "scripts" : true, "styles" : true, "vendor" : true }
           }
         },
         "serve" : {
           "builder" : "@angular-devkit/build-angular:dev-server",
-          "configurations" : { "production" : { "aot" : true, "browserTarget" : "fan-fiction-dot-com:build:production" } },
+          "configurations" : { "production" : { "aot" : true, "browserTarget" : "fan-fiction-dot-com:build" } },
           "options" : { "browserTarget" : "fan-fiction-dot-com:build" }
         },
         "extract-i18n" : {

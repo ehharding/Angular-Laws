@@ -5,9 +5,9 @@
 # all jobs in this file are running on an Ubuntu Linux host. See https://github.com/actions/virtual-environments for a list of options.
 #
 # `node_modules` is cached based on a hash of `package.json` for performance reasons. If the dependencies change, the hash should change as well,
-# meaning a fresh `npm install` should be triggered.
+# meaning a fresh `npm install` should be triggered. For the `main` branch, the pipeline is as follows:
 #
-#   * repository-checkout - Checks out The `main` GitHub repository branch for Fan Fiction.com and uploads the repository as an artifact
+#   * repository-checkout - Checks out The `main` branch for Fan Fiction.com and uploads the repository as an artifact
 #   * test                - Runs unit tests and uploads `coverage-report` as an artifact
 #   * eslint-report       - Runs ESLint on the project and uploads `eslint-report.html` as an artifact
 #   * build-production    - Runs a production build and uploads `dist-prod` as an artifact
@@ -258,7 +258,7 @@ jobs :
           name : dist-prod
           path : 'dist-prod'
 
-      - name : Deploy Production Build Distributable Contents To `gh-pages` Branch Under A `docs` Directory
+      - name : Deploy Production Build Distributable Contents To `gh-pages` Branch
         uses : peaceiris/actions-gh-pages@v3
         with :
           github_token : ${{ github.token }}
