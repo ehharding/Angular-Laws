@@ -13,7 +13,7 @@
       "spread" : true,
       "templateStrings" : true
     },
-    "ecmaVersion" : 2015,
+    "ecmaVersion" : 2020,
     "sourceType" : "module"
   },
   "plugins" : ["@angular-eslint", "@typescript-eslint", "eslint-plugin-tsdoc"],
