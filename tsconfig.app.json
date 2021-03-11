@@ -59,10 +59,10 @@
     "rootDir" : ".",
     "tsBuildInfoFile" : "build-cache/tsc",
     "module" : "ES2020",
-    "target" : "ES2015",
+    "target" : "ES2020",
     "moduleResolution" : "Node",
     "newLine" : "CRLF",
-    "lib" : ["DOM", "ES2015"],
+    "lib" : ["DOM", "ES2020"],
     "types" : ["node"],
     "paths" : {
       "@about/*" :  ["app/about/*"],
