@@ -78,7 +78,7 @@
     "init-declarations" : "off",
     "key-spacing" : ["warn", { "beforeColon" : true, "afterColon" : true, "mode" : "strict" }],
     "keyword-spacing" : "off",
-    "linebreak-style" : ["warn", "windows"],
+    "linebreak-style" : "off",
     "line-comment-position" : "off",
     "lines-around-comment" : ["warn", {
       "beforeBlockComment" : true,

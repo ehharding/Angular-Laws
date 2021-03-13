@@ -4,5 +4,4 @@
 # An .eslintignore file specifies, for ESLint, which directories and files to ignore and not lint.
 ######################################################################################################################################################
 
-!.github
-!src
+node_modules
