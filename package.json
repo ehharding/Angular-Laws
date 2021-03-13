@@ -21,6 +21,7 @@
     "clean" : "rimraf ./coverage-report ./dist ./dist-prod ./eslint-report.html",
     "lint" : "eslint **/*.ts",
     "lint:report" : "eslint **/*.ts -f node_modules/eslint-html-reporter/reporter.js -o ./eslint-report.html",
+    "lint:report:prod" : "eslint /home/runner/work/FanFiction.com/FanFiction.com/*.ts -f /home/runner/work/FanFiction.com/FanFiction.com/node_modules/eslint-html-reporter/reporter.js -o ./eslint-report.html",
     "ng" : "ng --version",
     "start" : "ng serve",
     "test" : "ng test --browsers=FirefoxHeadless --watch=false",

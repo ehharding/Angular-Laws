@@ -166,7 +166,7 @@ jobs :
         run : |
           echo 'Running ESLint And Generating HTML Report...'
 
-          npm run lint:report
+          npm run lint:report:prod
 
       - name : Upload ESLint Linting Artifact - `eslint-report`
         uses : actions/upload-artifact@v2
