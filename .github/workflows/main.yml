@@ -262,4 +262,4 @@ jobs :
         uses : peaceiris/actions-gh-pages@v3
         with :
           github_token : ${{ github.token }}
-          publish_dir : dist-prod/
+          publish_dir : dist-prod
