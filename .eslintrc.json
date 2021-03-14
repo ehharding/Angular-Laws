@@ -657,7 +657,6 @@
         "@angular-eslint/use-component-view-encapsulation" : "warn",
         "@angular-eslint/use-injectable-provided-in" : "warn",
         "@angular-eslint/use-lifecycle-interface" : "warn",
-        "@angular-eslint/use-pipe-decorator" : "warn",
         "@angular-eslint/use-pipe-transform-interface" : "warn"
       }
     },
