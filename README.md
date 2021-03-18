@@ -24,7 +24,9 @@
 
   <p>
     <a href="#executive-summary">Executive Summary</a> •
-    <a href="developer-environment-recommended-setup">Developer Environment Recommended Setup</a>
+    <a href="developer-environment-recommended-setup">Developer Environment Recommended Setup</a> •
+    <a href="credits">Credits</a> •
+    <a href="license">License</a>
   </p>
 
   <!-- This Is A Placeholder Image Until A Better One Is Found Or Created -->
@@ -43,7 +45,7 @@ essentially the same development environment configuration. So, this section wil
 recommended general setup.
 
 ### IDE And Project Setup
-First, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [NPM](http://npmjs.com)) installed on
+First, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/) (which comes with [NPM](http://npmjs.com)) installed on
 your computer. From your command line:
 
 ```bash
@@ -65,8 +67,11 @@ said settings. To do this, go to <strong>File | Manage IDE Settings | Settings R
 https://github.com/ehharding/webstorm-settings.git for the Upstream URL, and click <strong>Overwrite Local</strong>. You should be prompted to enter
 a token to verify permissions. Contact me, and I will gladly provide the token. After this is done, you should have all the IDE settings required.
 
-You may need to go through a setup routine for the [Material Theme UI](https://plugins.jetbrains.com/plugin/8006-material-theme-ui). Personally I use
-the Night Owl theme.
+You may need to go through a setup routine for the [Material Theme UI](https://plugins.jetbrains.com/plugin/8006-material-theme-ui) plugin.
+Personally, I use the Night Owl theme.
+
+Finally, while Chrome, Edge, Firefox, and Opera are supported as browsers, I would highly recommend [Firefox](https://www.mozilla.org/en-US/new/) as
+your core development browser. You will need it to properly run the project unit tests, anyways.
 
 ### Installing Project Dependencies
 You must now install the necessary dependencies for the project via NPM. From WebStorm's Terminal command line:
@@ -86,4 +91,39 @@ With dependencies installed, you should now be ready to actually run the project
 npm run start
 ```
 
-Angular should have compiled the project and served it to http://localhost:4200/. Point your browser here to see the site.
+Angular should have compiled the project and served it to http://localhost:4200/. Point your browser here to see the site. You will not be able to
+push to the GitHub repository without first being added as a project contributor.
+
+### Running The Project Unit Tests
+You can run unit tests for the project via the `test` and `test:watch` npm scripts or run the following:
+
+```bash
+# Run Unit Tests Inside Firefox And Watch The Results
+npm run test:watch
+
+# Run Unit Tests Inside A Headless Firefox (You Can Still See The Results In The Terminal)
+npm run test
+```
+
+### Linting The Project
+To assist with code maintainability and quality, this project utilizes ESLint. To run the linter on the project, you can use the `lint` and
+`lint:report` npm scripts or run the following:
+
+```bash
+# Run ESLint On The Project
+npm run lint
+
+# Run ESLint On The Project And Output An HTML Report Of The Results
+npm run lint:report
+```
+
+## Credits
+This software uses the following open source packages:
+
+- [Angular](https://angular.io) - Google's modern web development framework
+- [Angular Material](https://material.angular.io) - Google's Material Design components for Angular
+- [Node.js](https://nodejs.org/en/) - A JavaScript runtime built on Chrome's V8 JavaScript engine
+- [ESLint](https://eslint.org) - A modern code linter for JavaScript/TypeScript.
+
+## License
+[Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)
