@@ -1,4 +1,5 @@
-<div style="text-align : center">
+<!--suppress HtmlDeprecatedAttribute -->
+<div align="center">
   <h1>
     <a href="https://angular.io"><img alt="Angular.io" src="https://angular.io/assets/images/logos/angular/angular.svg" width="100" /></a>
     <br>
