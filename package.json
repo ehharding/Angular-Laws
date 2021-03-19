@@ -61,7 +61,7 @@
     "eslint" : "7.22.0",
     "eslint-html-reporter" : "0.7.4",
     "eslint-plugin-tsdoc" : "0.2.11",
-    "jasmine-core" : "3.7.0",
+    "jasmine-core" : "3.7.1",
     "jasmine-spec-reporter" : "6.0.0",
     "karma" : "6.2.0",
     "karma-coverage" : "2.0.3",
