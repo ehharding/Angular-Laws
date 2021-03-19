@@ -1,5 +1,9 @@
 /* Custom Configurations */
 
+body {
+  color: white;
+}
+
 a:hover {
   color: white;
 }
