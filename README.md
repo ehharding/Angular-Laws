@@ -122,8 +122,9 @@ This software uses the following open source packages:
 
 - [Angular](https://angular.io) - Google's modern web development framework
 - [Angular Material](https://material.angular.io) - Google's Material Design components for Angular
+- [Bootstrap](https://getbootstrap.com) - A popular front-end open source CSS toolkit
+- [ESLint](https://eslint.org) - A modern code linter for JavaScript/TypeScript
 - [Node.js](https://nodejs.org/en/) - A JavaScript runtime built on Chrome's V8 JavaScript engine
-- [ESLint](https://eslint.org) - A modern code linter for JavaScript/TypeScript.
 
 ## License
 [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)

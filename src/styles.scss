@@ -28,7 +28,12 @@ body {
 }
 
 a {
+  color : inherit !important;
   text-decoration : none !important;
+}
+
+header {
+  color : white;
 }
 
 ff-toolbar a .mat-button {
@@ -44,4 +49,25 @@ ff-toolbar a .mat-button {
 
 .ff-bg-grey {
   background : #303030;
+}
+
+.ff-headers-align .mat-expansion-panel-header-title, .ff-headers-align .mat-expansion-panel-header-description {
+  flex-basis : 0;
+}
+
+.ff-headers-align .mat-expansion-panel-header-description {
+  align-items : center;
+  justify-content : space-between;
+}
+
+.ff-headers-align .mat-form-field + .mat-form-field {
+  margin-left : 8px;
+}
+
+.ff-mw-card {
+  max-width : 500px;
+}
+
+.ff-mw-50 {
+  max-width : 50%;
 }

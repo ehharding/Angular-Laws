@@ -628,7 +628,7 @@
       },
       "rules" : {
         "@angular-eslint/component-class-suffix" : ["warn", { "suffixes" : ["Component"] }],
-        "@angular-eslint/component-max-inline-declarations" : ["warn", { "animations" : 0, "styles" : 0, "template" : 0 }],
+        "@angular-eslint/component-max-inline-declarations" : ["warn", { "animations" : 20, "styles" : 0, "template" : 20 }],
         "@angular-eslint/component-selector" : ["warn", { "type" : "element", "prefix" : "ff", "style" : "kebab-case" }],
         "@angular-eslint/contextual-decorator" : "warn",
         "@angular-eslint/contextual-lifecycle" : "warn",

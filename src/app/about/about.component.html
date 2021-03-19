@@ -1,3 +1,69 @@
 <!----------------------------------------------------------------------------------------------------------------------------------------------------
  ~ Copyright 2021 Evan H. Harding. All Rights Reserved.
  ---------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<!-- The About Page Header Explains The Very Basics Of The Project -->
+<header aria-label="About Page Header" class="ff-about-header p-3">
+  <h1 class="mat-h1 mt-2">About The Project</h1>
+
+  <div class="ff-mw-50">
+    <p>
+      Welcome to FanFiction.com! This project is about creating a modern, user-friendly, and responsive fan fiction website for the world to use.
+      Built on the latest technologies and utilizing the latest web development paradigms, I am hoping for FanFiction.com to become the fan fiction
+      site every fan fiction lover wants to use.
+    </p>
+  </div>
+</header>
+
+<!-- The Contributors Section Lists All Of The Contributors In A Material Accordion -->
+<div class="p-3">
+  <h2 class="mat-h2">Contributors</h2>
+
+  <mat-accordion class="ff-headers-align">
+    <mat-expansion-panel *ngFor="let contributor of contributors; let index = index;" (closed)="panelOpen = false;" (opened)="panelOpen = true;">
+      <!-- Panel Header -->
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon class="mr-2">account_circle</mat-icon>
+          <span [@openClose]="panelOpen ? 'open' : 'closed'">{{ contributor.name }}</span>
+        </mat-panel-title>
+
+        <mat-panel-description [@openClose]="panelOpen ? 'open' : 'closed'">{{ contributor.title }}</mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <!-- Panel Content (Lazily-Loaded) -->
+      <ng-template matExpansionPanelContent>
+        <mat-card class="ff-mw-card mat-elevation-z0">
+          <!-- Card Header -->
+          <mat-card-header>
+            <img mat-card-avatar alt="{{ contributor.name }}'s Avatar" aria-hidden="true" src="assets/avatars/{{ contributorNamesKebab[index] }}.jpeg"/>
+            <mat-card-title>{{ contributor.name }}</mat-card-title>
+            <mat-card-subtitle>{{ contributor.title }}</mat-card-subtitle>
+          </mat-card-header>
+
+          <!-- Card Image -->
+          <img mat-card-image aria-hidden="true" src="assets/images/{{ contributorNamesKebab[index] }}.jpeg" [alt]="contributor.name"/>
+
+          <!-- Card Content -->
+          <mat-card-content>{{ contributor.personalSummary }}</mat-card-content>
+
+          <!-- Card Actions -->
+          <mat-card-actions>
+            <!-- The First Contributor Card Action Button Is An Email Link -->
+            <a href="mailto:{{ contributor.email }}?subject=Subject&body=Hi%20{{ contributor.name }}">
+              <button mat-button [matTooltip]="contributor.email">E-MAIL</button>
+            </a>
+
+            <!-- The Second Contributor Card Action Button Is A Link To The Respective Contributors' LinkedIn (Optional) -->
+            <a *ngIf="contributor.linkedIn" target="_blank" [href]="contributor.linkedIn">
+              <button mat-button aria-label="{{ contributor.name }}'s LinkedIn Button">
+                <img alt="LinkedIn Logo" aria-hidden="true" class="ff-linkedin-logo mr-2" src="assets/icons/linkedin-logo.svg"/>
+                <span>LINKEDIN</span>
+              </button>
+            </a>
+          </mat-card-actions>
+        </mat-card>
+      </ng-template>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

@@ -1,8 +1,5 @@
 <!----------------------------------------------------------------------------------------------------------------------------------------------------
  ~ Copyright 2021 Evan H. Harding. All Rights Reserved.
- ~
- ~ This file serves as the template for the always-visible toolbar that lies at the top of the screen and stretches across its length. It has a button
- ~ on the left which, when clicked, takes the user home. On the right is a material theme switching menu and a link to the GitHub repository.
  ---------------------------------------------------------------------------------------------------------------------------------------------------->
 
 <nav aria-label="Top Toolbar" class="ff-navbar">
@@ -11,7 +8,7 @@
     <div>
       <!-- The First Item In The Left Group Is The `Fan Fiction` Button Which Links The User To The Home Page -->
       <a routerLink="/about">
-        <button mat-button aria-label="Toolbar Home Page Button">
+        <button mat-button aria-label="Home Page Button">
           <mat-icon aria-hidden="true" class="mr-2">book</mat-icon>
           {{ applicationTitle }}
         </button>
@@ -19,18 +16,18 @@
 
       <!-- The Second Item In The Left Group Is The `About` Button Which Links The User To The About Page -->
       <a routerLink="/about">
-        <button mat-button aria-label="Toolbar About Page Button">About</button>
+        <button mat-button aria-label="About Page Button">About</button>
       </a>
     </div>
 
     <!-- Right Group Of Toolbar Items -->
     <div>
       <!-- The First Item In The Right Group Is The Theme Switcher Menu -->
-      <button mat-icon-button aria-label="Toolbar Theme Selection Button" matTooltip="Select A Theme For The Application" [matMenuTriggerFor]="menu">
+      <button mat-icon-button aria-label="Theme Selection Button" matTooltip="Select A Theme For The Application" [matMenuTriggerFor]="menu">
         <mat-icon aria-hidden="true">palette</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item *ngFor="let theme of availableThemes" [disabled]="theme.bundleName === activeTheme" (click)="setApplicationTheme(theme.bundleName)">
+        <button mat-menu-item *ngFor="let theme of availableThemes;" [disabled]="theme.bundleName === activeTheme" (click)="setApplicationTheme(theme.bundleName)">
           <!-- Display A Checkmark Next To The Active Theme -->
           <mat-icon *ngIf="theme.bundleName === activeTheme" aria-hidden="true" class="mr-2">check</mat-icon>
           <!-- Display An Empty Icon Which Acts Like A Spacer Next To All Of The Other Themes -->
@@ -53,9 +50,10 @@
       </mat-menu>
 
       <!-- The Second Item In The Right Group Is A Button Which Links To The GitHub Repository -->
-      <a href="{{ gitHubURL }}" target="_blank">
-        <button mat-button aria-label="Toolbar GitHub Repository Button">
-          <img alt="GitHub Repository" aria-hidden="true" class="ff-github-logo mr-2" src="assets/icons/github-logo.svg"/>GitHub
+      <a target="_blank" [href]="gitHubURL">
+        <button mat-button aria-label="GitHub Repository Button">
+          <img alt="GitHub Logo" aria-hidden="true" class="ff-github-logo mr-2" src="assets/icons/github-logo.svg"/>
+          <span>GitHub</span>
         </button>
       </a>
     </div>

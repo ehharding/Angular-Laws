@@ -6,7 +6,6 @@
  * {@link https://angular.io/guide/sharing-ngmodules#sharing-modules | Angular Sharing Modules Guide}
  ****************************************************************************************************************************************************/
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,6 +13,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  exports : [BrowserAnimationsModule, CommonModule, FormsModule, HttpClientModule, RouterModule]
+  exports : [CommonModule, FormsModule, HttpClientModule, RouterModule]
 })
 export class SharedModule { }
