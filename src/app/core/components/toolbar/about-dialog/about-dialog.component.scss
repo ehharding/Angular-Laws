@@ -2,13 +2,24 @@
  * Copyright 2021 Evan H. Harding. All Rights Reserved.
  ****************************************************************************************************************************************************/
 
-.ff-github-logo {
-  filter : invert(100%);
-  height : 26px;
+a img {
+  transition : all 250ms ease-in-out;
+  height : 75px;
+  width : 75px;
 }
 
-.ff-navbar {
-  align-items : center;
-  display : flex;
-  flex-wrap : nowrap;
+a img:hover {
+  transform : scale(1.10);
+}
+
+.ff-copyright-text {
+  font-size : 12px;
+}
+
+.ff-source-vertical-divider {
+  height : 80px;
+}
+
+.ff-version-vertical-divider {
+  height : 40px;
 }

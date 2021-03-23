@@ -2,6 +2,7 @@
  * Copyright 2021 Evan H. Harding. All Rights Reserved.
  ****************************************************************************************************************************************************/
 
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { TestBed } from '@angular/core/testing';
 import { Title } from '@angular/platform-browser';
 
@@ -14,6 +15,8 @@ import { of } from 'rxjs';
 
 describe('ToolbarComponent', () : void => {
   let toolbarComponent : ToolbarComponent;
+
+  let matDialog : MatDialog;
   let themeService : ThemeService;
   let titleService : Title;
 
@@ -22,15 +25,21 @@ describe('ToolbarComponent', () : void => {
   beforeEach(() : void => {
     TestBed.configureTestingModule({
       declarations : [ToolbarComponent],
-      providers : [{ provide : ThemeService, useClass : ThemeService }, { provide : Title, useClass : Title }]
+      imports : [MatDialogModule],
+      providers : [
+        { provide : MatDialog, useClass : MatDialog },
+        { provide : ThemeService, useClass : ThemeService },
+        { provide : Title, useClass : Title }
+      ]
     });
 
+    matDialog = TestBed.inject(MatDialog);
     themeService = TestBed.inject(ThemeService);
     titleService = TestBed.inject(Title);
 
     spyOn(themeService, 'getActiveThemeBundleName').and.returnValue(of(DEFAULT_ACTIVE_THEME));
 
-    toolbarComponent = new ToolbarComponent(themeService, titleService);
+    toolbarComponent = new ToolbarComponent(matDialog, themeService, titleService);
     toolbarComponent.ngOnInit();
   });
 

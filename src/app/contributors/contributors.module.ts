@@ -1,7 +1,7 @@
 /*****************************************************************************************************************************************************
  * Copyright 2021 Evan H. Harding. All Rights Reserved.
  *
- * This module serves as the repository for all code related to the `About` page, which holds information about the application, what it's for,
+ * This module serves as the repository for all code related to the `About` page, which holds information contributors the application, what it's for,
  * contributors, etc.
  ****************************************************************************************************************************************************/
 
@@ -12,13 +12,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgModule } from '@angular/core';
 
-import { AboutRoutingModule } from '@about/about-routing.module';
+import { ContributorsRoutingModule } from '@contributors/contributors-routing.module';
 import { SharedModule } from '@shared/shared.module';
 
-import { AboutComponent } from '@about/about.component';
+import { ContributorsComponent } from '@contributors/contributors.component';
 
 @NgModule({
-  declarations : [AboutComponent],
-  imports : [AboutRoutingModule, SharedModule, MatButtonModule, MatCardModule, MatExpansionModule, MatIconModule, MatTooltipModule]
+  declarations : [ContributorsComponent],
+  imports : [ContributorsRoutingModule, SharedModule, MatButtonModule, MatCardModule, MatExpansionModule, MatIconModule, MatTooltipModule]
 })
-export class AboutModule { }
+export class ContributorsModule { }

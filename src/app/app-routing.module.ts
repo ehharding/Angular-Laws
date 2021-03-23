@@ -17,11 +17,11 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { AboutModule } from '@about/about.module';
+import { ContributorsModule } from '@contributors/contributors.module';
 
 const ROUTES : Routes = [
-  { path : '', pathMatch : 'full', redirectTo : 'about' },
-  { path : 'about', loadChildren : async() : Promise<AboutModule> => await import('@about/about.module').then((aboutModule) => aboutModule.AboutModule) }
+  { path : '', pathMatch : 'full', redirectTo : 'contributors' },
+  { path : 'contributors', loadChildren : async() : Promise<ContributorsModule> => await import('./contributors/contributors.module').then((contributorsModule) => contributorsModule.ContributorsModule) }
 ];
 
 @NgModule({

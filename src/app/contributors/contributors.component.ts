@@ -5,15 +5,15 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
-import { CONTRIBUTORS, Contributor } from '@about/about.configuration';
+import { CONTRIBUTORS, Contributor } from '@contributors/contributors.configuration';
 
 import { ReplaySubject } from 'rxjs';
 
 @Component({
   changeDetection : ChangeDetectionStrategy.OnPush,
   selector : 'ff-about',
-  styleUrls : ['about.component.scss'],
-  templateUrl : 'about.component.html',
+  styleUrls : ['contributors.component.scss'],
+  templateUrl : 'contributors.component.html',
   animations : [
     trigger('openClose', [
       state('closed', style({ opacity : 1 })),
@@ -23,7 +23,7 @@ import { ReplaySubject } from 'rxjs';
     ])
   ]
 })
-export class AboutComponent implements OnInit, OnDestroy {
+export class ContributorsComponent implements OnInit, OnDestroy {
   public readonly contributors : Contributor[] = CONTRIBUTORS;
   public readonly contributorNamesKebab : string[] = [];
 

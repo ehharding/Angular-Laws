@@ -12,7 +12,7 @@
     "strictBindCallApply" : true,
     "strictFunctionTypes" : true,
     "strictNullChecks" : true,
-    "strictPropertyInitialization" : true,
+    "strictPropertyInitialization" : false,
     "composite" : false,
     "declaration" : true,
     "declarationMap" : true,
@@ -25,7 +25,7 @@
     "noEmitHelpers" : false,
     "importHelpers" : true,
     "noEmitOnError" : false,
-    "noImplicitAny" : true,
+    "noImplicitAny" : false,
     "noImplicitThis" : true,
     "noImplicitUseStrict" : false,
     "noLib" : false,
@@ -60,12 +60,12 @@
     "tsBuildInfoFile" : "build-cache/tsc",
     "module" : "ES2020",
     "target" : "ES2020",
-    "moduleResolution" : "Node",
+    "moduleResolution" : "node",
     "newLine" : "CRLF",
     "lib" : ["DOM", "ES2020"],
     "types" : ["node"],
     "paths" : {
-      "@about/*" :  ["app/about/*"],
+      "@contributors/*" :  ["app/contributors/*"],
       "@core/*" : ["app/core/*"],
       "@shared/*" :["app/shared/*"],
       "@assets/*" : ["assets/*"],
@@ -74,5 +74,5 @@
   },
   "files" : ["src/main.ts", "src/polyfills.ts"],
   "exclude" : ["src/environments/environment.prod.ts", "src/test.ts"],
-  "include" : ["src/**/*.component.ts", "src/**/*.configuration.ts", "src/**/*.guard.ts", "src/**/*.module.ts", "src/**/*.service.ts", "src/**/*.d.ts"]
+  "include" : ["src/**.component.ts", "src/**.configuration.ts", "src/**.guard.ts", "src/**.module.ts", "src/**.service.ts", "src/**.d.ts"]
 }

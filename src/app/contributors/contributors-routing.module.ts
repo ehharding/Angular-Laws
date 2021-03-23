@@ -1,20 +1,20 @@
 /*****************************************************************************************************************************************************
  * Copyright 2021 Evan H. Harding. All Rights Reserved.
  *
- * This file handles navigation for the `About` module. The URLs defined here are children of about/.
+ * This file handles navigation for the `About` module. The URLs defined here are children of contributors/.
  ****************************************************************************************************************************************************/
 
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { AboutComponent } from '@about/about.component';
+import { ContributorsComponent } from '@contributors/contributors.component';
 
 const ROUTES : Routes = [
-  { path : '', component : AboutComponent }
+  { path : '', component : ContributorsComponent }
 ];
 
 @NgModule({
   exports : [RouterModule],
   imports : [RouterModule.forChild(ROUTES)]
 })
-export class AboutRoutingModule { }
+export class ContributorsRoutingModule { }

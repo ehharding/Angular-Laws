@@ -2,25 +2,19 @@
  ~ Copyright 2021 Evan H. Harding. All Rights Reserved.
  ---------------------------------------------------------------------------------------------------------------------------------------------------->
 
-<!-- The About Page Header Explains The Very Basics Of The Project -->
-<header aria-label="About Page Header" class="ff-about-header p-3">
-  <h1 class="mat-h1 mt-2">About The Project</h1>
+<!-- The Contributors Page Header Explains The Purpose Of The Page -->
+<header aria-label="Contributors Page Header" class="ff-contributors-header p-3">
+  <h1 class="mat-h1 mt-2">Contributors</h1>
 
   <div class="ff-mw-50">
-    <p>
-      Welcome to FanFiction.com! This project is about creating a modern, user-friendly, and responsive fan fiction website for the world to use.
-      Built on the latest technologies and utilizing the latest web development paradigms, I am hoping for FanFiction.com to become the fan fiction
-      site every fan fiction lover wants to use.
-    </p>
+    <p>This page lists the current contributors to the project.</p>
   </div>
 </header>
 
-<!-- The Contributors Section Lists All Of The Contributors In A Material Accordion -->
+<!-- This Section Lists All Of The Contributors In A Material Accordion -->
 <div class="p-3">
-  <h2 class="mat-h2">Contributors</h2>
-
   <mat-accordion class="ff-headers-align">
-    <mat-expansion-panel *ngFor="let contributor of contributors; let index = index;" (closed)="panelOpen = false;" (opened)="panelOpen = true;">
+    <mat-expansion-panel *ngFor="let contributor of contributors; let index = index" (closed)="panelOpen = false" (opened)="panelOpen = true">
       <!-- Panel Header -->
       <mat-expansion-panel-header>
         <mat-panel-title>

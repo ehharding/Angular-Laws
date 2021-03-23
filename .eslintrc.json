@@ -188,7 +188,7 @@
     }],
     "no-mixed-spaces-and-tabs" : "warn",
     "no-multi-assign" : "warn",
-    "no-multi-spaces" : ["warn", { "ignoreEOLComments" : false, "exceptions" : { "Property" : true } }],
+    "no-multi-spaces" : ["warn", { "ignoreEOLComments" : true, "exceptions" : { "Property" : true } }],
     "no-multi-str" : "warn",
     "no-multiple-empty-lines" : ["warn", { "max" : 1, "maxBOF" : 0, "maxEOF" : 1 }],
     "no-negated-condition" : "warn",
