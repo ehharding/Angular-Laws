@@ -1,7 +1,7 @@
 /*****************************************************************************************************************************************************
  * Copyright 2021 Evan H. Harding. All Rights Reserved.
  *
- * This file handles navigation for the `About` module. The URLs defined here are children of contributors/.
+ * This file handles navigation for the `Contributors` module. The URLs defined here are children of contributors/.
  ****************************************************************************************************************************************************/
 
 import { RouterModule, Routes } from '@angular/router';

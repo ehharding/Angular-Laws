@@ -81,7 +81,7 @@ You must now install the necessary dependencies for the project via NPM. From We
 cd /Scratch/FanFiction.com
 
 # Install Dependencies Via NPM
-npm install --legacy-peer-deps
+npm install
 ```
 
 ### Running The Project Locally
@@ -123,8 +123,11 @@ This software uses the following open source packages:
 - [Angular](https://angular.io) - Google's modern web development framework
 - [Angular Material](https://material.angular.io) - Google's Material Design components for Angular
 - [Bootstrap](https://getbootstrap.com) - A popular front-end open source CSS toolkit
+- [RxJS](https://rxjs-dev.firebaseapp.com/) - A library for composing asynchronous and event-based programs using observable sequences
 - [ESLint](https://eslint.org) - A modern code linter for JavaScript/TypeScript
+- [TypeScript](https://www.typescriptlang.org/) - Microsoft's open source programming language that extends JavaScript
 - [Node.js](https://nodejs.org/en/) - A JavaScript runtime built on Chrome's V8 JavaScript engine
+- [NPM](https://www.npmjs.com/) - The Node Package Manager (NPM)
 
 ## License
 [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)

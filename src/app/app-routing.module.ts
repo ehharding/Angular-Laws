@@ -21,7 +21,7 @@ import { ContributorsModule } from '@contributors/contributors.module';
 
 const ROUTES : Routes = [
   { path : '', pathMatch : 'full', redirectTo : 'contributors' },
-  { path : 'contributors', loadChildren : async() : Promise<ContributorsModule> => await import('./contributors/contributors.module').then((contributorsModule) => contributorsModule.ContributorsModule) }
+  { path : 'contributors', loadChildren : async() : Promise<ContributorsModule> => await import('@contributors/contributors.module').then((contributorsModule) => contributorsModule.ContributorsModule) }
 ];
 
 @NgModule({

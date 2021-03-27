@@ -1,8 +1,5 @@
 /*****************************************************************************************************************************************************
  * Copyright 2021 Evan H. Harding. All Rights Reserved.
- *
- * This module serves as the repository for all code related to the `About` page, which holds information contributors the application, what it's for,
- * contributors, etc.
  ****************************************************************************************************************************************************/
 
 import { MatButtonModule } from '@angular/material/button';

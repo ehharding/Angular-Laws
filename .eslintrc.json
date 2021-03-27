@@ -214,7 +214,7 @@
     "no-script-url" : "warn",
     "no-self-assign" : ["warn", { "props" : true }],
     "no-self-compare" : "warn",
-    "no-sequences" : "warn",
+    "no-sequences" : ["warn", { "allowInParentheses" : false }],
     "no-shadow" : "off",
     "no-shadow-restricted-names" : "error",
     "no-sparse-arrays" : "warn",
