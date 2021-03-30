@@ -7,6 +7,9 @@
  * {@link https://angular.io/guide/architecture#modules | Angular Module Guide}
  ****************************************************************************************************************************************************/
 
+import { BrowserModule, Title } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from 'app/app-routing.module';
@@ -18,6 +21,7 @@ import { AppComponent } from 'app/app.component';
 @NgModule({
   bootstrap : [AppComponent],
   declarations : [AppComponent],
-  imports : [AppRoutingModule, CoreModule, SharedModule]
+  imports : [BrowserModule, BrowserAnimationsModule, HttpClientModule, AppRoutingModule, CoreModule, SharedModule],
+  providers : [Title]
 })
 export class AppModule { }

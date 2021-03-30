@@ -5,10 +5,7 @@
  * in time across the entire application, in other words.
  ****************************************************************************************************************************************************/
 
-import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -31,9 +28,6 @@ import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
   declarations : [AboutDialogComponent, ToolbarComponent],
   exports : [ToolbarComponent],
   imports : [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
     SharedModule,
     MatButtonModule,
     MatCardModule,
@@ -44,7 +38,7 @@ import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
     MatToolbarModule,
     MatTooltipModule
   ],
-  providers : [ThemeService, Title]
+  providers : [ThemeService]
 })
 export class CoreModule {
   public constructor(@Optional() @SkipSelf() parentModule : CoreModule) {
