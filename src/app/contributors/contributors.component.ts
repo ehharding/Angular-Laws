@@ -34,7 +34,7 @@ export class ContributorsComponent implements OnInit, OnDestroy {
   public ngOnInit() : void {
     for (const CONTRIBUTOR of CONTRIBUTORS) {
       // We'll Convert The Contributors Name To Kebab-Case To Match The File Name (i.e. 'Evan Harding' -> evan-harding)
-      this.contributorNamesKebab.push(CONTRIBUTOR.name.toLowerCase().replace(' ', '-'));
+      this.contributorNamesKebab.push(`${ CONTRIBUTOR.firstName } ${ CONTRIBUTOR.lastName }`.toLowerCase().replace(' ', '-'));
     }
   }
 

@@ -10,7 +10,7 @@
       <a routerLink="/contributors">
         <button mat-button aria-label="Home Page Button">
           <mat-icon aria-hidden="true" class="mr-2">book</mat-icon>
-          {{ applicationTitle }}
+          <span>{{ applicationTitle }}</span>
         </button>
       </a>
 
@@ -47,7 +47,7 @@
                 <use xlink:href="#c" [attr.fill]="theme.headerColor"></use>
               </svg>
             </mat-icon>
-            {{ theme.labelName }}
+            <span>{{ theme.labelName }}</span>
           </button>
         </ng-template>
       </mat-menu>

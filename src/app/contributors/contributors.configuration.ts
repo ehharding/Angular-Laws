@@ -7,16 +7,18 @@ enum JobTitles {
 }
 
 export interface Contributor {
-  name : string;
+  firstName : string;
+  lastName : string;
   title : string;
   email : string;
   personalSummary : string;
-  linkedIn ? : string;
+  linkedIn ?: string;
 }
 
 export const CONTRIBUTORS : Contributor[] = [
   {
-    name : 'Evan Harding',
+    firstName : 'Evan',
+    lastName : 'Harding',
     title : JobTitles.SoftwareEngineer,
     email : 'ehharding@gmail.com',
     personalSummary : 'The creator of the site, Evan is a software engineer currently working for Lockheed Martin in Littleton, CO. He graduated ' +

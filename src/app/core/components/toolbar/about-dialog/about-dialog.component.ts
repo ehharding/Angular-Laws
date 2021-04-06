@@ -32,7 +32,7 @@ export class AboutDialogComponent implements OnInit, OnDestroy {
   public readonly esLintVersion : string = packageJSON.devDependencies['eslint'];         // eslint-disable-line @typescript-eslint/dot-notation
   public readonly typeScriptVersion : string = packageJSON.devDependencies['typescript']; // eslint-disable-line @typescript-eslint/dot-notation
 
-  private _currentTimeTimeout; // eslint-disable-line @typescript-eslint/typedef
+  private _currentTimeTimeout : NodeJS.Timeout;
 
   public constructor(@Inject(MAT_DIALOG_DATA) public data : AboutDialogConfigData, private readonly _changeDetectorRef : ChangeDetectorRef) { }
 
@@ -55,8 +55,7 @@ export class AboutDialogComponent implements OnInit, OnDestroy {
    * @remarks You should be cautious to call clearInterval() on a NodeJS.Timeout whose interval has been set so that the object does not keep the
    *          process alive unnecessarily longer than it has to.
    */
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-module-boundary-types
-  public setCurrentTimeInterval() {
+  public setCurrentTimeInterval() : NodeJS.Timeout {
     // Update The Time Every Second
     return setInterval(() : void => {
       this.currentTime = new Date();

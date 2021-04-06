@@ -1,10 +1,10 @@
 <!----------------------------------------------------------------------------------------------------------------------------------------------------
- ~ Copyright 2021 Evan H. Harding. All Rights Reserved.
+ - Copyright 2021 Evan H. Harding. All Rights Reserved.
  ---------------------------------------------------------------------------------------------------------------------------------------------------->
 
 <!-- The Contributors Page Header Explains The Purpose Of The Page -->
 <header aria-label="Contributors Page Header" class="ff-contributors-header p-3">
-  <h1 class="mat-h1 mt-2">Contributors</h1>
+  <h1 aria-labelledby="Contributors Page Header" class="mat-h1 mt-2">Contributors</h1>
 
   <div class="ff-mw-50">
     <p>This page lists the current contributors to the project.</p>
@@ -19,7 +19,7 @@
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon class="mr-2">account_circle</mat-icon>
-          <span [@openClose]="panelOpen ? 'open' : 'closed'">{{ contributor.name }}</span>
+          <span [@openClose]="panelOpen ? 'open' : 'closed'">{{ contributor.firstName }} {{ contributor.lastName }}</span>
         </mat-panel-title>
 
         <mat-panel-description [@openClose]="panelOpen ? 'open' : 'closed'">{{ contributor.title }}</mat-panel-description>
@@ -27,36 +27,38 @@
 
       <!-- Panel Content (Lazily-Loaded) -->
       <ng-template matExpansionPanelContent>
-        <mat-card class="ff-mw-card mat-elevation-z0">
-          <!-- Card Header -->
-          <mat-card-header>
-            <img mat-card-avatar alt="{{ contributor.name }}'s Avatar" aria-hidden="true" src="assets/avatars/{{ contributorNamesKebab[index] }}.jpeg"/>
-            <mat-card-title>{{ contributor.name }}</mat-card-title>
-            <mat-card-subtitle>{{ contributor.title }}</mat-card-subtitle>
-          </mat-card-header>
+        <div class="w-25">
+          <mat-card class="mat-elevation-z0">
+            <!-- Card Header -->
+            <mat-card-header>
+              <img mat-card-avatar alt="{{ contributor.firstName }} {{ contributor.lastName }}'s Avatar" aria-hidden="true" src="assets/avatars/{{ contributorNamesKebab[index] }}.jpeg"/>
+              <mat-card-title>{{ contributor.firstName }} {{ contributor.lastName }}</mat-card-title>
+              <mat-card-subtitle>{{ contributor.title }}</mat-card-subtitle>
+            </mat-card-header>
 
-          <!-- Card Image -->
-          <img mat-card-image aria-hidden="true" src="assets/images/{{ contributorNamesKebab[index] }}.jpeg" [alt]="contributor.name"/>
+            <!-- Card Image -->
+            <img mat-card-image aria-hidden="true" alt="{{ contributor.firstName }} {{ contributor.lastName }}" src="assets/images/{{ contributorNamesKebab[index] }}.jpeg"/>
 
-          <!-- Card Content -->
-          <mat-card-content>{{ contributor.personalSummary }}</mat-card-content>
+            <!-- Card Content -->
+            <mat-card-content>{{ contributor.personalSummary }}</mat-card-content>
 
-          <!-- Card Actions -->
-          <mat-card-actions>
-            <!-- The First Contributor Card Action Button Is An Email Link -->
-            <a href="mailto:{{ contributor.email }}?subject=Subject&body=Hi%20{{ contributor.name }}">
-              <button mat-button [matTooltip]="contributor.email">E-MAIL</button>
-            </a>
+            <!-- Card Actions -->
+            <mat-card-actions>
+              <!-- The First Contributor Card Action Button Is An Email Link -->
+              <a href="mailto:{{ contributor.email }}?subject=Subject&body=Hi%20{{ contributor.firstName }}">
+                <button mat-button [matTooltip]="contributor.email">E-MAIL</button>
+              </a>
 
-            <!-- The Second Contributor Card Action Button Is A Link To The Respective Contributors' LinkedIn (Optional) -->
-            <a *ngIf="contributor.linkedIn" target="_blank" [href]="contributor.linkedIn">
-              <button mat-button aria-label="{{ contributor.name }}'s LinkedIn Button">
-                <img alt="LinkedIn Logo" aria-hidden="true" class="ff-linkedin-logo mr-2" src="assets/icons/linkedin-logo.svg"/>
-                <span>LINKEDIN</span>
-              </button>
-            </a>
-          </mat-card-actions>
-        </mat-card>
+              <!-- The Second Contributor Card Action Button Is A Link To The Respective Contributors' LinkedIn (Optional) -->
+              <a *ngIf="contributor.linkedIn" target="_blank" [href]="contributor.linkedIn">
+                <button mat-button aria-label="{{ contributor.firstName }} {{ contributor.lastName }}'s LinkedIn Button">
+                  <img alt="LinkedIn Logo" aria-hidden="true" class="ff-linkedin-logo mr-2" src="assets/icons/linkedin-logo.svg"/>
+                  <span>LINKEDIN</span>
+                </button>
+              </a>
+            </mat-card-actions>
+          </mat-card>
+        </div>
       </ng-template>
     </mat-expansion-panel>
   </mat-accordion>

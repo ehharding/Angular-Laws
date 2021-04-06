@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgModule } from '@angular/core';
 
@@ -16,6 +17,15 @@ import { ContributorsComponent } from '@contributors/contributors.component';
 
 @NgModule({
   declarations : [ContributorsComponent],
-  imports : [ContributorsRoutingModule, SharedModule, MatButtonModule, MatCardModule, MatExpansionModule, MatIconModule, MatTooltipModule]
+  imports : [
+    ContributorsRoutingModule,
+    SharedModule,
+    MatButtonModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatTabsModule,
+    MatTooltipModule
+  ]
 })
 export class ContributorsModule { }
