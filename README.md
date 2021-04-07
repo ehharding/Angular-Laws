@@ -3,11 +3,14 @@
   <h1>
     <a href="https://angular.io"><img alt="Angular.io" src="https://angular.io/assets/images/logos/angular/angular.svg" width="100" /></a>
     <br>
-    Fan Fiction.com
+    <span>Fan Fiction.com</span>
   </h1>
 
   <h4>
-    A Fan Fiction Website Built On Top Of <a href="https://material.angular.io" target="_blank">Angular Material</a>
+    <span>A Fan Fiction</span>
+    <a href="https://ehharding.github.io/FanFiction.com/" target="_blank">Website</a>
+    <span>Built On Top Of</span>
+    <a href="https://material.angular.io" target="_blank">Angular Material</a>
   </h4>
 
   <p>
