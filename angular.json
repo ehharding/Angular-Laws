@@ -49,7 +49,7 @@
               "watch" : false,
               "baseHref" : "/FanFiction.com/",
               "deployUrl" : "/FanFiction.com/",
-              "outputPath" : "dist-prod",
+              "outputPath" : "dist",
               "index" : "src/index.html",
               "main" : "src/main.ts",
               "polyfills" : "src/polyfills.ts",
