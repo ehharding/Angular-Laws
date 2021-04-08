@@ -23,7 +23,7 @@ import { takeUntil } from 'rxjs/operators';
 export class ToolbarComponent implements OnInit, OnDestroy {
   public readonly aboutDialogTitle : string = 'About The Application';
   public readonly applicationTitle : string = this._titleService.getTitle();
-  public readonly gitHubURL : string = 'https://github.com/ehharding/pocket-fic';
+  public readonly gitHubURL : string = 'https://github.com/ehharding/Pocket-Fic';
   public readonly availableThemes : Theme[] = AVAILABLE_THEMES;
 
   public activeTheme : ThemeBundles | undefined;
