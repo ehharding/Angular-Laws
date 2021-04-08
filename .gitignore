@@ -13,4 +13,3 @@ node_modules
 
 *.log
 eslint-report.html
-package-lock.json

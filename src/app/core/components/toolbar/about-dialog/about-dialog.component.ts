@@ -14,7 +14,7 @@ export interface AboutDialogConfigData {
 
 @Component({
   changeDetection : ChangeDetectionStrategy.OnPush,
-  selector : 'ff-about-dialog',
+  selector : 'pf-about-dialog',
   styleUrls : ['about-dialog.component.scss'],
   templateUrl : 'about-dialog.component.html'
 })

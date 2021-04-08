@@ -1,11 +1,11 @@
 {
   "$schema" : "node_modules/@angular/cli/lib/config/schema.json",
-  "defaultProject" : "fan-fiction-dot-com",
+  "defaultProject" : "pocket-fic",
   "newProjectRoot" : "projects",
   "version" : 1,
   "cli" : { "analytics" : "272fc58f-c451-448e-9d84-257489841d8e", "packageManager" : "npm", "warnings" : { "versionMismatch" : true } },
   "projects" : {
-    "fan-fiction-dot-com" : {
+    "pocket-fic" : {
       "schematics" : {
         "@schematics/angular:class" : { "skipTests" : false },
         "@schematics/angular:component" : {
@@ -16,15 +16,15 @@
           "skipTests" : false,
           "changeDetection" : "OnPush",
           "viewEncapsulation" : "Emulated",
-          "prefix" : "ff",
+          "prefix" : "pf",
           "style" : "scss"
         },
-        "@schematics/angular:directive" : { "flat" : true, "skipImport" : false, "skipTests" : false, "prefix" : "ff" },
+        "@schematics/angular:directive" : { "flat" : true, "skipImport" : false, "skipTests" : false, "prefix" : "pf" },
         "@schematics/angular:module" : { "commonModule" : true, "flat" : false, "routing" : false, "routingScope" : "Child" },
         "@schematics/angular:pipe" : { "flat" : true, "skipImport" : false, "skipTests" : false },
         "@schematics/angular:service" : { "flat" : true, "skipTests" : false }
       },
-      "prefix" : "ff",
+      "prefix" : "pf",
       "projectType" : "application",
       "root" : "",
       "sourceRoot" : "src",
@@ -47,8 +47,8 @@
               "vendorChunk" : false,
               "verbose" : false,
               "watch" : false,
-              "baseHref" : "/FanFiction.com/",
-              "deployUrl" : "/FanFiction.com/",
+              "baseHref" : "/pocket-fic/",
+              "deployUrl" : "/pocket-fic/",
               "outputPath" : "dist-prod",
               "index" : "src/index.html",
               "main" : "src/main.ts",
@@ -105,12 +105,12 @@
         },
         "serve" : {
           "builder" : "@angular-devkit/build-angular:dev-server",
-          "configurations" : { "production" : { "aot" : true, "browserTarget" : "fan-fiction-dot-com:build" } },
-          "options" : { "browserTarget" : "fan-fiction-dot-com:build" }
+          "configurations" : { "production" : { "aot" : true, "browserTarget" : "pocket-fic:build" } },
+          "options" : { "browserTarget" : "pocket-fic:build" }
         },
         "extract-i18n" : {
           "builder" : "@angular-devkit/build-angular:extract-i18n",
-          "options" : { "browserTarget" : "fan-fiction-dot-com:build" }
+          "options" : { "browserTarget" : "pocket-fic:build" }
         },
         "test" : {
           "builder" : "@angular-devkit/build-angular:karma",

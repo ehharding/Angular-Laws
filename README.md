@@ -3,19 +3,19 @@
   <h1>
     <a href="https://angular.io"><img alt="Angular.io" src="https://angular.io/assets/images/logos/angular/angular.svg" width="100" /></a>
     <br>
-    <span>Fan Fiction.com</span>
+    <span>Pocket Fic</span>
   </h1>
 
   <h4>
     <span>A Fan Fiction</span>
-    <a href="https://ehharding.github.io/FanFiction.com/" target="_blank">Website</a>
+    <a href="https://ehharding.github.io/pocket-fic/" target="_blank">Website</a>
     <span>Built On Top Of</span>
     <a href="https://material.angular.io" target="_blank">Angular Material</a>
   </h4>
 
   <p>
-    <a href="https://github.com/ehharding/FanFiction.com/actions" target="_blank">
-      <img alt="CI/CD Pipeline Status" src="https://github.com/ehharding/FanFiction.com/actions/workflows/main.yml/badge.svg"/>
+    <a href="https://github.com/ehharding/pocket-fic/actions" target="_blank">
+      <img alt="CI/CD Pipeline Status" src="https://github.com/ehharding/pocket-fic/actions/workflows/main.yml/badge.svg"/>
     </a>
     <a href="https://opensource.org/licenses/Apache-2.0" target="_blank">
       <img alt="Apache 2.0 License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/>
@@ -37,7 +37,7 @@
 </div>
 
 ## Executive Summary
-A Modern FanFiction Website For The Modern Web... at least that's my goal! I don't see any super nice-looking or user-friendly fan fiction websites
+A modern fan fiction website for the modern web... at least that's my goal! I don't see any super nice-looking or user-friendly fan fiction websites
 out there, and I honestly want one. So, I'm building one... starting with the front-end design and hopefully later on with the back-end. I'm doing
 this to gain some architecture and general full-stack experience along with knowledge in various modern toolkits and programming paradigms (outside my
 main job, of course, so time spent developing is limited).
@@ -59,7 +59,7 @@ cd /
 mkdir Scratch && cd Scratch
 
 # Clone The Repository
-git clone https://github.com/ehharding/FanFiction.com.git
+git clone https://github.com/ehharding/pocket-fic.git
 ```
 
 Then, you should download JetBrains' [Webstorm IDE](https://www.jetbrains.com/webstorm/) for your platform (Windows, macOS, or Linux). WebStorm
@@ -81,7 +81,7 @@ You must now install the necessary dependencies for the project via NPM. From We
 
 ```bash
 # Go To Repository Directory If Terminal Does Not Automatically Put You Here
-cd /Scratch/FanFiction.com
+cd /Scratch/Pocket\ Fic/
 
 # Install Dependencies Via NPM
 npm install

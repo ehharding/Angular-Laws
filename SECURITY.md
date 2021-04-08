@@ -1,7 +1,7 @@
-# Reporting Vulnerabilities In Fan Fiction.com
+# Reporting Vulnerabilities In Pocket Fic
 
-Fan Fiction.com is still completely work-in-progress. However, there are plans to integrate security checks with the main CI/CD pipeline on GitHub.
-I would also like to include a suite of security tools, linting and otherwise, that would assist with security best practices while developing. While
+Pocket Fic is still very much work-in-progress. However, there are plans to integrate security checks with the main CI/CD pipeline on GitHub. I would
+also like to include a suite of security tools, linting and otherwise, that would assist with security best practices while developing. While
 no user data is stored on the site yet, with their being no backend system, I would still like to be security conscious while developing the site and
 overall architecture.
 

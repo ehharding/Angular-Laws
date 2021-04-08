@@ -16,8 +16,8 @@
 @import '~bootstrap/scss/grid';
 @import '~bootstrap/scss/reboot';
 
-$ff-light-theme-bg-color : #FAFAFA;
-$ff-dark-theme-bg-color : #303030;
+$pf-light-theme-bg-color : #FAFAFA;
+$pf-dark-theme-bg-color : #303030;
 
 /* Styling Applied To Entire Application */
 
@@ -47,46 +47,46 @@ img {
   border-radius : 5px;
 }
 
-ff-toolbar a .mat-button {
+pf-toolbar a .mat-button {
   color : white;
   font-weight : bold;
 }
 
 /* Global Styles That Can Be Applied To Any Applicable Element */
 
-.cdk-overlay-pane.ff-dialog {
+.cdk-overlay-pane.pf-dialog {
   position : relative !important;
 }
 
-.ff-bg-white {
-  background : $ff-light-theme-bg-color;
+.pf-bg-white {
+  background : $pf-light-theme-bg-color;
 }
 
-.ff-bg-grey {
-  background : $ff-dark-theme-bg-color;
+.pf-bg-grey {
+  background : $pf-dark-theme-bg-color;
 }
 
-.ff-card-footer-logo {
+.pf-card-footer-logo {
   height : 26px;
 }
 
-.ff-dialog-header-close-button.mat-icon-button {
+.pf-dialog-header-close-button.mat-icon-button {
   margin : 10px;
   right : 0;
   top : 0;
   position : absolute;
 }
 
-.ff-headers-align .mat-expansion-panel-header-title, .ff-headers-align .mat-expansion-panel-header-description {
+.pf-headers-align .mat-expansion-panel-header-title, .pf-headers-align .mat-expansion-panel-header-description {
   flex-basis : 0;
 }
 
-.ff-headers-align .mat-expansion-panel-header-description {
+.pf-headers-align .mat-expansion-panel-header-description {
   align-items : center;
   justify-content : space-between;
 }
 
-.ff-headers-align .mat-form-field + .mat-form-field {
+.pf-headers-align .mat-form-field + .mat-form-field {
   margin-left : 8px;
 }
 

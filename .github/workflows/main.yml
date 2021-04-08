@@ -7,7 +7,7 @@
 # `node_modules` is cached based on a hash of `package.json` for performance reasons. If the dependencies change, the hash should change as well,
 # meaning a fresh `npm install` should be triggered. For the `main` branch, the pipeline is as follows:
 #
-#   * repository-checkout - Checks out The `main` branch for Fan Fiction.com and uploads the repository as an artifact
+#   * repository-checkout - Checks out The `main` branch for Pocket Fic and uploads the repository as an artifact
 #   * test                - Runs unit tests and uploads `coverage-report` as an artifact
 #   * eslint-report       - Runs ESLint on the project and uploads `eslint-report.html` as an artifact
 #   * build-production    - Runs a production build and uploads `dist-prod` as an artifact
@@ -18,7 +18,7 @@
 # {@link https://angular.io/guide/deployment#deploy-to-github-pages | Angular Guide To Deploying To GitHub Pages}
 ######################################################################################################################################################
 
-name : Fan Fiction.com
+name : Pocket Fic
 
 # Triggers The Workflow On `push` Events But Only For The `main` Branch
 on :
@@ -75,11 +75,11 @@ jobs :
           submodules : true
           fetch-depth : 0 # Fetches All History For All Branches And Tags
 
-      - name : Upload Repository Snapshot Artifact - `fan-fiction-dot-com`
+      - name : Upload Repository Snapshot Artifact - `pocket-fic`
         uses : actions/upload-artifact@v2
         with :
-          name : fan-fiction-dot-com
-          path : '/home/runner/work/FanFiction.com/FanFiction.com'
+          name : pocket-fic
+          path : '/home/runner/work/pocket-fic/pocket-fic'
           retention-days : 2
 
   ########## JOB 2 - TEST ##########
@@ -99,13 +99,13 @@ jobs :
       - name : Checkout Latest Repository Snapshot - Commit SHA ${{ github.sha }}
         uses : actions/download-artifact@v2
         with :
-          name : fan-fiction-dot-com
+          name : pocket-fic
 
       - name : Determining If `node_modules` Cache Exists And Can Be Used Based On Changes To `package.json`...
         id : node-modules-cache
         uses : actions/cache@v2
         with :
-          path : '/home/runner/work/FanFiction.com/FanFiction.com/node_modules'
+          path : '/home/runner/work/pocket-fic/pocket-fic/node_modules'
           key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package.json') }}
 
       - name : Install NPM Dependencies If Required
@@ -126,7 +126,7 @@ jobs :
         uses : actions/upload-artifact@v2
         with :
           name : coverage-report
-          path : '/home/runner/work/FanFiction.com/FanFiction.com/coverage-report'
+          path : '/home/runner/work/pocket-fic/pocket-fic/coverage-report'
           retention-days : 2
 
   ########## JOB 3 - ESLINT-REPORT ##########
@@ -146,13 +146,13 @@ jobs :
       - name : Checkout Latest Repository Snapshot - Commit SHA ${{ github.sha }}
         uses : actions/download-artifact@v2
         with :
-          name : fan-fiction-dot-com
+          name : pocket-fic
 
       - name : Determining If `node_modules` Cache Exists And Can Be Used Based On Changes To `package.json`...
         id : node-modules-cache
         uses : actions/cache@v2
         with :
-          path : '/home/runner/work/FanFiction.com/FanFiction.com/node_modules'
+          path : '/home/runner/work/pocket-fic/pocket-fic/node_modules'
           key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package.json') }}
 
       - name : Install NPM Dependencies If Required
@@ -172,7 +172,7 @@ jobs :
         uses : actions/upload-artifact@v2
         with :
           name : eslint-report
-          path : '/home/runner/work/FanFiction.com/FanFiction.com/eslint-report.html'
+          path : '/home/runner/work/pocket-fic/pocket-fic/eslint-report.html'
           retention-days : 2
 
   ########## JOB 4 - BUILD-PRODUCTION ##########
@@ -192,13 +192,13 @@ jobs :
       - name : Checkout Latest Repository Snapshot - Commit SHA ${{ github.sha }}
         uses : actions/download-artifact@v2
         with :
-          name : fan-fiction-dot-com
+          name : pocket-fic
 
       - name : Determining If `node_modules` Cache Exists And Can Be Used Based On Changes To `package.json`...
         id : node-modules-cache
         uses : actions/cache@v2
         with :
-          path : '/home/runner/work/FanFiction.com/FanFiction.com/node_modules'
+          path : '/home/runner/work/pocket-fic/pocket-fic/node_modules'
           key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package.json') }}
 
       - name : Install NPM Dependencies If Required
@@ -219,7 +219,7 @@ jobs :
         uses : actions/upload-artifact@v2
         with :
           name : dist-prod
-          path : '/home/runner/work/FanFiction.com/FanFiction.com/dist-prod'
+          path : '/home/runner/work/pocket-fic/pocket-fic/dist-prod'
           retention-days : 2
 
   ########## JOB 5 - COPY-INDEX-TO-404 ##########

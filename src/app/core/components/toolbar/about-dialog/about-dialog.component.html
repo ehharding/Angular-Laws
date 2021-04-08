@@ -2,21 +2,21 @@
  - Copyright 2021 Evan H. Harding. All Rights Reserved.
  ---------------------------------------------------------------------------------------------------------------------------------------------------->
 
-<button mat-icon-button mat-dialog-close aria-label="About Dialog Header Close Button" class="ff-dialog-header-close-button" tabindex="-1">
+<button mat-icon-button mat-dialog-close aria-label="About Dialog Header Close Button" class="pf-dialog-header-close-button" tabindex="-1">
   <mat-icon aria-hidden="true">close</mat-icon>
 </button>
 
 <h1 mat-dialog-title aria-labelledby="About Dialog Title">{{ dialogTitle }}</h1>
 
 <mat-dialog-content>
-  <h4 aria-labelledby="FanFiction.com Description Header">What Is {{ applicationTitle }}?</h4>
-  <p aria-labelledby="FanFiction.com Description">
+  <h4 aria-labelledby="Pocket Fic Description Header">What Is {{ applicationTitle }}?</h4>
+  <p aria-labelledby="Pocket Fic Description">
     Welcome to {{ applicationTitle }}! This project is about creating a modern, user-friendly, and responsive fan fiction website for the world to
     use. Built on the latest technologies and utilizing the latest web development paradigms, I am hoping for {{ applicationTitle }} to become the
     fan fiction site every fan fiction lover wants to use.
   </p>
 
-  <h4 aria-labelledby="FanFiction.com Open Source Components Header">Built With Open Source Software</h4>
+  <h4 aria-labelledby="Pocket Fic Open Source Components Header">Built With Open Source Software</h4>
   <div class="container">
     <div class="align-items-center justify-content-center row">
       <!--
@@ -42,35 +42,35 @@
         <img alt="Angular Material.io" aria-hidden="true" src="assets/icons/dependency-logos/angular-material.svg" role="img"/>
       </a>
 
-      <mat-divider vertical class="ff-source-vertical-divider m-2"></mat-divider>
+      <mat-divider vertical class="pf-source-vertical-divider m-2"></mat-divider>
 
       <!-- Bootstrap -->
       <a href="https://getbootstrap.com" target="_blank" matTooltip="Bootstrap">
         <img alt="Bootstrap" aria-hidden="true" src="assets/icons/dependency-logos/bootstrap.svg" role="img"/>
       </a>
 
-      <mat-divider vertical class="ff-source-vertical-divider m-2"></mat-divider>
+      <mat-divider vertical class="pf-source-vertical-divider m-2"></mat-divider>
 
       <!-- RxJS -->
       <a href="https://rxjs-dev.firebaseapp.com" target="_blank" matTooltip="RxJS">
         <img alt="RxJS" aria-hidden="true" src="assets/icons/dependency-logos/rxjs.svg" role="img"/>
       </a>
 
-      <mat-divider vertical class="ff-source-vertical-divider m-2"></mat-divider>
+      <mat-divider vertical class="pf-source-vertical-divider m-2"></mat-divider>
 
       <!-- ESLint -->
       <a href="https://eslint.org/" target="_blank" matTooltip="ESLint">
         <img alt="ESLint" aria-hidden="true" src="assets/icons/dependency-logos/eslint.svg" role="img"/>
       </a>
 
-      <mat-divider vertical class="ff-source-vertical-divider m-2"></mat-divider>
+      <mat-divider vertical class="pf-source-vertical-divider m-2"></mat-divider>
 
       <!-- TypeScript -->
       <a href="https://www.typescriptlang.org/" target="_blank" matTooltip="TypeScript">
         <img alt="TypeScript" aria-hidden="true" src="assets/icons/dependency-logos/typescript.svg" role="img"/>
       </a>
 
-      <mat-divider vertical class="ff-source-vertical-divider m-2"></mat-divider>
+      <mat-divider vertical class="pf-source-vertical-divider m-2"></mat-divider>
 
       <!-- Node.js -->
       <a href="https://nodejs.org/en/" target="_blank" matTooltip="Node.js">
@@ -85,11 +85,11 @@
     </div>
   </div>
 
-  <h4 aria-labelledby="FanFiction.com Version Information Header">Version Information</h4>
+  <h4 aria-labelledby="Pocket Fic Version Information Header">Version Information</h4>
   <mat-card class="mat-elevation-z0">
     <!-- Card Header -->
     <mat-card-header>
-      <img mat-card-avatar alt="FanFiction.com Logo" aria-hidden="true" src="assets/icons/dependency-logos/angular.svg"/>
+      <img mat-card-avatar alt="Pocket Fic Logo" aria-hidden="true" src="assets/icons/dependency-logos/angular.svg"/>
       <mat-card-title>{{ applicationTitle }}</mat-card-title>
       <mat-card-subtitle>{{ applicationVersion }} - Current Time: {{ currentTime.toTimeString() }}</mat-card-subtitle>
     </mat-card-header>
@@ -102,35 +102,35 @@
           <p aria-labelledby="Angular Version">{{ angularVersion }}</p>
         </div>
 
-        <mat-divider vertical class="ff-version-vertical-divider m-2"></mat-divider>
+        <mat-divider vertical class="pf-version-vertical-divider m-2"></mat-divider>
 
         <div>
           <h5 aria-labelledby="Angular Material Version Header">Angular Material</h5>
           <p aria-labelledby="Angular Material Version">{{ angularMaterialVersion }}</p>
         </div>
 
-        <mat-divider vertical class="ff-version-vertical-divider m-2"></mat-divider>
+        <mat-divider vertical class="pf-version-vertical-divider m-2"></mat-divider>
 
         <div>
           <h5 aria-labelledby="Bootstrap Version Header">Bootstrap</h5>
           <p aria-labelledby="Bootstrap Version">{{ bootstrapVersion }}</p>
         </div>
 
-        <mat-divider vertical class="ff-version-vertical-divider m-2"></mat-divider>
+        <mat-divider vertical class="pf-version-vertical-divider m-2"></mat-divider>
 
         <div>
           <h5 aria-labelledby="RxJS Version Header">RxJS</h5>
           <p aria-labelledby="RxJS Version">{{ rxJSVersion }}</p>
         </div>
 
-        <mat-divider vertical class="ff-version-vertical-divider m-2"></mat-divider>
+        <mat-divider vertical class="pf-version-vertical-divider m-2"></mat-divider>
 
         <div>
           <h5 aria-labelledby="ESLint Version Header">ESLint</h5>
           <p aria-labelledby="ESLint Version">{{ esLintVersion }}</p>
         </div>
 
-        <mat-divider vertical class="ff-version-vertical-divider m-2"></mat-divider>
+        <mat-divider vertical class="pf-version-vertical-divider m-2"></mat-divider>
 
         <div>
           <h5 aria-labelledby="TypeScript Version Header">TypeScript</h5>
@@ -145,7 +145,7 @@
   <button cdkFocusInitial mat-button mat-dialog-close aria-labelledby="About Dialog Close Button" class="ml-2 mb-2">OK</button>
   <div class="align-items-center row mb-2">
     <mat-icon aria-hidden="true" class="mr-2">copyright</mat-icon>
-    <span aria-labelledby="Lockheed Martin Copyright Text" class="ff-copyright-text">
+    <span aria-labelledby="Lockheed Martin Copyright Text" class="pf-copyright-text">
       {{ currentTime.getFullYear().toString() }} Evan H. Harding. All Rights Reserved.
     </span>
   </div>
