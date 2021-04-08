@@ -81,7 +81,7 @@ You must now install the necessary dependencies for the project via NPM. From We
 
 ```bash
 # Go To Repository Directory If Terminal Does Not Automatically Put You Here
-cd /Scratch/Pocket\ Fic/
+cd /Scratch/Pocket-Fic
 
 # Install Dependencies Via NPM
 npm install
