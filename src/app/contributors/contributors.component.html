@@ -24,7 +24,7 @@
           <!-- Panel Header -->
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <mat-icon class="mr-2">account_circle</mat-icon>
+              <mat-icon aria-hidden="true" class="mr-2">account_circle</mat-icon>
               <span
                 class="pf-contributor-shift-animation"
                 [@hover]="panelHovered && !panelOpen ? 'shiftedState' : 'normalState'"
@@ -62,7 +62,10 @@
                 <mat-card-actions>
                   <!-- The First Contributor Card Action Button Is An Email Link -->
                   <a href="mailto:{{ contributor.email }}?subject=Subject&body=Hi%20{{ contributor.firstName }}">
-                    <button mat-button [matTooltip]="contributor.email">E-MAIL</button>
+                    <button mat-button aria-label="{{ contributor.firstName }} {{ contributor.lastName }}'s E-Mail Button" [matTooltip]="contributor.email">
+                      <mat-icon aria-hidden="true" class="mr-2">email</mat-icon>
+                      <span>E-MAIL</span>
+                    </button>
                   </a>
 
                   <!-- The Second Contributor Card Action Button Is A Link To The Respective Contributors' GitHub (Optional) -->
