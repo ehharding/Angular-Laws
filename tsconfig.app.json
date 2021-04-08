@@ -55,7 +55,7 @@
     "traceResolution" : false,
     "useDefineForClassFields" : false,
     "baseUrl" : "src",
-    "outDir" : "dist-prod/out-tsc/src",
+    "outDir" : "dist/out-tsc/src",
     "rootDir" : ".",
     "tsBuildInfoFile" : "build-cache/tsc",
     "module" : "ES2020",

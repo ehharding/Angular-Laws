@@ -5,7 +5,7 @@
 <!-- The Contributors Page Header Explains The Purpose Of The Page -->
 <header aria-label="Contributors Page Header" class="ff-contributors-header">
   <div class="row m-3">
-    <div class="mx-auto w-75">
+    <div class="mx-auto w-70">
       <h1 aria-labelledby="Contributors Page Header" class="mat-h1 mt-2">Contributors</h1>
 
       <p>This page lists the current contributors to the project.</p>
@@ -15,19 +15,19 @@
 
 <!-- This Section Lists All Of The Contributors In A Material Accordion -->
 <div class="row m-3">
-  <div class="mx-auto w-75">
+  <div class="mx-auto w-70">
     <mat-accordion class="ff-headers-align">
       <mat-expansion-panel
         *ngFor="let contributor of contributors; let index = index"
         (closed)="panelOpen = false" (opened)="panelOpen = true"
         (mouseenter)="panelHovered = true" (mouseleave)="panelHovered = false">
           <!-- Panel Header -->
-          <mat-expansion-panel-header class="ff-contributor-shift-animation">
+          <mat-expansion-panel-header>
             <mat-panel-title>
               <mat-icon class="mr-2">account_circle</mat-icon>
               <span
                 class="ff-contributor-shift-animation"
-                [@hover]="panelHovered ? 'shiftedState' : 'normalState'"
+                [@hover]="panelHovered && !panelOpen ? 'shiftedState' : 'normalState'"
                 [@openClose]="panelOpen ? 'invisibleState' : 'visibleState'">
                   {{ contributor.firstName }} {{ contributor.lastName }}
               </span>
@@ -35,7 +35,7 @@
 
             <mat-panel-description
               class="ff-contributor-shift-animation"
-              [@hover]="panelHovered ? 'shiftedState' : 'normalState'"
+              [@hover]="panelHovered && !panelOpen ? 'shiftedState' : 'normalState'"
               [@openClose]="panelOpen ? 'invisibleState' : 'visibleState'">
                 {{ contributor.title }}
             </mat-panel-description>
@@ -43,7 +43,7 @@
 
           <!-- Panel Content (Lazily-Loaded) -->
           <ng-template matExpansionPanelContent>
-            <div class="w-25">
+            <div class="w-40">
               <mat-card class="mat-elevation-z0">
                 <!-- Card Header -->
                 <mat-card-header>
@@ -65,10 +65,18 @@
                     <button mat-button [matTooltip]="contributor.email">E-MAIL</button>
                   </a>
 
-                  <!-- The Second Contributor Card Action Button Is A Link To The Respective Contributors' LinkedIn (Optional) -->
+                  <!-- The Second Contributor Card Action Button Is A Link To The Respective Contributors' GitHub (Optional) -->
+                  <a *ngIf="contributor.gitHub" target="_blank" [href]="contributor.gitHub">
+                    <button mat-button aria-label="{{ contributor.firstName }} {{ contributor.lastName }}'s GitHub Button">
+                      <img alt="GitHub Logo" aria-hidden="true" class="ff-card-footer-logo mr-2" src="assets/icons/github-logo.svg"/>
+                      <span>GITHUB</span>
+                    </button>
+                  </a>
+
+                  <!-- The Third Contributor Card Action Button Is A Link To The Respective Contributors' LinkedIn (Optional) -->
                   <a *ngIf="contributor.linkedIn" target="_blank" [href]="contributor.linkedIn">
                     <button mat-button aria-label="{{ contributor.firstName }} {{ contributor.lastName }}'s LinkedIn Button">
-                      <img alt="LinkedIn Logo" aria-hidden="true" class="ff-linkedin-logo mr-2" src="assets/icons/linkedin-logo.svg"/>
+                      <img alt="LinkedIn Logo" aria-hidden="true" class="ff-card-footer-logo mr-2" src="assets/icons/linkedin-logo.svg"/>
                       <span>LINKEDIN</span>
                     </button>
                   </a>

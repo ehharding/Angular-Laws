@@ -43,6 +43,10 @@ header {
   color : white;
 }
 
+img {
+  border-radius : 5px;
+}
+
 ff-toolbar a .mat-button {
   color : white;
   font-weight : bold;
@@ -60,6 +64,10 @@ ff-toolbar a .mat-button {
 
 .ff-bg-grey {
   background : $ff-dark-theme-bg-color;
+}
+
+.ff-card-footer-logo {
+  height : 26px;
 }
 
 .ff-dialog-header-close-button.mat-icon-button {
@@ -80,4 +88,36 @@ ff-toolbar a .mat-button {
 
 .ff-headers-align .mat-form-field + .mat-form-field {
   margin-left : 8px;
+}
+
+.w-10 {
+  width : 10% !important;
+}
+
+.w-20 {
+  width : 20% !important;
+}
+
+.w-30 {
+  width : 30% !important;
+}
+
+.w-40 {
+  width : 40% !important;
+}
+
+.w-60 {
+  width : 60% !important;
+}
+
+.w-70 {
+  width : 70% !important;
+}
+
+.w-80 {
+  width : 80% !important;
+}
+
+.w-90 {
+  width : 90% !important;
 }

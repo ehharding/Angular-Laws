@@ -14,6 +14,7 @@ export interface Contributor {
   title : string;
   email : string;
   personalSummary : string;
+  gitHub ?: string;
   linkedIn ?: string;
 }
 
@@ -26,8 +27,9 @@ export const CONTRIBUTORS : Contributor[] = [
     personalSummary : 'The creator of the site, Evan is a software engineer currently working for Lockheed Martin in Littleton, CO. He graduated ' +
                       'from The Pennsylvania State University (Penn State) in 2019 with a major in Computer Engineering and a minor in ' +
                       'Mathematics. His interests include gaming, reading, watching movies, artificial intelligence, and in general everything ' +
-                      'technology. He is 24 years old and lives in Castle Rock, CO with his fiancée Sarah, their australian cattledog Sega, and ' +
+                      'technology. He is 24 years old and lives in Castle Rock, CO with his fiancée Sarah, their Australian cattle dog Sega, and ' +
                       'their two cats Edgar and Minerva (Minnie).',
+    gitHub : 'https://github.com/ehharding',
     linkedIn : 'https://www.linkedin.com/in/ehharding/'
   }
 ];
