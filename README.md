@@ -8,14 +8,14 @@
 
   <h4>
     <span>A Fan Fiction</span>
-    <a href="https://ehharding.github.io/pocket-fic/" target="_blank">Website</a>
+    <a href="https://ehharding.github.io/Pocket-Fic/" target="_blank">Website</a>
     <span>Built On Top Of</span>
     <a href="https://material.angular.io" target="_blank">Angular Material</a>
   </h4>
 
   <p>
-    <a href="https://github.com/ehharding/pocket-fic/actions" target="_blank">
-      <img alt="CI/CD Pipeline Status" src="https://github.com/ehharding/pocket-fic/actions/workflows/main.yml/badge.svg"/>
+    <a href="https://github.com/ehharding/Pocket-Fic/actions" target="_blank">
+      <img alt="CI/CD Pipeline Status" src="https://github.com/ehharding/Pocket-Fic/actions/workflows/main.yml/badge.svg"/>
     </a>
     <a href="https://opensource.org/licenses/Apache-2.0" target="_blank">
       <img alt="Apache 2.0 License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/>
@@ -59,7 +59,7 @@ cd /
 mkdir Scratch && cd Scratch
 
 # Clone The Repository
-git clone https://github.com/ehharding/pocket-fic.git
+git clone https://github.com/ehharding/Pocket-Fic.git
 ```
 
 Then, you should download JetBrains' [Webstorm IDE](https://www.jetbrains.com/webstorm/) for your platform (Windows, macOS, or Linux). WebStorm
