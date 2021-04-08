@@ -43,7 +43,7 @@
               "preserveSymlinks" : false,
               "serviceWorker" : false,
               "showCircularDependencies" : true,
-              "subresourceIntegrity" : true,
+              "subresourceIntegrity" : false,
               "vendorChunk" : false,
               "verbose" : false,
               "watch" : false,
