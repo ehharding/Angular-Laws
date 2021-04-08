@@ -7,7 +7,7 @@
  * {@link https://karma-runner.github.io/6.3/config/configuration-file.html | Karma Configuration Guide}
  ****************************************************************************************************************************************************/
 
-module.exports = (config : any) : void => { // eslint-disable-line @typescript-eslint/no-explicit-any
+module.exports = (config : any) : void => {
   config.set({
     autoWatch : true,
     colors : true,

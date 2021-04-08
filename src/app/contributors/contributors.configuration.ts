@@ -2,6 +2,8 @@
  * Copyright 2021 Evan H. Harding. All Rights Reserved.
  ****************************************************************************************************************************************************/
 
+import { animate, state, style, transition, trigger } from '@angular/animations';
+
 enum JobTitles {
   SoftwareEngineer = 'Software Engineer'
 }
@@ -28,4 +30,16 @@ export const CONTRIBUTORS : Contributor[] = [
                       'their two cats Edgar and Minerva (Minnie).',
     linkedIn : 'https://www.linkedin.com/in/ehharding/'
   }
+];
+
+export const CONTRIBUTORS_ANIMATIONS : unknown[] = [
+  trigger('hover', [
+    state('normalState', style({ transform : 'translateX(0)' })),
+    state('shiftedState', style({ transform : 'translateX(10px)' }))
+  ]),
+  trigger('openClose', [
+    state('visibleState', style({ opacity : 1 })),
+    state('invisibleState', style({ opacity : 0 })),
+    transition('visibleState <=> invisibleState', [animate('500ms')])
+  ])
 ];

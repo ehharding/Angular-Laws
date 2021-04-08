@@ -2,44 +2,28 @@
  * Copyright 2021 Evan H. Harding. All Rights Reserved.
  ****************************************************************************************************************************************************/
 
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
-import { CONTRIBUTORS, Contributor } from '@contributors/contributors.configuration';
-
-import { ReplaySubject } from 'rxjs';
+import { CONTRIBUTORS, CONTRIBUTORS_ANIMATIONS, Contributor } from '@contributors/contributors.configuration';
 
 @Component({
   changeDetection : ChangeDetectionStrategy.OnPush,
-  selector : 'ff-about',
+  selector : 'ff-contributors',
   styleUrls : ['contributors.component.scss'],
   templateUrl : 'contributors.component.html',
-  animations : [
-    trigger('openClose', [
-      state('closed', style({ opacity : 1 })),
-      state('open', style({ opacity : 0 })),
-      transition('closed => open', [animate('0.5s')]),
-      transition('open => closed', [animate('0.5s')])
-    ])
-  ]
+  animations : CONTRIBUTORS_ANIMATIONS
 })
-export class ContributorsComponent implements OnInit, OnDestroy {
+export class ContributorsComponent implements OnInit {
   public readonly contributors : Contributor[] = CONTRIBUTORS;
   public readonly contributorNamesKebab : string[] = [];
 
+  public panelHovered : boolean = false;
   public panelOpen : boolean = false;
-
-  private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
   public ngOnInit() : void {
     for (const CONTRIBUTOR of CONTRIBUTORS) {
       // We'll Convert The Contributors Name To Kebab-Case To Match The File Name (i.e. 'Evan Harding' -> evan-harding)
       this.contributorNamesKebab.push(`${ CONTRIBUTOR.firstName } ${ CONTRIBUTOR.lastName }`.toLowerCase().replace(' ', '-'));
     }
-  }
-
-  public ngOnDestroy() : void {
-    this._componentDestroyed$.next(true);
-    this._componentDestroyed$.complete();
   }
 }
