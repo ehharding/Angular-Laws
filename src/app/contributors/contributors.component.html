@@ -3,7 +3,7 @@
  ---------------------------------------------------------------------------------------------------------------------------------------------------->
 
 <!-- The Contributors Page Header Explains The Purpose Of The Page -->
-<header aria-label="Contributors Page Header" class="ff-contributors-header">
+<header aria-label="Contributors Page Header" class="pf-contributors-header">
   <div class="row m-3">
     <div class="mx-auto w-70">
       <h1 aria-labelledby="Contributors Page Header" class="mat-h1 mt-2">Contributors</h1>
@@ -16,7 +16,7 @@
 <!-- This Section Lists All Of The Contributors In A Material Accordion -->
 <div class="row m-3">
   <div class="mx-auto w-70">
-    <mat-accordion class="ff-headers-align">
+    <mat-accordion class="pf-headers-align">
       <mat-expansion-panel
         *ngFor="let contributor of contributors; let index = index"
         (closed)="panelOpen = false" (opened)="panelOpen = true"
@@ -26,7 +26,7 @@
             <mat-panel-title>
               <mat-icon class="mr-2">account_circle</mat-icon>
               <span
-                class="ff-contributor-shift-animation"
+                class="pf-contributor-shift-animation"
                 [@hover]="panelHovered && !panelOpen ? 'shiftedState' : 'normalState'"
                 [@openClose]="panelOpen ? 'invisibleState' : 'visibleState'">
                   {{ contributor.firstName }} {{ contributor.lastName }}
@@ -34,7 +34,7 @@
             </mat-panel-title>
 
             <mat-panel-description
-              class="ff-contributor-shift-animation"
+              class="pf-contributor-shift-animation"
               [@hover]="panelHovered && !panelOpen ? 'shiftedState' : 'normalState'"
               [@openClose]="panelOpen ? 'invisibleState' : 'visibleState'">
                 {{ contributor.title }}
@@ -68,7 +68,7 @@
                   <!-- The Second Contributor Card Action Button Is A Link To The Respective Contributors' GitHub (Optional) -->
                   <a *ngIf="contributor.gitHub" target="_blank" [href]="contributor.gitHub">
                     <button mat-button aria-label="{{ contributor.firstName }} {{ contributor.lastName }}'s GitHub Button">
-                      <img alt="GitHub Logo" aria-hidden="true" class="ff-card-footer-logo mr-2" src="assets/icons/github-logo.svg"/>
+                      <img alt="GitHub Logo" aria-hidden="true" class="pf-card-footer-logo mr-2" src="assets/icons/github-logo.svg"/>
                       <span>GITHUB</span>
                     </button>
                   </a>
@@ -76,7 +76,7 @@
                   <!-- The Third Contributor Card Action Button Is A Link To The Respective Contributors' LinkedIn (Optional) -->
                   <a *ngIf="contributor.linkedIn" target="_blank" [href]="contributor.linkedIn">
                     <button mat-button aria-label="{{ contributor.firstName }} {{ contributor.lastName }}'s LinkedIn Button">
-                      <img alt="LinkedIn Logo" aria-hidden="true" class="ff-card-footer-logo mr-2" src="assets/icons/linkedin-logo.svg"/>
+                      <img alt="LinkedIn Logo" aria-hidden="true" class="pf-card-footer-logo mr-2" src="assets/icons/linkedin-logo.svg"/>
                       <span>LINKEDIN</span>
                     </button>
                   </a>
