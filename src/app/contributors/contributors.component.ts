@@ -8,7 +8,7 @@ import { CONTRIBUTORS, CONTRIBUTORS_ANIMATIONS, Contributor } from '@contributor
 
 @Component({
   changeDetection : ChangeDetectionStrategy.OnPush,
-  selector : 'ff-contributors',
+  selector : 'pf-contributors',
   styleUrls : ['contributors.component.scss'],
   templateUrl : 'contributors.component.html',
   animations : CONTRIBUTORS_ANIMATIONS

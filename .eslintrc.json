@@ -160,7 +160,7 @@
     "no-floating-decimal" : "warn",
     "no-func-assign" : "warn",
     "no-global-assign" : ["warn", { "exceptions" : [] }],
-    "no-implicit-coercion" : "warn",
+    "no-implicit-coercion" : ["warn", { "boolean" : true, "number" : true, "string" : true, "disallowTemplateShorthand" : false, "allow" : [] }],
     "no-implicit-globals" : ["warn", { "lexicalBindings" : false }],
     "no-implied-eval" : "off",
     "no-inline-comments" : "off",
@@ -187,7 +187,7 @@
       ]
     }],
     "no-mixed-spaces-and-tabs" : "warn",
-    "no-multi-assign" : "warn",
+    "no-multi-assign" : ["warn", { "ignoreNonDeclaration" : false }],
     "no-multi-spaces" : ["warn", { "ignoreEOLComments" : true, "exceptions" : { "Property" : true } }],
     "no-multi-str" : "warn",
     "no-multiple-empty-lines" : ["warn", { "max" : 1, "maxBOF" : 0, "maxEOF" : 1 }],
