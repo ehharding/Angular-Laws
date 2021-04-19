@@ -654,6 +654,7 @@
         "@angular-eslint/prefer-on-push-component-change-detection" : "warn",
         "@angular-eslint/prefer-output-readonly" : "warn",
         "@angular-eslint/relative-url-prefix" : "off",
+        "@angular-eslint/sort-ngmodule-metadata-arrays" : "off",
         "@angular-eslint/use-component-selector" : "warn",
         "@angular-eslint/use-component-view-encapsulation" : "warn",
         "@angular-eslint/use-injectable-provided-in" : "warn",

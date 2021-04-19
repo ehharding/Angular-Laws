@@ -2,13 +2,14 @@
  * Copyright 2021 Evan H. Harding. All Rights Reserved.
  ****************************************************************************************************************************************************/
 
-.pf-github-logo {
-  filter : invert(100%);
-  height : 26px;
-}
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-.pf-navbar {
-  align-items : center;
-  display : flex;
-  flex-flow : row wrap;
+@Component({
+  changeDetection : ChangeDetectionStrategy.OnPush,
+  selector : 'pf-footer',
+  styleUrls : ['footer.component.scss'],
+  templateUrl : 'footer.component.html'
+})
+export class FooterComponent {
+
 }

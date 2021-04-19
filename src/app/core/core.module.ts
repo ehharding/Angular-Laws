@@ -22,11 +22,12 @@ import { throwIfAlreadyLoaded } from '@core/guards/module-import.guard';
 import { ThemeService } from '@core/services/theme/theme.service';
 
 import { AboutDialogComponent } from '@core/components/toolbar/about-dialog/about-dialog.component';
+import { FooterComponent } from '@core/components/footer/footer.component';
 import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
 
 @NgModule({
-  declarations : [AboutDialogComponent, ToolbarComponent],
-  exports : [ToolbarComponent],
+  declarations : [AboutDialogComponent, FooterComponent, ToolbarComponent],
+  exports : [FooterComponent, ToolbarComponent],
   imports : [
     SharedModule,
     MatButtonModule,
