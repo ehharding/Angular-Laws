@@ -5,7 +5,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { AboutDialogConfigData, OpenSourceDependency, PackageVersion } from '@core/components/toolbar/about-dialog/about-dialog.model';
+import { AboutDialogConfigData, OPEN_SOURCE_DEPENDENCIES, OpenSourceDependency, PACKAGE_VERSIONS, PackageVersion } from '@core/components/toolbar/about-dialog/about-dialog.model';
 
 import packageJSON from 'app/../../package.json';
 
@@ -22,26 +22,10 @@ export class AboutDialogComponent implements OnInit, OnDestroy {
   public readonly applicationTitle : string = this.data.applicationTitle;
   public readonly dialogTitle : string = this.data.aboutDialogTitle;
 
-  public readonly openSourceDependencies : OpenSourceDependency[] = [
-    { imgAltDescription : 'Angular.io', imgTitle : 'angular', tooltip : 'Angular - Web Development Framework', websiteLink : 'https://angular.io' },
-    { imgAltDescription : 'Angular Material.io', imgTitle : 'angular-material', tooltip : 'Angular Material - Theming Library', websiteLink : 'https://material.angular.io' },
-    { imgAltDescription : 'Bootstrap', imgTitle : 'bootstrap', tooltip : 'Bootstrap - CSS Framework', websiteLink : 'https://getbootstrap.com' },
-    { imgAltDescription : 'RxJS', imgTitle : 'rxjs', tooltip : 'RxJS - Reactive Extensions Library for JavaScript', websiteLink : 'https://rxjs-dev.firebaseapp.com' },
-    { imgAltDescription : 'ESLint', imgTitle : 'eslint', tooltip : 'ESLint - JavaScript & TypeScript Linter', websiteLink : 'https://eslint.org' },
-    { imgAltDescription : 'TypeScript', imgTitle : 'typescript', tooltip : 'TypeScript - JavaScript With Typing', websiteLink : 'https://www.typescriptlang.org' },
-    { imgAltDescription : 'Node.js', imgTitle : 'nodejs', tooltip : 'Node.js - JavaScript Runtime Engine', websiteLink : 'https://nodejs.org/en/' },
-    { imgAltDescription : 'NPM', imgTitle : 'npm', tooltip : 'NPM - Software Registry', websiteLink : 'https://www.npmjs.com' }
-  ];
-
   public readonly applicationVersion : string = packageJSON.version;
-  public readonly packageVersions : PackageVersion[] = [
-    { name : 'Angular', version : packageJSON.dependencies['@angular/core'] },
-    { name : 'Angular Material', version : packageJSON.dependencies['@angular/material'] },
-    { name : 'Bootstrap', version : packageJSON.dependencies.bootstrap },
-    { name : 'RxJS', version : packageJSON.dependencies.rxjs },
-    { name : 'ESLint', version : packageJSON.devDependencies.eslint },
-    { name : 'TypeScript', version : packageJSON.devDependencies.typescript }
-  ];
+
+  public readonly openSourceDependencies : OpenSourceDependency[] = OPEN_SOURCE_DEPENDENCIES;
+  public readonly packageVersions : PackageVersion[] = PACKAGE_VERSIONS;
 
   private _currentTimeTimeout : number;
 
