@@ -60,9 +60,30 @@ module.exports = (config : any) : void => {
       // eslint-disable-next-line @typescript-eslint/naming-convention
       FirefoxHeadless : { base : 'Firefox', flags : ['--headless'], prefs : { 'network.proxy.type' : 0 } }
     },
+    client : {
+      captureConsole : true,
+      clearContext : false, // Leaves The Jasmine Test Runner Output Visible In The Browser
+      clientDisplayNone : false,
+      runInParent : false,
+      useIframe : true,
+      args : undefined
+    },
+    httpsServerOptions : { },
+    mime : { },
+    proxies : { },
+    coverageReporter : { dir : 'coverage-report/', type : 'html' }, // Update .github/workflows/main.yml If Changing The Dir Name For Code Coverage
+    mochaReporter : {
+      ignoreSkipped : false,
+      printFirstSuccess : false,
+      showDiff : false,
+      maxLogLines : 999,
+      colors : { error : 'red', info : 'grey', success : 'green', warning : 'yellow' },
+      output : 'full'
+    },
+    preprocessors : { 'src/app/*.ts' : 'coverage' },
     exclude : [],
     files : [
-      { pattern : './src/*.ts', type : 'js', included : false, served : true, watched : false },
+      { pattern : 'src/*.ts', type : 'js', included : false, served : true, watched : false },
       'node_modules/zone.js/dist/zone.js',
       'node_modules/zone.js/dist/long-stack-trace-zone.js',
       'node_modules/zone.js/dist/proxy.js',
@@ -81,27 +102,6 @@ module.exports = (config : any) : void => {
       require('karma-mocha-reporter')
     ],
     reporters : ['coverage', 'dots', 'kjhtml', 'mocha'],
-    transports : ['polling', 'websocket'],
-    coverageReporter : { dir : 'coverage-report/', type : 'html' }, // Update .github/workflows/main.yml If Changing The Dir Name For Code Coverage
-    mochaReporter : {
-      ignoreSkipped : false,
-      printFirstSuccess : false,
-      showDiff : false,
-      maxLogLines : 999,
-      colors : { error : 'red', info : 'grey', success : 'green', warning : 'yellow' },
-      output : 'full'
-    },
-    preprocessors : { 'src/app/*.ts' : 'coverage' },
-    client : {
-      captureConsole : true,
-      clearContext : false, // Leaves The Jasmine Test Runner Output Visible In The Browser
-      clientDisplayNone : false,
-      runInParent : false,
-      useIframe : true,
-      args : undefined
-    },
-    httpsServerOptions : { },
-    mime : { },
-    proxies : { }
+    transports : ['polling', 'websocket']
   });
 };

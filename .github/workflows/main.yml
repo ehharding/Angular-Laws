@@ -88,7 +88,7 @@ jobs :
     runs-on : ubuntu-latest
     strategy :
       matrix :
-        node-version : [15.X]
+        node-version : [16.X]
 
     steps :
       - name : Setup Node.js ${{ matrix.node-version }}
@@ -135,7 +135,7 @@ jobs :
     runs-on : ubuntu-latest
     strategy :
       matrix :
-        node-version : [15.X]
+        node-version : [16.X]
 
     steps :
       - name : Setup Node.js ${{ matrix.node-version }}
@@ -181,7 +181,7 @@ jobs :
     runs-on : ubuntu-latest
     strategy :
       matrix :
-        node-version : [15.X]
+        node-version : [16.X]
 
     steps :
       - name : Setup Node.js ${{ matrix.node-version }}
