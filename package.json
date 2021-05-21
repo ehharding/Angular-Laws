@@ -17,7 +17,7 @@
   "os" : ["darwin", "linux", "win32", "x64"],
   "scripts" : {
     "build" : "ng build",
-    "build:prod" : "ng build --prod",
+    "build:prod" : "ng build --configuration production",
     "clean" : "rimraf ./build-cache ./coverage-report ./dist ./dist-prod ./eslint-report.html",
     "lint" : "eslint **/*.ts",
     "lint:report" : "eslint **/*.ts -f node_modules/eslint-html-reporter/reporter.js -o ./eslint-report.html",
