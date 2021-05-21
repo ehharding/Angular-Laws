@@ -2,18 +2,16 @@
  * Copyright 2021 Evan H. Harding. All Rights Reserved.
  ****************************************************************************************************************************************************/
 
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+import { AboutDialogConfigData, OpenSourceDependency, PackageVersion } from '@core/components/toolbar/about-dialog/about-dialog.model';
 
 import packageJSON from 'app/../../package.json';
 
-export interface AboutDialogConfigData {
-  aboutDialogTitle : string;
-  applicationTitle : string;
-}
-
 @Component({
   changeDetection : ChangeDetectionStrategy.OnPush,
+  encapsulation : ViewEncapsulation.None,
   selector : 'pf-about-dialog',
   styleUrls : ['about-dialog.component.scss'],
   templateUrl : 'about-dialog.component.html'
@@ -24,13 +22,26 @@ export class AboutDialogComponent implements OnInit, OnDestroy {
   public readonly applicationTitle : string = this.data.applicationTitle;
   public readonly dialogTitle : string = this.data.aboutDialogTitle;
 
+  public readonly openSourceDependencies : OpenSourceDependency[] = [
+    { imgAltDescription : 'Angular.io', imgTitle : 'angular', tooltip : 'Angular - Web Development Framework', websiteLink : 'https://angular.io' },
+    { imgAltDescription : 'Angular Material.io', imgTitle : 'angular-material', tooltip : 'Angular Material - Theming Library', websiteLink : 'https://material.angular.io' },
+    { imgAltDescription : 'Bootstrap', imgTitle : 'bootstrap', tooltip : 'Bootstrap - CSS Framework', websiteLink : 'https://getbootstrap.com' },
+    { imgAltDescription : 'RxJS', imgTitle : 'rxjs', tooltip : 'RxJS - Reactive Extensions Library for JavaScript', websiteLink : 'https://rxjs-dev.firebaseapp.com' },
+    { imgAltDescription : 'ESLint', imgTitle : 'eslint', tooltip : 'ESLint - JavaScript & TypeScript Linter', websiteLink : 'https://eslint.org' },
+    { imgAltDescription : 'TypeScript', imgTitle : 'typescript', tooltip : 'TypeScript - JavaScript With Typing', websiteLink : 'https://www.typescriptlang.org' },
+    { imgAltDescription : 'Node.js', imgTitle : 'nodejs', tooltip : 'Node.js - JavaScript Runtime Engine', websiteLink : 'https://nodejs.org/en/' },
+    { imgAltDescription : 'NPM', imgTitle : 'npm', tooltip : 'NPM - Software Registry', websiteLink : 'https://www.npmjs.com' }
+  ];
+
   public readonly applicationVersion : string = packageJSON.version;
-  public readonly angularVersion : string = packageJSON.dependencies['@angular/core'];
-  public readonly angularMaterialVersion : string = packageJSON.dependencies['@angular/material'];
-  public readonly bootstrapVersion : string = packageJSON.dependencies['bootstrap'];      // eslint-disable-line @typescript-eslint/dot-notation
-  public readonly rxJSVersion : string = packageJSON.dependencies['rxjs'];                // eslint-disable-line @typescript-eslint/dot-notation
-  public readonly esLintVersion : string = packageJSON.devDependencies['eslint'];         // eslint-disable-line @typescript-eslint/dot-notation
-  public readonly typeScriptVersion : string = packageJSON.devDependencies['typescript']; // eslint-disable-line @typescript-eslint/dot-notation
+  public readonly packageVersions : PackageVersion[] = [
+    { name : 'Angular', version : packageJSON.dependencies['@angular/core'] },
+    { name : 'Angular Material', version : packageJSON.dependencies['@angular/material'] },
+    { name : 'Bootstrap', version : packageJSON.dependencies.bootstrap },
+    { name : 'RxJS', version : packageJSON.dependencies.rxjs },
+    { name : 'ESLint', version : packageJSON.devDependencies.eslint },
+    { name : 'TypeScript', version : packageJSON.devDependencies.typescript }
+  ];
 
   private _currentTimeTimeout : number;
 

@@ -17,14 +17,14 @@
 <div class="row m-3">
   <div class="mx-auto w-70">
     <mat-accordion class="pf-headers-align">
-      <mat-expansion-panel
+      <mat-expansion-panel style="max-height : 750px"
         *ngFor="let contributor of contributors; let index = index"
         (closed)="panelOpen = false" (opened)="panelOpen = true"
         (mouseenter)="panelHovered = true" (mouseleave)="panelHovered = false">
           <!-- Panel Header -->
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <mat-icon aria-hidden="true" class="mr-2">account_circle</mat-icon>
+              <mat-icon aria-hidden="true" class="me-2">account_circle</mat-icon>
               <span
                 class="pf-contributor-shift-animation"
                 [@hover]="panelHovered && !panelOpen ? 'shiftedState' : 'normalState'"
@@ -43,7 +43,7 @@
 
           <!-- Panel Content (Lazily-Loaded) -->
           <ng-template matExpansionPanelContent>
-            <div class="w-40">
+            <div class="d-flex justify-content-center">
               <mat-card class="mat-elevation-z0">
                 <!-- Card Header -->
                 <mat-card-header>
@@ -51,9 +51,6 @@
                   <mat-card-title>{{ contributor.firstName }} {{ contributor.lastName }}</mat-card-title>
                   <mat-card-subtitle>{{ contributor.title }}</mat-card-subtitle>
                 </mat-card-header>
-
-                <!-- Card Image -->
-                <img mat-card-image aria-hidden="true" alt="{{ contributor.firstName }} {{ contributor.lastName }}" src="assets/images/{{ contributorNamesKebab[index] }}.jpeg"/>
 
                 <!-- Card Content -->
                 <mat-card-content>{{ contributor.personalSummary }}</mat-card-content>
@@ -63,7 +60,7 @@
                   <!-- The First Contributor Card Action Button Is An Email Link -->
                   <a href="mailto:{{ contributor.email }}?subject=Subject&body=Hi%20{{ contributor.firstName }}">
                     <button mat-button aria-label="{{ contributor.firstName }} {{ contributor.lastName }}'s E-Mail Button" [matTooltip]="contributor.email">
-                      <mat-icon aria-hidden="true" class="mr-2">email</mat-icon>
+                      <mat-icon aria-hidden="true" class="me-2">email</mat-icon>
                       <span>E-MAIL</span>
                     </button>
                   </a>
@@ -71,7 +68,7 @@
                   <!-- The Second Contributor Card Action Button Is A Link To The Respective Contributors' GitHub (Optional) -->
                   <a *ngIf="contributor.gitHub" target="_blank" [href]="contributor.gitHub">
                     <button mat-button aria-label="{{ contributor.firstName }} {{ contributor.lastName }}'s GitHub Button">
-                      <img alt="GitHub Logo" aria-hidden="true" class="pf-card-footer-logo mr-2" src="assets/icons/github-logo.svg"/>
+                      <img alt="GitHub Logo" aria-hidden="true" class="pf-card-footer-logo me-2" src="assets/images/other-logos/github-logo.svg"/>
                       <span>GITHUB</span>
                     </button>
                   </a>
@@ -79,7 +76,7 @@
                   <!-- The Third Contributor Card Action Button Is A Link To The Respective Contributors' LinkedIn (Optional) -->
                   <a *ngIf="contributor.linkedIn" target="_blank" [href]="contributor.linkedIn">
                     <button mat-button aria-label="{{ contributor.firstName }} {{ contributor.lastName }}'s LinkedIn Button">
-                      <img alt="LinkedIn Logo" aria-hidden="true" class="pf-card-footer-logo mr-2" src="assets/icons/linkedin-logo.svg"/>
+                      <img alt="LinkedIn Logo" aria-hidden="true" class="pf-card-footer-logo me-2" src="assets/images/other-logos/linkedin-logo.svg"/>
                       <span>LINKEDIN</span>
                     </button>
                   </a>

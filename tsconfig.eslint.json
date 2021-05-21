@@ -1,0 +1,5 @@
+{
+  "extends" : "./tsconfig.app.json",
+  "files" : ["src/environments/environment.prod.ts", "src/polyfills.ts", "src/test.ts", "karma.conf.ts"],
+  "include" : ["**/*.ts"]
+}

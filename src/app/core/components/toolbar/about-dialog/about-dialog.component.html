@@ -6,86 +6,37 @@
   <mat-icon aria-hidden="true">close</mat-icon>
 </button>
 
-<h1 mat-dialog-title aria-labelledby="About Dialog Title">{{ dialogTitle }}</h1>
+<h3 aria-labelledby="About Dialog Title" class="mb-3">{{ dialogTitle }}</h3>
 
 <mat-dialog-content>
-  <h4 aria-labelledby="Pocket Fic Description Header">What Is {{ applicationTitle }}?</h4>
-  <p aria-labelledby="Pocket Fic Description">
+  <h5 aria-labelledby="Pocket Fic Description Header">What Is {{ applicationTitle }}?</h5>
+  <p aria-labelledby="Pocket Fic Description Text">
     Welcome to {{ applicationTitle }}! This project is about creating a modern, user-friendly, and responsive fan fiction website for the world to
     use. Built on the latest technologies and utilizing the latest web development paradigms, I am hoping for {{ applicationTitle }} to become the
     fan fiction site every fan fiction lover wants to use.
   </p>
 
-  <h4 aria-labelledby="Pocket Fic Open Source Components Header">Built With Open Source Software</h4>
-  <div class="container">
-    <div class="align-items-center justify-content-center row">
-      <!--
-       - SVG logo assets taken from the following sources:
-       -   Angular          - https://upload.wikimedia.org/wikipedia/commons/c/cf/Angular_full_color_logo.svg
-       -   Angular Material - https://material.angular.io/assets/img/angular-material-logo.svg
-       -   Bootstrap        - https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg
-       -   RxJS             - https://raw.githubusercontent.com/ReactiveX/rxjs/master/resources/CI-CD/logo/svg/RxJs_Logo_Basic.svg
-       -   ESLint           - https://d33wubrfki0l68.cloudfront.net/204482ca413433c80cd14fe369e2181dd97a2a40/092e2/assets/img/logo.svg
-       -   TypeScript       - https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg
-       -   Node.js          - https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg
-       -   NPM              - https://upload.wikimedia.org/wikipedia/commons/d/db/Npm-logo.svg
-       -->
-
-      <!-- Angular -->
-      <a href="https://angular.io" target="_blank" matTooltip="Angular">
-        <img alt="Angular.io" aria-hidden="true" src="assets/icons/dependency-logos/angular.svg" role="img"/>
-      </a>
-      <!-- A Scaled '+' -->
-      <span class="m-2" [style.transform]="'scale(2.0)'">+</span>
-      <!-- Angular Material -->
-      <a href="https://material.angular.io" target="_blank" matTooltip="Angular Material">
-        <img alt="Angular Material.io" aria-hidden="true" src="assets/icons/dependency-logos/angular-material.svg" role="img"/>
-      </a>
-
-      <mat-divider vertical class="pf-source-vertical-divider m-2"></mat-divider>
-
-      <!-- Bootstrap -->
-      <a href="https://getbootstrap.com" target="_blank" matTooltip="Bootstrap">
-        <img alt="Bootstrap" aria-hidden="true" src="assets/icons/dependency-logos/bootstrap.svg" role="img"/>
-      </a>
-
-      <mat-divider vertical class="pf-source-vertical-divider m-2"></mat-divider>
-
-      <!-- RxJS -->
-      <a href="https://rxjs-dev.firebaseapp.com" target="_blank" matTooltip="RxJS">
-        <img alt="RxJS" aria-hidden="true" src="assets/icons/dependency-logos/rxjs.svg" role="img"/>
-      </a>
-
-      <mat-divider vertical class="pf-source-vertical-divider m-2"></mat-divider>
-
-      <!-- ESLint -->
-      <a href="https://eslint.org/" target="_blank" matTooltip="ESLint">
-        <img alt="ESLint" aria-hidden="true" src="assets/icons/dependency-logos/eslint.svg" role="img"/>
-      </a>
-
-      <mat-divider vertical class="pf-source-vertical-divider m-2"></mat-divider>
-
-      <!-- TypeScript -->
-      <a href="https://www.typescriptlang.org/" target="_blank" matTooltip="TypeScript">
-        <img alt="TypeScript" aria-hidden="true" src="assets/icons/dependency-logos/typescript.svg" role="img"/>
-      </a>
-
-      <mat-divider vertical class="pf-source-vertical-divider m-2"></mat-divider>
-
-      <!-- Node.js -->
-      <a href="https://nodejs.org/en/" target="_blank" matTooltip="Node.js">
-        <img alt="Node.js" aria-hidden="true" src="assets/icons/dependency-logos/nodejs.svg" role="img"/>
-      </a>
-      <!-- A Scaled '+' -->
-      <span class="m-2" [style.transform]="'scale(2.0)'">+</span>
-      <!-- NPM -->
-      <a href="https://www.npmjs.com" target="_blank" matTooltip="Node Package Manager (NPM)">
-        <img alt="NPM" aria-hidden="true" src="assets/icons/dependency-logos/npm.svg" role="img"/>
+  <!--
+   - SVG logo assets taken from the following sources:
+   -   Angular          - https://upload.wikimedia.org/wikipedia/commons/c/cf/Angular_full_color_logo.svg
+   -   Angular Material - https://material.angular.io/assets/img/angular-material-logo.svg
+   -   Bootstrap        - https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg
+   -   RxJS             - https://raw.githubusercontent.com/ReactiveX/rxjs/master/resources/CI-CD/logo/svg/RxJs_Logo_Basic.svg
+   -   ESLint           - https://d33wubrfki0l68.cloudfront.net/204482ca413433c80cd14fe369e2181dd97a2a40/092e2/assets/img/logo.svg
+   -   TypeScript       - https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg
+   -   Node.js          - https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg
+   -   NPM              - https://upload.wikimedia.org/wikipedia/commons/d/db/Npm-logo.svg
+   -->
+  <h5 aria-labelledby="Pocket Fic Open Source Components Header">Built With Open Source Software</h5>
+  <cdk-virtual-scroll-viewport class="pf-horizontal-viewport my-5" itemSize="100" orientation="horizontal">
+    <div *cdkVirtualFor="let openSourceDependency of openSourceDependencies" class="mx-2 w-100" matTooltip="{{ openSourceDependency.tooltip }}">
+      <a href="{{ openSourceDependency.websiteLink }}" target="_blank">
+        <img alt="{{ openSourceDependency.imgAltDescription }}" aria-hidden="true" class="pf-dependency-image" src="assets/images/dependency-logos/{{ openSourceDependency.imgTitle }}.svg" role="img"/>
       </a>
     </div>
-  </div>
+  </cdk-virtual-scroll-viewport>
 
-  <h4 aria-labelledby="Pocket Fic Version Information Header">Version Information</h4>
+  <h5 aria-labelledby="Pocket Fic Version Information Header">Version Information</h5>
   <mat-card class="mat-elevation-z0">
     <!-- Card Header -->
     <mat-card-header>
@@ -96,57 +47,23 @@
 
     <!-- Card Content -->
     <mat-card-content>
-      <div class="row">
-        <div>
-          <h5 aria-labelledby="Angular Version Header">Angular</h5>
-          <p aria-labelledby="Angular Version">{{ angularVersion }}</p>
+      <cdk-virtual-scroll-viewport class="pf-horizontal-viewport" itemSize="50" orientation="horizontal">
+        <div *cdkVirtualFor="let packageVersion of packageVersions" class="text-start w-100">
+          <h6 aria-labelledby="{{ packageVersion.name }} Version Header">{{ packageVersion.name }}</h6>
+          <p aria-labelledby="{{ packageVersion.name }} Version Text">{{ packageVersion.version }}</p>
         </div>
-
-        <mat-divider vertical class="pf-version-vertical-divider m-2"></mat-divider>
-
-        <div>
-          <h5 aria-labelledby="Angular Material Version Header">Angular Material</h5>
-          <p aria-labelledby="Angular Material Version">{{ angularMaterialVersion }}</p>
-        </div>
-
-        <mat-divider vertical class="pf-version-vertical-divider m-2"></mat-divider>
-
-        <div>
-          <h5 aria-labelledby="Bootstrap Version Header">Bootstrap</h5>
-          <p aria-labelledby="Bootstrap Version">{{ bootstrapVersion }}</p>
-        </div>
-
-        <mat-divider vertical class="pf-version-vertical-divider m-2"></mat-divider>
-
-        <div>
-          <h5 aria-labelledby="RxJS Version Header">RxJS</h5>
-          <p aria-labelledby="RxJS Version">{{ rxJSVersion }}</p>
-        </div>
-
-        <mat-divider vertical class="pf-version-vertical-divider m-2"></mat-divider>
-
-        <div>
-          <h5 aria-labelledby="ESLint Version Header">ESLint</h5>
-          <p aria-labelledby="ESLint Version">{{ esLintVersion }}</p>
-        </div>
-
-        <mat-divider vertical class="pf-version-vertical-divider m-2"></mat-divider>
-
-        <div>
-          <h5 aria-labelledby="TypeScript Version Header">TypeScript</h5>
-          <p aria-labelledby="TypeScript Version">{{ typeScriptVersion }}</p>
-        </div>
-      </div>
+      </cdk-virtual-scroll-viewport>
     </mat-card-content>
   </mat-card>
 </mat-dialog-content>
 
-<mat-dialog-actions class="justify-content-between row mr-2">
-  <button cdkFocusInitial mat-button mat-dialog-close aria-labelledby="About Dialog Close Button" class="ml-2 mb-2">OK</button>
-  <div class="align-items-center row mb-2">
-    <mat-icon aria-hidden="true" class="mr-2">copyright</mat-icon>
-    <span aria-labelledby="Lockheed Martin Copyright Text" class="pf-copyright-text">
-      {{ currentTime.getFullYear().toString() }} Evan H. Harding. All Rights Reserved.
-    </span>
+<mat-dialog-actions class="justify-content-between">
+  <div>
+    <button cdkFocusInitial mat-button mat-dialog-close aria-labelledby="About Dialog Close Button">OK</button>
+  </div>
+
+  <div class="align-items-center d-flex">
+    <mat-icon aria-hidden="true" class="me-2">copyright</mat-icon>
+    <span aria-labelledby="Lockheed Martin Copyright Text" class="pf-copyright-text">{{ currentTime.getFullYear().toString() }} Evan H. Harding. All Rights Reserved.</span>
   </div>
 </mat-dialog-actions>

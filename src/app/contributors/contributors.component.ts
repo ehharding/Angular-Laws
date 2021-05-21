@@ -4,7 +4,7 @@
 
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
-import { CONTRIBUTORS, CONTRIBUTORS_ANIMATIONS, Contributor } from '@contributors/contributors.configuration';
+import { CONTRIBUTORS, CONTRIBUTORS_ANIMATIONS, Contributor } from '@contributors/contributors.model';
 
 @Component({
   changeDetection : ChangeDetectionStrategy.OnPush,

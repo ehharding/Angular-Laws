@@ -9,7 +9,8 @@ import { Title } from '@angular/platform-browser';
 import { AVAILABLE_THEMES, Theme, ThemeBundles } from '@core/services/theme/theme.configuration';
 import { ThemeService } from '@core/services/theme/theme.service';
 
-import { AboutDialogComponent, AboutDialogConfigData } from '@core/components/toolbar/about-dialog/about-dialog.component';
+import { AboutDialogComponent } from '@core/components/toolbar/about-dialog/about-dialog.component';
+import { AboutDialogConfigData } from '@core/components/toolbar/about-dialog/about-dialog.model';
 
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';

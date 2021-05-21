@@ -38,11 +38,9 @@
               "commonChunk" : true,
               "deleteOutputPath" : true,
               "extractLicenses" : true,
-              "forkTypeChecker" : true,
-              "namedChunks" : false,
+              "namedChunks" : true,
               "preserveSymlinks" : false,
               "serviceWorker" : false,
-              "showCircularDependencies" : true,
               "subresourceIntegrity" : false,
               "vendorChunk" : false,
               "verbose" : false,
@@ -55,6 +53,7 @@
               "polyfills" : "src/polyfills.ts",
               "tsConfig" : "tsconfig.app.json",
               "crossOrigin" : "anonymous",
+              "inlineStyleLanguage" : "scss",
               "outputHashing" : "all",
               "allowedCommonJsDependencies" : ["lodash"],
               "assets" : ["src/assets", "src/favicon.ico"],
@@ -64,7 +63,7 @@
                 { "type" : "anyComponentStyle", "maximumWarning" : "6kB", "maximumError" : "10kB" }
               ],
               "fileReplacements" : [{ "replace" : "src/environments/environment.ts", "with" : "src/environments/environment.prod.ts" }],
-              "optimization" : { "scripts" : true, "styles" : true },
+              "optimization" : { "scripts" : true, "fonts" : { "inline" : true }, "styles" : { "inlineCritical" : true, "minify" : true } },
               "sourceMap" : { "hidden" : false, "scripts" : true, "styles" : true, "vendor" : true }
             }
           },
@@ -74,11 +73,9 @@
             "commonChunk" : true,
             "deleteOutputPath" : true,
             "extractLicenses" : false,
-            "forkTypeChecker" : true,
-            "namedChunks" : false,
+            "namedChunks" : true,
             "preserveSymlinks" : false,
             "serviceWorker" : false,
-            "showCircularDependencies" : true,
             "subresourceIntegrity" : false,
             "vendorChunk" : false,
             "verbose" : false,
@@ -91,6 +88,7 @@
             "polyfills" : "src/polyfills.ts",
             "tsConfig" : "tsconfig.app.json",
             "crossOrigin" : "none",
+            "inlineStyleLanguage" : "scss",
             "outputHashing" : "none",
             "allowedCommonJsDependencies" : ["lodash"],
             "assets" : ["src/assets", "src/favicon.ico"],
@@ -99,7 +97,7 @@
               { "type" : "initial", "maximumWarning" : "2MB", "maximumError" : "5MB" },
               { "type" : "anyComponentStyle", "maximumWarning" : "6kB", "maximumError" : "10kB" }
             ],
-            "optimization" : { "scripts" : true, "styles" : true },
+            "optimization" : { "scripts" : true, "fonts" : { "inline" : true }, "styles" : { "inlineCritical" : true, "minify" : true } },
             "sourceMap" : { "hidden" : false, "scripts" : true, "styles" : true, "vendor" : true }
           }
         },

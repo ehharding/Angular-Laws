@@ -9,7 +9,7 @@
       <!-- The First Item In The Left Group Is The `Pocket Fic` Button Which Links The User To The Home Page -->
       <a routerLink="/contributors">
         <button mat-button aria-label="Home Page Button">
-          <mat-icon aria-hidden="true" class="mr-2">import_contacts</mat-icon>
+          <mat-icon aria-hidden="true" class="me-2">import_contacts</mat-icon>
           <span>{{ applicationTitle }}</span>
         </button>
       </a>
@@ -31,11 +31,11 @@
         <ng-template matMenuContent>
           <button mat-menu-item *ngFor="let theme of availableThemes" [disabled]="theme.bundleName === activeTheme" (click)="setApplicationTheme(theme.bundleName)">
             <!-- Display A Checkmark Next To The Active Theme -->
-            <mat-icon *ngIf="theme.bundleName === activeTheme" aria-hidden="true" class="mr-2">check</mat-icon>
+            <mat-icon *ngIf="theme.bundleName === activeTheme" aria-hidden="true" class="me-2">check</mat-icon>
             <!-- Display An Empty Icon Which Acts Like A Spacer Next To All Of The Other Themes -->
-            <mat-icon *ngIf="!(theme.bundleName === activeTheme)" aria-hidden="true" class="mr-2"></mat-icon>
+            <mat-icon *ngIf="!(theme.bundleName === activeTheme)" aria-hidden="true" class="me-2"></mat-icon>
 
-            <mat-icon aria-hidden="true" class="mr-2">
+            <mat-icon aria-hidden="true" class="me-2">
               <svg viewBox="0 0 80 80">
                 <defs>
                   <path id="a" d="M77.87 0C79.05 0 80 .95 80 2.13v75.74c0 1.17-.95 2.13-2.13 2.13H2.13C.96 80 0 79.04 0 77.87V2.13C0 .95.96 0 2.13 0h75.74z"></path>
@@ -53,7 +53,7 @@
       </mat-menu>
 
       <!-- The Second Item In The Right Group Is The `Help` Button -->
-      <button mat-icon-button aria-label="Help Menu Button" class="mr-2" matTooltip="Help Me" [matMenuTriggerFor]="helpMenu">
+      <button mat-icon-button aria-label="Help Menu Button" class="me-2" matTooltip="Help Me" [matMenuTriggerFor]="helpMenu">
         <mat-icon aria-hidden="true">help</mat-icon>
       </button>
       <mat-menu #helpMenu="matMenu" xPosition="before">
@@ -67,7 +67,7 @@
       <!-- The Third Item In The Right Group Is A Button Which Links To The GitHub Repository -->
       <a target="_blank" [href]="gitHubURL">
         <button mat-button aria-label="GitHub Repository Button">
-          <img alt="GitHub Logo" aria-hidden="true" class="pf-github-logo mr-2" src="assets/icons/github-logo.svg"/>
+          <img alt="GitHub Logo" aria-hidden="true" class="pf-github-logo me-2" src="assets/images/other-logos/github-logo.svg"/>
           <span>GitHub</span>
         </button>
       </a>
