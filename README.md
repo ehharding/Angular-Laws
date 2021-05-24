@@ -73,8 +73,8 @@ a token to verify permissions. Contact me, and I will gladly provide the token. 
 You may need to go through a setup routine for the [Material Theme UI](https://plugins.jetbrains.com/plugin/8006-material-theme-ui) plugin.
 Personally, I use the Night Owl theme.
 
-Finally, while Chrome, Edge, Firefox, and Opera are supported as browsers, I would highly recommend [Firefox](https://www.mozilla.org/en-US/new/) as
-your core development browser. You will need it to properly run the project unit tests, anyways.
+Finally, while Chrome, Edge, Firefox, Opera, and Safari are supported as browsers, I would highly recommend [Firefox](https://www.mozilla.org/en-US/new/)
+as your core development browser. You will need it to properly run the project unit tests, anyways.
 
 ### Installing Project Dependencies
 You must now install the necessary dependencies for the project via NPM. From WebStorm's Terminal command line:
