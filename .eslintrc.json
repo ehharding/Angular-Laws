@@ -637,6 +637,7 @@
     {
       "files" : ["*.spec.ts", "karma.conf.ts"],
       "rules" : {
+        "@typescript-eslint/dot-notation" : "off",
         "@typescript-eslint/no-empty-function" : "off",
         "@typescript-eslint/no-explicit-any" : "off",
         "@typescript-eslint/no-floating-promises" : "off",

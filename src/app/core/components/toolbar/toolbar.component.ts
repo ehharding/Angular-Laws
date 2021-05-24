@@ -23,17 +23,18 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class ToolbarComponent implements OnInit, OnDestroy {
   public readonly aboutDialogTitle : string = 'About The Application';
-  public readonly applicationTitle : string = this._titleService.getTitle();
-  public readonly gitHubURL : string = 'https://github.com/ehharding/Pocket-Fic';
   public readonly availableThemes : Theme[] = AVAILABLE_THEMES;
 
   public activeTheme : ThemeBundles | undefined;
+  public applicationTitle : string = '';
 
   private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
   public constructor(private readonly _dialog : MatDialog, private readonly _themeService : ThemeService, private readonly _titleService : Title) { }
 
   public ngOnInit() : void {
+    this.applicationTitle = this._titleService.getTitle();
+
     this._themeService.getActiveThemeBundleName().pipe(takeUntil(this._componentDestroyed$)).subscribe((activeTheme : ThemeBundles) : void => {
       this.activeTheme = activeTheme;
     });

@@ -124,12 +124,7 @@
           }
         },
         "lint" : {
-          "builder" : "@angular-eslint/builder:lint",
-          "options" : {
-            "exclude" : ["**/node_modules/**"],
-            "lineFilePatterns" : ["src/**/*.ts", "src/**/*.html"],
-            "tsConfig" : ["tsconfig.app.json"]
-          }
+          "options" : { "exclude" : ["**/node_modules/**"], "tsConfig" : ["tsconfig.app.json"] }
         }
       },
       "i18n" : { "sourceLocale" : "en-US" }
