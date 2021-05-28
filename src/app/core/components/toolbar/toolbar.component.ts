@@ -57,7 +57,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
       role : 'dialog',
       panelClass : 'pf-dialog',
       maxHeight : '80vh',
-      maxWidth : '1200px',
+      maxWidth : '1500px',
       width : '50%',
       data : ABOUT_DIALOG_CONFIG_DATA
     };
