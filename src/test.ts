@@ -25,3 +25,10 @@ const context : { <T>(id : string) : T; keys() : string[]; } = require.context('
 
 // Load Their Modules
 context.keys().map(context);
+
+// Load Material Icons From The Internet For Tests As Well
+const materialIcons : HTMLLinkElement = document.createElement('link');
+materialIcons.href = 'https://fonts.googleapis.com/css2?family=Material+Icons';
+materialIcons.rel = 'stylesheet';
+
+document.head.appendChild(materialIcons);

@@ -2,9 +2,10 @@
  * Copyright 2021 Evan H. Harding. All Rights Reserved.
  ****************************************************************************************************************************************************/
 
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatDialog, MatDialogConfig, MatDialogModule } from '@angular/material/dialog';
-import { MatMenuModule } from '@angular/material/menu';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { CoreModule } from '@core/core.module';
+import { RouterTestingModule } from '@angular/router/testing';
 import { Title } from '@angular/platform-browser';
 
 import { AVAILABLE_THEMES, ThemeBundles } from '@core/services/theme/theme.configuration';
@@ -27,12 +28,21 @@ describe('ToolbarComponent', () : void => {
   const DEFAULT_THEME : ThemeBundles = AVAILABLE_THEMES[0].bundleName;
   const MOCK_APPLICATION_TITLE : string = 'Application Title';
 
-  beforeEach(() : void => {
+  // Asynchronous beforeEach()
+  beforeEach(waitForAsync(() : void => {
     TestBed.configureTestingModule({
       declarations : [ToolbarComponent],
-      imports : [MatDialogModule, MatMenuModule]
-    });
+      imports : [CoreModule, RouterTestingModule],
+      providers : [MatDialog, Title, ThemeService]
+    }).compileComponents(); // Compile Template And CSS
+  }));
 
+  it('should create', () : void => {
+    expect(fixture.componentInstance).toBeDefined();
+  });
+
+  // Synchronous beforeEach()
+  beforeEach(() : void => {
     fixture = TestBed.createComponent(ToolbarComponent);
     toolbarComponent = fixture.componentInstance;
 
@@ -52,9 +62,20 @@ describe('ToolbarComponent', () : void => {
   });
 
   describe('ngOnInit()', () : void => {
-    it('should execute component initialization instructions', () : void => {
+    it('should execute component initialization instructions and check for basic DOM structure', () : void => {
       expect(toolbarComponent.applicationTitle).toEqual(MOCK_APPLICATION_TITLE);
       expect(toolbarComponent.activeTheme).toEqual(DEFAULT_THEME);
+
+      // We Expect The First <button></button> Element To Be The `Home Page` Button (Which Also Includes A Material Icon)
+      expect(fixture.nativeElement.querySelector('button[aria-label="Home Page Button"]').textContent.includes(toolbarComponent.applicationTitle)).toBe(true);
+      // We Expect The Second <button></button> Element To Be The `Contributors` Page Button
+      expect(fixture.nativeElement.querySelector('button[aria-label="Contributors Page Button"]').textContent).toEqual('Contributors');
+      // We Expect The Third <button></button Element To Be The `Theme Selection` Button (Which Includes A Paint Palette Material Icon)
+      expect(fixture.nativeElement.querySelector('button[aria-label="Theme Selection Button"]').textContent).toEqual('palette');
+      // We Expect The Fourth <button></button Element To Be The `Help` Button (Which Includes A Help Material Icon)
+      expect(fixture.nativeElement.querySelector('button[aria-label="Help Menu Button"]').textContent).toEqual('help');
+      // We Expect The Fifth And Final <button></button Element To Be The `GitHub Repository` Button (Which Includes An SVG Image Logo)
+      expect(fixture.nativeElement.querySelector('button[aria-label="GitHub Repository Button"]').textContent.includes('GitHub')).toBe(true);
     });
   });
 

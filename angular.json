@@ -98,7 +98,8 @@
               { "type" : "anyComponentStyle", "maximumWarning" : "6kB", "maximumError" : "10kB" }
             ],
             "optimization" : { "scripts" : true, "fonts" : { "inline" : true }, "styles" : { "inlineCritical" : true, "minify" : true } },
-            "sourceMap" : { "hidden" : false, "scripts" : true, "styles" : true, "vendor" : true }
+            "sourceMap" : { "hidden" : false, "scripts" : true, "styles" : true, "vendor" : true },
+            "stylePreprocessorOptions" : { "includePaths" : ["node_modules/bootstrap/scss/bootstrap.scss"] }
           }
         },
         "serve" : {
@@ -120,7 +121,8 @@
             "polyfills" : "src/polyfills.ts",
             "tsConfig" : "tsconfig.spec.json",
             "assets" : ["src/assets", "src/favicon.ico"],
-            "styles" : ["src/styles.scss"]
+            "styles" : ["src/styles.scss"],
+            "stylePreprocessorOptions" : { "includePaths" : ["node_modules/bootstrap/scss/bootstrap.scss"] }
           }
         },
         "lint" : {

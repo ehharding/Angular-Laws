@@ -6,13 +6,13 @@
  * {@link https://angular.io/guide/sharing-ngmodules#sharing-modules | Angular Sharing Modules Guide}
  ****************************************************************************************************************************************************/
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  exports : [CommonModule, FormsModule, HttpClientModule, RouterModule]
+  exports : [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule, RouterModule]
 })
 export class SharedModule { }

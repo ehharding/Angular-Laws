@@ -83,14 +83,24 @@ module.exports = (config : any) : void => {
     preprocessors : { 'src/app/*.ts' : 'coverage' },
     exclude : [],
     files : [
-      { pattern : 'src/*.ts', type : 'js', included : false, served : true, watched : false },
-      'node_modules/zone.js/dist/zone.js',
       'node_modules/zone.js/dist/long-stack-trace-zone.js',
       'node_modules/zone.js/dist/proxy.js',
       'node_modules/zone.js/dist/sync-test.js',
       'node_modules/zone.js/dist/jasmine-patch.js',
       'node_modules/zone.js/dist/async-test.js',
-      'node_modules/zone.js/dist/fake-async-test.js'
+      'node_modules/zone.js/dist/fake-async-test.js',
+      { pattern : 'node_modules/bootstrap/dist/css/bootstrap.css', watched : true, included : true, served : true },
+      { pattern : 'node_modules/bootstrap/dist/css/bootstrap.rtl.css', watched : true, included : true, served : true },
+      { pattern : 'node_modules/bootstrap/dist/css/bootstrap-grid.css', watched : true, included : true, served : true },
+      { pattern : 'node_modules/bootstrap/dist/css/bootstrap-grid.rtl.css', watched : true, included : true, served : true },
+      { pattern : 'node_modules/bootstrap/dist/css/bootstrap-reboot.css', watched : true, included : true, served : true },
+      { pattern : 'node_modules/bootstrap/dist/css/bootstrap-reboot.rtl.css', watched : true, included : true, served : true },
+      { pattern : 'node_modules/bootstrap/dist/css/bootstrap-utilities.css', watched : true, included : true, served : true },
+      { pattern : 'node_modules/bootstrap/dist/css/bootstrap-utilities.rtl.css', watched : true, included : true, served : true },
+      { pattern : 'src/assets/themes/deeppurple-amber.css', watched : true, included : true, served : true },
+      { pattern : 'src/assets/themes/indigo-pink.css', watched : true, included : true, served : true },
+      { pattern : 'src/assets/themes/pink-bluegrey.css', watched : true, included : true, served : true },
+      { pattern : 'src/assets/themes/purple-green.css', watched : true, included : true, served : true }
     ],
     frameworks : ['@angular-devkit/build-angular', 'jasmine'],
     plugins : [

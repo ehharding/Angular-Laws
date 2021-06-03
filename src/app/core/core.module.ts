@@ -30,7 +30,6 @@ import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
   declarations : [AboutDialogComponent, FooterComponent, ToolbarComponent],
   exports : [FooterComponent, ToolbarComponent],
   imports : [
-    SharedModule,
     MatButtonModule,
     MatCardModule,
     MatDialogModule,
@@ -39,7 +38,8 @@ import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
     MatMenuModule,
     MatToolbarModule,
     MatTooltipModule,
-    ScrollingModule
+    ScrollingModule,
+    SharedModule
   ],
   providers : [ThemeService]
 })
