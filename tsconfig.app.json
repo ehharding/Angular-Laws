@@ -73,7 +73,6 @@
     }
   },
   "files" : ["src/main.ts", "src/polyfills.ts"],
-  "exclude" : [
-    "src/environments/environment.production.ts", "src/test.ts", "karma.conf.ts"],
+  "exclude" : ["src/environments/environment.production.ts", "src/test.ts", "karma.conf.ts"],
   "include" : ["**.ts"]
 }
