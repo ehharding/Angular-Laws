@@ -16,9 +16,8 @@
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
+import { AVAILABLE_THEMES, ThemeBundles } from '@core/services/theme/theme.model';
 import { AppConfig } from 'app/app.config';
-
-import { AVAILABLE_THEMES, ThemeBundles } from '@core/services/theme/theme.configuration';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 

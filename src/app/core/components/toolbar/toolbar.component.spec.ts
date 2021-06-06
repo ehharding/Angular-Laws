@@ -9,7 +9,7 @@ import { MatDialogConfig } from '@angular/material/dialog';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Title } from '@angular/platform-browser';
 
-import { AVAILABLE_THEMES, ThemeBundles } from '@core/services/theme/theme.configuration';
+import { AVAILABLE_THEMES, ThemeBundles } from '@core/services/theme/theme.model';
 import { ThemeService } from '@core/services/theme/theme.service';
 
 import { AboutDialogComponent } from '@core/components/toolbar/about-dialog/about-dialog.component';
