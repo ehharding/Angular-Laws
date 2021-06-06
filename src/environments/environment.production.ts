@@ -6,6 +6,6 @@
  * {@link https://angular.io/guide/build | Angular Build Guide}
  ****************************************************************************************************************************************************/
 
-export const ENVIRONMENT : { production : boolean; } = {
-  production : true
+export const ENVIRONMENT : { name : 'development' | 'production'; } = {
+  name : 'production'
 };

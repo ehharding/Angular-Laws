@@ -16,6 +16,8 @@
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
+import { AppConfig } from 'app/app.config';
+
 import { AVAILABLE_THEMES, ThemeBundles } from '@core/services/theme/theme.configuration';
 
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -35,26 +37,6 @@ export class ThemeService {
    */
   public getActiveThemeBundleName() : Observable<ThemeBundles> {
     return this._activeThemeBundleName$.asObservable();
-  }
-
-  /**
-   * This method assigns the provided CSS class names to the element specified by elementID. Use this if you are wanting to achieve some kind of
-   * programmatic styling effect on a particular HTML element. The element ID here is referring to the ID set by using <input id="foo"/>, as an
-   * example.
-   *
-   * @param cssClassList - A list of CSS class names to assign to an existing HTML element
-   * @param elementID - The unique HTML ID of the element you would like to apply CSS classes to
-   */
-  public assignCSSClassesToID(cssClassList : readonly string[], elementID : string) : void {
-    const HTML_ELEMENT : HTMLElement | null = this._document.getElementById(elementID);
-
-    // If The Element Already Exists, We Set Its `class` Attribute To The List Of Provided CSS Class Names
-    if (HTML_ELEMENT) {
-      HTML_ELEMENT.setAttribute('class', cssClassList.join(' '));
-      // Otherwise, If The Element Does Not Exist, We'll Throw An Error Since That Essentially Means Programmer Mistake
-    } else {
-      throw new ReferenceError(`The HTML ID '${ elementID }' Does Not Exist In The DOM.`);
-    }
   }
 
   /**
@@ -86,7 +68,7 @@ export class ThemeService {
   public loadClientTheme(themeBundleName : ThemeBundles) : void {
     const HTML_LINK_ELEMENT_ID : string = 'client-theme';
     const HTML_LINK_ELEMENT : HTMLElement | null = this._document.getElementById(HTML_LINK_ELEMENT_ID);
-    const THEME_STYLES : string = `assets/themes/${ themeBundleName }.css`;
+    const THEME_STYLES : string = `${ AppConfig.appConfig.apiServer.themes }/${ themeBundleName }.css`;
 
     // If The <link/> Element Already Exists, We Simply Modify Its `href` Attribute
     if (HTML_LINK_ELEMENT) {
@@ -100,9 +82,7 @@ export class ThemeService {
       LINK_ELEMENT.setAttribute('type', 'text/css');
 
       // This Adds <link href="assets/themes/foo.css" id="client-theme" rel="stylesheet" type="text/css"/> To index.html's <head></head> Section
-      window.onload = () : void => {
-        this._document.head.appendChild(LINK_ELEMENT);
-      };
+      this._document.head.appendChild(LINK_ELEMENT);
     }
 
     this._activeThemeBundleName$.next(themeBundleName);

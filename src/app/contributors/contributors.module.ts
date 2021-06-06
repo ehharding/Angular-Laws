@@ -17,13 +17,13 @@ import { ContributorsComponent } from '@contributors/contributors.component';
 @NgModule({
   declarations : [ContributorsComponent],
   imports : [
-    ContributorsRoutingModule,
-    SharedModule,
     MatButtonModule,
     MatCardModule,
     MatExpansionModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    ContributorsRoutingModule,
+    SharedModule
   ]
 })
 export class ContributorsModule { }

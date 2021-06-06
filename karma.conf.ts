@@ -83,12 +83,6 @@ module.exports = (config : any) : void => {
     preprocessors : { 'src/app/*.ts' : 'coverage' },
     exclude : [],
     files : [
-      'node_modules/zone.js/dist/long-stack-trace-zone.js',
-      'node_modules/zone.js/dist/proxy.js',
-      'node_modules/zone.js/dist/sync-test.js',
-      'node_modules/zone.js/dist/jasmine-patch.js',
-      'node_modules/zone.js/dist/async-test.js',
-      'node_modules/zone.js/dist/fake-async-test.js',
       { pattern : 'node_modules/bootstrap/dist/css/bootstrap.css', watched : true, included : true, served : true },
       { pattern : 'node_modules/bootstrap/dist/css/bootstrap.rtl.css', watched : true, included : true, served : true },
       { pattern : 'node_modules/bootstrap/dist/css/bootstrap-grid.css', watched : true, included : true, served : true },

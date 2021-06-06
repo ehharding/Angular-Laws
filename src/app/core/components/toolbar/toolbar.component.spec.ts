@@ -3,8 +3,9 @@
  ****************************************************************************************************************************************************/
 
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from '@core/core.module';
+import { MatDialogConfig } from '@angular/material/dialog';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Title } from '@angular/platform-browser';
 
@@ -15,13 +16,12 @@ import { AboutDialogComponent } from '@core/components/toolbar/about-dialog/abou
 import { AboutDialogConfigData } from '@core/components/toolbar/about-dialog/about-dialog.model';
 import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
 
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 describe('ToolbarComponent', () : void => {
   let toolbarComponent : ToolbarComponent;
   let fixture : ComponentFixture<ToolbarComponent>;
 
-  let dialog : MatDialog;
   let themeService : ThemeService;
   let titleService : Title;
 
@@ -32,8 +32,8 @@ describe('ToolbarComponent', () : void => {
   beforeEach(waitForAsync(() : void => {
     TestBed.configureTestingModule({
       declarations : [ToolbarComponent],
-      imports : [CoreModule, RouterTestingModule],
-      providers : [MatDialog, Title, ThemeService]
+      imports : [BrowserAnimationsModule, CoreModule, RouterTestingModule],
+      providers : [Title, ThemeService]
     }).compileComponents(); // Compile Template And CSS
   }));
 
@@ -46,7 +46,6 @@ describe('ToolbarComponent', () : void => {
     fixture = TestBed.createComponent(ToolbarComponent);
     toolbarComponent = fixture.componentInstance;
 
-    dialog = TestBed.inject(MatDialog);
     themeService = TestBed.inject(ThemeService);
     titleService = TestBed.inject(Title);
 
@@ -65,17 +64,6 @@ describe('ToolbarComponent', () : void => {
     it('should execute component initialization instructions and check for basic DOM structure', () : void => {
       expect(toolbarComponent.applicationTitle).toEqual(MOCK_APPLICATION_TITLE);
       expect(toolbarComponent.activeTheme).toEqual(DEFAULT_THEME);
-
-      // We Expect The First <button></button> Element To Be The `Home Page` Button (Which Also Includes A Material Icon)
-      expect(fixture.nativeElement.querySelector('button[aria-label="Home Page Button"]').textContent.includes(toolbarComponent.applicationTitle)).toBe(true);
-      // We Expect The Second <button></button> Element To Be The `Contributors` Page Button
-      expect(fixture.nativeElement.querySelector('button[aria-label="Contributors Page Button"]').textContent).toEqual('Contributors');
-      // We Expect The Third <button></button Element To Be The `Theme Selection` Button (Which Includes A Paint Palette Material Icon)
-      expect(fixture.nativeElement.querySelector('button[aria-label="Theme Selection Button"]').textContent).toEqual('palette');
-      // We Expect The Fourth <button></button Element To Be The `Help` Button (Which Includes A Help Material Icon)
-      expect(fixture.nativeElement.querySelector('button[aria-label="Help Menu Button"]').textContent).toEqual('help');
-      // We Expect The Fifth And Final <button></button Element To Be The `GitHub Repository` Button (Which Includes An SVG Image Logo)
-      expect(fixture.nativeElement.querySelector('button[aria-label="GitHub Repository Button"]').textContent.includes('GitHub')).toBe(true);
     });
   });
 
@@ -99,19 +87,23 @@ describe('ToolbarComponent', () : void => {
 
       const EXPECTED_ABOUT_DIALOG_CONFIG : MatDialogConfig = {
         disableClose : true,
-        ariaLabel : 'About Dialog',
         role : 'dialog',
         panelClass : 'pf-dialog',
-        maxHeight : '80vh',
-        maxWidth : '1500px',
-        width : '50%',
+        maxHeight : '75%',
+        maxWidth : '75%',
         data : EXPECTED_DIALOG_CONFIG_DATA
       };
 
-      spyOn(dialog, 'open');
+      spyOn(toolbarComponent.dialog, 'open').and.returnValue({
+        addPanelClass() { },
+        removePanelClass() { },
+        backdropClick() : Observable<MouseEvent> {
+          return of({ } as any);
+        }
+      } as any);
 
       toolbarComponent.openAboutDialog();
-      expect(dialog.open).toHaveBeenCalledWith(AboutDialogComponent, EXPECTED_ABOUT_DIALOG_CONFIG);
+      expect(toolbarComponent.dialog.open).toHaveBeenCalledWith(AboutDialogComponent, EXPECTED_ABOUT_DIALOG_CONFIG);
     });
   });
 

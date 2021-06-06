@@ -62,7 +62,7 @@
                 { "type" : "initial", "maximumWarning" : "2MB", "maximumError" : "5MB" },
                 { "type" : "anyComponentStyle", "maximumWarning" : "6kB", "maximumError" : "10kB" }
               ],
-              "fileReplacements" : [{ "replace" : "src/environments/environment.ts", "with" : "src/environments/environment.prod.ts" }],
+              "fileReplacements" : [{ "replace" : "src/environments/environment.development.ts", "with" : "src/environments/environment.production.ts" }],
               "optimization" : { "scripts" : true, "fonts" : { "inline" : true }, "styles" : { "inlineCritical" : true, "minify" : true } },
               "sourceMap" : { "hidden" : false, "scripts" : true, "styles" : true, "vendor" : true }
             }

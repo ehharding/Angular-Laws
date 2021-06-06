@@ -7,30 +7,56 @@
  * {@link https://angular.io/guide/architecture#modules | Angular Module Guide}
  ****************************************************************************************************************************************************/
 
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions } from '@angular/material/tooltip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
 
+import { AppConfig } from 'app/app.config';
 import { AppRoutingModule } from 'app/app-routing.module';
 import { CoreModule } from '@core/core.module';
-import { SharedModule } from '@shared/shared.module';
 
 import { AppComponent } from 'app/app.component';
 
-const GLOBAL_TOOLTIP_DEFAULT_CONFIGURATION : MatTooltipDefaultOptions = {
-  hideDelay : 0,
-  showDelay : 500,          // eslint-disable-line @typescript-eslint/no-magic-numbers
-  touchendHideDelay : 1500, // eslint-disable-line @typescript-eslint/no-magic-numbers
-  position : 'below',
-  touchGestures : 'auto'
-};
+/**
+ * This function is called to begin the asynchronous retrieval of the base application configuration data from an endpoint.
+ *
+ * @param appConfig - the application configuration to retrieve
+ * @returns a function which returns a Promise (an object representing the eventual completion of an asynchronous operation).
+ */
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+export function initializeApplication(appConfig : AppConfig) : () => Promise<void> {
+  return async() : Promise<void> => {
+    await appConfig.loadApplicationConfiguration();
+  };
+}
 
 @NgModule({
   bootstrap : [AppComponent],
   declarations : [AppComponent],
-  imports : [BrowserModule, BrowserAnimationsModule, HttpClientModule, AppRoutingModule, CoreModule, SharedModule],
-  providers : [Title, { provide : MAT_TOOLTIP_DEFAULT_OPTIONS, useValue : GLOBAL_TOOLTIP_DEFAULT_CONFIGURATION }]
+  imports : [BrowserModule, BrowserAnimationsModule, AppRoutingModule, CoreModule],
+  providers : [
+    Title,
+    AppConfig,
+    {
+      multi : true,
+      deps : [AppConfig],
+      provide : APP_INITIALIZER,
+      useFactory : initializeApplication
+    },
+    {
+      deps : [AppConfig],
+      provide : MAT_TOOLTIP_DEFAULT_OPTIONS,
+      useFactory() : MatTooltipDefaultOptions {
+        return {
+          hideDelay : AppConfig.appConfig.constants.tooltipHideDelayMS,
+          showDelay : AppConfig.appConfig.constants.tooltipShowDelayMS,
+          touchendHideDelay : AppConfig.appConfig.constants.touchendHideDelayMS,
+          touchGestures : 'auto',
+          position : 'below'
+        };
+      }
+    }
+  ]
 })
 export class AppModule { }

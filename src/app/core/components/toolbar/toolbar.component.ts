@@ -3,8 +3,10 @@
  ****************************************************************************************************************************************************/
 
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
+
+import { AppConfig } from 'app/app.config';
 
 import { AVAILABLE_THEMES, Theme, ThemeBundles } from '@core/services/theme/theme.configuration';
 import { ThemeService } from '@core/services/theme/theme.service';
@@ -30,7 +32,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
   private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
-  public constructor(private readonly _dialog : MatDialog, private readonly _themeService : ThemeService, private readonly _titleService : Title) { }
+  public constructor(public readonly dialog : MatDialog, private readonly _titleService : Title, private readonly _themeService : ThemeService) { }
 
   public ngOnInit() : void {
     this.applicationTitle = this._titleService.getTitle();
@@ -49,20 +51,26 @@ export class ToolbarComponent implements OnInit, OnDestroy {
    * Opens the `About` dialog (sometimes called a modal) that contains information contributors the application.
    */
   public openAboutDialog() : void {
-    const ABOUT_DIALOG_CONFIG_DATA : AboutDialogConfigData = { aboutDialogTitle : this.aboutDialogTitle, applicationTitle : this.applicationTitle };
+    const ABOUT_DIALOG_CONFIG_DATA : AboutDialogConfigData = {
+      aboutDialogTitle : this.aboutDialogTitle,
+      applicationTitle : this.applicationTitle
+    };
 
     const ABOUT_DIALOG_CONFIG : MatDialogConfig = { // eslint-disable-line @typescript-eslint/no-explicit-any
       disableClose : true,
-      ariaLabel : 'About Dialog',
       role : 'dialog',
       panelClass : 'pf-dialog',
-      maxHeight : '80vh',
-      maxWidth : '1500px',
-      width : '50%',
+      maxHeight : '75%',
+      maxWidth : '75%',
       data : ABOUT_DIALOG_CONFIG_DATA
     };
 
-    this._dialog.open(AboutDialogComponent, ABOUT_DIALOG_CONFIG);
+    const ABOUT_DIALOG_REF : MatDialogRef<AboutDialogComponent> = this.dialog.open(AboutDialogComponent, ABOUT_DIALOG_CONFIG);
+
+    ABOUT_DIALOG_REF.backdropClick().subscribe(() : void => {
+      ABOUT_DIALOG_REF.addPanelClass('pf-shake');
+      window.setTimeout(() => ABOUT_DIALOG_REF.removePanelClass('pf-shake'), AppConfig.appConfig.constants.genericAnimationDurationMS);
+    });
   }
 
   /**

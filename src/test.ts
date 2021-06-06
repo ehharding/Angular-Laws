@@ -1,4 +1,4 @@
-import 'zone.js/dist/fake-async-test';
+import 'zone.js/dist/zone-testing';
 
 /*****************************************************************************************************************************************************
  * Copyright 2021 Evan H. Harding. All Rights Reserved.
@@ -7,7 +7,7 @@ import 'zone.js/dist/fake-async-test';
  *
  * {@link https://angular.io/guide/testing | Angular Testing Guide}
  *
- * @remarks 'import 'zone.js/dist/zone-testing' must be the first line of this file.
+ * @remarks Zone.js imports must be at the top of this file.
  ****************************************************************************************************************************************************/
 
 /*  eslint-disable @typescript-eslint/naming-convention */
