@@ -21,6 +21,7 @@ class MockMatDialog {
   public open() : any {
     return {
       addPanelClass() : void { },
+      removePanelClass() : void { },
       backdropClick : () : Observable<MouseEvent> => of({ } as any)
     };
   }
