@@ -6,7 +6,6 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestro
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { AboutDialogConfigData, OPEN_SOURCE_DEPENDENCIES, OpenSourceDependency, PACKAGE_VERSIONS, PackageVersion } from '@core/components/toolbar/about-dialog/about-dialog.model';
-
 import packageJSON from 'app/../../package.json';
 
 @Component({

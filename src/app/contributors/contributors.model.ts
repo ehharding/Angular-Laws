@@ -4,6 +4,8 @@
 
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
+import { ConfigService } from '@core/services/config/config.service';
+
 enum JobTitles {
   SoftwareEngineer = 'Software Engineer'
 }
@@ -42,6 +44,6 @@ export const CONTRIBUTORS_ANIMATIONS : unknown[] = [
   trigger('openClose', [
     state('visibleState', style({ opacity : 1 })),
     state('invisibleState', style({ opacity : 0 })),
-    transition('visibleState <=> invisibleState', [animate('500ms')])
+    transition('visibleState <=> invisibleState', [animate(`${ ConfigService.internalAppConfig.constants.genericAnimationDurationMS }ms`)])
   ])
 ];

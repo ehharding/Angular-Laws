@@ -6,7 +6,7 @@
 <header class="pf-contributors-header">
   <div class="row m-3">
     <div class="mx-auto w-70">
-      <h1 class="mat-h1 mt-2">Contributors</h1>
+      <h1 class="mat-h1 mt-2"><strong>Contributors</strong></h1>
 
       <p>This page lists the current contributors to the project.</p>
     </div>
@@ -24,7 +24,7 @@
             <mat-panel-title>
               <mat-icon class="me-2">account_circle</mat-icon>
               <span class="pf-contributor-shift-animation" [@hover]="panelHovered && !panelOpen ? 'shiftedState' : 'normalState'" [@openClose]="panelOpen ? 'invisibleState' : 'visibleState'">
-                {{ contributor.firstName }} {{ contributor.lastName }}
+                <strong>{{ contributor.firstName }} {{ contributor.lastName }}</strong>
               </span>
             </mat-panel-title>
 
@@ -41,7 +41,7 @@
                 <!-- Card Header -->
                 <mat-card-header>
                   <img mat-card-avatar alt="{{ contributor.firstName }} {{ contributor.lastName }}'s Avatar" src="assets/avatars/{{ contributorNamesKebab[index] }}.jpeg"/>
-                  <mat-card-title>{{ contributor.firstName }} {{ contributor.lastName }}</mat-card-title>
+                  <mat-card-title><strong>{{ contributor.firstName }} {{ contributor.lastName }}</strong></mat-card-title>
                   <mat-card-subtitle>{{ contributor.title }}</mat-card-subtitle>
                 </mat-card-header>
 

@@ -17,7 +17,7 @@ import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 import { AVAILABLE_THEMES, ThemeBundles } from '@core/services/theme/theme.model';
-import { AppConfig } from 'app/app.config';
+import { ConfigService } from '@core/services/config/config.service';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -67,7 +67,7 @@ export class ThemeService {
   public loadClientTheme(themeBundleName : ThemeBundles) : void {
     const HTML_LINK_ELEMENT_ID : string = 'client-theme';
     const HTML_LINK_ELEMENT : HTMLElement | null = this._document.getElementById(HTML_LINK_ELEMENT_ID);
-    const THEME_STYLES : string = `${ AppConfig.appConfig.apiServer.themes }/${ themeBundleName }.css`;
+    const THEME_STYLES : string = `${ ConfigService.internalAppConfig.apiServer.themes }/${ themeBundleName }.css`;
 
     // If The <link/> Element Already Exists, We Simply Modify Its `href` Attribute
     if (HTML_LINK_ELEMENT) {

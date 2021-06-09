@@ -6,10 +6,10 @@
   <mat-icon>close</mat-icon>
 </button>
 
-<h3 class="mb-3">{{ dialogTitle }}</h3>
+<h3 class="mb-3"><strong>{{ dialogTitle }}</strong></h3>
 
 <mat-dialog-content>
-  <h5>What Is {{ applicationTitle }}?</h5>
+  <h5><strong>What Is {{ applicationTitle }}?</strong></h5>
   <p>
     Welcome to {{ applicationTitle }}! This project is about creating a modern, user-friendly, and responsive fan fiction website for the world to
     use. Built on the latest technologies and utilizing the latest web development paradigms, I am hoping for {{ applicationTitle }} to become the
@@ -27,7 +27,7 @@
    -   Node.js          - https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg
    -   NPM              - https://upload.wikimedia.org/wikipedia/commons/d/db/Npm-logo.svg
    -->
-  <h5>Built With Open Source Software</h5>
+  <h5><strong>Built With Open Source Software</strong></h5>
   <cdk-virtual-scroll-viewport class="pf-horizontal-viewport mx-5 my-5" itemSize="100" orientation="horizontal">
     <div *cdkVirtualFor="let openSourceDependency of openSourceDependencies" class="mx-2 w-100" matTooltip="{{ openSourceDependency.tooltip }}">
       <a href="{{ openSourceDependency.websiteLink }}" target="_blank">
@@ -36,7 +36,7 @@
     </div>
   </cdk-virtual-scroll-viewport>
 
-  <h5>Version Information</h5>
+  <h5><strong>Version Information</strong></h5>
   <mat-card class="mat-elevation-z0">
     <!-- Card Header -->
     <mat-card-header>
@@ -49,7 +49,7 @@
     <mat-card-content>
       <cdk-virtual-scroll-viewport class="pf-horizontal-viewport" itemSize="50" orientation="horizontal">
         <div *cdkVirtualFor="let packageVersion of packageVersions" class="text-start w-100">
-          <h6>{{ packageVersion.name }}</h6>
+          <h6><strong>{{ packageVersion.name }}</strong></h6>
           <p>{{ packageVersion.version }}</p>
         </div>
       </cdk-virtual-scroll-viewport>

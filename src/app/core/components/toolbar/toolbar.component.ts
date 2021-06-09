@@ -6,13 +6,13 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 
-import { AppConfig } from 'app/app.config';
-
 import { AVAILABLE_THEMES, Theme, ThemeBundles } from '@core/services/theme/theme.model';
+import { AboutDialogConfigData } from '@core/components/toolbar/about-dialog/about-dialog.model';
+
+import { ConfigService } from '@core/services/config/config.service';
 import { ThemeService } from '@core/services/theme/theme.service';
 
 import { AboutDialogComponent } from '@core/components/toolbar/about-dialog/about-dialog.component';
-import { AboutDialogConfigData } from '@core/components/toolbar/about-dialog/about-dialog.model';
 
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -69,7 +69,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
     ABOUT_DIALOG_REF.backdropClick().subscribe(() : void => {
       ABOUT_DIALOG_REF.addPanelClass('pf-shake');
-      window.setTimeout(() => ABOUT_DIALOG_REF.removePanelClass('pf-shake'), AppConfig.appConfig.constants.genericAnimationDurationMS);
+      window.setTimeout(() => ABOUT_DIALOG_REF.removePanelClass('pf-shake'), ConfigService.internalAppConfig.constants.genericAnimationDurationMS);
     });
   }
 

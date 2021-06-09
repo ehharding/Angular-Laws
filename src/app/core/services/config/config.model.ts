@@ -27,7 +27,7 @@ export const DEFAULT_APP_CONFIG : IAppConfig = {
     themes : 'assets/themes'
   },
   constants : {
-    genericAnimationDurationMS : 250,
+    genericAnimationDurationMS : 100,
     tooltipHideDelayMS : 0,
     tooltipShowDelayMS : 500,
     touchendHideDelayMS : 1500

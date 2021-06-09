@@ -4,24 +4,33 @@
 
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CoreModule } from '@core/core.module';
-import { MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Title } from '@angular/platform-browser';
+
+import { CoreModule } from '@core/core.module';
 
 import { AVAILABLE_THEMES, ThemeBundles } from '@core/services/theme/theme.model';
 import { ThemeService } from '@core/services/theme/theme.service';
 
-import { AboutDialogComponent } from '@core/components/toolbar/about-dialog/about-dialog.component';
-import { AboutDialogConfigData } from '@core/components/toolbar/about-dialog/about-dialog.model';
 import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
 
 import { Observable, of } from 'rxjs';
+
+class MockMatDialog {
+  public open() : any {
+    return {
+      addPanelClass() : void { },
+      backdropClick : () : Observable<MouseEvent> => of({ } as any)
+    };
+  }
+}
 
 describe('ToolbarComponent', () : void => {
   let toolbarComponent : ToolbarComponent;
   let fixture : ComponentFixture<ToolbarComponent>;
 
+  let matDialog : MatDialog;
   let themeService : ThemeService;
   let titleService : Title;
 
@@ -33,7 +42,7 @@ describe('ToolbarComponent', () : void => {
     TestBed.configureTestingModule({
       declarations : [ToolbarComponent],
       imports : [BrowserAnimationsModule, CoreModule, RouterTestingModule],
-      providers : [Title, ThemeService]
+      providers : [Title, ThemeService, { provide : MatDialog, useClass : MockMatDialog }]
     }).compileComponents(); // Compile Template And CSS
   }));
 
@@ -46,6 +55,7 @@ describe('ToolbarComponent', () : void => {
     fixture = TestBed.createComponent(ToolbarComponent);
     toolbarComponent = fixture.componentInstance;
 
+    matDialog = TestBed.inject(MatDialog);
     themeService = TestBed.inject(ThemeService);
     titleService = TestBed.inject(Title);
 
@@ -56,12 +66,11 @@ describe('ToolbarComponent', () : void => {
     expect(toolbarComponent.applicationTitle).toEqual('');
     expect(toolbarComponent.availableThemes).toEqual(AVAILABLE_THEMES);
     expect(toolbarComponent.activeTheme).toBeUndefined();
-
-    fixture.detectChanges();
   });
 
   describe('ngOnInit()', () : void => {
-    it('should execute component initialization instructions and check for basic DOM structure', () : void => {
+    it('should execute component initialization instructions', () : void => {
+      fixture.detectChanges();
       expect(toolbarComponent.applicationTitle).toEqual(MOCK_APPLICATION_TITLE);
       expect(toolbarComponent.activeTheme).toEqual(DEFAULT_THEME);
     });
@@ -69,10 +78,12 @@ describe('ToolbarComponent', () : void => {
 
   describe('ngOnDestroy()', () : void => {
     it('should execute component destruction instructions', () : void => {
+      fixture.detectChanges();
+
       spyOn(toolbarComponent['_componentDestroyed$'], 'next');
       spyOn(toolbarComponent['_componentDestroyed$'], 'complete');
 
-      toolbarComponent.ngOnDestroy();
+      fixture.destroy();
       expect(toolbarComponent['_componentDestroyed$'].next).toHaveBeenCalledWith(true);
       expect(toolbarComponent['_componentDestroyed$'].complete).toHaveBeenCalledTimes(1);
     });
@@ -80,35 +91,19 @@ describe('ToolbarComponent', () : void => {
 
   describe('openAboutDialog()', () : void => {
     it('should open the about dialog with the expected parameters', () : void => {
-      const EXPECTED_DIALOG_CONFIG_DATA : AboutDialogConfigData = {
-        aboutDialogTitle : toolbarComponent.aboutDialogTitle,
-        applicationTitle : MOCK_APPLICATION_TITLE
-      };
+      fixture.detectChanges();
 
-      const EXPECTED_ABOUT_DIALOG_CONFIG : MatDialogConfig = {
-        disableClose : true,
-        role : 'dialog',
-        panelClass : 'pf-dialog',
-        maxHeight : '75%',
-        maxWidth : '75%',
-        data : EXPECTED_DIALOG_CONFIG_DATA
-      };
-
-      spyOn(toolbarComponent.dialog, 'open').and.returnValue({
-        addPanelClass() { },
-        removePanelClass() { },
-        backdropClick() : Observable<MouseEvent> {
-          return of({ } as any);
-        }
-      } as any);
+      spyOn(matDialog, 'open').and.callThrough();
 
       toolbarComponent.openAboutDialog();
-      expect(toolbarComponent.dialog.open).toHaveBeenCalledWith(AboutDialogComponent, EXPECTED_ABOUT_DIALOG_CONFIG);
+      expect(matDialog.open).toHaveBeenCalledTimes(1);
     });
   });
 
   describe('setApplicationTheme()', () : void => {
     it('should make a call to set the theme for the application', () : void => {
+      fixture.detectChanges();
+
       const DESIRED_THEME : ThemeBundles = ThemeBundles.IndigoPink;
 
       spyOn(themeService, 'loadClientTheme');

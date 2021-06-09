@@ -12,22 +12,23 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions } from '@angular/material/tooltip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppConfig } from 'app/app.config';
 import { AppRoutingModule } from 'app/app-routing.module';
 import { CoreModule } from '@core/core.module';
+
+import { ConfigService } from '@core/services/config/config.service';
 
 import { AppComponent } from 'app/app.component';
 
 /**
  * This function is called to begin the asynchronous retrieval of the base application configuration data from an endpoint.
  *
- * @param appConfig - the application configuration to retrieve
+ * @param configService - an instance of the Config Service to use to initialize the application
  * @returns a function which returns a Promise (an object representing the eventual completion of an asynchronous operation).
  */
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-export function initializeApplication(appConfig : AppConfig) : () => Promise<void> {
+export function initializeApplication(configService : ConfigService) : () => Promise<void> {
   return async() : Promise<void> => {
-    await appConfig.loadApplicationConfiguration();
+    await configService.loadApplicationConfiguration();
   };
 }
 
@@ -37,21 +38,20 @@ export function initializeApplication(appConfig : AppConfig) : () => Promise<voi
   imports : [BrowserModule, BrowserAnimationsModule, AppRoutingModule, CoreModule],
   providers : [
     Title,
-    AppConfig,
     {
       multi : true,
-      deps : [AppConfig],
+      deps : [ConfigService],
       provide : APP_INITIALIZER,
       useFactory : initializeApplication
     },
     {
-      deps : [AppConfig],
+      deps : [ConfigService],
       provide : MAT_TOOLTIP_DEFAULT_OPTIONS,
       useFactory() : MatTooltipDefaultOptions {
         return {
-          hideDelay : AppConfig.appConfig.constants.tooltipHideDelayMS,
-          showDelay : AppConfig.appConfig.constants.tooltipShowDelayMS,
-          touchendHideDelay : AppConfig.appConfig.constants.touchendHideDelayMS,
+          hideDelay : ConfigService.internalAppConfig.constants.tooltipHideDelayMS,
+          showDelay : ConfigService.internalAppConfig.constants.tooltipShowDelayMS,
+          touchendHideDelay : ConfigService.internalAppConfig.constants.touchendHideDelayMS,
           touchGestures : 'auto',
           position : 'below'
         };

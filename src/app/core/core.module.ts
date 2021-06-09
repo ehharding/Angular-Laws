@@ -20,6 +20,7 @@ import { SharedModule } from '@shared/shared.module';
 
 import { throwIfAlreadyLoaded } from '@core/guards/module-import.guard';
 
+import { ConfigService } from '@core/services/config/config.service';
 import { ThemeService } from '@core/services/theme/theme.service';
 
 import { AboutDialogComponent } from '@core/components/toolbar/about-dialog/about-dialog.component';
@@ -41,7 +42,7 @@ import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
     ScrollingModule,
     SharedModule
   ],
-  providers : [ThemeService]
+  providers : [ConfigService, ThemeService]
 })
 export class CoreModule {
   public constructor(@Optional() @SkipSelf() parentModule : CoreModule) {

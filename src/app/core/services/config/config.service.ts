@@ -1,8 +1,7 @@
 /*****************************************************************************************************************************************************
  * Copyright 2021 Evan H. Harding. All Rights Reserved.
  *
- * This file serves as the base application configuration file. It holds logic responsible for retrieving basic application configuration data from
- * an endpoint on startup. For now, this endpoint is a local JSON configuration file.
+ * This service handles the loading of external JSON configuration files. This should be done once, on startup, in `app.module.ts`.
  ****************************************************************************************************************************************************/
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -10,14 +9,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { DEFAULT_APP_CONFIG, IAppConfig } from 'app/app-config.model';
+import { DEFAULT_APP_CONFIG, IAppConfig } from '@core/services/config/config.model';
 import { ENVIRONMENT } from '@environment/environment.development';
 
 import { lastValueFrom } from 'rxjs';
 
 @Injectable()
-export class AppConfig {
-  public static appConfig : IAppConfig = DEFAULT_APP_CONFIG;
+export class ConfigService {
+  public static internalAppConfig : IAppConfig = DEFAULT_APP_CONFIG;
 
   public constructor(private readonly _httpClient : HttpClient) { }
 
@@ -32,8 +31,8 @@ export class AppConfig {
 
     await new Promise<void>((resolve : (value : void | PromiseLike<void>) => void, reject : (reason ?: any) => void) : void => {
       // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-      lastValueFrom(this._httpClient.get<IAppConfig>(APP_CONFIG_JSON_PATH)).then((appConfig : IAppConfig) : void => {
-        AppConfig.appConfig = appConfig;
+      lastValueFrom(this._httpClient.get<IAppConfig>(APP_CONFIG_JSON_PATH)).then((internalAppConfig : IAppConfig) : void => {
+        ConfigService.internalAppConfig = internalAppConfig;
 
         resolve();
       }).catch((response : any) : void => {
