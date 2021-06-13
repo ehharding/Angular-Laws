@@ -2,74 +2,74 @@
  * Copyright 2021 Evan H. Harding. All Rights Reserved.
  ****************************************************************************************************************************************************/
 
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDialog } from '@angular/material/dialog';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Title } from '@angular/platform-browser';
 
 import { CoreModule } from '@core/core.module';
 
 import { AVAILABLE_THEMES, ThemeBundles } from '@core/services/theme/theme.model';
+import { DEFAULT_APP_CONFIGURATION } from '@core/services/config/config.model';
+
 import { ThemeService } from '@core/services/theme/theme.service';
 
 import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
 
-import { Observable, of } from 'rxjs';
-
-class MockMatDialog {
-  public open() : any {
-    return {
-      addPanelClass() : void { },
-      removePanelClass() : void { },
-      backdropClick : () : Observable<MouseEvent> => of({ } as any)
-    };
-  }
-}
+import { of } from 'rxjs';
 
 describe('ToolbarComponent', () : void => {
   let toolbarComponent : ToolbarComponent;
   let fixture : ComponentFixture<ToolbarComponent>;
 
-  let matDialog : MatDialog;
-  let themeService : ThemeService;
-  let titleService : Title;
-
   const DEFAULT_THEME : ThemeBundles = AVAILABLE_THEMES[0].bundleName;
   const MOCK_APPLICATION_TITLE : string = 'Application Title';
+
+  const MOCK_MAT_DIALOG : any = jasmine.createSpyObj('MatDialog', ['open']);
+  const MOCK_MAT_DIALOG_REF : any = jasmine.createSpyObj('MatDialogRef', ['addPanelClass', 'removePanelClass', 'backdropClick']);
+  const MOCK_TITLE_SERVICE : any = jasmine.createSpyObj('Title', ['getTitle']);
+  const MOCK_THEME_SERVICE : any = jasmine.createSpyObj('ThemeService', ['getActiveThemeBundleName', 'loadClientTheme']);
+
+  let getActiveThemeBundleNameSpy : jasmine.Spy;
+  let getTitleSpy : jasmine.Spy;
+  let openDialogSpy : jasmine.Spy;
+  let openDialogRefSpy : jasmine.Spy;
 
   // Asynchronous beforeEach()
   beforeEach(waitForAsync(() : void => {
     TestBed.configureTestingModule({
       declarations : [ToolbarComponent],
-      imports : [BrowserAnimationsModule, CoreModule, RouterTestingModule],
-      providers : [Title, ThemeService, { provide : MatDialog, useClass : MockMatDialog }]
+      imports : [BrowserAnimationsModule, RouterTestingModule, CoreModule],
+      providers : [
+        { provide : MatDialog, useValue : MOCK_MAT_DIALOG },
+        { provide : MatDialogRef, useValue : MOCK_MAT_DIALOG_REF },
+        { provide : Title, useValue : MOCK_TITLE_SERVICE },
+        { provide : ThemeService, useValue : MOCK_THEME_SERVICE }
+      ]
     }).compileComponents(); // Compile Template And CSS
   }));
-
-  it('should create', () : void => {
-    expect(fixture.componentInstance).toBeDefined();
-  });
 
   // Synchronous beforeEach()
   beforeEach(() : void => {
     fixture = TestBed.createComponent(ToolbarComponent);
     toolbarComponent = fixture.componentInstance;
 
-    matDialog = TestBed.inject(MatDialog);
-    themeService = TestBed.inject(ThemeService);
-    titleService = TestBed.inject(Title);
+    getActiveThemeBundleNameSpy = MOCK_THEME_SERVICE.getActiveThemeBundleName.and.returnValue(of(DEFAULT_THEME));
+    getTitleSpy = MOCK_TITLE_SERVICE.getTitle.and.returnValue(MOCK_APPLICATION_TITLE);
 
-    spyOn(themeService, 'getActiveThemeBundleName').and.returnValue(of(DEFAULT_THEME));
-    spyOn(titleService, 'getTitle').and.returnValue(MOCK_APPLICATION_TITLE);
+    expect(toolbarComponent.aboutDialogTitle).toBeDefined();
+    expect(toolbarComponent.applicationTitle).toBeDefined();
 
-    expect(toolbarComponent.aboutDialogTitle).toEqual('About The Application');
-    expect(toolbarComponent.applicationTitle).toEqual('');
     expect(toolbarComponent.availableThemes).toEqual(AVAILABLE_THEMES);
-    expect(toolbarComponent.activeTheme).toBeUndefined();
+    expect(toolbarComponent.activeTheme).toEqual(ThemeBundles.DeepPurpleAmber);
   });
 
-  describe('ngOnInit()', () : void => {
+  it('should be created', () : void => {
+    expect(fixture.componentInstance).toBeDefined();
+  });
+
+  describe('lifecycle hook ngOnInit()', () : void => {
     it('should execute component initialization instructions', () : void => {
       fixture.detectChanges();
       expect(toolbarComponent.applicationTitle).toEqual(MOCK_APPLICATION_TITLE);
@@ -77,7 +77,7 @@ describe('ToolbarComponent', () : void => {
     });
   });
 
-  describe('ngOnDestroy()', () : void => {
+  describe('lifecycle hook ngOnDestroy()', () : void => {
     it('should execute component destruction instructions', () : void => {
       fixture.detectChanges();
 
@@ -90,27 +90,31 @@ describe('ToolbarComponent', () : void => {
     });
   });
 
-  describe('openAboutDialog()', () : void => {
-    it('should open the about dialog with the expected parameters', () : void => {
+  describe('function openAboutDialog()', () : void => {
+    it('should open the about dialog with the expected parameters and handle backdrop click behavior correctly', fakeAsync(() : void => {
       fixture.detectChanges();
 
-      spyOn(matDialog, 'open').and.callThrough();
+      openDialogSpy = MOCK_MAT_DIALOG.open.and.returnValue(MOCK_MAT_DIALOG_REF);
+      openDialogRefSpy = MOCK_MAT_DIALOG_REF.backdropClick.and.returnValue(of({ } as any));
 
       toolbarComponent.openAboutDialog();
-      expect(matDialog.open).toHaveBeenCalledTimes(1);
-    });
+      expect(MOCK_MAT_DIALOG.open).toHaveBeenCalledTimes(1);
+
+      expect(MOCK_MAT_DIALOG_REF.addPanelClass).toHaveBeenCalledTimes(1);
+
+      tick(DEFAULT_APP_CONFIGURATION.constants.genericAnimationDurationMS);
+      expect(MOCK_MAT_DIALOG_REF.removePanelClass).toHaveBeenCalledTimes(1);
+    }));
   });
 
-  describe('setApplicationTheme()', () : void => {
+  describe('function setApplicationTheme()', () : void => {
     it('should make a call to set the theme for the application', () : void => {
       fixture.detectChanges();
 
       const DESIRED_THEME : ThemeBundles = ThemeBundles.IndigoPink;
 
-      spyOn(themeService, 'loadClientTheme');
-
       toolbarComponent.setApplicationTheme(DESIRED_THEME);
-      expect(themeService.loadClientTheme).toHaveBeenCalledWith(DESIRED_THEME);
+      expect(MOCK_THEME_SERVICE.loadClientTheme).toHaveBeenCalledWith(DESIRED_THEME);
     });
   });
 });

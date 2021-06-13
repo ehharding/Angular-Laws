@@ -5,7 +5,8 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { AboutDialogConfigData, OPEN_SOURCE_DEPENDENCIES, OpenSourceDependency, PACKAGE_VERSIONS, PackageVersion } from '@core/components/toolbar/about-dialog/about-dialog.model';
+import { AboutDialogData, OPEN_SOURCE_DEPENDENCIES, OpenSourceDependency, PACKAGE_VERSIONS, PackageVersion } from '@core/components/toolbar/about-dialog/about-dialog.model';
+import { APP_CONSTANTS } from '@core/services/config/config.model';
 import packageJSON from 'app/../../package.json';
 
 @Component({
@@ -18,36 +19,33 @@ import packageJSON from 'app/../../package.json';
 export class AboutDialogComponent implements OnInit, OnDestroy {
   public currentTime : Date = new Date();
 
-  public readonly applicationTitle : string = this.data.applicationTitle;
-  public readonly dialogTitle : string = this.data.aboutDialogTitle;
+  public readonly applicationTitle : string = this.dialogData.applicationTitle;
+  public readonly dialogTitle : string = this.dialogData.aboutDialogTitle;
 
   public readonly applicationVersion : string = packageJSON.version;
-
   public readonly openSourceDependencies : OpenSourceDependency[] = OPEN_SOURCE_DEPENDENCIES;
   public readonly packageVersions : PackageVersion[] = PACKAGE_VERSIONS;
 
-  private _currentTimeTimeout : number;
+  private _currentTimeIntervalID : number;
 
-  public constructor(@Inject(MAT_DIALOG_DATA) public data : AboutDialogConfigData, private readonly _changeDetectorRef : ChangeDetectorRef) { }
+  public constructor(@Inject(MAT_DIALOG_DATA) public dialogData : AboutDialogData, private readonly _changeDetectorRef : ChangeDetectorRef) { }
 
   public ngOnInit() : void {
-    this._currentTimeTimeout = this.setCurrentTimeInterval();
-    this.currentTime.getFullYear().toString();
+    this._currentTimeIntervalID = this.setCurrentTimeInterval();
   }
 
   public ngOnDestroy() : void {
-    window.clearInterval(this._currentTimeTimeout);
+    window.clearInterval(this._currentTimeIntervalID);
   }
 
   /**
-   * Returns a NodeJS.Timeout object that performs a series of instructions at regular intervals.
+   * Returns a numeric non-zero number known as an interval ID that identifies a unique call to the global mixin WindowOrWorkerGlobalScope method
+   * setInterval(). The interval ID can later be used to cancel the repeated execution of code contained within said call. Here, this call is use to
+   * update the current system time displayed on the component.
    *
    * {@link https://nodejs.org/en/docs/guides/timers-in-node/ | Timers in Node.js}
    *
-   * @returns a NodeJS.Timeout object.
-   *
-   * @remarks You should be cautious to call clearInterval() on a NodeJS.Timeout whose interval has been set so that the object does not keep the
-   *          process alive unnecessarily longer than it has to.
+   * @returns a numeric non-zero number that identifies the timer created by the contained call to setInterval(), an interval ID.
    */
   public setCurrentTimeInterval() : number {
     // Update The Time Every Second
@@ -55,6 +53,6 @@ export class AboutDialogComponent implements OnInit, OnDestroy {
       this.currentTime = new Date();
 
       this._changeDetectorRef.detectChanges();
-    }, 1000); // eslint-disable-line @typescript-eslint/no-magic-numbers
+    }, APP_CONSTANTS.timeConstants.oneSecondMS);
   }
 }

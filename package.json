@@ -13,7 +13,7 @@
   "keywords" : ["Angular", "Creative Writing", "Fan Fiction", "Web Apps", "Writing"],
   "directories" : { "doc" : "README.md", "lib" : "src", "test" : "src" },
   "files" : ["*"],
-  "browserslist" : ["Chrome 91", "Edge 91", "Firefox 89", "Opera 75", "Safari 14"],
+  "browserslist" : ["Chrome 91", "Edge 91", "Firefox 89", "Opera 76", "Safari 14"],
   "os" : ["darwin", "linux", "win32", "x64"],
   "scripts" : {
     "build" : "ng build",

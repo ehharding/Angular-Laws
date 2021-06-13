@@ -597,20 +597,6 @@ input.mat-input-element {
   display: none
 }
 
-.cdk-visually-hidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  outline: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none
-}
-
 .cdk-overlay-container, .cdk-global-overlay-wrapper {
   pointer-events: none;
   top: 0;
@@ -642,19 +628,6 @@ input.mat-input-element {
   display: flex;
   max-width: 100%;
   max-height: 100%
-}
-
-.cdk-overlay-backdrop {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  pointer-events: auto;
-  -webkit-tap-highlight-color: transparent;
-  transition: opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
-  opacity: 0
 }
 
 .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
@@ -959,19 +932,6 @@ textarea.cdk-textarea-autosize-measuring-firefox {
 .mat-badge-disabled .mat-badge-content {
   background: #6E6E6E;
   color: rgba(255, 255, 255, .5)
-}
-
-.mat-badge-content {
-  position: absolute;
-  text-align: center;
-  display: inline-block;
-  border-radius: 50%;
-  transition: transform 200ms ease-in-out;
-  transform: scale(0.6);
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  pointer-events: none
 }
 
 .ng-animate-disabled .mat-badge-content, .mat-badge-content._mat-animation-noopable {

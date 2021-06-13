@@ -49,9 +49,9 @@ export function initializeApplication(configService : ConfigService) : () => Pro
       provide : MAT_TOOLTIP_DEFAULT_OPTIONS,
       useFactory() : MatTooltipDefaultOptions {
         return {
-          hideDelay : ConfigService.internalAppConfig.constants.tooltipHideDelayMS,
-          showDelay : ConfigService.internalAppConfig.constants.tooltipShowDelayMS,
-          touchendHideDelay : ConfigService.internalAppConfig.constants.touchendHideDelayMS,
+          hideDelay : ConfigService.internalAppConfiguration.constants.tooltipHideDelayMS,
+          showDelay : ConfigService.internalAppConfiguration.constants.tooltipShowDelayMS,
+          touchendHideDelay : ConfigService.internalAppConfiguration.constants.touchendHideDelayMS,
           touchGestures : 'auto',
           position : 'below'
         };

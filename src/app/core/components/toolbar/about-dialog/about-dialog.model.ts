@@ -4,7 +4,7 @@
 
 import packageJSON from 'app/../../package.json';
 
-export interface AboutDialogConfigData {
+export interface AboutDialogData {
   aboutDialogTitle : string;
   applicationTitle : string;
 }

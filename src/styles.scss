@@ -49,6 +49,44 @@ pf-toolbar a .mat-button {
 
 /* Global Styles That Can Be Applied To Any Applicable Element */
 
+.cdk-overlay-backdrop {
+  bottom : 0;
+  top : 0;
+  left : 0;
+  right : 0;
+  opacity : 0;
+  z-index : 1000;
+  pointer-events : auto;
+  position : absolute;
+  transition : opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+  -webkit-tap-highlight-color : transparent;
+}
+
+.cdk-visually-hidden {
+  border : 0;
+  outline : 0;
+  padding : 0;
+  height : 1px;
+  width : 1px;
+  margin : -1px;
+  clip : rect(0 0 0 0);
+  overflow : hidden;
+  position : absolute;
+}
+
+.mat-badge-content {
+  border-radius : 50%;
+  display : inline-block;
+  overflow : hidden;
+  pointer-events : none;
+  position : absolute;
+  text-align : center;
+  text-overflow : ellipsis;
+  transform : scale(0.6);
+  transition : transform 200ms ease-in-out;
+  white-space : nowrap;
+}
+
 .pf-shake {
   animation : shake 500ms;
   animation-iteration-count : infinite;
@@ -81,6 +119,8 @@ pf-toolbar a .mat-button {
 }
 
 .cdk-overlay-pane.pf-dialog {
+  max-height : 75% !important;
+  max-width : 75% !important;
   position : relative !important;
 }
 

@@ -44,6 +44,6 @@ export const CONTRIBUTORS_ANIMATIONS : unknown[] = [
   trigger('openClose', [
     state('visibleState', style({ opacity : 1 })),
     state('invisibleState', style({ opacity : 0 })),
-    transition('visibleState <=> invisibleState', [animate(`${ ConfigService.internalAppConfig.constants.genericAnimationDurationMS }ms`)])
+    transition('visibleState <=> invisibleState', [animate(`${ ConfigService.internalAppConfiguration.constants.genericAnimationDurationMS }ms`)])
   ])
 ];

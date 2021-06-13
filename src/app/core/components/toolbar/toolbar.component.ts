@@ -7,7 +7,7 @@ import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dial
 import { Title } from '@angular/platform-browser';
 
 import { AVAILABLE_THEMES, Theme, ThemeBundles } from '@core/services/theme/theme.model';
-import { AboutDialogConfigData } from '@core/components/toolbar/about-dialog/about-dialog.model';
+import { AboutDialogData } from '@core/components/toolbar/about-dialog/about-dialog.model';
 
 import { ConfigService } from '@core/services/config/config.service';
 import { ThemeService } from '@core/services/theme/theme.service';
@@ -25,10 +25,10 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class ToolbarComponent implements OnInit, OnDestroy {
   public readonly aboutDialogTitle : string = 'About The Application';
-  public readonly availableThemes : Theme[] = AVAILABLE_THEMES;
+  public applicationTitle : string = 'Application Title';
 
-  public activeTheme : ThemeBundles | undefined;
-  public applicationTitle : string = '';
+  public readonly availableThemes : Theme[] = AVAILABLE_THEMES;
+  public activeTheme : ThemeBundles = ThemeBundles.DeepPurpleAmber;
 
   private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
@@ -48,35 +48,33 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Opens the `About` dialog (sometimes called a modal) that contains information contributors the application.
+   * Opens the `About` dialog (sometimes called a modal) that contains information about the application.
    */
   public openAboutDialog() : void {
-    const ABOUT_DIALOG_CONFIG_DATA : AboutDialogConfigData = {
+    const ABOUT_DIALOG_DATA : AboutDialogData = {
       aboutDialogTitle : this.aboutDialogTitle,
       applicationTitle : this.applicationTitle
     };
 
-    const ABOUT_DIALOG_CONFIG : MatDialogConfig = { // eslint-disable-line @typescript-eslint/no-explicit-any
+    const ABOUT_DIALOG_CONFIG : MatDialogConfig = {
       disableClose : true,
       role : 'dialog',
       panelClass : 'pf-dialog',
-      maxHeight : '75%',
-      maxWidth : '75%',
-      data : ABOUT_DIALOG_CONFIG_DATA
+      data : ABOUT_DIALOG_DATA
     };
 
     const ABOUT_DIALOG_REF : MatDialogRef<AboutDialogComponent> = this.dialog.open(AboutDialogComponent, ABOUT_DIALOG_CONFIG);
 
     ABOUT_DIALOG_REF.backdropClick().subscribe(() : void => {
       ABOUT_DIALOG_REF.addPanelClass('pf-shake');
-      window.setTimeout(() => ABOUT_DIALOG_REF.removePanelClass('pf-shake'), ConfigService.internalAppConfig.constants.genericAnimationDurationMS);
+      window.setTimeout(() => ABOUT_DIALOG_REF.removePanelClass('pf-shake'), ConfigService.internalAppConfiguration.constants.genericAnimationDurationMS);
     });
   }
 
   /**
    * Sets the application theme using the Theme Service.
    *
-   * @param themeBundleName - The themeBundleName of the theme to set from one of the available defined in the ThemeBundles enumeration
+   * @param themeBundleName - The themeBundleName of the theme to set from one of the available defined in the `ThemeBundles` enumeration
    *
    * @see ThemeService
    */
