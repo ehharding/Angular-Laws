@@ -5,7 +5,6 @@
  * in time across the entire application, in other words.
  ****************************************************************************************************************************************************/
 
-import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -14,11 +13,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgModule } from '@angular/core';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { SharedModule } from '@shared/shared.module';
-
-import { throwIfAlreadyLoaded } from '@core/guards/module-import.guard';
 
 import { ConfigService } from '@core/services/config/config.service';
 import { ThemeService } from '@core/services/theme/theme.service';
@@ -44,8 +42,4 @@ import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
   ],
   providers : [ConfigService, ThemeService]
 })
-export class CoreModule {
-  public constructor(@Optional() @SkipSelf() parentModule : CoreModule) {
-    throwIfAlreadyLoaded(parentModule, 'CoreModule');
-  }
-}
+export class CoreModule { }

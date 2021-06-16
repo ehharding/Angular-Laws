@@ -1,0 +1,14 @@
+{
+  "environment" : {
+    "name" : "development"
+  },
+  "apiServer" : {
+    "themes" : "assets/themes"
+  },
+  "constants" : {
+    "genericAnimationDurationMS" : 1,
+    "tooltipHideDelayMS" : 1,
+    "tooltipShowDelayMS" : 1,
+    "touchendHideDelayMS" : 1
+  }
+}

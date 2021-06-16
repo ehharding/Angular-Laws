@@ -6,6 +6,9 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 
+import { ReplaySubject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
 import { AVAILABLE_THEMES, Theme, ThemeBundles } from '@core/services/theme/theme.model';
 import { AboutDialogData } from '@core/components/toolbar/about-dialog/about-dialog.model';
 
@@ -13,9 +16,6 @@ import { ConfigService } from '@core/services/config/config.service';
 import { ThemeService } from '@core/services/theme/theme.service';
 
 import { AboutDialogComponent } from '@core/components/toolbar/about-dialog/about-dialog.component';
-
-import { ReplaySubject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
   changeDetection : ChangeDetectionStrategy.OnPush,

@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Title } from '@angular/platform-browser';
 
+import { of } from 'rxjs';
+
 import { CoreModule } from '@core/core.module';
 
 import { AVAILABLE_THEMES, ThemeBundles } from '@core/services/theme/theme.model';
@@ -16,8 +18,6 @@ import { DEFAULT_APP_CONFIGURATION } from '@core/services/config/config.model';
 import { ThemeService } from '@core/services/theme/theme.service';
 
 import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
-
-import { of } from 'rxjs';
 
 describe('ToolbarComponent', () : void => {
   let toolbarComponent : ToolbarComponent;
@@ -30,11 +30,6 @@ describe('ToolbarComponent', () : void => {
   const MOCK_MAT_DIALOG_REF : any = jasmine.createSpyObj('MatDialogRef', ['addPanelClass', 'removePanelClass', 'backdropClick']);
   const MOCK_TITLE_SERVICE : any = jasmine.createSpyObj('Title', ['getTitle']);
   const MOCK_THEME_SERVICE : any = jasmine.createSpyObj('ThemeService', ['getActiveThemeBundleName', 'loadClientTheme']);
-
-  let getActiveThemeBundleNameSpy : jasmine.Spy;
-  let getTitleSpy : jasmine.Spy;
-  let openDialogSpy : jasmine.Spy;
-  let openDialogRefSpy : jasmine.Spy;
 
   // Asynchronous beforeEach()
   beforeEach(waitForAsync(() : void => {
@@ -55,8 +50,8 @@ describe('ToolbarComponent', () : void => {
     fixture = TestBed.createComponent(ToolbarComponent);
     toolbarComponent = fixture.componentInstance;
 
-    getActiveThemeBundleNameSpy = MOCK_THEME_SERVICE.getActiveThemeBundleName.and.returnValue(of(DEFAULT_THEME));
-    getTitleSpy = MOCK_TITLE_SERVICE.getTitle.and.returnValue(MOCK_APPLICATION_TITLE);
+    MOCK_THEME_SERVICE.getActiveThemeBundleName.and.returnValue(of(DEFAULT_THEME));
+    MOCK_TITLE_SERVICE.getTitle.and.returnValue(MOCK_APPLICATION_TITLE);
 
     expect(toolbarComponent.aboutDialogTitle).toBeDefined();
     expect(toolbarComponent.applicationTitle).toBeDefined();
@@ -66,7 +61,7 @@ describe('ToolbarComponent', () : void => {
   });
 
   it('should be created', () : void => {
-    expect(fixture.componentInstance).toBeDefined();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 
   describe('lifecycle hook ngOnInit()', () : void => {
@@ -94,8 +89,8 @@ describe('ToolbarComponent', () : void => {
     it('should open the about dialog with the expected parameters and handle backdrop click behavior correctly', fakeAsync(() : void => {
       fixture.detectChanges();
 
-      openDialogSpy = MOCK_MAT_DIALOG.open.and.returnValue(MOCK_MAT_DIALOG_REF);
-      openDialogRefSpy = MOCK_MAT_DIALOG_REF.backdropClick.and.returnValue(of({ } as any));
+      MOCK_MAT_DIALOG.open.and.returnValue(MOCK_MAT_DIALOG_REF);
+      MOCK_MAT_DIALOG_REF.backdropClick.and.returnValue(of({ } as any)); // Simulate One Backdrop Click
 
       toolbarComponent.openAboutDialog();
       expect(MOCK_MAT_DIALOG.open).toHaveBeenCalledTimes(1);

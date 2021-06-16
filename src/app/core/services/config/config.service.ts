@@ -26,19 +26,19 @@ export class ConfigService {
    *
    * @returns a Promise, or an object representing the eventual completion (or failure) of the asynchronous configuration retrieval, and its value.
    */
-  public async loadApplicationConfiguration() : Promise<void> {
-    const APP_CONFIG_JSON_PATH : string = `assets/config/config.${ ENVIRONMENT.name }.json`;
-
+  public async loadApplicationConfiguration(jsonConfigUrl : string = `assets/config/config.${ ENVIRONMENT.name }.json`) : Promise<void> {
     await new Promise<void>((resolve : (value : void | PromiseLike<void>) => void, reject : (reason ?: any) => void) : void => {
       // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-      lastValueFrom(this._httpClient.get<IAppConfiguration>(APP_CONFIG_JSON_PATH)).then((internalAppConfiguration : IAppConfiguration) : void => {
+      lastValueFrom(this._httpClient.get<IAppConfiguration>(jsonConfigUrl)).then((internalAppConfiguration : IAppConfiguration) : void => {
         ConfigService.internalAppConfiguration = internalAppConfiguration;
 
         resolve();
       }).catch((response : any) : void => {
+        ConfigService.internalAppConfiguration = DEFAULT_APP_CONFIGURATION;
+
         const ERROR : Error = {
           name : 'Error',
-          message : `Could Not Load Application Configuration File With Path '${ APP_CONFIG_JSON_PATH }' : ${ JSON.stringify(response) }`
+          message : `Could Not Load Application Configuration File With Path '${ jsonConfigUrl }': ${ response as string }`
         };
 
         reject(ERROR);
