@@ -1,6 +1,4 @@
 /*****************************************************************************************************************************************************
- * Copyright 2021 Evan H. Harding. All Rights Reserved.
- *
  * This file serves as the main entry point for the application. It compiles the application and bootstraps the root module, conventionally called
  * AppModule, to run in the browser.
  *

@@ -1,7 +1,3 @@
-/*****************************************************************************************************************************************************
- * Copyright 2021 Evan H. Harding. All Rights Reserved.
- ****************************************************************************************************************************************************/
-
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 

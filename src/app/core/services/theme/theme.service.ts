@@ -1,6 +1,4 @@
 /*****************************************************************************************************************************************************
- * Copyright 2021 Evan H. Harding. All Rights Reserved.
- *
  * This service holds the currently active application theme and provides functionality for loading four pre-built Angular Material themes and also
  * provides logic for assigning an arbitrary CSS class to an HTML tag.
  *

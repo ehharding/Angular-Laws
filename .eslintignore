@@ -1,7 +1,5 @@
 ######################################################################################################################################################
-# Copyright 2021 Evan H. Harding. All Rights Reserved.
-#
-# A .eslintignore file specifies, for ESLint, which directories and files to ignore and leave unchecked.
+# An .eslintignore file specifies, for ESLint, which directories and files to ignore and leave unchecked.
 ######################################################################################################################################################
 
 dist

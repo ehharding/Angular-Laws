@@ -1,7 +1,3 @@
-/*****************************************************************************************************************************************************
- * Copyright 2021 Evan H. Harding. All Rights Reserved.
- ****************************************************************************************************************************************************/
-
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';

@@ -1,7 +1,3 @@
-/*****************************************************************************************************************************************************
- * Copyright 2021 Evan H. Harding. All Rights Reserved.
- ****************************************************************************************************************************************************/
-
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 import { ConfigService } from '@core/services/config/config.service';

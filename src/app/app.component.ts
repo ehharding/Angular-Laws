@@ -1,6 +1,4 @@
 /*****************************************************************************************************************************************************
- * Copyright 2021 Evan H. Harding. All Rights Reserved.
- *
  * This component serves as the core, or root, component. It is always present and forms the main application view.
  *
  * {@link https://angular.io/guide/architecture#components | Angular Component Guide}

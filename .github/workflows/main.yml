@@ -1,6 +1,4 @@
 ######################################################################################################################################################
-# Copyright 2021 Evan H. Harding. All Rights Reserved.
-#
 # This is a GitHub Actions workflow file. It is written in YAML and specifies a series of commands that execute when certain events occur. Currently,
 # all jobs in this file are running on an Ubuntu Linux host. See https://github.com/actions/virtual-environments for a list of options.
 #

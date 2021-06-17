@@ -1,7 +1,3 @@
-/*****************************************************************************************************************************************************
- * Copyright 2021 Evan H. Harding. All Rights Reserved.
- ****************************************************************************************************************************************************/
-
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 import { CONTRIBUTORS, CONTRIBUTORS_ANIMATIONS, Contributor } from '@contributors/contributors.model';
