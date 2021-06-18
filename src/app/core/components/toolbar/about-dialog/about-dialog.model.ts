@@ -7,7 +7,7 @@ export interface AboutDialogData {
 
 export interface OpenSourceDependency {
   imgAltDescription : string;
-  imgTitle : 'angular' | 'angular-material' | 'bootstrap' | 'eslint' | 'nodejs' | 'npm' | 'rxjs' | 'typescript';
+  imgTitle : 'angular' | 'angular-material' | 'bootstrap' | 'rxjs' | 'eslint' | 'typescript' | 'nodejs' | 'npm';
   tooltip : string;
   websiteLink : string;
 }
