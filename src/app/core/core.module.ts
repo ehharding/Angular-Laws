@@ -6,7 +6,6 @@
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -20,17 +19,15 @@ import { ConfigService } from '@core/services/config/config.service';
 import { ThemeService } from '@core/services/theme/theme.service';
 
 import { AboutDialogComponent } from '@core/components/toolbar/about-dialog/about-dialog.component';
-import { FooterComponent } from '@core/components/footer/footer.component';
 import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
 
 @NgModule({
-  declarations : [AboutDialogComponent, FooterComponent, ToolbarComponent],
-  exports : [FooterComponent, ToolbarComponent],
+  declarations : [AboutDialogComponent, ToolbarComponent],
+  exports : [ToolbarComponent],
   imports : [
     MatButtonModule,
     MatCardModule,
     MatDialogModule,
-    MatDividerModule,
     MatIconModule,
     MatMenuModule,
     MatToolbarModule,

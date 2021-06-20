@@ -9,7 +9,7 @@
   <h4>
     <span>A Fan Fiction</span>
     <a href="https://ehharding.github.io/Pocket-Fic/" target="_blank">Website</a>
-    <span>Built On Top Of</span>
+    <span>Built With</span>
     <a href="https://material.angular.io" target="_blank">Angular Material</a>
   </h4>
 
