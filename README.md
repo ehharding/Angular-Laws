@@ -49,7 +49,7 @@ recommended general setup.
 
 ### IDE And Project Setup
 First, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/) (which comes with [NPM](http://npmjs.com)) installed on your
-computer. You must download an Active LTS or Maintenance LTS release of Node.js. You can out which versions these are by visiting the Node.js
+computer. You must download an Active LTS or Maintenance LTS release of Node.js. You can find out which versions these are by visiting the Node.js
 [release site](https://nodejs.org/en/about/releases/). After you have installed Node.js, enter the following from your command line of choice:
 
 ```bash
