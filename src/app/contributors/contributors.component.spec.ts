@@ -31,7 +31,7 @@ describe('ContributorsComponent', () : void => {
         ContributorsRoutingModule,
         SharedModule
       ]
-    }).compileComponents();
+    }).compileComponents(); // Compile Template And CSS
   }));
 
   // Synchronous beforeEach()
