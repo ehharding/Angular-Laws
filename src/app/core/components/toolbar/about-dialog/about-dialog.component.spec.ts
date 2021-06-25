@@ -1,8 +1,16 @@
 import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
-import { CoreModule } from '@core/core.module';
+import { SharedModule } from '@shared/shared.module';
 
 import { AboutDialogData, OPEN_SOURCE_DEPENDENCIES, PACKAGE_VERSIONS } from '@core/components/toolbar/about-dialog/about-dialog.model';
 import { APP_CONSTANTS } from '@core/services/config/config.model';
@@ -27,7 +35,19 @@ describe('AboutDialogComponent', () : void => {
   beforeEach(waitForAsync(() : void => {
     TestBed.configureTestingModule({
       declarations : [AboutDialogComponent],
-      imports : [BrowserAnimationsModule, CoreModule],
+      imports : [
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatCardModule,
+        MatDialogModule,
+        MatIconModule,
+        MatMenuModule,
+        MatToolbarModule,
+        MatTooltipModule,
+        ScrollingModule,
+        RouterTestingModule,
+        SharedModule
+      ],
       providers : [{ provide : MAT_DIALOG_DATA, useValue : MOCK_ABOUT_DIALOG_DATA }]
     }).compileComponents(); // Compile Template And CSS
   }));

@@ -1,12 +1,19 @@
 import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterTestingModule } from '@angular/router/testing';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { Title } from '@angular/platform-browser';
 
 import { of } from 'rxjs';
 
-import { CoreModule } from '@core/core.module';
+import { SharedModule } from '@shared/shared.module';
 
 import { AVAILABLE_THEMES, ThemeBundles } from '@core/services/theme/theme.model';
 import { DEFAULT_APP_CONFIGURATION } from '@core/services/config/config.model';
@@ -31,7 +38,19 @@ describe('ToolbarComponent', () : void => {
   beforeEach(waitForAsync(() : void => {
     TestBed.configureTestingModule({
       declarations : [ToolbarComponent],
-      imports : [BrowserAnimationsModule, RouterTestingModule, CoreModule],
+      imports : [
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatCardModule,
+        MatDialogModule,
+        MatIconModule,
+        MatMenuModule,
+        MatToolbarModule,
+        MatTooltipModule,
+        ScrollingModule,
+        RouterTestingModule,
+        SharedModule
+      ],
       providers : [
         { provide : MatDialog, useValue : MOCK_MAT_DIALOG },
         { provide : MatDialogRef, useValue : MOCK_MAT_DIALOG_REF },
