@@ -1,107 +1,70 @@
 {
-  "name": "pocket-fic",
-  "license": "Apache-2.0",
-  "private": true,
-  "version": "1.0.0",
-  "description": "A Modern Fan Fiction Website For The Modern Web",
-  "homepage": "https://ehharding.github.io/Pocket-Fic/",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ehharding/Pocket-Fic.git"
+  "name" : "pocket-fic",
+  "license" : "Apache-2.0",
+  "private" : true,
+  "version" : "1.0.0",
+  "description" : "A Modern Fan Fiction Website For The Modern Web",
+  "homepage" : "https://ehharding.github.io/Pocket-Fic/",
+  "repository" : { "type" : "git", "url" : "https://github.com/ehharding/Pocket-Fic.git" },
+  "author" : { "email" : "ehharding@gmail.com", "name" : "Evan H. Harding", "url" : "https://linkedin.com/in/ehharding" },
+  "bugs" : { "email" : "ehharding@gmail.com", "url" : "" },
+  "contributors" : ["Evan H. Harding"],
+  "maintainers" : ["Evan H. Harding"],
+  "keywords" : ["Angular", "Creative Writing", "Fan Fiction", "Web Apps", "Writing"],
+  "directories" : { "doc" : "README.md", "lib" : "src", "test" : "src" },
+  "files" : ["*"],
+  "browserslist" : ["Chrome 91", "Edge 91", "Firefox 89", "Opera 76", "Safari 14"],
+  "os" : ["darwin", "linux", "win32", "x64"],
+  "scripts" : {
+    "build" : "ng build",
+    "build:prod" : "ng build --configuration production",
+    "clean" : "rimraf ./build-cache ./coverage-report ./dist ./dist-prod ./eslint-report.html",
+    "lint" : "eslint **/*.ts",
+    "lint:report" : "eslint **/*.ts -f node_modules/eslint-html-reporter/reporter.js -o ./eslint-report.html",
+    "ng" : "ng --version",
+    "start" : "ng serve",
+    "test" : "ng test --browsers=FirefoxHeadless --watch=false",
+    "test:watch" : "ng test"
   },
-  "author": {
-    "email": "ehharding@gmail.com",
-    "name": "Evan H. Harding",
-    "url": "https://linkedin.com/in/ehharding"
+  "dependencies" : {
+    "@angular/animations" : "12.1.0",
+    "@angular/common" : "12.1.0",
+    "@angular/compiler" : "12.1.0",
+    "@angular/core" : "12.1.0",
+    "@angular/forms" : "12.1.0",
+    "@angular/localize" : "12.1.0",
+    "@angular/platform-browser" : "12.1.0",
+    "@angular/platform-browser-dynamic" : "12.1.0",
+    "@angular/router" : "12.1.0",
+    "@angular/cdk" : "12.1.0",
+    "@angular/material" : "12.1.0",
+    "bootstrap" : "5.0.2",
+    "rxjs" : "7.1.0",
+    "tslib" : "2.3.0",
+    "zone.js" : "0.11.4"
   },
-  "bugs": {
-    "email": "ehharding@gmail.com",
-    "url": ""
-  },
-  "contributors": [
-    "Evan H. Harding"
-  ],
-  "maintainers": [
-    "Evan H. Harding"
-  ],
-  "keywords": [
-    "Angular",
-    "Creative Writing",
-    "Fan Fiction",
-    "Web Apps",
-    "Writing"
-  ],
-  "directories": {
-    "doc": "README.md",
-    "lib": "src",
-    "test": "src"
-  },
-  "files": [
-    "*"
-  ],
-  "browserslist": [
-    "Chrome 91",
-    "Edge 91",
-    "Firefox 89",
-    "Opera 76",
-    "Safari 14"
-  ],
-  "os": [
-    "darwin",
-    "linux",
-    "win32",
-    "x64"
-  ],
-  "scripts": {
-    "build": "ng build",
-    "build:prod": "ng build --configuration production",
-    "clean": "rimraf ./build-cache ./coverage-report ./dist ./dist-prod ./eslint-report.html",
-    "lint": "eslint **/*.ts",
-    "lint:report": "eslint **/*.ts -f node_modules/eslint-html-reporter/reporter.js -o ./eslint-report.html",
-    "ng": "ng --version",
-    "start": "ng serve",
-    "test": "ng test --browsers=FirefoxHeadless --watch=false",
-    "test:watch": "ng test"
-  },
-  "dependencies": {
-    "@angular/animations": "12.1.0",
-    "@angular/common": "12.1.0",
-    "@angular/compiler": "12.1.0",
-    "@angular/core": "12.1.0",
-    "@angular/forms": "12.1.0",
-    "@angular/localize": "12.1.0",
-    "@angular/platform-browser": "12.1.0",
-    "@angular/platform-browser-dynamic": "12.1.0",
-    "@angular/router": "12.1.0",
-    "@angular/cdk": "12.1.0",
-    "@angular/material": "12.1.0",
-    "bootstrap": "5.0.2",
-    "rxjs": "7.1.0",
-    "tslib": "2.3.0",
-    "zone.js": "0.11.4"
-  },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "12.1.0",
-    "@angular/cli": "12.1.0",
-    "@angular/compiler-cli": "12.1.0",
-    "@types/jasmine": "3.7.7",
-    "@types/jasminewd2": "2.0.9",
-    "@types/node": "15.12.5",
-    "@typescript-eslint/eslint-plugin": "4.28.0",
-    "@typescript-eslint/parser": "4.28.0",
-    "eslint": "7.29.0",
-    "eslint-html-reporter": "0.7.4",
-    "eslint-plugin-tsdoc": "0.2.14",
-    "jasmine-core": "3.7.1",
-    "jasmine-spec-reporter": "7.0.0",
-    "karma": "6.3.4",
-    "karma-coverage": "2.0.3",
-    "karma-firefox-launcher": "2.1.1",
-    "karma-jasmine": "4.0.1",
-    "karma-jasmine-html-reporter": "1.6.0",
-    "karma-mocha-reporter": "2.2.5",
-    "npm-check-updates": "11.7.1",
-    "ts-node": "10.0.0",
-    "typescript": "4.3.4"
+  "devDependencies" : {
+    "@angular-devkit/build-angular" : "12.1.0",
+    "@angular/cli" : "12.1.0",
+    "@angular/compiler-cli" : "12.1.0",
+    "@types/jasmine" : "3.7.7",
+    "@types/jasminewd2" : "2.0.9",
+    "@types/node" : "15.12.5",
+    "@typescript-eslint/eslint-plugin" : "4.28.0",
+    "@typescript-eslint/parser" : "4.28.0",
+    "eslint" : "7.29.0",
+    "eslint-html-reporter" : "0.7.4",
+    "eslint-plugin-tsdoc" : "0.2.14",
+    "jasmine-core" : "3.7.1",
+    "jasmine-spec-reporter" : "7.0.0",
+    "karma" : "6.3.4",
+    "karma-coverage" : "2.0.3",
+    "karma-firefox-launcher" : "2.1.1",
+    "karma-jasmine" : "4.0.1",
+    "karma-jasmine-html-reporter" : "1.6.0",
+    "karma-mocha-reporter" : "2.2.5",
+    "npm-check-updates" : "11.7.1",
+    "ts-node" : "10.0.0",
+    "typescript" : "4.3.4"
   }
 }
