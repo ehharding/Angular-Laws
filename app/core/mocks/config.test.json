@@ -1,6 +1,6 @@
 {
   "environment" : {
-    "name" : "production"
+    "name" : "development"
   },
   "apiServer" : {
     "retries" : 2,
@@ -14,9 +14,9 @@
     }
   },
   "constants" : {
-    "genericAnimationDurationMS" : 100,
-    "tooltipHideDelayMS" : 0,
-    "tooltipShowDelayMS" : 500,
-    "touchendHideDelayMS" : 1500
+    "genericAnimationDurationMS" : 1,
+    "tooltipHideDelayMS" : 1,
+    "tooltipShowDelayMS" : 1,
+    "touchendHideDelayMS" : 1
   }
 }

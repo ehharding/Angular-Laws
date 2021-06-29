@@ -1,0 +1,26 @@
+[
+  {
+    "isAdmin" : true,
+    "userID" : 1,
+    "birthday" : "01JAN1970",
+    "title" : "Mr.",
+    "firstName" : "John",
+    "middleName" : "Michael",
+    "lastName" : "Doe",
+    "generation" : "",
+    "userName" : "solomon",
+    "password" : "admin"
+  },
+  {
+    "isAdmin" : false,
+    "userID" : 2,
+    "birthday" : "27JUN2019",
+    "title" : "Mr.",
+    "firstName" : "Sega",
+    "middleName" : "Dega Omega",
+    "lastName" : "Ortega",
+    "generation" : "",
+    "userName" : "sega0627",
+    "password" : "cattledog"
+  }
+]
