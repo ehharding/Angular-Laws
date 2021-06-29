@@ -1,10 +1,11 @@
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
-import testConfig from '@core/mocks/config.test.json';
 
 import { of, throwError } from 'rxjs';
 
 import { DEFAULT_APP_CONFIGURATION, IAppConfiguration } from '@core/services/config/config.model';
+
+import testConfig from '@core/mocks/config.test.json';
 
 import { ConfigService } from '@core/services/config/config.service';
 
