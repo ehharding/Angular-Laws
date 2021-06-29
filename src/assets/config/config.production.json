@@ -4,7 +4,7 @@
   },
   "apiServer" : {
     "retries" : 2,
-    "apiBase" : "api",
+    "apiBase" : "https://ehharding.github.io/Pocket-Fic/api",
     "themes" : "assets/themes",
     "paths" : {
       "users" : {

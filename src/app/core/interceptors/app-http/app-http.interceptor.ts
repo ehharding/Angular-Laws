@@ -10,10 +10,10 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { ConfigService } from '@core/services/config/config.service';
-
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+
+import { ConfigService } from '@core/services/config/config.service';
 
 @Injectable()
 export class AppHttpInterceptor implements HttpInterceptor {
