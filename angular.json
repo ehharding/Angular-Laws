@@ -56,7 +56,7 @@
               "inlineStyleLanguage" : "scss",
               "outputHashing" : "all",
               "allowedCommonJsDependencies" : ["lodash"],
-              "assets" : ["src/assets", "src/favicon.ico"],
+              "assets" : ["src/app/core/mocks", "src/assets", "src/favicon.ico"],
               "styles" : ["src/styles.scss"],
               "budgets" : [
                 { "type" : "initial", "maximumWarning" : "2MB", "maximumError" : "5MB" },
@@ -91,7 +91,7 @@
             "inlineStyleLanguage" : "scss",
             "outputHashing" : "none",
             "allowedCommonJsDependencies" : ["lodash"],
-            "assets" : ["src/assets", "src/favicon.ico"],
+            "assets" : ["src/app/core/mocks", "src/assets", "src/favicon.ico"],
             "styles" : ["src/styles.scss"],
             "budgets" : [
               { "type" : "initial", "maximumWarning" : "2MB", "maximumError" : "5MB" },
@@ -120,7 +120,7 @@
             "main" : "src/test.ts",
             "polyfills" : "src/polyfills.ts",
             "tsConfig" : "tsconfig.spec.json",
-            "assets" : ["src/assets", "src/favicon.ico"],
+            "assets" : ["src/app/core/mocks", "src/assets", "src/favicon.ico"],
             "styles" : ["src/styles.scss"],
             "stylePreprocessorOptions" : { "includePaths" : ["node_modules/bootstrap/scss/bootstrap.scss"] }
           }

@@ -3,6 +3,7 @@
     "name" : "development"
   },
   "apiServer" : {
+    "apiBase" : "api",
     "themes" : "assets/themes"
   },
   "constants" : {

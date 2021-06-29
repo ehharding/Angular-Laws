@@ -17,6 +17,7 @@ import { SharedModule } from '@shared/shared.module';
 
 import { ConfigService } from '@core/services/config/config.service';
 import { ThemeService } from '@core/services/theme/theme.service';
+import { UserService } from '@core/services/user/user.service';
 
 import { AboutDialogComponent } from '@core/components/toolbar/about-dialog/about-dialog.component';
 import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
@@ -35,6 +36,6 @@ import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
     ScrollingModule,
     SharedModule
   ],
-  providers : [ConfigService, ThemeService]
+  providers : [ConfigService, ThemeService, UserService]
 })
 export class CoreModule { }

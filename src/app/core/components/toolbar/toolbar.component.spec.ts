@@ -17,8 +17,12 @@ import { SharedModule } from '@shared/shared.module';
 
 import { AVAILABLE_THEMES, ThemeBundles } from '@core/services/theme/theme.model';
 import { DEFAULT_APP_CONFIGURATION } from '@core/services/config/config.model';
+import { User } from '@core/services/user/user.model';
+
+import allUsers from '@core/mocks/all-users.json';
 
 import { ThemeService } from '@core/services/theme/theme.service';
+import { UserService } from '@core/services/user/user.service';
 
 import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
 
@@ -28,11 +32,14 @@ describe('ToolbarComponent', () : void => {
 
   const DEFAULT_THEME : ThemeBundles = AVAILABLE_THEMES[0].bundleName;
   const MOCK_APPLICATION_TITLE : string = 'Application Title';
+  const MOCK_USER : User = allUsers[0];
+  const MOCK_USERS : User[] = allUsers;
 
   const MOCK_MAT_DIALOG : any = jasmine.createSpyObj('MatDialog', ['open']);
   const MOCK_MAT_DIALOG_REF : any = jasmine.createSpyObj('MatDialogRef', ['addPanelClass', 'removePanelClass', 'backdropClick']);
   const MOCK_TITLE_SERVICE : any = jasmine.createSpyObj('Title', ['getTitle']);
   const MOCK_THEME_SERVICE : any = jasmine.createSpyObj('ThemeService', ['getActiveThemeBundleName', 'loadClientTheme']);
+  const MOCK_USER_SERVICE : any = jasmine.createSpyObj('UserService', ['getAllUsers', 'getCurrentUser', 'getUserLoggedIn', 'login']);
 
   // Asynchronous beforeEach()
   beforeEach(waitForAsync(() : void => {
@@ -55,7 +62,8 @@ describe('ToolbarComponent', () : void => {
         { provide : MatDialog, useValue : MOCK_MAT_DIALOG },
         { provide : MatDialogRef, useValue : MOCK_MAT_DIALOG_REF },
         { provide : Title, useValue : MOCK_TITLE_SERVICE },
-        { provide : ThemeService, useValue : MOCK_THEME_SERVICE }
+        { provide : ThemeService, useValue : MOCK_THEME_SERVICE },
+        { provide : UserService, useValue : MOCK_USER_SERVICE }
       ]
     }).compileComponents(); // Compile Template And CSS
   }));
@@ -67,12 +75,19 @@ describe('ToolbarComponent', () : void => {
 
     MOCK_THEME_SERVICE.getActiveThemeBundleName.and.returnValue(of(DEFAULT_THEME));
     MOCK_TITLE_SERVICE.getTitle.and.returnValue(MOCK_APPLICATION_TITLE);
+    MOCK_USER_SERVICE.getAllUsers.and.returnValue(of(MOCK_USERS));
+    MOCK_USER_SERVICE.getCurrentUser.and.returnValue(of(MOCK_USER));
+    MOCK_USER_SERVICE.getUserLoggedIn.and.returnValue(of(false));
 
     expect(toolbarComponent.aboutDialogTitle).toBeDefined();
     expect(toolbarComponent.applicationTitle).toBeDefined();
 
     expect(toolbarComponent.availableThemes).toEqual(AVAILABLE_THEMES);
     expect(toolbarComponent.activeTheme).toEqual(ThemeBundles.DeepPurpleAmber);
+
+    expect(toolbarComponent.allUsers).not.toBeDefined();
+    expect(toolbarComponent.currentUser).not.toBeDefined();
+    expect(toolbarComponent.userLoggedIn).not.toBeDefined();
   });
 
   it('should be created', () : void => {
@@ -84,6 +99,9 @@ describe('ToolbarComponent', () : void => {
       fixture.detectChanges();
       expect(toolbarComponent.applicationTitle).toEqual(MOCK_APPLICATION_TITLE);
       expect(toolbarComponent.activeTheme).toEqual(DEFAULT_THEME);
+      expect(toolbarComponent.allUsers).toEqual(MOCK_USERS);
+      expect(toolbarComponent.currentUser).toEqual(MOCK_USER);
+      expect(toolbarComponent.userLoggedIn).toBe(false);
     });
   });
 
@@ -97,6 +115,15 @@ describe('ToolbarComponent', () : void => {
       fixture.destroy();
       expect(toolbarComponent['_componentDestroyed$'].next).toHaveBeenCalledWith(true);
       expect(toolbarComponent['_componentDestroyed$'].complete).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('function login()', () : void => {
+    it('should make a call to log the first available user in to the application (WIP)', () : void => {
+      fixture.detectChanges();
+
+      toolbarComponent.login();
+      expect(MOCK_USER_SERVICE.login).toHaveBeenCalledWith(MOCK_USERS[0]);
     });
   });
 

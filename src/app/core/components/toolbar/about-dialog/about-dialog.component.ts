@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { AboutDialogData, OPEN_SOURCE_DEPENDENCIES, OpenSourceDependency, PACKAGE_VERSIONS, PackageVersion } from '@core/components/toolbar/about-dialog/about-dialog.model';
 import { APP_CONSTANTS } from '@core/services/config/config.model';
+
 import packageJSON from 'app/../../package.json';
 
 @Component({

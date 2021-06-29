@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CoreModule } from '@core/core.module';
+import { UserService } from '@core/services/user/user.service';
 
 import { AppRoutingModule } from 'app/app-routing.module';
 
@@ -11,11 +12,14 @@ describe('AppComponent', () : void => {
   let appComponent : AppComponent;
   let fixture : ComponentFixture<AppComponent>;
 
+  const MOCK_USER_SERVICE : any = jasmine.createSpyObj('UserService', ['getAllUsers']);
+
   // Asynchronous beforeEach()
   beforeEach(waitForAsync(() : void => {
     TestBed.configureTestingModule({
       declarations : [AppComponent],
-      imports : [BrowserModule, BrowserAnimationsModule, AppRoutingModule, CoreModule]
+      imports : [BrowserModule, BrowserAnimationsModule, AppRoutingModule, CoreModule],
+      providers : [{ provide : UserService, useValue : MOCK_USER_SERVICE }]
     }).compileComponents(); // Compile Template And CSS
   }));
 

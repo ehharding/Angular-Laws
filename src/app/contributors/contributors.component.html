@@ -1,6 +1,6 @@
 <header class="pf-contributors-header">
   <div class="row m-3">
-    <div class="mx-auto w-70">
+    <div class="mx-auto pf-w-70">
       <h1 class="mat-h1 mt-2"><strong>Contributors</strong></h1>
 
       <p>This page lists the current contributors to the project.</p>
@@ -9,7 +9,7 @@
 </header>
 
 <div class="row m-3">
-  <div class="mx-auto w-70">
+  <div class="mx-auto pf-w-70">
     <mat-accordion class="pf-headers-align">
       <mat-expansion-panel *ngFor="let contributor of contributors; let index = index" style="max-height : 750px"
         (closed)="panelOpen = false" (opened)="panelOpen = true" (mouseenter)="panelHovered = true" (mouseleave)="panelHovered = false">

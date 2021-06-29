@@ -7,9 +7,11 @@ import { takeUntil } from 'rxjs/operators';
 
 import { AVAILABLE_THEMES, Theme, ThemeBundles } from '@core/services/theme/theme.model';
 import { AboutDialogData } from '@core/components/toolbar/about-dialog/about-dialog.model';
+import { User } from '@core/services/user/user.model';
 
 import { ConfigService } from '@core/services/config/config.service';
 import { ThemeService } from '@core/services/theme/theme.service';
+import { UserService } from '@core/services/user/user.service';
 
 import { AboutDialogComponent } from '@core/components/toolbar/about-dialog/about-dialog.component';
 
@@ -26,9 +28,18 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   public readonly availableThemes : Theme[] = AVAILABLE_THEMES;
   public activeTheme : ThemeBundles = ThemeBundles.DeepPurpleAmber;
 
+  public allUsers : User[];
+  public currentUser : User;
+  public userLoggedIn : boolean;
+
   private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
-  public constructor(public readonly dialog : MatDialog, private readonly _titleService : Title, private readonly _themeService : ThemeService) { }
+  public constructor(
+    public readonly dialog : MatDialog,
+    private readonly _titleService : Title,
+    private readonly _themeService : ThemeService,
+    private readonly _userService : UserService
+  ) { }
 
   public ngOnInit() : void {
     this.applicationTitle = this._titleService.getTitle();
@@ -36,11 +47,30 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     this._themeService.getActiveThemeBundleName().pipe(takeUntil(this._componentDestroyed$)).subscribe((activeTheme : ThemeBundles) : void => {
       this.activeTheme = activeTheme;
     });
+
+    this._userService.getAllUsers().pipe(takeUntil(this._componentDestroyed$)).subscribe((allUsers : User[]) : void => {
+      this.allUsers = allUsers;
+    });
+
+    this._userService.getCurrentUser().pipe(takeUntil(this._componentDestroyed$)).subscribe((currentUser : User) : void => {
+      this.currentUser = currentUser;
+    });
+
+    this._userService.getUserLoggedIn().pipe(takeUntil(this._componentDestroyed$)).subscribe((userLoggedIn : boolean) : void => {
+      this.userLoggedIn = userLoggedIn;
+    });
   }
 
   public ngOnDestroy() : void {
     this._componentDestroyed$.next(true);
     this._componentDestroyed$.complete();
+  }
+
+  /**
+   * Very simple "login" functionality, for now, where the first available user is loaded.
+   */
+  public login() : void {
+    this._userService.login(this.allUsers[0]);
   }
 
   /**

@@ -3,7 +3,15 @@
     "name" : "production"
   },
   "apiServer" : {
-    "themes" : "assets/themes"
+    "retries" : 2,
+    "apiBase" : "api",
+    "themes" : "assets/themes",
+    "paths" : {
+      "users" : {
+        "allUsers" : "allUsers",
+        "currentUser" : "currentUser"
+      }
+    }
   },
   "constants" : {
     "genericAnimationDurationMS" : 100,

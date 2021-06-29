@@ -5,7 +5,15 @@ export interface IAppConfiguration {
     name : 'development' | 'production';
   };
   apiServer : {
+    retries : number;
+    apiBase : string;
     themes : string;
+    paths : {
+      users : {
+        allUsers : string;
+        currentUser : string;
+      };
+    };
   };
   constants : {
     genericAnimationDurationMS : number;
@@ -20,7 +28,15 @@ export const DEFAULT_APP_CONFIGURATION : IAppConfiguration = {
     name : 'development'
   },
   apiServer : {
-    themes : 'assets/themes'
+    retries : 2,
+    apiBase : 'api',
+    themes : 'assets/themes',
+    paths : {
+      users : {
+        allUsers : 'allUsers',
+        currentUser : 'currentUser'
+      }
+    }
   },
   constants : {
     genericAnimationDurationMS : 100,
