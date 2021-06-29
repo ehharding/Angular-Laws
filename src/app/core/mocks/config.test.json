@@ -3,8 +3,15 @@
     "name" : "development"
   },
   "apiServer" : {
+    "retries" : 2,
     "apiBase" : "api",
-    "themes" : "assets/themes"
+    "themes" : "assets/themes",
+    "paths" : {
+      "users" : {
+        "allUsers" : "allUsers",
+        "currentUser" : "currentUser"
+      }
+    }
   },
   "constants" : {
     "genericAnimationDurationMS" : 1,
