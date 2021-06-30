@@ -4,7 +4,7 @@
   },
   "apiServer" : {
     "retries" : 2,
-    "apiBase" : "api",
+    "apiBase" : "api/",
     "themes" : "assets/themes",
     "paths" : {
       "users" : {
