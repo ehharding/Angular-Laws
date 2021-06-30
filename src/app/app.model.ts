@@ -2,6 +2,8 @@ import { ConfigService } from '@core/services/config/config.service';
 import { InMemoryBackendConfigArgs } from 'angular-in-memory-web-api';
 import { MatTooltipDefaultOptions } from '@angular/material/tooltip';
 
+import { ENVIRONMENT } from '@environment/environment.development';
+
 export const IN_MEMORY_BACKEND_CONFIG_ARGS : InMemoryBackendConfigArgs = {
   caseSensitiveSearch : true,
   dataEncapsulation : false,
@@ -13,7 +15,7 @@ export const IN_MEMORY_BACKEND_CONFIG_ARGS : InMemoryBackendConfigArgs = {
   passThruUnknownUrl : true,
   delay : 250, // eslint-disable-line @typescript-eslint/no-magic-numbers
   apiBase : ConfigService.internalAppConfiguration.apiServer.apiBase,
-  host : 'localhost',
+  host : ENVIRONMENT.name === 'development' ? 'localhost' : 'ehharding.github.io',
   rootPath : ''
 };
 
