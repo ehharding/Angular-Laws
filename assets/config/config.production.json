@@ -7,10 +7,7 @@
     "apiBase" : "api/",
     "themes" : "assets/themes",
     "paths" : {
-      "users" : {
-        "allUsers" : "allUsers",
-        "currentUser" : "currentUser"
-      }
+      "allUsers" : "allUsers"
     }
   },
   "constants" : {
