@@ -18,6 +18,7 @@ import { AVAILABLE_THEMES, ThemeBundles } from '@core/services/theme/theme.model
 import { ConfigService } from '@core/services/config/config.service';
 
 import { BehaviorSubject, Observable } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs/operators';
 
 @Injectable({ providedIn : 'root' })
 export class ThemeService {
@@ -30,10 +31,10 @@ export class ThemeService {
   /**
    * Provides an Observable for the currently active application theme to interested subscribers.
    *
-   * @returns a stream for the bundleName of the currently active application theme
+   * @returns a ThemeBundles-typed Observable stream for interested subscribers to receive the currently active theme bundle.
    */
   public getActiveThemeBundleName() : Observable<ThemeBundles> {
-    return this._activeThemeBundleName$.asObservable();
+    return this._activeThemeBundleName$.asObservable().pipe(distinctUntilChanged());
   }
 
   /**

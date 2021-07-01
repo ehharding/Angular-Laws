@@ -9,10 +9,7 @@ export interface IAppConfiguration {
     apiBase : string;
     themes : string;
     paths : {
-      users : {
-        allUsers : string;
-        currentUser : string;
-      };
+      allUsers : string;
     };
   };
   constants : {
@@ -32,10 +29,7 @@ export const DEFAULT_APP_CONFIGURATION : IAppConfiguration = {
     apiBase : 'api',
     themes : 'assets/themes',
     paths : {
-      users : {
-        allUsers : 'allUsers',
-        currentUser : 'currentUser'
-      }
+      allUsers : 'allUsers'
     }
   },
   constants : {

@@ -19,13 +19,8 @@ export class UserService {
   private readonly _userLoggedIn$ : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   public constructor(private readonly _httpClient : HttpClient) {
-    this._httpClient.get<User[]>(ConfigService.internalAppConfiguration.apiServer.paths.users.allUsers).subscribe((allUsers : User[]) : void => {
+    this._httpClient.get<User[]>(ConfigService.internalAppConfiguration.apiServer.paths.allUsers).subscribe((allUsers : User[]) : void => {
       this._allUsers$.next(allUsers);
-    });
-
-    this._httpClient.get<User>(ConfigService.internalAppConfiguration.apiServer.paths.users.currentUser).subscribe((currentUser : User) : void => {
-      this._currentUser$.next(currentUser);
-      this._userLoggedIn$.next(Object.keys(currentUser).length !== 0);
     });
   }
 

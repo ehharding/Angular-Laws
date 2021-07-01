@@ -11,12 +11,10 @@ import { InMemoryDatabase } from '@core/services/in-memory-data/in-memory-data.m
 import { User } from '@core/services/user/user.model';
 
 import allUsers from '@core/mocks/all-users.json';
-import currentUser from '@core/mocks/current-user.json';
 
 @Injectable({ providedIn : 'root' })
 export class InMemoryDataService implements InMemoryDbService {
   private readonly _allUsers : User[] = allUsers as User[];
-  private readonly _defaultCurrentUser : User = currentUser as User;
 
   /**
    * Creates the in-memory database to be used as a mock backend. This is required to implement the InMemoryDbService interface. To access data under
@@ -28,8 +26,7 @@ export class InMemoryDataService implements InMemoryDbService {
    */
   public createDb() : InMemoryDatabase {
     return {
-      allUsers : this._allUsers,
-      currentUser : this._defaultCurrentUser
+      allUsers : this._allUsers
     };
   }
 }
