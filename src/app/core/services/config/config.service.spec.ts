@@ -59,7 +59,7 @@ describe('ConfigService', () : void => {
 
     it('should load the default configuration JSON into the service when the HTTP Client fails to retrieve the configuration', waitForAsync(() : void => {
       MOCK_HTTP_CLIENT.get.and.returnValue(throwError(() : Error => {
-        return { name : 'Error', message : 'Failed At Succeeding' };
+        return { name : 'Error', message : 'Succeeded At Failing' };
       }));
 
       configService.loadApplicationConfiguration().then(undefined, () : void => {
