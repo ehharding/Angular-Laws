@@ -1,4 +1,4 @@
-export enum ThemeBundles {
+export enum ThemeBundle {
   DeepPurpleAmber = 'deeppurple-amber',
   IndigoPink = 'indigo-pink',
   PinkBlueGrey = 'pink-bluegrey',
@@ -6,7 +6,7 @@ export enum ThemeBundles {
 }
 
 export interface Theme {
-  bundleName : ThemeBundles;
+  bundleName : ThemeBundle;
   labelName : string;
   backgroundColor : string;
   buttonColor : string;
@@ -14,8 +14,8 @@ export interface Theme {
 }
 
 export const AVAILABLE_THEMES : Theme[] = [
-  { bundleName : ThemeBundles.DeepPurpleAmber, labelName : 'Deep Purple & Amber', backgroundColor : '#FFFFFF', buttonColor : '#FFC107', headerColor : '#673AB7' },
-  { bundleName : ThemeBundles.IndigoPink, labelName : 'Indigo & Pink', backgroundColor : '#FFFFFF', buttonColor : '#FF4081', headerColor : '#3F51B5' },
-  { bundleName : ThemeBundles.PinkBlueGrey, labelName : 'Pink & Blue Grey', backgroundColor : '#303030', buttonColor : '#607D8B', headerColor : '#E91E63' },
-  { bundleName : ThemeBundles.PurpleGreen, labelName : 'Purple & Green', backgroundColor : '#303030', buttonColor : '#4CAF50', headerColor : '#9C27B0' }
+  { bundleName : ThemeBundle.DeepPurpleAmber, labelName : 'Deep Purple & Amber', backgroundColor : '#FFFFFF', buttonColor : '#FFC107', headerColor : '#673AB7' },
+  { bundleName : ThemeBundle.IndigoPink, labelName : 'Indigo & Pink', backgroundColor : '#FFFFFF', buttonColor : '#FF4081', headerColor : '#3F51B5' },
+  { bundleName : ThemeBundle.PinkBlueGrey, labelName : 'Pink & Blue Grey', backgroundColor : '#303030', buttonColor : '#607D8B', headerColor : '#E91E63' },
+  { bundleName : ThemeBundle.PurpleGreen, labelName : 'Purple & Green', backgroundColor : '#303030', buttonColor : '#4CAF50', headerColor : '#9C27B0' }
 ];

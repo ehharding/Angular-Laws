@@ -5,7 +5,7 @@ import { Title } from '@angular/platform-browser';
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { AVAILABLE_THEMES, Theme, ThemeBundles } from '@core/services/theme/theme.model';
+import { AVAILABLE_THEMES, Theme, ThemeBundle } from '@core/services/theme/theme.model';
 import { AboutDialogData } from '@core/components/toolbar/about-dialog/about-dialog.model';
 import { User } from '@core/services/user/user.model';
 
@@ -26,7 +26,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   public applicationTitle : string = 'Application Title';
 
   public readonly availableThemes : Theme[] = AVAILABLE_THEMES;
-  public activeTheme : ThemeBundles = ThemeBundles.DeepPurpleAmber;
+  public activeTheme : ThemeBundle = ThemeBundle.DeepPurpleAmber;
 
   public allUsers : User[];
   public currentUser : User;
@@ -44,7 +44,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   public ngOnInit() : void {
     this.applicationTitle = this._titleService.getTitle();
 
-    this._themeService.getActiveThemeBundleName().pipe(takeUntil(this._componentDestroyed$)).subscribe((activeTheme : ThemeBundles) : void => {
+    this._themeService.getActiveThemeBundleName().pipe(takeUntil(this._componentDestroyed$)).subscribe((activeTheme : ThemeBundle) : void => {
       this.activeTheme = activeTheme;
     });
 
@@ -100,11 +100,11 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   /**
    * Sets the application theme using the Theme Service.
    *
-   * @param themeBundleName - The themeBundleName of the theme to set from one of the available defined in the `ThemeBundles` enumeration
-   *
    * @see ThemeService
+   *
+   * @param themeBundleName - The themeBundleName of the theme to set from one of the available defined in the `ThemeBundle` enumeration
    */
-  public setApplicationTheme(themeBundleName : ThemeBundles) : void {
+  public setApplicationTheme(themeBundleName : ThemeBundle) : void {
     this._themeService.loadClientTheme(themeBundleName);
   }
 }

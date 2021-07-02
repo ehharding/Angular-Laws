@@ -17,12 +17,12 @@ import { DOCUMENT } from '@angular/common';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 
-import { AVAILABLE_THEMES, ThemeBundles } from '@core/services/theme/theme.model';
+import { AVAILABLE_THEMES, ThemeBundle } from '@core/services/theme/theme.model';
 import { ConfigService } from '@core/services/config/config.service';
 
 @Injectable({ providedIn : 'root' })
 export class ThemeService {
-  private readonly _activeThemeBundleName$ : BehaviorSubject<ThemeBundles> = new BehaviorSubject<ThemeBundles>(AVAILABLE_THEMES[0].bundleName);
+  private readonly _activeThemeBundleName$ : BehaviorSubject<ThemeBundle> = new BehaviorSubject<ThemeBundle>(AVAILABLE_THEMES[0].bundleName);
 
   public constructor(@Inject(DOCUMENT) private readonly _document : Document) {
     this.loadClientTheme(AVAILABLE_THEMES[0].bundleName); // Load The First Theme By Default
@@ -31,9 +31,9 @@ export class ThemeService {
   /**
    * Provides an Observable for the currently active application theme to interested subscribers.
    *
-   * @returns a ThemeBundles-typed Observable stream for interested subscribers to receive the currently active theme bundle.
+   * @returns a ThemeBundle-typed Observable stream for interested subscribers to receive the currently active theme bundle.
    */
-  public getActiveThemeBundleName() : Observable<ThemeBundles> {
+  public getActiveThemeBundleName() : Observable<ThemeBundle> {
     return this._activeThemeBundleName$.asObservable().pipe(distinctUntilChanged());
   }
 
@@ -51,19 +51,19 @@ export class ThemeService {
     // If The Element Already Exists, We Set Its `class` Attribute To The List Of Provided CSS Class Names
     if (HTML_ELEMENT) {
         HTML_ELEMENT.setAttribute('class', cssClassList.join(' '));
-      // Otherwise, If The Element Does Not Exist, We'll Throw An Error Since That Essentially Means Programmer Mistake
+    // Otherwise, If The Element Does Not Exist, We'll Throw An Error Since That Essentially Means Programmer Mistake
     } else {
       throw new ReferenceError(`The HTML Tag '${ tagName }' Does Not Exist In The DOM.`);
     }
   }
 
   /**
-   * This method loads a style name that exists in the ThemeBundles enumeration, injecting the requested theme into the index.html as a <link/>. This
+   * This method loads a style name that exists in the ThemeBundle enumeration, injecting the requested theme into the index.html as a <link/>. This
    * allows for simple style switching at runtime.
    *
-   * @param themeBundleName - A theme bundleName from one of the available application themes defined in the ThemeBundles enumeration
+   * @param themeBundleName - The themeBundleName of the theme to load from one of the available defined in the `ThemeBundle` enumeration
    */
-  public loadClientTheme(themeBundleName : ThemeBundles) : void {
+  public loadClientTheme(themeBundleName : ThemeBundle) : void {
     const HTML_LINK_ELEMENT_ID : string = 'client-theme';
     const HTML_LINK_ELEMENT : HTMLElement | null = this._document.getElementById(HTML_LINK_ELEMENT_ID);
     const THEME_STYLES : string = `${ ConfigService.internalAppConfiguration.apiServer.themes }/${ themeBundleName }.css`;
@@ -71,7 +71,7 @@ export class ThemeService {
     // If The <link/> Element Already Exists, We Simply Modify Its `href` Attribute
     if (HTML_LINK_ELEMENT) {
       (HTML_LINK_ELEMENT as HTMLLinkElement).setAttribute('href', THEME_STYLES);
-      // Otherwise, If We're In Startup, We Create It With All The Necessary Attribute Settings
+    // Otherwise, If We're In Startup, We Create It With All The Necessary Attribute Settings
     } else {
       const LINK_ELEMENT : HTMLLinkElement = this._document.createElement('link');
       LINK_ELEMENT.setAttribute('href', THEME_STYLES);
@@ -88,7 +88,7 @@ export class ThemeService {
     // We'll Set The `background` Attribute Of <body></body> To `pf-bg-white` For Two Themes And `pf-bg-grey` For The Other Two
     const BODY_TAG : keyof HTMLElementTagNameMap = 'body';
 
-    if (themeBundleName === ThemeBundles.DeepPurpleAmber || themeBundleName === ThemeBundles.IndigoPink) {
+    if (themeBundleName === ThemeBundle.DeepPurpleAmber || themeBundleName === ThemeBundle.IndigoPink) {
       this.assignCSSClassesToTag(['pf-bg-white'], BODY_TAG);
     } else {
       this.assignCSSClassesToTag(['pf-bg-grey'], BODY_TAG);

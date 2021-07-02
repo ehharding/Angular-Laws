@@ -15,7 +15,7 @@ import { of } from 'rxjs';
 
 import { SharedModule } from '@shared/shared.module';
 
-import { AVAILABLE_THEMES, ThemeBundles } from '@core/services/theme/theme.model';
+import { AVAILABLE_THEMES, ThemeBundle } from '@core/services/theme/theme.model';
 import { DEFAULT_APP_CONFIGURATION } from '@core/services/config/config.model';
 import { User } from '@core/services/user/user.model';
 
@@ -30,7 +30,7 @@ describe('ToolbarComponent', () : void => {
   let toolbarComponent : ToolbarComponent;
   let fixture : ComponentFixture<ToolbarComponent>;
 
-  const DEFAULT_THEME : ThemeBundles = AVAILABLE_THEMES[0].bundleName;
+  const DEFAULT_THEME : ThemeBundle = AVAILABLE_THEMES[0].bundleName;
   const MOCK_APPLICATION_TITLE : string = 'Application Title';
   const MOCK_USER : User = allUsers[0];
   const MOCK_USERS : User[] = allUsers;
@@ -83,7 +83,7 @@ describe('ToolbarComponent', () : void => {
     expect(toolbarComponent.applicationTitle).toBeDefined();
 
     expect(toolbarComponent.availableThemes).toEqual(AVAILABLE_THEMES);
-    expect(toolbarComponent.activeTheme).toEqual(ThemeBundles.DeepPurpleAmber);
+    expect(toolbarComponent.activeTheme).toEqual(ThemeBundle.DeepPurpleAmber);
 
     expect(toolbarComponent.allUsers).not.toBeDefined();
     expect(toolbarComponent.currentUser).not.toBeDefined();
@@ -148,7 +148,7 @@ describe('ToolbarComponent', () : void => {
     it('should make a call to set the theme for the application', () : void => {
       fixture.detectChanges();
 
-      const DESIRED_THEME : ThemeBundles = ThemeBundles.IndigoPink;
+      const DESIRED_THEME : ThemeBundle = ThemeBundle.IndigoPink;
 
       toolbarComponent.setApplicationTheme(DESIRED_THEME);
       expect(MOCK_THEME_SERVICE.loadClientTheme).toHaveBeenCalledWith(DESIRED_THEME);
