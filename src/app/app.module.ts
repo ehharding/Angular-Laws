@@ -30,8 +30,7 @@ import { AppComponent } from 'app/app.component';
  * @param configService - an instance of the Config Service to use to initialize the application
  * @returns a function which returns a Promise (an object representing the eventual completion of an asynchronous operation).
  */
-// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-export function initializeApplication(configService : ConfigService) : () => Promise<void> {
+function initializeApplication(configService : ConfigService) : () => Promise<void> {
   return async() : Promise<void> => {
     await configService.loadApplicationConfiguration();
   };

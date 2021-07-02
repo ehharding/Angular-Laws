@@ -2,7 +2,7 @@ import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@an
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { HttpErrorResponse } from '@angular/common/http';
 
-import { DEFAULT_APP_CONFIGURATION, IAppConfiguration } from '@core/services/config/config.model';
+import { APP_CONSTANTS, DEFAULT_APP_CONFIGURATION, IAppConfiguration } from '@core/services/config/config.model';
 import { ENVIRONMENT } from '@environment/environment.development';
 
 import developmentConfig from '@assets/config/config.development.json';
@@ -71,7 +71,10 @@ describe('ConfigService', () : void => {
 
     it('should not modify the application configuration if the HTTP request fails', () : void => {
       const DEFAULT_CONFIGURATION_URI : string = `assets/config/config.${ ENVIRONMENT.name }.json`;
-      const MOCK_HTTP_ERROR_RESPONSE : HttpErrorResponse = { status : 500, message : 'Succeeded At Failing' } as any;
+      const MOCK_HTTP_ERROR_RESPONSE : HttpErrorResponse = {
+        status : APP_CONSTANTS.httpResponseCodes['418'].httpCode,
+        statusText : APP_CONSTANTS.httpResponseCodes['418'].httpStatusText
+      } as any;
 
       const APPLICATION_LOAD_PROMISE : Promise<void> = configService.loadApplicationConfiguration();
 

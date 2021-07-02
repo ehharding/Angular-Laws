@@ -12,7 +12,7 @@
  * ```
  ****************************************************************************************************************************************************/
 
-import { RouterModule, Routes } from '@angular/router';
+import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { ContributorsModule } from '@contributors/contributors.module';
@@ -22,8 +22,16 @@ const ROUTES : Routes = [
   { path : 'contributors', loadChildren : async() : Promise<ContributorsModule> => await import('@contributors/contributors.module').then((contributorsModule) => contributorsModule.ContributorsModule) }
 ];
 
+const EXTRA_OPTIONS : ExtraOptions = {
+  anchorScrolling : 'enabled',
+  onSameUrlNavigation : 'reload',
+  urlUpdateStrategy : 'deferred',
+  paramsInheritanceStrategy : 'emptyOnly',
+  relativeLinkResolution : 'corrected'
+};
+
 @NgModule({
   exports : [RouterModule],
-  imports : [RouterModule.forRoot(ROUTES, { onSameUrlNavigation : 'reload' })]
+  imports : [RouterModule.forRoot(ROUTES, EXTRA_OPTIONS)]
 })
 export class AppRoutingModule { }
