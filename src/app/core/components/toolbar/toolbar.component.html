@@ -25,11 +25,11 @@
       <mat-menu #themeMenu="matMenu" xPosition="before">
         <!-- Menu Content (Lazily-Loaded) -->
         <ng-template matMenuContent>
-          <button mat-menu-item *ngFor="let theme of availableThemes" [disabled]="theme.bundleName === activeTheme" (click)="setApplicationTheme(theme.bundleName)">
+          <button mat-menu-item *ngFor="let availableTheme of availableThemes" [disabled]="availableTheme.bundleName === activeTheme" (click)="setApplicationTheme(availableTheme.bundleName)">
             <!-- Display A Checkmark Next To The Active Theme -->
-            <mat-icon *ngIf="theme.bundleName === activeTheme" class="me-2">check</mat-icon>
+            <mat-icon *ngIf="availableTheme.bundleName === activeTheme" class="me-2">check</mat-icon>
             <!-- Display An Empty Icon Which Acts Like A Spacer Next To All Of The Other Themes -->
-            <mat-icon *ngIf="!(theme.bundleName === activeTheme)" class="me-2"></mat-icon>
+            <mat-icon *ngIf="!(availableTheme.bundleName === activeTheme)" class="me-2"></mat-icon>
 
             <mat-icon class="me-2">
               <svg viewBox="0 0 80 80">
@@ -38,12 +38,12 @@
                   <path id="b" d="M54 40c3.32 0 6 2.69 6 6 0 1.2 0-1.2 0 0 0 3.31-2.68 6-6 6H26c-3.31 0-6-2.69-6-6 0-1.2 0 1.2 0 0 0-3.31 2.69-6 6-6h28z"></path>
                   <path id="c" d="M0 0h80v17.24H0V0z"></path>
                 </defs>
-                <use xlink:href="#a" [attr.fill]="theme.backgroundColor"></use>
-                <use xlink:href="#b" [attr.fill]="theme.buttonColor"></use>
-                <use xlink:href="#c" [attr.fill]="theme.headerColor"></use>
+                <use xlink:href="#a" [attr.fill]="availableTheme.backgroundColor"></use>
+                <use xlink:href="#b" [attr.fill]="availableTheme.buttonColor"></use>
+                <use xlink:href="#c" [attr.fill]="availableTheme.headerColor"></use>
               </svg>
             </mat-icon>
-            <span>{{ theme.labelName }}</span>
+            <span>{{ availableTheme.labelName }}</span>
           </button>
         </ng-template>
       </mat-menu>

@@ -26,10 +26,10 @@
   </p>
 
   <p>
-    <a href="#executive-summary">Executive Summary</a> •
-    <a href="#developer-environment-recommended-setup">Developer Environment Recommended Setup</a> •
-    <a href="#credits">Credits</a> •
-    <a href="#license">License</a>
+    <a href="#Executive-Summary">Executive Summary</a> •
+    <a href="#Developer-Environment-Recommended-Setup">Developer Environment Recommended Setup</a> •
+    <a href="#Credits">Credits</a> •
+    <a href="#License">License</a>
   </p>
 
   <!-- This Is A Placeholder Image Until A Better One Is Found Or Created -->
