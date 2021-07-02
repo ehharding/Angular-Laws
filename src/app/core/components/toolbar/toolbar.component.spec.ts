@@ -101,7 +101,7 @@ describe('ToolbarComponent', () : void => {
       expect(toolbarComponent.activeTheme).toEqual(DEFAULT_THEME);
       expect(toolbarComponent.allUsers).toEqual(MOCK_USERS);
       expect(toolbarComponent.currentUser).toEqual(MOCK_USER);
-      expect(toolbarComponent.userLoggedIn).toBe(false);
+      expect(toolbarComponent.userLoggedIn).toBeFalse();
     });
   });
 

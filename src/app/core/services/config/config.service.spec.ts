@@ -1,5 +1,6 @@
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
 import { TestBed, waitForAsync } from '@angular/core/testing';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import { DEFAULT_APP_CONFIGURATION, IAppConfiguration } from '@core/services/config/config.model';
 import { ENVIRONMENT } from '@environment/environment.development';
@@ -70,6 +71,7 @@ describe('ConfigService', () : void => {
 
     it('should not modify the application configuration if the HTTP request fails', () : void => {
       const DEFAULT_CONFIGURATION_URI : string = `assets/config/config.${ ENVIRONMENT.name }.json`;
+      const MOCK_HTTP_ERROR_RESPONSE : HttpErrorResponse = { status : 500, message : 'Succeeded At Failing' } as any;
 
       const APPLICATION_LOAD_PROMISE : Promise<void> = configService.loadApplicationConfiguration();
 
@@ -77,7 +79,7 @@ describe('ConfigService', () : void => {
       expect(APP_CONFIGURATION_REQUEST.request.urlWithParams).toEqual(DEFAULT_CONFIGURATION_URI);
       expect(APP_CONFIGURATION_REQUEST.request.method).toEqual('GET');
       expect(APP_CONFIGURATION_REQUEST.request.body).toBeFalsy();
-      APP_CONFIGURATION_REQUEST.error({ error : '500', message : 'Succeeded At Failing' } as any);
+      APP_CONFIGURATION_REQUEST.error(MOCK_HTTP_ERROR_RESPONSE as any);
 
       APPLICATION_LOAD_PROMISE.then(() : void => {
         expect(ConfigService.internalAppConfiguration).toEqual(DEFAULT_APP_CONFIGURATION);

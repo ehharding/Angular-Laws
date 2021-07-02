@@ -14,7 +14,7 @@ import allUsers from '@core/mocks/all-users.json';
 
 @Injectable({ providedIn : 'root' })
 export class InMemoryDataService implements InMemoryDbService {
-  private readonly _allUsers : User[] = allUsers as User[];
+  private readonly _allUsers : User[] = allUsers;
 
   /**
    * Creates the in-memory database to be used as a mock backend. This is required to implement the InMemoryDbService interface. To access data under
