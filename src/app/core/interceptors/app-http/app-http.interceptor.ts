@@ -22,11 +22,11 @@ export class AppHttpInterceptor implements HttpInterceptor {
    * noted that HttpRequest objects are immutable, meaning they cannot be modified. To "modify" such an object, you should re-assign to a cloned and
    * modified copy of the object, or use an appropriate method.
    *
+   * {@link https://developer.mozilla.org/en-US/docs/Web/HTTP | MDN Web Docs HTTP Article}
+   *
    * @param httpRequest - An outgoing HTTP request which is being intercepted
    * @param httpHandler - A handler that dispatches the HTTP httpRequest to the next handler in the chain, as determined by order in `app.module.ts`
    * @returns an Observable of the HTTP event stream to be passed on to the next interceptor via httpHandler.handle(httpRequest : HttpRequest<any>).
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTTP
    */
   public intercept(httpRequest : HttpRequest<any>, httpHandler : HttpHandler) : Observable<HttpEvent<any>> {
     httpRequest = httpRequest.clone({ reportProgress : true, withCredentials : true, responseType : 'json' });

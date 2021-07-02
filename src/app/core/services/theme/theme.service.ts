@@ -14,11 +14,11 @@
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { AVAILABLE_THEMES, ThemeBundles } from '@core/services/theme/theme.model';
-import { ConfigService } from '@core/services/config/config.service';
-
 import { BehaviorSubject, Observable } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
+
+import { AVAILABLE_THEMES, ThemeBundles } from '@core/services/theme/theme.model';
+import { ConfigService } from '@core/services/config/config.service';
 
 @Injectable({ providedIn : 'root' })
 export class ThemeService {

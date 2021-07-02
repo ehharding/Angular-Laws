@@ -26,7 +26,7 @@ export const DEFAULT_APP_CONFIGURATION : IAppConfiguration = {
   },
   apiServer : {
     retries : 2,
-    apiBase : 'api',
+    apiBase : 'api/',
     themes : 'assets/themes',
     paths : {
       allUsers : 'allUsers'

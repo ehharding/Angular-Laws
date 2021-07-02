@@ -1,29 +1,34 @@
+import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
 import { TestBed, waitForAsync } from '@angular/core/testing';
-import { HttpClient } from '@angular/common/http';
-
-import { of, throwError } from 'rxjs';
 
 import { DEFAULT_APP_CONFIGURATION, IAppConfiguration } from '@core/services/config/config.model';
+import { ENVIRONMENT } from '@environment/environment.development';
 
+import developmentConfig from '@assets/config/config.development.json';
 import testConfig from '@core/mocks/config.test.json';
 
 import { ConfigService } from '@core/services/config/config.service';
 
 describe('ConfigService', () : void => {
   let configService : ConfigService;
-
-  const MOCK_HTTP_CLIENT : any = jasmine.createSpyObj('HttpClient', ['get']);
+  let httpMock : HttpTestingController;
 
   // Asynchronous beforeEach()
   beforeEach(waitForAsync(() : void => {
     TestBed.configureTestingModule({
-      providers : [ConfigService, { provide : HttpClient, useValue : MOCK_HTTP_CLIENT }]
+      imports : [HttpClientTestingModule],
+      providers : [ConfigService]
     });
   }));
 
   // Synchronous beforeEach()
   beforeEach(() : void => {
     configService = TestBed.inject(ConfigService);
+    httpMock = TestBed.inject(HttpTestingController);
+  });
+
+  afterEach(() : void => {
+    httpMock.verify();
   });
 
   it('should be created', () : void => {
@@ -31,40 +36,52 @@ describe('ConfigService', () : void => {
   });
 
   describe('function loadApplicationConfiguration()', () : void => {
-    beforeEach(() : void => {
-      MOCK_HTTP_CLIENT.get.calls.reset();
+    it('should load an application configuration into the service from an external JSON if a config was specified', () : void => {
+      const NEW_CONFIGURATION_URI : string = '@core/mocks/config.test.json';
+
+      const APPLICATION_LOAD_PROMISE : Promise<void> = configService.loadApplicationConfiguration(NEW_CONFIGURATION_URI);
+
+      const APP_CONFIGURATION_REQUEST : TestRequest = httpMock.expectOne(NEW_CONFIGURATION_URI);
+      expect(APP_CONFIGURATION_REQUEST.request.urlWithParams).toEqual(NEW_CONFIGURATION_URI);
+      expect(APP_CONFIGURATION_REQUEST.request.method).toEqual('GET');
+      expect(APP_CONFIGURATION_REQUEST.request.body).toBeFalsy();
+      APP_CONFIGURATION_REQUEST.flush(testConfig);
+
+      APPLICATION_LOAD_PROMISE.then(() : void => {
+        expect(ConfigService.internalAppConfiguration).toEqual(testConfig as IAppConfiguration);
+      });
     });
 
-    afterEach(() : void => {
-      expect(MOCK_HTTP_CLIENT.get).toHaveBeenCalledTimes(1);
+    it('should load the default development JSON into the service if no config was specified', () : void => {
+      const DEFAULT_DEVELOPMENT_CONFIGURATION_URI : string = `assets/config/config.${ ENVIRONMENT.name }.json`;
+
+      const APPLICATION_LOAD_PROMISE : Promise<void> = configService.loadApplicationConfiguration();
+
+      const APP_CONFIGURATION_REQUEST : TestRequest = httpMock.expectOne(DEFAULT_DEVELOPMENT_CONFIGURATION_URI);
+      expect(APP_CONFIGURATION_REQUEST.request.urlWithParams).toEqual(DEFAULT_DEVELOPMENT_CONFIGURATION_URI);
+      expect(APP_CONFIGURATION_REQUEST.request.method).toEqual('GET');
+      expect(APP_CONFIGURATION_REQUEST.request.body).toBeFalsy();
+      APP_CONFIGURATION_REQUEST.flush(developmentConfig);
+
+      APPLICATION_LOAD_PROMISE.then(() : void => {
+        expect(ConfigService.internalAppConfiguration).toEqual(developmentConfig as IAppConfiguration);
+      });
     });
 
-    it('should load an application configuration into the service from an external JSON if provided', waitForAsync(() : void => {
-      const NEW_CONFIGURATION : IAppConfiguration = testConfig as IAppConfiguration;
+    it('should not modify the application configuration if the HTTP request fails', () : void => {
+      const DEFAULT_CONFIGURATION_URI : string = `assets/config/config.${ ENVIRONMENT.name }.json`;
 
-      MOCK_HTTP_CLIENT.get.and.returnValue(of(NEW_CONFIGURATION));
+      const APPLICATION_LOAD_PROMISE : Promise<void> = configService.loadApplicationConfiguration();
 
-      configService.loadApplicationConfiguration('@core/mocks/config.test.json').then(() : void => {
-        expect(ConfigService.internalAppConfiguration).toEqual(NEW_CONFIGURATION);
-      });
-    }));
+      const APP_CONFIGURATION_REQUEST : TestRequest = httpMock.expectOne(DEFAULT_CONFIGURATION_URI);
+      expect(APP_CONFIGURATION_REQUEST.request.urlWithParams).toEqual(DEFAULT_CONFIGURATION_URI);
+      expect(APP_CONFIGURATION_REQUEST.request.method).toEqual('GET');
+      expect(APP_CONFIGURATION_REQUEST.request.body).toBeFalsy();
+      APP_CONFIGURATION_REQUEST.error({ error : '500', message : 'Succeeded At Failing' } as any);
 
-    it('should load the development configuration JSON into the service when an external JSON is not provided', waitForAsync(() : void => {
-      MOCK_HTTP_CLIENT.get.and.returnValue(of(DEFAULT_APP_CONFIGURATION));
-
-      configService.loadApplicationConfiguration().then(() : void => {
+      APPLICATION_LOAD_PROMISE.then(() : void => {
         expect(ConfigService.internalAppConfiguration).toEqual(DEFAULT_APP_CONFIGURATION);
       });
-    }));
-
-    it('should load the default configuration JSON into the service when the HTTP Client fails to retrieve the configuration', waitForAsync(() : void => {
-      MOCK_HTTP_CLIENT.get.and.returnValue(throwError(() : Error => {
-        return { name : 'Error', message : 'Succeeded At Failing' };
-      }));
-
-      configService.loadApplicationConfiguration().then(undefined, () : void => {
-        expect(ConfigService.internalAppConfiguration).toEqual(DEFAULT_APP_CONFIGURATION);
-      });
-    }));
+    });
   });
 });

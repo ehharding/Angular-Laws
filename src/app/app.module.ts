@@ -12,9 +12,10 @@ import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions } from '@angular/
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
-import { IN_MEMORY_BACKEND_CONFIG_ARGS, MAT_TOOLTIP_DEFAULT_CONFIG } from 'app/app.model';
 import { AppRoutingModule } from 'app/app-routing.module';
 import { CoreModule } from '@core/core.module';
+
+import { IN_MEMORY_BACKEND_CONFIG_ARGS, MAT_TOOLTIP_DEFAULT_CONFIG } from 'app/app.model';
 
 import { AppHttpInterceptor } from '@core/interceptors/app-http/app-http.interceptor';
 

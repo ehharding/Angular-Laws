@@ -2,9 +2,10 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CoreModule } from '@core/core.module';
-import { UserService } from '@core/services/user/user.service';
 
 import { AppRoutingModule } from 'app/app-routing.module';
+
+import { UserService } from '@core/services/user/user.service';
 
 import { AppComponent } from 'app/app.component';
 

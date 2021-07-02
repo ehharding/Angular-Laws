@@ -53,7 +53,7 @@ export class UserService {
 
   /**
    * Updates the current user of the application. This involves making a call to update the associated `currentUser` endpoint and updating. It should
-   * be noted that is the responsibility of the caller here to call this function appropriately. It is assumed that this call is done in good faith,
+   * be noted that is the responsibility of the caller to call this function appropriately. It is assumed that this call is done in good faith,
    * meaning it should have been verified that the user has the permission to do so (matching username and passwords, in other words).
    *
    * @param user - the new user to set as the current user

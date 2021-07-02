@@ -7,10 +7,10 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+import { lastValueFrom } from 'rxjs';
+
 import { DEFAULT_APP_CONFIGURATION, IAppConfiguration } from '@core/services/config/config.model';
 import { ENVIRONMENT } from '@environment/environment.development';
-
-import { lastValueFrom } from 'rxjs';
 
 @Injectable({ providedIn : 'root' })
 export class ConfigService {
