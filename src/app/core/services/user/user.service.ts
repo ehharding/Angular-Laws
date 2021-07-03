@@ -52,11 +52,12 @@ export class UserService {
   }
 
   /**
-   * Updates the current user of the application. This involves making a call to update the associated `currentUser` endpoint and updating. It should
-   * be noted that is the responsibility of the caller to call this function appropriately. It is assumed that this call is done in good faith,
-   * meaning it should have been verified that the user has the permission to do so (matching username and passwords, in other words).
+   * Updates the current user of the application. This involves updating the current user and the logged-in status of the application for all
+   * downstream functions to see. It should be noted that it is the responsibility of the caller to use this function appropriately. It is assumed
+   * that this call is done "in good faith", meaning it should have been verified that the user has the permission to do so (either by matching
+   * usernames and passwords or by some other means of authentication).
    *
-   * @param user - the new user to set as the current user
+   * @param user - the user to set as the current user for the application
    */
   public login(user : User) : void {
     this._currentUser$.next(user);

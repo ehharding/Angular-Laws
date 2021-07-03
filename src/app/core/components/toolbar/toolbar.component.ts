@@ -93,7 +93,10 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
     ABOUT_DIALOG_REF.backdropClick().subscribe(() : void => {
       ABOUT_DIALOG_REF.addPanelClass('pf-shake');
-      window.setTimeout(() => ABOUT_DIALOG_REF.removePanelClass('pf-shake'), ConfigService.internalAppConfiguration.constants.genericAnimationDurationMS);
+
+      window.setTimeout(() : MatDialogRef<AboutDialogComponent> => {
+        return ABOUT_DIALOG_REF.removePanelClass('pf-shake');
+      }, ConfigService.internalAppConfiguration.constants.genericAnimationDurationMS);
     });
   }
 

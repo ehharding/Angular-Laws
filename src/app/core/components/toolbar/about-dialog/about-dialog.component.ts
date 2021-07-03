@@ -50,6 +50,6 @@ export class AboutDialogComponent implements OnInit, OnDestroy {
       this.currentTime = new Date();
 
       this._changeDetectorRef.detectChanges();
-    }, APP_CONSTANTS.timeConstants.oneSecondMS);
+    }, APP_CONSTANTS.timeConstants.oneSecondMS as number); // eslint-disable-line @typescript-eslint/no-unsafe-member-access
   }
 }
