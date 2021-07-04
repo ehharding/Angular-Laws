@@ -1,10 +1,11 @@
-import { ConfigService } from '@core/services/config/config.service';
 import { InMemoryBackendConfigArgs } from 'angular-in-memory-web-api';
 import { MatTooltipDefaultOptions } from '@angular/material/tooltip';
 
 import { ENVIRONMENT } from '@environment/environment.development';
 
 import packageJSON from 'app/../../package.json';
+
+import { ConfigService } from '@core/services/config/config.service';
 
 /**
  * Returns the host (domain name) for the production server.

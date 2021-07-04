@@ -61,7 +61,7 @@
       </mat-menu>
 
       <!-- The Third Item In The Right Group Is The `Create Account | Login` Button, If The User Is Not Logged In -->
-      <button *ngIf="!userLoggedIn" mat-button class="me-2" (click)="login()">Create Account | Login</button>
+      <button *ngIf="!userLoggedIn" mat-button class="me-2" (click)="openCreateAccountLoginDialog()">Create Account | Login</button>
 
       <!-- The Third Item In The Right Group Is The `Profile` Button, If The User Is Logged In -->
       <button *ngIf="userLoggedIn" mat-button class="me-2">{{ currentUser.userName }}</button>

@@ -14,6 +14,7 @@ import { ThemeService } from '@core/services/theme/theme.service';
 import { UserService } from '@core/services/user/user.service';
 
 import { AboutDialogComponent } from '@core/components/toolbar/about-dialog/about-dialog.component';
+import { CreateAccountLoginDialogComponent } from '@core/components/toolbar/create-account-login-dialog/create-account-login-dialog.component';
 
 @Component({
   changeDetection : ChangeDetectionStrategy.OnPush,
@@ -82,20 +83,42 @@ export class ToolbarComponent implements OnInit, OnDestroy {
       applicationTitle : this.applicationTitle
     };
 
-    const ABOUT_DIALOG_CONFIG : MatDialogConfig = {
+    const DIALOG_CONFIG : MatDialogConfig = {
       disableClose : true,
       role : 'dialog',
       panelClass : 'pf-dialog',
       data : ABOUT_DIALOG_DATA
     };
 
-    const ABOUT_DIALOG_REF : MatDialogRef<AboutDialogComponent> = this.dialog.open(AboutDialogComponent, ABOUT_DIALOG_CONFIG);
+    const DIALOG_REF : MatDialogRef<AboutDialogComponent> = this.dialog.open(AboutDialogComponent, DIALOG_CONFIG);
 
-    ABOUT_DIALOG_REF.backdropClick().subscribe(() : void => {
-      ABOUT_DIALOG_REF.addPanelClass('pf-shake');
+    DIALOG_REF.backdropClick().subscribe(() : void => {
+      DIALOG_REF.addPanelClass('pf-shake');
 
       window.setTimeout(() : MatDialogRef<AboutDialogComponent> => {
-        return ABOUT_DIALOG_REF.removePanelClass('pf-shake');
+        return DIALOG_REF.removePanelClass('pf-shake');
+      }, ConfigService.internalAppConfiguration.constants.genericAnimationDurationMS);
+    });
+  }
+
+  /**
+   * Opens the `Create Account | Login` dialog (sometimes called a modal) that contains the functionality to both create an account on the application
+   * and to log in to the site with an existing account.
+   */
+  public openCreateAccountLoginDialog() : void {
+    const DIALOG_CONFIG : MatDialogConfig = {
+      disableClose : true,
+      role : 'dialog',
+      panelClass : 'pf-dialog'
+    };
+
+    const DIALOG_REF : MatDialogRef<CreateAccountLoginDialogComponent> = this.dialog.open(CreateAccountLoginDialogComponent, DIALOG_CONFIG);
+
+    DIALOG_REF.backdropClick().subscribe(() : void => {
+      DIALOG_REF.addPanelClass('pf-shake');
+
+      window.setTimeout(() : MatDialogRef<CreateAccountLoginDialogComponent> => {
+        return DIALOG_REF.removePanelClass('pf-shake');
       }, ConfigService.internalAppConfiguration.constants.genericAnimationDurationMS);
     });
   }

@@ -2,9 +2,11 @@
   <mat-icon>close</mat-icon>
 </button>
 
-<h3 class="mb-3"><strong>{{ dialogTitle }}</strong></h3>
-
 <mat-dialog-content>
+  <h3 class="text-center"><strong>{{ dialogTitle }}</strong></h3>
+
+  <mat-divider class="mx-5 my-3"></mat-divider>
+
   <h5><strong>What Is {{ applicationTitle }}?</strong></h5>
   <p>
     Welcome to {{ applicationTitle }}! This project is about creating a modern, user-friendly, and responsive fan fiction website for the world to
@@ -24,13 +26,15 @@
    -   NPM              - https://upload.wikimedia.org/wikipedia/commons/d/db/Npm-logo.svg
    -->
   <h5><strong>Built With Open Source Software</strong></h5>
-  <cdk-virtual-scroll-viewport class="pf-horizontal-viewport mx-5 my-5" itemSize="100" orientation="horizontal">
-    <div *cdkVirtualFor="let openSourceDependency of openSourceDependencies" class="mx-2 w-100" matTooltip="{{ openSourceDependency.tooltip }}">
-      <a href="{{ openSourceDependency.websiteLink }}" target="_blank">
-        <img alt="{{ openSourceDependency.imgAltDescription }}" class="pf-dependency-image" src="assets/images/dependency-logos/{{ openSourceDependency.imgTitle }}.svg" role="img"/>
-      </a>
-    </div>
-  </cdk-virtual-scroll-viewport>
+  <div class="mx-auto my-5 w-100">
+    <cdk-virtual-scroll-viewport class="pf-horizontal-viewport" itemSize="100" orientation="horizontal">
+      <div *cdkVirtualFor="let openSourceDependency of openSourceDependencies" class="mx-4" matTooltip="{{ openSourceDependency.tooltip }}">
+        <a href="{{ openSourceDependency.websiteLink }}" target="_blank">
+          <img alt="{{ openSourceDependency.imgAltDescription }}" class="pf-dependency-image" src="assets/images/dependency-logos/{{ openSourceDependency.imgTitle }}.svg" role="img"/>
+        </a>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
 
   <h5><strong>Version Information</strong></h5>
   <mat-card class="mat-elevation-z0">
@@ -43,12 +47,14 @@
 
     <!-- Card Content -->
     <mat-card-content>
-      <cdk-virtual-scroll-viewport class="pf-horizontal-viewport" itemSize="50" orientation="horizontal">
-        <div *cdkVirtualFor="let packageVersion of packageVersions" class="text-start w-100">
-          <h6><strong>{{ packageVersion.name }}</strong></h6>
-          <p>{{ packageVersion.version }}</p>
-        </div>
-      </cdk-virtual-scroll-viewport>
+      <div class="mx-auto w-100">
+        <cdk-virtual-scroll-viewport class="pf-horizontal-viewport" itemSize="50" orientation="horizontal">
+          <div *cdkVirtualFor="let packageVersion of packageVersions" class="text-start w-100">
+            <h6><strong>{{ packageVersion.name }}</strong></h6>
+            <p>{{ packageVersion.version }}</p>
+          </div>
+        </cdk-virtual-scroll-viewport>
+      </div>
     </mat-card-content>
   </mat-card>
 </mat-dialog-content>

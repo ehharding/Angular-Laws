@@ -14,6 +14,7 @@ import { SharedModule } from '@shared/shared.module';
 
 import { AboutDialogData, OPEN_SOURCE_DEPENDENCIES, PACKAGE_VERSIONS } from '@core/components/toolbar/about-dialog/about-dialog.model';
 import { APP_CONSTANTS } from '@core/services/config/config.model';
+
 import packageJSON from 'app/../../package.json';
 
 import { AboutDialogComponent } from '@core/components/toolbar/about-dialog/about-dialog.component';
