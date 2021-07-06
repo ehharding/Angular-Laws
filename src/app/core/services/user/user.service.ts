@@ -5,8 +5,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { BehaviorSubject, Observable } from 'rxjs';
-import { distinctUntilChanged } from 'rxjs/operators';
+import { BehaviorSubject, Observable, distinctUntilChanged } from 'rxjs';
 
 import { User } from '@core/services/user/user.model';
 

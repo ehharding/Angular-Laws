@@ -10,8 +10,7 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { Observable, catchError, retry, throwError } from 'rxjs';
 
 import { ConfigService } from '@core/services/config/config.service';
 

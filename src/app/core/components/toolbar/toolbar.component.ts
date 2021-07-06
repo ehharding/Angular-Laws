@@ -2,8 +2,7 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 
-import { ReplaySubject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { ReplaySubject, takeUntil } from 'rxjs';
 
 import { AVAILABLE_THEMES, Theme, ThemeBundle } from '@core/services/theme/theme.model';
 import { AboutDialogData } from '@core/components/toolbar/about-dialog/about-dialog.model';

@@ -14,10 +14,10 @@
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { BehaviorSubject, Observable } from 'rxjs';
-import { distinctUntilChanged } from 'rxjs/operators';
+import { BehaviorSubject, Observable, distinctUntilChanged } from 'rxjs';
 
 import { AVAILABLE_THEMES, ThemeBundle } from '@core/services/theme/theme.model';
+
 import { ConfigService } from '@core/services/config/config.service';
 
 @Injectable({ providedIn : 'root' })
