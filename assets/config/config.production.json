@@ -3,7 +3,6 @@
     "name" : "production"
   },
   "apiServer" : {
-    "retries" : 2,
     "apiBase" : "api/",
     "themes" : "assets/themes",
     "paths" : {
