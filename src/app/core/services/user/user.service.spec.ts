@@ -50,8 +50,8 @@ describe('UserService', () : void => {
 
   describe('function getAllUsers()', () : void => {
     it('should return a User[]-typed Observable stream of all users in the application', () : void => {
-      userService.getAllUsers().subscribe((allUsersValue : User[]) : void => {
-        expect(userService['_allUsers$'].value).toEqual(allUsersValue);
+      userService.getAllUsers().subscribe({
+        next(allUsersValue : User[]) : void { expect(userService['_allUsers$'].value).toEqual(allUsersValue); }
       });
 
       userService['_allUsers$'].next(allUsers);
@@ -61,8 +61,8 @@ describe('UserService', () : void => {
 
   describe('function getCurrentUser()', () : void => {
     it('should return a User-typed Observable stream of the currently-logged-in user', () : void => {
-      userService.getCurrentUser().subscribe((currentUserValue : User) : void => {
-        expect(userService['_currentUser$'].value).toEqual(currentUserValue);
+      userService.getCurrentUser().subscribe({
+        next(currentUserValue : User) : void { expect(userService['_currentUser$'].value).toEqual(currentUserValue); }
       });
 
       userService['_currentUser$'].next(allUsers[0]);
@@ -72,8 +72,8 @@ describe('UserService', () : void => {
 
   describe('function getUserLoggedIn()', () : void => {
     it('should return a boolean-typed Observable stream of the logged-in status of the application', () : void => {
-      userService.getUserLoggedIn().subscribe((userLoggedIn : boolean) : void => {
-        expect(userService['_userLoggedIn$'].value).toEqual(userLoggedIn);
+      userService.getUserLoggedIn().subscribe({
+        next(userLoggedInValue : boolean) : void { expect(userService['_userLoggedIn$'].value).toEqual(userLoggedInValue); }
       });
 
       userService['_userLoggedIn$'].next(true);

@@ -13,7 +13,6 @@ export interface IAppConfiguration {
     name : 'development' | 'production';
   };
   apiServer : {
-    retries : number;
     apiBase : string;
     themes : string;
     paths : {
@@ -467,7 +466,6 @@ export const DEFAULT_APP_CONFIGURATION : IAppConfiguration = {
     name : 'development'
   },
   apiServer : {
-    retries : 2,
     apiBase : 'api/',
     themes : 'assets/themes',
     paths : {

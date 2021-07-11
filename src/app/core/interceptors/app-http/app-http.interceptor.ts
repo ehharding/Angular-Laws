@@ -10,9 +10,7 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Observable, catchError, retry, throwError } from 'rxjs';
-
-import { ConfigService } from '@core/services/config/config.service';
+import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable()
 export class AppHttpInterceptor implements HttpInterceptor {
@@ -37,20 +35,19 @@ export class AppHttpInterceptor implements HttpInterceptor {
       httpRequest = httpRequest.clone({ headers : httpRequest.headers.set('Content-Type', 'application/json') });
     }
 
-    return httpHandler.handle(httpRequest).pipe(catchError(this._handleError), retry(ConfigService.internalAppConfiguration.apiServer.retries));
+    return httpHandler.handle(httpRequest).pipe(catchError(this._handleError));
   }
 
   /**
-   * This method performs all necessary error handling steps. Eventually, this should do more sophisticated things like logging to remote
-   * infrastructure or sending the information to a UI element.
+   * This method performs preliminary error handling steps for failed HTTP requests application-wide. The essence of this architecture is that of a
+   * catch-rethrow strategy. This means that the caught error is rethrown and passed down the Observable chain. As such, this method can perform
+   * initial error handling logic and leaves it up to the subscription down the line to further handle the error locally.
    *
    * @param errorResponse - an HttpErrorResponse object returned from an HttpRequest in the event of HTTP failure, for whatever reason
-   * @returns a never-typed Observable, meaning it cannot be subscribed to.
+   * @returns a never-typed Observable, meaning it never emits any value.
    */
   // eslint-disable-next-line @typescript-eslint/typedef
   private readonly _handleError = (errorResponse : HttpErrorResponse) : Observable<never> => {
-    return throwError(() : Error => {
-      return { name : errorResponse.status.toString(), message : errorResponse.statusText };
-    });
+    return throwError(() : HttpErrorResponse => errorResponse);
   };
 }

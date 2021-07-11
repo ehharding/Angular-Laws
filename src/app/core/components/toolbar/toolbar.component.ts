@@ -44,20 +44,20 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   public ngOnInit() : void {
     this.applicationTitle = this._titleService.getTitle();
 
-    this._themeService.getActiveThemeBundleName().pipe(takeUntil(this._componentDestroyed$)).subscribe((activeTheme : ThemeBundle) : void => {
-      this.activeTheme = activeTheme;
+    this._themeService.getActiveThemeBundleName().pipe(takeUntil(this._componentDestroyed$)).subscribe({
+      next : (activeTheme : ThemeBundle) : void => { this.activeTheme = activeTheme; }
     });
 
-    this._userService.getAllUsers().pipe(takeUntil(this._componentDestroyed$)).subscribe((allUsers : User[]) : void => {
-      this.allUsers = allUsers;
+    this._userService.getAllUsers().pipe(takeUntil(this._componentDestroyed$)).subscribe({
+      next : (allUsers : User[]) : void => { this.allUsers = allUsers; }
     });
 
-    this._userService.getCurrentUser().pipe(takeUntil(this._componentDestroyed$)).subscribe((currentUser : User) : void => {
-      this.currentUser = currentUser;
+    this._userService.getCurrentUser().pipe(takeUntil(this._componentDestroyed$)).subscribe({
+      next : (currentUser : User) : void => { this.currentUser = currentUser; }
     });
 
-    this._userService.getUserLoggedIn().pipe(takeUntil(this._componentDestroyed$)).subscribe((userLoggedIn : boolean) : void => {
-      this.userLoggedIn = userLoggedIn;
+    this._userService.getUserLoggedIn().pipe(takeUntil(this._componentDestroyed$)).subscribe({
+      next : (userLoggedIn : boolean) : void => { this.userLoggedIn = userLoggedIn; }
     });
   }
 
