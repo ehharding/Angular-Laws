@@ -38,14 +38,12 @@
 
   <h5><strong>Version Information</strong></h5>
   <mat-card class="mat-elevation-z0">
-    <!-- Card Header -->
     <mat-card-header>
       <mat-icon mat-card-avatar>import_contacts</mat-icon>
       <mat-card-title>{{ applicationTitle }}</mat-card-title>
       <mat-card-subtitle>{{ applicationVersion }} - Current Time: {{ currentTime.toTimeString() }}</mat-card-subtitle>
     </mat-card-header>
 
-    <!-- Card Content -->
     <mat-card-content>
       <div class="mx-auto w-100">
         <cdk-virtual-scroll-viewport class="pf-horizontal-viewport" itemSize="50" orientation="horizontal">

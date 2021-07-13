@@ -17,7 +17,6 @@ describe('ContributorsComponent', () : void => {
   let contributorsComponent : ContributorsComponent;
   let fixture : ComponentFixture<ContributorsComponent>;
 
-  // Asynchronous beforeEach()
   beforeEach(waitForAsync(() : void => {
     TestBed.configureTestingModule({
       declarations : [ContributorsComponent],
@@ -34,7 +33,6 @@ describe('ContributorsComponent', () : void => {
     }).compileComponents(); // Compile Template And CSS
   }));
 
-  // Synchronous beforeEach()
   beforeEach(() : void => {
     fixture = TestBed.createComponent(ContributorsComponent);
     contributorsComponent = fixture.componentInstance;

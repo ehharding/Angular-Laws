@@ -14,7 +14,6 @@ describe('UserService', () : void => {
 
   let allUsersRequest : TestRequest;
 
-  // Asynchronous beforeEach()
   beforeEach(waitForAsync(() : void => {
     TestBed.configureTestingModule({
       imports : [HttpClientTestingModule],
@@ -22,7 +21,6 @@ describe('UserService', () : void => {
     });
   }));
 
-  // Synchronous beforeEach()
   beforeEach(() : void => {
     userService = TestBed.inject(UserService);
     httpMock = TestBed.inject(HttpTestingController);

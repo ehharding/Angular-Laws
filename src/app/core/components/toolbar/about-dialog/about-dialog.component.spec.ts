@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -32,7 +33,6 @@ describe('AboutDialogComponent', () : void => {
 
   const MOCK_INTERVAL_ID : number = 1;
 
-  // Asynchronous beforeEach()
   beforeEach(waitForAsync(() : void => {
     TestBed.configureTestingModule({
       declarations : [AboutDialogComponent],
@@ -41,6 +41,7 @@ describe('AboutDialogComponent', () : void => {
         MatButtonModule,
         MatCardModule,
         MatDialogModule,
+        MatDividerModule,
         MatIconModule,
         MatMenuModule,
         MatToolbarModule,
@@ -53,7 +54,6 @@ describe('AboutDialogComponent', () : void => {
     }).compileComponents(); // Compile Template And CSS
   }));
 
-  // Synchronous beforeEach()
   beforeEach(() : void => {
     fixture = TestBed.createComponent(AboutDialogComponent);
     aboutDialogComponent = fixture.componentInstance;

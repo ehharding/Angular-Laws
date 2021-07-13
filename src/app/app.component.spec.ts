@@ -15,7 +15,6 @@ describe('AppComponent', () : void => {
 
   const MOCK_USER_SERVICE : any = jasmine.createSpyObj('UserService', ['getAllUsers']);
 
-  // Asynchronous beforeEach()
   beforeEach(waitForAsync(() : void => {
     TestBed.configureTestingModule({
       declarations : [AppComponent],
@@ -24,7 +23,6 @@ describe('AppComponent', () : void => {
     }).compileComponents(); // Compile Template And CSS
   }));
 
-  // Synchronous beforeEach()
   beforeEach(() : void => {
     fixture = TestBed.createComponent(AppComponent);
     appComponent = fixture.componentInstance;

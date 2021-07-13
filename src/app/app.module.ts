@@ -8,6 +8,7 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { MAT_TABS_CONFIG, MatTabsConfig } from '@angular/material/tabs';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions } from '@angular/material/tooltip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -15,7 +16,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppRoutingModule } from 'app/app-routing.module';
 import { CoreModule } from '@core/core.module';
 
-import { IN_MEMORY_BACKEND_CONFIG_ARGS, MAT_TOOLTIP_DEFAULT_CONFIG } from 'app/app.model';
+import { IN_MEMORY_BACKEND_CONFIG_ARGS, MAT_TABS_DEFAULT_CONFIG, MAT_TOOLTIP_DEFAULT_CONFIG } from 'app/app.model';
 
 import { AppHttpInterceptor } from '@core/interceptors/app-http/app-http.interceptor';
 
@@ -59,6 +60,11 @@ function initializeApplication(configService : ConfigService) : () => Promise<vo
       deps : [ConfigService],
       provide : APP_INITIALIZER,
       useFactory : initializeApplication
+    },
+    {
+      deps : [ConfigService],
+      provide : MAT_TABS_CONFIG,
+      useFactory : () : MatTabsConfig => MAT_TABS_DEFAULT_CONFIG
     },
     {
       deps : [ConfigService],

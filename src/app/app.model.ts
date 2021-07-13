@@ -1,4 +1,5 @@
 import { InMemoryBackendConfigArgs } from 'angular-in-memory-web-api';
+import { MatTabsConfig } from '@angular/material/tabs';
 import { MatTooltipDefaultOptions } from '@angular/material/tooltip';
 
 import { ENVIRONMENT } from '@environment/environment.development';
@@ -32,6 +33,13 @@ export const IN_MEMORY_BACKEND_CONFIG_ARGS : InMemoryBackendConfigArgs = {
   apiBase : ConfigService.internalAppConfiguration.apiServer.apiBase,
   host : ENVIRONMENT.name === 'development' ? 'localhost' : getProductionHost(),
   rootPath : ''
+};
+
+export const MAT_TABS_DEFAULT_CONFIG : MatTabsConfig = {
+  disablePagination : false,
+  dynamicHeight : true,
+  fitInkBarToContent : true,
+  animationDuration : `${ ConfigService.internalAppConfiguration.constants.genericAnimationDurationMS }ms`
 };
 
 export const MAT_TOOLTIP_DEFAULT_CONFIG : MatTooltipDefaultOptions = {

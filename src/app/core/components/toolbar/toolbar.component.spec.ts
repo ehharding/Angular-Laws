@@ -3,6 +3,7 @@ import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dial
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -41,7 +42,6 @@ describe('ToolbarComponent', () : void => {
   const MOCK_THEME_SERVICE : any = jasmine.createSpyObj('ThemeService', ['getActiveThemeBundleName', 'loadClientTheme']);
   const MOCK_USER_SERVICE : any = jasmine.createSpyObj('UserService', ['getAllUsers', 'getCurrentUser', 'getUserLoggedIn', 'login']);
 
-  // Asynchronous beforeEach()
   beforeEach(waitForAsync(() : void => {
     TestBed.configureTestingModule({
       declarations : [ToolbarComponent],
@@ -50,6 +50,7 @@ describe('ToolbarComponent', () : void => {
         MatButtonModule,
         MatCardModule,
         MatDialogModule,
+        MatDividerModule,
         MatIconModule,
         MatMenuModule,
         MatToolbarModule,
@@ -68,7 +69,6 @@ describe('ToolbarComponent', () : void => {
     }).compileComponents(); // Compile Template And CSS
   }));
 
-  // Synchronous beforeEach()
   beforeEach(() : void => {
     fixture = TestBed.createComponent(ToolbarComponent);
     toolbarComponent = fixture.componentInstance;
@@ -88,6 +88,12 @@ describe('ToolbarComponent', () : void => {
     expect(toolbarComponent.allUsers).not.toBeDefined();
     expect(toolbarComponent.currentUser).not.toBeDefined();
     expect(toolbarComponent.userLoggedIn).not.toBeDefined();
+  });
+
+  afterEach(() : void => {
+    MOCK_MAT_DIALOG.open.calls.reset();
+    MOCK_MAT_DIALOG_REF.addPanelClass.calls.reset();
+    MOCK_MAT_DIALOG_REF.removePanelClass.calls.reset();
   });
 
   it('should be created', () : void => {
@@ -135,6 +141,23 @@ describe('ToolbarComponent', () : void => {
       MOCK_MAT_DIALOG_REF.backdropClick.and.returnValue(of({ } as any)); // Simulate One Backdrop Click
 
       toolbarComponent.openAboutDialog();
+      expect(MOCK_MAT_DIALOG.open).toHaveBeenCalledTimes(1);
+
+      expect(MOCK_MAT_DIALOG_REF.addPanelClass).toHaveBeenCalledTimes(1);
+
+      tick(DEFAULT_APP_CONFIGURATION.constants.genericAnimationDurationMS);
+      expect(MOCK_MAT_DIALOG_REF.removePanelClass).toHaveBeenCalledTimes(1);
+    }));
+  });
+
+  describe('function openCreateAccountLoginDialog()', () : void => {
+    it('should open the create account | login dialog with the expected parameters and handle backdrop click behavior correctly', fakeAsync(() : void => {
+      fixture.detectChanges();
+
+      MOCK_MAT_DIALOG.open.and.returnValue(MOCK_MAT_DIALOG_REF);
+      MOCK_MAT_DIALOG_REF.backdropClick.and.returnValue(of({ } as any)); // Simulate One Backdrop Click
+
+      toolbarComponent.openCreateAccountLoginDialog();
       expect(MOCK_MAT_DIALOG.open).toHaveBeenCalledTimes(1);
 
       expect(MOCK_MAT_DIALOG_REF.addPanelClass).toHaveBeenCalledTimes(1);

@@ -2,7 +2,6 @@
   <mat-toolbar class="justify-content-between" color="primary">
     <!-- Left Group Of Toolbar Items -->
     <div>
-      <!-- The First Item In The Left Group Is The `Home Page` Button Which Links The User To The Home Page -->
       <a routerLink="/contributors">
         <button mat-button>
           <mat-icon class="me-2">import_contacts</mat-icon>
@@ -10,7 +9,6 @@
         </button>
       </a>
 
-      <!-- The Second Item In The Left Group Is The `Contributors` Button Which Links The User To The Contributors Page -->
       <a routerLink="/contributors">
         <button mat-button>Contributors</button>
       </a>
@@ -18,12 +16,10 @@
 
     <!-- Right Group Of Toolbar Items -->
     <div>
-      <!-- The First Item In The Right Group Is The Theme Selection Menu -->
       <button mat-icon-button matTooltip="Select A Theme For The Application" [matMenuTriggerFor]="themeMenu">
         <mat-icon>palette</mat-icon>
       </button>
       <mat-menu #themeMenu="matMenu" xPosition="before">
-        <!-- Menu Content (Lazily-Loaded) -->
         <ng-template matMenuContent>
           <button mat-menu-item *ngFor="let availableTheme of availableThemes" [disabled]="availableTheme.bundleName === activeTheme" (click)="setApplicationTheme(availableTheme.bundleName)">
             <!-- Display A Checkmark Next To The Active Theme -->
@@ -48,25 +44,19 @@
         </ng-template>
       </mat-menu>
 
-      <!-- The Second Item In The Right Group Is The `Help` Button -->
       <button mat-icon-button class="me-2" matTooltip="Help Me" [matMenuTriggerFor]="helpMenu">
         <mat-icon>help</mat-icon>
       </button>
       <mat-menu #helpMenu="matMenu" xPosition="before">
-        <!-- Menu Content (Lazily-Loaded) -->
         <ng-template matMenuContent>
-          <!-- The First Item In The Menu Is A Button That Launches A Dialog That Displays Information About The Application -->
           <button mat-menu-item (click)="openAboutDialog()">{{ aboutDialogTitle }}...</button>
         </ng-template>
       </mat-menu>
 
-      <!-- The Third Item In The Right Group Is The `Create Account | Login` Button, If The User Is Not Logged In -->
       <button *ngIf="!userLoggedIn" mat-button class="me-2" (click)="openCreateAccountLoginDialog()">Create Account | Login</button>
 
-      <!-- The Third Item In The Right Group Is The `Profile` Button, If The User Is Logged In -->
       <button *ngIf="userLoggedIn" mat-button class="me-2">{{ currentUser.userName }}</button>
 
-      <!-- The Fourth Item In The Right Group Is A Button Which Links To The GitHub Repository -->
       <a href="https://github.com/ehharding/Pocket-Fic" target="_blank">
         <button mat-button>
           <img alt="GitHub Logo" class="pf-github-logo me-2" src="assets/images/other-logos/github-logo.svg"/>

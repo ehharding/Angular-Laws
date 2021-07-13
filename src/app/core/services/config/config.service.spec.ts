@@ -14,7 +14,6 @@ describe('ConfigService', () : void => {
   let configService : ConfigService;
   let httpMock : HttpTestingController;
 
-  // Asynchronous beforeEach()
   beforeEach(waitForAsync(() : void => {
     TestBed.configureTestingModule({
       imports : [HttpClientTestingModule],
@@ -22,7 +21,6 @@ describe('ConfigService', () : void => {
     });
   }));
 
-  // Synchronous beforeEach()
   beforeEach(() : void => {
     configService = TestBed.inject(ConfigService);
     httpMock = TestBed.inject(HttpTestingController);

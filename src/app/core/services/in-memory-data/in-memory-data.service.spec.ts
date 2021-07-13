@@ -7,14 +7,12 @@ import { InMemoryDataService } from '@core/services/in-memory-data/in-memory-dat
 describe('InMemoryDataService', () : void => {
   let inMemoryDataService : InMemoryDataService;
 
-  // Asynchronous beforeEach()
   beforeEach(waitForAsync(() : void => {
     TestBed.configureTestingModule({
       providers : [InMemoryDataService]
     });
   }));
 
-  // Synchronous beforeEach()
   beforeEach(() : void => {
     inMemoryDataService = TestBed.inject(InMemoryDataService);
 
