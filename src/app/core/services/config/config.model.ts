@@ -27,12 +27,24 @@ export interface IAppConfiguration {
   };
 }
 
+interface AppConstants {
+  httpResponseCodes : Record<number, {
+    httpCode : number;
+    httpResponseType : HttpResponseType;
+    httpStatusText : string;
+    httpStatusDescription : string;
+  }>;
+  timeConstants : {
+    oneSecondMS : number;
+  };
+}
+
 /**
  * Global app configuration constants. Last modified: 2nd July 2021
  *
  * {@link https://developer.mozilla.org/en-US/docs/Web/HTTP/Status | MDN Web Docs HTTP Response Status Codes}
  */
-export const APP_CONSTANTS : any = { // eslint-disable-line @typescript-eslint/no-explicit-any
+export const APP_CONSTANTS : AppConstants = {
   httpResponseCodes : {
     100 : {
       httpCode : 100,

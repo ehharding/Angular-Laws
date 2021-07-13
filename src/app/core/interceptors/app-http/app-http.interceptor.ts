@@ -5,7 +5,7 @@
  * {@link https://angular.io/guide/http#intercepting-requests-and-responses | Angular Intercepting Requests And Responses Guide}
  ****************************************************************************************************************************************************/
 
-/* eslint-disable no-param-reassign, @typescript-eslint/no-explicit-any */
+/* eslint-disable no-param-reassign */
 
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -25,7 +25,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
    * @param httpHandler - A handler that dispatches the HTTP httpRequest to the next handler in the chain, as determined by order in `app.module.ts`
    * @returns an Observable of the HTTP event stream to be passed on to the next interceptor via httpHandler.handle(httpRequest : HttpRequest<any>).
    */
-  public intercept(httpRequest : HttpRequest<any>, httpHandler : HttpHandler) : Observable<HttpEvent<any>> {
+  public intercept(httpRequest : HttpRequest<unknown>, httpHandler : HttpHandler) : Observable<HttpEvent<unknown>> {
     httpRequest = httpRequest.clone({ reportProgress : true, withCredentials : true, responseType : 'json' });
 
     if (!httpRequest.headers.has('Accept')) {

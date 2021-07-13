@@ -72,8 +72,8 @@ describe('ConfigService', () : void => {
     it('should not modify the application configuration if the HTTP request fails', () : void => {
       const DEFAULT_CONFIGURATION_URI : string = `assets/config/config.${ ENVIRONMENT.name }.json`;
       const MOCK_HTTP_ERROR_RESPONSE : HttpErrorResponse = {
-        status : APP_CONSTANTS.httpResponseCodes['418'].httpCode,
-        statusText : APP_CONSTANTS.httpResponseCodes['418'].httpStatusText
+        status : APP_CONSTANTS.httpResponseCodes[418].httpCode,
+        statusText : APP_CONSTANTS.httpResponseCodes[418].httpStatusText
       } as any;
 
       const APPLICATION_LOAD_PROMISE : Promise<void> = configService.loadApplicationConfiguration();

@@ -32,8 +32,8 @@ describe('ToolbarComponent', () : void => {
 
   const DEFAULT_THEME : ThemeBundle = AVAILABLE_THEMES[0].bundleName;
   const MOCK_APPLICATION_TITLE : string = 'Application Title';
-  const MOCK_USER : User = allUsers[0];
   const MOCK_USERS : User[] = allUsers;
+  const MOCK_USER : User = allUsers[0];
 
   const MOCK_MAT_DIALOG : any = jasmine.createSpyObj('MatDialog', ['open']);
   const MOCK_MAT_DIALOG_REF : any = jasmine.createSpyObj('MatDialogRef', ['addPanelClass', 'removePanelClass', 'backdropClick']);
