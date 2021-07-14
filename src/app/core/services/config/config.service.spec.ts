@@ -2,7 +2,7 @@ import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@an
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { HttpErrorResponse } from '@angular/common/http';
 
-import { APP_CONSTANTS, DEFAULT_APP_CONFIGURATION, IAppConfiguration } from '@core/services/config/config.model';
+import { APP_CONSTANTS, DEFAULT_APP_CONFIGURATION, HttpMethods, IAppConfiguration } from '@core/services/config/config.model';
 import { ENVIRONMENT } from '@environment/environment.development';
 
 import developmentConfig from '@assets/config/config.development.json';
@@ -42,7 +42,7 @@ describe('ConfigService', () : void => {
 
       const APP_CONFIGURATION_REQUEST : TestRequest = httpMock.expectOne(NEW_CONFIGURATION_URI);
       expect(APP_CONFIGURATION_REQUEST.request.urlWithParams).toEqual(NEW_CONFIGURATION_URI);
-      expect(APP_CONFIGURATION_REQUEST.request.method).toEqual('GET');
+      expect(APP_CONFIGURATION_REQUEST.request.method).toEqual(HttpMethods.Get);
       expect(APP_CONFIGURATION_REQUEST.request.body).toBeFalsy();
       APP_CONFIGURATION_REQUEST.flush(testConfig);
 
@@ -58,7 +58,7 @@ describe('ConfigService', () : void => {
 
       const APP_CONFIGURATION_REQUEST : TestRequest = httpMock.expectOne(DEFAULT_DEVELOPMENT_CONFIGURATION_URI);
       expect(APP_CONFIGURATION_REQUEST.request.urlWithParams).toEqual(DEFAULT_DEVELOPMENT_CONFIGURATION_URI);
-      expect(APP_CONFIGURATION_REQUEST.request.method).toEqual('GET');
+      expect(APP_CONFIGURATION_REQUEST.request.method).toEqual(HttpMethods.Get);
       expect(APP_CONFIGURATION_REQUEST.request.body).toBeFalsy();
       APP_CONFIGURATION_REQUEST.flush(developmentConfig);
 
@@ -78,7 +78,7 @@ describe('ConfigService', () : void => {
 
       const APP_CONFIGURATION_REQUEST : TestRequest = httpMock.expectOne(DEFAULT_CONFIGURATION_URI);
       expect(APP_CONFIGURATION_REQUEST.request.urlWithParams).toEqual(DEFAULT_CONFIGURATION_URI);
-      expect(APP_CONFIGURATION_REQUEST.request.method).toEqual('GET');
+      expect(APP_CONFIGURATION_REQUEST.request.method).toEqual(HttpMethods.Get);
       expect(APP_CONFIGURATION_REQUEST.request.body).toBeFalsy();
       APP_CONFIGURATION_REQUEST.error(MOCK_HTTP_ERROR_RESPONSE as any);
 

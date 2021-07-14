@@ -11,9 +11,8 @@
 <div class="row m-3">
   <div class="mx-auto pf-w-70">
     <mat-accordion class="pf-headers-align">
-      <mat-expansion-panel *ngFor="let contributor of contributors; let index = index" style="max-height : 750px"
+      <mat-expansion-panel *ngFor="let contributor of contributors; let index = index" [expanded]="index === 0"
         (closed)="panelOpen = false" (opened)="panelOpen = true" (mouseenter)="panelHovered = true" (mouseleave)="panelHovered = false">
-          <!-- Panel Header -->
           <mat-expansion-panel-header>
             <mat-panel-title>
               <mat-icon class="me-2">account_circle</mat-icon>
@@ -28,21 +27,17 @@
             </mat-panel-description>
           </mat-expansion-panel-header>
 
-          <!-- Panel Content (Lazily-Loaded) -->
           <ng-template matExpansionPanelContent>
             <div class="d-flex justify-content-center">
               <mat-card class="mat-elevation-z0">
-                <!-- Card Header -->
                 <mat-card-header>
                   <img mat-card-avatar alt="{{ contributor.firstName }} {{ contributor.lastName }}'s Avatar" src="assets/avatars/{{ contributorNamesKebab[index] }}.jpeg"/>
                   <mat-card-title><strong>{{ contributor.firstName }} {{ contributor.lastName }}</strong></mat-card-title>
                   <mat-card-subtitle>{{ contributor.title }}</mat-card-subtitle>
                 </mat-card-header>
 
-                <!-- Card Content -->
                 <mat-card-content>{{ contributor.personalSummary }}</mat-card-content>
 
-                <!-- Card Actions -->
                 <mat-card-actions>
                   <!-- The First Contributor Card Action Button Is An Email Link -->
                   <a href="mailto:{{ contributor.email }}?subject=Subject&body=Hi%20{{ contributor.firstName }}">

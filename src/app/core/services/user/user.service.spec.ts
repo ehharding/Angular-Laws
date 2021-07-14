@@ -1,6 +1,7 @@
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 
+import { HttpMethods } from '@core/services/config/config.model';
 import { User } from '@core/services/user/user.model';
 
 import allUsers from '@core/mocks/all-users.json';
@@ -31,7 +32,7 @@ describe('UserService', () : void => {
 
     allUsersRequest = httpMock.expectOne(ConfigService.internalAppConfiguration.apiServer.paths.allUsers);
     expect(allUsersRequest.request.urlWithParams).toEqual(ConfigService.internalAppConfiguration.apiServer.paths.allUsers);
-    expect(allUsersRequest.request.method).toEqual('GET');
+    expect(allUsersRequest.request.method).toEqual(HttpMethods.Get);
     expect(allUsersRequest.request.body).toBeFalsy();
   });
 

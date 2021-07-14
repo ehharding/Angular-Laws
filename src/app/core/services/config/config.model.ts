@@ -1,5 +1,17 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 
+export enum HttpMethods {
+  Connect = 'CONNECT', // Establishes A Tunnel To The Server Identified By The Target Resource
+  Delete = 'DELETE',   // Deletes The Specified Resource
+  Get = 'GET',         // Requests A Representation Of The Specified Resource
+  Head = 'HEAD',       // Asks For A Response Identical To That Of A GET Request, But Without The Response Body
+  Options = 'OPTIONS', // Describes The Communication Options For The Target Resource
+  Patch = 'PATCH',     // Used To Apply Partial Modifications To A Resource
+  Post = 'POST',       // Used To Submit An Entity To The Specified Resource, Often Causing A Change In State Or Side Effects On The Server
+  Put = 'PUT',         // Replaces All Current Representations Of The Target Resource With The Request Payload
+  Trace = 'TRACE'      // Performs A Message Loop-Back Test Along The Path To The Target Resource
+}
+
 enum HttpResponseType {
   InformationResponse = 'Information Response',    // 1XX Codes
   SuccessfulResponse = 'Successful Response',      // 2XX Codes
