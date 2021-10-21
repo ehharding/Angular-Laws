@@ -1,5 +1,5 @@
 /*****************************************************************************************************************************************************
- * This file handles navigation for the `Contributors` module. The URLs defined here are children of contributors/.
+ * This file handles navigation for the `Contributors` module. The URLs defined here are children of contributor/.
  ****************************************************************************************************************************************************/
 
 import { RouterModule, Routes } from '@angular/router';

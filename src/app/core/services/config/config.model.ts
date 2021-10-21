@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 
-export enum HttpMethods {
+export enum HttpMethod {
   Connect = 'CONNECT', // Establishes A Tunnel To The Server Identified By The Target Resource
   Delete = 'DELETE',   // Deletes The Specified Resource
   Get = 'GET',         // Requests A Representation Of The Specified Resource
@@ -13,29 +13,37 @@ export enum HttpMethods {
 }
 
 enum HttpResponseType {
-  InformationResponse = 'Information Response',    // 1XX Codes
-  SuccessfulResponse = 'Successful Response',      // 2XX Codes
-  RedirectionMessages = 'Redirection Messages',    // 3XX Codes
-  ClientErrorResponses = 'Client Error Responses', // 4XX Codes
-  ServerErrorResponses = 'Server Error Responses'  // 5XX Codes
+  InformationResponse = 'Information Response',  // 1XX Codes
+  SuccessfulResponse = 'Successful Response',    // 2XX Codes
+  RedirectionMessage = 'Redirection Message',    // 3XX Codes
+  ClientErrorResponse = 'Client Error Response', // 4XX Codes
+  ServerErrorResponse = 'Server Error Response'  // 5XX Codes
 }
 
-export interface IAppConfiguration {
-  environment : {
-    name : 'development' | 'production';
-  };
+export interface AppConfiguration {
   apiServer : {
-    apiBase : string;
-    themes : string;
     paths : {
-      allUsers : string;
+      contributors : {
+        allContributors : string;
+      };
+      users : {
+        allUsers : string;
+      };
     };
+    themes : string;
   };
   constants : {
     genericAnimationDurationMS : number;
+    progressSpinnerDiameterPX : number;
+    progressSpinnerStrokeWidthPX : number;
     tooltipHideDelayMS : number;
     tooltipShowDelayMS : number;
     touchendHideDelayMS : number;
+  };
+  flags : {
+    disableTabPagination : boolean;
+    dynamicTabHeight : boolean;
+    fitTabInkBarToContent : boolean;
   };
 }
 
@@ -58,6 +66,13 @@ interface AppConstants {
  */
 export const APP_CONSTANTS : AppConstants = {
   httpResponseCodes : {
+    0 : {
+      httpCode : 0,
+      httpResponseType : HttpResponseType.ServerErrorResponse,
+      httpStatusText : 'Blocked By DevTools',
+      httpStatusDescription : 'This response (interpreted by most browsers as an "unknown error") usually indicates that local browser DevTools' +
+                              'are blocking the specific HTTP request. It is classified here as a server error.'
+    },
     100 : {
       httpCode : 100,
       httpResponseType : HttpResponseType.InformationResponse,
@@ -159,7 +174,7 @@ export const APP_CONSTANTS : AppConstants = {
     },
     300 : {
       httpCode : 300,
-      httpResponseType : HttpResponseType.RedirectionMessages,
+      httpResponseType : HttpResponseType.RedirectionMessage,
       httpStatusText : 'Multiple Choice',
       httpStatusDescription : 'The request has more than one possible response. The user-agent or user should choose one of them. (There is no ' +
                               'standardized way of choosing one of the responses, but HTML links to the possibilities are recommended so the user ' +
@@ -167,33 +182,33 @@ export const APP_CONSTANTS : AppConstants = {
     },
     301 : {
       httpCode : 301,
-      httpResponseType : HttpResponseType.RedirectionMessages,
+      httpResponseType : HttpResponseType.RedirectionMessage,
       httpStatusText : 'Moved Permanently',
       httpStatusDescription : 'The URL of the requested resource has been changed permanently. The new URL is given in the response.'
     },
     302 : {
       httpCode : 302,
-      httpResponseType : HttpResponseType.RedirectionMessages,
+      httpResponseType : HttpResponseType.RedirectionMessage,
       httpStatusText : 'Found',
       httpStatusDescription : 'This response code means that the URI of requested resource has been changed temporarily. Further changes in the ' +
                               'URI might be made in the future. Therefore, this same URI should be used by the client in future requests.'
     },
     303 : {
       httpCode : 303,
-      httpResponseType : HttpResponseType.RedirectionMessages,
+      httpResponseType : HttpResponseType.RedirectionMessage,
       httpStatusText : 'See Other',
       httpStatusDescription : 'The server sent this response to direct the client to get the requested resource at another URI with a GET request.'
     },
     304 : {
       httpCode : 304,
-      httpResponseType : HttpResponseType.RedirectionMessages,
+      httpResponseType : HttpResponseType.RedirectionMessage,
       httpStatusText : 'Not Modified',
       httpStatusDescription : 'This is used for caching purposes. It tells the client that the response has not been modified, so the client can ' +
                               'continue to use the same cached version of the response.'
     },
     307 : {
       httpCode : 307,
-      httpResponseType : HttpResponseType.RedirectionMessages,
+      httpResponseType : HttpResponseType.RedirectionMessage,
       httpStatusText : 'Temporary Redirect',
       httpStatusDescription : 'The server sends this response to direct the client to get the requested resource at another URI with same method ' +
                               'that was used in the prior request. This has the same semantics as the 302 Found HTTP response code, with the ' +
@@ -202,7 +217,7 @@ export const APP_CONSTANTS : AppConstants = {
     },
     308 : {
       httpCode : 308,
-      httpResponseType : HttpResponseType.RedirectionMessages,
+      httpResponseType : HttpResponseType.RedirectionMessage,
       httpStatusText : 'Permanent Redirect',
       httpStatusDescription : 'This means that the resource is now permanently located at another URI, specified by the Location: HTTP Response ' +
                               'header. This has the same semantics as the 301 Moved Permanently HTTP response code, with the exception that the ' +
@@ -211,34 +226,34 @@ export const APP_CONSTANTS : AppConstants = {
     },
     400 : {
       httpCode : 400,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Bad Request',
       httpStatusDescription : 'The server could not understand the request due to invalid syntax.'
     },
     401 : {
       httpCode : 401,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Unauthorized',
       httpStatusDescription : 'Although the HTTP standard specifies "unauthorized", semantically this response means "unauthenticated". That is, ' +
                               'the client must authenticate itself to get the requested response.'
     },
     402 : {
       httpCode : 402,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Payment Required',
       httpStatusDescription : 'This response code is reserved for future use. The initial aim for creating this code was using it for digital ' +
                               'payment systems, however this status code is used very rarely and no standard convention exists.'
     },
     403 : {
       httpCode : 403,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Forbidden',
       httpStatusDescription : 'The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to ' +
                               'give the requested resource. Unlike 401, the client\'s identity is known to the server.'
     },
     404 : {
       httpCode : 404,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Not Found',
       httpStatusDescription : 'The server can not find the requested resource. In the browser, this means the URL is not recognized. In an API, ' +
                               'this can also mean that the endpoint is valid but the resource itself does not exist. Servers may also send this ' +
@@ -247,27 +262,27 @@ export const APP_CONSTANTS : AppConstants = {
     },
     405 : {
       httpCode : 405,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Method Not Allowed',
       httpStatusDescription : 'The request method is known by the server but is not supported by the target resource. For example, an API may ' +
                               'forbid DELETE-ing a resource.'
     },
     406 : {
       httpCode : 406,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Not Acceptable',
       httpStatusDescription : 'This response is sent when the web server, after performing server-driven content negotiation, doesn\'t find any ' +
                               'content that conforms to the criteria given by the user agent.'
     },
     407 : {
       httpCode : 407,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Proxy Authentication Required',
       httpStatusDescription : 'This is similar to 401 but authentication is needed to be done by a proxy.'
     },
     408 : {
       httpCode : 408,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Request Timeout',
       httpStatusDescription : 'This response is sent on an idle connection by some servers, even without any previous request by the client. It ' +
                               'means that the server would like to shut down this unused connection. This response is used much more since some ' +
@@ -276,13 +291,13 @@ export const APP_CONSTANTS : AppConstants = {
     },
     409 : {
       httpCode : 409,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Conflict',
       httpStatusDescription : 'This response is sent when a request conflicts with the current state of the server.'
     },
     410 : {
       httpCode : 410,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Gone',
       httpStatusDescription : 'This response is sent when the requested content has been permanently deleted from server, with no forwarding ' +
                               'address. Clients are expected to remove their caches and links to the resource. The HTTP specification intends this ' +
@@ -291,88 +306,88 @@ export const APP_CONSTANTS : AppConstants = {
     },
     411 : {
       httpCode : 411,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Length Required',
       httpStatusDescription : 'Server rejected the request because the Content-Length header field is not defined and the server requires it.'
     },
     412 : {
       httpCode : 412,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Precondition Failed',
       httpStatusDescription : 'The client has indicated preconditions in its headers which the server does not meet.'
     },
     413 : {
       httpCode : 413,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Payload Too Large',
       httpStatusDescription : 'Request entity is larger than limits defined by server; the server might close the connection or return an ' +
                               'Retry-After header field.'
     },
     414 : {
       httpCode : 414,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'URI Too Long',
       httpStatusDescription : 'The URI requested by the client is longer than the server is willing to interpret.'
     },
     415 : {
       httpCode : 415,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Unsupported Media Type',
       httpStatusDescription : 'The media format of the requested data is not supported by the server, so the server is rejecting the request.'
     },
     416 : {
       httpCode : 416,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Range Not Satisfiable',
       httpStatusDescription : 'The range specified by the Range header field in the request can\'t be fulfilled; it\'s possible that the range is ' +
                               'outside the size of the target URI\'s data.'
     },
     417 : {
       httpCode : 417,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Expectation Failed',
       httpStatusDescription : 'This response code means the expectation indicated by the Expect request header field can\'t be met by the server.'
     },
     418 : {
       httpCode : 418,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'I\'m A Teapot',
       httpStatusDescription : 'The server refuses the attempt to brew coffee with a teapot.'
     },
     421 : {
       httpCode : 421,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Misdirected Request',
       httpStatusDescription : 'The request was directed at a server that is not able to produce a response. This can be sent by a server that is ' +
                               'not configured to produce responses for the combination of scheme and authority that are included in the request URI.'
     },
     422 : {
       httpCode : 422,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Unprocessable Entity (WebDAV)',
       httpStatusDescription : 'The request was well-formed but was unable to be followed due to semantic errors.'
     },
     423 : {
       httpCode : 423,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Locked (WebDAV)',
       httpStatusDescription : 'The resource that is being accessed is locked.'
     },
     424 : {
       httpCode : 424,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Failed Dependency (WebDAV)',
       httpStatusDescription : 'The request failed due to failure of a previous request.'
     },
     425 : {
       httpCode : 425,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Too Early',
       httpStatusDescription : 'Indicates that the server is unwilling to risk processing a request that might be replayed.'
     },
     426 : {
       httpCode : 426,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Upgrade Required',
       httpStatusDescription : 'The server refuses to perform the request using the current protocol but might be willing to do so after the client ' +
                               'upgrades to a different protocol. The server sends an Upgrade header in a 426 response to indicate the required ' +
@@ -380,7 +395,7 @@ export const APP_CONSTANTS : AppConstants = {
     },
     428 : {
       httpCode : 428,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Precondition Required',
       httpStatusDescription : 'The origin server requires the request to be conditional. This response is intended to prevent the \'lost update\' ' +
                               'problem, where a client GETs a resource\'s state, modifies it, and PUTs it back to the server, when meanwhile a ' +
@@ -388,46 +403,46 @@ export const APP_CONSTANTS : AppConstants = {
     },
     429 : {
       httpCode : 429,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Too Many Requests',
       httpStatusDescription : 'The user has sent too many requests in a given amount of time ("rate limiting").'
     },
     431 : {
       httpCode : 431,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Request Header Fields Too Large',
       httpStatusDescription : 'The server is unwilling to process the request because its header fields are too large. The request may be ' +
                               'resubmitted after reducing the size of the request header fields.'
     },
     451 : {
       httpCode : 451,
-      httpResponseType : HttpResponseType.ClientErrorResponses,
+      httpResponseType : HttpResponseType.ClientErrorResponse,
       httpStatusText : 'Unavailable For Legal Reasons',
       httpStatusDescription : 'The user-agent requested a resource that cannot legally be provided, such as a web page censored by a government.'
     },
     500 : {
       httpCode : 500,
-      httpResponseType : HttpResponseType.ServerErrorResponses,
+      httpResponseType : HttpResponseType.ServerErrorResponse,
       httpStatusText : 'Internal Server Error',
       httpStatusDescription : 'The server has encountered a situation it doesn\'t know how to handle.'
     },
     501 : {
       httpCode : 501,
-      httpResponseType : HttpResponseType.ServerErrorResponses,
+      httpResponseType : HttpResponseType.ServerErrorResponse,
       httpStatusText : 'Not Implemented',
       httpStatusDescription : 'The request method is not supported by the server and cannot be handled. The only methods that servers are required ' +
                               'to support (and therefore that must not return this code) are GET and HEAD.'
     },
     502 : {
       httpCode : 502,
-      httpResponseType : HttpResponseType.ServerErrorResponses,
+      httpResponseType : HttpResponseType.ServerErrorResponse,
       httpStatusText : 'Bad Gateway',
       httpStatusDescription : 'This error response means that the server, while working as a gateway to get a response needed to handle the ' +
                               'request, got an invalid response.'
     },
     503 : {
       httpCode : 503,
-      httpResponseType : HttpResponseType.ServerErrorResponses,
+      httpResponseType : HttpResponseType.ServerErrorResponse,
       httpStatusText : 'Service Unavailable',
       httpStatusDescription : 'The server is not ready to handle the request. Common causes are a server that is down for maintenance or that is ' +
                               'overloaded. Note that together with this response, a user-friendly page explaining the problem should be sent. This ' +
@@ -437,45 +452,45 @@ export const APP_CONSTANTS : AppConstants = {
     },
     504 : {
       httpCode : 504,
-      httpResponseType : HttpResponseType.ServerErrorResponses,
+      httpResponseType : HttpResponseType.ServerErrorResponse,
       httpStatusText : 'Gateway Timeout',
       httpStatusDescription : 'This error response is given when the server is acting as a gateway and cannot get a response in time.'
     },
     505 : {
       httpCode : 505,
-      httpResponseType : HttpResponseType.ServerErrorResponses,
+      httpResponseType : HttpResponseType.ServerErrorResponse,
       httpStatusText : 'HTTP Version Not Supported',
       httpStatusDescription : 'The HTTP version used in the request is not supported by the server.'
     },
     506 : {
       httpCode : 506,
-      httpResponseType : HttpResponseType.ServerErrorResponses,
+      httpResponseType : HttpResponseType.ServerErrorResponse,
       httpStatusText : 'Variant Also Negotiates',
       httpStatusDescription : 'The server has an internal configuration error: the chosen variant resource is configured to engage in transparent ' +
                               'content negotiation itself, and is therefore not a proper end point in the negotiation process.'
     },
     507 : {
       httpCode : 507,
-      httpResponseType : HttpResponseType.ServerErrorResponses,
+      httpResponseType : HttpResponseType.ServerErrorResponse,
       httpStatusText : 'Insufficient Storage (WebDAV)',
       httpStatusDescription : 'The method could not be performed on the resource because the server is unable to store the representation needed ' +
                               'to successfully complete the request.'
     },
     508 : {
       httpCode : 508,
-      httpResponseType : HttpResponseType.ServerErrorResponses,
+      httpResponseType : HttpResponseType.ServerErrorResponse,
       httpStatusText : 'Loop Detected (WebDAV)',
       httpStatusDescription : 'The server detected an infinite loop while processing the request.'
     },
     510 : {
       httpCode : 510,
-      httpResponseType : HttpResponseType.ServerErrorResponses,
+      httpResponseType : HttpResponseType.ServerErrorResponse,
       httpStatusText : 'Not Extended',
       httpStatusDescription : 'Further extensions to the request are required for the server to fulfill it.'
     },
     511 : {
       httpCode : 511,
-      httpResponseType : HttpResponseType.ServerErrorResponses,
+      httpResponseType : HttpResponseType.ServerErrorResponse,
       httpStatusText : 'Network Authentication Required',
       httpStatusDescription : 'The 511 status code indicates that the client needs to authenticate to gain network access.'
     }
@@ -485,21 +500,29 @@ export const APP_CONSTANTS : AppConstants = {
   }
 };
 
-export const DEFAULT_APP_CONFIGURATION : IAppConfiguration = {
-  environment : {
-    name : 'development'
-  },
+export const DEFAULT_APP_CONFIGURATION : AppConfiguration = {
   apiServer : {
-    apiBase : 'api/',
-    themes : 'assets/themes',
     paths : {
-      allUsers : 'allUsers'
-    }
+      contributors : {
+        allContributors : 'assets/data/contributors/all-contributors.json'
+      },
+      users : {
+        allUsers : 'assets/data/users/all-users.json'
+      }
+    },
+    themes : 'assets/themes'
   },
   constants : {
     genericAnimationDurationMS : 100,
+    progressSpinnerDiameterPX : 80,
+    progressSpinnerStrokeWidthPX : 10,
     tooltipHideDelayMS : 0,
     tooltipShowDelayMS : 500,
     touchendHideDelayMS : 1500
+  },
+  flags : {
+    disableTabPagination : false,
+    dynamicTabHeight : true,
+    fitTabInkBarToContent : true
   }
 };

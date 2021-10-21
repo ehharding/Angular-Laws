@@ -10,8 +10,8 @@
 
 <div class="row m-3">
   <div class="mx-auto pf-w-70">
-    <mat-accordion class="pf-headers-align">
-      <mat-expansion-panel *ngFor="let contributor of contributors; let index = index" [expanded]="index === 0"
+    <mat-accordion *ngIf="!contributorsFetchError" class="pf-headers-align">
+      <mat-expansion-panel *ngFor="let contributor of allContributors; let index = index" [expanded]="index === 0"
         (closed)="panelOpen = false" (opened)="panelOpen = true" (mouseenter)="panelHovered = true" (mouseleave)="panelHovered = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -23,7 +23,7 @@
 
             <mat-panel-description class="pf-contributor-shift-animation"
               [@hover]="(panelHovered && !panelOpen) ? 'shiftedState' : 'normalState'" [@openClose]="panelOpen ? 'invisibleState' : 'visibleState'">
-                {{ contributor.title }}
+                {{ contributor.jobTitle }}
             </mat-panel-description>
           </mat-expansion-panel-header>
 
@@ -33,7 +33,7 @@
                 <mat-card-header>
                   <img mat-card-avatar alt="{{ contributor.firstName }} {{ contributor.lastName }}'s Avatar" src="assets/avatars/{{ contributorNamesKebab[index] }}.jpeg"/>
                   <mat-card-title><strong>{{ contributor.firstName }} {{ contributor.lastName }}</strong></mat-card-title>
-                  <mat-card-subtitle>{{ contributor.title }}</mat-card-subtitle>
+                  <mat-card-subtitle>{{ contributor.jobTitle }}</mat-card-subtitle>
                 </mat-card-header>
 
                 <mat-card-content>{{ contributor.personalSummary }}</mat-card-content>
@@ -68,5 +68,19 @@
           </ng-template>
       </mat-expansion-panel>
     </mat-accordion>
+
+    <div *ngIf="contributorsFetchError" class="row">
+      <div class="col">
+        <h1 class="row mat-h1">
+          <strong>An Error Occurred Fetching The List Of Contributors. Sorry About That!</strong>
+          <mat-hint class="mat-h3">{{ contributorsFetchErrorInfo }}</mat-hint>
+        </h1>
+
+        <button mat-raised-button (click)="fetchAllContributors()">
+          <mat-icon class="me-2">refresh</mat-icon>
+          <span>RETRY</span>
+        </button>
+      </div>
+    </div>
   </div>
 </div>

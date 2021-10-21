@@ -122,6 +122,10 @@ pf-toolbar a .mat-button {
   position : relative !important;
 }
 
+.pf-dialog-divider {
+  margin: $spacer ($spacer * 3) !important;
+}
+
 .pf-dialog-header-close-button.mat-icon-button {
   margin : 10px;
   right : 0;
@@ -140,6 +144,38 @@ pf-toolbar a .mat-button {
 
 .pf-headers-align .mat-form-field + .mat-form-field {
   margin-left : 8px;
+}
+
+.pf-h-10 {
+  height : 10% !important;
+}
+
+.pf-h-20 {
+  height : 20% !important;
+}
+
+.pf-h-30 {
+  height : 30% !important;
+}
+
+.pf-h-40 {
+  height : 40% !important;
+}
+
+.pf-h-60 {
+  height : 60% !important;
+}
+
+.pf-h-70 {
+  height : 70% !important;
+}
+
+.pf-h-80 {
+  height : 80% !important;
+}
+
+.pf-h-90 {
+  height : 90% !important;
 }
 
 .pf-w-10 {

@@ -46,7 +46,6 @@
               "verbose" : false,
               "watch" : false,
               "baseHref" : "/Pocket-Fic/",
-              "deployUrl" : "/Pocket-Fic/",
               "outputPath" : "dist-prod",
               "index" : "src/index.html",
               "main" : "src/main.ts",
@@ -56,7 +55,7 @@
               "inlineStyleLanguage" : "scss",
               "outputHashing" : "all",
               "allowedCommonJsDependencies" : ["lodash"],
-              "assets" : ["src/app/core/mocks", "src/assets", "src/favicon.ico"],
+              "assets" : ["src/assets", "src/favicon.ico"],
               "styles" : ["src/styles.scss"],
               "budgets" : [
                 { "type" : "initial", "maximumWarning" : "2MB", "maximumError" : "5MB" },
@@ -81,7 +80,6 @@
             "verbose" : false,
             "watch" : false,
             "baseHref" : "/",
-            "deployUrl" : "/",
             "outputPath" : "dist",
             "index" : "src/index.html",
             "main" : "src/main.ts",
@@ -91,7 +89,7 @@
             "inlineStyleLanguage" : "scss",
             "outputHashing" : "none",
             "allowedCommonJsDependencies" : ["lodash"],
-            "assets" : ["src/app/core/mocks", "src/assets", "src/favicon.ico"],
+            "assets" : ["src/assets", "src/favicon.ico"],
             "styles" : ["src/styles.scss"],
             "budgets" : [
               { "type" : "initial", "maximumWarning" : "2MB", "maximumError" : "5MB" },
@@ -115,12 +113,12 @@
           "builder" : "@angular-devkit/build-angular:karma",
           "options" : {
             "codeCoverage": true,
-            "sourceMap" : true,
+            "sourceMap" : { "scripts" : true, "styles" : true, "vendor" : true },
             "karmaConfig" : "karma.conf.ts",
             "main" : "src/test.ts",
             "polyfills" : "src/polyfills.ts",
             "tsConfig" : "tsconfig.spec.json",
-            "assets" : ["src/app/core/mocks", "src/assets", "src/favicon.ico"],
+            "assets" : ["src/assets", "src/favicon.ico"],
             "styles" : ["src/styles.scss"],
             "stylePreprocessorOptions" : { "includePaths" : ["node_modules/bootstrap/scss/bootstrap.scss"] }
           }

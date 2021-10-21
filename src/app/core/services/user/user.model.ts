@@ -1,12 +1,11 @@
 export interface User {
+  id : number;
   isAdmin : boolean;
-  userID : number;
-  birthday : string;
-  title : string;
-  firstName : string;
-  middleName : string;
-  lastName : string;
-  generation : string;
   userName : string;
-  password : string;
+  birthday : string;
+  title : string | null;
+  firstName : string;
+  middleName : string | null;
+  lastName : string;
+  generation : string | null;
 }

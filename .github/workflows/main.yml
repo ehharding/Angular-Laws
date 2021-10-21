@@ -82,6 +82,7 @@ jobs :
 
   ########## JOB 2 - TEST ##########
   test :
+    if : 'false'
     needs : repository-checkout
     runs-on : ubuntu-latest
     strategy :

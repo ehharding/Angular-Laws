@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 
-import { AboutDialogData, OPEN_SOURCE_DEPENDENCIES, OpenSourceDependency, PACKAGE_VERSIONS, PackageVersion } from '@core/components/toolbar/about-dialog/about-dialog.model';
+import { OPEN_SOURCE_DEPENDENCIES, OpenSourceDependency, PACKAGE_VERSIONS, PackageVersion } from '@core/components/toolbar/about-dialog/about-dialog.model';
 import { APP_CONSTANTS } from '@core/services/config/config.model';
 
 import packageJSON from 'app/../../package.json';
@@ -16,16 +15,13 @@ import packageJSON from 'app/../../package.json';
 export class AboutDialogComponent implements OnInit, OnDestroy {
   public currentTime : Date = new Date();
 
-  public readonly applicationTitle : string = this.dialogData.applicationTitle;
-  public readonly dialogTitle : string = this.dialogData.aboutDialogTitle;
-
   public readonly applicationVersion : string = packageJSON.version;
   public readonly openSourceDependencies : OpenSourceDependency[] = OPEN_SOURCE_DEPENDENCIES;
   public readonly packageVersions : PackageVersion[] = PACKAGE_VERSIONS;
 
   private _currentTimeIntervalID : number;
 
-  public constructor(@Inject(MAT_DIALOG_DATA) public dialogData : AboutDialogData, private readonly _changeDetectorRef : ChangeDetectorRef) { }
+  public constructor(private readonly _changeDetectorRef : ChangeDetectorRef) { }
 
   public ngOnInit() : void {
     this._currentTimeIntervalID = this.setCurrentTimeInterval();

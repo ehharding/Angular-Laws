@@ -8,20 +8,18 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS, MatProgressSpinnerDefaultOptions } from '@angular/material/progress-spinner';
 import { MAT_TABS_CONFIG, MatTabsConfig } from '@angular/material/tabs';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions } from '@angular/material/tooltip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { AppRoutingModule } from 'app/app-routing.module';
 import { CoreModule } from '@core/core.module';
 
-import { IN_MEMORY_BACKEND_CONFIG_ARGS, MAT_TABS_DEFAULT_CONFIG, MAT_TOOLTIP_DEFAULT_CONFIG } from 'app/app.model';
-
 import { AppHttpInterceptor } from '@core/interceptors/app-http/app-http.interceptor';
+import { SpinnerInterceptor } from '@core/interceptors/spinner/spinner.interceptor';
 
 import { ConfigService } from '@core/services/config/config.service';
-import { InMemoryDataService } from '@core/services/in-memory-data/in-memory-data.service';
 
 import { AppComponent } from 'app/app.component';
 
@@ -37,6 +35,30 @@ function initializeApplication(configService : ConfigService) : () => Promise<vo
   };
 }
 
+/* eslint-disable prefer-const */
+
+let matProgressSpinnerDefaultOptions : MatProgressSpinnerDefaultOptions = {
+  diameter : ConfigService.appConfiguration.constants.progressSpinnerDiameterPX,
+  strokeWidth : ConfigService.appConfiguration.constants.progressSpinnerStrokeWidthPX
+};
+
+let matTabsConfig : MatTabsConfig = {
+  disablePagination : ConfigService.appConfiguration.flags.disableTabPagination,
+  dynamicHeight : ConfigService.appConfiguration.flags.dynamicTabHeight,
+  fitInkBarToContent : ConfigService.appConfiguration.flags.fitTabInkBarToContent,
+  animationDuration : String(ConfigService.appConfiguration.constants.genericAnimationDurationMS)
+};
+
+let matTooltipDefaultOptions : MatTooltipDefaultOptions = {
+  hideDelay : ConfigService.appConfiguration.constants.tooltipHideDelayMS,
+  showDelay : ConfigService.appConfiguration.constants.tooltipShowDelayMS,
+  touchendHideDelay : ConfigService.appConfiguration.constants.touchendHideDelayMS,
+  touchGestures : 'auto',
+  position : 'below'
+};
+
+/* eslint-enable prefer-const */
+
 @NgModule({
   bootstrap : [AppComponent],
   declarations : [AppComponent],
@@ -44,7 +66,6 @@ function initializeApplication(configService : ConfigService) : () => Promise<vo
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, IN_MEMORY_BACKEND_CONFIG_ARGS),
     AppRoutingModule,
     CoreModule
   ],
@@ -57,19 +78,29 @@ function initializeApplication(configService : ConfigService) : () => Promise<vo
     },
     {
       multi : true,
+      provide : HTTP_INTERCEPTORS,
+      useClass : SpinnerInterceptor
+    },
+    {
+      multi : true,
       deps : [ConfigService],
       provide : APP_INITIALIZER,
       useFactory : initializeApplication
     },
     {
       deps : [ConfigService],
+      provide : MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS,
+      useValue : matProgressSpinnerDefaultOptions
+    },
+    {
+      deps : [ConfigService],
       provide : MAT_TABS_CONFIG,
-      useFactory : () : MatTabsConfig => MAT_TABS_DEFAULT_CONFIG
+      useValue : matTabsConfig
     },
     {
       deps : [ConfigService],
       provide : MAT_TOOLTIP_DEFAULT_OPTIONS,
-      useFactory : () : MatTooltipDefaultOptions => MAT_TOOLTIP_DEFAULT_CONFIG
+      useValue : matTooltipDefaultOptions
     }
   ]
 })

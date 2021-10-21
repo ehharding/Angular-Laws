@@ -5,7 +5,7 @@
       <a routerLink="/contributors">
         <button mat-button>
           <mat-icon class="me-2">import_contacts</mat-icon>
-          <span>{{ applicationTitle }}</span>
+          <span>Pocket Fic</span>
         </button>
       </a>
 
@@ -49,7 +49,10 @@
       </button>
       <mat-menu #helpMenu="matMenu" xPosition="before">
         <ng-template matMenuContent>
-          <button mat-menu-item (click)="openAboutDialog()">{{ aboutDialogTitle }}...</button>
+          <button mat-menu-item (click)="openAboutDialog()">
+            <mat-icon class="me-2">info</mat-icon>
+            <span>About The Application...</span>
+          </button>
         </ng-template>
       </mat-menu>
 

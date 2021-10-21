@@ -44,7 +44,7 @@ module.exports = (config : any) : void => {
     proxyReq : undefined,
     proxyRes : undefined,
     upstreamProxy : undefined,
-    logLevel : config.LOG_INFO as string,
+    logLevel : config.LOG_INFO,
     loggers : [{ type : 'console' }],
     beforeMiddleware : [],
     middleware : [],
