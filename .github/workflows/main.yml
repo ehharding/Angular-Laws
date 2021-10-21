@@ -130,6 +130,7 @@ jobs :
 
   ########## JOB 3 - ESLINT-REPORT ##########
   eslint-report :
+    needs : repository-checkout
     runs-on : ubuntu-latest
     strategy :
       matrix :
