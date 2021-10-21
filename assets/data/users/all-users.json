@@ -1,0 +1,13 @@
+[
+  {
+    "id" : 1,
+    "isAdmin" : true,
+    "userName" : "solomon",
+    "birthday" : "19/09/2552",
+    "title" : "Mr.",
+    "firstName" : "Evan",
+    "middleName" : null,
+    "lastName" : "Harding",
+    "generation" : null
+  }
+]

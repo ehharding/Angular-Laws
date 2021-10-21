@@ -1,18 +1,26 @@
 {
-  "environment" : {
-    "name" : "development"
-  },
   "apiServer" : {
-    "apiBase" : "api/",
-    "themes" : "assets/themes",
     "paths" : {
-      "allUsers" : "allUsers"
-    }
+      "contributors" : {
+        "allContributors" : "assets/data/contributors/all-contributors.json"
+      },
+      "users" : {
+        "allUsers" : "assets/data/users/all-users.json"
+      }
+    },
+    "themes" : "assets/themes"
   },
   "constants" : {
     "genericAnimationDurationMS" : 100,
+    "progressSpinnerDiameterPX" : 80,
+    "progressSpinnerStrokeWidthPX" : 10,
     "tooltipHideDelayMS" : 0,
     "tooltipShowDelayMS" : 500,
     "touchendHideDelayMS" : 1500
+  },
+  "flags" : {
+    "disableTabPagination" : false,
+    "dynamicTabHeight" : true,
+    "fitTabInkBarToContent" : true
   }
 }
