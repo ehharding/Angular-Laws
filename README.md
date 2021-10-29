@@ -38,14 +38,14 @@
 
 ## Executive Summary
 A modern fan fiction website for the modern web... at least that's my goal! I don't see any super nice-looking or user-friendly fan fiction websites
-out there, and I honestly want one. So, I'm building one... starting with the front-end design and hopefully later on with the back-end. I'm doing
+out there, and I honestly want one. So, I'm building one! starting with the frontend design and hopefully later on with the backend. I'm doing
 this to gain some architecture and general full-stack experience along with knowledge in various modern toolkits and programming paradigms (outside my
 main job, of course, so time spent developing is limited).
 
 ## Developer Environment Recommended Setup
 To build from source and to contribute to the project, you will need to do a couple of things to get going. It is my goal that every developer have
-essentially the same development environment configuration. So, this section will go over both the tools required to work on the project and also the
-recommended general setup.
+the same development environment configuration. So, this section will go over both the tools required to work on the project and also the recommended
+general setup.
 
 ### IDE And Project Setup
 First, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/) (which comes with [NPM](http://npmjs.com)) installed on your
@@ -89,7 +89,7 @@ npm install
 ```
 
 ### Running The Project Locally
-With dependencies installed, you should now be ready to actually run the project. Either double click the `start` npm script or run the following:
+With dependencies installed, you should now be ready to actually run the project. Either double click the `start` npm script or run the following NPM command:
 
 ```bash
 npm run start
@@ -98,8 +98,8 @@ npm run start
 Angular should have compiled the project and served it to http://localhost:4200/. Point your browser here to see the site. You will not be able to
 push to the GitHub repository without first being added as a project contributor.
 
-### Running The Project Unit Tests
-You can run unit tests for the project via the `test` and `test:watch` npm scripts or run the following:
+### Running The Project Unit Tests - Currently Broken (WiP)
+You can run unit tests for the project via the `test` and `test:watch` npm scripts or run the following NPM commands:
 
 ```bash
 # Run Unit Tests Inside Firefox And Watch The Results
@@ -110,8 +110,9 @@ npm run test
 ```
 
 ### Linting The Project
-To assist with code maintainability and quality, this project utilizes ESLint. To run the linter on the project, you can use the `lint` and
-`lint:report` npm scripts or run the following:
+To assist with code maintainability and quality, this project utilizes [ESLint](https://eslint.org) along with the
+[@typescript-eslint](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin) and [eslint-plugin-tsdoc](https://www.npmjs.com/package/eslint-plugin-tsdoc) plugins. To
+run the linter on the project, you can use the `lint` and `lint:report` npm scripts or run the following NPM commands:
 
 ```bash
 # Run ESLint On The Project
@@ -129,6 +130,8 @@ This software uses the following open source packages:
 - [Bootstrap](https://getbootstrap.com) - A popular front-end open source CSS toolkit
 - [RxJS](https://rxjs-dev.firebaseapp.com/) - A library for composing asynchronous and event-based programs using observable sequences
 - [ESLint](https://eslint.org) - A modern code linter for JavaScript/TypeScript
+- [ESLint Plugin TypeScript](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin) - An ESLint TypeScript plugin that extends ESLint's tools for TypeScript-targeted code style enforcement
+- [ESLint Plugin TSDoc](https://www.npmjs.com/package/eslint-plugin-tsdoc) - An ESLint TSDoc plugin that extends ESLint's tools for TypeScript-targeted documentation style enforcement
 - [TypeScript](https://www.typescriptlang.org/) - Microsoft's open source programming language that extends JavaScript
 - [Node.js](https://nodejs.org/en/) - A JavaScript runtime built on Chrome's V8 JavaScript engine
 - [NPM](https://www.npmjs.com/) - The Node Package Manager (NPM)

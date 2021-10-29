@@ -22,21 +22,21 @@ export function constructOkResponse(body ?: any) : Observable<HttpResponse<unkno
  * This function provides a never-typed Observable stream for interested subscribers to trigger the emission of an HttpErrorResponse object as needed with a custom HTTP status
  * code and status text.
  *
- * @param httpStatusCode - An HTTP status code to include in the error response (e.g. 401, 404, etc.)
+ * @param status - An HTTP status code to include in the error response (e.g. 401, 404, etc.)
  * @param statusText - A status text, or message, to include in the error response (e.g. "A Very Specific Error Just Occurred...")
  * @returns a never-typed Observable stream. Subscribe to the stream to trigger the emission of an HttpErrorResponse object with the provided information.
  */
-export function constructErrorResponse(httpStatusCode : HttpStatusCode, statusText : string) : Observable<never> {
-  return throwError(() : HttpErrorResponse => new HttpErrorResponse({ status : httpStatusCode, statusText }));
+export function constructErrorResponse(status : HttpStatusCode, statusText : string) : Observable<never> {
+  return throwError(() : HttpErrorResponse => new HttpErrorResponse({ status, statusText }));
 }
 
 /**
  * This function provides a never-typed Observable stream for interested subscribers to trigger the emission of an HTTP 401 (Unauthorized) HttpErrorResponse object as needed
  * with a custom HTTP status text.
  *
- * @param httpStatusText - A status text, or message, to include in the error response (e.g. "The User Was Not Authorized For This Reason....")
+ * @param statusText - A status text, or message, to include in the error response (e.g. "The User Was Not Authorized For This Reason....")
  * @returns a never-typed Observable stream. Subscribe to the stream to trigger the emission of an HttpErrorResponse object with the provided information.
  */
-export function constructUnauthorizedResponse(httpStatusText : string = APP_CONSTANTS.httpResponseCodes[HttpStatusCode.Unauthorized].httpStatusText) : Observable<never> {
-  return throwError(() : HttpErrorResponse => new HttpErrorResponse({ status : HttpStatusCode.Unauthorized, statusText : httpStatusText }));
+export function constructUnauthorizedResponse(statusText : string = APP_CONSTANTS.httpResponseCodes[HttpStatusCode.Unauthorized].httpStatusText) : Observable<never> {
+  return throwError(() : HttpErrorResponse => new HttpErrorResponse({ status : HttpStatusCode.Unauthorized, statusText }));
 }
