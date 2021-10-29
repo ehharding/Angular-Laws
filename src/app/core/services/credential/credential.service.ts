@@ -1,5 +1,5 @@
 /******************************************************************************************************************************************************************************
- * This service handles the loading of user credential from storage on application startup and keeps track of the currently authenticated (logged in) user.
+ * This service handles the loading of user credentials from storage on application startup and keeps track of the currently authenticated (logged in) user.
  *****************************************************************************************************************************************************************************/
 
 import { HttpClient } from '@angular/common/http';

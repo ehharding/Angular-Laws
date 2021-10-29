@@ -247,6 +247,7 @@
     "no-unsafe-optional-chaining" : ["warn", { "disallowArithmeticOperators" : true }],
     "no-unused-expressions" : "off",
     "no-unused-labels" : "warn",
+    "no-unused-private-class-members" : "warn",
     "no-unused-vars" : "off",
     "no-use-before-define" : "off",
     "no-useless-call" : "warn",

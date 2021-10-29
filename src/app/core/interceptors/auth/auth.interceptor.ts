@@ -29,7 +29,7 @@ export class AuthInterceptor implements HttpInterceptor {
    *
    * @param httpRequest - An outgoing HTTP request which is being intercepted
    * @param httpHandler - A handler that dispatches the HTTP httpRequest to the next handler in the chain, as determined by order in `app.module.ts`
-   * @returns an Observable of the HTTP event stream to be passed on to the next response-interceptor via httpHandler.handle(httpRequest : HttpRequest<unknown>).
+   * @returns an Observable of the HTTP event stream to be passed on to the next interceptor via httpHandler.handle(httpRequest : HttpRequest<unknown>).
    */
   public intercept(httpRequest : HttpRequest<unknown>, httpHandler : HttpHandler) : Observable<HttpEvent<unknown>> {
     const REQUEST_BODY : any = httpRequest.body;

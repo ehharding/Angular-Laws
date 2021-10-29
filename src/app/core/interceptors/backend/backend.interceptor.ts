@@ -27,7 +27,7 @@ export class BackendInterceptor implements HttpInterceptor {
    *
    * @param httpRequest - An outgoing HTTP request which is being intercepted
    * @param httpHandler - A handler that dispatches the HTTP httpRequest to the next handler in the chain, as determined by order in `app.module.ts`
-   * @returns an Observable of the HTTP event stream to be passed on to the next response-interceptor via httpHandler.handle(httpRequest : HttpRequest<unknown>).
+   * @returns an Observable of the HTTP event stream to be passed on to the next interceptor via httpHandler.handle(httpRequest : HttpRequest<unknown>).
    *
    * @remarks The inline comments concerning the use of materialize()/dematerialize() is a result of the following RxJS issue which boils down to RxJS not time-shifting
    *          Observables properly when they emit errors https://github.com/Reactive-Extensions/RxJS/issues/648
@@ -43,13 +43,12 @@ export class BackendInterceptor implements HttpInterceptor {
      * @returns an HttpResponse with the body being the list of contributors to the project, either loaded from LocalStorage or a basic set of initial contributors if empty.
      */
     const getAllContributors = () : Observable<HttpEvent<unknown>> => {
-      const ALL_CONTRIBUTORS : Contributor[] = JSON.parse(
-        localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.contributors.allContributors) ?? INITIAL_CONTRIBUTORS_JSON
-      ) as Contributor[];
+      // eslint-disable-next-line max-len
+      const ALL_CONTRIBUTORS : Contributor[] = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.contributors.allContributors) ?? INITIAL_CONTRIBUTORS_JSON) as Contributor[];
 
-      // Inject Any Initial Contributors That Are To Exist When There Otherwise Are None In Local Storage
-      if (ALL_CONTRIBUTORS.length === 0) {
-        return constructOkResponse(INITIAL_CONTRIBUTORS);
+      // Startup Condition
+      if (ALL_CONTRIBUTORS.length === INITIAL_CONTRIBUTORS.length) {
+        localStorage.setItem(ConfigService.appConfiguration.apiServer.paths.contributors.allContributors, JSON.stringify(ALL_CONTRIBUTORS));
       }
 
       return constructOkResponse(ALL_CONTRIBUTORS);
@@ -63,9 +62,9 @@ export class BackendInterceptor implements HttpInterceptor {
     const getAllUsers = () : Observable<HttpEvent<unknown>> => {
       const ALL_USERS : User[] = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.users.allUsers) ?? INITIAL_USERS_JSON) as User[];
 
-      // Inject Any Initial Users That Are To Exist When There Otherwise Are None In Local Storage
-      if (ALL_USERS.length === 0) {
-        return constructOkResponse(INITIAL_USERS);
+      // Startup Condition
+      if (ALL_USERS.length === INITIAL_USERS.length) {
+        localStorage.setItem(ConfigService.appConfiguration.apiServer.paths.users.allUsers, JSON.stringify(ALL_USERS));
       }
 
       return constructOkResponse(ALL_USERS);
