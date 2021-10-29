@@ -37,20 +37,18 @@
 </div>
 
 ## Executive Summary
-A modern fan fiction website for the modern web... at least that's my goal! I don't see any super nice-looking or user-friendly fan fiction websites
-out there, and I honestly want one. So, I'm building one! starting with the frontend design and hopefully later on with the backend. I'm doing
-this to gain some architecture and general full-stack experience along with knowledge in various modern toolkits and programming paradigms (outside my
-main job, of course, so time spent developing is limited).
+A modern fan fiction website for the modern web... at least that's my goal! I don't see any super nice-looking or user-friendly fan fiction websites out there, and I honestly
+want one. So, I'm building one! starting with the frontend design and hopefully later on with the backend. I'm doing this to gain some architecture and general full-stack
+experience along with knowledge in various modern toolkits and programming paradigms (outside my main job, of course, so time spent developing is limited).
 
 ## Developer Environment Recommended Setup
-To build from source and to contribute to the project, you will need to do a couple of things to get going. It is my goal that every developer have
-the same development environment configuration. So, this section will go over both the tools required to work on the project and also the recommended
-general setup.
+To build from source and to contribute to the project, you will need to do a couple of things to get going. It is my goal that every developer have the same development
+environment configuration. So, this section will go over both the tools required to work on the project and also the recommended general setup.
 
 ### IDE And Project Setup
-First, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/) (which comes with [NPM](http://npmjs.com)) installed on your
-computer. You must download an Active LTS or Maintenance LTS release of Node.js. You can find out which versions these are by visiting the Node.js
-[release site](https://nodejs.org/en/about/releases/). After you have installed Node.js, enter the following from your command line of choice:
+First, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/) (which comes with [NPM](http://npmjs.com)) installed on your computer. You must download an
+Active LTS or Maintenance LTS release of Node.js. You can find out which versions these are by visiting the Node.js[release site](https://nodejs.org/en/about/releases/). After
+you have installed Node.js, enter the following from your command line of choice:
 
 ```bash
 # Go To The Top-Level Directory On Your Machine
@@ -63,19 +61,19 @@ mkdir Scratch && cd Scratch
 git clone https://github.com/ehharding/Pocket-Fic.git
 ```
 
-Then, you should download JetBrains' [Webstorm IDE](https://www.jetbrains.com/webstorm/) for your platform (Windows, macOS, or Linux). WebStorm
-includes a free 30-day trial, but you will most likely want to purchase a license to use all of its features.
+Then, you should download JetBrains' [Webstorm IDE](https://www.jetbrains.com/webstorm/) for your platform (Windows, macOS, or Linux). WebStorm includes a free 30-day trial,
+but you will most likely want to purchase a license to use all of its features.
 
-Now, when WebStorm starts up, open the newly cloned repository. We will now pull down shared WebStorm settings from a private repository containing
-said settings. To do this, go to <strong>File | Manage IDE Settings | Settings Repository...</strong>, enter
-https://github.com/ehharding/webstorm-settings.git for the Upstream URL, and click <strong>Overwrite Local</strong>. You should be prompted to enter
-a token to verify permissions. Contact me, and I will gladly provide the token. After this is done, you should have all the IDE settings required.
+Now, when WebStorm starts up, open the newly cloned repository. We will now pull down shared WebStorm settings from a private repository containing said settings. To do this,
+go to <strong>File | Manage IDE Settings | Settings Repository...</strong>, enter "https://github.com/ehharding/webstorm-settings.git" for the Upstream URL, and click 
+<strong>Overwrite Local</strong>. You should be prompted to enter a token to verify permissions. Contact me, and I will gladly provide the token. After this is done, you
+should have all the IDE settings required.
 
-You may need to go through a setup routine for the [Material Theme UI](https://plugins.jetbrains.com/plugin/8006-material-theme-ui) plugin.
-Personally, I use the Night Owl theme.
+You may need to go through a setup routine for the [Material Theme UI](https://plugins.jetbrains.com/plugin/8006-material-theme-ui) plugin. Personally, I use the Night Owl
+theme.
 
-Finally, while Chrome, Edge, Firefox, Opera, and Safari are supported as browsers, I would highly recommend [Firefox](https://www.mozilla.org/en-US/new/)
-as your core development browser. You will need it to properly run the project unit tests, anyways.
+Finally, while Chrome, Edge, Firefox, Opera, and Safari are supported as browsers, I would highly recommend [Firefox](https://www.mozilla.org/en-US/new/) as your core 
+development browser. You will need it to properly run the project unit tests, anyways.
 
 ### Installing Project Dependencies
 You must now install the necessary dependencies for the project via NPM. From WebStorm's Terminal command line:
@@ -95,8 +93,8 @@ With dependencies installed, you should now be ready to actually run the project
 npm run start
 ```
 
-Angular should have compiled the project and served it to http://localhost:4200/. Point your browser here to see the site. You will not be able to
-push to the GitHub repository without first being added as a project contributor.
+Angular should have compiled the project and served it to http://localhost:4200/. Point your browser here to see the site. You will not be able to push to the GitHub
+repository without first being added as a project contributor.
 
 ### Running The Project Unit Tests - Currently Broken (WiP)
 You can run unit tests for the project via the `test` and `test:watch` npm scripts or run the following NPM commands:
@@ -130,8 +128,10 @@ This software uses the following open source packages:
 - [Bootstrap](https://getbootstrap.com) - A popular front-end open source CSS toolkit
 - [RxJS](https://rxjs-dev.firebaseapp.com/) - A library for composing asynchronous and event-based programs using observable sequences
 - [ESLint](https://eslint.org) - A modern code linter for JavaScript/TypeScript
-- [ESLint Plugin TypeScript](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin) - An ESLint TypeScript plugin that extends ESLint's tools for TypeScript-targeted code style enforcement
-- [ESLint Plugin TSDoc](https://www.npmjs.com/package/eslint-plugin-tsdoc) - An ESLint TSDoc plugin that extends ESLint's tools for TypeScript-targeted documentation style enforcement
+- [ESLint Plugin TypeScript](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin) - An ESLint TypeScript plugin that extends ESLint's tools for TypeScript-targeted
+                                                                                               code style enforcement
+- [ESLint Plugin TSDoc](https://www.npmjs.com/package/eslint-plugin-tsdoc) - An ESLint TSDoc plugin that extends ESLint's tools for TypeScript-targeted documentation style
+                                                                             enforcement
 - [TypeScript](https://www.typescriptlang.org/) - Microsoft's open source programming language that extends JavaScript
 - [Node.js](https://nodejs.org/en/) - A JavaScript runtime built on Chrome's V8 JavaScript engine
 - [NPM](https://www.npmjs.com/) - The Node Package Manager (NPM)
