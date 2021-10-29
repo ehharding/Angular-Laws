@@ -3,6 +3,7 @@
  *****************************************************************************************************************************************************************************/
 
 import { HttpErrorResponse, HttpResponse, HttpStatusCode } from '@angular/common/http';
+
 import { Observable, of, throwError } from 'rxjs';
 
 import { APP_CONSTANTS } from '@core/services/config/config.model';
@@ -33,9 +34,9 @@ export function constructErrorResponse(httpStatusCode : HttpStatusCode, statusTe
  * This function provides a never-typed Observable stream for interested subscribers to trigger the emission of an HTTP 401 (Unauthorized) HttpErrorResponse object as needed
  * with a custom HTTP status text.
  *
- * @param statusText - A status text, or message, to include in the error response (e.g. "The User Was Not Authorized For This Reason....")
+ * @param httpStatusText - A status text, or message, to include in the error response (e.g. "The User Was Not Authorized For This Reason....")
  * @returns a never-typed Observable stream. Subscribe to the stream to trigger the emission of an HttpErrorResponse object with the provided information.
  */
-export function constructUnauthorizedResponse(statusText : string = APP_CONSTANTS.httpResponseCodes[HttpStatusCode.Unauthorized].httpStatusText) : Observable<never> {
-  return throwError(() : HttpErrorResponse => new HttpErrorResponse({ status : HttpStatusCode.Unauthorized, statusText }));
+export function constructUnauthorizedResponse(httpStatusText : string = APP_CONSTANTS.httpResponseCodes[HttpStatusCode.Unauthorized].httpStatusText) : Observable<never> {
+  return throwError(() : HttpErrorResponse => new HttpErrorResponse({ status : HttpStatusCode.Unauthorized, statusText : httpStatusText }));
 }

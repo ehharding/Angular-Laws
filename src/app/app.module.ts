@@ -35,25 +35,25 @@ import { AppComponent } from 'app/app.component';
  * @param configService - An instance of the ConfigService to use to initialize the application
  * @returns a function which returns a Promise (an object representing the eventual completion of an asynchronous operation).
  */
-function initializeApplication(configService : ConfigService) : () => Promise<void> {
+function initializeApplication(configService : ConfigService) : (() => Promise<void>) {
   return async() : Promise<void> => {
     await configService.loadApplicationConfiguration();
   };
 }
 
-const MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS_CONFIG : MatProgressSpinnerDefaultOptions = {
+const CONFIGURED_MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS : MatProgressSpinnerDefaultOptions = {
   diameter : ConfigService.appConfiguration.constants.progressSpinnerDiameterPX,
   strokeWidth : ConfigService.appConfiguration.constants.progressSpinnerStrokeWidthPX
 };
 
-const MAT_TABS_CONFIG_CONFIG : MatTabsConfig = {
+const CONFIGURED_MAT_TABS_CONFIG : MatTabsConfig = {
   disablePagination : ConfigService.appConfiguration.flags.disableTabPagination,
   dynamicHeight : ConfigService.appConfiguration.flags.dynamicTabHeight,
   fitInkBarToContent : ConfigService.appConfiguration.flags.fitTabInkBarToContent,
   animationDuration : String(ConfigService.appConfiguration.constants.genericAnimationDurationMS)
 };
 
-const MAT_TOOLTIP_DEFAULT_OPTIONS_CONFIG : MatTooltipDefaultOptions = {
+const CONFIGURED_MAT_TOOLTIP_DEFAULT_OPTIONS : MatTooltipDefaultOptions = {
   hideDelay : ConfigService.appConfiguration.constants.tooltipHideDelayMS,
   showDelay : ConfigService.appConfiguration.constants.tooltipShowDelayMS,
   touchendHideDelay : ConfigService.appConfiguration.constants.touchendHideDelayMS,
@@ -74,9 +74,9 @@ const MAT_TOOLTIP_DEFAULT_OPTIONS_CONFIG : MatTooltipDefaultOptions = {
   providers : [
     Title,
     { multi : true, deps : [ConfigService], provide : APP_INITIALIZER, useFactory : initializeApplication },
-    { multi : false, deps : [], provide : MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS, useValue : MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS_CONFIG },
-    { multi : false, deps : [], provide : MAT_TABS_CONFIG, useValue : MAT_TABS_CONFIG_CONFIG },
-    { multi : false, deps : [], provide : MAT_TOOLTIP_DEFAULT_OPTIONS, useValue : MAT_TOOLTIP_DEFAULT_OPTIONS_CONFIG },
+    { multi : false, deps : [], provide : MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS, useValue : CONFIGURED_MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS },
+    { multi : false, deps : [], provide : MAT_TABS_CONFIG, useValue : CONFIGURED_MAT_TABS_CONFIG },
+    { multi : false, deps : [], provide : MAT_TOOLTIP_DEFAULT_OPTIONS, useValue : CONFIGURED_MAT_TOOLTIP_DEFAULT_OPTIONS },
     { multi : true, deps : [], provide : HTTP_INTERCEPTORS, useClass : AppHttpInterceptor },
     { multi : true, deps : [SpinnerService], provide : HTTP_INTERCEPTORS, useClass : SpinnerInterceptor },
     { multi : true, deps : [], provide : HTTP_INTERCEPTORS, useClass : BackendInterceptor },
