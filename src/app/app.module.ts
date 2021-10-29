@@ -1,9 +1,11 @@
-/*****************************************************************************************************************************************************
- * This module serves as the root application module and is bootstrapped to start the application. It imports all other feature modules to aid in
- * application modularity and scalability, often asynchronously.
+/******************************************************************************************************************************************************************************
+ * This module serves as the root application module and is bootstrapped to start the application. It imports all other feature modules to aid in application modularity and
+ * scalability, often asynchronously.
  *
  * {@link https://angular.io/guide/architecture#modules | Angular Module Guide}
- ****************************************************************************************************************************************************/
+ *
+ * @remarks Be sure to note that the order of Providers in the AppModule is highly important. Providers will initialize in the order they are declared.
+ *****************************************************************************************************************************************************************************/
 
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
@@ -17,16 +19,20 @@ import { AppRoutingModule } from 'app/app-routing.module';
 import { CoreModule } from '@core/core.module';
 
 import { AppHttpInterceptor } from '@core/interceptors/app-http/app-http.interceptor';
+import { AuthInterceptor } from '@core/interceptors/auth/auth.interceptor';
+import { BackendInterceptor } from '@core/interceptors/backend/backend.interceptor';
 import { SpinnerInterceptor } from '@core/interceptors/spinner/spinner.interceptor';
 
 import { ConfigService } from '@core/services/config/config.service';
+import { CredentialService } from '@core/services/credential/credential.service';
+import { SpinnerService } from '@core/services/spinner/spinner.service';
 
 import { AppComponent } from 'app/app.component';
 
 /**
  * This function is called to begin the asynchronous retrieval of the base application configuration data from an endpoint.
  *
- * @param configService - an instance of the Config Service to use to initialize the application
+ * @param configService - An instance of the ConfigService to use to initialize the application
  * @returns a function which returns a Promise (an object representing the eventual completion of an asynchronous operation).
  */
 function initializeApplication(configService : ConfigService) : () => Promise<void> {
@@ -35,29 +41,25 @@ function initializeApplication(configService : ConfigService) : () => Promise<vo
   };
 }
 
-/* eslint-disable prefer-const */
-
-let matProgressSpinnerDefaultOptions : MatProgressSpinnerDefaultOptions = {
+const MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS_CONFIG : MatProgressSpinnerDefaultOptions = {
   diameter : ConfigService.appConfiguration.constants.progressSpinnerDiameterPX,
   strokeWidth : ConfigService.appConfiguration.constants.progressSpinnerStrokeWidthPX
 };
 
-let matTabsConfig : MatTabsConfig = {
+const MAT_TABS_CONFIG_CONFIG : MatTabsConfig = {
   disablePagination : ConfigService.appConfiguration.flags.disableTabPagination,
   dynamicHeight : ConfigService.appConfiguration.flags.dynamicTabHeight,
   fitInkBarToContent : ConfigService.appConfiguration.flags.fitTabInkBarToContent,
   animationDuration : String(ConfigService.appConfiguration.constants.genericAnimationDurationMS)
 };
 
-let matTooltipDefaultOptions : MatTooltipDefaultOptions = {
+const MAT_TOOLTIP_DEFAULT_OPTIONS_CONFIG : MatTooltipDefaultOptions = {
   hideDelay : ConfigService.appConfiguration.constants.tooltipHideDelayMS,
   showDelay : ConfigService.appConfiguration.constants.tooltipShowDelayMS,
   touchendHideDelay : ConfigService.appConfiguration.constants.touchendHideDelayMS,
   touchGestures : 'auto',
   position : 'below'
 };
-
-/* eslint-enable prefer-const */
 
 @NgModule({
   bootstrap : [AppComponent],
@@ -71,37 +73,14 @@ let matTooltipDefaultOptions : MatTooltipDefaultOptions = {
   ],
   providers : [
     Title,
-    {
-      multi : true,
-      provide : HTTP_INTERCEPTORS,
-      useClass : AppHttpInterceptor
-    },
-    {
-      multi : true,
-      provide : HTTP_INTERCEPTORS,
-      useClass : SpinnerInterceptor
-    },
-    {
-      multi : true,
-      deps : [ConfigService],
-      provide : APP_INITIALIZER,
-      useFactory : initializeApplication
-    },
-    {
-      deps : [ConfigService],
-      provide : MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS,
-      useValue : matProgressSpinnerDefaultOptions
-    },
-    {
-      deps : [ConfigService],
-      provide : MAT_TABS_CONFIG,
-      useValue : matTabsConfig
-    },
-    {
-      deps : [ConfigService],
-      provide : MAT_TOOLTIP_DEFAULT_OPTIONS,
-      useValue : matTooltipDefaultOptions
-    }
+    { multi : true, deps : [ConfigService], provide : APP_INITIALIZER, useFactory : initializeApplication },
+    { multi : false, deps : [], provide : MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS, useValue : MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS_CONFIG },
+    { multi : false, deps : [], provide : MAT_TABS_CONFIG, useValue : MAT_TABS_CONFIG_CONFIG },
+    { multi : false, deps : [], provide : MAT_TOOLTIP_DEFAULT_OPTIONS, useValue : MAT_TOOLTIP_DEFAULT_OPTIONS_CONFIG },
+    { multi : true, deps : [], provide : HTTP_INTERCEPTORS, useClass : AppHttpInterceptor },
+    { multi : true, deps : [SpinnerService], provide : HTTP_INTERCEPTORS, useClass : SpinnerInterceptor },
+    { multi : true, deps : [], provide : HTTP_INTERCEPTORS, useClass : BackendInterceptor },
+    { multi : true, deps : [CredentialService], provide : HTTP_INTERCEPTORS, useClass : AuthInterceptor }
   ]
 })
 export class AppModule { }

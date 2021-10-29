@@ -1,6 +1,6 @@
-/*****************************************************************************************************************************************************
+/******************************************************************************************************************************************************************************
  * This service handles the retrieval of contributor-related data.
- ****************************************************************************************************************************************************/
+ *****************************************************************************************************************************************************************************/
 
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -10,8 +10,6 @@ import { BehaviorSubject, Observable, distinctUntilChanged } from 'rxjs';
 import { Contributor } from '@contributors/services/contributor/contributor.model';
 
 import { ConfigService } from '@core/services/config/config.service';
-
-/* eslint-disable max-len */
 
 @Injectable({ providedIn : 'any' })
 export class ContributorService {
@@ -37,8 +35,6 @@ export class ContributorService {
     });
   }
 
-  /* eslint-enable max-len */
-
   /**
    * Provides a Contributor[]-typed Observable stream for interested subscribers to receive all contributors from the database.
    *
@@ -49,8 +45,8 @@ export class ContributorService {
   }
 
   /**
-   * Provides a HttpErrorResponse/undefined-typed Observable stream for interested subscribers to receive the latest error, if any, when the HTTP
-   * request to retrieve all contributors from the database was made.
+   * Provides a HttpErrorResponse/undefined-typed Observable stream for interested subscribers to receive the latest error, if any, when the HTTP request to retrieve all
+   * contributors from the database was made.
    *
    * @returns a HttpErrorResponse/undefined[]-typed Observable stream. Subscribe to the stream to receive the object type specified asynchronously.
    */

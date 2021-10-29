@@ -68,7 +68,7 @@
     "func-name-matching" : ["warn", "always", { "considerPropertyDescriptor" : false, "includeCommonJSModuleExports" : false }],
     "func-names" : ["warn", "always"],
     "func-style" : ["warn", "declaration", { "allowArrowFunctions" : true }],
-    "function-call-argument-newline" : ["warn", "never"],
+    "function-call-argument-newline" : "off",
     "function-paren-newline" : "off",
     "generator-star-spacing" : ["warn", "after"],
     "getter-return" : ["error", { "allowImplicit" : false }],
@@ -83,7 +83,7 @@
     "linebreak-style" : "off",
     "line-comment-position" : "off",
     "lines-around-comment" : ["warn", {
-      "beforeBlockComment" : true,
+      "beforeBlockComment" : false,
       "afterBlockComment" : false,
       "beforeLineComment" : false,
       "afterLineComment" : false,
@@ -107,8 +107,8 @@
       "ignoreStrings" : true,
       "ignoreTemplateLiterals" : true,
       "ignoreRegExpLiterals" : true,
-      "code" : 150,
-      "comments" : 150,
+      "code" : 175,
+      "comments" : 175,
       "tabWidth" : 2
     }],
     "max-lines" : ["warn", { "skipBlankLines" : false, "skipComments" : false, "max" : 1000 }],
@@ -481,7 +481,7 @@
       "enforceForFunctionPrototypeMethods" : true,
       "enforceForNewInMemberExpressions" : true,
       "enforceForSequenceExpressions" : true,
-      "nestedBinaryExpressions" : true,
+      "nestedBinaryExpressions" : false,
       "ignoreJSX" : "none"
     }],
     "@typescript-eslint/no-extra-semi" : "warn",
@@ -588,7 +588,7 @@
     "@typescript-eslint/prefer-readonly-parameter-types" : "off",
     "@typescript-eslint/prefer-readonly" : ["warn", { "onlyInlineLambdas" : false }],
     "@typescript-eslint/prefer-reduce-type-parameter" : "warn",
-    "@typescript-eslint/prefer-regexp-exec" : "warn",
+    "@typescript-eslint/prefer-regexp-exec" : "off",
     "@typescript-eslint/prefer-return-this-type" : "warn",
     "@typescript-eslint/prefer-string-starts-ends-with" : "warn",
     "@typescript-eslint/prefer-ts-expect-error" : "warn",
@@ -636,12 +636,33 @@
   },
   "overrides" : [
     {
+      "files" : ["http-response.utility.ts"],
+      "rules" : {
+        "@typescript-eslint/explicit-module-boundary-types" : "off",
+        "@typescript-eslint/no-explicit-any" : "off",
+        "@typescript-eslint/no-shadow" : "off",
+        "@typescript-eslint/no-unsafe-assignment" : "off"
+      }
+    },
+    {
       "files" : ["*-routing.module.ts"],
       "rules" : {
         "arrow-body-style" : "off",
         "implicit-arrow-linebreak" : "off",
 
         "@typescript-eslint/prefer-readonly-parameter-types" : "off",
+        "@typescript-eslint/typedef" : "off"
+      }
+    },
+    {
+      "files" : ["*.interceptor.ts"],
+      "rules" : {
+        "no-param-reassign" : "off",
+
+        "@typescript-eslint/naming-convention" : "off",
+        "@typescript-eslint/no-explicit-any" : "off",
+        "@typescript-eslint/no-unsafe-assignment" : "off",
+        "@typescript-eslint/no-unsafe-member-access" : "off",
         "@typescript-eslint/typedef" : "off"
       }
     },

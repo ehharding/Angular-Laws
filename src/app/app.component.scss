@@ -8,6 +8,17 @@
   right : 0;
 }
 
+.pf-spinner-overlay {
+  align-items : center;
+  justify-content : center;
+  display : flex;
+  position : absolute;
+  top : 56px;
+  bottom : 0;
+  left : 0;
+  right : 0;
+}
+
 .pf-toolbar {
   position : fixed;
   top : 0;

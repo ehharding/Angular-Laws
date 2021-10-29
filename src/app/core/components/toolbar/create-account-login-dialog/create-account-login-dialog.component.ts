@@ -6,6 +6,4 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls : ['create-account-login-dialog.component.scss'],
   templateUrl : 'create-account-login-dialog.component.html'
 })
-export class CreateAccountLoginDialogComponent {
-
-}
+export class CreateAccountLoginDialogComponent { }

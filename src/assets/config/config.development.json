@@ -2,10 +2,13 @@
   "apiServer" : {
     "paths" : {
       "contributors" : {
-        "allContributors" : "assets/data/contributors/all-contributors.json"
+        "allContributors" : "api/contributors/allContributors"
       },
       "users" : {
-        "allUsers" : "assets/data/users/all-users.json"
+        "allUsers" : "api/users/allUsers",
+        "authenticate" : "api/users/authenticate",
+        "createAccount" : "api/users/createAccount",
+        "currentUser" : "api/users/currentUser"
       }
     },
     "themes" : "assets/themes"
@@ -14,6 +17,7 @@
     "genericAnimationDurationMS" : 100,
     "progressSpinnerDiameterPX" : 80,
     "progressSpinnerStrokeWidthPX" : 10,
+    "simulatedServerLatencyMS" : 1000,
     "tooltipHideDelayMS" : 0,
     "tooltipShowDelayMS" : 500,
     "touchendHideDelayMS" : 1500

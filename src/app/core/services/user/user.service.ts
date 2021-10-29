@@ -1,11 +1,11 @@
-/*****************************************************************************************************************************************************
- * This service handles the retrieval of user-related data.
- ****************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************
+ * This service handles the retrieval of user-related data and making user-related transactions with the database.
+ *****************************************************************************************************************************************************************************/
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { BehaviorSubject, Observable, distinctUntilChanged } from 'rxjs';
+import { BehaviorSubject, Observable, distinctUntilChanged, map } from 'rxjs';
 
 import { User } from '@core/services/user/user.model';
 
@@ -15,11 +15,18 @@ import { ConfigService } from '@core/services/config/config.service';
 export class UserService {
   private readonly _allUsers$ : BehaviorSubject<User[]> = new BehaviorSubject<User[]>([] as User[]);
   private readonly _currentUser$ : BehaviorSubject<User> = new BehaviorSubject<User>({} as User);
-  private readonly _userLoggedIn$ : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   public constructor(private readonly _httpClient : HttpClient) {
     this._httpClient.get<User[]>(ConfigService.appConfiguration.apiServer.paths.users.allUsers).pipe(distinctUntilChanged()).subscribe({
       next : (allUsers : User[]) : void => { this._allUsers$.next(allUsers); }
+    });
+
+    this._httpClient.get<User>(ConfigService.appConfiguration.apiServer.paths.users.currentUser).pipe(distinctUntilChanged()).subscribe({
+      next : (currentUser : User) : void => {
+        if (currentUser.jwtToken) {
+          this._currentUser$.next(currentUser);
+        }
+      }
     });
   }
 
@@ -42,24 +49,21 @@ export class UserService {
   }
 
   /**
-   * Provides a boolean-typed Observable stream for interested subscribers to receive the logged-out / logged-in status of the application.
+   * This function authenticates (logs in) a user to the application. If the username and password match an existing user in the database, then the user is logged in.
    *
-   * @returns a boolean-typed Observable stream. Subscribe to the stream to receive the object type specified asynchronously.
+   * @param userName - The username of the user to log in
+   * @param password - The password of the user trying to log in
+   * @returns the newly logged-in user if successful.
    */
-  public getUserLoggedIn() : Observable<boolean> {
-    return this._userLoggedIn$.asObservable().pipe(distinctUntilChanged());
-  }
+  public login(userName : string, password : string) : Observable<User> {
+    return this._httpClient.post<User>(ConfigService.appConfiguration.apiServer.paths.users.authenticate, { userName, password }, { withCredentials : true }).pipe(
+      map((responseObject : User) : User => {
+        if (responseObject.jwtToken) {
+          this._currentUser$.next(responseObject);
+        }
 
-  /**
-   * Updates the current user of the application. This involves updating the current user and the logged-in status of the application for all
-   * downstream functions to see. It should be noted that it is the responsibility of the caller to use this function appropriately. It is assumed
-   * that this call is done "in good faith", meaning it should have been verified that the user has the permission to do so (either by matching
-   * usernames and passwords or by some other means of authentication).
-   *
-   * @param user - the user to set as the current user for the application
-   */
-  public login(user : User) : void {
-    this._currentUser$.next(user);
-    this._userLoggedIn$.next(true);
+        return responseObject;
+      })
+    );
   }
 }

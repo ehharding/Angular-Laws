@@ -56,9 +56,9 @@
         </ng-template>
       </mat-menu>
 
-      <button *ngIf="!userLoggedIn" mat-button class="me-2" (click)="openCreateAccountLoginDialog()">Create Account | Login</button>
+      <button *ngIf="!currentUser.jwtToken" mat-button class="me-2" (click)="openCreateAccountLoginDialog()">Create Account | Login</button>
 
-      <button *ngIf="userLoggedIn" mat-button class="me-2">{{ currentUser.userName }}</button>
+      <button *ngIf="currentUser.jwtToken" mat-button class="me-2">{{ currentUser.userName }}</button>
 
       <a href="https://github.com/ehharding/Pocket-Fic" target="_blank">
         <button mat-button>

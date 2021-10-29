@@ -1,7 +1,7 @@
-/*****************************************************************************************************************************************************
- * This module serves as the repository for the applications singleton core services. All services provided here have only one instance at any point
- * in time across the entire application, in other words.
- ****************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************
+ * This module serves as the repository for the applications singleton core services. All services provided here have only one instance at any point in time across the entire
+ * application, in other words.
+ *****************************************************************************************************************************************************************************/
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -29,7 +29,7 @@ import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
 
 @NgModule({
   declarations : [AboutDialogComponent, CreateAccountLoginDialogComponent, SpinnerOverlayComponent, ToolbarComponent],
-  exports : [ToolbarComponent],
+  exports : [SpinnerOverlayComponent, ToolbarComponent],
   imports : [
     MatButtonModule,
     MatCardModule,

@@ -1,6 +1,6 @@
-/*****************************************************************************************************************************************************
- * This service holds the currently active application theme and provides functionality for loading four pre-built Angular Material themes and also
- * provides logic for assigning an arbitrary CSS class to an HTML tag.
+/******************************************************************************************************************************************************************************
+ * This service holds the currently active application theme and provides functionality for loading four pre-built Angular Material themes and also provides logic for
+ * assigning an arbitrary CSS class to an HTML tag.
  *
  * {@link https://material.angular.io | Angular Material}
  *
@@ -9,7 +9,7 @@
  *   2) Indigo & Pink
  *   3) Pink & Blue Grey
  *   4) Purple & Green
- ****************************************************************************************************************************************************/
+ *****************************************************************************************************************************************************************************/
 
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
@@ -38,9 +38,8 @@ export class ThemeService {
   }
 
   /**
-   * This method assigns the provided CSS class names to the element specified by tagName. Use this if you are wanting to achieve some kind of
-   * programmatic styling effect on an entire tag name. For example, this is used to set the `background` attribute of <body></body>, depending
-   * on the current application theme.
+   * This method assigns the provided CSS class names to the element specified by tagName. Use this if you are wanting to achieve some kind of programmatic styling effect on
+   * an entire tag name. For example, this is used to set the `background` attribute of <body></body>, depending on the current application theme.
    *
    * @param cssClassList - A list of CSS class names to assign to an existing HTML element
    * @param tagName - The qualified HTML tag name that you would like to apply CSS classes to
@@ -58,8 +57,8 @@ export class ThemeService {
   }
 
   /**
-   * This method loads a style name that exists in the ThemeBundle enumeration, injecting the requested theme into the index.html as a <link/>. This
-   * allows for simple style switching at runtime.
+   * This method loads a style name that exists in the ThemeBundle enumeration, injecting the requested theme into the index.html as a <link/>. This allows for simple style
+   * switching at runtime.
    *
    * @param themeBundleName - The themeBundleName of the theme to load from one of the available defined in the `ThemeBundle` enumeration
    */

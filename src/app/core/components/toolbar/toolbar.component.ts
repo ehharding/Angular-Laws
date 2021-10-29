@@ -22,17 +22,11 @@ import { CreateAccountLoginDialogComponent } from '@core/components/toolbar/crea
 export class ToolbarComponent implements OnInit, OnDestroy {
   public readonly availableThemes : Theme[] = AVAILABLE_THEMES;
   public activeTheme : ThemeBundle = ThemeBundle.DeepPurpleAmber;
-
-  public currentUser : User;
-  public userLoggedIn : boolean;
+  public currentUser : User = {} as User;
 
   private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
-  public constructor(
-    public readonly dialog : MatDialog,
-    private readonly _themeService : ThemeService,
-    private readonly _userService : UserService
-  ) { }
+  public constructor(public readonly dialog : MatDialog, private readonly _themeService : ThemeService, private readonly _userService : UserService) { }
 
   public ngOnInit() : void {
     this._themeService.getActiveThemeBundleName().pipe(takeUntil(this._componentDestroyed$)).subscribe({
@@ -41,10 +35,6 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
     this._userService.getCurrentUser().pipe(takeUntil(this._componentDestroyed$)).subscribe({
       next : (currentUser : User) : void => { this.currentUser = currentUser; }
-    });
-
-    this._userService.getUserLoggedIn().pipe(takeUntil(this._componentDestroyed$)).subscribe({
-      next : (userLoggedIn : boolean) : void => { this.userLoggedIn = userLoggedIn; }
     });
   }
 
@@ -70,8 +60,8 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Opens the `Create Account | Login` dialog (sometimes called a modal) that contains the functionality to both create an account on the application
-   * and to log in to the site with an existing account.
+   * Opens the `Create Account | Login` dialog (sometimes called a modal) that contains the functionality to both create an account on the application and to log in to the
+   * site with an existing account.
    */
   public openCreateAccountLoginDialog() : void {
     const DIALOG_CONFIG : MatDialogConfig = {
@@ -92,9 +82,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Sets the application theme using the Theme Service.
-   *
-   * @see ThemeService
+   * Sets the application theme using the ThemeService.
    *
    * @param themeBundleName - The themeBundleName of the theme to set from one of the available defined in the `ThemeBundle` enumeration
    */

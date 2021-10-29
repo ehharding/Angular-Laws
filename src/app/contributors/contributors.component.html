@@ -33,7 +33,18 @@
                 <mat-card-header>
                   <img mat-card-avatar alt="{{ contributor.firstName }} {{ contributor.lastName }}'s Avatar" src="assets/avatars/{{ contributorNamesKebab[index] }}.jpeg"/>
                   <mat-card-title><strong>{{ contributor.firstName }} {{ contributor.lastName }}</strong></mat-card-title>
-                  <mat-card-subtitle>{{ contributor.jobTitle }}</mat-card-subtitle>
+                  <mat-card-subtitle>
+                    <div class="col">
+                      <div class="mb-2">
+                        {{ contributor.jobTitle }}
+                      </div>
+                      <div>
+                        <a matTooltipPosition="right" [matTooltip]="contributor.pocketFicUserName">
+                          <button mat-stroked-button>Visit Profile</button>
+                        </a>
+                      </div>
+                    </div>
+                  </mat-card-subtitle>
                 </mat-card-header>
 
                 <mat-card-content>{{ contributor.personalSummary }}</mat-card-content>

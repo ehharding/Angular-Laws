@@ -32,9 +32,9 @@ export class AboutDialogComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Returns a numeric non-zero number known as an interval ID that identifies a unique call to the global mixin WindowOrWorkerGlobalScope method
-   * setInterval(). The interval ID can later be used to cancel the repeated execution of code contained within said call. Here, this call is use to
-   * update the current system time displayed on the component.
+   * Returns a numeric non-zero number known as an interval ID that identifies a unique call to the global mixin WindowOrWorkerGlobalScope method setInterval(). The interval
+   * ID can later be used to cancel the repeated execution of code contained within said call. Here, this call is use to update the current system time displayed on the
+   * component.
    *
    * {@link https://nodejs.org/en/docs/guides/timers-in-node/ | Timers in Node.js}
    *
