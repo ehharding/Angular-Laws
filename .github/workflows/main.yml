@@ -1,9 +1,9 @@
-######################################################################################################################################################
-# This is a GitHub Actions workflow file. It is written in YAML and specifies a series of commands that execute when certain events occur. Currently,
-# all jobs in this file are running on an Ubuntu Linux host. See https://github.com/actions/virtual-environments for a list of options.
+###############################################################################################################################################################################
+# This is a GitHub Actions workflow file. It is written in YAML and specifies a series of commands that execute when certain events occur. Currently, all jobs in this file
+ # are running on an Ubuntu Linux host. See https://github.com/actions/virtual-environments for a list of options.
 #
-# `node_modules` is cached based on a hash of `package.json` for performance reasons. If the dependencies change, the hash should change as well,
-# meaning a fresh `npm install` should be triggered. For the `main` branch, the pipeline is as follows:
+# `node_modules` is cached based on a hash of `package.json` for performance reasons. If the dependencies change, the hash should change as well, meaning a fresh `npm install`
+# should be triggered. For the `main` branch, the pipeline is as follows:
 #
 #   * repository-checkout - Checks out The `main` branch for Pocket Fic and uploads the repository as an artifact
 #   * test                - Runs unit tests and uploads `coverage-report` as an artifact
@@ -14,7 +14,7 @@
 #
 # {@link https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions | Introduction to GitHub Actions}
 # {@link https://angular.io/guide/deployment#deploy-to-github-pages | Angular Guide To Deploying To GitHub Pages}
-######################################################################################################################################################
+###############################################################################################################################################################################
 
 name : Pocket Fic
 
@@ -87,7 +87,7 @@ jobs :
     runs-on : ubuntu-latest
     strategy :
       matrix :
-        node-version : [14.X]
+        node-version : [16.X]
 
     steps :
       - name : Setup Node.js ${{ matrix.node-version }}
@@ -108,7 +108,7 @@ jobs :
           key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package.json') }}
 
       - name : Install NPM Dependencies If Required
-        # Caches Older Than Two Days (GitHub Setting) Are Evicted Based On Age Or If The 5GB Cache Limit Is Exceeded
+        # Caches Older Than Two Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Is Exceeded
         if : steps.node-modules-cache.outputs.cache-hit != 'true'
         run : |
           echo 'Installing Dependencies Defined In `package.json` Using NPM... This May Take Awhile'
@@ -134,7 +134,7 @@ jobs :
     runs-on : ubuntu-latest
     strategy :
       matrix :
-        node-version : [14.X]
+        node-version : [16.X]
 
     steps :
       - name : Setup Node.js ${{ matrix.node-version }}
@@ -155,7 +155,7 @@ jobs :
           key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package.json') }}
 
       - name : Install NPM Dependencies If Required
-        # Caches Older Than Two Days (GitHub Setting) Are Evicted Based On Age Or If The 5GB Cache Limit Is Exceeded
+        # Caches Older Than Two Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Is Exceeded
         if : steps.node-modules-cache.outputs.cache-hit != 'true'
         run : |
           echo 'Installing Dependencies Defined In `package.json` Using NPM... This May Take Awhile'
@@ -180,7 +180,7 @@ jobs :
     runs-on : ubuntu-latest
     strategy :
       matrix :
-        node-version : [14.X]
+        node-version : [16.X]
 
     steps :
       - name : Setup Node.js ${{ matrix.node-version }}
@@ -201,7 +201,7 @@ jobs :
           key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package.json') }}
 
       - name : Install NPM Dependencies If Required
-        # Caches Older Than Two Days (GitHub Setting) Are Evicted Based On Age Or If The 5GB Cache Limit Is Exceeded
+        # Caches Older Than Two Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Is Exceeded
         if : steps.node-modules-cache.outputs.cache-hit != 'true'
         run : |
           echo 'Installing Dependencies Defined In `package.json` Using NPM... This May Take Awhile'
