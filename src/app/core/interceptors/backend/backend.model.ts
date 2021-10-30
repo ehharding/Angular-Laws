@@ -8,7 +8,7 @@ export const DEFAULT_CONTRIBUTORS : Contributor[] = [
     firstName : 'Evan',
     lastName : 'Harding',
     email : 'ehharding@gmail.com',
-    resume : 'https://drive.google.com/file/d/1iuRKehEldVMUmB5z2VvViBFRrsaqHvrl/view?usp=sharing',
+    resume : 'https://drive.google.com/file/d/1XG5aQTebftlhcTpj0KGrWktlUsLLXY12/view',
     gitHub : 'https://github.com/ehharding',
     linkedIn : 'https://www.linkedin.com/in/ehharding/',
     jobTitle : 'Sofware Engineer II',
