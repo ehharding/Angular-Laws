@@ -14,16 +14,16 @@ import { ConfigService } from '@core/services/config/config.service';
 @Injectable({ providedIn : 'root' })
 export class UserService {
   private readonly _allUsers$ : BehaviorSubject<User[]> = new BehaviorSubject<User[]>([] as User[]);
-  private readonly _currentUser$ : BehaviorSubject<User> = new BehaviorSubject<User>({ } as User);
+  private readonly _currentUser$ : BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
 
   public constructor(private readonly _httpClient : HttpClient) {
     this._httpClient.get<User[]>(ConfigService.appConfiguration.apiServer.paths.users.allUsers).pipe(distinctUntilChanged()).subscribe({
       next : (allUsers : User[]) : void => { this._allUsers$.next(allUsers); }
     });
 
-    this._httpClient.get<User>(ConfigService.appConfiguration.apiServer.paths.users.currentUser).pipe(distinctUntilChanged()).subscribe({
-      next : (currentUser : User) : void => {
-        if (currentUser.jwtToken) {
+    this._httpClient.get<User | null>(ConfigService.appConfiguration.apiServer.paths.users.currentUser).pipe(distinctUntilChanged()).subscribe({
+      next : (currentUser : User | null) : void => {
+        if (currentUser?.jwtToken) {
           this._currentUser$.next(currentUser);
         }
       }
@@ -40,11 +40,11 @@ export class UserService {
   }
 
   /**
-   * Provides a User-typed Observable stream for interested subscribers to receive the current user from the database.
+   * Provides a User | null-typed Observable stream for interested subscribers to receive the current user from the database.
    *
-   * @returns a User-typed Observable stream. Subscribe to the stream to receive the object type specified asynchronously.
+   * @returns a User | null-typed Observable stream. Subscribe to the stream to receive the object type specified asynchronously.
    */
-  public getCurrentUser() : Observable<User> {
+  public getCurrentUser() : Observable<User | null> {
     return this._currentUser$.asObservable().pipe(distinctUntilChanged());
   }
 
@@ -53,7 +53,7 @@ export class UserService {
    *
    * @param userName - The username of the user to log in
    * @param password - The password of the user trying to log in
-   * @returns the newly logged-in user if successful.
+   * @returns the newly logged in user if successful.
    */
   public login(userName : string, password : string) : Observable<User> {
     return this._httpClient.post<User>(ConfigService.appConfiguration.apiServer.paths.users.authenticate, { userName, password }, { withCredentials : true }).pipe(

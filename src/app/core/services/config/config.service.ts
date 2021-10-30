@@ -23,7 +23,7 @@ export class ConfigService {
   }
 
   /**
-   * This function loads the global base application configuration data into the static "appConfiguration" class member. This should be called once on startup.
+   * This function loads the global base application configuration data into the static class member. This should be called once on startup.
    *
    * @returns a Promise, or an object representing the eventual completion (or failure) of the asynchronous configuration retrieval, and its value.
    */

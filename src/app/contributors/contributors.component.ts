@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 
+import { ReplaySubject, takeUntil } from 'rxjs';
+
 import { APP_CONSTANTS } from '@core/services/config/config.model';
 import { CONTRIBUTORS_ANIMATIONS } from '@contributors/contributors.model';
 import { Contributor } from '@contributors/services/contributor/contributor.model';
 
 import { ContributorService } from '@contributors/services/contributor/contributor.service';
-
-import { ReplaySubject, takeUntil } from 'rxjs';
 
 @Component({
   changeDetection : ChangeDetectionStrategy.OnPush,

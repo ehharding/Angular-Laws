@@ -45,10 +45,10 @@ export class ContributorService {
   }
 
   /**
-   * Provides a HttpErrorResponse/undefined-typed Observable stream for interested subscribers to receive the latest error, if any, when the HTTP request to retrieve all
+   * Provides a HttpErrorResponse | undefined-typed Observable stream for interested subscribers to receive the latest error, if any, when the HTTP request to retrieve all
    * contributors from the database was made.
    *
-   * @returns a HttpErrorResponse/undefined[]-typed Observable stream. Subscribe to the stream to receive the object type specified asynchronously.
+   * @returns a HttpErrorResponse | undefined-typed Observable stream. Subscribe to the stream to receive the object type specified asynchronously.
    */
   public getContributorsFetchError() : Observable<HttpErrorResponse | undefined> {
     return this._contributorsFetchError$.asObservable().pipe(distinctUntilChanged());

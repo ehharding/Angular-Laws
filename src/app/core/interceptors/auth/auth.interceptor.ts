@@ -47,29 +47,29 @@ export class AuthInterceptor implements HttpInterceptor {
 
       // Check That The User Is Logged In
       if (!this._credentialService.isLoggedIn()) {
-        return constructUnauthorizedResponse('You Must Be Authenticated To Delete A User. Please Login.');
+        return constructUnauthorizedResponse('You Must be Authenticated to Delete a User. Please Login.');
       }
 
       // Extract The User ID Associated With The Account To Be Deleted From The Request URL And Use It To Remove The Associated Object From The All Users List
       const USER_ID_TO_DELETE : number = parseInt(REQUEST_URL.split('/')[REQUEST_URL.split('/').length - 1], 10);
       const USER_TO_DELETE : User | undefined = allUsers.find((user : User) : boolean => user.id === USER_ID_TO_DELETE);
 
-      // Check That The Logged-In User's ID Matches The ID They Want To Delete Or That They Are At Least An Admin To Actually Make The Update
-      if ((this._credentialService.getCurrentUser().id === USER_ID_TO_DELETE) || this._credentialService.getCurrentUser().isAdmin) {
+      // Check That The Logged In User's ID Matches The ID They Want To Delete Or That They Are At Least An Admin To Actually Make The Update
+      if ((this._credentialService.getCurrentUser()?.id === USER_ID_TO_DELETE) || this._credentialService.getCurrentUser()?.isAdmin) {
         allUsers = allUsers.filter((user : User) : boolean => user.id === USER_ID_TO_DELETE);
         localStorage.setItem(ConfigService.appConfiguration.apiServer.paths.users.allUsers, JSON.stringify(allUsers));
 
         return constructOkResponse(USER_TO_DELETE);
       }
 
-      return constructUnauthorizedResponse('You Cannot Delete A User Other Than Yourself Unless You Are An Admin.');
+      return constructUnauthorizedResponse('You Cannot Delete a User Other Than Yourself Unless You Are an Admin.');
     };
 
     /**
      * This function authenticates, or tries to login, a given user. It compares the username and password provided in the request against the users in the database. If there
-     * is a match, an authentication token (presumably a Java Web Token (JWT)) is created, the CredentialService is updated with the newly logged-in user, complete with
-     * the new token, and the user is returned in the response body. If there is not a match an HTTP 401 (Unauthorized) error response is instead returned, indicating a
-     * failure to login.
+     * is a match, an authentication token (presumably a JSON Web Token (JWT)) is created, the CredentialService is updated with the newly logged in user, complete with the
+     * new token, and the user is returned in the response body. If there is not a match an HTTP 401 (Unauthorized) error response is instead returned, indicating a failure to
+     * login.
      *
      * @returns an HttpResponse with the body being the user just authenticated if successful or an HTTP 401 (Unauthorized) HttpErrorResponse if unsuccessful. The returned
      *          user will have a randomly generated JWT token set, valid for the session.
@@ -88,7 +88,7 @@ export class AuthInterceptor implements HttpInterceptor {
         return constructOkResponse(USER);
       }
 
-      return constructErrorResponse(HttpStatusCode.Unauthorized, 'Username Or Password Is Incorrect.');
+      return constructErrorResponse(HttpStatusCode.Unauthorized, 'Username or Password is Incorrect.');
     };
 
     /**
@@ -97,9 +97,11 @@ export class AuthInterceptor implements HttpInterceptor {
      * @returns An HttpEvent<unknown>-typed Observable stream appropriate for the intercepted request.
      */
     const handleURL = () : Observable<HttpEvent<unknown>> => {
+      const DELETE_USER_ID_MATCHER : RegExp = /\/allUsers\/\d+$/; // (e.g. User Wants To Delete Themselves When They Have ID = 5 -> DELETE /allUsers/5)
+
       switch (true) {
         // DELETE Requests
-        case (REQUEST_METHOD === HttpMethod.Delete) && REQUEST_URL.match(/\/allUsers\/\d+$/) :
+        case (REQUEST_METHOD === HttpMethod.Delete) && REQUEST_URL.match(DELETE_USER_ID_MATCHER) :
           return deleteUser();
 
         // POST Requests
@@ -111,9 +113,7 @@ export class AuthInterceptor implements HttpInterceptor {
     };
 
     if (this._credentialService.isLoggedIn()) {
-      httpRequest = httpRequest.clone({
-        headers : httpRequest.headers.set('Authorization', `Bearer ${ this._credentialService.getJwtToken() }`)
-      });
+      httpRequest = httpRequest.clone({ headers : httpRequest.headers.set('Authorization', `Bearer ${ this._credentialService.getJwtToken() }`) });
     }
 
     return handleURL();

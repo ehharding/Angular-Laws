@@ -24,7 +24,7 @@ export const DEFAULT_USERS : User[] = [
     id : 1,
     isAdmin : true,
     userName : 'solomon',
-    password : 'time',
+    password : 'time', // NOTE: In Production We Would Obviously Not Store Passwords Like This In Plain-Text
     birthday : '19/09/2552',
     title : null,
     firstName : 'Evan',

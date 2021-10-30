@@ -23,7 +23,7 @@ import { CreateAccountLoginDialogComponent } from '@core/components/toolbar/crea
 export class ToolbarComponent implements OnInit, OnDestroy {
   public readonly allThemes : Theme[] = ALL_THEMES;
   public activeTheme : ThemeBundle = ThemeBundle.DeepPurpleAmber;
-  public currentUser : User = { } as User;
+  public currentUser : User | null = null;
 
   private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
@@ -35,7 +35,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     });
 
     this._userService.getCurrentUser().pipe(takeUntil(this._componentDestroyed$)).subscribe({
-      next : (currentUser : User) : void => { this.currentUser = currentUser; }
+      next : (currentUser : User | null) : void => { this.currentUser = currentUser; }
     });
   }
 

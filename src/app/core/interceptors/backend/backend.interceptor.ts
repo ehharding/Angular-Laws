@@ -59,26 +59,26 @@ export class BackendInterceptor implements HttpInterceptor {
     };
 
     /**
-     * This function responds to a request to retrieve the currently authenticated (logged-in) user.
+     * This function responds to a request to retrieve the currently authenticated (logged in) user.
      *
-     * @returns an HttpResponse with the body being the currently authenticated (logged-in) user. This will be either a user with a valid JWT token if there is a logged-in
-     *          user or an empty object otherwise.
+     * @returns an HttpResponse with the body being the currently authenticated (logged in) user. This will be either a user with a valid JWT token if there is a logged in
+     *          user or null otherwise.
      */
     const getCurrentUser = () : Observable<HttpEvent<unknown>> => {
-      const CURRENT_USER : User = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.users.currentUser) ?? '{ }') as User;
+      const CURRENT_USER : User | null = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.users.currentUser) ?? 'null') as User | null;
 
-      if (CURRENT_USER.jwtToken) {
+      if (CURRENT_USER?.jwtToken) {
         return constructOkResponse(CURRENT_USER);
       }
 
-      return constructOkResponse({ } as User); // Also OK To Simply Ask If There Is A Current User, In Which Case We Return An Empty Object
+      return constructOkResponse(null);
     };
 
     /**
      * This function responds to a request to create a new account on the application.
      *
      * @returns an HttpResponse with the body being the newly created user if successful or an HTTP 409 (Conflict) HttpErrorResponse if unsuccessful. All user IDs in the
-     *          application are assigned sequentially and do not mutate once created for a given username.
+     *          application are assigned sequentially and cannot be mutated.
      */
     const createAccount = () : Observable<HttpEvent<unknown>> => {
       const ALL_USERS : User[] = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.users.allUsers) ?? '[]') as User[];
@@ -86,7 +86,7 @@ export class BackendInterceptor implements HttpInterceptor {
 
       // Check If The Username Already Exists On The Application
       if (ALL_USERS.find((user : User) : boolean => user.userName === REQUESTED_USER.userName)) {
-        return constructErrorResponse(HttpStatusCode.Conflict, `${ REQUESTED_USER.userName } Is Already Taken.`);
+        return constructErrorResponse(HttpStatusCode.Conflict, `"${ REQUESTED_USER.userName }" is Already Taken.`);
       }
 
       // User ID Created Sequentially From 1st To Most Recent User (e.g. 1st User ID = 1, 2nd User ID = 2, etc.)

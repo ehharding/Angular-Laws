@@ -11,7 +11,7 @@ import { ConfigService } from '@core/services/config/config.service';
 
 @Injectable({ providedIn : 'root' })
 export class CredentialService {
-  private _currentUser : User = { } as User;
+  private _currentUser : User | null = null;
   private _jwtToken : string = '';
 
   public constructor(private readonly _httpClient : HttpClient) {
@@ -19,7 +19,7 @@ export class CredentialService {
   }
 
   /**
-   * Returns the Java Web Token (JWT) of the current user, which could be empty.
+   * Returns the JSON Web Token (JWT) of the current user, which could be empty.
    *
    * @returns the JWT token of the current user. This token signifies the authentication status (logged in/not logged in) of the user, so it can be empty.
    */
@@ -28,7 +28,7 @@ export class CredentialService {
   }
 
   /**
-   * A utility function to get a boolean value for the logged-in status of the application.
+   * A utility function to get a boolean value for the logged in status of the application.
    *
    * @returns true if the user is logged in and false otherwise.
    */
@@ -37,11 +37,11 @@ export class CredentialService {
   }
 
   /**
-   * A utility function for retrieving the currently logged-in (authenticated) user for the application.
+   * A utility function for retrieving the currently logged in (authenticated) user for the application.
    *
-   * @returns the currently logged-in user. This could be an empty object if the user is not logged in.
+   * @returns the currently logged in user. This could be an empty object if the user is not logged in.
    */
-  public getCurrentUser() : User {
+  public getCurrentUser() : User | null {
     return this._currentUser;
   }
 
@@ -60,7 +60,11 @@ export class CredentialService {
    * setup check.
    */
   private _loadCredentialsFromStorage() : void {
-    this._currentUser = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.users.currentUser) ?? '{ }') as User;
-    this._jwtToken = this._currentUser.jwtToken;
+    const EXISTING_USER : User | null = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.users.currentUser) ?? 'null') as User | null;
+
+    if (EXISTING_USER?.jwtToken) {
+      this._currentUser = EXISTING_USER;
+      this._jwtToken = EXISTING_USER.jwtToken;
+    }
   }
 }

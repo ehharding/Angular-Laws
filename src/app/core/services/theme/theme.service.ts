@@ -52,7 +52,7 @@ export class ThemeService {
         HTML_ELEMENT.setAttribute('class', cssClassList.join(' '));
     // Otherwise, If The Element Does Not Exist, We'll Throw An Error Since That Essentially Means Programmer Mistake
     } else {
-      throw new ReferenceError(`The HTML Tag '${ tagName }' Does Not Exist In The DOM.`);
+      throw new ReferenceError(`The HTML Tag '${ tagName }' Does Not Exist in the DOM.`);
     }
   }
 

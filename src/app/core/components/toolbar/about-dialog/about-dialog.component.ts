@@ -19,7 +19,7 @@ export class AboutDialogComponent implements OnInit, OnDestroy {
   public readonly openSourceDependencies : OpenSourceDependency[] = OPEN_SOURCE_DEPENDENCIES;
   public readonly packageVersions : PackageVersion[] = PACKAGE_VERSIONS;
 
-  private _currentTimeIntervalID : number;
+  private _currentTimeIntervalID : number | undefined = undefined;
 
   public constructor(private readonly _changeDetectorRef : ChangeDetectorRef) { }
 
