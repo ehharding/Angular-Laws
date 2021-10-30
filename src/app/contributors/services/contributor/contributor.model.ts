@@ -4,6 +4,7 @@ export interface Contributor {
   firstName : string;
   lastName : string;
   email : string;
+  resume : string | null;
   gitHub : string | null;
   linkedIn : string | null;
   jobTitle : string;

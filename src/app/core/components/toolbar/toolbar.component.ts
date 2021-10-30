@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 import { ReplaySubject, takeUntil } from 'rxjs';
 
-import { AVAILABLE_THEMES, Theme, ThemeBundle } from '@core/services/theme/theme.model';
+import { ALL_THEMES, Theme, ThemeBundle } from '@core/services/theme/theme.model';
+import { DEFAULT_MAT_DIALOG_CONFIG } from '@core/services/config/config.model';
 import { User } from '@core/services/user/user.model';
 
 import { ConfigService } from '@core/services/config/config.service';
@@ -20,7 +21,7 @@ import { CreateAccountLoginDialogComponent } from '@core/components/toolbar/crea
   templateUrl : 'toolbar.component.html'
 })
 export class ToolbarComponent implements OnInit, OnDestroy {
-  public readonly availableThemes : Theme[] = AVAILABLE_THEMES;
+  public readonly allThemes : Theme[] = ALL_THEMES;
   public activeTheme : ThemeBundle = ThemeBundle.DeepPurpleAmber;
   public currentUser : User = {} as User;
 
@@ -44,11 +45,10 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Opens the `About` dialog (sometimes called a modal) that contains information about the application.
+   * Opens the "About" dialog (sometimes called a modal) that contains information about the application.
    */
   public openAboutDialog() : void {
-    const DIALOG_CONFIG : MatDialogConfig = { disableClose : true, role : 'dialog', panelClass : 'pf-dialog' };
-    const DIALOG_REF : MatDialogRef<AboutDialogComponent> = this.dialog.open(AboutDialogComponent, DIALOG_CONFIG);
+    const DIALOG_REF : MatDialogRef<AboutDialogComponent> = this.dialog.open(AboutDialogComponent, DEFAULT_MAT_DIALOG_CONFIG);
 
     DIALOG_REF.backdropClick().subscribe(() : void => {
       DIALOG_REF.addPanelClass('pf-shake');
@@ -60,17 +60,11 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Opens the `Create Account | Login` dialog (sometimes called a modal) that contains the functionality to both create an account on the application and to log in to the
+   * Opens the "Create Account | Login" dialog (sometimes called a modal) that contains the functionality to both create an account on the application and to log in to the
    * site with an existing account.
    */
   public openCreateAccountLoginDialog() : void {
-    const DIALOG_CONFIG : MatDialogConfig = {
-      disableClose : true,
-      role : 'dialog',
-      panelClass : 'pf-dialog'
-    };
-
-    const DIALOG_REF : MatDialogRef<CreateAccountLoginDialogComponent> = this.dialog.open(CreateAccountLoginDialogComponent, DIALOG_CONFIG);
+    const DIALOG_REF : MatDialogRef<CreateAccountLoginDialogComponent> = this.dialog.open(CreateAccountLoginDialogComponent, DEFAULT_MAT_DIALOG_CONFIG);
 
     DIALOG_REF.backdropClick().subscribe(() : void => {
       DIALOG_REF.addPanelClass('pf-shake');

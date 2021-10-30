@@ -40,7 +40,7 @@
                       </div>
                       <div>
                         <a matTooltipPosition="right" [matTooltip]="contributor.pocketFicUserName">
-                          <button mat-stroked-button>Visit Profile</button>
+                          <button mat-stroked-button>VISIT POCKET FIC PROFILE</button>
                         </a>
                       </div>
                     </div>
@@ -53,24 +53,32 @@
                   <!-- The First Contributor Card Action Button Is An Email Link -->
                   <a href="mailto:{{ contributor.email }}?subject=Subject&body=Hi%20{{ contributor.firstName }}">
                     <button mat-button [matTooltip]="contributor.email">
-                      <mat-icon class="me-2">email</mat-icon>
                       <span>E-MAIL</span>
+                      <mat-icon class="ms-2">email</mat-icon>
                     </button>
                   </a>
 
-                  <!-- The Second Contributor Card Action Button Is A Link To The Respective Contributors' GitHub (Optional) -->
+                  <!-- The Second Contributor Card Action Button Is A Link To The Respective Contributors' Resume (Optional) -->
+                  <a *ngIf="contributor.resume" target="_blank" [href]="contributor.resume">
+                    <button mat-button>
+                      <span>RESUM&Eacute;</span>
+                      <mat-icon class="ms-2">contact_page</mat-icon>
+                    </button>
+                  </a>
+
+                  <!-- The Third Contributor Card Action Button Is A Link To The Respective Contributors' GitHub (Optional) -->
                   <a *ngIf="contributor.gitHub" target="_blank" [href]="contributor.gitHub">
                     <button mat-button>
-                      <img alt="GitHub Logo" class="pf-card-footer-logo me-2" src="assets/images/other-logos/github-logo.svg"/>
                       <span>GITHUB</span>
+                      <img alt="GitHub Logo" class="ms-2 pf-card-footer-logo" src="assets/images/other-logos/github-logo.svg"/>
                     </button>
                   </a>
 
-                  <!-- The Third Contributor Card Action Button Is A Link To The Respective Contributors' LinkedIn (Optional) -->
+                  <!-- The Fourth Contributor Card Action Button Is A Link To The Respective Contributors' LinkedIn (Optional) -->
                   <a *ngIf="contributor.linkedIn" target="_blank" [href]="contributor.linkedIn">
                     <button mat-button>
-                      <img alt="LinkedIn Logo" class="pf-card-footer-logo me-2" src="assets/images/other-logos/linkedin-logo.svg"/>
                       <span>LINKEDIN</span>
+                      <img alt="LinkedIn Logo" class="ms-2 pf-card-footer-logo" src="assets/images/other-logos/linkedin-logo.svg"/>
                     </button>
                   </a>
                 </mat-card-actions>
@@ -88,8 +96,8 @@
         </h1>
 
         <button mat-raised-button (click)="fetchAllContributors()">
-          <mat-icon class="me-2">refresh</mat-icon>
           <span>RETRY</span>
+          <mat-icon class="ms-2">refresh</mat-icon>
         </button>
       </div>
     </div>

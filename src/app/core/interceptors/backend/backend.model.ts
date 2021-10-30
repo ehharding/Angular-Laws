@@ -1,13 +1,14 @@
 import { Contributor } from '@contributors/services/contributor/contributor.model';
 import { User } from '@core/services/user/user.model';
 
-export const INITIAL_CONTRIBUTORS : Contributor[] = [
+export const DEFAULT_CONTRIBUTORS : Contributor[] = [
   {
     id : 1,
     pocketFicUserName : 'solomon',
     firstName : 'Evan',
     lastName : 'Harding',
     email : 'ehharding@gmail.com',
+    resume : 'https://drive.google.com/file/d/1iuRKehEldVMUmB5z2VvViBFRrsaqHvrl/view?usp=sharing',
     gitHub : 'https://github.com/ehharding',
     linkedIn : 'https://www.linkedin.com/in/ehharding/',
     jobTitle : 'Sofware Engineer II',
@@ -18,7 +19,7 @@ export const INITIAL_CONTRIBUTORS : Contributor[] = [
   }
 ];
 
-export const INITIAL_USERS : User[] = [
+export const DEFAULT_USERS : User[] = [
   {
     id : 1,
     isAdmin : true,
@@ -33,6 +34,3 @@ export const INITIAL_USERS : User[] = [
     jwtToken : ''
   }
 ];
-
-export const INITIAL_CONTRIBUTORS_JSON : string = JSON.stringify(INITIAL_CONTRIBUTORS);
-export const INITIAL_USERS_JSON : string = JSON.stringify(INITIAL_USERS);

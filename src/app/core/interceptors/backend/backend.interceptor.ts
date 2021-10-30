@@ -10,7 +10,6 @@ import { Injectable } from '@angular/core';
 
 import { Observable, catchError, delay, dematerialize, materialize, mergeMap, of, throwError } from 'rxjs';
 
-import { INITIAL_CONTRIBUTORS, INITIAL_CONTRIBUTORS_JSON, INITIAL_USERS, INITIAL_USERS_JSON } from '@core/interceptors/backend/backend.model';
 import { Contributor } from '@contributors/services/contributor/contributor.model';
 import { HttpMethod } from '@core/services/config/config.model';
 import { User } from '@core/services/user/user.model';
@@ -43,13 +42,7 @@ export class BackendInterceptor implements HttpInterceptor {
      * @returns an HttpResponse with the body being the list of contributors to the project, either loaded from LocalStorage or a basic set of initial contributors if empty.
      */
     const getAllContributors = () : Observable<HttpEvent<unknown>> => {
-      // eslint-disable-next-line max-len
-      const ALL_CONTRIBUTORS : Contributor[] = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.contributors.allContributors) ?? INITIAL_CONTRIBUTORS_JSON) as Contributor[];
-
-      // Startup Condition
-      if (ALL_CONTRIBUTORS.length === INITIAL_CONTRIBUTORS.length) {
-        localStorage.setItem(ConfigService.appConfiguration.apiServer.paths.contributors.allContributors, JSON.stringify(ALL_CONTRIBUTORS));
-      }
+      const ALL_CONTRIBUTORS : Contributor[] = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.contributors.allContributors) ?? '[]') as Contributor[];
 
       return constructOkResponse(ALL_CONTRIBUTORS);
     };
@@ -60,12 +53,7 @@ export class BackendInterceptor implements HttpInterceptor {
      * @returns an HttpResponse with the body being the list of users to the project, either loaded from LocalStorage or a basic set of initial users if empty.
      */
     const getAllUsers = () : Observable<HttpEvent<unknown>> => {
-      const ALL_USERS : User[] = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.users.allUsers) ?? INITIAL_USERS_JSON) as User[];
-
-      // Startup Condition
-      if (ALL_USERS.length === INITIAL_USERS.length) {
-        localStorage.setItem(ConfigService.appConfiguration.apiServer.paths.users.allUsers, JSON.stringify(ALL_USERS));
-      }
+      const ALL_USERS : User[] = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.users.allUsers) ?? '[]') as User[];
 
       return constructOkResponse(ALL_USERS);
     };
@@ -93,7 +81,7 @@ export class BackendInterceptor implements HttpInterceptor {
      *          application are assigned sequentially and do not mutate once created for a given username.
      */
     const createAccount = () : Observable<HttpEvent<unknown>> => {
-      const ALL_USERS : User[] = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.users.allUsers) ?? INITIAL_USERS_JSON) as User[];
+      const ALL_USERS : User[] = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.users.allUsers) ?? '[]') as User[];
       const REQUESTED_USER : User = REQUEST_BODY;
 
       // Check If The Username Already Exists On The Application

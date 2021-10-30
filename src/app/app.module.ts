@@ -33,7 +33,7 @@ import { AppComponent } from 'app/app.component';
  * This function is called to begin the asynchronous retrieval of the base application configuration data from an endpoint.
  *
  * @param configService - An instance of the ConfigService to use to initialize the application
- * @returns a function which returns a Promise (an object representing the eventual completion of an asynchronous operation).
+ * @returns a function which returns a Promise (an object representing the eventual completion of an asynchronous operation, and its value).
  */
 function initializeApplication(configService : ConfigService) : (() => Promise<void>) {
   return async() : Promise<void> => {
@@ -50,7 +50,7 @@ const CONFIGURED_MAT_TABS_CONFIG : MatTabsConfig = {
   disablePagination : ConfigService.appConfiguration.flags.disableTabPagination,
   dynamicHeight : ConfigService.appConfiguration.flags.dynamicTabHeight,
   fitInkBarToContent : ConfigService.appConfiguration.flags.fitTabInkBarToContent,
-  animationDuration : String(ConfigService.appConfiguration.constants.genericAnimationDurationMS)
+  animationDuration : `${ ConfigService.appConfiguration.constants.genericAnimationDurationMS }ms`
 };
 
 const CONFIGURED_MAT_TOOLTIP_DEFAULT_OPTIONS : MatTooltipDefaultOptions = {

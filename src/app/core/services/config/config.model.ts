@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 
+import { MatDialogConfig } from '@angular/material/dialog';
+
 export enum HttpMethod {
   Connect = 'CONNECT', // Establishes A Tunnel To The Server Identified By The Target Resource
   Delete = 'DELETE',   // Deletes The Specified Resource
@@ -458,4 +460,15 @@ export const DEFAULT_APP_CONFIGURATION : AppConfiguration = {
     dynamicTabHeight : true,
     fitTabInkBarToContent : true
   }
+};
+
+export const DEFAULT_MAT_DIALOG_CONFIG : MatDialogConfig = {
+  autoFocus : true,
+  closeOnNavigation : false,
+  disableClose : true,
+  hasBackdrop : true,
+  restoreFocus : true,
+  direction : 'ltr',
+  panelClass : 'pf-dialog',
+  role : 'dialog'
 };

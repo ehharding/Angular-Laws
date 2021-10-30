@@ -23,7 +23,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
    * @returns an Observable of the HTTP event stream to be passed on to the next interceptor via httpHandler.handle(httpRequest : HttpRequest<unknown>).
    */
   public intercept(httpRequest : HttpRequest<unknown>, httpHandler : HttpHandler) : Observable<HttpEvent<unknown>> {
-    httpRequest = httpRequest.clone({ reportProgress : true, withCredentials : true, responseType : 'json' });
+    httpRequest = httpRequest.clone({ reportProgress : true });
 
     if (!httpRequest.headers.has('Accept')) {
       httpRequest = httpRequest.clone({ headers : httpRequest.headers.set('Accept', 'application/json') });

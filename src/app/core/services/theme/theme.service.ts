@@ -16,16 +16,16 @@ import { DOCUMENT } from '@angular/common';
 
 import { BehaviorSubject, Observable, distinctUntilChanged } from 'rxjs';
 
-import { AVAILABLE_THEMES, ThemeBundle } from '@core/services/theme/theme.model';
+import { ALL_THEMES, ThemeBundle } from '@core/services/theme/theme.model';
 
 import { ConfigService } from '@core/services/config/config.service';
 
 @Injectable({ providedIn : 'root' })
 export class ThemeService {
-  private readonly _activeThemeBundleName$ : BehaviorSubject<ThemeBundle> = new BehaviorSubject<ThemeBundle>(AVAILABLE_THEMES[0].bundleName);
+  private readonly _activeThemeBundleName$ : BehaviorSubject<ThemeBundle> = new BehaviorSubject<ThemeBundle>(ALL_THEMES[0].bundleName);
 
   public constructor(@Inject(DOCUMENT) private readonly _document : Document) {
-    this.loadClientTheme(AVAILABLE_THEMES[0].bundleName); // Load The First Theme By Default
+    this.loadClientTheme(ALL_THEMES[0].bundleName); // Load The First Theme By Default
   }
 
   /**
