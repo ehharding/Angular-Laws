@@ -14,6 +14,9 @@ import { MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS, MatProgressSpinnerDefaultOptions 
 import { MAT_TABS_CONFIG, MatTabsConfig } from '@angular/material/tabs';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions } from '@angular/material/tooltip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceWorkerModule } from '@angular/service-worker';
+
+import { ENVIRONMENT } from '@environment/environment.development';
 
 import { AppRoutingModule } from 'app/app-routing.module';
 import { CoreModule } from '@core/core.module';
@@ -68,6 +71,8 @@ const CONFIGURED_MAT_TOOLTIP_DEFAULT_OPTIONS : MatTooltipDefaultOptions = {
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    // Register The ServiceWorker As Soon As The Application Is Stable Or After 30 Seconds (Whichever Comes First)
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled : ENVIRONMENT.name === 'production', registrationStrategy : 'registerWhenStable:30000' }),
     AppRoutingModule,
     CoreModule
   ],

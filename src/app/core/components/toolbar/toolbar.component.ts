@@ -23,7 +23,7 @@ import { CreateAccountLoginDialogComponent } from '@core/components/toolbar/crea
 export class ToolbarComponent implements OnInit, OnDestroy {
   public readonly allThemes : Theme[] = ALL_THEMES;
   public activeTheme : ThemeBundle = ThemeBundle.DeepPurpleAmber;
-  public currentUser : User = {} as User;
+  public currentUser : User = { } as User;
 
   private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
@@ -78,7 +78,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   /**
    * Sets the application theme using the ThemeService.
    *
-   * @param themeBundleName - The themeBundleName of the theme to set from one of the available defined in the `ThemeBundle` enumeration
+   * @param themeBundleName - The themeBundleName of the theme to set from one of the available defined in the "ThemeBundle" enumeration
    */
   public setApplicationTheme(themeBundleName : ThemeBundle) : void {
     this._themeService.loadClientTheme(themeBundleName);

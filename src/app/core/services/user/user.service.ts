@@ -14,7 +14,7 @@ import { ConfigService } from '@core/services/config/config.service';
 @Injectable({ providedIn : 'root' })
 export class UserService {
   private readonly _allUsers$ : BehaviorSubject<User[]> = new BehaviorSubject<User[]>([] as User[]);
-  private readonly _currentUser$ : BehaviorSubject<User> = new BehaviorSubject<User>({} as User);
+  private readonly _currentUser$ : BehaviorSubject<User> = new BehaviorSubject<User>({ } as User);
 
   public constructor(private readonly _httpClient : HttpClient) {
     this._httpClient.get<User[]>(ConfigService.appConfiguration.apiServer.paths.users.allUsers).pipe(distinctUntilChanged()).subscribe({

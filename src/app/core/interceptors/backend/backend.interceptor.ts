@@ -25,7 +25,7 @@ export class BackendInterceptor implements HttpInterceptor {
    * This function is responsible for intercepting certain URL requests directed towards a backend and responds with mock data as appropriate.
    *
    * @param httpRequest - An outgoing HTTP request which is being intercepted
-   * @param httpHandler - A handler that dispatches the HTTP httpRequest to the next handler in the chain, as determined by order in `app.module.ts`
+   * @param httpHandler - A handler that dispatches the HTTP httpRequest to the next handler in the chain, as determined by order in "app.module.ts"
    * @returns an Observable of the HTTP event stream to be passed on to the next interceptor via httpHandler.handle(httpRequest : HttpRequest<unknown>).
    *
    * @remarks The inline comments concerning the use of materialize()/dematerialize() is a result of the following RxJS issue which boils down to RxJS not time-shifting
@@ -65,13 +65,13 @@ export class BackendInterceptor implements HttpInterceptor {
      *          user or an empty object otherwise.
      */
     const getCurrentUser = () : Observable<HttpEvent<unknown>> => {
-      const CURRENT_USER : User = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.users.currentUser) ?? '{}') as User;
+      const CURRENT_USER : User = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.users.currentUser) ?? '{ }') as User;
 
       if (CURRENT_USER.jwtToken) {
         return constructOkResponse(CURRENT_USER);
       }
 
-      return constructOkResponse({} as User); // Also OK To Simply Ask If There Is A Current User, In Which Case We Return An Empty Object
+      return constructOkResponse({ } as User); // Also OK To Simply Ask If There Is A Current User, In Which Case We Return An Empty Object
     };
 
     /**

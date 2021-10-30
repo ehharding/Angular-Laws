@@ -2,15 +2,15 @@
 # This is a GitHub Actions workflow file. It is written in YAML and specifies a series of commands that execute when certain events occur. Currently, all jobs in this file
  # are running on an Ubuntu Linux host. See https://github.com/actions/virtual-environments for a list of options.
 #
-# `node_modules` is cached based on a hash of `package.json` for performance reasons. If the dependencies change, the hash should change as well, meaning a fresh `npm install`
-# should be triggered. For the `main` branch, the pipeline is as follows:
+# "node_modules" is cached based on a hash of "package.json" for performance reasons. If the dependencies change, the hash should change as well, meaning a fresh "npm install"
+# should be triggered. For the "main" branch, the pipeline is as follows:
 #
-#   * repository-checkout - Checks out The `main` branch for Pocket Fic and uploads the repository as an artifact
-#   * test                - Runs unit tests and uploads `coverage-report` as an artifact
-#   * eslint-report       - Runs ESLint on the project and uploads `eslint-report.html` as an artifact
-#   * build-production    - Runs a production build and uploads `dist-prod` as an artifact
-#   * copy-index-to-404   - Copies `index.html` to `404.html` as part of the requirements for most Angular deployments
-#   * deploy              - Deploys the production build distributable to the `gh-pages` branch which will then be used by GitHub Pages for hosting
+#   * repository-checkout - Checks out the "main" branch for Pocket Fic and uploads the repository as an artifact
+#   * test                - Runs unit tests and uploads "coverage-report" as an artifact
+#   * eslint-report       - Runs ESLint on the project and uploads "eslint-report.html" as an artifact
+#   * build-production    - Runs a production build and uploads "dist-prod" as an artifact
+#   * copy-index-to-404   - Copies "index.html" to "404.html" as part of the requirements for most Angular deployments
+#   * deploy              - Deploys the production build distributable to the "gh-pages" branch which will then be used by GitHub Pages for hosting
 #
 # {@link https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions | Introduction to GitHub Actions}
 # {@link https://angular.io/guide/deployment#deploy-to-github-pages | Angular Guide To Deploying To GitHub Pages}
@@ -18,12 +18,12 @@
 
 name : Pocket Fic
 
-# Triggers The Workflow On `push` Events But Only For The `main` Branch
+# Triggers The Workflow On "push" Events But Only For The "main" Branch
 on :
   push :
     branches : [main]
 
-  # Allows The Workflow To Be Run Manually From The `Actions` Tab
+  # Allows The Workflow To Be Run Manually From The "Actions" Tab
   workflow_dispatch :
 
 jobs :
@@ -73,7 +73,7 @@ jobs :
           submodules : true
           fetch-depth : 0 # Fetches All History For All Branches And Tags
 
-      - name : Upload Repository Snapshot Artifact - `Pocket-Fic`
+      - name : Upload Repository Snapshot Artifact - "Pocket-Fic"
         uses : actions/upload-artifact@v2
         with :
           name : Pocket-Fic
@@ -100,7 +100,7 @@ jobs :
         with :
           name : Pocket-Fic
 
-      - name : Determining If `node_modules` Cache Exists And Can Be Used Based On Changes To `package.json`...
+      - name : Determining If "node_modules" Cache Exists And Can Be Used Based On Changes To "package.json"...
         id : node-modules-cache
         uses : actions/cache@v2
         with :
@@ -111,7 +111,7 @@ jobs :
         # Caches Older Than Two Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Is Exceeded
         if : steps.node-modules-cache.outputs.cache-hit != 'true'
         run : |
-          echo 'Installing Dependencies Defined In `package.json` Using NPM... This May Take Awhile'
+          echo 'Installing Dependencies Defined In "package.json" Using NPM... This May Take Awhile'
           npm install
 
       - name : Run Angular Unit Tests Within Headless Firefox
@@ -121,7 +121,7 @@ jobs :
           npm run ng
           npm run test
 
-      - name : Upload Unit Testing Code Coverage Artifact - `coverage-report`
+      - name : Upload Unit Testing Code Coverage Artifact - "coverage-report"
         uses : actions/upload-artifact@v2
         with :
           name : coverage-report
@@ -147,7 +147,7 @@ jobs :
         with :
           name : Pocket-Fic
 
-      - name : Determining If `node_modules` Cache Exists And Can Be Used Based On Changes To `package.json`...
+      - name : Determining If "node_modules" Cache Exists And Can Be Used Based On Changes To "package.json"...
         id : node-modules-cache
         uses : actions/cache@v2
         with :
@@ -158,7 +158,7 @@ jobs :
         # Caches Older Than Two Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Is Exceeded
         if : steps.node-modules-cache.outputs.cache-hit != 'true'
         run : |
-          echo 'Installing Dependencies Defined In `package.json` Using NPM... This May Take Awhile'
+          echo 'Installing Dependencies Defined In "package.json" Using NPM... This May Take Awhile'
           npm install
 
       - name : Run ESLint
@@ -167,7 +167,7 @@ jobs :
 
           npm run lint:report
 
-      - name : Upload ESLint Linting Artifact - `eslint-report`
+      - name : Upload ESLint Linting Artifact - "eslint-report"
         uses : actions/upload-artifact@v2
         with :
           name : eslint-report
@@ -193,7 +193,7 @@ jobs :
         with :
           name : Pocket-Fic
 
-      - name : Determining If `node_modules` Cache Exists And Can Be Used Based On Changes To `package.json`...
+      - name : Determining If "node_modules" Cache Exists And Can Be Used Based On Changes To "package.json"...
         id : node-modules-cache
         uses : actions/cache@v2
         with :
@@ -204,17 +204,17 @@ jobs :
         # Caches Older Than Two Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Is Exceeded
         if : steps.node-modules-cache.outputs.cache-hit != 'true'
         run : |
-          echo 'Installing Dependencies Defined In `package.json` Using NPM... This May Take Awhile'
+          echo 'Installing Dependencies Defined In "package.json" Using NPM... This May Take Awhile'
           npm install
 
-      - name : Create Production Build Distributable Directory - `dist-prod`
+      - name : Create Production Build Distributable Directory - "dist-prod"
         run : |
           echo 'Starting Up The Angular Framework...'
 
           npm run ng
           npm run build:prod
 
-      - name : Upload Production Build Distributable Directory Artifact - `dist-prod`
+      - name : Upload Production Build Distributable Directory Artifact - "dist-prod"
         uses : actions/upload-artifact@v2
         with :
           name : dist-prod
@@ -227,18 +227,18 @@ jobs :
     runs-on : ubuntu-latest
 
     steps :
-      - name : Download Production Build Distributable Directory - `dist-prod`
+      - name : Download Production Build Distributable Directory - "dist-prod"
         uses : actions/download-artifact@v2
         with :
           name : dist-prod
           path : 'dist-prod'
 
-      - name : Copy `index.html` To `404.html` For GitHub Pages
+      - name : Copy "index.html" To "404.html" For GitHub Pages
         run : |
-          echo 'Copying Contents Of `dist-prod/index.html` To `dist-prod/404.html`...'
+          echo 'Copying Contents Of "dist-prod/index.html" To "dist-prod/404.html"...'
           cp -v dist-prod/index.html dist-prod/404.html
 
-      - name : Upload Modified Production Build Distributable Artifact - `dist-prod`
+      - name : Upload Modified Production Build Distributable Artifact - "dist-prod"
         uses : actions/upload-artifact@v2
         with :
           name : dist-prod
@@ -251,13 +251,13 @@ jobs :
     runs-on : ubuntu-latest
 
     steps :
-      - name : Download Production Build Distributable Directory - `dist-prod`
+      - name : Download Production Build Distributable Directory - "dist-prod"
         uses : actions/download-artifact@v2
         with :
           name : dist-prod
           path : 'dist-prod'
 
-      - name : Deploy Production Build Distributable Contents To `gh-pages` Branch
+      - name : Deploy Production Build Distributable Contents To "gh-pages" Branch
         uses : peaceiris/actions-gh-pages@v3
         with :
           github_token : ${{ github.token }}

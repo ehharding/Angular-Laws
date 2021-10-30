@@ -1,5 +1,5 @@
 <header class="pf-contributors-header">
-  <div class="row m-3">
+  <div class="m-3 row">
     <div class="mx-auto pf-w-70">
       <h1 class="mat-h1 mt-2"><strong>Contributors</strong></h1>
 
@@ -8,7 +8,7 @@
   </div>
 </header>
 
-<div class="row m-3">
+<div class="m-3 row">
   <div class="mx-auto pf-w-70">
     <mat-accordion *ngIf="!contributorsFetchError" class="pf-headers-align">
       <mat-expansion-panel *ngFor="let contributor of allContributors; let index = index" [expanded]="index === 0"
@@ -31,7 +31,7 @@
             <div class="d-flex justify-content-center">
               <mat-card class="mat-elevation-z0">
                 <mat-card-header>
-                  <img mat-card-avatar alt="{{ contributor.firstName }} {{ contributor.lastName }}'s Avatar" src="assets/avatars/{{ contributorNamesKebab[index] }}.jpeg"/>
+                  <img mat-card-avatar alt="{{ contributor.firstName }} {{ contributor.lastName }}'s Avatar" src="assets/avatars/{{ contributorNamesKebab[index] }}.jpg"/>
                   <mat-card-title><strong>{{ contributor.firstName }} {{ contributor.lastName }}</strong></mat-card-title>
                   <mat-card-subtitle>
                     <div class="col">
@@ -70,7 +70,7 @@
                   <a *ngIf="contributor.gitHub" target="_blank" [href]="contributor.gitHub">
                     <button mat-button>
                       <span>GITHUB</span>
-                      <img alt="GitHub Logo" class="ms-2 pf-card-footer-logo" src="assets/images/other-logos/github-logo.svg"/>
+                      <img alt="GitHub Logo" class="ms-2 pf-card-footer-logo" src="assets/images/other-logos/github.svg"/>
                     </button>
                   </a>
 
@@ -78,7 +78,7 @@
                   <a *ngIf="contributor.linkedIn" target="_blank" [href]="contributor.linkedIn">
                     <button mat-button>
                       <span>LINKEDIN</span>
-                      <img alt="LinkedIn Logo" class="ms-2 pf-card-footer-logo" src="assets/images/other-logos/linkedin-logo.svg"/>
+                      <img alt="LinkedIn Logo" class="ms-2 pf-card-footer-logo" src="assets/images/other-logos/linkedin.svg"/>
                     </button>
                   </a>
                 </mat-card-actions>
@@ -90,7 +90,7 @@
 
     <div *ngIf="contributorsFetchError" class="row">
       <div class="col">
-        <h1 class="row mat-h1">
+        <h1 class="mat-h1 row">
           <strong>An Error Occurred Fetching The List Of Contributors. Sorry About That!</strong>
           <mat-hint class="mat-h3">{{ contributorsFetchErrorInfo }}</mat-hint>
         </h1>

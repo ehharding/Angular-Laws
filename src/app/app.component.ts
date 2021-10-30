@@ -17,7 +17,7 @@ import { SpinnerService } from '@core/services/spinner/spinner.service';
   templateUrl : 'app.component.html'
 })
 export class AppComponent {
-  public isLoading : boolean;
+  public isLoading : boolean = false;
 
   public constructor(private readonly _changeDetectorRef : ChangeDetectorRef, private readonly _spinnerService : SpinnerService) {
     this._spinnerService.isLoading$.pipe(distinctUntilChanged()).subscribe({

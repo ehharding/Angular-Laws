@@ -39,7 +39,7 @@ export class ThemeService {
 
   /**
    * This method assigns the provided CSS class names to the element specified by tagName. Use this if you are wanting to achieve some kind of programmatic styling effect on
-   * an entire tag name. For example, this is used to set the `background` attribute of <body></body>, depending on the current application theme.
+   * an entire tag name. For example, this is used to set the "background" attribute of <body></body>, depending on the current application theme.
    *
    * @param cssClassList - A list of CSS class names to assign to an existing HTML element
    * @param tagName - The qualified HTML tag name that you would like to apply CSS classes to
@@ -47,7 +47,7 @@ export class ThemeService {
   public assignCSSClassesToTag(cssClassList : readonly string[], tagName : keyof HTMLElementTagNameMap) : void {
     const HTML_ELEMENT : HTMLElement | null = this._document.querySelector(tagName);
 
-    // If The Element Already Exists, We Set Its `class` Attribute To The List Of Provided CSS Class Names
+    // If The Element Already Exists, We Set Its "class" Attribute To The List Of Provided CSS Class Names
     if (HTML_ELEMENT) {
         HTML_ELEMENT.setAttribute('class', cssClassList.join(' '));
     // Otherwise, If The Element Does Not Exist, We'll Throw An Error Since That Essentially Means Programmer Mistake
@@ -60,14 +60,14 @@ export class ThemeService {
    * This method loads a style name that exists in the ThemeBundle enumeration, injecting the requested theme into the index.html as a <link/>. This allows for simple style
    * switching at runtime.
    *
-   * @param themeBundleName - The themeBundleName of the theme to load from one of the available defined in the `ThemeBundle` enumeration
+   * @param themeBundleName - The themeBundleName of the theme to load from one of the available defined in the "ThemeBundle" enumeration
    */
   public loadClientTheme(themeBundleName : ThemeBundle) : void {
     const HTML_LINK_ELEMENT_ID : string = 'client-theme';
     const HTML_LINK_ELEMENT : HTMLElement | null = this._document.getElementById(HTML_LINK_ELEMENT_ID);
     const THEME_STYLES : string = `${ ConfigService.appConfiguration.apiServer.themes }/${ themeBundleName }.css`;
 
-    // If The <link/> Element Already Exists, We Simply Modify Its `href` Attribute
+    // If The <link/> Element Already Exists, We Simply Modify Its "href" Attribute
     if (HTML_LINK_ELEMENT) {
       (HTML_LINK_ELEMENT as HTMLLinkElement).setAttribute('href', THEME_STYLES);
     // Otherwise, If We're In Startup, We Create It With All The Necessary Attribute Settings
@@ -84,7 +84,7 @@ export class ThemeService {
 
     this._activeThemeBundleName$.next(themeBundleName);
 
-    // We'll Set The `background` Attribute Of <body></body> To `pf-bg-white` For Two Themes And `pf-bg-grey` For The Other Two
+    // We'll Set The "background" Attribute Of <body></body> To "pf-bg-white" For Two Themes And "pf-bg-grey" For The Other Two
     const BODY_TAG : keyof HTMLElementTagNameMap = 'body';
 
     if (themeBundleName === ThemeBundle.DeepPurpleAmber || themeBundleName === ThemeBundle.IndigoPink) {

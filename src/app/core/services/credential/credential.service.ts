@@ -11,7 +11,7 @@ import { ConfigService } from '@core/services/config/config.service';
 
 @Injectable({ providedIn : 'root' })
 export class CredentialService {
-  private _currentUser : User = {} as User;
+  private _currentUser : User = { } as User;
   private _jwtToken : string = '';
 
   public constructor(private readonly _httpClient : HttpClient) {
@@ -60,7 +60,7 @@ export class CredentialService {
    * setup check.
    */
   private _loadCredentialsFromStorage() : void {
-    this._currentUser = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.users.currentUser) ?? '{}') as User;
+    this._currentUser = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.users.currentUser) ?? '{ }') as User;
     this._jwtToken = this._currentUser.jwtToken;
   }
 }
