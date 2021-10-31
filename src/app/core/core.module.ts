@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -19,22 +20,26 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { SharedModule } from '@shared/shared.module';
 
 import { ConfigService } from '@core/services/config/config.service';
+import { CredentialService } from '@core/services/credential/credential.service';
+import { RouteResolverService } from '@core/services/route-resolver/route-resolver.service';
+import { SpinnerService } from '@core/services/spinner/spinner.service';
 import { ThemeService } from '@core/services/theme/theme.service';
 import { UserService } from '@core/services/user/user.service';
 
 import { AboutDialogComponent } from '@core/components/toolbar/about-dialog/about-dialog.component';
-import { CreateAccountLoginDialogComponent } from '@core/components/toolbar/create-account-login-dialog/create-account-login-dialog.component';
+import { NotFoundComponent } from '@core/components/not-found/not-found.component';
 import { SpinnerOverlayComponent } from '@core/components/spinner-overlay/spinner-overlay.component';
 import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
 
 @NgModule({
-  declarations : [AboutDialogComponent, CreateAccountLoginDialogComponent, SpinnerOverlayComponent, ToolbarComponent],
+  declarations : [AboutDialogComponent, NotFoundComponent, SpinnerOverlayComponent, ToolbarComponent],
   exports : [SpinnerOverlayComponent, ToolbarComponent],
   imports : [
     MatButtonModule,
     MatCardModule,
     MatDialogModule,
     MatDividerModule,
+    MatFormFieldModule,
     MatIconModule,
     MatMenuModule,
     MatProgressSpinnerModule,
@@ -44,6 +49,6 @@ import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
     ScrollingModule,
     SharedModule
   ],
-  providers : [ConfigService, ThemeService, UserService]
+  providers : [ConfigService, CredentialService, RouteResolverService, SpinnerService, ThemeService, UserService]
 })
 export class CoreModule { }

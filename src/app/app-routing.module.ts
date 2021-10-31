@@ -16,15 +16,24 @@ import { NgModule } from '@angular/core';
 
 import { ContributorsModule } from '@contributors/contributors.module';
 
+import { RouteResolverService } from '@core/services/route-resolver/route-resolver.service';
+
+import { NotFoundComponent } from '@core/components/not-found/not-found.component';
+
+export enum AppRoute {
+  Contributors = 'contributors'
+}
+
 const ROUTES : Routes = [
-  { path : '', pathMatch : 'full', redirectTo : 'contributors' },
-  { path : 'contributors', loadChildren : async() : Promise<ContributorsModule> => (await import('@contributors/contributors.module')).ContributorsModule }
+  { path : '', pathMatch : 'full', redirectTo : AppRoute.Contributors },
+  { path : AppRoute.Contributors, loadChildren : async() : Promise<ContributorsModule> => (await import('@contributors/contributors.module')).ContributorsModule },
+  { path : '**', component : NotFoundComponent, resolve : { possibleIntendedRoutes : RouteResolverService } }
 ];
 
 const EXTRA_OPTIONS : ExtraOptions = {
   anchorScrolling : 'enabled',
   onSameUrlNavigation : 'reload',
-  urlUpdateStrategy : 'deferred',
+  urlUpdateStrategy : 'eager',
   paramsInheritanceStrategy : 'emptyOnly',
   relativeLinkResolution : 'corrected'
 };

@@ -34,10 +34,16 @@ a {
 
 footer, header {
   color : white;
+  overflow : hidden;
+  position : relative;
 }
 
 img {
   border-radius : 5px;
+}
+
+mat-card {
+  align-items : center;
 }
 
 pf-toolbar a .mat-button {

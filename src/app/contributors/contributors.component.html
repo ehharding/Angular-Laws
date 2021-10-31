@@ -1,29 +1,31 @@
-<header class="pf-contributors-header">
+<header>
   <div class="m-3 row">
     <div class="mx-auto pf-w-70">
-      <h1 class="mat-h1 mt-2"><strong>Contributors</strong></h1>
+      <h1 class="fs-4 mt-2"><strong>Contributors</strong></h1>
 
       <p>This page lists the current contributors to the project.</p>
     </div>
   </div>
 </header>
 
-<div class="m-3 row">
-  <div class="mx-auto pf-w-70">
-    <mat-accordion *ngIf="!contributorsFetchError" class="pf-headers-align">
-      <mat-expansion-panel *ngFor="let contributor of allContributors; let index = index" [expanded]="index === 0"
-        (closed)="panelOpen = false" (opened)="panelOpen = true" (mouseenter)="panelHovered = true" (mouseleave)="panelHovered = false">
+<main>
+  <div class="m-3">
+    <div class="mx-auto pf-w-70">
+      <mat-accordion *ngIf="!contributorsFetchError" class="pf-headers-align">
+        <mat-expansion-panel *ngFor="let contributor of allContributors; let index = index" [expanded]="index === 0"
+                             (closed)="panelOpen = false" (opened)="panelOpen = true" (mouseenter)="panelHovered = true" (mouseleave)="panelHovered = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
               <mat-icon class="me-2">account_circle</mat-icon>
-              <span class="pf-contributor-shift-animation" [@hover]="(panelHovered && !panelOpen) ? 'shiftedState' : 'normalState'" [@openClose]="panelOpen ? 'invisibleState' : 'visibleState'">
+              <span class="pf-contributor-shift-animation"
+                    [@hover]="(panelHovered && !panelOpen) ? 'shiftedState' : 'normalState'" [@openClose]="panelOpen ? 'invisibleState' : 'visibleState'">
                 <strong>{{ contributor.firstName }} {{ contributor.lastName }}</strong>
               </span>
             </mat-panel-title>
 
             <mat-panel-description class="pf-contributor-shift-animation"
-              [@hover]="(panelHovered && !panelOpen) ? 'shiftedState' : 'normalState'" [@openClose]="panelOpen ? 'invisibleState' : 'visibleState'">
-                {{ contributor.jobTitle }}
+                                   [@hover]="(panelHovered && !panelOpen) ? 'shiftedState' : 'normalState'" [@openClose]="panelOpen ? 'invisibleState' : 'visibleState'">
+              {{ contributor.jobTitle }}
             </mat-panel-description>
           </mat-expansion-panel-header>
 
@@ -40,7 +42,10 @@
                       </div>
                       <div>
                         <a matTooltipPosition="right" [matTooltip]="contributor.pocketFicUserName">
-                          <button mat-stroked-button>VISIT POCKET FIC PROFILE</button>
+                          <button mat-stroked-button>
+                            <span>VISIT POCKET FIC PROFILE</span>
+                            <mat-icon class="ms-2" color="primary">import_contacts</mat-icon>
+                          </button>
                         </a>
                       </div>
                     </div>
@@ -85,21 +90,24 @@
               </mat-card>
             </div>
           </ng-template>
-      </mat-expansion-panel>
-    </mat-accordion>
+        </mat-expansion-panel>
+      </mat-accordion>
 
-    <div *ngIf="contributorsFetchError" class="row">
-      <div class="col">
-        <h1 class="mat-h1 row">
-          <strong>An Error Occurred Fetching the List of Contributors. Sorry About That!</strong>
-          <mat-hint class="mat-h3">{{ contributorsFetchErrorInfo }}</mat-hint>
-        </h1>
+      <div *ngIf="contributorsFetchError" class="row">
+        <div class="col">
+          <h1 class="fs-4 row">
+            <strong>An Error Occurred Fetching the List of Contributors. Sorry About That!</strong>
+            <mat-hint class="fs-5">{{ contributorsFetchErrorInfo }}</mat-hint>
+          </h1>
 
-        <button mat-raised-button (click)="fetchAllContributors()">
-          <span>RETRY</span>
-          <mat-icon class="ms-2">refresh</mat-icon>
-        </button>
+          <div>
+            <button mat-raised-button (click)="fetchAllContributors()">
+              <span>RETRY</span>
+              <mat-icon class="ms-2">refresh</mat-icon>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</main>

@@ -4,8 +4,8 @@
     <div>
       <a routerLink="/contributors">
         <button mat-button>
-          <mat-icon class="me-2">import_contacts</mat-icon>
           <span>Pocket Fic</span>
+          <mat-icon class="ms-2">import_contacts</mat-icon>
         </button>
       </a>
 
@@ -53,7 +53,9 @@
         </ng-template>
       </mat-menu>
 
-      <button *ngIf="!currentUser?.jwtToken" mat-button class="me-2" (click)="openCreateAccountLoginDialog()">Create Account | Login</button>
+      <a *ngIf="!currentUser?.jwtToken" routerLink="/login">
+        <button mat-button>Login</button>
+      </a>
 
       <button *ngIf="currentUser?.jwtToken" mat-button class="me-2">{{ currentUser.userName }}</button>
 

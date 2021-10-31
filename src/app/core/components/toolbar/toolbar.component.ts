@@ -12,7 +12,6 @@ import { ThemeService } from '@core/services/theme/theme.service';
 import { UserService } from '@core/services/user/user.service';
 
 import { AboutDialogComponent } from '@core/components/toolbar/about-dialog/about-dialog.component';
-import { CreateAccountLoginDialogComponent } from '@core/components/toolbar/create-account-login-dialog/create-account-login-dialog.component';
 
 @Component({
   changeDetection : ChangeDetectionStrategy.OnPush,
@@ -21,9 +20,10 @@ import { CreateAccountLoginDialogComponent } from '@core/components/toolbar/crea
   templateUrl : 'toolbar.component.html'
 })
 export class ToolbarComponent implements OnInit, OnDestroy {
-  public readonly allThemes : Theme[] = ALL_THEMES;
   public activeTheme : ThemeBundle = ThemeBundle.DeepPurpleAmber;
   public currentUser : User | null = null;
+
+  public readonly allThemes : Theme[] = ALL_THEMES;
 
   private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
@@ -54,22 +54,6 @@ export class ToolbarComponent implements OnInit, OnDestroy {
       DIALOG_REF.addPanelClass('pf-shake');
 
       window.setTimeout(() : MatDialogRef<AboutDialogComponent> => {
-        return DIALOG_REF.removePanelClass('pf-shake');
-      }, ConfigService.appConfiguration.constants.genericAnimationDurationMS);
-    });
-  }
-
-  /**
-   * Opens the "Create Account | Login" dialog (sometimes called a modal) that contains the functionality to both create an account on the application and to log in to the
-   * site with an existing account.
-   */
-  public openCreateAccountLoginDialog() : void {
-    const DIALOG_REF : MatDialogRef<CreateAccountLoginDialogComponent> = this.dialog.open(CreateAccountLoginDialogComponent, DEFAULT_MAT_DIALOG_CONFIG);
-
-    DIALOG_REF.backdropClick().subscribe(() : void => {
-      DIALOG_REF.addPanelClass('pf-shake');
-
-      window.setTimeout(() : MatDialogRef<CreateAccountLoginDialogComponent> => {
         return DIALOG_REF.removePanelClass('pf-shake');
       }, ConfigService.appConfiguration.constants.genericAnimationDurationMS);
     });

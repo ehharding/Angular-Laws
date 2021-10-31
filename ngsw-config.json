@@ -9,7 +9,7 @@
       "installMode" : "prefetch",
       "updateMode" : "prefetch",
       "cacheQueryOptions" : { "ignoreSearch" : false },
-      "resources" : { "files" : ["favicon.ico", "index.html", "manifest.json", "*.css", "*.js"] }
+      "resources" : { "files" : ["favicon.ico", "index.html", "manifest.webmanifest", "*.css", "*.js"] }
     },
     {
       "name" : "assets",
