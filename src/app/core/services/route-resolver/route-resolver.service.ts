@@ -7,9 +7,9 @@
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Injectable } from '@angular/core';
 
-import { distance } from 'fastest-levenshtein';
-
 import { AppRoute } from 'app/app-routing.module';
+
+import { distance } from 'fastest-levenshtein';
 
 @Injectable()
 export class RouteResolverService implements Resolve<string | null> {
@@ -39,19 +39,19 @@ export class RouteResolverService implements Resolve<string | null> {
    * This method is responsible for providing a response route to the requested route by a user, where the requested route resulted in an unknown application route being
    * encountered.
    *
-   * @param _route - The ActivatedRouteSnapshot object that contains information about the unknown route entered by the user
-   * @param state - The RouterStateSnapshot object that contains information about the state of the router at a moment in time
+   * @param route - The ActivatedRouteSnapshot object that contains information about the unknown route entered by the user
+   * @param _state - The RouterStateSnapshot object that contains information about the state of the router at a moment in time
    * @returns Either a string list (comma delimited string) of the existing application routes that seem to resemble the requested route or null if none seem to match at all.
    */
-  public resolve(_route : ActivatedRouteSnapshot, state : RouterStateSnapshot) : string | null { // _route Is Required To Implement This Function From Resolve
-    const REQUESTED_ROUTE : string = state.url.replace('/', '');
+  public resolve(route : ActivatedRouteSnapshot, _state : RouterStateSnapshot) : string | null { // _state Is Required To Implement This Function From Resolve
+    const REQUESTED_ROUTE : string = route.queryParams.requestedRoute as string;
     const THRESHOLD : number = RouteResolverService._getThreshold(REQUESTED_ROUTE); // eslint-disable-line no-underscore-dangle
 
-    const POSSIBLE_INTENDED_ROUTES : AppRoute[] = Object.values(AppRoute).filter((route : AppRoute) : boolean => {
-      return Math.abs(route.length - REQUESTED_ROUTE.length) < THRESHOLD;
+    const INTENDED_ROUTE_GUESSES : AppRoute[] = Object.values(AppRoute).filter((appRoute : AppRoute) : boolean => {
+      return Math.abs(appRoute.length - REQUESTED_ROUTE.length) < THRESHOLD;
     });
 
-    if (POSSIBLE_INTENDED_ROUTES.length === 0) {
+    if (INTENDED_ROUTE_GUESSES.length === 0) {
       return null;
     }
 
@@ -67,7 +67,7 @@ export class RouteResolverService implements Resolve<string | null> {
    * @returns The list of existing application routes, if any, that resemble the requested route.
    */
   private _sortByLevenshtein(requestedRoute : string) : AppRoute[] {
-    const APP_ROUTES : AppRoute[] = Object.values(AppRoute);
+    const APP_ROUTES : AppRoute[] = Object.values(AppRoute).filter((appRoute : AppRoute) : boolean => appRoute !== AppRoute.NotFound);
     const ROUTES_DISTANCE : Record<string, number> = { } as Record<string, number>;
 
     APP_ROUTES.sort((a : AppRoute | string, b : AppRoute | string) : number => {

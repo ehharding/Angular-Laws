@@ -16,19 +16,23 @@ import { NgModule } from '@angular/core';
 
 import { ContributorsModule } from '@contributors/contributors.module';
 
+import { NotFoundGuard } from '@core/guards/not-found/not-found.guard';
+
 import { RouteResolverService } from '@core/services/route-resolver/route-resolver.service';
 
 import { NotFoundComponent } from '@core/components/not-found/not-found.component';
 
 export enum AppRoute {
   Contributors = 'contributors',
-  Users = 'users'
+  Users = 'users',
+  NotFound = '404'
 }
 
 const ROUTES : Routes = [
   { path : '', pathMatch : 'full', redirectTo : AppRoute.Contributors },
   { path : AppRoute.Contributors, loadChildren : async() : Promise<ContributorsModule> => (await import('@contributors/contributors.module')).ContributorsModule },
-  { path : '**', component : NotFoundComponent, resolve : { possibleIntendedRoutes : RouteResolverService } }
+  { path : '404', component : NotFoundComponent, resolve : { intendedRouteGuesses : RouteResolverService } }, // The NotFoundComponent Is Fed Possible Route Guesses
+  { path : '**', canActivate : [NotFoundGuard] }
 ];
 
 const EXTRA_OPTIONS : ExtraOptions = {

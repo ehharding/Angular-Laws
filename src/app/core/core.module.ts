@@ -19,6 +19,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { SharedModule } from '@shared/shared.module';
 
+import { NotFoundGuard } from '@core/guards/not-found/not-found.guard';
+
 import { ConfigService } from '@core/services/config/config.service';
 import { CredentialService } from '@core/services/credential/credential.service';
 import { RouteResolverService } from '@core/services/route-resolver/route-resolver.service';
@@ -49,6 +51,14 @@ import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
     ScrollingModule,
     SharedModule
   ],
-  providers : [ConfigService, CredentialService, RouteResolverService, SpinnerService, ThemeService, UserService]
+  providers : [
+    NotFoundGuard,
+    ConfigService,
+    CredentialService,
+    RouteResolverService,
+    SpinnerService,
+    ThemeService,
+    UserService
+  ]
 })
 export class CoreModule { }
