@@ -12,6 +12,7 @@
 
       <div class="col text-start w-50">
         <h1 class="fs-1"><strong>Page Not Found (HTTP 404)</strong></h1>
+        <mat-hint>{{ HttpResponseType.ClientErrorResponse }}</mat-hint>
 
         <p class="fs-4">The page you are looking for cannot be found. Sorry about that!</p>
 
@@ -24,10 +25,18 @@
         <div *ngIf="possibleIntendedRoutes.length > 0" class="mt-5">
           <mat-hint>Did you mean any of these routes? They were similar to what you tried to navigate to.</mat-hint>
           <mat-card *ngFor="let possibleIntendedRoute of possibleIntendedRoutes" class="d-flex justify-content-between my-2">
+            <!-- Left Group Of Card Items -->
             <div>
               /{{ possibleIntendedRoute }}
             </div>
+
+            <!-- Right Group Of Card Items -->
             <div>
+              <button mat-stroked-button matTooltip="Copy &quot;/{{ possibleIntendedRoute }}&quot; to clipboard" matTooltipPosition="left"
+                      (click)="copyRouteToClipboard(possibleIntendedRoute)">
+                <span>COPY ROUTE</span>
+              </button>
+
               <a routerLink="/{{ possibleIntendedRoute }}">
                 <button mat-stroked-button>GO TO ROUTE</button>
               </a>

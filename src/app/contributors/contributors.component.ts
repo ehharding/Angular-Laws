@@ -3,6 +3,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 import { ReplaySubject, takeUntil } from 'rxjs';
 
+import { AppRoute } from 'app/app-routing.module';
+
 import { APP_CONSTANTS } from '@core/services/config/config.model';
 import { CONTRIBUTORS_ANIMATIONS } from '@contributors/contributors.model';
 import { Contributor } from '@contributors/services/contributor/contributor.model';
@@ -25,6 +27,8 @@ export class ContributorsComponent implements OnInit, OnDestroy {
   public allContributors : Contributor[] = [];
   public contributorsFetchError : HttpErrorResponse | undefined = undefined;
   public contributorsFetchErrorInfo : string | undefined = undefined;
+
+  public readonly AppRoute = AppRoute;
 
   private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 

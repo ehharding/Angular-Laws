@@ -522,7 +522,7 @@
     "@typescript-eslint/no-parameter-properties" : "off",
     "@typescript-eslint/no-redeclare" : ["warn", { "builtinGlobals" : true, "ignoreDeclarationMerge" : false }],
     "@typescript-eslint/no-require-imports" : "warn",
-    "@typescript-eslint/no-shadow" : ["warn", { "builtinGlobals" : true, "hoist" : "functions", "allow" : ["require"] }],
+    "@typescript-eslint/no-shadow" : ["warn", { "builtinGlobals" : true, "hoist" : "functions", "allow" : ["Clipboard", "require"] }],
     "@typescript-eslint/no-this-alias" : ["warn", { "allowDestructuring" : false, "allowedNames" : [] }],
     "@typescript-eslint/no-throw-literal" : "warn",
     "@typescript-eslint/no-type-alias" : ["warn", {

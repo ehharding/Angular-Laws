@@ -1,9 +1,12 @@
 import { ActivatedRoute, Data } from '@angular/router';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 import { ReplaySubject, distinctUntilChanged, takeUntil } from 'rxjs';
 
 import { AppRoute } from 'app/app-routing.module';
+
+import { HttpResponseType } from '@core/services/config/config.model';
 
 @Component({
   changeDetection : ChangeDetectionStrategy.OnPush,
@@ -15,10 +18,11 @@ export class NotFoundComponent implements OnInit, OnDestroy {
   public possibleIntendedRoutes : string[] = [];
 
   public readonly AppRoute = AppRoute;
+  public readonly HttpResponseType = HttpResponseType;
 
   private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
-  public constructor(private readonly _activatedRoute : ActivatedRoute) { }
+  public constructor(private readonly _activatedRoute : ActivatedRoute, private readonly _clipboard : Clipboard) { }
 
   public ngOnInit() : void {
     this._activatedRoute.data.pipe(distinctUntilChanged(), takeUntil(this._componentDestroyed$)).subscribe({
@@ -37,5 +41,14 @@ export class NotFoundComponent implements OnInit, OnDestroy {
   public ngOnDestroy() : void {
     this._componentDestroyed$.next(true);
     this._componentDestroyed$.complete();
+  }
+
+  /**
+   * This method copies a given route string to the clipboard.
+   *
+   * @param route - The string route to copy to the clipboard
+   */
+  public copyRouteToClipboard(route : string) : void {
+    this._clipboard.copy(`/${ route }`);
   }
 }

@@ -41,8 +41,8 @@
                         {{ contributor.jobTitle }}
                       </div>
                       <div>
-                        <a matTooltipPosition="right" [matTooltip]="contributor.pocketFicUserName">
-                          <button mat-stroked-button>
+                        <a routerLink="/{{ AppRoute.Users }}/{{ contributor.id }}">
+                          <button mat-stroked-button matTooltipPosition="right" [matTooltip]="contributor.pocketFicUserName">
                             <span>VISIT POCKET FIC PROFILE</span>
                             <mat-icon class="ms-2" color="primary">import_contacts</mat-icon>
                           </button>

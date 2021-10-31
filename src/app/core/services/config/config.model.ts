@@ -14,7 +14,7 @@ export enum HttpMethod {
   Trace = 'TRACE'      // Performs A Message Loop-Back Test Along The Path To The Target Resource
 }
 
-enum HttpResponseType {
+export enum HttpResponseType {
   InformationResponse = 'Information Response',  // 1XX Codes
   SuccessfulResponse = 'Successful Response',    // 2XX Codes
   RedirectionMessage = 'Redirection Message',    // 3XX Codes

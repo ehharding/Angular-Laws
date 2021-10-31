@@ -21,7 +21,8 @@ import { RouteResolverService } from '@core/services/route-resolver/route-resolv
 import { NotFoundComponent } from '@core/components/not-found/not-found.component';
 
 export enum AppRoute {
-  Contributors = 'contributors'
+  Contributors = 'contributors',
+  Users = 'users'
 }
 
 const ROUTES : Routes = [
