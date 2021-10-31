@@ -1,7 +1,7 @@
 {
   "name" : "pocket-fic",
   "short_name" : "pocket-fic",
-  "description" : "A Modern Fan Fiction Website for the Modern Web.",
+  "description" : "A modern fan fiction website for the modern web.",
   "lang" : "en",
   "dir" : "auto",
   "scope" : "/",
