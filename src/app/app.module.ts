@@ -7,7 +7,7 @@
  * @remarks Be sure to note that the order of Providers in the AppModule is highly important. Providers will initialize in the order they are declared.
  *****************************************************************************************************************************************************************************/
 
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER, InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS, MatProgressSpinnerDefaultOptions } from '@angular/material/progress-spinner';
@@ -44,6 +44,8 @@ function initializeApplication(configService : ConfigService) : (() => Promise<v
   };
 }
 
+export const WINDOW_INJECTION_TOKEN : InjectionToken<Window> = new InjectionToken<Window>('window');
+
 const CONFIGURED_MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS : MatProgressSpinnerDefaultOptions = {
   diameter : ConfigService.appConfiguration.constants.progressSpinnerDiameterPX,
   strokeWidth : ConfigService.appConfiguration.constants.progressSpinnerStrokeWidthPX
@@ -78,6 +80,7 @@ const CONFIGURED_MAT_TOOLTIP_DEFAULT_OPTIONS : MatTooltipDefaultOptions = {
   ],
   providers : [
     Title,
+    { provide : WINDOW_INJECTION_TOKEN, useFactory : () : Window => window },
     { multi : true, deps : [ConfigService], provide : APP_INITIALIZER, useFactory : initializeApplication },
     { multi : false, deps : [], provide : MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS, useValue : CONFIGURED_MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS },
     { multi : false, deps : [], provide : MAT_TABS_CONFIG, useValue : CONFIGURED_MAT_TABS_CONFIG },

@@ -23,11 +23,11 @@
         </div>
 
         <div *ngIf="possibleIntendedRoutes.length > 0" class="mt-5">
-          <mat-hint>Did you mean any of these routes? They were similar to what you tried to navigate to.</mat-hint>
+          <mat-hint>Did you mean any of these routes? They may be similar to what you tried to navigate to and are sorted in order of relevance.</mat-hint>
           <mat-card *ngFor="let possibleIntendedRoute of possibleIntendedRoutes" class="d-flex justify-content-between my-2">
             <!-- Left Group Of Card Items -->
             <div>
-              /{{ possibleIntendedRoute }}
+              <span><strong>{{ hostname }}{{ hostname === 'localhost' ? ':4200' : '' }}</strong>/{{ possibleIntendedRoute }}</span>
             </div>
 
             <!-- Right Group Of Card Items -->
