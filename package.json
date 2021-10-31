@@ -3,7 +3,7 @@
   "name" : "pocket-fic",
   "license" : "Apache-2.0",
   "version" : "1.0.0",
-  "description" : "A Modern Fan Fiction Website for the Modern Web.",
+  "description" : "A modern fan fiction website for the modern web.",
   "homepage" : "https://ehharding.github.io/Pocket-Fic/",
   "repository" : { "type" : "git", "url" : "https://github.com/ehharding/Pocket-Fic.git" },
   "author" : { "email" : "ehharding@gmail.com", "name" : "Evan H. Harding", "url" : "https://linkedin.com/in/ehharding" },
