@@ -6,8 +6,6 @@ import { ReplaySubject, distinctUntilChanged, takeUntil } from 'rxjs';
 
 import { AppRoute } from 'app/app-routing.module';
 
-import { HttpResponseType } from '@core/services/config/config.model';
-
 @Component({
   changeDetection : ChangeDetectionStrategy.OnPush,
   selector : 'pf-not-found',
@@ -15,10 +13,9 @@ import { HttpResponseType } from '@core/services/config/config.model';
   templateUrl : 'not-found.component.html'
 })
 export class NotFoundComponent implements OnInit, OnDestroy {
-  public possibleIntendedRoutes : string[] = [];
+  public intendedRouteGuesses : string[] = [];
 
   public readonly AppRoute = AppRoute;
-  public readonly HttpResponseType = HttpResponseType;
 
   private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
@@ -32,7 +29,7 @@ export class NotFoundComponent implements OnInit, OnDestroy {
 
         // If There Are Guesses As To The Intended Route, We Add It To The Class Variable For Display
         if (POSSIBLE_INTENDED_ROUTES) {
-          this.possibleIntendedRoutes = POSSIBLE_INTENDED_ROUTES;
+          this.intendedRouteGuesses = POSSIBLE_INTENDED_ROUTES.map((intendedRouteGuess : string) : string => `/${ intendedRouteGuess }`);
         }
       }
     });
@@ -49,6 +46,6 @@ export class NotFoundComponent implements OnInit, OnDestroy {
    * @param route - The string route to copy to the clipboard
    */
   public copyRouteToClipboard(route : string) : void {
-    this._clipboard.copy(`/${ route }`);
+    this._clipboard.copy(route);
   }
 }

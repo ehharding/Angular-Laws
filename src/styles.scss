@@ -139,6 +139,10 @@ pf-toolbar a .mat-button {
   position : absolute;
 }
 
+.pf-divider {
+ margin-bottom : 1rem !important;
+}
+
 .pf-headers-align .mat-expansion-panel-header-title, .pf-headers-align .mat-expansion-panel-header-description {
   flex-basis : 0;
 }
