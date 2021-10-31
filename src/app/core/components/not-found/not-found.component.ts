@@ -3,6 +3,8 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/
 
 import { ReplaySubject, distinctUntilChanged, takeUntil } from 'rxjs';
 
+import { AppRoute } from 'app/app-routing.module';
+
 @Component({
   changeDetection : ChangeDetectionStrategy.OnPush,
   selector : 'pf-not-found',
@@ -11,6 +13,8 @@ import { ReplaySubject, distinctUntilChanged, takeUntil } from 'rxjs';
 })
 export class NotFoundComponent implements OnInit, OnDestroy {
   public possibleIntendedRoutes : string[] = [];
+
+  public readonly AppRoute = AppRoute;
 
   private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 

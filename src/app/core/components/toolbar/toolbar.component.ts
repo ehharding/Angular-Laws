@@ -3,6 +3,8 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 import { ReplaySubject, takeUntil } from 'rxjs';
 
+import { AppRoute } from 'app/app-routing.module';
+
 import { ALL_THEMES, Theme, ThemeBundle } from '@core/services/theme/theme.model';
 import { DEFAULT_MAT_DIALOG_CONFIG } from '@core/services/config/config.model';
 import { User } from '@core/services/user/user.model';
@@ -24,6 +26,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   public currentUser : User | null = null;
 
   public readonly allThemes : Theme[] = ALL_THEMES;
+  public readonly AppRoute = AppRoute;
 
   private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
