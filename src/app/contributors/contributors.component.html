@@ -16,7 +16,7 @@
                              (closed)="panelOpen = false" (opened)="panelOpen = true" (mouseenter)="panelHovered = true" (mouseleave)="panelHovered = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <mat-icon class="me-2">account_circle</mat-icon>
+              <mat-icon class="me-3">account_circle</mat-icon>
               <span class="pf-contributor-shift-animation"
                     [@hover]="(panelHovered && !panelOpen) ? 'shiftedState' : 'normalState'" [@openClose]="panelOpen ? 'invisibleState' : 'visibleState'">
                 <strong>{{ contributor.firstName }} {{ contributor.lastName }}</strong>
@@ -43,8 +43,8 @@
                       <div>
                         <a routerLink="/{{ AppRoute.Users }}/{{ contributor.id }}">
                           <button mat-stroked-button matTooltipPosition="right" [matTooltip]="contributor.pocketFicUserName">
+                            <mat-icon class="me-2" color="primary">import_contacts</mat-icon>
                             <span>VISIT POCKET FIC PROFILE</span>
-                            <mat-icon class="ms-2" color="primary">import_contacts</mat-icon>
                           </button>
                         </a>
                       </div>
@@ -58,32 +58,32 @@
                   <!-- The First Contributor Card Action Button Is An Email Link -->
                   <a href="mailto:{{ contributor.email }}?subject=Subject&body=Hi%20{{ contributor.firstName }}">
                     <button mat-button [matTooltip]="contributor.email">
+                      <mat-icon class="me-2">email</mat-icon>
                       <span>E-MAIL</span>
-                      <mat-icon class="ms-2">email</mat-icon>
                     </button>
                   </a>
 
                   <!-- The Second Contributor Card Action Button Is A Link To The Respective Contributors' Resume (Optional) -->
                   <a *ngIf="contributor.resume" target="_blank" [href]="contributor.resume">
                     <button mat-button>
+                      <mat-icon class="me-2">contact_page</mat-icon>
                       <span>RESUM&Eacute;</span>
-                      <mat-icon class="ms-2">contact_page</mat-icon>
                     </button>
                   </a>
 
                   <!-- The Third Contributor Card Action Button Is A Link To The Respective Contributors' GitHub (Optional) -->
                   <a *ngIf="contributor.gitHub" target="_blank" [href]="contributor.gitHub">
                     <button mat-button>
+                      <img alt="GitHub Logo" class="me-2 pf-card-footer-logo" src="assets/images/other-logos/github.svg"/>
                       <span>GITHUB</span>
-                      <img alt="GitHub Logo" class="ms-2 pf-card-footer-logo" src="assets/images/other-logos/github.svg"/>
                     </button>
                   </a>
 
                   <!-- The Fourth Contributor Card Action Button Is A Link To The Respective Contributors' LinkedIn (Optional) -->
                   <a *ngIf="contributor.linkedIn" target="_blank" [href]="contributor.linkedIn">
                     <button mat-button>
+                      <img alt="LinkedIn Logo" class="me-2 pf-card-footer-logo" src="assets/images/other-logos/linkedin.svg"/>
                       <span>LINKEDIN</span>
-                      <img alt="LinkedIn Logo" class="ms-2 pf-card-footer-logo" src="assets/images/other-logos/linkedin.svg"/>
                     </button>
                   </a>
                 </mat-card-actions>
@@ -102,8 +102,8 @@
 
           <div>
             <button mat-raised-button (click)="fetchAllContributors()">
+              <mat-icon class="me-2">refresh</mat-icon>
               <span>RETRY</span>
-              <mat-icon class="ms-2">refresh</mat-icon>
             </button>
           </div>
         </div>

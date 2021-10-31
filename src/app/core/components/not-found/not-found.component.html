@@ -14,7 +14,7 @@
         <h1 class="fs-1"><strong>Page Not Found (HTTP 404)</strong></h1>
         <mat-hint>{{ HttpResponseType.ClientErrorResponse }}</mat-hint>
 
-        <p class="fs-4">The page you are looking for cannot be found. Sorry about that!</p>
+        <p class="fs-4">The page you are looking for cannot seem to be found. Sorry about that!</p>
 
         <div>
           <a routerLink="/{{ AppRoute.Contributors }}">
@@ -32,13 +32,16 @@
 
             <!-- Right Group Of Card Items -->
             <div>
-              <button mat-stroked-button matTooltip="Copy &quot;/{{ possibleIntendedRoute }}&quot; to clipboard" matTooltipPosition="left"
-                      (click)="copyRouteToClipboard(possibleIntendedRoute)">
-                <span>COPY ROUTE</span>
+              <button mat-stroked-button matTooltip="&quot;/{{ possibleIntendedRoute }}&quot;" matTooltipPosition="left" (click)="copyRouteToClipboard(possibleIntendedRoute)">
+                <mat-icon class="me-2">content_copy</mat-icon>
+                <span>COPY ROUTE TO CLIPBOARD</span>
               </button>
 
               <a routerLink="/{{ possibleIntendedRoute }}">
-                <button mat-stroked-button>GO TO ROUTE</button>
+                <button mat-stroked-button>
+                  <mat-icon class="me-2">arrow_circle_right</mat-icon>
+                  <span>GO</span>
+                </button>
               </a>
             </div>
           </mat-card>

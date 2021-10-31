@@ -4,8 +4,8 @@
     <div>
       <a routerLink="/{{ AppRoute.Contributors }}">
         <button mat-button>
+          <mat-icon class="me-2">import_contacts</mat-icon>
           <span>Pocket Fic</span>
-          <mat-icon class="ms-2">import_contacts</mat-icon>
         </button>
       </a>
 
@@ -16,7 +16,7 @@
 
     <!-- Right Group Of Toolbar Items -->
     <div>
-      <button mat-icon-button matTooltip="Select a theme for your time on Pocket Fic" [matMenuTriggerFor]="themeMenu">
+      <button mat-icon-button matTooltip="Select a theme for your stay on Pocket Fic" [matMenuTriggerFor]="themeMenu">
         <mat-icon>palette</mat-icon>
       </button>
       <mat-menu #themeMenu="matMenu" xPosition="before">
@@ -49,7 +49,10 @@
       </button>
       <mat-menu #helpMenu="matMenu" xPosition="before">
         <ng-template matMenuContent>
-          <button mat-menu-item (click)="openAboutDialog()">About the application...</button>
+          <button mat-menu-item (click)="openAboutDialog()">
+            <mat-icon class="me-2">info</mat-icon>
+            <span>About the application...</span>
+          </button>
         </ng-template>
       </mat-menu>
 
