@@ -12,7 +12,7 @@
 
       <div class="col text-start w-50">
         <h1 class="fs-1"><strong>Page Not Found (HTTP 404)</strong></h1>
-        <p class="fs-4">The page you are looking for cannot seem to be found. Sorry about that!</p>
+        <p class="fs-4">The route you are looking for was not found. Bummer!</p>
 
         <mat-divider class="pf-divider"></mat-divider>
 
@@ -23,7 +23,7 @@
         </div>
 
         <div *ngIf="intendedRouteGuesses.length > 0" class="mt-5">
-          <mat-hint>Did you mean any of these actual application routes? They may be similar to what you were looking for and are sorted in order of relevance.</mat-hint>
+          <mat-hint>Do you want any of these application routes instead? They are similar to what you are looking for and are sorted in order of likely relevance.</mat-hint>
           <mat-card *ngFor="let intendedRouteGuess of intendedRouteGuesses" class="d-flex justify-content-between my-2">
             <!-- Left Group Of Card Items -->
             <div>
