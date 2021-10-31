@@ -82,6 +82,12 @@
       "sizes" : "512x512",
       "type" : "image/svg",
       "purpose" : "maskable any"
+    },
+    {
+      "src" : "assets/images/other-logos/not-found.svg",
+      "sizes" : "16x16",
+      "type" : "image/svg",
+      "purpose" : "maskable any"
     }
   ],
   "prefer_related_applications" : false,
