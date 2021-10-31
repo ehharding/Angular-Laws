@@ -22,10 +22,7 @@ export class NotFoundComponent implements OnInit, OnDestroy {
 
   private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
-  public constructor(
-    private readonly _activatedRoute : ActivatedRoute,
-    private readonly _clipboard : Clipboard
-  ) { }
+  public constructor(private readonly _activatedRoute : ActivatedRoute, private readonly _clipboard : Clipboard) { }
 
   public ngOnInit() : void {
     this._activatedRoute.data.pipe(distinctUntilChanged(), takeUntil(this._componentDestroyed$)).subscribe({
