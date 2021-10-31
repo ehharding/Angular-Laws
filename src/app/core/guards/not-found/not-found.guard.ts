@@ -19,11 +19,11 @@ export class NotFoundGuard implements CanActivate {
    * For example, if the user tried to navigate to "/abc" (assuming that "abc" is an invalid application route), this method would deny access to "/abc" and navigate to
    * "/404?requestedRoute=abc" instead, telling the NotFoundComponent invoked on that route that the user attempted to access the invalid "abc" route.
    *
-   * @param _route - The ActivatedRouteSnapshot object that contains information about the unknown route entered by the user
+   * @param route - The ActivatedRouteSnapshot object that contains information about the unknown route entered by the user
    * @returns a Promise, or an object representing the eventual completion (or failure) of the asynchronous route navigation resolution, and its value.
    */
-  public async canActivate(_route : ActivatedRouteSnapshot) : Promise<boolean> {
-    await this._router.navigate([AppRoute.NotFound], { queryParams : { requestedRoute : _route.url.join('/') } });
+  public async canActivate(route : ActivatedRouteSnapshot) : Promise<boolean> {
+    await this._router.navigate([AppRoute.NotFound], { queryParams : { requestedRoute : route.url.join('/') } });
 
     return await new Promise<boolean>((resolve : (value : boolean) => void) : void => {
       resolve(false);

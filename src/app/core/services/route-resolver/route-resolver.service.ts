@@ -43,7 +43,7 @@ export class RouteResolverService implements Resolve<string | null> {
    * @param _state - The RouterStateSnapshot object that contains information about the state of the router at a moment in time
    * @returns Either a string list (comma delimited string) of the existing application routes that seem to resemble the requested route or null if none seem to match at all.
    */
-  public resolve(route : ActivatedRouteSnapshot, _state : RouterStateSnapshot) : string | null { // _state Is Required To Implement This Function From Resolve
+  public resolve(route : ActivatedRouteSnapshot, _state : RouterStateSnapshot) : string | null { // "_state" Is Required To Implement This Method From Resolve
     const REQUESTED_ROUTE : string = route.queryParams.requestedRoute as string;
     const THRESHOLD : number = RouteResolverService._getThreshold(REQUESTED_ROUTE); // eslint-disable-line no-underscore-dangle
 

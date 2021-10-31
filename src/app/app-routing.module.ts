@@ -31,7 +31,7 @@ export enum AppRoute {
 const ROUTES : Routes = [
   { path : '', pathMatch : 'full', redirectTo : AppRoute.Contributors },
   { path : AppRoute.Contributors, loadChildren : async() : Promise<ContributorsModule> => (await import('@contributors/contributors.module')).ContributorsModule },
-  { path : '404', component : NotFoundComponent, resolve : { intendedRouteGuesses : RouteResolverService } }, // The NotFoundComponent Is Fed Possible Route Guesses
+  { path : AppRoute.NotFound, component : NotFoundComponent, resolve : { intendedRouteGuesses : RouteResolverService } }, // NotFoundComponent Fed Possible Route Resolutions
   { path : '**', canActivate : [NotFoundGuard] }
 ];
 
