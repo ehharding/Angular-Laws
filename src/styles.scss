@@ -46,6 +46,10 @@ mat-card {
   align-items : center;
 }
 
+mat-divider {
+  margin-bottom : 1rem !important;
+}
+
 pf-toolbar a .mat-button {
   color : white;
   font-weight : bold;
@@ -128,8 +132,8 @@ pf-toolbar a .mat-button {
   position : relative !important;
 }
 
-.pf-dialog-divider {
-  margin: $spacer ($spacer * 3) !important;
+.pf-dialog-divider-title {
+  margin : $spacer ($spacer * 3) !important;
 }
 
 .pf-dialog-header-close-button.mat-icon-button {
@@ -137,10 +141,6 @@ pf-toolbar a .mat-button {
   right : 0;
   top : 0;
   position : absolute;
-}
-
-.pf-divider {
- margin-bottom : 1rem !important;
 }
 
 .pf-headers-align .mat-expansion-panel-header-title, .pf-headers-align .mat-expansion-panel-header-description {
