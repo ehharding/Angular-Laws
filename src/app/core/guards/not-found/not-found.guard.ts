@@ -17,7 +17,7 @@ export class NotFoundGuard implements CanActivate {
    * route and instead navigates to the "/404" route, injecting information about the requested route that the user made, where it is further handled.
    *
    * For example, if the user tried to navigate to "/abc" (assuming that "abc" is an invalid application route), this method would deny access to "/abc" and navigate to
-   * "/404?requestedRoute=abc" instead, telling the NotFoundComponent invoked on that route that the user attempted to access the invalid "abc" route.
+   * "/404?requestedRoute=abc" instead, telling the NotFoundComponent invoked after that route is activated that the user attempted to access the invalid "abc" route.
    *
    * @param route - The ActivatedRouteSnapshot object that contains information about the unknown route entered by the user
    * @returns a Promise, or an object representing the eventual completion (or failure) of the asynchronous route navigation resolution, and its value.

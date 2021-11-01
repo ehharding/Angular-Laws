@@ -23,7 +23,7 @@
         </div>
 
         <div *ngIf="intendedRouteGuesses.length > 0" class="mt-5">
-          <mat-hint>Do you want any of these application routes instead? They are similar to what you are looking for and are sorted in order of likely relevance.</mat-hint>
+          <mat-hint>Do you want any of these application routes instead? They are similar and are sorted in order of likely relevance to you.</mat-hint>
           <mat-card *ngFor="let intendedRouteGuess of intendedRouteGuesses" class="d-flex justify-content-between my-2">
             <!-- Left Group Of Card Items -->
             <div>
@@ -32,9 +32,9 @@
 
             <!-- Right Group Of Card Items -->
             <div>
-              <button mat-stroked-button matTooltip="&quot;{{ intendedRouteGuess }}&quot;" matTooltipPosition="left" (click)="copyRouteToClipboard(intendedRouteGuess)">
+              <button mat-stroked-button (click)="copyRouteToClipboard(intendedRouteGuess)">
                 <mat-icon class="me-2">content_copy</mat-icon>
-                <span>COPY ROUTE TO CLIPBOARD</span>
+                <span>COPY TO CLIPBOARD</span>
               </button>
 
               <a [routerLink]="intendedRouteGuess">

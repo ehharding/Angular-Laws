@@ -47,7 +47,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
       // Check That The User Is Logged In
       if (!this._credentialService.isLoggedIn()) {
-        return constructUnauthorizedResponse('You Must be Authenticated to Delete a User. Please Login.');
+        return constructUnauthorizedResponse('You must be authenticated to delete a user. Please login.');
       }
 
       // Extract The User ID Associated With The Account To Be Deleted From The Request URL And Use It To Remove The Associated Object From The All Users List
@@ -62,7 +62,7 @@ export class AuthInterceptor implements HttpInterceptor {
         return constructOkResponse(USER_TO_DELETE);
       }
 
-      return constructUnauthorizedResponse('You Cannot Delete a User Other Than Yourself Unless You Are an Admin.');
+      return constructUnauthorizedResponse('You cannot delete a user other than yourself unless you are an admin.');
     };
 
     /**
@@ -88,7 +88,7 @@ export class AuthInterceptor implements HttpInterceptor {
         return constructOkResponse(USER);
       }
 
-      return constructErrorResponse(HttpStatusCode.Unauthorized, 'Username or Password is Incorrect.');
+      return constructErrorResponse(HttpStatusCode.Unauthorized, 'Username or password is incorrect.');
     };
 
     /**
@@ -111,10 +111,6 @@ export class AuthInterceptor implements HttpInterceptor {
           return httpHandler.handle(httpRequest).pipe(catchError(this._handleError));
       }
     };
-
-    if (this._credentialService.isLoggedIn()) {
-      httpRequest = httpRequest.clone({ headers : httpRequest.headers.set('Authorization', `Bearer ${ this._credentialService.getJwtToken() }`) });
-    }
 
     return handleURL();
   }
