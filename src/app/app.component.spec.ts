@@ -1,4 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { APP_BASE_HREF } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
+import { APP_ROUTES } from 'app/app-routing.module';
 
 import { SpinnerService } from '@core/services/spinner/spinner.service';
 
@@ -14,8 +18,9 @@ describe('AppComponent', () : void => {
   beforeEach(waitForAsync(() : void => {
     TestBed.configureTestingModule({
       declarations : [AppComponent],
-      providers : [SpinnerService]
-    }).compileComponents();
+      imports : [RouterModule.forRoot(APP_ROUTES)],
+      providers : [SpinnerService, { provide : APP_BASE_HREF, useValue : '/' }]
+    }).compileComponents(); // Compile Template And CSS
   }));
 
   beforeEach(() : void => {

@@ -28,11 +28,11 @@ export enum AppRoute {
   NotFound = '404'
 }
 
-const ROUTES : Routes = [
+export const APP_ROUTES : Routes = [
   { path : '', pathMatch : 'full', redirectTo : AppRoute.Contributors },
   { path : AppRoute.Contributors, loadChildren : async() : Promise<ContributorsModule> => (await import('@contributors/contributors.module')).ContributorsModule },
   { path : AppRoute.NotFound, component : NotFoundComponent, resolve : { intendedRouteGuesses : RouteResolverService } }, // NotFoundComponent Fed Possible Route Guesses
-  { path : '**', canActivate : [NotFoundGuard] }
+  { path : '**', component : NotFoundComponent, canActivate : [NotFoundGuard] }
 ];
 
 const EXTRA_OPTIONS : ExtraOptions = {
@@ -45,6 +45,6 @@ const EXTRA_OPTIONS : ExtraOptions = {
 
 @NgModule({
   exports : [RouterModule],
-  imports : [RouterModule.forRoot(ROUTES, EXTRA_OPTIONS)]
+  imports : [RouterModule.forRoot(APP_ROUTES, EXTRA_OPTIONS)]
 })
 export class AppRoutingModule { }
