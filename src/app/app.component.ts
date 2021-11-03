@@ -4,7 +4,7 @@
  * {@link https://angular.io/guide/architecture#components | Angular Component Guide}
  *****************************************************************************************************************************************************************************/
 
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 import { distinctUntilChanged } from 'rxjs';
 
@@ -16,10 +16,12 @@ import { SpinnerService } from '@core/services/spinner/spinner.service';
   styleUrls : ['app.component.scss'],
   templateUrl : 'app.component.html'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   public isLoading : boolean = false;
 
-  public constructor(private readonly _changeDetectorRef : ChangeDetectorRef, private readonly _spinnerService : SpinnerService) {
+  public constructor(private readonly _changeDetectorRef : ChangeDetectorRef, private readonly _spinnerService : SpinnerService) { }
+
+  public ngOnInit() : void {
     this._spinnerService.isLoading$.pipe(distinctUntilChanged()).subscribe({
       next : (isLoading : boolean) : void => {
         this.isLoading = isLoading;

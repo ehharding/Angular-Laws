@@ -82,7 +82,6 @@ jobs :
 
   ########## JOB 2 - TEST ##########
   test :
-    if : 'false'
     needs : repository-checkout
     runs-on : ubuntu-latest
     strategy :
@@ -130,7 +129,7 @@ jobs :
 
   ########## JOB 3 - ESLINT-REPORT ##########
   eslint-report :
-    needs : repository-checkout
+    needs : test
     runs-on : ubuntu-latest
     strategy :
       matrix :

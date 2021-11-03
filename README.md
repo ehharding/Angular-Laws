@@ -96,7 +96,7 @@ npm run start
 Angular should have compiled the project and served it to http://localhost:4200/. Point your browser here to see the site. You will not be able to push to the GitHub
 repository without first being added as a project contributor.
 
-### Running The Project Unit Tests - Currently Broken (WiP)
+### Running The Project Unit Tests
 You can run unit tests for the project via the `test` and `test:watch` npm scripts or run the following NPM commands:
 
 ```bash
