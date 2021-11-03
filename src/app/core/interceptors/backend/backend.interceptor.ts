@@ -14,7 +14,7 @@ import { Contributor } from '@contributors/services/contributor/contributor.mode
 import { HttpMethod } from '@core/services/config/config.model';
 import { User } from '@core/services/user/user.model';
 
-import { constructErrorResponse, constructOkResponse } from '@shared/utilities/http-response.utility';
+import { constructErrorResponse, constructOkResponse } from '@shared/utilities/http-response/http-response.utility';
 
 import { ConfigService } from '@core/services/config/config.service';
 

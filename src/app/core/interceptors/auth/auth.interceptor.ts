@@ -13,7 +13,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { HttpMethod } from '@core/services/config/config.model';
 import { User } from '@core/services/user/user.model';
 
-import { constructErrorResponse, constructOkResponse, constructUnauthorizedResponse } from '@shared/utilities/http-response.utility';
+import { constructErrorResponse, constructOkResponse, constructUnauthorizedResponse } from '@shared/utilities/http-response/http-response.utility';
 
 import { ConfigService } from '@core/services/config/config.service';
 import { CredentialService } from '@core/services/credential/credential.service';
