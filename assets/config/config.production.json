@@ -15,6 +15,7 @@
   },
   "constants" : {
     "genericAnimationDurationMS" : 100,
+    "maxClipboardCopyAttempts" : 2,
     "progressSpinnerDiameterPX" : 80,
     "progressSpinnerStrokeWidthPX" : 10,
     "simulatedServerLatencyMS" : 1000,
