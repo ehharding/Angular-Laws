@@ -61,6 +61,8 @@ export class RouteResolverService implements Resolve<string | null> {
    * This method is responsible for sorting the application routes into suggestions by comparing them to the requested route. Any routes that seem to "resemble" the requested
    * route are returned. This could be empty.
    *
+   * {@link https://en.wikipedia.org/wiki/Levenshtein_distance | Levenshtein Distance Wikipedia Article}
+   *
    * @param requestedRoute - The requested route entered by the user
    * @returns The list of existing application routes, if any, that resemble the requested route.
    */
