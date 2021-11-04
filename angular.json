@@ -3,7 +3,12 @@
   "defaultProject" : "pocket-fic",
   "newProjectRoot" : "projects",
   "version" : 1,
-  "cli" : { "analytics" : "272fc58f-c451-448e-9d84-257489841d8e", "packageManager" : "npm", "warnings" : { "versionMismatch" : true } },
+  "cli" : {
+    "analytics" : "272fc58f-c451-448e-9d84-257489841d8e",
+    "packageManager" : "npm",
+    "cache" : { "enabled" : true, "environment" : "local", "path" : ".angular/cache" },
+    "warnings" : { "versionMismatch" : true }
+  },
   "projects" : {
     "pocket-fic" : {
       "schematics" : {

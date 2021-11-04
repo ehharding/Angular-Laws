@@ -16,7 +16,7 @@ import { getTestBed } from '@angular/core/testing';
 declare const require : { context(path : string, deep ?: boolean, filter ?: RegExp) : { keys() : string[]; <T>(id : string) : T; }; };
 
 // Initialize The Angular Testing Environment
-getTestBed().initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting());
+getTestBed().initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting(), { teardown : { destroyAfterEach : true, rethrowErrors : true } });
 
 // Find All Tests In The Project
 const context : { <T>(id : string) : T; keys() : string[]; } = require.context('./', true, /\.spec\.ts$/);
