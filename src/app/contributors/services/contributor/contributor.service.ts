@@ -40,7 +40,7 @@ export class ContributorService {
    *
    * @returns a Contributor[]-typed Observable stream. Subscribe to the stream to receive the object type specified asynchronously.
    */
-  public getAllContributors() : Observable<Contributor[]> {
+  public getAllContributors$() : Observable<Contributor[]> {
     return this._allContributors$.asObservable().pipe(distinctUntilChanged());
   }
 
@@ -50,7 +50,7 @@ export class ContributorService {
    *
    * @returns a HttpErrorResponse | undefined-typed Observable stream. Subscribe to the stream to receive the object type specified asynchronously.
    */
-  public getContributorsFetchError() : Observable<HttpErrorResponse | undefined> {
+  public getContributorsFetchError$() : Observable<HttpErrorResponse | undefined> {
     return this._contributorsFetchError$.asObservable().pipe(distinctUntilChanged());
   }
 }

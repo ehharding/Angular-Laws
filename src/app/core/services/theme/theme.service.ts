@@ -33,7 +33,7 @@ export class ThemeService {
    *
    * @returns a ThemeBundle-typed Observable stream for interested subscribers to receive the currently active theme bundle.
    */
-  public getActiveThemeBundleName() : Observable<ThemeBundle> {
+  public getActiveThemeBundleName$() : Observable<ThemeBundle> {
     return this._activeThemeBundleName$.asObservable().pipe(distinctUntilChanged());
   }
 
@@ -52,7 +52,7 @@ export class ThemeService {
         HTML_ELEMENT.setAttribute('class', cssClassList.join(' '));
     // Otherwise, If The Element Does Not Exist, We'll Throw An Error Since That Essentially Means Programmer Mistake
     } else {
-      throw new ReferenceError(`The HTML tag '${ tagName }' does not exist in the DOM.`);
+      throw new ReferenceError(`The HTML Tag '${ tagName }' Does Not Exist in the DOM.`);
     }
   }
 

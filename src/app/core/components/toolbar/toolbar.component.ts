@@ -33,11 +33,11 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   public constructor(public readonly dialog : MatDialog, private readonly _themeService : ThemeService, private readonly _userService : UserService) { }
 
   public ngOnInit() : void {
-    this._themeService.getActiveThemeBundleName().pipe(takeUntil(this._componentDestroyed$)).subscribe({
+    this._themeService.getActiveThemeBundleName$().pipe(takeUntil(this._componentDestroyed$)).subscribe({
       next : (activeTheme : ThemeBundle) : void => { this.activeTheme = activeTheme; }
     });
 
-    this._userService.getCurrentUser().pipe(takeUntil(this._componentDestroyed$)).subscribe({
+    this._userService.getCurrentUser$().pipe(takeUntil(this._componentDestroyed$)).subscribe({
       next : (currentUser : User | null) : void => { this.currentUser = currentUser; }
     });
   }

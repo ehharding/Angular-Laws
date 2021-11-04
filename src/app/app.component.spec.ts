@@ -8,7 +8,7 @@ import { SpinnerService } from '@core/services/spinner/spinner.service';
 
 import { AppComponent } from 'app/app.component';
 
-describe('AppComponent', () : void => {
+describe('component AppComponent', () : void => {
   let appComponentFixture : ComponentFixture<AppComponent>;
   let appComponentElement : HTMLElement;
   let appComponentInstance : any;

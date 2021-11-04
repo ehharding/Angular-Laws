@@ -2,14 +2,12 @@
  * This service is invoked whenever an unknown application route is encountered and attempts to provide suggestions as to the intended route meant by the user.
  *****************************************************************************************************************************************************************************/
 
-/* eslint-disable id-length */
-
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Injectable } from '@angular/core';
 
-import { AppRoute } from 'app/app-routing.module';
-
 import { distance } from 'fastest-levenshtein';
+
+import { AppRoute } from 'app/app-routing.module';
 
 @Injectable()
 export class RouteResolverService implements Resolve<string | null> {
@@ -70,16 +68,16 @@ export class RouteResolverService implements Resolve<string | null> {
     const APP_ROUTES : AppRoute[] = Object.values(AppRoute).filter((appRoute : AppRoute) : boolean => appRoute !== AppRoute.NotFound);
     const ROUTES_DISTANCE : Record<string, number> = { } as Record<string, number>;
 
-    APP_ROUTES.sort((a : AppRoute | string, b : AppRoute | string) : number => {
-      if (!(a in ROUTES_DISTANCE)) {
-        ROUTES_DISTANCE[a] = distance(a, requestedRoute);
+    APP_ROUTES.sort((appRouteA : AppRoute | string, appRouteB : AppRoute | string) : number => {
+      if (!(appRouteA in ROUTES_DISTANCE)) {
+        ROUTES_DISTANCE[appRouteA] = distance(appRouteA, requestedRoute);
       }
 
-      if (!(b in ROUTES_DISTANCE)) {
-        ROUTES_DISTANCE[b] = distance(b, requestedRoute);
+      if (!(appRouteB in ROUTES_DISTANCE)) {
+        ROUTES_DISTANCE[appRouteB] = distance(appRouteB, requestedRoute);
       }
 
-      return ROUTES_DISTANCE[a] - ROUTES_DISTANCE[b];
+      return ROUTES_DISTANCE[appRouteA] - ROUTES_DISTANCE[appRouteB];
     });
 
     return APP_ROUTES;

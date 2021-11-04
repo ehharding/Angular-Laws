@@ -35,7 +35,7 @@ export class ContributorsComponent implements OnInit, OnDestroy {
   public constructor(private readonly _changeDetectorRef : ChangeDetectorRef, private readonly _contributorService : ContributorService) { }
 
   public ngOnInit() : void {
-    this._contributorService.getAllContributors().pipe(takeUntil(this._componentDestroyed$)).subscribe({
+    this._contributorService.getAllContributors$().pipe(takeUntil(this._componentDestroyed$)).subscribe({
       next : (allContributors : Contributor[]) : void => {
         this.allContributors = allContributors;
         this.contributorsFetchError = undefined;
@@ -50,7 +50,7 @@ export class ContributorsComponent implements OnInit, OnDestroy {
       }
     });
 
-    this._contributorService.getContributorsFetchError().pipe(takeUntil(this._componentDestroyed$)).subscribe({
+    this._contributorService.getContributorsFetchError$().pipe(takeUntil(this._componentDestroyed$)).subscribe({
       next : (contributorsFetchError : HttpErrorResponse | undefined) : void => {
         if (contributorsFetchError) {
           this.contributorsFetchError = contributorsFetchError;

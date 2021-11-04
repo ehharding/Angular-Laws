@@ -14,7 +14,7 @@ import { Contributor } from '@contributors/services/contributor/contributor.mode
 import { HttpMethod } from '@core/services/config/config.model';
 import { User } from '@core/services/user/user.model';
 
-import { constructErrorResponse, constructOkResponse } from '@shared/utilities/http-response/http-response.utility';
+import { constructErrorResponse$, constructOkResponse$ } from '@shared/utilities/http-response/http-response.utility';
 
 import { ConfigService } from '@core/services/config/config.service';
 
@@ -41,10 +41,10 @@ export class BackendInterceptor implements HttpInterceptor {
      *
      * @returns an HttpResponse with the body being the list of contributors to the project, either loaded from LocalStorage or a basic set of initial contributors if empty.
      */
-    const getAllContributors = () : Observable<HttpEvent<unknown>> => {
+    const getAllContributors$ = () : Observable<HttpEvent<unknown>> => {
       const ALL_CONTRIBUTORS : Contributor[] = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.contributors.allContributors) ?? '[]') as Contributor[];
 
-      return constructOkResponse(ALL_CONTRIBUTORS);
+      return constructOkResponse$(ALL_CONTRIBUTORS);
     };
 
     /**
@@ -52,10 +52,10 @@ export class BackendInterceptor implements HttpInterceptor {
      *
      * @returns an HttpResponse with the body being the list of users to the project, either loaded from LocalStorage or a basic set of initial users if empty.
      */
-    const getAllUsers = () : Observable<HttpEvent<unknown>> => {
+    const getAllUsers$ = () : Observable<HttpEvent<unknown>> => {
       const ALL_USERS : User[] = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.users.allUsers) ?? '[]') as User[];
 
-      return constructOkResponse(ALL_USERS);
+      return constructOkResponse$(ALL_USERS);
     };
 
     /**
@@ -64,14 +64,14 @@ export class BackendInterceptor implements HttpInterceptor {
      * @returns an HttpResponse with the body being the currently authenticated (logged in) user. This will be either a user with a valid JWT token if there is a logged in
      *          user or null otherwise.
      */
-    const getCurrentUser = () : Observable<HttpEvent<unknown>> => {
+    const getCurrentUser$ = () : Observable<HttpEvent<unknown>> => {
       const CURRENT_USER : User | null = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.users.currentUser) ?? 'null') as User | null;
 
       if (CURRENT_USER?.jwtToken) {
-        return constructOkResponse(CURRENT_USER);
+        return constructOkResponse$(CURRENT_USER);
       }
 
-      return constructOkResponse(null);
+      return constructOkResponse$(null);
     };
 
     /**
@@ -80,13 +80,13 @@ export class BackendInterceptor implements HttpInterceptor {
      * @returns an HttpResponse with the body being the newly created user if successful or an HTTP 409 (Conflict) HttpErrorResponse if unsuccessful. All user IDs in the
      *          application are assigned sequentially and cannot be mutated.
      */
-    const createAccount = () : Observable<HttpEvent<unknown>> => {
+    const createAccount$ = () : Observable<HttpEvent<unknown>> => {
       const ALL_USERS : User[] = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.users.allUsers) ?? '[]') as User[];
       const REQUESTED_USER : User = REQUEST_BODY;
 
       // Check If The Username Already Exists On The Application
       if (ALL_USERS.find((user : User) : boolean => user.userName === REQUESTED_USER.userName)) {
-        return constructErrorResponse(HttpStatusCode.Conflict, `"${ REQUESTED_USER.userName }" is Already Taken.`);
+        return constructErrorResponse$(HttpStatusCode.Conflict, `"${ REQUESTED_USER.userName }" is Already Taken.`);
       }
 
       // User ID Created Sequentially From 1st To Most Recent User (e.g. 1st User ID = 1, 2nd User ID = 2, etc.)
@@ -95,7 +95,7 @@ export class BackendInterceptor implements HttpInterceptor {
       ALL_USERS.push(REQUESTED_USER);
       localStorage.setItem(ConfigService.appConfiguration.apiServer.paths.users.allUsers, JSON.stringify(ALL_USERS));
 
-      return constructOkResponse(REQUESTED_USER);
+      return constructOkResponse$(REQUESTED_USER);
     };
 
     /**
@@ -103,27 +103,27 @@ export class BackendInterceptor implements HttpInterceptor {
      *
      * @returns An HttpEvent<unknown>-typed Observable stream appropriate for the intercepted request.
      */
-    const handleURL = () : Observable<HttpEvent<unknown>> => {
+    const handleURL$ = () : Observable<HttpEvent<unknown>> => {
       switch (true) {
         // GET Requests
         case (REQUEST_METHOD === HttpMethod.Get) && REQUEST_URL.endsWith(ConfigService.appConfiguration.apiServer.paths.contributors.allContributors) :
-          return getAllContributors();
+          return getAllContributors$();
         case (REQUEST_METHOD === HttpMethod.Get) && REQUEST_URL.endsWith(ConfigService.appConfiguration.apiServer.paths.users.allUsers) :
-          return getAllUsers();
+          return getAllUsers$();
         case (REQUEST_METHOD === HttpMethod.Get) && REQUEST_URL.endsWith(ConfigService.appConfiguration.apiServer.paths.users.currentUser) :
-          return getCurrentUser();
+          return getCurrentUser$();
 
         // POST Requests
         case (REQUEST_METHOD === HttpMethod.Post) && REQUEST_URL.endsWith(ConfigService.appConfiguration.apiServer.paths.users.createAccount) :
-          return createAccount();
+          return createAccount$();
         default :
-          return httpHandler.handle(httpRequest).pipe(catchError(this._handleError));
+          return httpHandler.handle(httpRequest).pipe(catchError(this._handleError$));
       }
     };
 
     return of(null).pipe(
-      catchError(this._handleError),                                            // Passes Any Errors Down The Observable Chain
-      mergeMap(handleURL),                                                      // Executes Certain Instructions Before Relaying The Observable
+      catchError(this._handleError$),                                           // Passes Any Errors Down The Observable Chain
+      mergeMap(handleURL$),                                                     // Executes Certain Instructions Before Relaying The Observable
       materialize(),                                                            // Ensures A Delay Even When An Error Is Thrown (See Remarks)
       delay(ConfigService.appConfiguration.constants.simulatedServerLatencyMS), // Simulates Server Latency
       dematerialize()                                                           // Necessary Due To The Call To materialize()
@@ -138,7 +138,7 @@ export class BackendInterceptor implements HttpInterceptor {
    * @param errorResponse - An HttpErrorResponse object returned from an HttpRequest in the event of HTTP failure, for whatever reason
    * @returns a never-typed Observable, meaning it never emits any value.
    */
-  private readonly _handleError = (errorResponse : HttpErrorResponse) : Observable<never> => {
+  private readonly _handleError$ = (errorResponse : HttpErrorResponse) : Observable<never> => {
     return throwError(() : HttpErrorResponse => errorResponse);
   };
 }

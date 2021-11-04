@@ -35,7 +35,7 @@ export class UserService {
    *
    * @returns a User[]-typed Observable stream. Subscribe to the stream to receive the object type specified asynchronously.
    */
-  public getAllUsers() : Observable<User[]> {
+  public getAllUsers$() : Observable<User[]> {
     return this._allUsers$.asObservable().pipe(distinctUntilChanged());
   }
 
@@ -44,7 +44,7 @@ export class UserService {
    *
    * @returns a User | null-typed Observable stream. Subscribe to the stream to receive the object type specified asynchronously.
    */
-  public getCurrentUser() : Observable<User | null> {
+  public getCurrentUser$() : Observable<User | null> {
     return this._currentUser$.asObservable().pipe(distinctUntilChanged());
   }
 
@@ -55,7 +55,7 @@ export class UserService {
    * @param password - The password of the user trying to log in
    * @returns the newly logged in user if successful.
    */
-  public login(userName : string, password : string) : Observable<User> {
+  public login$(userName : string, password : string) : Observable<User> {
     return this._httpClient.post<User>(ConfigService.appConfiguration.apiServer.paths.users.authenticate, { userName, password }, { withCredentials : true }).pipe(
       map((responseObject : User) : User => {
         if (responseObject.jwtToken) {

@@ -33,7 +33,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
       httpRequest = httpRequest.clone({ headers : httpRequest.headers.set('Content-Type', 'application/json') });
     }
 
-    return httpHandler.handle(httpRequest).pipe(catchError(this._handleError));
+    return httpHandler.handle(httpRequest).pipe(catchError(this._handleError$));
   }
 
   /**
@@ -44,7 +44,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
    * @param errorResponse - An HttpErrorResponse object returned from an HttpRequest in the event of HTTP failure, for whatever reason
    * @returns a never-typed Observable, meaning it never emits any value.
    */
-  private readonly _handleError = (errorResponse : HttpErrorResponse) : Observable<never> => {
+  private readonly _handleError$ = (errorResponse : HttpErrorResponse) : Observable<never> => {
     return throwError(() : HttpErrorResponse => errorResponse);
   };
 }

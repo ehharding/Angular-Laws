@@ -13,7 +13,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { HttpMethod } from '@core/services/config/config.model';
 import { User } from '@core/services/user/user.model';
 
-import { constructErrorResponse, constructOkResponse, constructUnauthorizedResponse } from '@shared/utilities/http-response/http-response.utility';
+import { constructErrorResponse$, constructOkResponse$, constructUnauthorizedResponse$ } from '@shared/utilities/http-response/http-response.utility';
 
 import { ConfigService } from '@core/services/config/config.service';
 import { CredentialService } from '@core/services/credential/credential.service';
@@ -42,12 +42,12 @@ export class AuthInterceptor implements HttpInterceptor {
      *
      * @returns an HttpResponse with the body being the user just deleted if successful or an HTTP 401 (Unauthorized) HttpErrorResponse if unsuccessful.
      */
-    const deleteUser = () : Observable<HttpEvent<unknown>> => {
+    const deleteUser$ = () : Observable<HttpEvent<unknown>> => {
       let allUsers : User[] = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.users.allUsers) ?? '[]');
 
       // Check That The User Is Logged In
       if (!this._credentialService.isLoggedIn()) {
-        return constructUnauthorizedResponse('You must be authenticated to delete a user. Please login.');
+        return constructUnauthorizedResponse$('You Must be Authenticated to Delete a User. Please Login.');
       }
 
       // Extract The User ID Associated With The Account To Be Deleted From The Request URL And Use It To Remove The Associated Object From The All Users List
@@ -59,10 +59,10 @@ export class AuthInterceptor implements HttpInterceptor {
         allUsers = allUsers.filter((user : User) : boolean => user.id === USER_ID_TO_DELETE);
         localStorage.setItem(ConfigService.appConfiguration.apiServer.paths.users.allUsers, JSON.stringify(allUsers));
 
-        return constructOkResponse(USER_TO_DELETE);
+        return constructOkResponse$(USER_TO_DELETE);
       }
 
-      return constructUnauthorizedResponse('You cannot delete a user other than yourself unless you are an admin.');
+      return constructUnauthorizedResponse$('You Cannot Delete a User Other Than Yourself Unless You Are an Admin.');
     };
 
     /**
@@ -74,7 +74,7 @@ export class AuthInterceptor implements HttpInterceptor {
      * @returns an HttpResponse with the body being the user just authenticated if successful or an HTTP 401 (Unauthorized) HttpErrorResponse if unsuccessful. The returned
      *          user will have a randomly generated JWT token set, valid for the session.
      */
-    const authenticate = () : Observable<HttpEvent<unknown>> => {
+    const authenticate$ = () : Observable<HttpEvent<unknown>> => {
       const USERNAME : string = REQUEST_BODY.userName as string;
       const PASSWORD : string = REQUEST_BODY.password as string;
 
@@ -85,10 +85,10 @@ export class AuthInterceptor implements HttpInterceptor {
         USER.jwtToken = 'fake-jwt-token';
         this._credentialService.setCurrentUser(USER);
 
-        return constructOkResponse(USER);
+        return constructOkResponse$(USER);
       }
 
-      return constructErrorResponse(HttpStatusCode.Unauthorized, 'Username or password is incorrect.');
+      return constructErrorResponse$(HttpStatusCode.Unauthorized, 'Username or Password is Incorrect.');
     };
 
     /**
@@ -96,23 +96,23 @@ export class AuthInterceptor implements HttpInterceptor {
      *
      * @returns An HttpEvent<unknown>-typed Observable stream appropriate for the intercepted request.
      */
-    const handleURL = () : Observable<HttpEvent<unknown>> => {
+    const handleURL$ = () : Observable<HttpEvent<unknown>> => {
       const DELETE_USER_ID_MATCHER : RegExp = /\/allUsers\/\d+$/; // (e.g. User Wants To Delete Themselves When They Have ID = 5 -> DELETE /allUsers/5)
 
       switch (true) {
         // DELETE Requests
         case (REQUEST_METHOD === HttpMethod.Delete) && REQUEST_URL.match(DELETE_USER_ID_MATCHER) :
-          return deleteUser();
+          return deleteUser$();
 
         // POST Requests
         case (REQUEST_METHOD === HttpMethod.Post) && REQUEST_URL.endsWith(ConfigService.appConfiguration.apiServer.paths.users.authenticate) :
-          return authenticate();
+          return authenticate$();
         default :
-          return httpHandler.handle(httpRequest).pipe(catchError(this._handleError));
+          return httpHandler.handle(httpRequest).pipe(catchError(this._handleError$));
       }
     };
 
-    return handleURL();
+    return handleURL$();
   }
 
   /**
@@ -123,7 +123,7 @@ export class AuthInterceptor implements HttpInterceptor {
    * @param errorResponse - An HttpErrorResponse object returned from an HttpRequest in the event of HTTP failure, for whatever reason
    * @returns a never-typed Observable, meaning it never emits any value.
    */
-  private readonly _handleError = (errorResponse : HttpErrorResponse) : Observable<never> => {
+  private readonly _handleError$ = (errorResponse : HttpErrorResponse) : Observable<never> => {
     // Automatically Logout The Current User If An HTTP 401 (Unauthorized) Is Returned From The API
     if (errorResponse.status === HttpStatusCode.Unauthorized) {
       location.reload();
