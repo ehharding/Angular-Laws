@@ -104,7 +104,7 @@
         },
         "serve" : {
           "builder" : "@angular-devkit/build-angular:dev-server",
-          "configurations" : { "production" : { "aot" : true, "browserTarget" : "pocket-fic:build" } },
+          "configurations" : { "production" : { "browserTarget" : "pocket-fic:build" } },
           "options" : { "browserTarget" : "pocket-fic:build" }
         },
         "extract-i18n" : {
@@ -126,6 +126,7 @@
           }
         },
         "lint" : {
+          "builder" : "",
           "options" : { "exclude" : ["**/node_modules/**"], "tsConfig" : ["tsconfig.app.json"] }
         }
       },
