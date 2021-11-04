@@ -48,7 +48,7 @@ function initializeApplication(configService : ConfigService) : (() => Promise<v
 export const WINDOW_INJECTION_TOKEN : InjectionToken<Window> = new InjectionToken<Window>('window');
 
 export const CONFIGURED_CDK_COPY_TO_CLIPBOARD_CONFIG : CdkCopyToClipboardConfig = {
-  attempts : 1
+  attempts : ConfigService.appConfiguration.constants.maxClipboardCopyAttempts
 };
 
 const CONFIGURED_MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS : MatProgressSpinnerDefaultOptions = {

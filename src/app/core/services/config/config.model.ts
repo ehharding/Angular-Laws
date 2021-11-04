@@ -39,6 +39,7 @@ export interface AppConfiguration {
   };
   constants : {
     genericAnimationDurationMS : number;
+    maxClipboardCopyAttempts : number;
     progressSpinnerDiameterPX : number;
     progressSpinnerStrokeWidthPX : number;
     simulatedServerLatencyMS : number;
@@ -448,6 +449,7 @@ export const DEFAULT_APP_CONFIGURATION : AppConfiguration = {
   },
   constants : {
     genericAnimationDurationMS : 100,
+    maxClipboardCopyAttempts : 2,
     progressSpinnerDiameterPX : 80,
     progressSpinnerStrokeWidthPX : 10,
     simulatedServerLatencyMS : 1000,
