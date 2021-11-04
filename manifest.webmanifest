@@ -1,0 +1,83 @@
+{
+  "name" : "pocket-fic",
+  "short_name" : "pocket-fic",
+  "prefer_related_applications" : false,
+  "description" : "A modern fan fiction website for the modern web.",
+  "lang" : "en",
+  "dir" : "auto",
+  "scope" : "/",
+  "start_url" : "/",
+  "display" : "fullscreen",
+  "orientation" : "landscape-primary",
+  "background_color": "#FAFAFA",
+  "theme_color" : "#1976D2",
+  "related_applications" : [],
+  "shortcuts" : [],
+  "icons" : [
+    {
+      "src" : "favicon.ico",
+      "sizes" : "28x30",
+      "type" : "image/x-icon"
+    },
+    {
+      "src" : "assets/avatars/evan-harding.jpg",
+      "sizes" : "40x40",
+      "type" : "image/jpg"
+    },
+    {
+      "src" : "assets/images/dependency-logos/angular.svg",
+      "sizes" : "150x150",
+      "type" : "image/svg"
+    },
+    {
+      "src" : "assets/images/dependency-logos/angular-material.svg",
+      "sizes" : "139x150",
+      "type" : "image/svg"
+    },
+    {
+      "src" : "assets/images/dependency-logos/bootstrap.svg",
+      "sizes" : "150x150",
+      "type" : "image/svg"
+    },
+    {
+      "src" : "assets/images/dependency-logos/eslint.svg",
+      "sizes" : "171x150",
+      "type" : "image/svg"
+    },
+    {
+      "src" : "assets/images/dependency-logos/nodejs.svg",
+      "sizes" : "590x361",
+      "type" : "image/svg"
+    },
+    {
+      "src" : "assets/images/dependency-logos/npm.svg",
+      "sizes" : "540x210",
+      "type" : "image/svg"
+    },
+    {
+      "src" : "assets/images/dependency-logos/rxjs.svg",
+      "sizes" : "150x150",
+      "type" : "image/svg"
+    },
+    {
+      "src" : "assets/images/dependency-logos/typescript.svg",
+      "sizes" : "512x512",
+      "type" : "image/svg"
+    },
+    {
+      "src" : "assets/images/other-logos/github.svg",
+      "sizes" : "439x439",
+      "type" : "image/svg"
+    },
+    {
+      "src" : "assets/images/other-logos/linkedin.svg",
+      "sizes" : "382x382",
+      "type" : "image/svg"
+    },
+    {
+      "src" : "assets/images/other-logos/not-found.svg",
+      "sizes" : "150x150",
+      "type" : "image/svg"
+    }
+  ]
+}
