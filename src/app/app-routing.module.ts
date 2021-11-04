@@ -11,7 +11,7 @@
  * ```
  *****************************************************************************************************************************************************************************/
 
-import { ExtraOptions, RouterModule, Routes } from '@angular/router';
+import { ExtraOptions, NoPreloading, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { ContributorsModule } from '@contributors/contributors.module';
@@ -32,15 +32,21 @@ export const APP_ROUTES : Routes = [
   { path : '', pathMatch : 'full', redirectTo : AppRoute.Contributors },
   { path : AppRoute.Contributors, loadChildren : async() : Promise<ContributorsModule> => (await import('@contributors/contributors.module')).ContributorsModule },
   { path : AppRoute.NotFound, component : NotFoundComponent, resolve : { intendedRouteGuesses : RouteResolverService } }, // NotFoundComponent Fed Possible Route Guesses
-  { path : '**', component : NotFoundComponent, canActivate : [NotFoundGuard] }
+  { path : '**', canActivate : [NotFoundGuard], component : NotFoundComponent }
 ];
 
 const EXTRA_OPTIONS : ExtraOptions = {
+  enableTracing : false,
+  useHash : undefined,
   anchorScrolling : 'enabled',
+  canceledNavigationResolution : 'replace',
+  initialNavigation : 'enabledNonBlocking',
   onSameUrlNavigation : 'reload',
-  urlUpdateStrategy : 'eager',
   paramsInheritanceStrategy : 'emptyOnly',
-  relativeLinkResolution : 'corrected'
+  preloadingStrategy : NoPreloading,
+  relativeLinkResolution : 'corrected',
+  scrollPositionRestoration : 'enabled',
+  urlUpdateStrategy : 'eager'
 };
 
 @NgModule({
