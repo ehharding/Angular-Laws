@@ -2,6 +2,7 @@
 # A .gitignore file specifies, for the Git VCS, which directories and files to ignore and leave untracked.
 ###############################################################################################################################################################################
 
+.angular
 .idea
 build-cache
 coverage-report
