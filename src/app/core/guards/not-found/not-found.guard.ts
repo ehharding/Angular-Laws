@@ -3,15 +3,13 @@
  * with the request.
  *****************************************************************************************************************************************************************************/
 
-import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
 import { Injectable } from '@angular/core';
 
 import { AppRoute } from 'app/app-routing.module';
 
 @Injectable()
 export class NotFoundGuard implements CanActivate {
-  public constructor(private readonly _router : Router) { }
-
   /**
    * This method determines if the wildcard application route can be activated. In reality, this implementation is a proxy method that always denies access to the unknown
    * route and instead navigates to the "/404" route, injecting information about the requested route that the user made, where it is further handled.
@@ -23,7 +21,7 @@ export class NotFoundGuard implements CanActivate {
    * @returns a Promise, or an object representing the eventual completion (or failure) of the asynchronous route navigation resolution, and its value.
    */
   public async canActivate(route : ActivatedRouteSnapshot) : Promise<boolean> {
-    await this._router.navigate([AppRoute.NotFound], { queryParams : { requestedRoute : route.url.join('/') } });
+    location.replace(`/${ AppRoute.NotFound }?requestedRoute=${ route.url.join('/') }`);
 
     return await new Promise<boolean>((resolve : (value : boolean) => void) : void => {
       resolve(false);
