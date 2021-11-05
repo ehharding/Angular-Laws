@@ -6,6 +6,8 @@
 import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
 import { Injectable } from '@angular/core';
 
+import { ENVIRONMENT } from '@environment/environment.development';
+
 import { AppRoute } from 'app/app-routing.module';
 
 @Injectable()
@@ -21,7 +23,10 @@ export class NotFoundGuard implements CanActivate {
    * @returns a Promise, or an object representing the eventual completion (or failure) of the asynchronous route navigation resolution, and its value.
    */
   public async canActivate(route : ActivatedRouteSnapshot) : Promise<boolean> {
-    location.replace(`/${ AppRoute.NotFound }?requestedRoute=${ route.url.join('/') }`);
+    const DEVELOPMENT_NOT_FOUND_URL : string = `/${ AppRoute.NotFound }?requestedRoute=${ encodeURIComponent(route.url.join('/')) }`;
+    const PRODUCTION_NOT_FOUND_URL : string = `/Pocket-Fic/${ AppRoute.NotFound }?requestedRoute=${ encodeURIComponent(route.url.join('/')) }`;
+
+    location.replace(ENVIRONMENT.name === 'production' ? PRODUCTION_NOT_FOUND_URL : DEVELOPMENT_NOT_FOUND_URL);
 
     return await new Promise<boolean>((resolve : (value : boolean) => void) : void => {
       resolve(false);
