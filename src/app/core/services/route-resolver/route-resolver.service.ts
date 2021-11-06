@@ -54,11 +54,11 @@ export class RouteResolverService implements Resolve<string | null> {
     }
 
     // For The Application Routes That Are In The Threshold In String Length; Sort Them Via The Levenshtein Algorithm (see https://en.wikipedia.org/wiki/Levenshtein_distance)
-    return this._sortByLevenshtein(REQUESTED_ROUTE).join(',');
+    return this._getLevenshteinGuesses(REQUESTED_ROUTE).join(',');
   }
 
   /**
-   * This method is responsible for sorting the application routes into suggestions by comparing them to the requested route. Any routes that seem to "resemble" the requested
+   * This method is responsible for sorting the application routes into guesses by comparing them to the requested route. Any routes that seem to "resemble" the requested
    * route are returned. This could be empty.
    *
    * {@link https://en.wikipedia.org/wiki/Levenshtein_distance | Levenshtein Distance Wikipedia Article}
@@ -66,8 +66,8 @@ export class RouteResolverService implements Resolve<string | null> {
    * @param requestedRoute - The requested route entered by the user
    * @returns The list of existing application routes, if any, that resemble the requested route.
    */
-  private _sortByLevenshtein(requestedRoute : string) : AppRoute[] {
-    const APP_ROUTES : AppRoute[] = Object.values(AppRoute).filter((appRoute : AppRoute) : boolean => appRoute !== AppRoute.NotFound);
+  private _getLevenshteinGuesses(requestedRoute : string) : AppRoute[] {
+    const APP_ROUTES : AppRoute[] = Object.values(AppRoute).filter((appRoute : AppRoute) : boolean => appRoute !== AppRoute.NotFound); // Don't Suggest 404 Since We're There
     const ROUTES_DISTANCE : Record<string, number> = { } as Record<string, number>;
 
     APP_ROUTES.sort((appRouteA : AppRoute | string, appRouteB : AppRoute | string) : number => {
