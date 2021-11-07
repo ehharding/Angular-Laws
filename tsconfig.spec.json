@@ -1,6 +1,6 @@
 {
   "extends" : "./tsconfig.app.json",
-  "compilerOptions" : { "outDir" : "dist-prod/out-tsc/spec", "types" : ["jasmine"] },
-  "files" : ["src/polyfills.ts", "src/test.ts"],
+  "compilerOptions" : { "outDir" : "dist-prod/out-tsc/spec", "types" : ["jasmine", "node"] },
+  "files" : ["src/environments/environment.production.ts", "src/test.ts", "karma.conf.ts"],
   "include" : ["**/*.ts"]
 }

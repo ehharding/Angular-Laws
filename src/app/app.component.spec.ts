@@ -21,9 +21,7 @@ describe('component AppComponent', () : void => {
       imports : [RouterModule.forRoot(APP_ROUTES)],
       providers : [SpinnerService, { provide : APP_BASE_HREF, useValue : '/' }]
     }).compileComponents(); // Compile Template And CSS
-  }));
 
-  beforeEach(() : void => {
     appComponentFixture = TestBed.createComponent(AppComponent);
     appComponentElement = appComponentFixture.debugElement.nativeElement;
     appComponentInstance = appComponentFixture.debugElement.componentInstance;
@@ -31,12 +29,17 @@ describe('component AppComponent', () : void => {
     spinnerService = TestBed.inject(SpinnerService);
 
     appComponentFixture.detectChanges();
-  });
+  }));
 
-  it('should be created', () : void => {
-    expect(appComponentFixture).toBeTruthy();
+  describe('Constructor Tests', () : void => {
+    it('should be created', () : void => {
+      expect(appComponentFixture).toBeTruthy();
 
-    expect(appComponentInstance.isLoading).toBe(false);
+      expect(appComponentInstance.isLoading).toBe(false);
+
+      spinnerService.isLoading$.next(true);
+      expect(appComponentInstance.isLoading).toBe(true);
+    });
   });
 
   describe('Template Tests', () : void => {

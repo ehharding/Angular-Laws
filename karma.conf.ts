@@ -78,7 +78,7 @@ module.exports = (config : any) : void => {
       colors : { error : 'red', info : 'grey', success : 'green', warning : 'yellow' },
       output : 'full'
     },
-    preprocessors : { 'src/app/*.ts' : 'coverage' },
+    preprocessors : { '**/*.ts' : 'coverage' },
     exclude : [],
     files : [
       { pattern : 'node_modules/bootstrap/dist/css/bootstrap.css', watched : true, included : true, served : true },
