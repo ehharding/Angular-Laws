@@ -35,10 +35,10 @@ describe('component AppComponent', () : void => {
     it('should be created', () : void => {
       expect(appComponentFixture).toBeTruthy();
 
-      expect(appComponentInstance.isLoading).toBe(false);
+      expect(appComponentInstance.isLoading).toBeFalse();
 
       spinnerService.isLoading$.next(true);
-      expect(appComponentInstance.isLoading).toBe(true);
+      expect(appComponentInstance.isLoading).toBeTrue();
     });
   });
 

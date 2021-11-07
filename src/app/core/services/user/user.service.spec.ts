@@ -22,7 +22,8 @@ describe('service UserService', () : void => {
 
   beforeEach(() : void => {
     TestBed.configureTestingModule({
-      imports : [HttpClientTestingModule]
+      imports : [HttpClientTestingModule],
+      providers : [HttpClient, UserService]
     });
 
     userService = TestBed.inject(UserService);
@@ -46,10 +47,6 @@ describe('service UserService', () : void => {
   });
 
   describe('Constructor Tests', () : void => {
-    it('should be created with no current user', () : void => {
-      expect(userService['_currentUser$'].value).toBeNull();
-    });
-
     it('should be created with a current user', () : void => {
       currentUserGetRequest.flush(MOCK_CURRENT_USER);
       expect(userService['_currentUser$'].value).toEqual(MOCK_CURRENT_USER);
@@ -101,7 +98,7 @@ describe('service UserService', () : void => {
       const LOGIN_REQUEST : TestRequest = httpTestingController.expectOne(ConfigService.appConfiguration.apiServer.paths.users.authenticate);
       expect(LOGIN_REQUEST.request.body).toEqual(MOCK_USER_CREDENTIALS);
       expect(LOGIN_REQUEST.request.method).toBe(HttpMethod.Post);
-      expect(LOGIN_REQUEST.request.withCredentials).toBe(true);
+      expect(LOGIN_REQUEST.request.withCredentials).toBeTrue();
 
       LOGIN_REQUEST.flush(DEFAULT_USERS[0]);
     });
@@ -116,7 +113,7 @@ describe('service UserService', () : void => {
       const LOGIN_REQUEST : TestRequest = httpTestingController.expectOne(ConfigService.appConfiguration.apiServer.paths.users.authenticate);
       expect(LOGIN_REQUEST.request.body).toEqual(MOCK_USER_CREDENTIALS);
       expect(LOGIN_REQUEST.request.method).toBe(HttpMethod.Post);
-      expect(LOGIN_REQUEST.request.withCredentials).toBe(true);
+      expect(LOGIN_REQUEST.request.withCredentials).toBeTrue();
 
       LOGIN_REQUEST.flush(MOCK_CURRENT_USER);
     });
