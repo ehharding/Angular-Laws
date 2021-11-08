@@ -45,6 +45,16 @@
       "type" : "image/svg"
     },
     {
+      "src" : "assets/images/dependency-logos/jasmine.svg",
+      "sizes" : "273x75",
+      "type" : "image/svg"
+    },
+    {
+      "src" : "assets/images/dependency-logos/karma.svg",
+      "sizes" : "2500x1934",
+      "type" : "image/svg"
+    },
+    {
       "src" : "assets/images/dependency-logos/nodejs.svg",
       "sizes" : "590x361",
       "type" : "image/svg"
