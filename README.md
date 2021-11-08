@@ -127,12 +127,14 @@ This software uses the following open source packages:
 - [Angular Material](https://material.angular.io) - Google's Material Design components for Angular
 - [Bootstrap](https://getbootstrap.com) - A popular front-end open source CSS toolkit
 - [RxJS](https://rxjs-dev.firebaseapp.com/) - A library for composing asynchronous and event-based programs using observable sequences
+- [TypeScript](https://www.typescriptlang.org/) - Microsoft's open source programming language that extends JavaScript
 - [ESLint](https://eslint.org) - A modern code linter for JavaScript/TypeScript
 - [ESLint Plugin TypeScript](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin) - An ESLint TypeScript plugin that extends ESLint's tools for TypeScript-targeted
                                                                                                code style enforcement
 - [ESLint Plugin TSDoc](https://www.npmjs.com/package/eslint-plugin-tsdoc) - An ESLint TSDoc plugin that extends ESLint's tools for TypeScript-targeted documentation style
                                                                              enforcement
-- [TypeScript](https://www.typescriptlang.org/) - Microsoft's open source programming language that extends JavaScript
+- [Jasmine](https://jasmine.github.io/) - A behavior-driven JavaScript unit testing framework 
+- [Karma](https://karma-runner.github.io/latest/index.html) - A JavaScript unit test runner
 - [Node.js](https://nodejs.org/en/) - A JavaScript runtime built on Chrome's V8 JavaScript engine
 - [NPM](https://www.npmjs.com/) - The Node Package Manager (NPM)
 

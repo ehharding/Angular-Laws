@@ -24,7 +24,7 @@ export const OPEN_SOURCE_DEPENDENCIES : OpenSourceDependency[] = [
   { imgAltDescription : 'RxJS', imgTitle : 'rxjs', tooltip : 'RxJS - Reactive Extensions Library For JavaScript', websiteLink : 'https://rxjs-dev.firebaseapp.com' },
   { imgAltDescription : 'TypeScript', imgTitle : 'typescript', tooltip : 'TypeScript - JavaScript With Typing', websiteLink : 'https://www.typescriptlang.org' },
   { imgAltDescription : 'ESLint', imgTitle : 'eslint', tooltip : 'ESLint - JavaScript/TypeScript Linter', websiteLink : 'https://eslint.org' },
-  { imgAltDescription : 'Jasmine', imgTitle : 'jasmine', tooltip : 'Jasmine - Testing Framework', websiteLink : 'https://jasmine.github.io' },
+  { imgAltDescription : 'Jasmine', imgTitle : 'jasmine', tooltip : 'Jasmine - Testing Framework', websiteLink : 'https://jasmine.github.io/' },
   { imgAltDescription : 'Karma', imgTitle : 'karma', tooltip : 'Karma - Test Runner', websiteLink : 'https://karma-runner.github.io/latest/index.html' },
   { imgAltDescription : 'Node.js', imgTitle : 'nodejs', tooltip : 'Node.js - JavaScript Runtime Engine', websiteLink : 'https://nodejs.org/en/' },
   { imgAltDescription : 'NPM', imgTitle : 'npm', tooltip : 'NPM - Software Registry', websiteLink : 'https://www.npmjs.com' }
