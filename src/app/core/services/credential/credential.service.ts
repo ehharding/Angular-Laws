@@ -2,7 +2,6 @@
  * This service handles the loading of user credentials from storage on application startup and keeps track of the currently authenticated (logged in) user.
  *****************************************************************************************************************************************************************************/
 
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { User } from '@core/services/user/user.model';
@@ -14,8 +13,17 @@ export class CredentialService {
   private _currentUser : User | null = null;
   private _jwtToken : string = '';
 
-  public constructor(private readonly _httpClient : HttpClient) {
+  public constructor() {
     this._loadCredentialsFromStorage();
+  }
+
+  /**
+   * A utility function for retrieving the currently logged in (authenticated) user for the application.
+   *
+   * @returns the currently logged in user. This could be an empty object if the user is not logged in.
+   */
+  public getCurrentUser() : User | null {
+    return this._currentUser;
   }
 
   /**
@@ -34,15 +42,6 @@ export class CredentialService {
    */
   public isLoggedIn() : boolean {
     return this._jwtToken.length > 0;
-  }
-
-  /**
-   * A utility function for retrieving the currently logged in (authenticated) user for the application.
-   *
-   * @returns the currently logged in user. This could be an empty object if the user is not logged in.
-   */
-  public getCurrentUser() : User | null {
-    return this._currentUser;
   }
 
   /**

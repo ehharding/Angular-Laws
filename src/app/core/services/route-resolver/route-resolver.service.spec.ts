@@ -13,7 +13,9 @@ describe('service RouteResolverService', () : void => {
     });
 
     routeResolverService = TestBed.inject(RouteResolverService);
+  });
 
+  it('should be created', () : void => {
     expect(routeResolverService).toBeTruthy();
   });
 
