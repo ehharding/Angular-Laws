@@ -64,6 +64,7 @@
     "types" : ["node"],
     "paths" : {
       "@contributors/*" :  ["app/contributors/*"],
+      "@users/*" : ["app/users/*"],
       "@core/*" : ["app/core/*"],
       "@shared/*" :["app/shared/*"],
       "@assets/*" : ["assets/*"],

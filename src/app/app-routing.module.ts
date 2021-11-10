@@ -15,6 +15,7 @@ import { ExtraOptions, NoPreloading, RouterModule, Routes } from '@angular/route
 import { NgModule } from '@angular/core';
 
 import { ContributorsModule } from '@contributors/contributors.module';
+import { UsersModule } from '@users/users.module';
 
 import { NotFoundGuard } from '@core/guards/not-found/not-found.guard';
 
@@ -31,6 +32,7 @@ export enum AppRoute {
 export const APP_ROUTES : Routes = [
   { path : '', pathMatch : 'full', redirectTo : AppRoute.Contributors },
   { path : AppRoute.Contributors, loadChildren : async() : Promise<ContributorsModule> => (await import('@contributors/contributors.module')).ContributorsModule },
+  { path : AppRoute.Users, loadChildren : async() : Promise<UsersModule> => (await import('@users/users.module')).UsersModule },
   { path : AppRoute.NotFound, component : NotFoundComponent, resolve : { intendedRouteGuesses : RouteResolverService } }, // NotFoundComponent Is Fed Intended Route Guesses
   { path : '**', canActivate : [NotFoundGuard], component : NotFoundComponent }
 ];
