@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkpocket_fic=self.webpackChunkpocket_fic||[]).push([[344],{1344:(i,r,s)=>{s.r(r),s.d(r,{UsersModule:()=>f});var l=s(9247),n=s(6213),e=s(4001);const c=[];let d=(()=>{class o{}return o.\u0275fac=function(u){return new(u||o)},o.\u0275mod=e.oAB({type:o}),o.\u0275inj=e.cJS({imports:[[n.Bz.forChild(c)],n.Bz]}),o})(),f=(()=>{class o{}return o.\u0275fac=function(u){return new(u||o)},o.\u0275mod=e.oAB({type:o}),o.\u0275inj=e.cJS({imports:[[l.m,d]]}),o})()}}]);
+//# sourceMappingURL=344.js.map
