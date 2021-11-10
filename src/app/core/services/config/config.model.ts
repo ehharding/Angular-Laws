@@ -81,7 +81,7 @@ export const APP_CONSTANTS : AppConstants = {
     100 : {
       httpResponseType : HttpResponseType.InformationResponse,
       httpStatusText : 'Continue',
-      httpStatusDescription : 'This interim response indicates that everything so far is OK and that the client should continue the request, or ignore the response if the' +
+      httpStatusDescription : 'This interim response indicates that everything so far is OK and that the client should continue the request, or ignore the response if the ' +
                               'request is already finished.'
     },
     101 : {
@@ -103,10 +103,10 @@ export const APP_CONSTANTS : AppConstants = {
     200 : {
       httpResponseType : HttpResponseType.SuccessfulResponse,
       httpStatusText : 'OK',
-      httpStatusDescription : 'The request has succeeded. The meaning of the success depends on the HTTP method\n ' +
-                              'GET: The resource has been fetched and is transmitted in the message body.\n ' +
-                              'HEAD: The representation headers are included in the response without any message body.\n ' +
-                              'PUT or POST: The resource describing the result of the action is transmitted in the message body.\n ' +
+      httpStatusDescription : 'The request has succeeded. The meaning of the success depends on the HTTP method\n' +
+                              'GET: The resource has been fetched and is transmitted in the message body.\n' +
+                              'HEAD: The representation headers are included in the response without any message body.\n' +
+                              'PUT or POST: The resource describing the result of the action is transmitted in the message body.\n' +
                               'TRACE: The message body contains the request message as received by the server.\n'
     },
     201 : {

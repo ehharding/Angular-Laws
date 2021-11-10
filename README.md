@@ -28,6 +28,7 @@
   <p>
     <a href="#Executive-Summary">Executive Summary</a> •
     <a href="#Developer-Environment-Recommended-Setup">Developer Environment Recommended Setup</a> •
+    <a href="#Getting-Your-Changes-Integrated-Into-The-Project">Getting Your Changes Integrated Into The Project</a> •
     <a href="#Credits">Credits</a> •
     <a href="#License">License</a>
   </p>
@@ -63,11 +64,6 @@ git clone https://github.com/ehharding/Pocket-Fic.git
 
 Then, you should download JetBrains' [Webstorm IDE](https://www.jetbrains.com/webstorm/) for your platform (Windows, macOS, or Linux). WebStorm includes a free 30-day trial,
 but you will most likely want to purchase a license to use all of its features.
-
-Now, when WebStorm starts up, open the newly cloned repository. We will now pull down shared WebStorm settings from a private repository containing said settings. To do this,
-go to <strong>File | Manage IDE Settings | Settings Repository...</strong>, enter "https://github.com/ehharding/webstorm-settings.git" for the Upstream URL, and click 
-<strong>Overwrite Local</strong>. You should be prompted to enter a token to verify permissions. Contact me, and I will gladly provide the token. After this is done, you
-should have all the IDE settings required.
 
 You may need to go through a setup routine for the [Material Theme UI](https://plugins.jetbrains.com/plugin/8006-material-theme-ui) plugin. Personally, I use the Night Owl
 theme.
@@ -119,6 +115,61 @@ npm run lint
 # Run ESLint On The Project And Output An HTML Report Of The Results
 npm run lint:report
 ```
+
+## Getting Your Changes Integrated Into The Project
+For now, all contributors are simply pushing their changes to the [main](https://github.com/ehharding/Pocket-Fic/tree/main) GitHub branch. Of course, in the future, this could
+conceivably be more of a pull-commits-into-main sort of situation.
+
+To be allowed to push to the `main` branch, you must first have the "Direct Access" permission in the Pocket Fic repository. After this is given, you will then need to
+configure your local Git client to use a GPG key to communicate securely with the GitHub server. The first step in this process (after being given access) is to generate a
+4,096 bit RSA key. To do this, from a CLI:
+
+```bash
+
+# Tells Git What The GPG Program To Use Is And To Always Sign Commits
+git config --global gpg.program gpg
+git config --global commit.gpgsign true
+
+# Generate A Key (Stepper Process - USE YOUR GITHUB ACCOUNT EMAIL/USERNAME, Select 4,096 bit RSA, No Expiration)
+gpg --full-generate-key
+```
+
+Now, Git should have created a public/private key on your system. Keep the private key, logically, private and secure. The public key will be used to authenticate with GitHub.
+To see your newly generated key, run the following:
+
+```bash
+# List The Long Form Of The GPG Keys For Which You Have Both A Public And Private Key
+gpg --list-secret-keys --keyid-format=long
+```
+
+If successful, something like the following will be shown:
+
+```markdown
+/Users/hubot/.gnupg/secring.gpg
+------------------------------------
+sec   4096R/3AA5C34371567BD2 2016-03-10 [expires: 2017-03-10]
+uid                          Hubot
+ssb   4096R/42B317FD4BA89E7A 2016-03-10
+```
+
+Take the GPG key ID (the "3AA5C34371567BD2" part shown in the above example) and feed it to the following command to see your public key block which will be associated with
+your GitHub user account:
+
+```bash
+# Substitute Your GPG Key ID As The Last Argument
+gpg --armor --export xxxxxxxxxxxxxxxx
+```
+
+The GitHub Pocket Fic repository will then need to be modified to include a contributor with the public GPG key block output above. Finally, configure your Git client to use
+your newly generated public key:
+
+```bash
+# Substitute Your GPG Key ID As The Last Argument
+git config --global user.signingkey xxxxxxxxxxxxxxxx
+```
+
+After doing this, when you push, Git should prompt you for your password that encrypts/decrypts your public/private GPG key pair. If successful, the repository shows the
+commit as a verified commit.
 
 ## Credits
 This software uses the following open source packages:
