@@ -14,6 +14,7 @@ describe('service CredentialService', () : void => {
     });
 
     credentialService = TestBed.inject(CredentialService);
+    localStorage.clear();
 
     expect(credentialService).toBeTruthy();
   });
