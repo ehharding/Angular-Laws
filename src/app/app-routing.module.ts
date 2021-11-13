@@ -26,6 +26,7 @@ import { NotFoundComponent } from '@core/components/not-found/not-found.componen
 export enum AppRoute {
   Contributors = 'contributors',
   Login = 'login',
+  Users = 'users',
   NotFound = '404'
 }
 
