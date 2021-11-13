@@ -1,0 +1,7 @@
+###############################################################################################################################################################################
+# A .gitattributes file specifies overrides to the GitHub repository language analysis system, Linguist. The format is very similar to a .gitignore.
+#
+# {@link https://github.com/github/linguist | Linguist GitHub Repository}
+###############################################################################################################################################################################
+
+src/assets/** linguist-vendored
