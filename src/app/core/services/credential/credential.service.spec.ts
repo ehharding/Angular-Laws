@@ -13,8 +13,8 @@ describe('service CredentialService', () : void => {
       providers : [CredentialService]
     });
 
-    credentialService = TestBed.inject(CredentialService);
     localStorage.clear();
+    credentialService = TestBed.inject(CredentialService);
 
     expect(credentialService).toBeTruthy();
   });
