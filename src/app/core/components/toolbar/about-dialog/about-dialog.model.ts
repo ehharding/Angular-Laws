@@ -7,7 +7,7 @@ export interface AboutDialogData {
 
 export interface OpenSourceDependency {
   imgAltDescription : string;
-  imgTitle : 'angular' | 'angular-material' | 'bootstrap' | 'rxjs' | 'typescript' | 'eslint' | 'jasmine' | 'karma' | 'nodejs' | 'npm';
+  imgTitle : string;
   tooltip : string;
   websiteLink : string;
 }
@@ -21,7 +21,7 @@ export const OPEN_SOURCE_DEPENDENCIES : OpenSourceDependency[] = [
   { imgAltDescription : 'Angular.io', imgTitle : 'angular', tooltip : 'Angular - Web Development Framework', websiteLink : 'https://angular.io' },
   { imgAltDescription : 'Angular Material.io', imgTitle : 'angular-material', tooltip : 'Angular Material - Theming Library', websiteLink : 'https://material.angular.io' },
   { imgAltDescription : 'Bootstrap', imgTitle : 'bootstrap', tooltip : 'Bootstrap - CSS Framework', websiteLink : 'https://getbootstrap.com' },
-  { imgAltDescription : 'RxJS', imgTitle : 'rxjs', tooltip : 'RxJS - Reactive Extensions Library For JavaScript', websiteLink : 'https://rxjs-dev.firebaseapp.com' },
+  { imgAltDescription : 'RxJS', imgTitle : 'rxjs', tooltip : 'RxJS - Reactive Programming Library For JavaScript', websiteLink : 'https://rxjs-dev.firebaseapp.com' },
   { imgAltDescription : 'TypeScript', imgTitle : 'typescript', tooltip : 'TypeScript - JavaScript With Typing', websiteLink : 'https://www.typescriptlang.org' },
   { imgAltDescription : 'ESLint', imgTitle : 'eslint', tooltip : 'ESLint - JavaScript/TypeScript Linter', websiteLink : 'https://eslint.org' },
   { imgAltDescription : 'Jasmine', imgTitle : 'jasmine', tooltip : 'Jasmine - Testing Framework', websiteLink : 'https://jasmine.github.io/' },
