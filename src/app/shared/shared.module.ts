@@ -6,10 +6,12 @@
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  exports : [CommonModule, FormsModule, ReactiveFormsModule, RouterModule]
+  exports : [CommonModule, FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, RouterModule]
 })
 export class SharedModule { }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 import { ReplaySubject, takeUntil } from 'rxjs';
@@ -30,15 +30,26 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
   private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
-  public constructor(public readonly dialog : MatDialog, private readonly _themeService : ThemeService, private readonly _userService : UserService) { }
+  public constructor(
+    public readonly dialog : MatDialog,
+    private readonly _changeDetectorRef : ChangeDetectorRef,
+    private readonly _themeService : ThemeService,
+    private readonly _userService : UserService
+  ) { }
 
   public ngOnInit() : void {
     this._themeService.getActiveThemeBundleName$().pipe(takeUntil(this._componentDestroyed$)).subscribe({
-      next : (activeTheme : ThemeBundle) : void => { this.activeTheme = activeTheme; }
+      next : (activeTheme : ThemeBundle) : void => {
+        this.activeTheme = activeTheme;
+        this._changeDetectorRef.detectChanges();
+      }
     });
 
     this._userService.getCurrentUser$().pipe(takeUntil(this._componentDestroyed$)).subscribe({
-      next : (currentUser : User | null) : void => { this.currentUser = currentUser; }
+      next : (currentUser : User | null) : void => {
+        this.currentUser = currentUser;
+        this._changeDetectorRef.detectChanges();
+      }
     });
   }
 

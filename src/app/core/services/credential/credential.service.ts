@@ -52,6 +52,8 @@ export class CredentialService {
   public setCurrentUser(user : User) : void {
     this._currentUser = user;
     this._jwtToken = user.jwtToken;
+
+    localStorage.setItem(ConfigService.appConfiguration.apiServer.paths.users.currentUser, JSON.stringify(user));
   }
 
   /**

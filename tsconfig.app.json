@@ -63,12 +63,12 @@
     "lib" : ["DOM", "ES2020"],
     "types" : ["node"],
     "paths" : {
-      "@contributors/*" :  ["app/contributors/*"],
-      "@users/*" : ["app/users/*"],
+      "@assets/*" : ["assets/*"],
+      "@environment/*" : ["environments/*"],
       "@core/*" : ["app/core/*"],
       "@shared/*" :["app/shared/*"],
-      "@assets/*" : ["assets/*"],
-      "@environment/*" : ["environments/*"]
+      "@contributors/*" :  ["app/contributors/*"],
+      "@login/*" : ["app/login/*"]
     }
   },
   "files" : ["src/main.ts", "src/polyfills.ts"],

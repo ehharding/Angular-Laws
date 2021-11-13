@@ -40,7 +40,7 @@ describe('service RouteResolverService', () : void => {
     });
 
     it('should return "contributors,users", since "contributors" would be the closest to the input', () : void => {
-      expect(routeResolverService.resolve({ queryParams : { requestedRoute : `${ AppRoute.Contributors }ssss` } } as any, { } as any)).toEqual(`${ AppRoute.Contributors },${ AppRoute.Users }`);
+      expect(routeResolverService.resolve({ queryParams : { requestedRoute : `${ AppRoute.Contributors }ssss` } } as any, { } as any)).toEqual(`${ AppRoute.Contributors },${ AppRoute.Login }`);
     });
   });
 });

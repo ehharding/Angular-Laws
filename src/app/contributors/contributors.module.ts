@@ -19,16 +19,7 @@ import { ContributorsComponent } from '@contributors/contributors.component';
 
 @NgModule({
   declarations : [ContributorsComponent],
-  imports : [
-    MatButtonModule,
-    MatCardModule,
-    MatExpansionModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatTooltipModule,
-    ContributorsRoutingModule,
-    SharedModule
-  ],
+  imports : [MatButtonModule, MatCardModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatTooltipModule, ContributorsRoutingModule, SharedModule],
   providers : [ContributorService]
 })
 export class ContributorsModule { }

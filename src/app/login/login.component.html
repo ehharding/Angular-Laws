@@ -1,0 +1,32 @@
+<main>
+  <div class="align-items-center justify-content-center text-center d-flex flex-row w-100">
+    <div class="position-absolute pf-t-30 pf-w-30">
+      <mat-card>
+        <h1 class="fs-4"><strong>Login</strong></h1>
+        <mat-divider></mat-divider>
+
+        <form [formGroup]="loginFormGroup">
+          <div class="mb-3 mt-3 row">
+            <div class="col w-50">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>USERNAME</mat-label>
+                <input matInput formControlName="userName" type="text"/>
+                <mat-error><strong>USERNAME</strong> is required.</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col w-50">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>PASSWORD</mat-label>
+                <input matInput formControlName="password" type="text"/>
+                <mat-error><strong>PASSWORD</strong> is required.</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <button mat-raised-button class="w-100" color="primary" [disabled]="loginFormGroup.invalid" (click)="login()">LOGIN</button>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</main>

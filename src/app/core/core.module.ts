@@ -51,14 +51,6 @@ import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
     ScrollingModule,
     SharedModule
   ],
-  providers : [
-    NotFoundGuard,
-    ConfigService,
-    CredentialService,
-    RouteResolverService,
-    SpinnerService,
-    ThemeService,
-    UserService
-  ]
+  providers : [NotFoundGuard, ConfigService, CredentialService, RouteResolverService, SpinnerService, ThemeService, UserService]
 })
 export class CoreModule { }

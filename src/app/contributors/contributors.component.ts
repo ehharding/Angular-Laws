@@ -46,7 +46,7 @@ export class ContributorsComponent implements OnInit, OnDestroy {
           this.contributorNamesKebab.push(`${ CONTRIBUTOR.firstName } ${ CONTRIBUTOR.lastName }`.toLowerCase().replace(' ', '-'));
         }
 
-        this._changeDetectorRef.markForCheck();
+        this._changeDetectorRef.detectChanges();
       }
     });
 
@@ -57,7 +57,7 @@ export class ContributorsComponent implements OnInit, OnDestroy {
           this.contributorsFetchErrorInfo = `HTTP ${ contributorsFetchError.status }: ${ APP_CONSTANTS.httpResponseCodes[contributorsFetchError.status].httpStatusText }`;
         }
 
-        this._changeDetectorRef.markForCheck();
+        this._changeDetectorRef.detectChanges();
       }
     });
   }
