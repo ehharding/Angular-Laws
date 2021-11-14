@@ -78,7 +78,7 @@ jobs :
         with :
           name : Pocket-Fic
           path : '/home/runner/work/Pocket-Fic/Pocket-Fic'
-          retention-days : 2
+          retention-days : 5
 
   ########## JOB 2 - TEST ##########
   test :
@@ -107,7 +107,7 @@ jobs :
           key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package*.json') }}
 
       - name : Install NPM Dependencies If Required
-        # Caches Older Than Two Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Is Exceeded
+        # Caches Older Than Five Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Is Exceeded
         if : steps.node-modules-cache.outputs.cache-hit != 'true'
         run : |
           echo 'Installing Dependencies Defined In "package.json" Using NPM... This May Take Awhile'
@@ -125,7 +125,7 @@ jobs :
         with :
           name : coverage-report
           path : '/home/runner/work/Pocket-Fic/Pocket-Fic/coverage-report'
-          retention-days : 2
+          retention-days : 5
 
   ########## JOB 3 - ESLINT-REPORT ##########
   eslint-report :
@@ -154,7 +154,7 @@ jobs :
           key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package*.json') }}
 
       - name : Install NPM Dependencies If Required
-        # Caches Older Than Two Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Is Exceeded
+        # Caches Older Than Five Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Is Exceeded
         if : steps.node-modules-cache.outputs.cache-hit != 'true'
         run : |
           echo 'Installing Dependencies Defined In "package.json" Using NPM... This May Take Awhile'
@@ -171,7 +171,7 @@ jobs :
         with :
           name : eslint-report
           path : '/home/runner/work/Pocket-Fic/Pocket-Fic/eslint-report.html'
-          retention-days : 2
+          retention-days : 5
 
   ########## JOB 4 - BUILD-PRODUCTION ##########
   build-production :
@@ -200,7 +200,7 @@ jobs :
           key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package*.json') }}
 
       - name : Install NPM Dependencies If Required
-        # Caches Older Than Two Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Is Exceeded
+        # Caches Older Than Five Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Is Exceeded
         if : steps.node-modules-cache.outputs.cache-hit != 'true'
         run : |
           echo 'Installing Dependencies Defined In "package.json" Using NPM... This May Take Awhile'
@@ -218,7 +218,7 @@ jobs :
         with :
           name : dist-prod
           path : '/home/runner/work/Pocket-Fic/Pocket-Fic/dist-prod'
-          retention-days : 2
+          retention-days : 5
 
   ########## JOB 5 - COPY-INDEX-TO-404 ##########
   copy-index-to-404 :
@@ -242,7 +242,7 @@ jobs :
         with :
           name : dist-prod
           path : 'dist-prod'
-          retention-days : 2
+          retention-days : 5
 
   ########## JOB 6 - DEPLOY ##########
   deploy :
