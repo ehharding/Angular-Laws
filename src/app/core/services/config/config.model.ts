@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 
 import { MatDialogConfig } from '@angular/material/dialog';
+import { MatSnackBarConfig } from '@angular/material/snack-bar';
 
 export enum HttpMethod {
   Connect = 'CONNECT', // Establishes A Tunnel To The Server Identified By The Target Resource
@@ -473,4 +474,16 @@ export const DEFAULT_MAT_DIALOG_CONFIG : MatDialogConfig = {
   direction : 'ltr',
   panelClass : 'pf-dialog',
   role : 'dialog'
+};
+
+export const DEFAULT_MAT_SNACKBAR_CONFIG : MatSnackBarConfig = {
+  duration : 5000,
+  direction : 'ltr',
+  horizontalPosition : 'center',
+  verticalPosition : 'bottom',
+  politeness : 'polite',
+  announcementMessage : undefined,
+  data : undefined,
+  panelClass : undefined,
+  viewContainerRef : undefined
 };

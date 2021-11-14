@@ -5,6 +5,7 @@
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgModule } from '@angular/core';
 
 import { LoginRoutingModule } from '@login/login-routing.module';
@@ -14,6 +15,6 @@ import { LoginComponent } from '@login/login.component';
 
 @NgModule({
   declarations : [LoginComponent],
-  imports : [MatButtonModule, MatCardModule, MatDividerModule, LoginRoutingModule, SharedModule]
+  imports : [MatButtonModule, MatCardModule, MatDividerModule, MatSnackBarModule, LoginRoutingModule, SharedModule]
 })
 export class LoginModule { }

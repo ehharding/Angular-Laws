@@ -4,4 +4,4 @@
 # {@link https://github.com/github/linguist | Linguist GitHub Repository}
 ###############################################################################################################################################################################
 
-src/assets/** linguist-vendored
+src/assets/themes/** linguist-vendored
