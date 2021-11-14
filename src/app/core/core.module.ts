@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgModule } from '@angular/core';
@@ -19,6 +20,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { SharedModule } from '@shared/shared.module';
 
+import { LoginGuard } from '@core/guards/login/login.guard';
 import { NotFoundGuard } from '@core/guards/not-found/not-found.guard';
 
 import { ConfigService } from '@core/services/config/config.service';
@@ -46,11 +48,12 @@ import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
     MatIconModule,
     MatMenuModule,
     MatProgressSpinnerModule,
+    MatSnackBarModule,
     MatToolbarModule,
     MatTooltipModule,
     ScrollingModule,
     SharedModule
   ],
-  providers : [NotFoundGuard, ConfigService, CredentialService, RouteResolverService, SpinnerService, ThemeService, UserService]
+  providers : [LoginGuard, NotFoundGuard, ConfigService, CredentialService, RouteResolverService, SpinnerService, ThemeService, UserService]
 })
 export class CoreModule { }

@@ -11,6 +11,7 @@
               <mat-form-field appearance="outline" class="w-100">
                 <mat-label>USERNAME</mat-label>
                 <input matInput formControlName="userName" type="text"/>
+
                 <mat-error><strong>USERNAME</strong> is required.</mat-error>
               </mat-form-field>
             </div>
@@ -18,7 +19,11 @@
             <div class="col w-50">
               <mat-form-field appearance="outline" class="w-100">
                 <mat-label>PASSWORD</mat-label>
-                <input matInput formControlName="password" type="text"/>
+                <input matInput formControlName="password" [type]="hidePasswordText ? 'password' : 'text'"/>
+                <button mat-icon-button matSuffix (click)="hidePasswordText = !hidePasswordText">
+                  <mat-icon>{{ hidePasswordText ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+
                 <mat-error><strong>PASSWORD</strong> is required.</mat-error>
               </mat-form-field>
             </div>

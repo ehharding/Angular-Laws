@@ -17,6 +17,7 @@ import { NgModule } from '@angular/core';
 import { ContributorsModule } from '@contributors/contributors.module';
 import { LoginModule } from '@login/login.module';
 
+import { LoginGuard } from '@core/guards/login/login.guard';
 import { NotFoundGuard } from '@core/guards/not-found/not-found.guard';
 
 import { RouteResolverService } from '@core/services/route-resolver/route-resolver.service';
@@ -33,7 +34,7 @@ export enum AppRoute {
 export const APP_ROUTES : Routes = [
   { path : '', pathMatch : 'full', redirectTo : AppRoute.Contributors }, // In The Future This Would Load A Home Pocket Fic Module But, For Now, It Loads Contributors Instead
   { path : AppRoute.Contributors, loadChildren : async() : Promise<ContributorsModule> => (await import('@contributors/contributors.module')).ContributorsModule },
-  { path : AppRoute.Login, loadChildren : async() : Promise<LoginModule> => (await import('@login/login.module')).LoginModule },
+  { path : AppRoute.Login, canActivate : [LoginGuard], loadChildren : async() : Promise<LoginModule> => (await import('@login/login.module')).LoginModule },
   { path : AppRoute.NotFound, component : NotFoundComponent, resolve : { intendedRouteGuesses : RouteResolverService } }, // NotFoundComponent Is Fed Intended Route Guesses
   { path : '**', canActivate : [NotFoundGuard], component : NotFoundComponent }
 ];

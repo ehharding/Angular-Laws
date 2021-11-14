@@ -26,6 +26,8 @@ export class NotFoundGuard implements CanActivate {
     const DEVELOPMENT_NOT_FOUND_URL : string = `/${ AppRoute.NotFound }?requestedRoute=${ encodeURIComponent(route.url.join('/')) }`;
     const PRODUCTION_NOT_FOUND_URL : string = `/Pocket-Fic/${ AppRoute.NotFound }?requestedRoute=${ encodeURIComponent(route.url.join('/')) }`;
 
+    // eslint-disable-next-line no-warning-comments
+    // TODO Fix The Routing Here... We Don't Want To Start A New Session And Log The User Out.
     location.replace(ENVIRONMENT.name === 'production' ? PRODUCTION_NOT_FOUND_URL : DEVELOPMENT_NOT_FOUND_URL);
 
     return await new Promise<boolean>((resolve : (value : boolean) => void) : void => {
