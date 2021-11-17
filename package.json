@@ -13,7 +13,7 @@
   "keywords" : ["Angular", "Creative Writing", "Fan Fiction", "Web Apps", "Writing"],
   "directories" : { "doc" : "README.md", "lib" : "src", "man" : "README.md", "test" : "src" },
   "files" : ["*"],
-  "browserslist" : ["Chrome 95", "Edge 95", "Firefox 94", "Opera 81", "Safari 15"],
+  "browserslist" : ["Chrome 96", "Edge 95", "Firefox 94", "Opera 81", "Safari 15"],
   "scripts" : {
     "build" : "ng build",
     "build:prod" : "ng build --configuration production",
@@ -58,7 +58,7 @@
     "eslint-plugin-tsdoc" : "0.2.14",
     "jasmine-core" : "3.10.1",
     "jasmine-spec-reporter" : "7.0.0",
-    "karma" : "6.3.8",
+    "karma" : "6.3.9",
     "karma-coverage" : "2.0.3",
     "karma-firefox-launcher" : "2.1.2",
     "karma-jasmine" : "4.0.1",
