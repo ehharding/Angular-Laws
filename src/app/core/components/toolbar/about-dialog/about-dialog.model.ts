@@ -22,7 +22,7 @@ export const OPEN_SOURCE_DEPENDENCIES : OpenSourceDependency[] = [
   { imgAltDescription : 'Angular Material.io', imgTitle : 'angular-material', tooltip : 'Angular Material - Theming Library', websiteLink : 'https://material.angular.io' },
   { imgAltDescription : 'Bootstrap', imgTitle : 'bootstrap', tooltip : 'Bootstrap - CSS Framework', websiteLink : 'https://getbootstrap.com' },
   { imgAltDescription : 'RxJS', imgTitle : 'rxjs', tooltip : 'RxJS - Reactive Programming Library For JavaScript', websiteLink : 'https://rxjs-dev.firebaseapp.com' },
-  { imgAltDescription : 'TypeScript', imgTitle : 'typescript', tooltip : 'TypeScript - JavaScript With Typing', websiteLink : 'https://www.typescriptlang.org' },
+  { imgAltDescription : 'TypeScript', imgTitle : 'typescript', tooltip : 'TypeScript - Statically Typed JavaScript', websiteLink : 'https://www.typescriptlang.org' },
   { imgAltDescription : 'ESLint', imgTitle : 'eslint', tooltip : 'ESLint - JavaScript/TypeScript Linter', websiteLink : 'https://eslint.org' },
   { imgAltDescription : 'Jasmine', imgTitle : 'jasmine', tooltip : 'Jasmine - Testing Framework', websiteLink : 'https://jasmine.github.io/' },
   { imgAltDescription : 'Karma', imgTitle : 'karma', tooltip : 'Karma - Test Runner', websiteLink : 'https://karma-runner.github.io/latest/index.html' },
