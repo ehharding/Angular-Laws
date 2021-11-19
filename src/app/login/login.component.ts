@@ -19,6 +19,7 @@ import { UserService } from '@core/services/user/user.service';
 })
 export class LoginComponent implements OnDestroy {
   public hidePasswordText : boolean = true;
+  public loginCardShowing : boolean = true;
 
   public loginFormGroup : FormGroup = new FormGroup({
     userName : new FormControl('', Validators.required),

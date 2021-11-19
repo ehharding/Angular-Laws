@@ -1,0 +1,26 @@
+.pf-create-account-login-card-container {
+  position : absolute;
+  perspective : 500px;
+  -webkit-perspective : 500px;
+}
+
+.pf-flippable-div {
+  transform-style : preserve-3d;
+  transition : transform 500ms;
+}
+
+.pf-flippable-div .pf-create-account-card {
+  transform : rotateY(-180deg);
+}
+
+.pf-flippable-div.flipped {
+  transform : rotateY(-180deg);
+}
+
+.pf-flippable-div mat-card {
+  backface-visibility : hidden;
+  position : absolute;
+  height : 250px;
+  width : 100%;
+  margin : 0;
+}
