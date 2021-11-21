@@ -283,6 +283,7 @@
     "quote-props" : ["warn", "consistent-as-needed", { "keywords" : true, "numbers" : false, "unnecessary" : true }],
     "quotes" : "off",
     "radix" : ["warn", "always"],
+    "require-atomic-updates" : ["warn", { "allowProperties" : false }],
     "require-await" : "off",
     "require-yield" : "error",
     "rest-spread-spacing" : ["warn", "never"],
