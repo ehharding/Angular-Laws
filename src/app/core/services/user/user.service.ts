@@ -53,7 +53,7 @@ export class UserService {
    *
    * @param userName - The username of the user to log in
    * @param password - The password of the user trying to log in
-   * @returns the newly logged in user if successful.
+   * @returns the newly logged-in user if successful.
    */
   public login$(userName : string, password : string) : Observable<User> {
     return this._httpClient.post<User>(ConfigService.appConfiguration.apiServer.paths.users.authenticate, { userName, password }, { withCredentials : true }).pipe(

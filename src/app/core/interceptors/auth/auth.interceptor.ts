@@ -38,7 +38,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     /**
      * This function deletes a user from the database by their ID. Essentially, any DELETE requests aimed at allUsers/someUserID are handled. The user must be logged in to the
-     * application to delete a user and they can only delete their own profiles unless they are an admin.
+     * application to delete a user, and they can only delete their own profiles unless they are an admin.
      *
      * @returns an HttpResponse with the body being the user just deleted if successful or an HTTP 401 (Unauthorized) HttpErrorResponse if unsuccessful.
      */
@@ -50,11 +50,11 @@ export class AuthInterceptor implements HttpInterceptor {
         return constructUnauthorizedResponse$('You Must be Authenticated to Delete a User. Please Login.');
       }
 
-      // Extract The User ID Associated With The Account To Be Deleted From The Request URL And Use It To Remove The Associated Object From The All Users List
+      // Extract The User ID Associated With The Account To Be Deleted From The Request URL And Use It To Remove The Associated Object From The allUsers List
       const USER_ID_TO_DELETE : number = parseInt(REQUEST_URL.split('/')[REQUEST_URL.split('/').length - 1], 10);
       const USER_TO_DELETE : User | undefined = allUsers.find((user : User) : boolean => user.id === USER_ID_TO_DELETE);
 
-      // Check That The Logged In User's ID Matches The ID They Want To Delete Or That They Are At Least An Admin To Actually Make The Update
+      // Check That The Logged-In User's ID Matches The ID They Want To Delete Or That They Are At Least An Admin To Actually Make The Update
       if ((this._credentialService.getCurrentUser()?.id === USER_ID_TO_DELETE) || this._credentialService.getCurrentUser()?.isAdmin) {
         allUsers = allUsers.filter((user : User) : boolean => user.id === USER_ID_TO_DELETE);
         localStorage.setItem(ConfigService.appConfiguration.apiServer.paths.users.allUsers, JSON.stringify(allUsers));
@@ -66,9 +66,9 @@ export class AuthInterceptor implements HttpInterceptor {
     };
 
     /**
-     * This function authenticates, or tries to login, a given user. It compares the username and password provided in the request against the users in the database. If there
-     * is a match, an authentication token (presumably a JSON Web Token (JWT)) is created, the CredentialService is updated with the newly logged in user, complete with the
-     * new token, and the user is returned in the response body. If there is not a match an HTTP 401 (Unauthorized) error response is instead returned, indicating a failure to
+     * This function authenticates, or tries to log in, a given user. It compares the username and password provided in the request against the users in the database. If there
+     * is a match, an authentication token (presumably a JSON Web Token (JWT)) is created, the CredentialService is updated with the newly logged-in user, complete with the
+     * new token, and the user is returned to the response body. If there is not a match an HTTP 401 (Unauthorized) error response is instead returned, indicating a failure to
      * login.
      *
      * @returns an HttpResponse with the body being the user just authenticated if successful or an HTTP 401 (Unauthorized) HttpErrorResponse if unsuccessful. The returned

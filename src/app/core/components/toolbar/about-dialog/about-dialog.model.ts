@@ -27,7 +27,7 @@ export const OPEN_SOURCE_DEPENDENCIES : OpenSourceDependency[] = [
   { imgAltDescription : 'Jasmine', imgTitle : 'jasmine', tooltip : 'Jasmine - Testing Framework', websiteLink : 'https://jasmine.github.io/' },
   { imgAltDescription : 'Karma', imgTitle : 'karma', tooltip : 'Karma - Test Runner', websiteLink : 'https://karma-runner.github.io/latest/index.html' },
   { imgAltDescription : 'Node.js', imgTitle : 'nodejs', tooltip : 'Node.js - JavaScript Runtime Engine', websiteLink : 'https://nodejs.org/en/' },
-  { imgAltDescription : 'NPM', imgTitle : 'npm', tooltip : 'NPM - Software Registry', websiteLink : 'https://www.npmjs.com' }
+  { imgAltDescription : 'npm', imgTitle : 'npm', tooltip : 'npm - Software Registry', websiteLink : 'https://www.npmjs.com' }
 ];
 
 export const PACKAGE_VERSIONS : PackageVersion[] = [

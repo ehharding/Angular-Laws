@@ -61,7 +61,7 @@ export class BackendInterceptor implements HttpInterceptor {
     /**
      * This function responds to a request to retrieve the currently authenticated (logged in) user.
      *
-     * @returns an HttpResponse with the body being the currently authenticated (logged in) user. This will be either a user with a valid JWT token if there is a logged in
+     * @returns an HttpResponse with the body being the currently authenticated (logged in) user. This will be either a user with a valid JWT token if there is a logged-in
      *          user or null otherwise.
      */
     const getCurrentUser$ = () : Observable<HttpEvent<unknown>> => {

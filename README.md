@@ -69,7 +69,7 @@ You may need to go through a setup routine for the [Material Theme UI](https://p
 theme.
 
 Finally, while Chrome, Edge, Firefox, Opera, and Safari are supported as browsers, I would highly recommend [Firefox](https://www.mozilla.org/en-US/new/) as your core 
-development browser. You will need it to properly run the project unit tests, anyways.
+development browser. You will need it to properly run the project unit tests.
 
 ### Installing Project Dependencies
 You must now install the necessary dependencies for the project via NPM. From WebStorm's Terminal command line:
@@ -187,7 +187,7 @@ This software uses the following open source packages:
 - [Jasmine](https://jasmine.github.io/) - A behavior-driven JavaScript unit testing framework 
 - [Karma](https://karma-runner.github.io/latest/index.html) - A JavaScript unit test runner
 - [Node.js](https://nodejs.org/en/) - A JavaScript runtime built on Chrome's V8 JavaScript engine
-- [NPM](https://www.npmjs.com/) - The Node Package Manager (NPM)
+- [npm](https://www.npmjs.com/) - The Node Package Manager (npm)
 
 ## License
 [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)
