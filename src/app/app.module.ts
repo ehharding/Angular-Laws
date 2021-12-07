@@ -45,9 +45,7 @@ function initializeApplication(configService : ConfigService) : (() => Promise<v
   };
 }
 
-export const WINDOW_INJECTION_TOKEN : InjectionToken<Window> = new InjectionToken<Window>('window');
-
-export const CONFIGURED_CDK_COPY_TO_CLIPBOARD_CONFIG : CdkCopyToClipboardConfig = {
+const CONFIGURED_CDK_COPY_TO_CLIPBOARD_CONFIG : CdkCopyToClipboardConfig = {
   attempts : ConfigService.appConfiguration.constants.maxClipboardCopyAttempts
 };
 
@@ -70,6 +68,8 @@ const CONFIGURED_MAT_TOOLTIP_DEFAULT_OPTIONS : MatTooltipDefaultOptions = {
   touchGestures : 'auto',
   position : 'below'
 };
+
+const WINDOW_INJECTION_TOKEN : InjectionToken<Window> = new InjectionToken<Window>('window');
 
 @NgModule({
   bootstrap : [AppComponent],
