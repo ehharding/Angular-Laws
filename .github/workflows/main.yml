@@ -8,7 +8,7 @@
 #   * repository-checkout - Checks out the "main" branch for Pocket Fic and uploads the repository as an artifact
 #   * test                - Runs unit tests and uploads "coverage-report" as an artifact
 #   * eslint-report       - Runs ESLint on the project and uploads "eslint-report.html" as an artifact
-#   * build-production    - Runs a production build and uploads "dist-prod" as an artifact
+#   * build-production    - Runs a production build and uploads "dist-production" as an artifact
 #   * copy-index-to-404   - Copies "index.html" to "404.html" as part of the requirements for most Angular deployments
 #   * deploy              - Deploys the production build distributable to the "gh-pages" branch which will then be used by GitHub Pages for hosting
 #
@@ -206,18 +206,18 @@ jobs :
           echo 'Installing Dependencies Defined In "package.json" Using NPM... This May Take Awhile'
           npm install
 
-      - name : Create Production Build Distributable Directory - "dist-prod"
+      - name : Create Production Build Distributable Directory - "dist-production"
         run : |
           echo 'Starting Up The Angular Framework...'
 
           npm run ng
-          npm run build:prod
+          npm run build:production
 
-      - name : Upload Production Build Distributable Directory Artifact - "dist-prod"
+      - name : Upload Production Build Distributable Directory Artifact - "dist-production"
         uses : actions/upload-artifact@v2
         with :
-          name : dist-prod
-          path : '/home/runner/work/Pocket-Fic/Pocket-Fic/dist-prod'
+          name : dist-production
+          path : '/home/runner/work/Pocket-Fic/Pocket-Fic/dist-production'
           retention-days : 5
 
   ########## JOB 5 - COPY-INDEX-TO-404 ##########
@@ -226,22 +226,22 @@ jobs :
     runs-on : ubuntu-latest
 
     steps :
-      - name : Download Production Build Distributable Directory - "dist-prod"
+      - name : Download Production Build Distributable Directory - "dist-production"
         uses : actions/download-artifact@v2
         with :
-          name : dist-prod
-          path : 'dist-prod'
+          name : dist-production
+          path : 'dist-production'
 
       - name : Copy "index.html" To "404.html" For GitHub Pages
         run : |
-          echo 'Copying Contents Of "dist-prod/index.html" To "dist-prod/404.html"...'
-          cp -v dist-prod/index.html dist-prod/404.html
+          echo 'Copying Contents Of "dist-production/index.html" To "dist-production/404.html"...'
+          cp -v dist-production/index.html dist-production/404.html
 
-      - name : Upload Modified Production Build Distributable Artifact - "dist-prod"
+      - name : Upload Modified Production Build Distributable Artifact - "dist-production"
         uses : actions/upload-artifact@v2
         with :
-          name : dist-prod
-          path : 'dist-prod'
+          name : dist-production
+          path : 'dist-production'
           retention-days : 5
 
   ########## JOB 6 - DEPLOY ##########
@@ -250,14 +250,14 @@ jobs :
     runs-on : ubuntu-latest
 
     steps :
-      - name : Download Production Build Distributable Directory - "dist-prod"
+      - name : Download Production Build Distributable Directory - "dist-production"
         uses : actions/download-artifact@v2
         with :
-          name : dist-prod
-          path : 'dist-prod'
+          name : dist-production
+          path : 'dist-production'
 
       - name : Deploy Production Build Distributable Contents To "gh-pages" Branch
         uses : peaceiris/actions-gh-pages@v3
         with :
           github_token : ${{ github.token }}
-          publish_dir : dist-prod
+          publish_dir : dist-production

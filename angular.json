@@ -51,7 +51,7 @@
               "verbose" : false,
               "watch" : false,
               "baseHref" : "/Pocket-Fic/",
-              "outputPath" : "dist-prod",
+              "outputPath" : "dist-production",
               "index" : "src/index.html",
               "main" : "src/main.ts",
               "ngswConfigPath": "ngsw-config.json",

@@ -16,8 +16,8 @@
   "browserslist" : ["Chrome 96", "Edge 96", "Firefox 95", "Opera 82", "Safari 15"],
   "scripts" : {
     "build" : "ng build",
-    "build:prod" : "ng build --configuration production",
-    "clean" : "rimraf ./.angular ./build-cache ./coverage-report ./dist ./dist-prod ./eslint-report.html",
+    "build:production" : "ng build --configuration production",
+    "clean" : "rimraf ./.angular ./build-cache ./coverage-report ./dist ./dist-production ./eslint-report.html",
     "lint" : "eslint **/*.ts",
     "lint:report" : "eslint **/*.ts -f node_modules/eslint-html-reporter/reporter.js -o ./eslint-report.html",
     "ng" : "ng --version",

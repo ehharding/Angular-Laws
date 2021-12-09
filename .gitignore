@@ -7,7 +7,7 @@
 build-cache
 coverage-report
 dist
-dist-prod
+dist-production
 node_modules
 
 *.log
