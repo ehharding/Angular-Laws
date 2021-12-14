@@ -1,6 +1,6 @@
 ###############################################################################################################################################################################
 # This is a GitHub Actions workflow file. It is written in YAML and specifies a series of commands that execute when certain events occur. Currently, all jobs in this file are
-# running on a Windows Server 2019 host.
+# running on an Ubuntu Linux host.
 #
 # "node_modules" is cached based on a hash of "package.json" for performance reasons. If the dependencies change, the hash should change as well, meaning a fresh "npm install"
 # should be triggered. For the "main" branch, the pipeline is as follows:
@@ -30,7 +30,7 @@ on :
 jobs :
   ########## JOB 1 - REPOSITORY-CHECKOUT ##########
   repository-checkout :
-    runs-on : windows-latest
+    runs-on : ubuntu-latest
 
     steps :
       - name : Configuration
@@ -84,7 +84,7 @@ jobs :
   ########## JOB 2 - TEST ##########
   test :
     needs : repository-checkout
-    runs-on : windows-latest
+    runs-on : ubuntu-latest
     strategy :
       matrix :
         node-version : [16.X]
@@ -131,7 +131,7 @@ jobs :
   ########## JOB 3 - ESLINT-REPORT ##########
   eslint-report :
     needs : test
-    runs-on : windows-latest
+    runs-on : ubuntu-latest
     strategy :
       matrix :
         node-version : [16.X]
@@ -177,7 +177,7 @@ jobs :
   ########## JOB 4 - BUILD-PRODUCTION ##########
   build-production :
     needs : eslint-report
-    runs-on : windows-latest
+    runs-on : ubuntu-latest
     strategy :
       matrix :
         node-version : [16.X]
@@ -224,7 +224,7 @@ jobs :
   ########## JOB 5 - COPY-INDEX-TO-404 ##########
   copy-index-to-404 :
     needs : build-production
-    runs-on : windows-latest
+    runs-on : ubuntu-latest
 
     steps :
       - name : Download Production Build Distributable Directory - "dist-production"
@@ -248,7 +248,7 @@ jobs :
   ########## JOB 6 - DEPLOY ##########
   deploy :
     needs : copy-index-to-404
-    runs-on : windows-latest
+    runs-on : ubuntu-latest
 
     steps :
       - name : Download Production Build Distributable Directory - "dist-production"
