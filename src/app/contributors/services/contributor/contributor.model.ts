@@ -1,12 +1,12 @@
 export interface Contributor {
   id : number;
-  pocketFicUserName : string | null;
+  pocketFicUserName : string | undefined;
   firstName : string;
   lastName : string;
   email : string;
-  resume : string | null;
-  gitHub : string | null;
-  linkedIn : string | null;
+  resume : string | undefined;
+  gitHub : string | undefined;
+  linkedIn : string | undefined;
   jobTitle : string;
   personalSummary : string;
 }

@@ -20,7 +20,7 @@ export class CredentialService {
   /**
    * A utility function for retrieving the currently logged in (authenticated) user for the application.
    *
-   * @returns the currently logged-in user. This could be an empty object if the user is not logged in.
+   * @returns the currently logged-in user. This could be null if the user is not logged in.
    */
   public getCurrentUser() : User | null {
     return this._currentUser;

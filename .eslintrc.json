@@ -31,7 +31,7 @@
       "unicodeCodePointEscapes" : true
     },
     "allowReserved" : false,
-    "ecmaVersion" : 2020,
+    "ecmaVersion" : 2021,
     "project" : "tsconfig.eslint.json",
     "ignorePatterns" : [".eslintrc.json"],
     "sourceType" : "module"

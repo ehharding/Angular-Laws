@@ -4,10 +4,10 @@ export interface User {
   userName : string;
   password : string;
   birthday : string;
-  title : string | null;
+  title : string | undefined;
   firstName : string;
-  middleName : string | null;
-  lastName : string | null;
-  generation : string | null;
+  middleName : string | undefined;
+  lastName : string | undefined;
+  generation : string | undefined;
   jwtToken : string;
 }

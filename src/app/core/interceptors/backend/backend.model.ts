@@ -26,11 +26,11 @@ export const DEFAULT_USERS : User[] = [
     userName : 'solomon',
     password : 'time', // NOTE: In Production We Would Obviously Not Store Passwords Like This In Plain-Text
     birthday : '19/09/2552',
-    title : null,
+    title : undefined,
     firstName : 'Evan',
-    middleName : null,
+    middleName : undefined,
     lastName : 'Harding',
-    generation : null,
+    generation : undefined,
     jwtToken : ''
   }
 ];
