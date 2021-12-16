@@ -27,8 +27,8 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   public mobileView : boolean = false;
   public showSidenav : boolean = false;
 
-  public readonly AppRoute = AppRoute;
   public readonly allThemes : Theme[] = ALL_THEMES;
+  public readonly AppRoute = AppRoute;
 
   private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
