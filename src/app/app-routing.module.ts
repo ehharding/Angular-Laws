@@ -25,6 +25,7 @@ import { RouteResolverService } from '@core/services/route-resolver/route-resolv
 import { NotFoundComponent } from '@core/components/not-found/not-found.component';
 
 export enum AppRoute {
+  Home = '',
   Contributors = 'contributors',
   Login = 'login',
   Users = 'users',
@@ -32,7 +33,7 @@ export enum AppRoute {
 }
 
 export const APP_ROUTES : Routes = [
-  { path : '', pathMatch : 'full', redirectTo : AppRoute.Contributors }, // In The Future This Would Load A Home Pocket Fic Module But, For Now, It Loads Contributors Instead
+  { path : AppRoute.Home, pathMatch : 'full', redirectTo : AppRoute.Contributors },
   { path : AppRoute.Contributors, loadChildren : async() : Promise<ContributorsModule> => (await import('@contributors/contributors.module')).ContributorsModule },
   { path : AppRoute.Login, canActivate : [LoginGuard], loadChildren : async() : Promise<LoginModule> => (await import('@login/login.module')).LoginModule },
   { path : AppRoute.NotFound, component : NotFoundComponent, resolve : { intendedRouteGuesses : RouteResolverService } }, // NotFoundComponent Is Fed Intended Route Guesses

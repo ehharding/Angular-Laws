@@ -32,15 +32,15 @@ describe('service RouteResolverService', () : void => {
   });
 
   // eslint-disable-next-line no-warning-comments
-  // TODO Improve the robustness of this functions' tests
+  // TODO Improve the robustness and maintainability of this functions' tests
   describe('function resolve()', () : void => {
     it('should return null if the requested route is totally different from any existing route (greater than five characters different)', () : void => {
       // Since "contributors" Is The Closest Existent Route And This Is Different In Length By Five Characters
       expect(routeResolverService.resolve({ queryParams : { requestedRoute : `${ AppRoute.Contributors }sssss` } } as any, { } as any)).toBeNull();
     });
 
-    it('should return "contributors,users", since "contributors" would be the closest to the input', () : void => {
-      expect(routeResolverService.resolve({ queryParams : { requestedRoute : `${ AppRoute.Contributors }ssss` } } as any, { } as any)).toEqual(`${ AppRoute.Contributors },${ AppRoute.Users },${ AppRoute.Login }`);
+    it('should return "contributors,users,login,", since "contributors" would be the closest to the input, followed by "users", "login", and home ("")', () : void => {
+      expect(routeResolverService.resolve({ queryParams : { requestedRoute : `${ AppRoute.Contributors }ssss` } } as any, { } as any)).toEqual(`${ AppRoute.Contributors },${ AppRoute.Users },${ AppRoute.Login },`);
     });
   });
 });

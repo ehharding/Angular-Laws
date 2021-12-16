@@ -12,7 +12,7 @@
 
       <div class="col text-start w-50">
         <h1 class="fs-1"><strong>Page Not Found (HTTP 404)</strong></h1>
-        <p class="fs-4">The route you are looking for was not found. Bummer!</p>
+        <p class="fs-4">The route you are looking for was not found. Sorry about that!</p>
 
         <mat-divider></mat-divider>
 
@@ -27,7 +27,7 @@
           <mat-card *ngFor="let intendedRouteGuess of intendedRouteGuesses" class="d-flex justify-content-between my-2">
             <!-- Left Group Of Card Items -->
             <div>
-              <strong>{{ intendedRouteGuess }}</strong>
+              <strong>{{ intendedRouteGuess === '/' ? 'Home Page' : intendedRouteGuess }}</strong>
             </div>
 
             <!-- Right Group Of Card Items -->
