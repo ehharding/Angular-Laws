@@ -47,7 +47,7 @@ To build from source and to contribute to the project, you will need to do a cou
 environment configuration. So, this section will go over both the tools required to work on the project and also the recommended general setup.
 
 ### IDE And Project Setup
-First, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/) (which comes with [NPM](http://npmjs.com)) installed on your computer. You must download an
+First, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/) (which comes with [npm](http://npmjs.com)) installed on your computer. You must download an
 Active LTS or Maintenance LTS release of Node.js. You can find out which versions these are by visiting the Node.js[release site](https://nodejs.org/en/about/releases/). After
 you have installed Node.js, enter the following from your command line of choice:
 
@@ -83,7 +83,7 @@ npm install
 ```
 
 ### Running The Project Locally
-With dependencies installed, you should now be ready to actually run the project. Either double click the `start` npm script or run the following NPM command:
+With dependencies installed, you should now be ready to actually run the project. Either double click the `start` npm script or run the following npm command:
 
 ```bash
 npm run start
@@ -93,7 +93,7 @@ Angular should have compiled the project and served it to http://localhost:4200/
 repository without first being added as a project contributor.
 
 ### Running The Project Unit Tests
-You can run unit tests for the project via the `test` and `test:watch` npm scripts or run the following NPM commands:
+You can run unit tests for the project via the `test` and `test:watch` npm scripts or run the following npm commands:
 
 ```bash
 # Run Unit Tests Inside Firefox And Watch The Results
@@ -106,7 +106,7 @@ npm run test
 ### Linting The Project
 To assist with code maintainability and quality, this project utilizes [ESLint](https://eslint.org) along with the
 [@typescript-eslint](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin) and [eslint-plugin-tsdoc](https://www.npmjs.com/package/eslint-plugin-tsdoc) plugins. To
-run the linter on the project, you can use the `lint` and `lint:report` npm scripts or run the following NPM commands:
+run the linter on the project, you can use the `lint` and `lint:report` npm scripts or run the following npm commands:
 
 ```bash
 # Run ESLint On The Project

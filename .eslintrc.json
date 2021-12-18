@@ -294,6 +294,7 @@
     "prefer-arrow-callback" : ["warn", { "allowNamedFunctions" : false, "allowUnboundThis" : true }],
     "prefer-const" : ["warn", { "ignoreReadBeforeAssign" : false, "destructuring" : "any" }],
     "prefer-numeric-literals" : "error",
+    "prefer-object-has-own" : "warn",
     "prefer-promise-reject-errors" : ["warn", { "allowEmptyReject" : false }],
     "prefer-rest-params" : "error",
     "prefer-spread" : "error",
