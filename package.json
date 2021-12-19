@@ -11,7 +11,7 @@
   "contributors" : ["Evan H. Harding"],
   "maintainers" : ["Evan H. Harding"],
   "keywords" : ["Angular", "Creative Writing", "Fan Fiction", "Web Apps", "Writing"],
-  "directories" : { "doc" : "README.md", "lib" : "src", "man" : "README.md", "test" : "src" },
+  "directories" : { "doc" : ".github/README.md", "lib" : "src", "man" : ".github/README.md", "test" : "src" },
   "files" : ["*"],
   "browserslist" : ["Chrome 96", "Edge 96", "Firefox 95", "Opera 82", "Safari 15"],
   "scripts" : {
