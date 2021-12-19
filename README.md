@@ -20,9 +20,6 @@
     <a href="https://opensource.org/licenses/Apache-2.0" target="_blank">
       <img alt="Apache 2.0 License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/>
     </a>
-    <a href="https://www.paypal.me/ehharding" target="_blank" >
-      <img alt="Donate Via PayPal" src="https://img.shields.io/badge/PayPal-donate-ff69b4.svg"/>
-    </a>
   </p>
 
   <p>
@@ -47,9 +44,9 @@ To build from source and to contribute to the project, you will need to do a cou
 environment configuration. So, this section will go over both the tools required to work on the project and also the recommended general setup.
 
 ### IDE And Project Setup
-First, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/) (which comes with [npm](http://npmjs.com)) installed on your computer. You must download an
-Active LTS or Maintenance LTS release of Node.js. You can find out which versions these are by visiting the Node.js[release site](https://nodejs.org/en/about/releases/). After
-you have installed Node.js, enter the following from your command line of choice:
+First, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/) (which comes with [npm](https://npmjs.com)) installed on your computer. You must download
+an Active LTS or Maintenance LTS release of Node.js. You can find out which versions these are by visiting the Node.js[release site](https://nodejs.org/en/about/releases/).
+After you have installed Node.js, enter the following from your command line of choice:
 
 ```bash
 # Go To The Top-Level Directory On Your Machine
