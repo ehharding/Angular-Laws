@@ -544,7 +544,7 @@
     "@typescript-eslint/no-require-imports" : "warn",
     "@typescript-eslint/no-shadow" : ["warn", { "builtinGlobals" : true, "hoist" : "functions", "allow" : ["Clipboard", "require"] }],
     "@typescript-eslint/no-this-alias" : ["warn", { "allowDestructuring" : false, "allowedNames" : [] }],
-    "@typescript-eslint/no-throw-literal" : "warn",
+    "@typescript-eslint/no-throw-literal" : ["warn", { "allowThrowingAny" : false, "allowThrowingUnknown" : false }],
     "@typescript-eslint/no-type-alias" : ["warn", {
       "allowAliases" : "always",
       "allowCallbacks" : "always",
@@ -625,9 +625,9 @@
     "@typescript-eslint/quotes" : ["warn", "single", { "allowTemplateLiterals" : true, "avoidEscape" : true }],
     "@typescript-eslint/require-array-sort-compare" : ["warn", { "ignoreStringArrays" : false }],
     "@typescript-eslint/require-await" : "warn",
-    "@typescript-eslint/restrict-plus-operands" : ["warn", { "checkCompoundAssignments" : true }],
+    "@typescript-eslint/restrict-plus-operands" : ["warn", { "allowAny" : false, "checkCompoundAssignments" : true }],
     "@typescript-eslint/restrict-template-expressions" : ["warn", {
-      "allowAny" : true,
+      "allowAny" : false,
       "allowBoolean" : true,
       "allowNullish" : true,
       "allowNumber" : true,
