@@ -107,11 +107,11 @@ jobs :
           path : '/home/runner/work/Pocket-Fic/Pocket-Fic/node_modules'
           key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package*.json') }}
 
-      - name : Install NPM Dependencies If Required
+      - name : Install npm Dependencies If Required
         # Caches Older Than Five Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Is Exceeded
         if : steps.node-modules-cache.outputs.cache-hit != 'true'
         run : |
-          echo 'Installing Dependencies Defined In "package.json" Using NPM... This May Take Awhile'
+          echo 'Installing Dependencies Defined In "package.json" Using npm... This May Take Awhile'
           npm install
 
       - name : Run Angular Unit Tests Within Headless Firefox
@@ -154,11 +154,11 @@ jobs :
           path : '/home/runner/work/Pocket-Fic/Pocket-Fic/node_modules'
           key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package*.json') }}
 
-      - name : Install NPM Dependencies If Required
+      - name : Install npm Dependencies If Required
         # Caches Older Than Five Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Is Exceeded
         if : steps.node-modules-cache.outputs.cache-hit != 'true'
         run : |
-          echo 'Installing Dependencies Defined In "package.json" Using NPM... This May Take Awhile'
+          echo 'Installing Dependencies Defined In "package.json" Using npm... This May Take Awhile'
           npm install
 
       - name : Run ESLint
@@ -200,11 +200,11 @@ jobs :
           path : '/home/runner/work/Pocket-Fic/Pocket-Fic/node_modules'
           key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package*.json') }}
 
-      - name : Install NPM Dependencies If Required
+      - name : Install npm Dependencies If Required
         # Caches Older Than Five Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Is Exceeded
         if : steps.node-modules-cache.outputs.cache-hit != 'true'
         run : |
-          echo 'Installing Dependencies Defined In "package.json" Using NPM... This May Take Awhile'
+          echo 'Installing Dependencies Defined In "package.json" Using npm... This May Take Awhile'
           npm install
 
       - name : Create Production Build Distributable Directory - "dist-production"
