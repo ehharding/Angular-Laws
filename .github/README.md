@@ -165,7 +165,7 @@ your newly generated public key:
 git config --global user.signingkey xxxxxxxxxxxxxxxx
 ```
 
-After doing this, when you push, Git should prompt you for your password that encrypts/decrypts your public/private GPG key pair. If successful, the repository shows the
+After doing this, when you commit, Git should prompt you for your password that encrypts/decrypts your public/private GPG key pair. If successful, the repository shows the
 commit as a verified commit.
 
 ## Credits
