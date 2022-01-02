@@ -100,7 +100,7 @@ jobs :
         with :
           name : Pocket-Fic
 
-      - name : Determining If "node_modules" Cache Exists And Can Be Used Based On Changes To "package-lock.json" And "package-lock.json"...
+      - name : Determining If "node_modules" Cache Exists And Can Be Used Based On Changes To "package.json" And "package-lock.json"...
         id : node-modules-cache
         uses : actions/cache@v2
         with :
