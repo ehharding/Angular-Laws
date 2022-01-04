@@ -69,13 +69,13 @@ Finally, while Chrome, Edge, Firefox, Opera, and Safari are supported as browser
 development browser. You will need it to properly run the project unit tests.
 
 ### Installing Project Dependencies
-You must now install the necessary dependencies for the project via NPM. From WebStorm's Terminal command line:
+You must now install the necessary dependencies for the project via npm. From WebStorm's Terminal command line:
 
 ```bash
 # Go To Repository Directory If Terminal Does Not Automatically Put You Here
 cd /Scratch/Pocket-Fic
 
-# Install Dependencies Via NPM
+# Install Dependencies Via npm
 npm install
 ```
 
