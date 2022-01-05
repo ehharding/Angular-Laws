@@ -105,7 +105,7 @@ jobs :
         uses : actions/cache@v2
         with :
           path : "/home/runner/work/Pocket-Fic/Pocket-Fic/node_modules"
-          key : ${{ matrix.node-version }}-node-modules-${{ hashFiles("**/package*.json") }}
+          key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package*.json') }}
 
       - name : Install npm Dependencies If Required
         # Caches Older Than Five Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Exceeded
@@ -150,7 +150,7 @@ jobs :
         uses : actions/cache@v2
         with :
           path : "/home/runner/work/Pocket-Fic/Pocket-Fic/node_modules"
-          key : ${{ matrix.node-version }}-node-modules-${{ hashFiles("**/package*.json") }}
+          key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package*.json') }}
 
       - name : Install npm Dependencies If Required
         # Caches Older Than Five Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Exceeded
@@ -196,7 +196,7 @@ jobs :
         uses : actions/cache@v2
         with :
           path : "/home/runner/work/Pocket-Fic/Pocket-Fic/node_modules"
-          key : ${{ matrix.node-version }}-node-modules-${{ hashFiles("**/package*.json") }}
+          key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package*.json') }}
 
       - name : Install npm Dependencies If Required
         # Caches Older Than Five Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Exceeded
