@@ -1,5 +1,5 @@
 /******************************************************************************************************************************************************************************
- * This module serves as the repository for the applications' singleton core services. All services provided here have only one instance at any point in time across the entire
+ * This module serves as the repository for the applications' singleton core services. All services provided here have only one instance at any point across the entire
  * application, in other words.
  *****************************************************************************************************************************************************************************/
 

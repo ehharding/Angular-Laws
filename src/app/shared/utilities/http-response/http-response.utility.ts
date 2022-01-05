@@ -22,8 +22,8 @@ export function constructOkResponse$(body ?: any) : Observable<HttpResponse<unkn
  * This function provides a never-typed Observable stream for interested subscribers to trigger the emission of an HttpErrorResponse object as needed with a custom HTTP status
  * code and status text.
  *
- * @param status - An HTTP status code to include in the error response (e.g. 401, 404, etc.)
- * @param statusText - A status text, or message, to include in the error response (e.g. "A Very Specific Error Just Occurred...")
+ * @param status - An HTTP status code to include in the error response (e.g., 401, 404, etc.)
+ * @param statusText - A status text, or message, to include in the error response (e.g., "A Specific Error Just Occurred…")
  * @returns a never-typed Observable stream. Subscribe to the stream to trigger the emission of an HttpErrorResponse object with the provided information.
  */
 export function constructErrorResponse$(status : HttpStatusCode, statusText : string) : Observable<never> {
@@ -34,7 +34,7 @@ export function constructErrorResponse$(status : HttpStatusCode, statusText : st
  * This function provides a never-typed Observable stream for interested subscribers to trigger the emission of an HTTP 401 (Unauthorized) HttpErrorResponse object as needed
  * with a custom HTTP status text.
  *
- * @param statusText - A status text, or message, to include in the error response (e.g. "The User Was Not Authorized For This Reason....")
+ * @param statusText - A status text, or message, to include in the error response (e.g., "The User Was Not Authorized For This Reason….")
  * @returns a never-typed Observable stream. Subscribe to the stream to trigger the emission of an HttpErrorResponse object with the provided information.
  */
 export function constructUnauthorizedResponse$(statusText : string = APP_CONSTANTS.httpResponseCodes[HttpStatusCode.Unauthorized].httpStatusText) : Observable<never> {

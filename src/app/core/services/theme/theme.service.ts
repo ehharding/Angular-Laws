@@ -1,10 +1,10 @@
 /******************************************************************************************************************************************************************************
- * This service holds the currently active application theme and provides functionality for loading four pre-built Angular Material themes and also provides logic for
- * assigning an arbitrary CSS class to an HTML tag.
+ * This service holds the active application theme and provides functionality for loading four pre-built Angular Material themes and provides logic for assigning an arbitrary
+ * CSS class to an HTML tag.
  *
  * {@link https://material.angular.io | Angular Material}
  *
- * @remarks There are currently four material themes available to the user:
+ * @remarks There are four material themes available to the user:
  *   1) Deep Purple & Amber
  *   2) Indigo & Pink
  *   3) Pink & Blue Grey
@@ -29,9 +29,9 @@ export class ThemeService {
   }
 
   /**
-   * Provides an Observable for the currently active application theme to interested subscribers.
+   * Provides an Observable for the active application theme to interested subscribers.
    *
-   * @returns a ThemeBundle-typed Observable stream for interested subscribers to receive the currently active theme bundle.
+   * @returns a ThemeBundle-typed Observable stream for interested subscribers to receive the active theme bundle.
    */
   public getActiveThemeBundleName$() : Observable<ThemeBundle> {
     return this._activeThemeBundleName$.asObservable().pipe(distinctUntilChanged());
@@ -57,8 +57,8 @@ export class ThemeService {
   }
 
   /**
-   * This method loads a style name that exists in the ThemeBundle enumeration, injecting the requested theme into the index.html as a <link/>. This allows for simple style
-   * switching at runtime.
+   * This method loads a style name in the ThemeBundle enumeration, injecting the requested theme into the index.html as a <link/>. This allows for simple style switching at
+   * runtime.
    *
    * @param themeBundleName - The themeBundleName of the theme to load from one of the available defined in the "ThemeBundle" enumeration
    */

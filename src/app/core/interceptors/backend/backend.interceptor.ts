@@ -24,11 +24,11 @@ export class BackendInterceptor implements HttpInterceptor {
   /**
    * This function is responsible for intercepting certain URL requests directed towards a backend and responds with mock data as appropriate.
    *
-   * @param httpRequest - An outgoing HTTP request which is being intercepted
+   * @param httpRequest - An outgoing HTTP request, which is being intercepted
    * @param httpHandler - A handler that dispatches the HTTP httpRequest to the next handler in the chain, as determined by order in "app.module.ts"
    * @returns an Observable of the HTTP event stream to be passed on to the next interceptor via httpHandler.handle(httpRequest : HttpRequest<unknown>).
    *
-   * @remarks The inline comments concerning the use of materialize()/dematerialize() is a result of the following RxJS issue which boils down to RxJS not time-shifting
+   * @remarks The inline comments concerning the use of materialize()/dematerialize() is a result of the following RxJS issue, which boils down to RxJS not time-shifting
    *          Observables properly when they emit errors https://github.com/Reactive-Extensions/RxJS/issues/648
    */
   public intercept(httpRequest : HttpRequest<unknown>, httpHandler : HttpHandler) : Observable<HttpEvent<unknown>> {
@@ -39,7 +39,7 @@ export class BackendInterceptor implements HttpInterceptor {
     /**
      * This function responds to a request to retrieve a list of all contributors to the project.
      *
-     * @returns an HttpResponse with the body being the list of contributors to the project, either loaded from LocalStorage or a basic set of initial contributors if empty.
+     * @returns an HttpResponse with the body being the list of contributors to the project, either loaded from LocalStorage, or a basic set of initial contributors if empty.
      */
     const getAllContributors$ = () : Observable<HttpEvent<unknown>> => {
       const ALL_CONTRIBUTORS : Contributor[] = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.contributors.allContributors) ?? '[]') as Contributor[];
@@ -50,7 +50,7 @@ export class BackendInterceptor implements HttpInterceptor {
     /**
      * This function responds to a request to retrieve the list of all users for the application.
      *
-     * @returns an HttpResponse with the body being the list of users to the project, either loaded from LocalStorage or a basic set of initial users if empty.
+     * @returns an HttpResponse with the body being the list of users to the project, either loaded from LocalStorage, or a basic set of initial users if empty.
      */
     const getAllUsers$ = () : Observable<HttpEvent<unknown>> => {
       const ALL_USERS : User[] = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.users.allUsers) ?? '[]') as User[];
@@ -59,10 +59,10 @@ export class BackendInterceptor implements HttpInterceptor {
     };
 
     /**
-     * This function responds to a request to retrieve the currently authenticated (logged in) user.
+     * This function responds to a request to retrieve the authenticated (logged in) user.
      *
-     * @returns an HttpResponse with the body being the currently authenticated (logged in) user. This will be either a user with a valid JWT token if there is a logged-in
-     *          user or null otherwise.
+     * @returns an HttpResponse with the body being the authenticated (logged in) user. This will be either a user with a valid JWT token if there is a logged-in user or null
+     * otherwise.
      */
     const getCurrentUser$ = () : Observable<HttpEvent<unknown>> => {
       const CURRENT_USER : User | null = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.users.currentUser) ?? 'null') as User | null;
@@ -77,7 +77,7 @@ export class BackendInterceptor implements HttpInterceptor {
     /**
      * This function responds to a request to create a new account on the application.
      *
-     * @returns an HttpResponse with the body being the newly created user if successful or an HTTP 409 (Conflict) HttpErrorResponse if unsuccessful. All user IDs in the
+     * @returns an HttpResponse with the body being the newly created user if successful, or an HTTP 409 (Conflict) HttpErrorResponse if unsuccessful. All user IDs in the
      *          application are assigned sequentially and cannot be mutated.
      */
     const createAccount$ = () : Observable<HttpEvent<unknown>> => {
@@ -89,7 +89,7 @@ export class BackendInterceptor implements HttpInterceptor {
         return constructErrorResponse$(HttpStatusCode.Conflict, `"${ REQUESTED_USER.userName }" is Already Taken.`);
       }
 
-      // User ID Created Sequentially From 1st To Most Recent User (e.g. 1st User ID = 1, 2nd User ID = 2, etc.)
+      // User ID Created Sequentially From 1st To Most Recent User (e.g., 1st User ID = 1, 2nd User ID = 2, etc.)
       REQUESTED_USER.id = ALL_USERS.length ? Math.max(...ALL_USERS.map((user : User) : number => user.id)) + 1 : 1;
 
       ALL_USERS.push(REQUESTED_USER);
@@ -135,7 +135,7 @@ export class BackendInterceptor implements HttpInterceptor {
    * This means that the caught error is rethrown and passed down the Observable chain. As such, this method can perform initial error handling logic and leaves it up to the
    * subscription down the line to further handle the error locally.
    *
-   * @param errorResponse - An HttpErrorResponse object returned from an HttpRequest in the event of HTTP failure, for whatever reason
+   * @param errorResponse - An HttpErrorResponse object returned from an HttpRequest in case of HTTP failure, for whatever reason
    * @returns a never-typed Observable, meaning it never emits any value.
    */
   private readonly _handleError$ = (errorResponse : HttpErrorResponse) : Observable<never> => {

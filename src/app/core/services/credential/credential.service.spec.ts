@@ -25,7 +25,7 @@ describe('service CredentialService', () : void => {
   });
 
   describe('function getCurrentUser()', () : void => {
-    it('should return the currently logged in user', () : void => {
+    it('should return the logged-in user', () : void => {
       expect(credentialService.getCurrentUser()).toBe(credentialService['_currentUser']);
     });
   });
@@ -37,7 +37,7 @@ describe('service CredentialService', () : void => {
   });
 
   describe('function isLoggedIn()', () : void => {
-    it('should return whether or not the current user is logged in based on whether or not they have a JWT set', () : void => {
+    it('should return whether the current user is logged in based on whether they have a JWT set', () : void => {
       expect(credentialService.isLoggedIn()).toBeFalse();
 
       credentialService['_jwtToken'] = 'fake-jwt-token';
@@ -46,7 +46,7 @@ describe('service CredentialService', () : void => {
   });
 
   describe('function setCurrentUser()', () : void => {
-    it('should set the current user for the application, meaning that the state of the CredentialService is updated', () : void => {
+    it('should set the current user for the application, meaning the state of the CredentialService is updated', () : void => {
       const MOCK_CURRENT_USER : User = { ...DEFAULT_USERS[0], jwtToken : 'fake-jwt-token' };
 
       credentialService.setCurrentUser(MOCK_CURRENT_USER);

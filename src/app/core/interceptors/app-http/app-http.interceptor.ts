@@ -18,7 +18,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
    *
    * {@link https://developer.mozilla.org/en-US/docs/Web/HTTP | MDN Web Docs HTTP Article}
    *
-   * @param httpRequest - An outgoing HTTP request which is being intercepted
+   * @param httpRequest - An outgoing HTTP request, which is being intercepted
    * @param httpHandler - A handler that dispatches the HTTP httpRequest to the next handler in the chain, as determined by order in "app.module.ts"
    * @returns an Observable of the HTTP event stream to be passed on to the next interceptor via httpHandler.handle(httpRequest : HttpRequest<unknown>).
    */
@@ -41,7 +41,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
    * This means that the caught error is rethrown and passed down the Observable chain. As such, this method can perform initial error handling logic and leaves it up to the
    * subscription down the line to further handle the error locally.
    *
-   * @param errorResponse - An HttpErrorResponse object returned from an HttpRequest in the event of HTTP failure, for whatever reason
+   * @param errorResponse - An HttpErrorResponse object returned from an HttpRequest in case of HTTP failure, for whatever reason
    * @returns a never-typed Observable, meaning it never emits any value.
    */
   private readonly _handleError$ = (errorResponse : HttpErrorResponse) : Observable<never> => {

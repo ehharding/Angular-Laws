@@ -14,14 +14,14 @@ export class RouteResolverService implements Resolve<string | null> {
   /* eslint-disable @typescript-eslint/no-magic-numbers */
 
   /**
-   * Returns a threshold or, in this case, a maximum length delta of difference between the requested route and the correct values defined in the "AppPath" enum defined in
+   * Returns a threshold or, in this case, a maximum length delta of difference between the requested route, and the correct values defined in the "AppPath" enum defined in
    * "app-routing.module.ts". The threshold returned here is then used to return a list of possible correct routes as defined in "AppPath".
    *
-   * For example, if "/contributors" is a valid route and the user enters "/ccontributorrs", the threshold returned will be 5 since the requested path has a word length of 14.
-   * This would then mean that any paths defined in "AppPath" that vary in length by this threshold amount or less would be candidates for being the intended route.
+   * For example, if "/contributors" is a valid route, and the user enters "/ccontributorrs", the threshold returned will be 5 since the requested path has a word length of
+   * 14. This would then mean any paths defined in "AppPath" that vary in length by this threshold amount or less would be candidates for being the intended route.
    *
    * @param requestedPath - the requested route given by the user
-   * @returns a threshold number as described above.
+   * @returns a threshold number described above.
    */
   private static _getThreshold(requestedPath : string) : number {
     if (requestedPath.length < 5) {
@@ -38,7 +38,7 @@ export class RouteResolverService implements Resolve<string | null> {
    * encountered.
    *
    * @param route - The ActivatedRouteSnapshot object that contains information about the unknown route entered by the user
-   * @param _state - The RouterStateSnapshot object that contains information about the state of the router at a moment in time
+   * @param _state - The RouterStateSnapshot object that contains information about the state of the router at a moment
    * @returns Either a string list (comma delimited string) of the application routes that seem to resemble the requested route or null if none seem to match at all.
    */
   public resolve(route : ActivatedRouteSnapshot, _state : RouterStateSnapshot) : string | null { // "_state" Is Required To Implement This Method From Resolve

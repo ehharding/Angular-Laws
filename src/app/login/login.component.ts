@@ -42,11 +42,11 @@ export class LoginComponent implements OnDestroy {
   public login() : void {
     this._userService.login$(this.loginFormGroup.value.userName, this.loginFormGroup.value.password).pipe(takeUntil(this._componentDestroyed$)).subscribe({
       next : async(_user : User) : Promise<void> => {
-        this._snackBar.open('Login Successful', 'OK', DEFAULT_MAT_SNACKBAR_CONFIG);
+        this._snackBar.open('Log In Successful', 'OK', DEFAULT_MAT_SNACKBAR_CONFIG);
         await this._router.navigate(['']);
       },
       error : (_errorResponse : HttpErrorResponse) : void => {
-        this._snackBar.open('Failed to Login. Please Try Again.', 'OK', { ...DEFAULT_MAT_SNACKBAR_CONFIG, politeness : 'assertive' });
+        this._snackBar.open('Failed to Log In. Please Try Again.', 'OK', { ...DEFAULT_MAT_SNACKBAR_CONFIG, politeness : 'assertive' });
       }
     });
   }

@@ -69,7 +69,7 @@
         </mat-menu>
 
         <a *ngIf="!currentUser?.jwtToken" routerLink="/{{ AppRoute.Login }}">
-          <button mat-button>Login</button>
+          <button mat-button>Log In</button>
         </a>
 
         <button *ngIf="currentUser?.jwtToken" mat-button class="me-2">{{ currentUser.userName }}</button>

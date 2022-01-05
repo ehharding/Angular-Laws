@@ -66,7 +66,7 @@ describe('service UserService', () : void => {
   });
 
   describe('function getCurrentUser$()', () : void => {
-    it('should return null if there is no currently authenticated user', () : void => {
+    it('should return null if there is no authenticated user', () : void => {
       userService.getCurrentUser$().subscribe({
         next(currentUser : User | null) : void {
           expect(currentUser).toBeNull();
@@ -74,7 +74,7 @@ describe('service UserService', () : void => {
       });
     });
 
-    it('should return a User stream with the emitted object being the current authenticated user', () : void => {
+    it('should return a User stream with the emitted object being the authenticated user', () : void => {
       currentUserGetRequest.flush(MOCK_CURRENT_USER);
 
       userService.getCurrentUser$().subscribe({

@@ -35,7 +35,7 @@ export class ConfigService {
       lastValueFrom(this._httpClient.get<AppConfiguration>(JSON_CONFIG_URI).pipe(distinctUntilChanged())).then((appConfiguration : AppConfiguration) : void => {
         ConfigService.appConfiguration = appConfiguration;
 
-        // On Startup, We Will Be Clearing LocalStorage And Setting Certain Data Sets To Default Values For The Time Being... This Will Change In Production
+        // On Startup, We Will Be Clearing LocalStorage And Setting Certain Data Sets To Default Values For The Time Being… This Will Change In Production
         localStorage.clear();
 
         localStorage.setItem(ConfigService.appConfiguration.apiServer.paths.contributors.allContributors, JSON.stringify(DEFAULT_CONTRIBUTORS));

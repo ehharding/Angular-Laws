@@ -27,7 +27,7 @@ export class AuthInterceptor implements HttpInterceptor {
    *
    * {@link https://developer.mozilla.org/en-US/docs/Web/HTTP | MDN Web Docs HTTP Article}
    *
-   * @param httpRequest - An outgoing HTTP request which is being intercepted
+   * @param httpRequest - An outgoing HTTP request, which is being intercepted
    * @param httpHandler - A handler that dispatches the HTTP httpRequest to the next handler in the chain, as determined by order in "app.module.ts"
    * @returns an Observable of the HTTP event stream to be passed on to the next interceptor via httpHandler.handle(httpRequest : HttpRequest<unknown>).
    */
@@ -45,16 +45,16 @@ export class AuthInterceptor implements HttpInterceptor {
     const deleteUser$ = () : Observable<HttpEvent<unknown>> => {
       let allUsers : User[] = JSON.parse(localStorage.getItem(ConfigService.appConfiguration.apiServer.paths.users.allUsers) ?? '[]');
 
-      // Check That The User Is Logged In
+      // Check The User Is Logged In
       if (!this._credentialService.isLoggedIn()) {
-        return constructUnauthorizedResponse$('You Must be Authenticated to Delete a User. Please Login.');
+        return constructUnauthorizedResponse$('You Must be Authenticated to Delete a User. Please Log In.');
       }
 
       // Extract The User ID Associated With The Account To Be Deleted From The Request URL And Use It To Remove The Associated Object From The allUsers List
       const USER_ID_TO_DELETE : number = parseInt(REQUEST_URL.split('/')[REQUEST_URL.split('/').length - 1], 10);
       const USER_TO_DELETE : User | undefined = allUsers.find((user : User) : boolean => user.id === USER_ID_TO_DELETE);
 
-      // Check That The Logged-In User's ID Matches The ID They Want To Delete Or That They Are At Least An Admin To Actually Make The Update
+      // Check The Logged-In User's ID Matches The ID They Want To Delete, Or They Are At Least An Admin To Actually Make The Update
       if ((this._credentialService.getCurrentUser()?.id === USER_ID_TO_DELETE) || this._credentialService.getCurrentUser()?.isAdmin) {
         allUsers = allUsers.filter((user : User) : boolean => user.id === USER_ID_TO_DELETE);
         localStorage.setItem(ConfigService.appConfiguration.apiServer.paths.users.allUsers, JSON.stringify(allUsers));
@@ -97,7 +97,7 @@ export class AuthInterceptor implements HttpInterceptor {
      * @returns An HttpEvent<unknown>-typed Observable stream appropriate for the intercepted request.
      */
     const handleURL$ = () : Observable<HttpEvent<unknown>> => {
-      const DELETE_USER_ID_MATCHER : RegExp = /\/allUsers\/\d+$/; // (e.g. User Wants To Delete Themselves When They Have ID = 5 -> DELETE /allUsers/5)
+      const DELETE_USER_ID_MATCHER : RegExp = /\/allUsers\/\d+$/; // (e.g., User Wants To Delete Themselves When They Have ID = 5 -> DELETE /allUsers/5)
 
       switch (true) {
         // DELETE Requests
@@ -120,7 +120,7 @@ export class AuthInterceptor implements HttpInterceptor {
    * This means that the caught error is rethrown and passed down the Observable chain. As such, this method can perform initial error handling logic and leaves it up to the
    * subscription down the line to further handle the error locally.
    *
-   * @param errorResponse - An HttpErrorResponse object returned from an HttpRequest in the event of HTTP failure, for whatever reason
+   * @param errorResponse - An HttpErrorResponse object returned from an HttpRequest in case of HTTP failure, for whatever reason
    * @returns a never-typed Observable, meaning it never emits any value.
    */
   private readonly _handleError$ = (errorResponse : HttpErrorResponse) : Observable<never> => {

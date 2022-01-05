@@ -1,5 +1,5 @@
 /******************************************************************************************************************************************************************************
- * This service handles the loading of user credentials from storage on application startup and keeps track of the currently authenticated (logged in) user.
+ * This service handles the loading of user credentials from storage on application startup and keeps track of the authenticated (logged-in) user.
  *****************************************************************************************************************************************************************************/
 
 import { Injectable } from '@angular/core';
@@ -18,9 +18,9 @@ export class CredentialService {
   }
 
   /**
-   * A utility function for retrieving the currently logged in (authenticated) user for the application.
+   * A utility function for retrieving the logged-in (authenticated) user for the application.
    *
-   * @returns the currently logged-in user. This could be null if the user is not logged in.
+   * @returns the logged-in user. This could be null if the user is not logged in.
    */
   public getCurrentUser() : User | null {
     return this._currentUser;
@@ -29,7 +29,7 @@ export class CredentialService {
   /**
    * Returns the JSON Web Token (JWT) of the current user, which could be empty.
    *
-   * @returns the JWT token of the current user. This token signifies the authentication status (logged in/not logged in) of the user, so it can be empty.
+   * @returns the JWT token of the current user. This token signifies the authentication status (logged-in/not logged-in) of the user, so it can be empty.
    */
   public getJwtToken() : string {
     return this._jwtToken;

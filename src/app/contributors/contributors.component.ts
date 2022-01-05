@@ -42,7 +42,7 @@ export class ContributorsComponent implements OnInit, OnDestroy {
         this.contributorsFetchErrorInfo = undefined;
 
         for (const CONTRIBUTOR of allContributors) {
-          // We'll Convert The Contributors Name To Kebab-Case To Match The File Name (e.g. 'Evan Harding' -> evan-harding)
+          // We'll Convert The Contributors Name To Kebab-Case To Match The File Name (e.g., 'Evan Harding' -> evan-harding)
           this.contributorNamesKebab.push(`${ CONTRIBUTOR.firstName } ${ CONTRIBUTOR.lastName }`.toLowerCase().replace(' ', '-'));
         }
 

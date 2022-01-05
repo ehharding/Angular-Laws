@@ -37,7 +37,7 @@ import { AppComponent } from 'app/app.component';
  * This function is called to begin the asynchronous retrieval of the base application configuration data from an endpoint.
  *
  * @param configService - An instance of the ConfigService to use to initialize the application
- * @returns a function which returns a Promise (an object representing the eventual completion of an asynchronous operation, and its value).
+ * @returns a function, which returns a Promise (an object representing the eventual completion of an asynchronous operation, and its value).
  */
 function initializeApplication(configService : ConfigService) : (() => Promise<void>) {
   return async() : Promise<void> => {

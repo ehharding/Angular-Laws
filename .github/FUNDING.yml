@@ -4,9 +4,9 @@
 # {@link https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/displaying-a-sponsor-button-in-your-repository}
 ###############################################################################################################################################################################
 
-custom : ['https://www.paypal.me/ehharding'] # Custom Sponsorship URLs (e.g. ['link1', 'link2']) (Specify Up To Four)
+custom : ['https://www.paypal.me/ehharding'] # Custom Sponsorship URLs (e.g., ['link1', 'link2']) (Specify Up To Four)
 
-community_bridge : # Community Bridge project-name (e.g. cloud-foundry)
+community_bridge : # Community Bridge project-name (e.g., cloud-foundry)
 github : []        # GitHub Sponsors-enabled Usernames (Specify Up To Four)
 issuehunt :        # IssueHunt Username
 ko_fi :            # Ko-fi Username
@@ -14,4 +14,4 @@ liberapay :        # Liberapay Username
 open_collective :  # Open Collective Username
 otechie :          # Otechie Username
 patreon :          # Patreon Username
-tidelift :         # Tidelift platform-name/package-name (e.g. npm/babel)
+tidelift :         # Tidelift platform-name/package-name (e.g., npm/babel)

@@ -15,8 +15,8 @@ export class LoginGuard implements CanActivate {
   public constructor(private readonly _router : Router, private readonly _snackBar : MatSnackBar, private readonly _credentialService : CredentialService) { }
 
   /**
-   * This method determines if the /login application route can be activated. If the user is logged in to the application then access to the route is rejected and the user is
-   * returned to the main page. Otherwise, they are obviously allowed to the login page.
+   * This method determines if the /login application route can be activated. If the user is logged in to the application then access to the route is rejected, and the user is
+   * returned to the main page. Otherwise, they are allowed to the login page.
    *
    * @returns true if the user can activate the route this guard is configured for and false otherwise.
    */

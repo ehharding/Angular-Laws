@@ -24,7 +24,7 @@ export class SpinnerInterceptor implements HttpInterceptor {
    *
    * {@link https://developer.mozilla.org/en-US/docs/Web/HTTP | MDN Web Docs HTTP Article}
    *
-   * @param httpRequest - An outgoing HTTP request which is being intercepted
+   * @param httpRequest - An outgoing HTTP request, which is being intercepted
    * @param httpHandler - A handler that dispatches the HTTP httpRequest to the next handler in the chain, as determined by order in "app.module.ts"
    * @returns an Observable of the HTTP event stream to be passed on to the next interceptor via httpHandler.handle(httpRequest : HttpRequest<unknown>).
    */

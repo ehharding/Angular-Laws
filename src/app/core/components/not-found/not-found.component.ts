@@ -24,10 +24,10 @@ export class NotFoundComponent implements OnInit, OnDestroy {
   public ngOnInit() : void {
     this._activatedRoute.data.pipe(distinctUntilChanged(), takeUntil(this._componentDestroyed$)).subscribe({
       next : (data : Data) : void => {
-        // Retrieve Any Guesses As To The Users Intended Route Based On How Far In Length It Differs From Any Existing Top-Level Routes
+        // Retrieve Any Guesses About The Users Intended Route Based On How Far In Length It Differs From Any Existing Top-Level Routes
         const INTENDED_ROUTE_GUESSES : string[] = (data.intendedRouteGuesses as string | undefined)?.split(',') ?? [];
 
-        // If There Are Guesses As To The Intended Route, We Add It To The Class Variable For Display
+        // If There Are Guesses About The Intended Route, We Add It To The Class Variable For Display
         this.intendedRouteGuesses = INTENDED_ROUTE_GUESSES.map((intendedRouteGuess : string) : string => `/${ intendedRouteGuess }`);
       }
     });
