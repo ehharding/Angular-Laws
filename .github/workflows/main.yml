@@ -19,12 +19,12 @@
 
 name : Pocket Fic
 
-# Triggers The Workflow On "push” Events But Only For The "main” Branch
+# Triggers The Workflow On "push" Events But Only For The "main" Branch
 on :
   push :
     branches : [main]
 
-  # Allows The Workflow To Run Manually If Needed From The "Actions” Tab
+  # Allows The Workflow To Run Manually If Needed From The "Actions" Tab
   workflow_dispatch :
 
 jobs :
@@ -100,7 +100,7 @@ jobs :
         with :
           name : Pocket-Fic
 
-      - name : Determine If ”node_modules” Cache Is Usable Based On Changes To ”package.json” And ”package-lock.json”…
+      - name : Determine If "node_modules" Cache Is Usable Based On Changes To "package.json" And "package-lock.json"…
         id : node-modules-cache
         uses : actions/cache@v2
         with :
@@ -111,7 +111,7 @@ jobs :
         # Caches Older Than Five Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Exceeded
         if : steps.node-modules-cache.outputs.cache-hit != "true"
         run : |
-          echo ”Installing Dependencies Defined In ”package-lock.json” Using npm… This May Take A While”
+          echo "Installing Dependencies Defined In "package-lock.json" Using npm… This May Take A While"
           npm install
 
       - name : Run Angular Unit Tests Within Headless Firefox
@@ -119,7 +119,7 @@ jobs :
           npm run ng
           npm run test
 
-      - name : Upload Unit Testing Code Coverage Artifact — ”coverage-report”
+      - name : Upload Unit Testing Code Coverage Artifact — "coverage-report"
         uses : actions/upload-artifact@v2
         with :
           name : coverage-report
@@ -145,7 +145,7 @@ jobs :
         with :
           name : Pocket-Fic
 
-      - name : Determine If ”node_modules” Cache Is Usable Based On Changes To ”package.json” And ”package-lock.json”…
+      - name : Determine If "node_modules" Cache Is Usable Based On Changes To "package.json" And "package-lock.json"…
         id : node-modules-cache
         uses : actions/cache@v2
         with :
@@ -156,7 +156,7 @@ jobs :
         # Caches Older Than Five Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Exceeded
         if : steps.node-modules-cache.outputs.cache-hit != "true"
         run : |
-          echo ”Installing Dependencies Defined In ”package-lock.json” Using npm… This May Take A While”
+          echo "Installing Dependencies Defined In "package-lock.json" Using npm… This May Take A While"
           npm install
 
       - name : Run ESLint
@@ -191,7 +191,7 @@ jobs :
         with :
           name : Pocket-Fic
 
-      - name : Determine If ”node_modules” Cache Is Usable Based On Changes To ”package.json” And ”package-lock.json”…
+      - name : Determine If "node_modules" Cache Is Usable Based On Changes To "package.json" And "package-lock.json"…
         id : node-modules-cache
         uses : actions/cache@v2
         with :
@@ -202,7 +202,7 @@ jobs :
         # Caches Older Than Five Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Exceeded
         if : steps.node-modules-cache.outputs.cache-hit != "true"
         run : |
-          echo ”Installing Dependencies Defined In ”package-lock.json” Using npm… This May Take A While”
+          echo "Installing Dependencies Defined In "package-lock.json" Using npm… This May Take A While"
           npm install
 
       - name : Create Production Build Distributable Directory — "dist-production"
