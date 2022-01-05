@@ -3,14 +3,14 @@
 # running on an Ubuntu Linux host.
 #
 # "node_modules" is cached based on a hash of "package.json" for performance reasons. If the dependencies change, the hash should change as well, meaning a fresh "npm install"
-# should be triggered. For the "main" branch, the pipeline is as follows:
+# should be executed. For the "main" branch, the pipeline is as follows:
 #
 #   * repository-checkout - Checks out the "main" branch for Pocket Fic and uploads the repository as an artifact
-#   * test                - Runs unit tests and uploads "coverage-report" as an artifact
-#   * eslint-report       - Runs ESLint on the project and uploads "eslint-report.html" as an artifact
-#   * build-production    - Runs a production build and uploads "dist-production" as an artifact
-#   * copy-index-to-404   - Copies "index.html" to "404.html" as part of the requirements for most Angular deployments
-#   * deploy              - Deploys the production build distributable to the "gh-pages" branch which will then be used by GitHub Pages for hosting
+#   * test                - Run unit tests and uploads "coverage-report" as an artifact
+#   * eslint-report       - Run ESLint on the project and uploads "eslint-report.html" as an artifact
+#   * build-production    - Run a production build and uploads "dist-production" as an artifact
+#   * copy-index-to-404   - Copy "index.html" to "404.html" as part of the requirements for most Angular deployments
+#   * deploy              - Deploy the production build distributable to the "gh-pages" branch which will then be used by GitHub Pages for hosting
 #
 # {@link https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions | Introduction to GitHub Actions}
 # {@link https://angular.io/guide/deployment#deploy-to-github-pages | Angular Guide To Deploying To GitHub Pages}
@@ -19,51 +19,51 @@
 
 name : Pocket Fic
 
-# Triggers The Workflow On "push" Events But Only For The "main" Branch
+# Triggers The Workflow On "push” Events But Only For The "main” Branch
 on :
   push :
     branches : [main]
 
-  # Allows The Workflow To Be Run Manually From The "Actions" Tab
+  # Allows The Workflow To Run Manually If Needed From The "Actions” Tab
   workflow_dispatch :
 
 jobs :
-  ########## JOB 1 - REPOSITORY-CHECKOUT ##########
+  ########## JOB 1 - REPOSITORY CHECKOUT ##########
   repository-checkout :
     runs-on : ubuntu-latest
 
     steps :
       - name : Configuration
         run : |
-          echo '--------------------------------------------- ENVIRONMENT INFORMATION ---------------------------------------------'
-          echo 'GitHub Event Name:              '${{ github.event_name }}
-          echo 'GitHub API URL:                 '$GITHUB_API_URL
-          echo 'GitHub GraphQL API URL:         '$GITHUB_GRAPHQL_URL
-          echo 'GitHub Server URL:              '$GITHUB_SERVER_URL
-          echo 'Workflow Branch:                '$GITHUB_REF
-          echo 'Workflow URL:                   '$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
-          echo 'Workflow WebHook Event:         '$GITHUB_EVENT_NAME
-          echo 'Workflow WebHook Event Payload: '$GITHUB_EVENT_PATH
-          echo 'Workflow Repository:            '$GITHUB_REPOSITORY
-          echo 'Workflow Initiator:             '$GITHUB_ACTOR
-          echo 'Workflow Run ID:                '$GITHUB_RUN_ID
-          echo 'Workflow Run Number:            '$GITHUB_RUN_NUMBER
-          echo 'Workflow Name:                  '$GITHUB_WORKFLOW
-          echo 'Workspace:                      '$GITHUB_WORKSPACE
-          echo ''
-          echo 'See https://docs.github.com/en/actions/reference/environment-variables'
+          echo "--------------------------------------------- ENVIRONMENT INFORMATION ---------------------------------------------"
+          echo "GitHub Event Name:              "${{ github.event_name }}
+          echo "GitHub API URL:                 "$GITHUB_API_URL
+          echo "GitHub GraphQL API URL:         "$GITHUB_GRAPHQL_URL
+          echo "GitHub Server URL:              "$GITHUB_SERVER_URL
+          echo "Workflow Branch:                "$GITHUB_REF
+          echo "Workflow URL:                   "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+          echo "Workflow WebHook Event:         "$GITHUB_EVENT_NAME
+          echo "Workflow WebHook Event Payload: "$GITHUB_EVENT_PATH
+          echo "Workflow Repository:            "$GITHUB_REPOSITORY
+          echo "Workflow Initiator:             "$GITHUB_ACTOR
+          echo "Workflow Run ID:                "$GITHUB_RUN_ID
+          echo "Workflow Run Number:            "$GITHUB_RUN_NUMBER
+          echo "Workflow Name:                  "$GITHUB_WORKFLOW
+          echo "Workspace:                      "$GITHUB_WORKSPACE
+          echo ""
+          echo "See https://docs.github.com/en/actions/reference/environment-variables"
 
-          echo '------------------------------------------------ RUNNER INFORMATION -----------------------------------------------'
-          echo 'Runner Operating System:    '${{ runner.os }}
-          echo 'Runner Temporary Directory: '${{ runner.temp }}
-          echo 'Runner Tools:               '${{ runner.tool_cache }}
-          echo '-------------------------------------------------------------------------------------------------------------------'
+          echo "------------------------------------------------ RUNNER INFORMATION -----------------------------------------------"
+          echo "Runner Operating System:    "${{ runner.os }}
+          echo "Runner Temporary Directory: "${{ runner.temp }}
+          echo "Runner Tools:               "${{ runner.tool_cache }}
+          echo "-------------------------------------------------------------------------------------------------------------------"
           git config --global init.defaultBranch main
 
-      - name : Checkout Latest Repository Snapshot - Commit SHA ${{ github.sha }}
+      - name : Commit Snapshot — SHA-224 ${{ github.sha }}
         uses : actions/checkout@v2
         with :
-          path : ''
+          path : ""
           repository : ${{ github.repository }}
           token : ${{ github.token }}
           ref : main
@@ -74,14 +74,14 @@ jobs :
           submodules : true
           fetch-depth : 0 # Fetches All History For All Branches And Tags
 
-      - name : Upload Repository Snapshot Artifact - "Pocket-Fic"
+      - name : Upload Repository Snapshot Artifact — "Pocket-Fic"
         uses : actions/upload-artifact@v2
         with :
           name : Pocket-Fic
-          path : '/home/runner/work/Pocket-Fic/Pocket-Fic'
+          path : "/home/runner/work/Pocket-Fic/Pocket-Fic"
           retention-days : 5
 
-  ########## JOB 2 - TEST ##########
+  ########## JOB 2 - RUN UNIT TESTS ##########
   test :
     needs : repository-checkout
     runs-on : ubuntu-latest
@@ -90,45 +90,43 @@ jobs :
         node-version : [16.X]
 
     steps :
-      - name : Setup Node.js ${{ matrix.node-version }}
+      - name : Setup Node.js LTS ${{ matrix.node-version }}
         uses : actions/setup-node@v2
         with :
           node-version : ${{ matrix.node-version }}
 
-      - name : Checkout Latest Repository Snapshot - Commit SHA ${{ github.sha }}
+      - name : Commit Snapshot — SHA-224 ${{ github.sha }}
         uses : actions/download-artifact@v2
         with :
           name : Pocket-Fic
 
-      - name : Determining If "node_modules" Cache Exists And Can Be Used Based On Changes To "package.json" And "package-lock.json"...
+      - name : Determine If ”node_modules” Cache Is Usable Based On Changes To ”package.json” And ”package-lock.json”…
         id : node-modules-cache
         uses : actions/cache@v2
         with :
-          path : '/home/runner/work/Pocket-Fic/Pocket-Fic/node_modules'
-          key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package*.json') }}
+          path : "/home/runner/work/Pocket-Fic/Pocket-Fic/node_modules"
+          key : ${{ matrix.node-version }}-node-modules-${{ hashFiles("**/package*.json") }}
 
       - name : Install npm Dependencies If Required
-        # Caches Older Than Five Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Is Exceeded
-        if : steps.node-modules-cache.outputs.cache-hit != 'true'
+        # Caches Older Than Five Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Exceeded
+        if : steps.node-modules-cache.outputs.cache-hit != "true"
         run : |
-          echo 'Installing Dependencies Defined In "package-lock.json" Using npm... This May Take Awhile'
+          echo ”Installing Dependencies Defined In ”package-lock.json” Using npm… This May Take A While”
           npm install
 
       - name : Run Angular Unit Tests Within Headless Firefox
         run : |
-          echo 'Starting Up The Angular And Jasmine/Karma Frameworks...'
-
           npm run ng
           npm run test
 
-      - name : Upload Unit Testing Code Coverage Artifact - "coverage-report"
+      - name : Upload Unit Testing Code Coverage Artifact — ”coverage-report”
         uses : actions/upload-artifact@v2
         with :
           name : coverage-report
-          path : '/home/runner/work/Pocket-Fic/Pocket-Fic/coverage-report'
+          path : "/home/runner/work/Pocket-Fic/Pocket-Fic/coverage-report"
           retention-days : 5
 
-  ########## JOB 3 - ESLINT-REPORT ##########
+  ########## JOB 3 - ESLINT REPORT ##########
   eslint-report :
     needs : test
     runs-on : ubuntu-latest
@@ -137,44 +135,44 @@ jobs :
         node-version : [16.X]
 
     steps :
-      - name : Setup Node.js ${{ matrix.node-version }}
+      - name : Setup Node.js LTS ${{ matrix.node-version }}
         uses : actions/setup-node@v2
         with :
           node-version : ${{ matrix.node-version }}
 
-      - name : Checkout Latest Repository Snapshot - Commit SHA ${{ github.sha }}
+      - name : Commit Snapshot — SHA-224 ${{ github.sha }}
         uses : actions/download-artifact@v2
         with :
           name : Pocket-Fic
 
-      - name : Determining If "node_modules" Cache Exists And Can Be Used Based On Changes To "package.json" And "package-lock.json"...
+      - name : Determine If ”node_modules” Cache Is Usable Based On Changes To ”package.json” And ”package-lock.json”…
         id : node-modules-cache
         uses : actions/cache@v2
         with :
-          path : '/home/runner/work/Pocket-Fic/Pocket-Fic/node_modules'
-          key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package*.json') }}
+          path : "/home/runner/work/Pocket-Fic/Pocket-Fic/node_modules"
+          key : ${{ matrix.node-version }}-node-modules-${{ hashFiles("**/package*.json") }}
 
       - name : Install npm Dependencies If Required
-        # Caches Older Than Five Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Is Exceeded
-        if : steps.node-modules-cache.outputs.cache-hit != 'true'
+        # Caches Older Than Five Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Exceeded
+        if : steps.node-modules-cache.outputs.cache-hit != "true"
         run : |
-          echo 'Installing Dependencies Defined In "package-lock.json" Using npm... This May Take Awhile'
+          echo ”Installing Dependencies Defined In ”package-lock.json” Using npm… This May Take A While”
           npm install
 
       - name : Run ESLint
         run : |
-          echo 'Running ESLint And Generating HTML Report...'
+          echo "Running ESLint And Generating HTML Report…"
 
           npm run lint:report
 
-      - name : Upload ESLint Linting Artifact - "eslint-report"
+      - name : Upload ESLint Linting Artifact — "eslint-report"
         uses : actions/upload-artifact@v2
         with :
           name : eslint-report
-          path : '/home/runner/work/Pocket-Fic/Pocket-Fic/eslint-report.html'
+          path : "/home/runner/work/Pocket-Fic/Pocket-Fic/eslint-report.html"
           retention-days : 5
 
-  ########## JOB 4 - BUILD-PRODUCTION ##########
+  ########## JOB 4 - BUILD PRODUCTION DISTRIBUTABLE ##########
   build-production :
     needs : eslint-report
     runs-on : ubuntu-latest
@@ -183,79 +181,77 @@ jobs :
         node-version : [16.X]
 
     steps :
-      - name : Setup Node.js ${{ matrix.node-version }}
+      - name : Setup Node.js LTS ${{ matrix.node-version }}
         uses : actions/setup-node@v2
         with :
           node-version : ${{ matrix.node-version }}
 
-      - name : Checkout Latest Repository Snapshot - Commit SHA ${{ github.sha }}
+      - name : Commit Snapshot — SHA-224 ${{ github.sha }}
         uses : actions/download-artifact@v2
         with :
           name : Pocket-Fic
 
-      - name : Determining If "node_modules" Cache Exists And Can Be Used Based On Changes To "package.json" And "package-lock.json"...
+      - name : Determine If ”node_modules” Cache Is Usable Based On Changes To ”package.json” And ”package-lock.json”…
         id : node-modules-cache
         uses : actions/cache@v2
         with :
-          path : '/home/runner/work/Pocket-Fic/Pocket-Fic/node_modules'
-          key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package*.json') }}
+          path : "/home/runner/work/Pocket-Fic/Pocket-Fic/node_modules"
+          key : ${{ matrix.node-version }}-node-modules-${{ hashFiles("**/package*.json") }}
 
       - name : Install npm Dependencies If Required
-        # Caches Older Than Five Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Is Exceeded
-        if : steps.node-modules-cache.outputs.cache-hit != 'true'
+        # Caches Older Than Five Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Exceeded
+        if : steps.node-modules-cache.outputs.cache-hit != "true"
         run : |
-          echo 'Installing Dependencies Defined In "package-lock.json" Using npm... This May Take Awhile'
+          echo ”Installing Dependencies Defined In ”package-lock.json” Using npm… This May Take A While”
           npm install
 
-      - name : Create Production Build Distributable Directory - "dist-production"
+      - name : Create Production Build Distributable Directory — "dist-production"
         run : |
-          echo 'Starting Up The Angular Framework...'
-
           npm run ng
           npm run build:production
 
-      - name : Upload Production Build Distributable Directory Artifact - "dist-production"
+      - name : Upload Production Build Distributable Directory Artifact — "dist-production"
         uses : actions/upload-artifact@v2
         with :
           name : dist-production
-          path : '/home/runner/work/Pocket-Fic/Pocket-Fic/dist-production'
+          path : "/home/runner/work/Pocket-Fic/Pocket-Fic/dist-production"
           retention-days : 5
 
-  ########## JOB 5 - COPY-INDEX-TO-404 ##########
+  ########## JOB 5 - COPY index.html TO 404.html ##########
   copy-index-to-404 :
     needs : build-production
     runs-on : ubuntu-latest
 
     steps :
-      - name : Download Production Build Distributable Directory - "dist-production"
+      - name : Download Production Build Distributable Directory — "dist-production"
         uses : actions/download-artifact@v2
         with :
           name : dist-production
-          path : 'dist-production'
+          path : "dist-production"
 
       - name : Copy "index.html" To "404.html" For GitHub Pages
         run : |
-          echo 'Copying Contents Of "dist-production/index.html" To "dist-production/404.html"...'
+          echo "Copying Contents Of dist-production/index.html To dist-production/404.html…"
           cp -v dist-production/index.html dist-production/404.html
 
-      - name : Upload Modified Production Build Distributable Artifact - "dist-production"
+      - name : Upload Modified Production Build Distributable Artifact — "dist-production"
         uses : actions/upload-artifact@v2
         with :
           name : dist-production
-          path : 'dist-production'
+          path : "dist-production"
           retention-days : 5
 
-  ########## JOB 6 - DEPLOY ##########
+  ########## JOB 6 - DEPLOY TO GITHUB PAGES ##########
   deploy :
     needs : copy-index-to-404
     runs-on : ubuntu-latest
 
     steps :
-      - name : Download Production Build Distributable Directory - "dist-production"
+      - name : Download Production Build Distributable Directory — "dist-production"
         uses : actions/download-artifact@v2
         with :
           name : dist-production
-          path : 'dist-production'
+          path : "dist-production"
 
       - name : Deploy Production Build Distributable Contents To "gh-pages" Branch
         uses : peaceiris/actions-gh-pages@v3

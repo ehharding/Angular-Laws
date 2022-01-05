@@ -35,13 +35,13 @@
 </div>
 
 ## Executive Summary
-A modern fan fiction website for the modern web... at least that's my goal! I don't see any super nice-looking or user-friendly fan fiction websites out there, and I honestly
-want one. So, I'm building one! starting with the frontend design and hopefully later on with the backend. I'm doing this to gain some architecture and general full-stack
+A modern fan fiction website for the modern web… at least that's my goal! I don't see any super nice-looking or user-friendly fan fiction websites out there, and I honestly
+want one. So, I'm building one! starting with the frontend design and hopefully later with the backend. I'm doing this to gain some architecture and general full-stack
 experience along with knowledge in various modern toolkits and programming paradigms (outside my main job, of course, so time spent developing is limited).
 
 ## Developer Environment Recommended Setup
 To build from source and to contribute to the project, you will need to do a couple of things to get going. It is my goal that every developer have the same development
-environment configuration. So, this section will go over both the tools required to work on the project and also the recommended general setup.
+environment configuration. So, this section will go over both the tools required to work on the project and the recommended general setup.
 
 ### IDE And Project Setup
 First, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/) (which comes with [npm](https://npmjs.com)) installed on your computer. You must download
@@ -101,7 +101,7 @@ npm run test
 ```
 
 ### Linting The Project
-To assist with code maintainability and quality, this project utilizes [ESLint](https://eslint.org) along with the
+To help with code maintainability and quality, this project utilizes [ESLint](https://eslint.org) along with the
 [@typescript-eslint](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin) and [eslint-plugin-tsdoc](https://www.npmjs.com/package/eslint-plugin-tsdoc) plugins. To
 run the linter on the project, you can use the `lint` and `lint:report` npm scripts or run the following npm commands:
 
@@ -115,7 +115,7 @@ npm run lint:report
 
 ## Getting Your Changes Integrated Into The Project
 For now, all contributors are simply pushing their changes to the [main](https://github.com/ehharding/Pocket-Fic/tree/main) GitHub branch. Of course, in the future, this could
-conceivably be more of a pull-commits-into-main sort of situation.
+conceivably be more of a pull-commits-into-main situation.
 
 To be allowed to push to the `main` branch, you must first have the "Direct Access" permission in the Pocket Fic repository. After this is given, you will then need to
 configure your local Git client to use a GPG key to communicate securely with the GitHub server. The first step in this process (after being given access) is to generate a
@@ -144,12 +144,12 @@ If successful, something like the following will be shown:
 ```markdown
 /Users/hubot/.gnupg/secring.gpg
 ------------------------------------
-sec   4096R/3AA5C34371567BD2 2016-03-10 [expires: 2017-03-10]
-uid                          Hubot
-ssb   4096R/42B317FD4BA89E7A 2016-03-10
+sec 4096R/3AA5C34371567BD2 2016-03-10 [expires: 2017-03-10]
+uid Hubot
+ssb 4096R/42B317FD4BA89E7A 2016-03-10
 ```
 
-Take the GPG key ID (the "3AA5C34371567BD2" part shown in the above example) and feed it to the following command to see your public key block which will be associated with
+Take the GPG key ID (the "3AA5C34371567BD2" part shown in the above example) and feed it to the following command to see your public key block, which will be associated with
 your GitHub user account:
 
 ```bash
@@ -173,18 +173,18 @@ This software uses the following open source packages:
 
 - [Angular](https://angular.io) - Google's modern web development framework
 - [Angular Material](https://material.angular.io) - Google's Material Design components for Angular
-- [Bootstrap](https://getbootstrap.com) - A popular front-end open source CSS toolkit
-- [RxJS](https://rxjs-dev.firebaseapp.com/) - A library for composing asynchronous and event-based programs using observable sequences
-- [TypeScript](https://www.typescriptlang.org/) - Microsoft's open source programming language that extends JavaScript
-- [ESLint](https://eslint.org) - A modern code linter for JavaScript/TypeScript
-- [ESLint Plugin TypeScript](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin) - An ESLint TypeScript plugin that extends ESLint's tools for TypeScript-targeted
+- [Bootstrap](https://getbootstrap.com) — A popular front-end open source CSS toolkit
+- [RxJS](https://rxjs-dev.firebaseapp.com/) — A library for composing asynchronous and event-based programs using observable sequences
+- [TypeScript](https://www.typescriptlang.org/) — Microsoft's open source programming language that extends JavaScript
+- [ESLint](https://eslint.org) — A modern code linter for JavaScript/TypeScript
+- [ESLint Plugin TypeScript](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin) — An ESLint TypeScript plugin that extends ESLint's tools for TypeScript-targeted
                                                                                                code style enforcement
-- [ESLint Plugin TSDoc](https://www.npmjs.com/package/eslint-plugin-tsdoc) - An ESLint TSDoc plugin that extends ESLint's tools for TypeScript-targeted documentation style
+- [ESLint Plugin TSDoc](https://www.npmjs.com/package/eslint-plugin-tsdoc) — An ESLint TSDoc plugin that extends ESLint's tools for TypeScript-targeted documentation style
                                                                              enforcement
 - [Jasmine](https://jasmine.github.io/) - A behavior-driven JavaScript unit testing framework 
 - [Karma](https://karma-runner.github.io/latest/index.html) - A JavaScript unit test runner
-- [Node.js](https://nodejs.org/en/) - A JavaScript runtime built on Chrome's V8 JavaScript engine
-- [npm](https://www.npmjs.com/) - The Node Package Manager (npm)
+- [Node.js](https://nodejs.org/en/) — A JavaScript runtime built on Chrome's V8 JavaScript engine
+- [npm](https://www.npmjs.com/) — The Node Package Manager (npm)
 
 ## License
 [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)

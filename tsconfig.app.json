@@ -16,7 +16,6 @@
     "composite" : false,
     "declaration" : true,
     "declarationMap" : true,
-    "inlineSourceMap" : true,
     "sourceMap" : true,
     "disableSizeLimit" : false,
     "downlevelIteration" : true,
