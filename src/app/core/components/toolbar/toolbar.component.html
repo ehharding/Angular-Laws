@@ -21,7 +21,7 @@
       <div>
         <ng-container *ngTemplateOutlet="homeButtonTemplate"></ng-container>
 
-        <a routerLink="/{{ AppRoute.Contributors }}">
+        <a [routerLink]="AppRoute.Contributors">
           <button mat-button>Contributors</button>
         </a>
       </div>
@@ -68,7 +68,7 @@
           </ng-template>
         </mat-menu>
 
-        <a *ngIf="!currentUser?.jwtToken" routerLink="/{{ AppRoute.Login }}">
+        <a *ngIf="!currentUser?.jwtToken" [routerLink]="AppRoute.Login">
           <button mat-button>Log In</button>
         </a>
 
