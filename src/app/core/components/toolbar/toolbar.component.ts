@@ -1,19 +1,14 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
-import { ReplaySubject, takeUntil } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 
 import { AppRoute } from 'app/app-routing.module';
 
 import { ALL_THEMES, Theme, ThemeBundle } from '@core/services/theme/theme.model';
-import { DEFAULT_MAT_DIALOG_CONFIG } from '@core/services/config/config.model';
 import { User } from '@core/services/user/user.model';
 
 import { ConfigService } from '@core/services/config/config.service';
-import { ThemeService } from '@core/services/theme/theme.service';
-import { UserService } from '@core/services/user/user.service';
-
-import { AboutDialogComponent } from '@core/components/toolbar/about-dialog/about-dialog.component';
 
 @Component({
   changeDetection : ChangeDetectionStrategy.OnPush,
@@ -22,22 +17,21 @@ import { AboutDialogComponent } from '@core/components/toolbar/about-dialog/abou
   templateUrl : 'toolbar.component.html'
 })
 export class ToolbarComponent implements OnInit, OnDestroy {
-  public activeTheme : ThemeBundle = ThemeBundle.DeepPurpleAmber;
-  public currentUser : User | null = null;
+  @Input() public activeTheme : ThemeBundle = ThemeBundle.DeepPurpleAmber;
+  @Input() public currentUser : User | null = null;
+
+  @Output() public openAboutDialog : EventEmitter<void> = new EventEmitter<void>();
+  @Output() public openSidenav : EventEmitter<void> = new EventEmitter<void>();
+  @Output() public themeChange : EventEmitter<ThemeBundle> = new EventEmitter<ThemeBundle>();
+
   public mobileView : boolean = false;
-  public showSidenav : boolean = false;
 
   public readonly allThemes : Theme[] = ALL_THEMES;
   public readonly AppRoute = AppRoute;
 
   private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
-  public constructor(
-    private readonly _changeDetectorRef : ChangeDetectorRef,
-    private readonly _dialog : MatDialog,
-    private readonly _themeService : ThemeService,
-    private readonly _userService : UserService
-  ) { }
+  public constructor(private readonly _changeDetectorRef : ChangeDetectorRef, private readonly _dialog : MatDialog) { }
 
   /**
    * Executes certain actions whenever the window changes size. In this case, we set a flag that indicates if we should show a mobile-centric view or not.
@@ -56,20 +50,6 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
   public ngOnInit() : void {
     this._onResize(window, true);
-
-    this._themeService.getActiveThemeBundleName$().pipe(takeUntil(this._componentDestroyed$)).subscribe({
-      next : (activeTheme : ThemeBundle) : void => {
-        this.activeTheme = activeTheme;
-        this._changeDetectorRef.detectChanges();
-      }
-    });
-
-    this._userService.getCurrentUser$().pipe(takeUntil(this._componentDestroyed$)).subscribe({
-      next : (currentUser : User | null) : void => {
-        this.currentUser = currentUser;
-        this._changeDetectorRef.detectChanges();
-      }
-    });
   }
 
   public ngOnDestroy() : void {
@@ -78,26 +58,25 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Opens the "About" dialog (sometimes called a modal) that contains information about the application.
+   * Lets the parent component know that the "About" dialog (modal) should open.
    */
-  public openAboutDialog() : void {
-    const DIALOG_REF : MatDialogRef<AboutDialogComponent> = this._dialog.open(AboutDialogComponent, DEFAULT_MAT_DIALOG_CONFIG);
-
-    DIALOG_REF.backdropClick().subscribe(() : void => {
-      DIALOG_REF.addPanelClass('pf-shake');
-
-      window.setTimeout(() : MatDialogRef<AboutDialogComponent> => {
-        return DIALOG_REF.removePanelClass('pf-shake');
-      }, ConfigService.appConfiguration.constants.genericAnimationDurationMS);
-    });
+  public onOpenAboutDialog() : void {
+    this.openAboutDialog.emit();
   }
 
   /**
-   * Sets the application theme using the ThemeService.
+   * Lets the parent component know that the navigation sidenav should open.
+   */
+  public onOpenSidenav() : void {
+    this.openSidenav.emit();
+  }
+
+  /**
+   * Lets the parent component know that the active theme should change.
    *
    * @param themeBundleName - The themeBundleName of the theme to set from one of the available defined in the "ThemeBundle" enumeration
    */
-  public setApplicationTheme(themeBundleName : ThemeBundle) : void {
-    this._themeService.loadClientTheme(themeBundleName);
+  public onSetApplicationTheme(themeBundleName : ThemeBundle) : void {
+    this.themeChange.emit(themeBundleName);
   }
 }

@@ -457,7 +457,7 @@ export const DEFAULT_APP_CONFIGURATION : AppConfiguration = {
     progressSpinnerStrokeWidthPX : 10,
     simulatedServerLatencyMS : 1000,
     tooltipHideDelayMS : 0,
-    tooltipShowDelayMS : 500,
+    tooltipShowDelayMS : 0,
     touchendHideDelayMS : 1500
   },
   flags : {

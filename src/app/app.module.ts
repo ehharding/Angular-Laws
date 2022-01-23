@@ -15,6 +15,10 @@ import { MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS, MatProgressSpinnerDefaultOptions 
 import { MAT_TABS_CONFIG, MatTabsConfig } from '@angular/material/tabs';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions } from '@angular/material/tooltip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { ENVIRONMENT } from '@environment/environment.development';
@@ -78,6 +82,10 @@ const WINDOW_INJECTION_TOKEN : InjectionToken<Window> = new InjectionToken<Windo
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatButtonModule,
+    MatIconModule,
+    MatListModule,
+    MatSidenavModule,
     // Register The ServiceWorker As Soon As The Application Is Stable Or After 30 Seconds (Whichever Comes First)
     ServiceWorkerModule.register('ngsw-worker.js', { enabled : ENVIRONMENT.name === 'production', registrationStrategy : 'registerWhenStable:30000' }),
     AppRoutingModule,

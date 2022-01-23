@@ -1,10 +1,14 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { APP_BASE_HREF } from '@angular/common';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatDialogModule } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
 
 import { APP_ROUTES } from 'app/app-routing.module';
 
 import { SpinnerService } from '@core/services/spinner/spinner.service';
+import { ThemeService } from '@core/services/theme/theme.service';
+import { UserService } from '@core/services/user/user.service';
 
 import { AppComponent } from 'app/app.component';
 
@@ -18,8 +22,8 @@ describe('component AppComponent', () : void => {
   beforeEach(waitForAsync(() : void => {
     TestBed.configureTestingModule({
       declarations : [AppComponent],
-      imports : [RouterModule.forRoot(APP_ROUTES)],
-      providers : [SpinnerService, { provide : APP_BASE_HREF, useValue : '/' }]
+      imports : [HttpClientTestingModule, MatDialogModule, RouterModule.forRoot(APP_ROUTES)],
+      providers : [SpinnerService, ThemeService, UserService, { provide : APP_BASE_HREF, useValue : '/' }]
     }).compileComponents(); // Compile Template And CSS
 
     appComponentFixture = TestBed.createComponent(AppComponent);
