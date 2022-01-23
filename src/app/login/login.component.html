@@ -1,6 +1,6 @@
 <main>
   <div class="justify-content-center d-flex flex-row w-100">
-    <div class="pf-create-account-login-card-container pf-t-30 pf-w-40">
+    <div class="pf-create-account-login-card-container pf-t-30" [ngClass]="{ 'pf-w-40' : !mobileView, 'w-100' : mobileView }">
       <div class="pf-flippable-div" [ngClass]="{ 'flipped' : !loginCardShowing }">
         <mat-card>
           <h1 class="fs-4 text-center"><strong>Log In</strong></h1>
