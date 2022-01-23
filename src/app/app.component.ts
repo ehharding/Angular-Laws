@@ -4,8 +4,6 @@
  * {@link https://angular.io/guide/architecture#components | Angular Component Guide}
  *****************************************************************************************************************************************************************************/
 
-/* eslint-disable @typescript-eslint/no-floating-promises */
-
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatDrawer } from '@angular/material/sidenav';
@@ -84,8 +82,6 @@ export class AppComponent implements OnInit, OnDestroy {
    * Opens the "About" dialog (modal) that contains information about the application.
    */
   public openAboutDialog() : void {
-    this.drawer?.close();
-
     const DIALOG_REF : MatDialogRef<AboutDialogComponent> = this._dialog.open(AboutDialogComponent, DEFAULT_MAT_DIALOG_CONFIG);
 
     DIALOG_REF.backdropClick().subscribe(() : void => {
@@ -95,13 +91,6 @@ export class AppComponent implements OnInit, OnDestroy {
         return DIALOG_REF.removePanelClass('pf-shake');
       }, ConfigService.appConfiguration.constants.genericAnimationDurationMS);
     });
-  }
-
-  /**
-   * Opens the navigation sidenav that contains the toolbar's information condensed into a mobile-friendly list.
-   */
-  public openSidenav() : void {
-    this.drawer?.open();
   }
 
   /**

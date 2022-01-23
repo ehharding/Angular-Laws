@@ -5,7 +5,7 @@
       <!-- Left Group Of Mobile Toolbar Items -->
       <div>
         <!-- Shows The Sidenav -->
-        <button mat-icon-button (click)="onOpenSidenav()">
+        <button mat-icon-button (click)="openSidenav.emit()">
           <mat-icon>menu</mat-icon>
         </button>
       </div>
@@ -33,7 +33,7 @@
         </button>
         <mat-menu #themeMenu="matMenu" xPosition="before">
           <ng-template matMenuContent>
-            <button mat-menu-item *ngFor="let theme of allThemes" [disabled]="theme.bundleName === activeTheme" (click)="onSetApplicationTheme(theme.bundleName)">
+            <button mat-menu-item *ngFor="let theme of allThemes" [disabled]="theme.bundleName === activeTheme" (click)="setApplicationTheme.emit(theme.bundleName)">
               <!-- Display A Checkmark Next To The Active Theme -->
               <mat-icon *ngIf="theme.bundleName === activeTheme" class="me-2">check</mat-icon>
               <!-- Display An Empty Icon Which Acts Like A Spacer Next To All Of The Other Themes -->
@@ -51,6 +51,7 @@
                   <use xlink:href="#c" [attr.fill]="theme.headerColor"></use>
                 </svg>
               </mat-icon>
+
               <span>{{ theme.labelName }}</span>
             </button>
           </ng-template>
@@ -61,7 +62,7 @@
         </button>
         <mat-menu #helpMenu="matMenu" xPosition="before">
           <ng-template matMenuContent>
-            <button mat-menu-item (click)="onOpenAboutDialog()">
+            <button mat-menu-item (click)="openAboutDialog.emit()">
               <mat-icon class="me-2">info</mat-icon>
               <span>About&hellip;</span>
             </button>

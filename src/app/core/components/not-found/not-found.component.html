@@ -1,6 +1,6 @@
 <main>
   <div class="m-3">
-    <div class="mx-auto text-center row pf-w-70">
+    <div class="mx-auto row text-center" [ngClass]="{ 'pf-w-70' : !mobileView, 'w-100' : mobileView }">
       <div class="col w-50">
         <div class="container">
           <!-- The Following SVG Image Is Taken From "chris i" At https://codepen.io/christinei/pen/VxpxKm -->
@@ -21,32 +21,32 @@
             <button mat-raised-button color="primary">GO HOME</button>
           </a>
         </div>
-
-        <div *ngIf="intendedRouteGuesses.length > 0" class="mt-5">
-          <mat-hint>Do you want any of these application routes instead? They are similar and are sorted in order of likely relevance to you.</mat-hint>
-          <mat-card *ngFor="let intendedRouteGuess of intendedRouteGuesses" class="d-flex justify-content-between my-2">
-            <!-- Left Group Of Card Items -->
-            <div>
-              <strong>{{ intendedRouteGuess === '/' ? 'Home Page' : intendedRouteGuess }}</strong>
-            </div>
-
-            <!-- Right Group Of Card Items -->
-            <div>
-              <button mat-stroked-button (click)="copyRouteToClipboard(intendedRouteGuess)">
-                <mat-icon class="me-2">content_copy</mat-icon>
-                <span>COPY TO CLIPBOARD</span>
-              </button>
-
-              <a [routerLink]="intendedRouteGuess">
-                <button mat-stroked-button>
-                  <mat-icon class="me-2">arrow_circle_right</mat-icon>
-                  <span>GO</span>
-                </button>
-              </a>
-            </div>
-          </mat-card>
-        </div>
       </div>
+    </div>
+
+    <div *ngIf="intendedRouteGuesses.length > 0" class="mt-3">
+      <mat-hint>Do you want any of these application routes instead? They are similar and are sorted in order of likely relevance to you.</mat-hint>
+      <mat-card *ngFor="let intendedRouteGuess of intendedRouteGuesses" class="d-flex justify-content-between my-2">
+        <!-- Left Group Of Card Items -->
+        <div>
+          <strong>{{ intendedRouteGuess === '/' ? 'Home Page' : intendedRouteGuess }}</strong>
+        </div>
+
+        <!-- Right Group Of Card Items -->
+        <div>
+          <button mat-stroked-button (click)="copyRouteToClipboard(intendedRouteGuess)">
+            <mat-icon class="me-2">content_copy</mat-icon>
+            <span>COPY</span>
+          </button>
+
+          <a [routerLink]="intendedRouteGuess">
+            <button mat-stroked-button>
+              <mat-icon class="me-2">arrow_circle_right</mat-icon>
+              <span>GO</span>
+            </button>
+          </a>
+        </div>
+      </mat-card>
     </div>
   </div>
 </main>

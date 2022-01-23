@@ -22,7 +22,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
   @Output() public openAboutDialog : EventEmitter<void> = new EventEmitter<void>();
   @Output() public openSidenav : EventEmitter<void> = new EventEmitter<void>();
-  @Output() public themeChange : EventEmitter<ThemeBundle> = new EventEmitter<ThemeBundle>();
+  @Output() public setApplicationTheme : EventEmitter<ThemeBundle> = new EventEmitter<ThemeBundle>();
 
   public mobileView : boolean = false;
 
@@ -55,28 +55,5 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   public ngOnDestroy() : void {
     this._componentDestroyed$.next(true);
     this._componentDestroyed$.complete();
-  }
-
-  /**
-   * Lets the parent component know that the "About" dialog (modal) should open.
-   */
-  public onOpenAboutDialog() : void {
-    this.openAboutDialog.emit();
-  }
-
-  /**
-   * Lets the parent component know that the navigation sidenav should open.
-   */
-  public onOpenSidenav() : void {
-    this.openSidenav.emit();
-  }
-
-  /**
-   * Lets the parent component know that the active theme should change.
-   *
-   * @param themeBundleName - The themeBundleName of the theme to set from one of the available defined in the "ThemeBundle" enumeration
-   */
-  public onSetApplicationTheme(themeBundleName : ThemeBundle) : void {
-    this.themeChange.emit(themeBundleName);
   }
 }

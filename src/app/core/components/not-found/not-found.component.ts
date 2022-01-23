@@ -1,10 +1,12 @@
 import { ActivatedRoute, Data } from '@angular/router';
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Clipboard } from '@angular/cdk/clipboard';
 
 import { ReplaySubject, distinctUntilChanged, takeUntil } from 'rxjs';
 
 import { AppRoute } from 'app/app-routing.module';
+
+import { ConfigService } from '@core/services/config/config.service';
 
 @Component({
   changeDetection : ChangeDetectionStrategy.OnPush,
@@ -14,6 +16,7 @@ import { AppRoute } from 'app/app-routing.module';
 })
 export class NotFoundComponent implements OnInit, OnDestroy {
   public intendedRouteGuesses : string[] = [];
+  public mobileView : boolean = false;
 
   public readonly AppRoute = AppRoute;
 
@@ -21,7 +24,24 @@ export class NotFoundComponent implements OnInit, OnDestroy {
 
   public constructor(private readonly _activatedRoute : ActivatedRoute, private readonly _clipboard : Clipboard) { }
 
+  /**
+   * Executes certain actions whenever the window changes size. In this case, we set a flag that indicates if we should show a mobile-centric view or not.
+   *
+   * @param $windowResizeEvent - the resize event that triggered the function call (unless we are called when initializing)
+   * @param initialize - a flag that indicates we are in startup and should set the mobile view flag after the view is initialized
+   */
+  @HostListener('window:resize', ['$event.target'])
+  private _onResize($windowResizeEvent : typeof window, initialize : boolean = false) : void {
+    if (initialize) {
+      this.mobileView = window.innerWidth < ConfigService.appConfiguration.constants.mobileViewThresholdWidthPX;
+    } else {
+      this.mobileView = $windowResizeEvent.innerWidth < ConfigService.appConfiguration.constants.mobileViewThresholdWidthPX;
+    }
+  }
+
   public ngOnInit() : void {
+    this._onResize(window, true);
+
     this._activatedRoute.data.pipe(distinctUntilChanged(), takeUntil(this._componentDestroyed$)).subscribe({
       next : (data : Data) : void => {
         // Retrieve Any Guesses About The Users Intended Route Based On How Far In Length It Differs From Any Existing Top-Level Routes

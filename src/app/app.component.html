@@ -27,7 +27,7 @@
           </a>
 
           <a *ngIf="currentUser?.jwtToken" mat-list-item (click)="drawer.close()">
-            {{ currentUser.userName }}
+            <span>{{ currentUser.userName }}</span>
           </a>
 
           <div mat-subheader>THEME</div>
@@ -50,13 +50,14 @@
                 <use xlink:href="#c" [attr.fill]="theme.headerColor"></use>
               </svg>
             </mat-icon>
+
             <span>{{ theme.labelName }}</span>
           </a>
 
           <!-- List Of Help-Related Items -->
           <div mat-subheader>HELP ME</div>
 
-          <a mat-list-item (click)="openAboutDialog()">
+          <a mat-list-item (click)="drawer.close(); openAboutDialog()">
             <span>About&hellip;</span>
           </a>
 
@@ -77,7 +78,7 @@
       <!-- The Drawer Content Represents The Contents Of The Drawer When The Sidenav Is Not Shown (i.e. The Main Page) -->
       <mat-drawer-content class="pf-app-content">
         <pf-toolbar class="mat-elevation-z5 pf-toolbar" [activeTheme]="activeTheme" [currentUser]="currentUser"
-                    (openAboutDialog)="openAboutDialog()" (openSidenav)="openSidenav()" (themeChange)="setApplicationTheme($event)">
+                    (openAboutDialog)="drawer.close(); openAboutDialog()" (openSidenav)="drawer.open()" (setApplicationTheme)="setApplicationTheme($event)">
         </pf-toolbar>
 
         <router-outlet></router-outlet>
