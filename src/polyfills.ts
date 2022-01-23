@@ -3,8 +3,7 @@
  *
  * This file is divided into 2 sections:
  *   1. Browser polyfills. These are applied before loading ZoneJS and are sorted by browsers.
- *   2. Application imports. Files imported after ZoneJS that should be loaded before your main
- *      file.
+ *   2. Application imports. Files imported after ZoneJS that should be loaded before your main file.
  *
  * The current setup is for so-called "evergreen" browsers; the last versions of browsers that automatically update themselves. This includes recent versions of Safari,
  * Chrome (including Opera), Edge on the desktop, and iOS and Chrome on mobile.
@@ -46,6 +45,6 @@ import 'zone.js'; // Included with Angular CLI.
  */
 
 /*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that can be found in the LICENSE file at https://angular.io/license
-*/
+ * Copyright Google LLC. All Rights Reserved.
+ * Use of this source code is governed by an MIT-style license that can be found in the LICENSE file at https://angular.io/license
+ */
