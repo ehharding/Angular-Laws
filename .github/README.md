@@ -45,7 +45,7 @@ environment configuration. So, this section will go over both the tools required
 
 ### IDE And Project Setup
 First, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/) (which comes with [npm](https://npmjs.com)) installed on your computer. You must download
-an Active LTS or Maintenance LTS release of Node.js. You can find out which versions these are by visiting the Node.js[release site](https://nodejs.org/en/about/releases/).
+an Active LTS or Maintenance LTS release of Node.js. You can find out which versions these are by visiting the Node.js [release site](https://nodejs.org/en/about/releases/).
 After you have installed Node.js, enter the following from your command line of choice:
 
 ```bash
@@ -62,7 +62,7 @@ git clone https://github.com/ehharding/Pocket-Fic.git
 Then, you should download JetBrains' [Webstorm IDE](https://www.jetbrains.com/webstorm/) for your platform (Windows, macOS, or Linux). WebStorm includes a free 30-day trial,
 but you will most likely want to purchase a license to use all of its features.
 
-You may need to go through a setup routine for the [Material Theme UI](https://plugins.jetbrains.com/plugin/8006-material-theme-ui) plugin. Personally, I use the Night Owl
+You will need to go through a setup routine for the [Material Theme UI](https://plugins.jetbrains.com/plugin/8006-material-theme-ui) plugin. Personally, I use the Night Owl
 theme.
 
 Finally, while Chrome, Edge, Firefox, Opera, and Safari are supported as browsers, I would highly recommend [Firefox](https://www.mozilla.org/en-US/new/) as your core 
@@ -171,8 +171,8 @@ commit as a verified commit.
 ## Credits
 This software uses the following open source packages:
 
-- [Angular](https://angular.io) - Google's modern web development framework
-- [Angular Material](https://material.angular.io) - Google's Material Design components for Angular
+- [Angular](https://angular.io) — Google's modern web development framework
+- [Angular Material](https://material.angular.io) — Google's Material Design components for Angular
 - [Bootstrap](https://getbootstrap.com) — A popular front-end open source CSS toolkit
 - [RxJS](https://rxjs-dev.firebaseapp.com/) — A library for composing asynchronous and event-based programs using observable sequences
 - [TypeScript](https://www.typescriptlang.org/) — Microsoft's open source programming language that extends JavaScript
@@ -181,8 +181,8 @@ This software uses the following open source packages:
                                                                                                code style enforcement
 - [ESLint Plugin TSDoc](https://www.npmjs.com/package/eslint-plugin-tsdoc) — An ESLint TSDoc plugin that extends ESLint's tools for TypeScript-targeted documentation style
                                                                              enforcement
-- [Jasmine](https://jasmine.github.io/) - A behavior-driven JavaScript unit testing framework 
-- [Karma](https://karma-runner.github.io/latest/index.html) - A JavaScript unit test runner
+- [Jasmine](https://jasmine.github.io/) — A behavior-driven JavaScript unit testing framework 
+- [Karma](https://karma-runner.github.io/latest/index.html) — A JavaScript unit test runner
 - [Node.js](https://nodejs.org/en/) — A JavaScript runtime built on Chrome's V8 JavaScript engine
 - [npm](https://www.npmjs.com/) — The Node Package Manager (npm)
 
