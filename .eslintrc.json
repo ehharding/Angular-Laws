@@ -318,7 +318,7 @@
     }],
     "sort-keys" : "off",
     "sort-vars" : ["warn", { "ignoreCase" : false }],
-    "space-before-blocks" : "warn",
+    "space-before-blocks" : "off",
     "space-before-function-paren" : "off",
     "space-in-parens" : ["warn", "never"],
     "space-infix-ops" : "off",
