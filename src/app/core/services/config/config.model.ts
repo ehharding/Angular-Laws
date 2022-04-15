@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-magic-numbers */
+/* eslint-disable @typescript-eslint/naming-convention, @typescript-eslint/no-magic-numbers */
 
 import { MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBarConfig } from '@angular/material/snack-bar';

@@ -85,10 +85,10 @@ export class AppComponent implements OnInit, OnDestroy {
     const DIALOG_REF : MatDialogRef<AboutDialogComponent> = this._dialog.open(AboutDialogComponent, DEFAULT_MAT_DIALOG_CONFIG);
 
     DIALOG_REF.backdropClick().subscribe(() : void => {
-      DIALOG_REF.addPanelClass('pf-shake');
+      DIALOG_REF.addPanelClass('pf-bounce-out');
 
       window.setTimeout(() : MatDialogRef<AboutDialogComponent> => {
-        return DIALOG_REF.removePanelClass('pf-shake');
+        return DIALOG_REF.removePanelClass('pf-bounce-out');
       }, ConfigService.appConfiguration.constants.genericAnimationDurationMS);
     });
   }

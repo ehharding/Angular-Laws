@@ -33,9 +33,9 @@
     "allowReserved" : false,
     "ecmaVersion" : 2021,
     "project" : "tsconfig.eslint.json",
-    "ignorePatterns" : [".eslintrc.json"],
     "sourceType" : "module"
   },
+  "ignorePatterns" : ["dist", "dist-production", "node_modules"],
   "plugins" : ["@typescript-eslint", "eslint-plugin-tsdoc"],
   "rules" : {
     "accessor-pairs" : ["warn", { "enforceForClassMembers" : true, "getWithoutSet" : true, "setWithoutGet" : true }],
@@ -148,7 +148,7 @@
     "no-class-assign" : "error",
     "no-compare-neg-zero" : "warn",
     "no-cond-assign" : ["warn", "except-parens"],
-    "no-confusing-arrow" : ["warn", { "allowParens" : true }],
+    "no-confusing-arrow" : ["warn", { "allowParens" : true, "onlyOneSimpleParam": true }],
     "no-console" : ["warn", { "allow" : ["error"] }],
     "no-const-assign" : "error",
     "no-constant-condition" : ["warn", { "checkLoops" : true }],
@@ -318,7 +318,7 @@
     }],
     "sort-keys" : "off",
     "sort-vars" : ["warn", { "ignoreCase" : false }],
-    "space-before-blocks" : ["warn", { "classes" : "always", "functions" : "always", "keywords" : "always" }],
+    "space-before-blocks" : "warn",
     "space-before-function-paren" : "off",
     "space-in-parens" : ["warn", "never"],
     "space-infix-ops" : "off",
@@ -535,15 +535,25 @@
     }],
     "@typescript-eslint/no-meaningless-void-operator" : ["warn", { "checkNever" : true }],
     "@typescript-eslint/no-misused-new" : "error",
-    "@typescript-eslint/no-misused-promises" : ["error", { "checksConditionals" : true, "checksVoidReturn" : true }],
+    "@typescript-eslint/no-misused-promises" : ["error", {
+      "checksConditionals" : true,
+      "checksVoidReturn" : {
+        "arguments": true,
+        "attributes": true,
+        "properties": false,
+        "returns": true,
+        "variables": true
+      }
+    }],
     "@typescript-eslint/no-namespace" : ["error", { "allowDeclarations" : false, "allowDefinitionFiles" : false }],
     "@typescript-eslint/no-non-null-asserted-nullish-coalescing" : "warn",
     "@typescript-eslint/no-non-null-asserted-optional-chain" : "warn",
     "@typescript-eslint/no-non-null-assertion" : "warn",
     "@typescript-eslint/no-parameter-properties" : "off",
     "@typescript-eslint/no-redeclare" : ["warn", { "builtinGlobals" : true, "ignoreDeclarationMerge" : false }],
+    "@typescript-eslint/no-redundant-type-constituents": "warn",
     "@typescript-eslint/no-require-imports" : "warn",
-    "@typescript-eslint/no-shadow" : ["warn", { "builtinGlobals" : true, "hoist" : "functions", "allow" : ["Clipboard", "require"] }],
+    "@typescript-eslint/no-shadow" : ["warn", { "builtinGlobals" : true, "ignoreOnInitialization": false, "hoist" : "functions", "allow" : ["Clipboard", "require"] }],
     "@typescript-eslint/no-this-alias" : ["warn", { "allowDestructuring" : false, "allowedNames" : [] }],
     "@typescript-eslint/no-throw-literal" : ["warn", { "allowThrowingAny" : false, "allowThrowingUnknown" : false }],
     "@typescript-eslint/no-type-alias" : ["warn", {
@@ -576,10 +586,11 @@
     "@typescript-eslint/no-unused-expressions" : ["warn", { "allowShortCircuit" : false, "allowTaggedTemplates" : false, "allowTernary" : false }],
     "@typescript-eslint/no-unused-vars" : ["warn", {
       "args" : "all",
-      "argsIgnorePattern" : "_",
       "caughtErrors" : "all",
-      "caughtErrorsIgnorePattern" : "",
       "vars" : "all",
+      "argsIgnorePattern" : "_",
+      "caughtErrorsIgnorePattern" : "",
+      "destructuredArrayIgnorePattern": "",
       "varsIgnorePattern" : "",
       "ignoreRestSiblings" : false
     }],
@@ -592,6 +603,7 @@
       "variables" : true
     }],
     "@typescript-eslint/no-useless-constructor" : "warn",
+    "@typescript-eslint/no-useless-empty-export": "warn",
     "@typescript-eslint/no-var-requires" : "warn",
     "@typescript-eslint/object-curly-spacing" : ["warn", "always", { "arraysInObjects" : true, "objectsInObjects" : true }],
     "@typescript-eslint/padding-line-between-statements" : ["warn", {
@@ -636,6 +648,7 @@
     }],
     "@typescript-eslint/return-await" : ["warn", "always"],
     "@typescript-eslint/semi" : ["warn", "always", { "omitLastInOneLineBlock" : false }],
+    "@typescript-eslint/space-before-blocks": ["warn", { "classes" : "always", "functions" : "always", "keywords" : "always" }],
     "@typescript-eslint/space-before-function-paren" : ["warn", { "anonymous" : "never", "asyncArrow" : "never", "named" : "never" }],
     "@typescript-eslint/space-infix-ops" : ["warn", { "int32Hint" : false }],
     "@typescript-eslint/strict-boolean-expressions" : "off",
@@ -653,7 +666,7 @@
       "variableDeclarationIgnoreFunction" : false
     }],
     "@typescript-eslint/unbound-method" : ["warn", { "ignoreStatic" : true }],
-    "@typescript-eslint/unified-signatures" : "warn",
+    "@typescript-eslint/unified-signatures" : ["warn", { "ignoreDifferentlyNamedParameters": false }],
 
     "tsdoc/syntax" : "warn"
   },
@@ -694,6 +707,7 @@
       "files" : ["*.spec.ts", "karma.conf.ts"],
       "rules" : {
         "@typescript-eslint/dot-notation" : "off",
+        "@typescript-eslint/naming-convention": "off",
         "@typescript-eslint/no-empty-function" : "off",
         "@typescript-eslint/no-explicit-any" : "off",
         "@typescript-eslint/no-floating-promises" : "off",

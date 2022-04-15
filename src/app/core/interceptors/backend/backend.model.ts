@@ -11,7 +11,7 @@ export const DEFAULT_CONTRIBUTORS : Contributor[] = [
     resume : 'https://drive.google.com/file/d/1NNx7D6jjK-QTicMbIeOLKai8t6U1Wk7H/view',
     gitHub : 'https://github.com/ehharding',
     linkedIn : 'https://www.linkedin.com/in/ehharding/',
-    jobTitle : 'Sofware Engineer II',
+    jobTitle : 'Software Engineer II',
     personalSummary : 'The creator of the site, Evan is a software engineer working out of Alabama. He graduated from The Pennsylvania State University (Penn State) in ' +
                       '2019 with a major in computer engineering and a minor in mathematics. His interests include gaming, reading, watching movies, artificial ' +
                       'intelligence, and in general everything technology. He is 25 years old and lives in Madison, AL with his wife Sarah, their Australian Cattle Dog ' +
