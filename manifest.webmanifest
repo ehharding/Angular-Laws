@@ -9,7 +9,7 @@
   "start_url" : "/",
   "display" : "fullscreen",
   "orientation" : "landscape-primary",
-  "background_color": "#FAFAFA",
+  "background_color" : "#FAFAFA",
   "theme_color" : "#1976D2",
   "related_applications" : [],
   "shortcuts" : [],
