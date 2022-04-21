@@ -54,7 +54,7 @@
               "outputPath" : "dist-production",
               "index" : "src/index.html",
               "main" : "src/main.ts",
-              "ngswConfigPath": "ngsw-config.json",
+              "ngswConfigPath" : "ngsw-config.json",
               "polyfills" : "src/polyfills.ts",
               "tsConfig" : "tsconfig.app.json",
               "crossOrigin" : "anonymous",
@@ -89,7 +89,7 @@
             "outputPath" : "dist",
             "index" : "src/index.html",
             "main" : "src/main.ts",
-            "ngswConfigPath": "",
+            "ngswConfigPath" : "",
             "polyfills" : "src/polyfills.ts",
             "tsConfig" : "tsconfig.app.json",
             "crossOrigin" : "none",
@@ -119,7 +119,7 @@
         "test" : {
           "builder" : "@angular-devkit/build-angular:karma",
           "options" : {
-            "codeCoverage": true,
+            "codeCoverage" : true,
             "sourceMap" : { "scripts" : true, "styles" : true, "vendor" : true },
             "karmaConfig" : "karma.conf.ts",
             "main" : "src/test.ts",

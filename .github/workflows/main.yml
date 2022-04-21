@@ -19,8 +19,10 @@
 
 name : Pocket Fic
 
-# Triggers The Workflow On "push" Events But Only For The "main" Branch
+# Triggers The Workflow On "pull_request" and "push" Events But Only For The "main" Branch
 on :
+  pull_request :
+    branches : [main]
   push :
     branches : [main]
 
