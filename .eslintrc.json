@@ -613,6 +613,7 @@
       "prev" : ["block", "block-like", "do", "for", "function", "if", "interface", "multiline-block-like", "return", "switch", "throw", "try", "type", "while", "with"],
       "next" : ["block", "block-like", "do", "for", "function", "if", "interface", "multiline-block-like", "return", "switch", "throw", "try", "type", "while", "with"]
     }],
+    "@typescript-eslint/parameter-properties" : "off",
     "@typescript-eslint/prefer-as-const" : "warn",
     "@typescript-eslint/prefer-enum-initializers" : "warn",
     "@typescript-eslint/prefer-for-of" : "warn",
