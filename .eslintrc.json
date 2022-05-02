@@ -484,6 +484,7 @@
     "@typescript-eslint/no-confusing-non-null-assertion" : "warn",
     "@typescript-eslint/no-confusing-void-expression" : ["warn", { "ignoreArrowShorthand" : false, "ignoreVoidOperator" : false }],
     "@typescript-eslint/no-dupe-class-members" : "warn",
+    "@typescript-eslint/no-duplicate-enum-values" : "warn",
     "@typescript-eslint/no-duplicate-imports" : ["warn", { "includeExports" : true }],
     "@typescript-eslint/no-dynamic-delete" : "warn",
     "@typescript-eslint/no-empty-function" : ["warn", {
