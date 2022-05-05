@@ -63,7 +63,7 @@ jobs :
           git config --global init.defaultBranch main
 
       - name : Commit Snapshot — SHA-224 ${{ github.sha }}
-        uses : actions/checkout@v2
+        uses : actions/checkout@v3
         with :
           path : ""
           repository : ${{ github.repository }}
@@ -77,7 +77,7 @@ jobs :
           fetch-depth : 0 # Fetches All History For All Branches And Tags
 
       - name : Upload Repository Snapshot Artifact — "Pocket-Fic"
-        uses : actions/upload-artifact@v2
+        uses : actions/upload-artifact@v3
         with :
           name : Pocket-Fic
           path : "/home/runner/work/Pocket-Fic/Pocket-Fic"
@@ -89,22 +89,22 @@ jobs :
     runs-on : ubuntu-latest
     strategy :
       matrix :
-        node-version : [18.X]
+        node-version : [16.X]
 
     steps :
       - name : Setup Node.js LTS ${{ matrix.node-version }}
-        uses : actions/setup-node@v2
+        uses : actions/setup-node@v3
         with :
           node-version : ${{ matrix.node-version }}
 
       - name : Commit Snapshot — SHA-224 ${{ github.sha }}
-        uses : actions/download-artifact@v2
+        uses : actions/download-artifact@v3
         with :
           name : Pocket-Fic
 
       - name : Determine If "node_modules" Cache Is Usable Based On Changes To "package.json" And "package-lock.json"…
         id : node-modules-cache
-        uses : actions/cache@v2
+        uses : actions/cache@v3
         with :
           path : "/home/runner/work/Pocket-Fic/Pocket-Fic/node_modules"
           key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package*.json') }}
@@ -122,7 +122,7 @@ jobs :
           npm run test
 
       - name : Upload Unit Testing Code Coverage Artifact — "coverage-report"
-        uses : actions/upload-artifact@v2
+        uses : actions/upload-artifact@v3
         with :
           name : coverage-report
           path : "/home/runner/work/Pocket-Fic/Pocket-Fic/coverage-report"
@@ -134,22 +134,22 @@ jobs :
     runs-on : ubuntu-latest
     strategy :
       matrix :
-        node-version : [18.X]
+        node-version : [16.X]
 
     steps :
       - name : Setup Node.js LTS ${{ matrix.node-version }}
-        uses : actions/setup-node@v2
+        uses : actions/setup-node@v3
         with :
           node-version : ${{ matrix.node-version }}
 
       - name : Commit Snapshot — SHA-224 ${{ github.sha }}
-        uses : actions/download-artifact@v2
+        uses : actions/download-artifact@v3
         with :
           name : Pocket-Fic
 
       - name : Determine If "node_modules" Cache Is Usable Based On Changes To "package.json" And "package-lock.json"…
         id : node-modules-cache
-        uses : actions/cache@v2
+        uses : actions/cache@v3
         with :
           path : "/home/runner/work/Pocket-Fic/Pocket-Fic/node_modules"
           key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package*.json') }}
@@ -168,7 +168,7 @@ jobs :
           npm run lint:report
 
       - name : Upload ESLint Linting Artifact — "eslint-report"
-        uses : actions/upload-artifact@v2
+        uses : actions/upload-artifact@v3
         with :
           name : eslint-report
           path : "/home/runner/work/Pocket-Fic/Pocket-Fic/eslint-report.html"
@@ -180,22 +180,22 @@ jobs :
     runs-on : ubuntu-latest
     strategy :
       matrix :
-        node-version : [18.X]
+        node-version : [16.X]
 
     steps :
       - name : Setup Node.js LTS ${{ matrix.node-version }}
-        uses : actions/setup-node@v2
+        uses : actions/setup-node@v3
         with :
           node-version : ${{ matrix.node-version }}
 
       - name : Commit Snapshot — SHA-224 ${{ github.sha }}
-        uses : actions/download-artifact@v2
+        uses : actions/download-artifact@v3
         with :
           name : Pocket-Fic
 
       - name : Determine If "node_modules" Cache Is Usable Based On Changes To "package.json" And "package-lock.json"…
         id : node-modules-cache
-        uses : actions/cache@v2
+        uses : actions/cache@v3
         with :
           path : "/home/runner/work/Pocket-Fic/Pocket-Fic/node_modules"
           key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package*.json') }}
@@ -213,7 +213,7 @@ jobs :
           npm run build:production
 
       - name : Upload Production Build Distributable Directory Artifact — "dist-production"
-        uses : actions/upload-artifact@v2
+        uses : actions/upload-artifact@v3
         with :
           name : dist-production
           path : "/home/runner/work/Pocket-Fic/Pocket-Fic/dist-production"
@@ -226,7 +226,7 @@ jobs :
 
     steps :
       - name : Download Production Build Distributable Directory — "dist-production"
-        uses : actions/download-artifact@v2
+        uses : actions/download-artifact@v3
         with :
           name : dist-production
           path : "dist-production"
@@ -237,7 +237,7 @@ jobs :
           cp -v dist-production/index.html dist-production/404.html
 
       - name : Upload Modified Production Build Distributable Artifact — "dist-production"
-        uses : actions/upload-artifact@v2
+        uses : actions/upload-artifact@v3
         with :
           name : dist-production
           path : "dist-production"
@@ -250,7 +250,7 @@ jobs :
 
     steps :
       - name : Download Production Build Distributable Directory — "dist-production"
-        uses : actions/download-artifact@v2
+        uses : actions/download-artifact@v3
         with :
           name : dist-production
           path : "dist-production"
