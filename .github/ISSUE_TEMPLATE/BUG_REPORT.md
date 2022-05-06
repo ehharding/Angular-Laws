@@ -1,7 +1,7 @@
 ---
 name: Bug Report
 about: Create A Bug Report To Help Us Understand And Fix An Issue
-title: "[BUG] Short Bug Description"
+title: "BUG - Short Bug Description"
 labels: bug
 assignees: ''
 ---
@@ -20,18 +20,18 @@ Steps to reproduce the behavior:
 4. See error
 
 ## Screenshots
-If applicable, add screenshots to help explain your problem.
+Add screenshots to help explain your problem, if applicable.
 
-## Desktop (Please Complete The Following Information):
-- OS: [e.g. macOS 12.3.1, Windows 11 Pro]
+## Desktop (Please Complete The Following Information, If Applicable):
+- OS: [e.g. macOS, Windows]
 - Browser: [e.g. Chrome, Firefox, Safari]
-- Version: [e.g. 100]
+- Version: [e.g. 101]
 
-## Smartphone (Please Complete The Following Information):
+## Smartphone (Please Complete The Following Information, If Applicable):
 - Device: [e.g. iPhone 13 Pro]
 - OS: [e.g. iOS 15.4.1]
 - Browser: [e.g. Chrome, Firefox, Safari]
-- Version: [e.g. 100]
+- Version: [e.g. 101]
 
 ## Additional Context
 Add any other context about the problem here.

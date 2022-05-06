@@ -19,8 +19,6 @@ import { UserService } from '@core/services/user/user.service';
   templateUrl : 'login.component.html'
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  public hidePasswordText : boolean = true;
-  public loginCardShowing : boolean = true;
   public mobileView : boolean = false;
 
   public loginFormGroup : FormGroup = new FormGroup({

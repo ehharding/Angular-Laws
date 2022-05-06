@@ -254,6 +254,7 @@
       "allowAfterThis" : true,
       "allowAfterThisConstructor" : false,
       "allowFunctionParams" : true,
+      "enforceInClassFields" : false,
       "enforceInMethodNames" : false,
       "allow" : []
     }],
