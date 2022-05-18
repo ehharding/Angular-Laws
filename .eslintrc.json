@@ -36,7 +36,7 @@
     "sourceType" : "module"
   },
   "ignorePatterns" : ["*.html", "dist", "dist-production", "node_modules"],
-  "plugins" : ["@typescript-eslint", "eslint-plugin-tsdoc"],
+  "plugins" : ["@typescript-eslint", "import", "tsdoc"],
   "rules" : {
     "accessor-pairs" : ["warn", { "enforceForClassMembers" : true, "getWithoutSet" : true, "setWithoutGet" : true }],
     "array-bracket-newline" : "off",
@@ -486,7 +486,6 @@
     "@typescript-eslint/no-confusing-void-expression" : ["warn", { "ignoreArrowShorthand" : false, "ignoreVoidOperator" : false }],
     "@typescript-eslint/no-dupe-class-members" : "warn",
     "@typescript-eslint/no-duplicate-enum-values" : "warn",
-    "@typescript-eslint/no-duplicate-imports" : ["warn", { "includeExports" : true }],
     "@typescript-eslint/no-dynamic-delete" : "warn",
     "@typescript-eslint/no-empty-function" : ["warn", {
       "allow" : [
@@ -494,7 +493,8 @@
         "constructors",
         "protected-constructors",
         "private-constructors",
-        "decoratedFunctions"
+        "decoratedFunctions",
+        "overrideMethods"
       ]
     }],
     "@typescript-eslint/no-empty-interface" : ["warn", { "allowSingleExtends" : false }],
@@ -672,6 +672,8 @@
     }],
     "@typescript-eslint/unbound-method" : ["warn", { "ignoreStatic" : true }],
     "@typescript-eslint/unified-signatures" : ["warn", { "ignoreDifferentlyNamedParameters" : false }],
+
+    "import/no-duplicates" : ["warn", { "considerQueryString" : true }],
 
     "tsdoc/syntax" : "warn"
   },
