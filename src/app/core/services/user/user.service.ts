@@ -12,7 +12,7 @@ import { User } from '@core/services/user/user.model';
 import { ConfigService } from '@core/services/config/config.service';
 
 @Injectable({ providedIn : 'root' })
-export class UserService {
+class UserService {
   private readonly _allUsers$ : BehaviorSubject<User[]> = new BehaviorSubject<User[]>([] as User[]);
   private readonly _currentUser$ : BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
 
@@ -69,3 +69,7 @@ export class UserService {
     );
   }
 }
+
+export {
+  UserService
+};

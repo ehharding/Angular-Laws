@@ -14,7 +14,7 @@ import { APP_CONSTANTS } from '@core/services/config/config.model';
  * @param body - The body of the HttpResponse object
  * @returns a HttpResponse<unknown>-typed Observable stream. Subscribe to the stream to receive the object type specified asynchronously.
  */
-export function constructOkResponse$(body ?: any) : Observable<HttpResponse<unknown>> {
+function constructOkResponse$(body ?: any) : Observable<HttpResponse<unknown>> {
   return of(new HttpResponse({ status : HttpStatusCode.Ok, body }));
 }
 
@@ -26,7 +26,7 @@ export function constructOkResponse$(body ?: any) : Observable<HttpResponse<unkn
  * @param statusText - A status text, or message, to include in the error response (e.g., "A Specific Error Just Occurred…")
  * @returns a never-typed Observable stream. Subscribe to the stream to trigger the emission of an HttpErrorResponse object with the provided information.
  */
-export function constructErrorResponse$(status : HttpStatusCode, statusText : string) : Observable<never> {
+function constructErrorResponse$(status : HttpStatusCode, statusText : string) : Observable<never> {
   return throwError(() : HttpErrorResponse => new HttpErrorResponse({ status, statusText }));
 }
 
@@ -37,6 +37,12 @@ export function constructErrorResponse$(status : HttpStatusCode, statusText : st
  * @param statusText - A status text, or message, to include in the error response (e.g., "The User Was Not Authorized For This Reason….")
  * @returns a never-typed Observable stream. Subscribe to the stream to trigger the emission of an HttpErrorResponse object with the provided information.
  */
-export function constructUnauthorizedResponse$(statusText : string = APP_CONSTANTS.httpResponseCodes[HttpStatusCode.Unauthorized].httpStatusText) : Observable<never> {
+function constructUnauthorizedResponse$(statusText : string = APP_CONSTANTS.httpResponseCodes[HttpStatusCode.Unauthorized].httpStatusText) : Observable<never> {
   return throwError(() : HttpErrorResponse => new HttpErrorResponse({ status : HttpStatusCode.Unauthorized, statusText }));
 }
+
+export {
+  constructOkResponse$,
+  constructErrorResponse$,
+  constructUnauthorizedResponse$
+};

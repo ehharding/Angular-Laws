@@ -14,4 +14,8 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   exports : [CommonModule, FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, RouterModule]
 })
-export class SharedModule { }
+class SharedModule { }
+
+export {
+  SharedModule
+};

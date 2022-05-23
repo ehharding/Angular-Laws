@@ -105,4 +105,8 @@ const WINDOW_INJECTION_TOKEN : InjectionToken<Window> = new InjectionToken<Windo
     { multi : true, deps : [CredentialService], provide : HTTP_INTERCEPTORS, useClass : AuthInterceptor }
   ]
 })
-export class AppModule { }
+class AppModule { }
+
+export {
+  AppModule
+};

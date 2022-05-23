@@ -1,4 +1,4 @@
-export interface Contributor {
+interface Contributor {
   id : number;
   pocketFicUserName : string | undefined;
   firstName : string;
@@ -10,3 +10,7 @@ export interface Contributor {
   jobTitle : string;
   personalSummary : string;
 }
+
+export type {
+  Contributor
+};

@@ -14,4 +14,8 @@ import { LoginComponent } from '@login/login.component';
   declarations : [LoginComponent],
   imports : [MatSnackBarModule, LoginRoutingModule, SharedModule]
 })
-export class LoginModule { }
+class LoginModule { }
+
+export {
+  LoginModule
+};

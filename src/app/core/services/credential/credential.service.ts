@@ -9,7 +9,7 @@ import { User } from '@core/services/user/user.model';
 import { ConfigService } from '@core/services/config/config.service';
 
 @Injectable({ providedIn : 'root' })
-export class CredentialService {
+class CredentialService {
   private _currentUser : User | null = null;
   private _jwtToken : string = '';
 
@@ -69,3 +69,7 @@ export class CredentialService {
     }
   }
 }
+
+export {
+  CredentialService
+};

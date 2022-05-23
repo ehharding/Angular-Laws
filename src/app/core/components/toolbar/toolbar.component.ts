@@ -16,7 +16,7 @@ import { ConfigService } from '@core/services/config/config.service';
   styleUrls : ['toolbar.component.scss'],
   templateUrl : 'toolbar.component.html'
 })
-export class ToolbarComponent implements OnInit, OnDestroy {
+class ToolbarComponent implements OnInit, OnDestroy {
   @Input() public activeTheme : ThemeBundle = ThemeBundle.DeepPurpleAmber;
   @Input() public currentUser : User | null = null;
 
@@ -57,3 +57,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     this._componentDestroyed$.complete();
   }
 }
+
+export {
+  ToolbarComponent
+};

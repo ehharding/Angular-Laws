@@ -22,4 +22,8 @@ import { ContributorsComponent } from '@contributors/contributors.component';
   imports : [MatButtonModule, MatCardModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatTooltipModule, ContributorsRoutingModule, SharedModule],
   providers : [ContributorService]
 })
-export class ContributorsModule { }
+class ContributorsModule { }
+
+export {
+  ContributorsModule
+};

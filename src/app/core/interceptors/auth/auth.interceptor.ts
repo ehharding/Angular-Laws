@@ -19,7 +19,7 @@ import { ConfigService } from '@core/services/config/config.service';
 import { CredentialService } from '@core/services/credential/credential.service';
 
 @Injectable()
-export class AuthInterceptor implements HttpInterceptor {
+class AuthInterceptor implements HttpInterceptor {
   public constructor(private readonly _credentialService : CredentialService) { }
 
   /**
@@ -132,3 +132,7 @@ export class AuthInterceptor implements HttpInterceptor {
     return throwError(() : HttpErrorResponse => errorResponse);
   };
 }
+
+export {
+  AuthInterceptor
+};

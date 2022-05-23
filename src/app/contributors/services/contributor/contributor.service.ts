@@ -12,7 +12,7 @@ import { Contributor } from '@contributors/services/contributor/contributor.mode
 import { ConfigService } from '@core/services/config/config.service';
 
 @Injectable({ providedIn : 'any' })
-export class ContributorService {
+class ContributorService {
   private readonly _allContributors$ : BehaviorSubject<Contributor[]> = new BehaviorSubject<Contributor[]>([] as Contributor[]);
   private readonly _contributorsFetchError$ : BehaviorSubject<HttpErrorResponse | undefined> = new BehaviorSubject<HttpErrorResponse | undefined>(undefined);
 
@@ -54,3 +54,7 @@ export class ContributorService {
     return this._contributorsFetchError$.asObservable().pipe(distinctUntilChanged());
   }
 }
+
+export {
+  ContributorService
+};

@@ -35,6 +35,7 @@
     "project" : "tsconfig.eslint.json",
     "sourceType" : "module"
   },
+  "extends" : ["eslint:recommended", "plugin:import/recommended"],
   "ignorePatterns" : ["*.html", "dist", "dist-production", "node_modules"],
   "plugins" : ["@typescript-eslint", "import", "node", "tsdoc"],
   "rules" : {
@@ -793,7 +794,63 @@
     "@typescript-eslint/unbound-method" : ["warn", { "ignoreStatic" : true }],
     "@typescript-eslint/unified-signatures" : ["warn", { "ignoreDifferentlyNamedParameters" : false }],
 
+    "import/default" : "warn",
+    "import/dynamic-import-chunkname" : "warn",
+    "import/export" : "warn",
+    "import/exports-last" : "warn",
+    "import/extensions" : ["warn", "ignorePackages", { "ignorePackages" : true }],
+    "import/first" : "warn",
+    "import/group-exports" : "warn",
+    "import/max-dependencies" : ["warn", { "ignoreTypeImports" : false, "max" : 15 }],
+    "import/named" : "warn",
+    "import/namespace" : ["warn", { "allowComputed" : false }],
+    "import/newline-after-import" : ["warn", { "count" : 1 }],
+    "import/no-absolute-path" : ["warn", { "amd" : false, "commonjs" : true, "esmodule" : true }],
+    "import/no-amd" : "warn",
+    "import/no-anonymous-default-export" : ["warn", {
+      "allowAnonymousClass" : false,
+      "allowAnonymousFunction" : false,
+      "allowArray" : false,
+      "allowArrowFunction" : false,
+      "allowCallExpression" : false,
+      "allowLiteral" : false,
+      "allowObject" : false
+    }],
+    "import/no-commonjs" : ["warn", { "allowConditionalRequire" : false, "allowPrimitiveModules" : true, "allowRequire" : false }],
+    "import/no-cycle" : ["warn", { "ignoreExternal" : false }],
+    "import/no-default-export" : "warn",
+    "import/no-deprecated" : "warn",
     "import/no-duplicates" : ["warn", { "considerQueryString" : true }],
+    "import/no-dynamic-require" : "warn",
+    "import/no-extraneous-dependencies" : ["warn", { "bundledDependencies" : false, "devDependencies" : false, "optionalDependencies" : false, "peerDependencies" : false }],
+    "import/no-import-module-exports" : ["warn", { "exceptions" : [] }],
+    "import/no-internal-modules" : ["warn", { "forbid" : [] }],
+    "import/no-mutable-exports" : "warn",
+    "import/no-named-as-default-member" : "warn",
+    "import/no-named-as-default" : "warn",
+    "import/no-named-default" : "warn",
+    "import/no-named-export" : "off",
+    "import/no-namespace" : ["warn", { "ignore" : [] }],
+    "import/no-nodejs-modules" : ["warn", { "allow" : [] }],
+    "import/no-relative-packages" : "warn",
+    "import/no-relative-parent-imports" : "warn",
+    "import/no-restricted-paths" : "warn",
+    "import/no-self-import" : "warn",
+    "import/no-unassigned-import" : ["warn", { "allow" : ["zone.js", "zone.js/dist/zone-testing"] }],
+    "import/no-unresolved" : ["off", { "amd" : false, "commonjs" : false, "caseSensitive" : true, "caseSensitiveStrict" : true }],
+    "import/no-unused-modules" : "warn",
+    "import/no-useless-path-segments" : ["warn", { "commonjs" : false, "noUselessIndex" : true }],
+    "import/no-webpack-loader-syntax" : "warn",
+    "import/order" : ["warn", {
+      "warnOnUnassignedImports" : true,
+      "newlines-between" : "always-and-inside-groups",
+      "alphabetize" : { "caseInsensitive" : false, "order" : "ignore" },
+      "groups" : ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type", "unknown"],
+      "pathGroups" : [],
+      "pathGroupsExcludedImportTypes" : ["builtin", "external", "object"]
+    }],
+    "import/prefer-default-export" : "off",
+    "import/unambiguous" : "warn",
 
     "node/no-unsupported-features/es-builtins" : ["warn", { "ignores" : [] }],
     "node/no-unsupported-features/es-syntax" : ["off", { "ignores" : [] }],
@@ -803,21 +860,18 @@
   },
   "overrides" : [
     {
+      "files" : ["app.module.ts", "core.module.ts"],
+      "rules" : {
+        "import/max-dependencies" : "off"
+      }
+    },
+    {
       "files" : ["http-response.utility.ts"],
       "rules" : {
         "@typescript-eslint/explicit-module-boundary-types" : "off",
         "@typescript-eslint/no-explicit-any" : "off",
         "@typescript-eslint/no-shadow" : "off",
         "@typescript-eslint/no-unsafe-assignment" : "off"
-      }
-    },
-    {
-      "files" : ["*-routing.module.ts"],
-      "rules" : {
-        "@typescript-eslint/no-unsafe-assignment" : "off",
-        "@typescript-eslint/no-unsafe-return" : "off",
-        "@typescript-eslint/prefer-readonly-parameter-types" : "off",
-        "@typescript-eslint/typedef" : "off"
       }
     },
     {
@@ -849,7 +903,10 @@
         "@typescript-eslint/no-unsafe-return" : "off",
         "@typescript-eslint/no-unused-vars" : "off",
         "@typescript-eslint/no-unused-vars-experimental" : "off",
-        "@typescript-eslint/unbound-method" : "off"
+        "@typescript-eslint/unbound-method" : "off",
+
+        "import/no-extraneous-dependencies" : "off",
+        "import/unambiguous" : "off"
       }
     }
   ]

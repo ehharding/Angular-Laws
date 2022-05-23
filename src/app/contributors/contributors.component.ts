@@ -17,7 +17,7 @@ import { ContributorService } from '@contributors/services/contributor/contribut
   styleUrls : ['contributors.component.scss'],
   templateUrl : 'contributors.component.html'
 })
-export class ContributorsComponent implements OnInit, OnDestroy {
+class ContributorsComponent implements OnInit, OnDestroy {
   public allContributors : Contributor[] = [];
   public contributorsFetchError : HttpErrorResponse | undefined = undefined;
   public contributorsFetchErrorInfo : string | undefined = undefined;
@@ -87,3 +87,7 @@ export class ContributorsComponent implements OnInit, OnDestroy {
     this._contributorService.fetchAllContributors();
   }
 }
+
+export {
+  ContributorsComponent
+};

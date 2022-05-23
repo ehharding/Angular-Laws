@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable()
-export class AppHttpInterceptor implements HttpInterceptor {
+class AppHttpInterceptor implements HttpInterceptor {
   /**
    * This method is responsible for intercepting application HTTP requests and is required to implement the HttpInterceptor interface. It should be noted that HttpRequest
    * objects are immutable, meaning they cannot be modified. To "modify" such an object, you should re-assign to a cloned and modified copy of the object, or use an
@@ -48,3 +48,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
     return throwError(() : HttpErrorResponse => errorResponse);
   };
 }
+
+export {
+  AppHttpInterceptor
+};

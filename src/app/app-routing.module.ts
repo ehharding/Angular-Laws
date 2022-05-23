@@ -24,22 +24,6 @@ import { RouteResolverService } from '@core/services/route-resolver/route-resolv
 
 import { NotFoundComponent } from '@core/components/not-found/not-found.component';
 
-export enum AppRoute {
-  Home = '',
-  Contributors = 'contributors',
-  Login = 'login',
-  Users = 'users',
-  NotFound = '404'
-}
-
-export const APP_ROUTES : Routes = [
-  { path : AppRoute.Home, pathMatch : 'full', redirectTo : AppRoute.Contributors },
-  { path : AppRoute.Contributors, loadChildren : async() : Promise<ContributorsModule> => (await import('@contributors/contributors.module')).ContributorsModule },
-  { path : AppRoute.Login, canActivate : [LoginGuard], loadChildren : async() : Promise<LoginModule> => (await import('@login/login.module')).LoginModule },
-  { path : AppRoute.NotFound, component : NotFoundComponent, resolve : { intendedRouteGuesses : RouteResolverService } }, // NotFoundComponent Is Fed Intended Route Guesses
-  { path : '**', canActivate : [NotFoundGuard], component : NotFoundComponent }
-];
-
 const EXTRA_OPTIONS : ExtraOptions = {
   enableTracing : false,
   useHash : undefined,
@@ -54,8 +38,49 @@ const EXTRA_OPTIONS : ExtraOptions = {
   urlUpdateStrategy : 'eager'
 };
 
+enum AppRoute {
+  Home = '',
+  Contributors = 'contributors',
+  Login = 'login',
+  Users = 'users',
+  NotFound = '404'
+}
+
+const APP_ROUTES : Routes = [
+  {
+    path : AppRoute.Home,
+    pathMatch : 'full',
+    redirectTo : AppRoute.Contributors
+  },
+  {
+    path : AppRoute.Contributors,
+    loadChildren : async() : Promise<ContributorsModule> => (await import(/* webpackChunkName: "ContributorsModule" */ '@contributors/contributors.module')).ContributorsModule
+  },
+  {
+    path : AppRoute.Login,
+    canActivate : [LoginGuard],
+    loadChildren : async() : Promise<LoginModule> => (await import(/* webpackChunkName: "LoginModule" */ '@login/login.module')).LoginModule
+  },
+  {
+    path : AppRoute.NotFound,
+    component : NotFoundComponent,
+    resolve : { intendedRouteGuesses : RouteResolverService } // NotFoundComponent Is Fed Intended Route Guesses
+  },
+  {
+    path : '**',
+    canActivate : [NotFoundGuard],
+    component : NotFoundComponent
+  }
+];
+
 @NgModule({
   exports : [RouterModule],
   imports : [RouterModule.forRoot(APP_ROUTES, EXTRA_OPTIONS)]
 })
-export class AppRoutingModule { }
+class AppRoutingModule { }
+
+export {
+  AppRoute,
+  AppRoutingModule,
+  APP_ROUTES
+};

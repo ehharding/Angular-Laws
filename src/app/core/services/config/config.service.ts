@@ -13,7 +13,7 @@ import { AppConfiguration, DEFAULT_APP_CONFIGURATION } from '@core/services/conf
 import { DEFAULT_CONTRIBUTORS, DEFAULT_USERS } from '@core/interceptors/backend/backend.model';
 
 @Injectable({ providedIn : 'root' })
-export class ConfigService {
+class ConfigService {
   public static appConfiguration : AppConfiguration = DEFAULT_APP_CONFIGURATION;
 
   private readonly _httpClient : HttpClient;
@@ -48,3 +48,7 @@ export class ConfigService {
     });
   }
 }
+
+export {
+  ConfigService
+};

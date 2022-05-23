@@ -29,7 +29,7 @@ import { AboutDialogComponent } from '@core/components/toolbar/about-dialog/abou
   styleUrls : ['app.component.scss'],
   templateUrl : 'app.component.html'
 })
-export class AppComponent implements OnInit, OnDestroy {
+class AppComponent implements OnInit, OnDestroy {
   @ViewChild('drawer') public drawer : MatDrawer | undefined = undefined;
 
   public activeTheme : ThemeBundle = ThemeBundle.DeepPurpleAmber;
@@ -102,3 +102,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this._themeService.loadClientTheme(themeBundleName);
   }
 }
+
+export {
+  AppComponent
+};

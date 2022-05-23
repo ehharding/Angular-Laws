@@ -7,10 +7,18 @@
  *          "environment.production.ts". The list of file replacements can be found in "angular.json".
  */
 
-export interface ProductionEnvironment {
+interface ProductionEnvironment {
   name : string;
 }
 
-export const ENVIRONMENT : ProductionEnvironment = {
+const ENVIRONMENT : ProductionEnvironment = {
   name : 'production'
+};
+
+export {
+  ENVIRONMENT
+};
+
+export type {
+  ProductionEnvironment
 };

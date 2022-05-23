@@ -13,7 +13,7 @@ import { Observable, Subscriber, Subscription } from 'rxjs';
 import { SpinnerService } from '@core/services/spinner/spinner.service';
 
 @Injectable()
-export class SpinnerInterceptor implements HttpInterceptor {
+class SpinnerInterceptor implements HttpInterceptor {
   private readonly _activeRequests : HttpRequest<unknown>[] = [];
 
   public constructor(private readonly _spinnerService : SpinnerService) { }
@@ -72,3 +72,7 @@ export class SpinnerInterceptor implements HttpInterceptor {
     this._spinnerService.isLoading$.next(this._activeRequests.length > 0);
   }
 }
+
+export {
+  SpinnerInterceptor
+};

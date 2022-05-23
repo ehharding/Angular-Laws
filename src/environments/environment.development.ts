@@ -7,11 +7,11 @@
  *          "environment.production.ts". The list of file replacements can be found in "angular.json".
  */
 
-export interface DevelopmentEnvironment {
+interface DevelopmentEnvironment {
   name : string;
 }
 
-export const ENVIRONMENT : DevelopmentEnvironment = {
+const ENVIRONMENT : DevelopmentEnvironment = {
   name : 'development'
 };
 
@@ -21,3 +21,11 @@ export const ENVIRONMENT : DevelopmentEnvironment = {
  * This import should be commented out in production mode because it will have a negative impact on performance if an error is thrown.
  */
 // import 'zone.js/plugins/zone-error'; // Included with Angular CLI.
+
+export {
+  ENVIRONMENT
+};
+
+export type {
+  DevelopmentEnvironment
+};

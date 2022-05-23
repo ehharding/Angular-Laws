@@ -15,4 +15,8 @@ const ROUTES : Routes = [
   exports : [RouterModule],
   imports : [RouterModule.forChild(ROUTES)]
 })
-export class ContributorsRoutingModule { }
+class ContributorsRoutingModule { }
+
+export {
+  ContributorsRoutingModule
+};

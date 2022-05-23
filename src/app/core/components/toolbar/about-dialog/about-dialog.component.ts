@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnIni
 import { OPEN_SOURCE_DEPENDENCIES, OpenSourceDependency, PACKAGE_VERSIONS, PackageVersion } from '@core/components/toolbar/about-dialog/about-dialog.model';
 import { APP_CONSTANTS } from '@core/services/config/config.model';
 
+// eslint-disable-next-line import/no-relative-parent-imports
 import packageJSON from 'app/../../package.json';
 
 @Component({
@@ -12,7 +13,7 @@ import packageJSON from 'app/../../package.json';
   styleUrls : ['about-dialog.component.scss'],
   templateUrl : 'about-dialog.component.html'
 })
-export class AboutDialogComponent implements OnInit, OnDestroy {
+class AboutDialogComponent implements OnInit, OnDestroy {
   public currentTime : Date = new Date();
 
   public readonly applicationVersion : string = packageJSON.version;
@@ -49,3 +50,7 @@ export class AboutDialogComponent implements OnInit, OnDestroy {
     }, APP_CONSTANTS.timeConstants.oneSecondMS);
   }
 }
+
+export {
+  AboutDialogComponent
+};

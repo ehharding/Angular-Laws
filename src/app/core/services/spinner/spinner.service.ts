@@ -7,6 +7,10 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn : 'root' })
-export class SpinnerService {
+class SpinnerService {
   public readonly isLoading$ : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 }
+
+export {
+  SpinnerService
+};

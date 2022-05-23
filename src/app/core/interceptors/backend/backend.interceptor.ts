@@ -19,7 +19,7 @@ import { constructErrorResponse$, constructOkResponse$ } from '@shared/utilities
 import { ConfigService } from '@core/services/config/config.service';
 
 @Injectable()
-export class BackendInterceptor implements HttpInterceptor {
+class BackendInterceptor implements HttpInterceptor {
   // eslint-disable-next-line no-warning-comments
   /**
    * This function is responsible for intercepting certain URL requests directed towards a backend and responds with mock data as appropriate.
@@ -142,3 +142,7 @@ export class BackendInterceptor implements HttpInterceptor {
     return throwError(() : HttpErrorResponse => errorResponse);
   };
 }
+
+export {
+  BackendInterceptor
+};

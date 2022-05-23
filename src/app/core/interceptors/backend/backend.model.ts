@@ -1,7 +1,7 @@
 import { Contributor } from '@contributors/services/contributor/contributor.model';
 import { User } from '@core/services/user/user.model';
 
-export const DEFAULT_CONTRIBUTORS : Contributor[] = [
+const DEFAULT_CONTRIBUTORS : Contributor[] = [
   {
     id : 1,
     pocketFicUserName : 'solomon',
@@ -19,7 +19,7 @@ export const DEFAULT_CONTRIBUTORS : Contributor[] = [
   }
 ];
 
-export const DEFAULT_USERS : User[] = [
+const DEFAULT_USERS : User[] = [
   {
     id : 1,
     isAdmin : true,
@@ -34,3 +34,8 @@ export const DEFAULT_USERS : User[] = [
     jwtToken : ''
   }
 ];
+
+export {
+  DEFAULT_CONTRIBUTORS,
+  DEFAULT_USERS
+};

@@ -11,7 +11,7 @@ import { ENVIRONMENT } from '@environment/environment.development';
 import { AppRoute } from 'app/app-routing.module';
 
 @Injectable()
-export class NotFoundGuard implements CanActivate {
+class NotFoundGuard implements CanActivate {
   /**
    * This method determines if the wildcard application route can be activated. In reality, this implementation is a proxy method that always denies access to the unknown
    * route and instead navigates to the "/404" route, injecting information about the requested route that the user made, where it is further handled.
@@ -35,3 +35,7 @@ export class NotFoundGuard implements CanActivate {
     });
   }
 }
+
+export {
+  NotFoundGuard
+};

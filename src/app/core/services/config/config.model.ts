@@ -3,7 +3,7 @@
 import { MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBarConfig } from '@angular/material/snack-bar';
 
-export enum HttpMethod {
+enum HttpMethod {
   Connect = 'CONNECT', // Establishes A Tunnel To The Server Identified By The Target Resource
   Delete = 'DELETE',   // Deletes The Specified Resource
   Get = 'GET',         // Requests A Representation Of The Specified Resource
@@ -15,7 +15,7 @@ export enum HttpMethod {
   Trace = 'TRACE'      // Performs A Message Loop-Back Test Along The Path To The Target Resource
 }
 
-export enum HttpResponseType {
+enum HttpResponseType {
   InformationResponse = 'Information Response',  // 1XX Codes
   SuccessfulResponse = 'Successful Response',    // 2XX Codes
   RedirectionMessage = 'Redirection Message',    // 3XX Codes
@@ -23,7 +23,18 @@ export enum HttpResponseType {
   ServerErrorResponse = 'Server Error Response'  // 5XX Codes
 }
 
-export interface AppConfiguration {
+interface AppConstants {
+  httpResponseCodes : Record<number, {
+    httpResponseType : HttpResponseType;
+    httpStatusText : string;
+    httpStatusDescription : string;
+  }>;
+  timeConstants : {
+    oneSecondMS : number;
+  };
+}
+
+interface AppConfiguration {
   apiServer : {
     paths : {
       contributors : {
@@ -56,23 +67,12 @@ export interface AppConfiguration {
   };
 }
 
-interface AppConstants {
-  httpResponseCodes : Record<number, {
-    httpResponseType : HttpResponseType;
-    httpStatusText : string;
-    httpStatusDescription : string;
-  }>;
-  timeConstants : {
-    oneSecondMS : number;
-  };
-}
-
 /**
  * Global app constants. Last modified: 2nd July 2021
  *
  * {@link https://developer.mozilla.org/en-US/docs/Web/HTTP/Status | MDN Web Docs HTTP Response Status Codes}
  */
-export const APP_CONSTANTS : AppConstants = {
+const APP_CONSTANTS : AppConstants = {
   httpResponseCodes : {
     0 : {
       httpResponseType : HttpResponseType.ServerErrorResponse,
@@ -434,7 +434,7 @@ export const APP_CONSTANTS : AppConstants = {
   }
 };
 
-export const DEFAULT_APP_CONFIGURATION : AppConfiguration = {
+const DEFAULT_APP_CONFIGURATION : AppConfiguration = {
   apiServer : {
     paths : {
       contributors : {
@@ -467,7 +467,7 @@ export const DEFAULT_APP_CONFIGURATION : AppConfiguration = {
   }
 };
 
-export const DEFAULT_MAT_DIALOG_CONFIG : MatDialogConfig = {
+const DEFAULT_MAT_DIALOG_CONFIG : MatDialogConfig = {
   autoFocus : true,
   closeOnNavigation : false,
   disableClose : true,
@@ -478,7 +478,7 @@ export const DEFAULT_MAT_DIALOG_CONFIG : MatDialogConfig = {
   role : 'dialog'
 };
 
-export const DEFAULT_MAT_SNACKBAR_CONFIG : MatSnackBarConfig = {
+const DEFAULT_MAT_SNACKBAR_CONFIG : MatSnackBarConfig = {
   duration : 5000,
   direction : 'ltr',
   horizontalPosition : 'center',
@@ -488,4 +488,16 @@ export const DEFAULT_MAT_SNACKBAR_CONFIG : MatSnackBarConfig = {
   data : undefined,
   panelClass : undefined,
   viewContainerRef : undefined
+};
+
+export {
+  HttpMethod,
+  APP_CONSTANTS,
+  DEFAULT_APP_CONFIGURATION,
+  DEFAULT_MAT_DIALOG_CONFIG,
+  DEFAULT_MAT_SNACKBAR_CONFIG
+};
+
+export type {
+  AppConfiguration
 };

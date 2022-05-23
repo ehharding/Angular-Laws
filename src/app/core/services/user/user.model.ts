@@ -1,4 +1,4 @@
-export interface User {
+interface User {
   id : number;
   isAdmin : boolean;
   userName : string;
@@ -11,3 +11,7 @@ export interface User {
   generation : string | undefined;
   jwtToken : string;
 }
+
+export type {
+  User
+};

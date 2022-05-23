@@ -8,6 +8,10 @@ import { SPINNER_OVERLAY_TEXT } from '@core/components/spinner-overlay/spinner-o
   styleUrls : ['spinner-overlay.component.scss'],
   templateUrl : 'spinner-overlay.component.html'
 })
-export class SpinnerOverlayComponent {
+class SpinnerOverlayComponent {
   public readonly spinnerOverlayText : string = SPINNER_OVERLAY_TEXT;
 }
+
+export {
+  SpinnerOverlayComponent
+};

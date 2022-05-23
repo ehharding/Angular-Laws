@@ -56,4 +56,8 @@ import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
   ],
   providers : [LoginGuard, NotFoundGuard, ConfigService, CredentialService, RouteResolverService, SpinnerService, ThemeService, UserService]
 })
-export class CoreModule { }
+class CoreModule { }
+
+export {
+  CoreModule
+};

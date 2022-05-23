@@ -18,7 +18,7 @@ import { UserService } from '@core/services/user/user.service';
   styleUrls : ['login.component.scss'],
   templateUrl : 'login.component.html'
 })
-export class LoginComponent implements OnInit, OnDestroy {
+class LoginComponent implements OnInit, OnDestroy {
   public mobileView : boolean = false;
 
   public loginFormGroup : FormGroup = new FormGroup({
@@ -70,3 +70,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     });
   }
 }
+
+export {
+  LoginComponent
+};

@@ -14,7 +14,7 @@ import { ConfigService } from '@core/services/config/config.service';
   styleUrls : ['not-found.component.scss'],
   templateUrl : 'not-found.component.html'
 })
-export class NotFoundComponent implements OnInit, OnDestroy {
+class NotFoundComponent implements OnInit, OnDestroy {
   public intendedRouteGuesses : string[] = [];
   public mobileView : boolean = false;
 
@@ -67,3 +67,7 @@ export class NotFoundComponent implements OnInit, OnDestroy {
     this._clipboard.copy(route);
   }
 }
+
+export {
+  NotFoundComponent
+};

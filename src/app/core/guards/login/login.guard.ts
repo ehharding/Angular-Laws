@@ -11,7 +11,7 @@ import { DEFAULT_MAT_SNACKBAR_CONFIG } from '@core/services/config/config.model'
 import { CredentialService } from '@core/services/credential/credential.service';
 
 @Injectable()
-export class LoginGuard implements CanActivate {
+class LoginGuard implements CanActivate {
   public constructor(private readonly _router : Router, private readonly _snackBar : MatSnackBar, private readonly _credentialService : CredentialService) { }
 
   /**
@@ -30,3 +30,7 @@ export class LoginGuard implements CanActivate {
     return true;
   }
 }
+
+export {
+  LoginGuard
+};

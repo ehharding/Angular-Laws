@@ -21,7 +21,7 @@ import { ALL_THEMES, ThemeBundle } from '@core/services/theme/theme.model';
 import { ConfigService } from '@core/services/config/config.service';
 
 @Injectable({ providedIn : 'root' })
-export class ThemeService {
+class ThemeService {
   private readonly _activeThemeBundleName$ : BehaviorSubject<ThemeBundle> = new BehaviorSubject<ThemeBundle>(ALL_THEMES[0].bundleName);
 
   public constructor(@Inject(DOCUMENT) private readonly _document : Document) {
@@ -94,3 +94,7 @@ export class ThemeService {
     }
   }
 }
+
+export {
+  ThemeService
+};

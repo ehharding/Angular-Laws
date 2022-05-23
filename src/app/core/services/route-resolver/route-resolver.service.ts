@@ -10,7 +10,7 @@ import { distance } from 'fastest-levenshtein';
 import { AppRoute } from 'app/app-routing.module';
 
 @Injectable()
-export class RouteResolverService implements Resolve<string | null> {
+class RouteResolverService implements Resolve<string | null> {
   /* eslint-disable @typescript-eslint/no-magic-numbers */
 
   /**
@@ -85,3 +85,7 @@ export class RouteResolverService implements Resolve<string | null> {
     return APP_ROUTES;
   }
 }
+
+export {
+  RouteResolverService
+};

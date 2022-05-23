@@ -1,23 +1,19 @@
+// eslint-disable-next-line import/no-relative-parent-imports
 import packageJSON from 'app/../../package.json';
 
-export interface AboutDialogData {
-  aboutDialogTitle : string;
-  applicationTitle : string;
-}
-
-export interface OpenSourceDependency {
+interface OpenSourceDependency {
   imgAltDescription : string;
   imgTitle : string;
   tooltip : string;
   websiteLink : string;
 }
 
-export interface PackageVersion {
+interface PackageVersion {
   name : string;
   version : string;
 }
 
-export const OPEN_SOURCE_DEPENDENCIES : OpenSourceDependency[] = [
+const OPEN_SOURCE_DEPENDENCIES : OpenSourceDependency[] = [
   { imgAltDescription : 'Angular.io', imgTitle : 'angular', tooltip : 'Angular — Web Application Framework', websiteLink : 'https://angular.io' },
   { imgAltDescription : 'Angular Material.io', imgTitle : 'angular-material', tooltip : 'Angular Material — Theming Library', websiteLink : 'https://material.angular.io' },
   { imgAltDescription : 'Bootstrap', imgTitle : 'bootstrap', tooltip : 'Bootstrap — CSS Framework', websiteLink : 'https://getbootstrap.com' },
@@ -30,7 +26,7 @@ export const OPEN_SOURCE_DEPENDENCIES : OpenSourceDependency[] = [
   { imgAltDescription : 'npm', imgTitle : 'npm', tooltip : 'npm — Software Registry', websiteLink : 'https://www.npmjs.com' }
 ];
 
-export const PACKAGE_VERSIONS : PackageVersion[] = [
+const PACKAGE_VERSIONS : PackageVersion[] = [
   { name : 'Angular', version : packageJSON.dependencies['@angular/core'] },
   { name : 'Angular Material', version : packageJSON.dependencies['@angular/material'] },
   { name : 'Bootstrap', version : packageJSON.dependencies.bootstrap },
@@ -40,3 +36,13 @@ export const PACKAGE_VERSIONS : PackageVersion[] = [
   { name : 'Jasmine', version : packageJSON.devDependencies['jasmine-core'] },
   { name : 'Karma', version : packageJSON.devDependencies.karma }
 ];
+
+export {
+  OPEN_SOURCE_DEPENDENCIES,
+  PACKAGE_VERSIONS
+};
+
+export type {
+  OpenSourceDependency,
+  PackageVersion
+};
