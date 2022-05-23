@@ -1,6 +1,6 @@
-/******************************************************************************************************************************************************************************
+/**
  * This service is invoked whenever an unknown application route is encountered and attempts to provide suggestions as to the intended route meant by the user.
- *****************************************************************************************************************************************************************************/
+ */
 
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Injectable } from '@angular/core';

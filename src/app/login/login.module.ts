@@ -1,6 +1,6 @@
-/******************************************************************************************************************************************************************************
+/**
  * This module serves as the repository for all modules and components associated with the "Login" module of the application.
- *****************************************************************************************************************************************************************************/
+ */
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgModule } from '@angular/core';

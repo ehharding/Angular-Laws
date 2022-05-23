@@ -1,6 +1,6 @@
-/******************************************************************************************************************************************************************************
+/**
  * This file handles the activation of the /login route of the application. It rejects users of the application that are already logged in.
- *****************************************************************************************************************************************************************************/
+ */
 
 import { CanActivate, Router } from '@angular/router';
 import { Injectable } from '@angular/core';

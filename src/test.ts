@@ -1,12 +1,12 @@
 import 'zone.js/dist/zone-testing';
 
-/******************************************************************************************************************************************************************************
+/**
  * This file defines the environment under which we test the application via Karma.
  *
  * {@link https://angular.io/guide/testing | Angular Testing Guide}
  *
  * @remarks Zone.js imports must be at the top of this file.
- *****************************************************************************************************************************************************************************/
+ */
 
 /*  eslint-disable @typescript-eslint/naming-convention */
 

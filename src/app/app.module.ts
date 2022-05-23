@@ -1,11 +1,11 @@
-/******************************************************************************************************************************************************************************
+/**
  * This module serves as the root application module and is bootstrapped to start the application. It imports all other feature modules to aid in application modularity and
  * scalability, often asynchronously.
  *
  * {@link https://angular.io/guide/architecture#modules | Angular Module Guide}
  *
  * @remarks Be sure to note that the order of Providers in the AppModule is highly important. Providers will initialize in the order they are declared.
- *****************************************************************************************************************************************************************************/
+ */
 
 import { APP_INITIALIZER, InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';

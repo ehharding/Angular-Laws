@@ -1,9 +1,9 @@
-/******************************************************************************************************************************************************************************
+/**
  * The SpinnerInterceptor handles the subscription and unsubscription to the spinner overlay service, showing and hiding a progress spinner overlay as appropriate for HTTP
  * request instances.
  *
  * {@link https://angular.io/guide/http#intercepting-requests-and-responses | Angular Intercepting Requests And Responses Guide}
- *****************************************************************************************************************************************************************************/
+ */
 
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -51,8 +51,8 @@ export class SpinnerInterceptor implements HttpInterceptor {
       });
 
       return () : void => {
-         this._removeActiveRequest(httpRequest);
-         SPINNER_SUBSCRIPTION.unsubscribe();
+        this._removeActiveRequest(httpRequest);
+        SPINNER_SUBSCRIPTION.unsubscribe();
       };
     });
   }

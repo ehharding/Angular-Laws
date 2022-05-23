@@ -1,8 +1,8 @@
-/******************************************************************************************************************************************************************************
+/**
  * This component serves as the core, or root, component. It is always present and forms the main application view.
  *
  * {@link https://angular.io/guide/architecture#components | Angular Component Guide}
- *****************************************************************************************************************************************************************************/
+ */
 
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';

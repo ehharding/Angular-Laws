@@ -1,9 +1,9 @@
-/******************************************************************************************************************************************************************************
+/**
  * The AuthInterceptor handles the authentication status of the user on every HTTP request made in the application, EXCEPT those needed for application startup, such as the
  * ConfigService.
  *
  * {@link https://angular.io/guide/http#intercepting-requests-and-responses | Angular Intercepting Requests And Responses Guide}
- *****************************************************************************************************************************************************************************/
+ */
 
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpStatusCode } from '@angular/common/http';
 import { Injectable } from '@angular/core';

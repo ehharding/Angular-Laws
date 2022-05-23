@@ -1,6 +1,6 @@
-/******************************************************************************************************************************************************************************
+/**
  * This service handles the loading of external JSON configuration files. This should be done once, on startup, in "app.module.ts".
- *****************************************************************************************************************************************************************************/
+ */
 
 import { HttpBackend, HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';

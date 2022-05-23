@@ -1,6 +1,6 @@
-/******************************************************************************************************************************************************************************
+/**
  * This utility file holds several functions used in constructing HTTP responses to backend requests, mostly used in the BackendInterceptor to mock backend data responses.
- *****************************************************************************************************************************************************************************/
+ */
 
 import { HttpErrorResponse, HttpResponse, HttpStatusCode } from '@angular/common/http';
 

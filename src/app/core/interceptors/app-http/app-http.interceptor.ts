@@ -1,8 +1,8 @@
-/******************************************************************************************************************************************************************************
+/**
  * The AppHttpInterceptor transforms HTTP requests going in and out of the application, adding the proper headers, performing any necessary error handling.
  *
  * {@link https://angular.io/guide/http#intercepting-requests-and-responses | Angular Intercepting Requests And Responses Guide}
- *****************************************************************************************************************************************************************************/
+ */
 
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';

@@ -1,7 +1,7 @@
-/******************************************************************************************************************************************************************************
+/**
  * This module serves as the repository for the applications' singleton core services. All services provided here have only one instance at any point across the entire
  * application, in other words.
- *****************************************************************************************************************************************************************************/
+ */
 
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatButtonModule } from '@angular/material/button';

@@ -1,4 +1,4 @@
-/******************************************************************************************************************************************************************************
+/**
  * This service holds the active application theme and provides functionality for loading four pre-built Angular Material themes and provides logic for assigning an arbitrary
  * CSS class to an HTML tag.
  *
@@ -9,7 +9,7 @@
  *   2) Indigo & Pink
  *   3) Pink & Blue Grey
  *   4) Purple & Green
- *****************************************************************************************************************************************************************************/
+ */
 
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
@@ -49,7 +49,7 @@ export class ThemeService {
 
     // If The Element Already Exists, We Set Its "class" Attribute To The List Of Provided CSS Class Names
     if (HTML_ELEMENT) {
-        HTML_ELEMENT.setAttribute('class', cssClassList.join(' '));
+      HTML_ELEMENT.setAttribute('class', cssClassList.join(' '));
     // Otherwise, If The Element Does Not Exist, We'll Throw An Error Since That Essentially Means Programmer Mistake
     } else {
       throw new ReferenceError(`The HTML Tag '${ tagName }' Does Not Exist in the DOM.`);

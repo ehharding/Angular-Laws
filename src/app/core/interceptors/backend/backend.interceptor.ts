@@ -1,9 +1,9 @@
-/******************************************************************************************************************************************************************************
+/**
  * The BackendInterceptor intercepts certain URL requests directed towards a backend and responds to the requests appropriately, instead of directing the requests towards an
  * actual server, as would be the case in the eventual application.
  *
  * {@link https://angular.io/guide/http#intercepting-requests-and-responses | Angular Intercepting Requests And Responses Guide}
- *****************************************************************************************************************************************************************************/
+ */
 
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpStatusCode } from '@angular/common/http';
 import { Injectable } from '@angular/core';

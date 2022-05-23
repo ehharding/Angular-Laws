@@ -1,7 +1,7 @@
-/******************************************************************************************************************************************************************************
+/**
  * This file handles the activation of wildcard routes within the application. It handles the navigation of such route requests to the "/404" route while providing that path
  * with the request.
- *****************************************************************************************************************************************************************************/
+ */
 
 import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
 import { Injectable } from '@angular/core';

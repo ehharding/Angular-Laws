@@ -1,4 +1,4 @@
-/******************************************************************************************************************************************************************************
+/**
  * This file handles navigation for the core application. The URLs defined here are the parent directories for the entire SPA. It enables navigation from one view to the next
  * as users perform application tasks. A change in the browser URL indicates an instruction to change the view to the corresponding component.
  *
@@ -9,7 +9,7 @@
  * ```html
  * <router-outlet></router-outlet>
  * ```
- *****************************************************************************************************************************************************************************/
+ */
 
 import { ExtraOptions, NoPreloading, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';

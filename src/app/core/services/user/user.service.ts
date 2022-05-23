@@ -1,6 +1,6 @@
-/******************************************************************************************************************************************************************************
+/**
  * This service handles the retrieval of user-related data and making user-related transactions with the database.
- *****************************************************************************************************************************************************************************/
+ */
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -18,7 +18,9 @@ export class UserService {
 
   public constructor(private readonly _httpClient : HttpClient) {
     this._httpClient.get<User[]>(ConfigService.appConfiguration.apiServer.paths.users.allUsers).pipe(distinctUntilChanged()).subscribe({
-      next : (allUsers : User[]) : void => { this._allUsers$.next(allUsers); }
+      next : (allUsers : User[]) : void => {
+        this._allUsers$.next(allUsers);
+      }
     });
 
     this._httpClient.get<User | null>(ConfigService.appConfiguration.apiServer.paths.users.currentUser).pipe(distinctUntilChanged()).subscribe({

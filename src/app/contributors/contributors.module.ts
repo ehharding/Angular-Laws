@@ -1,6 +1,6 @@
-/******************************************************************************************************************************************************************************
+/**
  * This module serves as the repository for all modules and components associated with the "Contributors" module of the application.
- *****************************************************************************************************************************************************************************/
+ */
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
