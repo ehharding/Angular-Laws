@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/no-relative-parent-imports
+// eslint-disable-next-line import/no-relative-parent-imports, node/file-extension-in-import, node/no-extraneous-import
 import packageJSON from 'app/../../package.json';
 
 interface OpenSourceDependency {

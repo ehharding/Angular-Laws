@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnIni
 import { OPEN_SOURCE_DEPENDENCIES, OpenSourceDependency, PACKAGE_VERSIONS, PackageVersion } from '@core/components/toolbar/about-dialog/about-dialog.model';
 import { APP_CONSTANTS } from '@core/services/config/config.model';
 
-// eslint-disable-next-line import/no-relative-parent-imports
+// eslint-disable-next-line import/no-relative-parent-imports, node/file-extension-in-import, node/no-extraneous-import
 import packageJSON from 'app/../../package.json';
 
 @Component({
