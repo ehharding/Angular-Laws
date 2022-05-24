@@ -35,7 +35,7 @@
     "project" : "tsconfig.eslint.json",
     "sourceType" : "module"
   },
-  "extends" : ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:import/recommended"],
+  "extends" : ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:import/recommended", "plugin:node/recommended"],
   "ignorePatterns" : ["*.html", "dist", "dist-production", "node_modules"],
   "plugins" : ["@typescript-eslint", "import", "node", "tsdoc"],
   "rules" : {
