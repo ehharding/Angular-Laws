@@ -3,6 +3,8 @@
  * framework.
  *
  * {@link https://karma-runner.github.io/6.3/config/configuration-file.html | Karma Configuration Guide}
+ * {@link https://github.com/dfederm/karma-jasmine-html-reporter | Karma Jasmine HTML Reporter}
+ * {@link https://github.com/litixsoft/karma-mocha-reporter | Karma Mocha Reporter}
  */
 
 module.exports = (config : any) : void => {
@@ -13,7 +15,7 @@ module.exports = (config : any) : void => {
     detached : false,
     failOnEmptyTestSuite : true,
     failOnFailingTestSuite : true,
-    failOnSkippedTests : false,
+    failOnSkippedTests : true,
     forceJSONP : false,
     proxyValidateSSL : true,
     restartOnFileChange : true,
@@ -24,6 +26,7 @@ module.exports = (config : any) : void => {
     browserNoActivityTimeout : 60000,
     browserSocketTimeout : 20000,
     captureTimeout : 60000,
+    concurrency : Infinity,
     pingTimeout : 5000,
     port : 9876,
     processKillTimeout : 2000,
@@ -34,7 +37,6 @@ module.exports = (config : any) : void => {
     protocol : 'http:',
     listenAddress : '0.0.0.0',
     urlRoot : '/',
-    concurrency : Infinity,
     customClientContextFile : undefined,
     customContextFile : undefined,
     customDebugFile : undefined,
@@ -45,40 +47,51 @@ module.exports = (config : any) : void => {
     proxyRes : undefined,
     upstreamProxy : undefined,
     logLevel : config.LOG_INFO,
-    loggers : [{ type : 'console' }],
-    beforeMiddleware : [],
-    middleware : [],
-    browsers : ['Firefox'],
     browserConsoleLogOptions : {
       terminal : false,
       format : '%b %T %m', // { Browser } { Log Type in UpperCase } { Log Message } (%t Is Unused But Is The LogType In LowerCase)
       level : 'debug'
     },
-    customLaunchers : {
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      FirefoxHeadless : { base : 'Firefox', flags : ['--headless'], prefs : { 'network.proxy.type' : 0 } }
-    },
     client : {
       captureConsole : true,
-      clearContext : false, // Leaves The Jasmine Test Runner Output Visible In The Browser
+      clearContext : false,
       clientDisplayNone : false,
       runInParent : false,
       useIframe : true,
-      args : undefined
+      args : undefined,
+      jasmine : {
+        autoCleanClosures : true,
+        failSpecWithNoExpectations : true,
+        hideDisabled : false,
+        random : true,
+        seed : undefined,
+        stopOnSpecFailure : false,
+        stopSpecOnExpectationFailure : true,
+        verboseDeprecations : true
+      }
     },
-    httpsServerOptions : { },
-    mime : { },
-    proxies : { },
-    coverageReporter : { dir : 'coverage-report/', type : 'html' }, // Update .github/workflows/main.yml If Changing The Dir Name For Code Coverage
+    coverageReporter : { dir : 'coverage-report', type : 'html' },
+    jasmineHtmlReporter : { suppressAll : false, suppressFailed : false },
     mochaReporter : {
       ignoreSkipped : false,
       printFirstSuccess : false,
       showDiff : false,
       maxLogLines : 999,
-      colors : { error : 'red', info : 'grey', success : 'green', warning : 'yellow' },
-      output : 'full'
+      divider : '====================================================================================================',
+      output : 'full',
+      colors : { error : 'red', info : 'green', success : 'blue', warning : 'cyan' },
+      symbols : { error : 'x', info : '#', success : '+', warning : '!' }
     },
+    customLaunchers : {
+      FirefoxHeadless : { base : 'Firefox', flags : ['--headless'], prefs : { 'network.proxy.type' : 0 } }
+    },
+    httpsServerOptions : { },
+    mime : { },
+    proxies : { },
     preprocessors : { '**/*.ts' : 'coverage' },
+    beforeMiddleware : [],
+    middleware : [],
+    browsers : ['Firefox'],
     exclude : [],
     files : [
       { pattern : 'node_modules/bootstrap/dist/css/bootstrap.css', watched : true, included : true, served : true },
@@ -95,6 +108,7 @@ module.exports = (config : any) : void => {
       { pattern : 'src/assets/themes/purple-green.css', watched : true, included : true, served : true }
     ],
     frameworks : ['@angular-devkit/build-angular', 'jasmine'],
+    loggers : [{ type : 'console' }],
     plugins : [
       require('@angular-devkit/build-angular/plugins/karma'),
       require('karma-coverage'),
