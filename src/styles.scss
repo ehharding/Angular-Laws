@@ -101,27 +101,27 @@ pf-toolbar a .mat-button {
 }
 
 @keyframes bounce-out {
-  0% { transform : scale(1.000) }
-  5% { transform : scale(1.005) }
-  10% { transform : scale(1.010) }
-  15% { transform : scale(1.015) }
-  20% { transform : scale(1.020) }
-  25% { transform : scale(1.025) }
-  30% { transform : scale(1.030) }
-  35% { transform : scale(1.035) }
-  40% { transform : scale(1.040) }
-  45% { transform : scale(1.045) }
-  50% { transform : scale(1.050) }
-  55% { transform : scale(1.045) }
-  60% { transform : scale(1.040) }
-  65% { transform : scale(1.035) }
-  70% { transform : scale(1.030) }
-  75% { transform : scale(1.025) }
-  80% { transform : scale(1.020) }
-  85% { transform : scale(1.015) }
-  90% { transform : scale(1.010) }
-  95% { transform : scale(1.005) }
-  100% { transform : scale(1.000) }
+  0% { transform : scale(1.0000) }
+  5% { transform : scale(1.0025) }
+  10% { transform : scale(1.0050) }
+  15% { transform : scale(1.0075) }
+  20% { transform : scale(1.0100) }
+  25% { transform : scale(1.0125) }
+  30% { transform : scale(1.0150) }
+  35% { transform : scale(1.0175) }
+  40% { transform : scale(1.0200) }
+  45% { transform : scale(1.0225) }
+  50% { transform : scale(1.0250) }
+  55% { transform : scale(1.0225) }
+  60% { transform : scale(1.0200) }
+  65% { transform : scale(1.0175) }
+  70% { transform : scale(1.0150) }
+  75% { transform : scale(1.0125) }
+  80% { transform : scale(1.0100) }
+  85% { transform : scale(1.0075) }
+  90% { transform : scale(1.0050) }
+  95% { transform : scale(1.0025) }
+  100% { transform : scale(1.0000) }
 }
 
 .pf-bg-white {

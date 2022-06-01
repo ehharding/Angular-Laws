@@ -5,7 +5,7 @@
   "license" : "Apache-2.0",
   "name" : "pocket-fic",
   "version" : "1.0.0",
-  "browserslist" : ["Chrome 102", "Edge 101", "Firefox 100", "Opera 84", "Safari 15"],
+  "browserslist" : ["Chrome 102", "Edge 101", "Firefox 101", "Opera 87", "Safari 15"],
   "contributors" : ["Evan H. Harding"],
   "files" : ["*"],
   "keywords" : ["Angular", "Creative Writing", "Fan Fiction", "Web Apps", "Writing"],
