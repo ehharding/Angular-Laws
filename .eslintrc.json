@@ -660,6 +660,7 @@
     "@typescript-eslint/no-misused-new" : ["warn"],
     "@typescript-eslint/no-misused-promises" : ["warn", {
       "checksConditionals" : true,
+      "checksSpreads" : true,
       "checksVoidReturn" : {
         "arguments" : true,
         "attributes" : true,

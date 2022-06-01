@@ -22,17 +22,10 @@
     </a>
   </p>
 
-  <p>
-    <a href="#Executive-Summary">Executive Summary</a> •
-    <a href="#Developer-Environment-Recommended-Setup">Developer Environment Recommended Setup</a> •
-    <a href="#Getting-Your-Changes-Integrated-Into-The-Project">Getting Your Changes Integrated Into The Project</a> •
-    <a href="#Credits">Credits</a> •
-    <a href="#License">License</a>
-  </p>
-
-  <!-- This Is A Placeholder Image Until A Better One Is Found Or Created -->
-  <img alt="Repository Image" src="https://repository-images.githubusercontent.com/302976042/b7524280-78b4-11eb-8eea-2c34fedcf9c1"/>
+  <img alt="Repository Image" src="https://i.guim.co.uk/img/media/70198efce20be3cb7933cffbf1d6be5e472eb113/1_0_1768_1061/master/1768.jpg?width=1020&quality=45&auto=format&fit=max&dpr=2&s=9596951b6339e070e0842f9b011238b1"/>
 </div>
+
+#### Illustration: [Bill McConkey](https://billmcconkey.blogspot.com)
 
 ## Executive Summary
 A modern fan fiction website for the modern web… at least that's my goal! I don't see any super nice-looking or user-friendly fan fiction websites out there, and I honestly
