@@ -21,9 +21,7 @@
       <div>
         <ng-container *ngTemplateOutlet="homeButtonTemplate"></ng-container>
 
-        <a [routerLink]="AppRoute.Contributors">
-          <button mat-button>Contributors</button>
-        </a>
+        <a mat-button routerLinkActive="pf-active-button" [routerLink]="AppRoute.Contributors">Contributors</a>
       </div>
 
       <!-- Right Group Of Desktop Toolbar Items -->
@@ -69,17 +67,13 @@
           </ng-template>
         </mat-menu>
 
-        <a *ngIf="!currentUser?.jwtToken" [routerLink]="AppRoute.Login">
-          <button mat-button>Log In</button>
-        </a>
+        <a *ngIf="!currentUser?.jwtToken" mat-button routerLinkActive="pf-active-button" [routerLink]="AppRoute.Login">Log In</a>
 
         <button *ngIf="currentUser?.jwtToken" mat-button class="me-2">{{ currentUser?.userName }}</button>
 
-        <a href="https://github.com/ehharding/Pocket-Fic" target="_blank">
-          <button mat-button>
-            <img alt="GitHub Logo" class="me-2 pf-github-logo" src="assets/images/other-logos/github.svg"/>
-            <span>GitHub</span>
-          </button>
+        <a mat-button href="https://github.com/ehharding/Pocket-Fic" target="_blank">
+          <img alt="GitHub Logo" class="me-2 pf-github-logo" src="assets/images/other-logos/github.svg"/>
+          <span>GitHub</span>
         </a>
       </div>
     </ng-template>
@@ -87,10 +81,8 @@
 </nav>
 
 <ng-template #homeButtonTemplate>
-  <a [routerLink]="AppRoute.Home">
-    <button mat-button>
-      <mat-icon class="me-2">import_contacts</mat-icon>
-      <span>Pocket Fic</span>
-    </button>
+  <a mat-button [routerLink]="AppRoute.Home">
+    <mat-icon class="me-2">import_contacts</mat-icon>
+    <span>Pocket Fic</span>
   </a>
 </ng-template>

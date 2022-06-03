@@ -146,6 +146,11 @@ pf-toolbar a .mat-button {
   margin : $spacer ($spacer * 3) !important;
 }
 
+.pf-active-button {
+  background : rgba(0, 0, 0, 0.08) !important;
+  color : white !important;
+}
+
 .pf-fixed-close-button.mat-icon-button {
   margin : 10px;
   right : 0;
