@@ -87,7 +87,7 @@ class ThemeService {
     // We'll Set The "background" Attribute Of <body></body> To "pf-bg-white" For Two Themes And "pf-bg-grey" For The Other Two
     const BODY_TAG : keyof HTMLElementTagNameMap = 'body';
 
-    if (themeBundleName === ThemeBundle.DeepPurpleAmber || themeBundleName === ThemeBundle.IndigoPink) {
+    if (themeBundleName === ThemeBundle.IndigoPink) {
       this.assignCSSClassesToTag(['pf-bg-white'], BODY_TAG);
     } else {
       this.assignCSSClassesToTag(['pf-bg-grey'], BODY_TAG);

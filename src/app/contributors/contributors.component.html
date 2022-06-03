@@ -32,7 +32,7 @@
 
                   <mat-card-subtitle>
                     <a routerLink="/{{ AppRoute.Users }}/{{ contributor.id }}">
-                      <button mat-stroked-button matTooltipPosition="right" [matTooltip]="contributor.pocketFicUserName">
+                      <button mat-stroked-button matTooltipPosition="right" [matTooltip]="contributor.pocketFicUserName ?? 'undefined'">
                         <mat-icon class="me-2" color="primary">import_contacts</mat-icon>
                         <span>POCKET FIC PROFILE</span>
                       </button>

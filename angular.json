@@ -1,6 +1,5 @@
 {
-  "$schema" : "node_modules/@angular/cli/lib/config/schema.json",
-  "defaultProject" : "pocket-fic",
+  "$schema": "node_modules/@angular/cli/lib/config/schema.json",
   "newProjectRoot" : "projects",
   "version" : 1,
   "cli" : {
@@ -20,9 +19,9 @@
           "skipImport" : false,
           "skipTests" : false,
           "changeDetection" : "OnPush",
-          "viewEncapsulation" : "Emulated",
           "prefix" : "pf",
-          "style" : "scss"
+          "style" : "scss",
+          "viewEncapsulation" : "Emulated"
         },
         "@schematics/angular:directive" : { "flat" : true, "skipImport" : false, "skipTests" : false, "prefix" : "pf" },
         "@schematics/angular:module" : { "commonModule" : true, "flat" : false, "routing" : false, "routingScope" : "Child" },
@@ -35,7 +34,7 @@
       "sourceRoot" : "src",
       "architect" : {
         "build" : {
-          "builder" : "@angular-devkit/build-angular:browser",
+          "builder" : "@angular-devkit/build-angular:browser-esbuild",
           "configurations" : {
             "production" : {
               "aot" : true,
@@ -43,7 +42,7 @@
               "commonChunk" : true,
               "deleteOutputPath" : true,
               "extractLicenses" : true,
-              "namedChunks" : false,
+              "namedChunks" : true,
               "preserveSymlinks" : false,
               "serviceWorker" : true,
               "subresourceIntegrity" : false,
@@ -78,7 +77,7 @@
             "commonChunk" : true,
             "deleteOutputPath" : true,
             "extractLicenses" : false,
-            "namedChunks" : false,
+            "namedChunks" : true,
             "preserveSymlinks" : false,
             "serviceWorker" : false,
             "subresourceIntegrity" : false,
@@ -89,10 +88,10 @@
             "outputPath" : "dist",
             "index" : "src/index.html",
             "main" : "src/main.ts",
-            "ngswConfigPath" : "",
+            "ngswConfigPath" : "ngsw-config.json",
             "polyfills" : "src/polyfills.ts",
             "tsConfig" : "tsconfig.app.json",
-            "crossOrigin" : "none",
+            "crossOrigin" : "anonymous",
             "inlineStyleLanguage" : "scss",
             "outputHashing" : "none",
             "allowedCommonJsDependencies" : ["lodash"],
@@ -135,7 +134,7 @@
           "options" : { "exclude" : ["**/node_modules/**"], "tsConfig" : ["tsconfig.app.json"] }
         }
       },
-      "i18n" : { "sourceLocale" : "en-US" }
+      "i18n" : { "sourceLocale" : "en" }
     }
   }
 }

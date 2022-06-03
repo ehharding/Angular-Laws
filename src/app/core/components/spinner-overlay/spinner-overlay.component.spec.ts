@@ -7,7 +7,6 @@ import { SpinnerOverlayComponent } from '@core/components/spinner-overlay/spinne
 describe('component SpinnerOverlayComponent', () : void => {
   let spinnerOverlayComponentFixture : ComponentFixture<SpinnerOverlayComponent>;
   let spinnerOverlayElement : HTMLElement;
-  let spinnerOverlayComponentInstance : any;
 
   beforeEach(waitForAsync(() : void => {
     TestBed.configureTestingModule({
@@ -16,7 +15,6 @@ describe('component SpinnerOverlayComponent', () : void => {
 
     spinnerOverlayComponentFixture = TestBed.createComponent(SpinnerOverlayComponent);
     spinnerOverlayElement = spinnerOverlayComponentFixture.debugElement.nativeElement;
-    spinnerOverlayComponentInstance = spinnerOverlayComponentFixture.debugElement.componentInstance;
 
     spinnerOverlayComponentFixture.detectChanges();
   }));

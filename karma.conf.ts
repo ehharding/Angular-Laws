@@ -102,20 +102,18 @@ module.exports = (config : any) : void => {
       { pattern : 'node_modules/bootstrap/dist/css/bootstrap-reboot.rtl.css', watched : true, included : true, served : true },
       { pattern : 'node_modules/bootstrap/dist/css/bootstrap-utilities.css', watched : true, included : true, served : true },
       { pattern : 'node_modules/bootstrap/dist/css/bootstrap-utilities.rtl.css', watched : true, included : true, served : true },
-      { pattern : 'src/assets/themes/deeppurple-amber.css', watched : true, included : true, served : true },
       { pattern : 'src/assets/themes/indigo-pink.css', watched : true, included : true, served : true },
-      { pattern : 'src/assets/themes/pink-bluegrey.css', watched : true, included : true, served : true },
-      { pattern : 'src/assets/themes/purple-green.css', watched : true, included : true, served : true }
+      { pattern : 'src/assets/themes/pink-bluegrey.css', watched : true, included : true, served : true }
     ],
     frameworks : ['@angular-devkit/build-angular', 'jasmine'],
     loggers : [{ type : 'console' }],
     plugins : [
-      require('@angular-devkit/build-angular/plugins/karma'),
-      require('karma-coverage'),
-      require('karma-firefox-launcher'),
-      require('karma-jasmine'),
-      require('karma-jasmine-html-reporter'),
-      require('karma-mocha-reporter')
+      '@angular-devkit/build-angular/plugins/karma',
+      'karma-coverage',
+      'karma-firefox-launcher',
+      'karma-jasmine',
+      'karma-jasmine-html-reporter',
+      'karma-mocha-reporter'
     ],
     reporters : ['coverage', 'dots', 'kjhtml', 'mocha'],
     transports : ['polling', 'websocket']

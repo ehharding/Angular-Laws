@@ -2,7 +2,7 @@
  * This file handles the activation of the /login route of the application. It rejects users of the application that are already logged in.
  */
 
-import { CanActivate, Router } from '@angular/router';
+import { CanActivate } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -12,7 +12,7 @@ import { CredentialService } from '@core/services/credential/credential.service'
 
 @Injectable()
 class LoginGuard implements CanActivate {
-  public constructor(private readonly _router : Router, private readonly _snackBar : MatSnackBar, private readonly _credentialService : CredentialService) { }
+  public constructor(private readonly _snackBar : MatSnackBar, private readonly _credentialService : CredentialService) { }
 
   /**
    * This method determines if the /login application route can be activated. If the user is logged in to the application then access to the route is rejected, and the user is

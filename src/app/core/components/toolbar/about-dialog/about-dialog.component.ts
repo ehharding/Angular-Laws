@@ -20,16 +20,16 @@ class AboutDialogComponent implements OnInit, OnDestroy {
   public readonly openSourceDependencies : OpenSourceDependency[] = OPEN_SOURCE_DEPENDENCIES;
   public readonly packageVersions : PackageVersion[] = PACKAGE_VERSIONS;
 
-  private _currentTimeIntervalID : number | undefined = undefined;
+  private _currentTimeIntervalId : number | undefined = undefined;
 
   public constructor(private readonly _changeDetectorRef : ChangeDetectorRef) { }
 
   public ngOnInit() : void {
-    this._currentTimeIntervalID = this.setCurrentTimeInterval();
+    this._currentTimeIntervalId = this.setCurrentTimeInterval();
   }
 
   public ngOnDestroy() : void {
-    window.clearInterval(this._currentTimeIntervalID);
+    window.clearInterval(this._currentTimeIntervalId);
   }
 
   /**

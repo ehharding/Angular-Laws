@@ -1,6 +1,10 @@
 {
   "extends" : "./tsconfig.app.json",
-  "compilerOptions" : { "outDir" : "dist-production/out-tsc/spec", "types" : ["jasmine", "node"] },
+  "compilerOptions" : {
+    "outDir" : "dist-production/out-tsc/spec",
+    "types" : ["jasmine", "node"]
+  },
   "files" : ["src/environments/environment.production.ts", "src/test.ts", "karma.conf.ts"],
+  "exclude" : ["src/main.ts"],
   "include" : ["**/*.ts"]
 }

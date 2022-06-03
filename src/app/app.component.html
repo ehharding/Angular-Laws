@@ -27,7 +27,7 @@
           </a>
 
           <a *ngIf="currentUser?.jwtToken" mat-list-item (click)="drawer.close()">
-            <span>{{ currentUser.userName }}</span>
+            <span>{{ currentUser?.userName }}</span>
           </a>
 
           <div mat-subheader>THEME</div>

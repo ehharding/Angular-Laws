@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output } from '@angular/core';
 
 import { ReplaySubject } from 'rxjs';
 
@@ -17,7 +16,7 @@ import { ConfigService } from '@core/services/config/config.service';
   templateUrl : 'toolbar.component.html'
 })
 class ToolbarComponent implements OnInit, OnDestroy {
-  @Input() public activeTheme : ThemeBundle = ThemeBundle.DeepPurpleAmber;
+  @Input() public activeTheme : ThemeBundle = ThemeBundle.IndigoPink;
   @Input() public currentUser : User | null = null;
 
   @Output() public openAboutDialog : EventEmitter<void> = new EventEmitter<void>();
@@ -30,8 +29,6 @@ class ToolbarComponent implements OnInit, OnDestroy {
   public readonly AppRoute = AppRoute;
 
   private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
-
-  public constructor(private readonly _changeDetectorRef : ChangeDetectorRef, private readonly _dialog : MatDialog) { }
 
   /**
    * Executes certain actions whenever the window changes size. In this case, we set a flag that indicates if we should show a mobile-centric view or not.

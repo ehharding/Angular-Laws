@@ -12,7 +12,6 @@ import { UserService } from '@core/services/user/user.service';
 describe('service UserService', () : void => {
   let userService : UserService;
 
-  let httpClient : HttpClient;
   let httpTestingController : HttpTestingController;
 
   let allUsersGetRequest : TestRequest;
@@ -27,7 +26,6 @@ describe('service UserService', () : void => {
     });
 
     userService = TestBed.inject(UserService);
-    httpClient = TestBed.inject(HttpClient);
     httpTestingController = TestBed.inject(HttpTestingController);
 
     expect(userService).toBeTruthy();

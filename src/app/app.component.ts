@@ -32,7 +32,7 @@ import { AboutDialogComponent } from '@core/components/toolbar/about-dialog/abou
 class AppComponent implements OnInit, OnDestroy {
   @ViewChild('drawer') public drawer : MatDrawer | undefined = undefined;
 
-  public activeTheme : ThemeBundle = ThemeBundle.DeepPurpleAmber;
+  public activeTheme : ThemeBundle = ThemeBundle.IndigoPink;
   public currentUser : User | null = null;
   public isLoading : boolean = false;
 

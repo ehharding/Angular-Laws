@@ -14,9 +14,6 @@
 import { ExtraOptions, NoPreloading, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { ContributorsModule } from '@contributors/contributors.module';
-import { LoginModule } from '@login/login.module';
-
 import { LoginGuard } from '@core/guards/login/login.guard';
 import { NotFoundGuard } from '@core/guards/not-found/not-found.guard';
 
@@ -54,12 +51,12 @@ const APP_ROUTES : Routes = [
   },
   {
     path : AppRoute.Contributors,
-    loadChildren : async() : Promise<ContributorsModule> => (await import(/* webpackChunkName: "ContributorsModule" */ '@contributors/contributors.module')).ContributorsModule
+    loadChildren : async() => (await import(/* webpackChunkName: "ContributorsModule" */ '@contributors/contributors.module')).ContributorsModule
   },
   {
     path : AppRoute.Login,
     canActivate : [LoginGuard],
-    loadChildren : async() : Promise<LoginModule> => (await import(/* webpackChunkName: "LoginModule" */ '@login/login.module')).LoginModule
+    loadChildren : async() => (await import(/* webpackChunkName: "LoginModule" */ '@login/login.module')).LoginModule
   },
   {
     path : AppRoute.NotFound,
