@@ -34,7 +34,7 @@
       "sourceRoot" : "src",
       "architect" : {
         "build" : {
-          "builder" : "@angular-devkit/build-angular:browser-esbuild",
+          "builder" : "@angular-devkit/build-angular:browser",
           "configurations" : {
             "production" : {
               "aot" : true,
