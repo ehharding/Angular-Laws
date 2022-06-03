@@ -67,11 +67,12 @@ pf-toolbar a .mat-button {
   pointer-events : auto;
   position : absolute;
   transition : opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
-  -webkit-tap-highlight-color : transparent;
+  -webkit-tap-highlight-color : rgba(0, 0, 0, 0);
 }
 
 .cdk-visually-hidden {
   border : 0;
+  left : 0;
   outline : 0;
   padding : 0;
   height : 1px;
@@ -80,6 +81,9 @@ pf-toolbar a .mat-button {
   clip : rect(0 0 0 0);
   overflow : hidden;
   position : absolute;
+  white-space : nowrap;
+  -moz-appearance : none;
+  -webkit-appearance : none;
 }
 
 .mat-badge-content {

@@ -346,7 +346,7 @@
       "destructuredArrayIgnorePattern" : "",
       "varsIgnorePattern" : ""
     }],
-    "no-use-before-define" : ["off", { "classes" : true, "functions" : true, "variables" : true }],
+    "no-use-before-define" : ["off", { "allowNamedExports" : false, "classes" : true, "functions" : true, "variables" : true }],
     "no-useless-backreference" : ["warn"],
     "no-useless-call" : ["warn"],
     "no-useless-catch" : ["warn"],
