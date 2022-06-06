@@ -6,8 +6,8 @@
   "lang" : "en",
   "dir" : "auto",
   "id" : "/",
-  "scope" : "/",
-  "start_url" : "/",
+  "scope" : "https://ehharding.github.io/Pocket-Fic/",
+  "start_url" : "https://ehharding.github.io/Pocket-Fic/",
   "display" : "fullscreen",
   "orientation" : "landscape-primary",
   "background_color" : "#FAFAFA",
@@ -31,7 +31,7 @@
     { "src" : "assets/images/other-logos/github.svg", "sizes" : "439x439" },
     { "src" : "assets/images/other-logos/linkedin.svg", "sizes" : "382x382" },
     { "src" : "assets/images/other-logos/not-found.svg", "sizes" : "150x150" },
-    { "src" : "assets/images/other-logos/apple-touch-icon.png", "sizes" : "192x192" },
-    { "src" : "assets/images/other-logos/splash.png", "sizes" : "512x512" }
+    { "src" : "assets/images/other-logos/apple-touch-icon.png", "sizes" : "192x192", "type" : "image/png" },
+    { "src" : "assets/images/other-logos/splash.png", "sizes" : "512x512", "type" : "image/png" }
   ]
 }
