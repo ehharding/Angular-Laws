@@ -8,15 +8,17 @@
   <mat-divider class="pf-dialog-divider-title"></mat-divider>
 
   <h5><strong>What Is Pocket Fic?</strong></h5>
+
   <p>
-    Welcome to Pocket Fic! This project is about creating a modern, user-friendly, and responsive fan fiction website for the world to use. Built on the latest technologies
-    and web development paradigms, I am hoping for Pocket Fic to become the fan fiction site every fan fiction consumer loves to use.
+    Welcome to Pocket Fic! This project is about creating a modern, user-friendly, and responsive fan fiction website for the world to use, for free! Built with the latest
+    technologies and web development tools, I am hoping for the site to eventually become the fan fiction site every fan fiction consumer enjoys using.
   </p>
 
   <!--
    - SVG logo assets taken from the following sources:
    -   Angular          - https://upload.wikimedia.org/wikipedia/commons/c/cf/Angular_full_color_logo.svg
    -   Angular Material - https://material.angular.io/assets/img/angular-material-logo.svg
+   -   Firebase         - https://firebase.google.com/downloads/brand-guidelines/SVG/logo-logomark.svg
    -   Bootstrap        - https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg
    -   RxJS             - https://raw.githubusercontent.com/ReactiveX/rxjs/master/resources/CI-CD/logo/svg/RxJs_Logo_Basic.svg
    -   ESLint           - https://d33wubrfki0l68.cloudfront.net/204482ca413433c80cd14fe369e2181dd97a2a40/092e2/assets/img/logo.svg
@@ -24,7 +26,8 @@
    -   Node.js          - https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg
    -   NPM              - https://upload.wikimedia.org/wikipedia/commons/d/db/Npm-logo.svg
    -->
-  <h5><strong>Built With Open Source Software</strong></h5>
+  <h5><strong>Built With Modern Tools (NOT Endorsed... Yet!)</strong></h5>
+
   <div class="mx-auto my-5 w-100">
     <cdk-virtual-scroll-viewport class="pf-horizontal-viewport" itemSize="100" orientation="horizontal">
       <div *cdkVirtualFor="let openSourceDependency of openSourceDependencies" class="mx-4" matTooltip="{{ openSourceDependency.tooltip }}">
@@ -35,7 +38,8 @@
     </cdk-virtual-scroll-viewport>
   </div>
 
-  <h5><strong>Version Information</strong></h5>
+  <h5><strong>Client (Angular) Application Information</strong></h5>
+
   <mat-card class="mat-elevation-z0">
     <mat-card-header>
       <mat-icon mat-card-avatar>import_contacts</mat-icon>
@@ -54,6 +58,75 @@
       </div>
     </mat-card-content>
   </mat-card>
+
+  <div class="m-3 mt-0">
+    <div class="mx-auto">
+      <mat-accordion class="pf-headers-align">
+        <!-- Google Firebase App Information -->
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <strong>Firebase Connection</strong>
+            </mat-panel-title>
+
+            <mat-panel-description>Firebase App Information</mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <ng-template matExpansionPanelContent>
+            <div class="text-start w-100">
+              <h6><strong>API Key</strong></h6>
+              <p>{{ firebaseApiKey }}</p>
+
+              <h6><strong>Auth Domain</strong></h6>
+              <p>{{ firebaseAuthDomain }}</p>
+
+              <h6><strong>Storage Bucket</strong></h6>
+              <p>{{ firebaseStorageBucket }}</p>
+
+              <h6><strong>App ID</strong></h6>
+              <p>{{ firebaseAppId }}</p>
+
+              <h6><strong>Messaging Sender ID</strong></h6>
+              <p>{{ firebaseMessagingSenderId }}</p>
+
+              <h6><strong>Measurement ID</strong></h6>
+              <p>{{ firebaseMeasurementId }}</p>
+
+              <h6><strong>Project ID</strong></h6>
+              <p>{{ firebaseProjectId }}</p>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+
+        <!-- Google Firebase Firestore Database Information -->
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <strong>Firestore Connection&nbsp;</strong>
+              <mat-icon matTooltipPosition="after" [color]="firestoreConnected ? 'primary' : 'warn'" [matTooltip]="firestoreConnected ? 'Connected' : 'Disconnected'">
+                {{ firestoreConnected ? 'check_circle' : 'cancel' }}
+              </mat-icon>
+            </mat-panel-title>
+
+            <mat-panel-description>Firebase Database Information</mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <ng-template matExpansionPanelContent>
+            <div class="text-start w-100">
+              <h6><strong>Persistence Key</strong></h6>
+              <p>{{ firestorePersistenceKey }}</p>
+
+              <h6><strong>App ID</strong></h6>
+              <p>{{ firestoreAppId }}</p>
+
+              <h6><strong>Client ID</strong></h6>
+              <p>{{ firestoreClientId }}</p>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
 </mat-dialog-content>
 
 <mat-dialog-actions>

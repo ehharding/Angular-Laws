@@ -13,26 +13,27 @@
           <!-- List Of Application Pages -->
           <div mat-subheader>PAGES</div>
 
-          <a mat-list-item [routerLink]="AppRoute.Home" (click)="drawer.close()">
+          <a mat-list-item [href]="AppRoute.Home" [routerLink]="AppRoute.Home" (click)="drawer.close()">
             <mat-icon class="me-2" color="primary">import_contacts</mat-icon>
             <span>Pocket Fic</span>
           </a>
 
-          <a mat-list-item [routerLink]="AppRoute.Contributors" (click)="drawer.close()">
+          <a mat-list-item [href]="AppRoute.Contributors" [routerLink]="AppRoute.Contributors"
+             (click)="drawer.close()">
             <span>Contributors</span>
           </a>
 
-          <a *ngIf="!currentUser?.jwtToken" mat-list-item [routerLink]="AppRoute.Login" (click)="drawer.close()">
+          <a *ngIf="!currentUser?.jwtToken" mat-list-item [href]="AppRoute.Login" [routerLink]="AppRoute.Login" (click)="drawer.close()">
             <span>Log In</span>
           </a>
 
-          <a *ngIf="currentUser?.jwtToken" mat-list-item (click)="drawer.close()">
-            <span>{{ currentUser?.userName }}</span>
-          </a>
+          <button *ngIf="currentUser?.jwtToken" mat-list-item (click)="drawer.close()">
+            <strong>{{ currentUser?.userName }}</strong>
+          </button>
 
           <div mat-subheader>THEME</div>
 
-          <a mat-list-item *ngFor="let theme of allThemes" [disabled]="theme.bundleName === activeTheme" (click)="setApplicationTheme(theme.bundleName)">
+          <button *ngFor="let theme of allThemes" mat-list-item [disabled]="theme.bundleName === activeTheme" (click)="setApplicationTheme(theme.bundleName)">
             <!-- Display A Checkmark Next To The Active Theme -->
             <mat-icon *ngIf="theme.bundleName === activeTheme" class="me-2">check</mat-icon>
             <!-- Display An Empty Icon Which Acts Like A Spacer Next To All Of The Other Themes -->
@@ -51,15 +52,15 @@
               </svg>
             </mat-icon>
 
-            <span>{{ theme.labelName }}</span>
-          </a>
+            <strong>{{ theme.labelName }}</strong>
+          </button>
 
           <!-- List Of Help-Related Items -->
           <div mat-subheader>HELP ME</div>
 
-          <a mat-list-item (click)="drawer.close(); openAboutDialog()">
-            <span>About&hellip;</span>
-          </a>
+          <button mat-list-item (click)="drawer.close(); openAboutDialog()">
+            <strong>About&hellip;</strong>
+          </button>
 
           <!-- List Of External Links And Resources -->
           <div mat-subheader>EXTERNAL LINKS</div>

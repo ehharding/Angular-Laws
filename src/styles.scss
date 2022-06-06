@@ -138,6 +138,7 @@ pf-toolbar a .mat-button {
 
 .pf-card-footer-logo {
   height : 26px;
+  width : 26px;
 }
 
 .cdk-overlay-pane.pf-dialog {
@@ -148,11 +149,6 @@ pf-toolbar a .mat-button {
 
 .pf-dialog-divider-title {
   margin : $spacer ($spacer * 3) !important;
-}
-
-.pf-active-button {
-  background : rgba(0, 0, 0, 0.08) !important;
-  color : white !important;
 }
 
 .pf-fixed-close-button.mat-icon-button {

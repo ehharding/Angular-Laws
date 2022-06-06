@@ -8,92 +8,83 @@
   </div>
 </header>
 
-<main>
-  <div class="m-3">
-    <div class="mx-auto" [ngClass]="{ 'pf-w-70' : !mobileView, 'w-100' : mobileView }">
-      <mat-accordion *ngIf="!contributorsFetchError" class="pf-headers-align">
-        <mat-expansion-panel *ngFor="let contributor of allContributors; let index = index" [expanded]="index === 0">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <mat-icon class="me-3">account_circle</mat-icon>
-              <strong>{{ contributor.firstName }} {{ contributor.lastName }}</strong>
-            </mat-panel-title>
+<div class="m-3">
+  <div class="mx-auto" [ngClass]="{ 'pf-w-70' : !mobileView, 'w-100' : mobileView }">
+    <mat-accordion *ngIf="!contributorsFetchError" class="pf-headers-align">
+      <mat-expansion-panel *ngFor="let contributor of allContributors; let index = index" [expanded]="index === 0">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon class="me-3">account_circle</mat-icon>
+            <strong>{{ contributor.firstName }} {{ contributor.lastName }}</strong>
+          </mat-panel-title>
 
-            <mat-panel-description>{{ contributor.jobTitle }}</mat-panel-description>
-          </mat-expansion-panel-header>
+          <mat-panel-description>{{ contributor.jobTitle }}</mat-panel-description>
+        </mat-expansion-panel-header>
 
-          <ng-template matExpansionPanelContent>
-            <div class="d-flex justify-content-center">
-              <mat-card class="mat-elevation-z0">
-                <mat-card-header>
-                  <img mat-card-avatar alt="{{ contributor.firstName }} {{ contributor.lastName }}'s Avatar" src="assets/avatars/{{ contributorNamesKebab[index] }}.jpg"/>
+        <ng-template matExpansionPanelContent>
+          <div class="d-flex justify-content-center">
+            <mat-card class="mat-elevation-z0">
+              <mat-card-header>
+                <img mat-card-avatar alt="{{ contributor.firstName }} {{ contributor.lastName }}'s Avatar" src="assets/avatars/{{ contributorNamesKebab[index] }}.jpg"/>
 
-                  <mat-card-subtitle>
-                    <a routerLink="/{{ AppRoute.Users }}/{{ contributor.id }}">
-                      <button mat-stroked-button matTooltipPosition="right" [matTooltip]="contributor.pocketFicUserName ?? 'undefined'">
-                        <mat-icon class="me-2" color="primary">import_contacts</mat-icon>
-                        <span>POCKET FIC PROFILE</span>
-                      </button>
-                    </a>
-                  </mat-card-subtitle>
-                </mat-card-header>
-
-                <mat-card-content>{{ contributor.personalSummary }}</mat-card-content>
-
-                <mat-card-actions>
-                  <!-- The First Contributor Card Action Button Is An Email Link -->
-                  <a href="mailto:{{ contributor.email }}?subject=Subject&body=Hi%20{{ contributor.firstName }}">
-                    <button mat-button [matTooltip]="contributor.email">
-                      <mat-icon class="me-2">email</mat-icon>
-                      <span>E-MAIL</span>
-                    </button>
+                <!-- If The Contributor Has A Pocket Fic Profile We Display A Button To Link To That User Profile -->
+                <mat-card-subtitle *ngIf="contributor.pocketFicUserId">
+                  <a mat-stroked-button href="/{{ AppRoute.Users }}/{{ contributor.pocketFicUserId }}" routerLink="/{{ AppRoute.Users }}/{{ contributor.pocketFicUserId }}"
+                     matTooltipPosition="right" [matTooltip]="getUserNameFromUserId(contributor.pocketFicUserId)" [matTooltipShowDelay]="matTooltipShowDelay">
+                    <mat-icon class="me-2" color="primary">import_contacts</mat-icon>
+                    <span>PROFILE</span>
                   </a>
+                </mat-card-subtitle>
+              </mat-card-header>
 
-                  <!-- The Second Contributor Card Action Button Is A Link To The Respective Contributors' Resume (Optional) -->
-                  <a *ngIf="contributor.resume" target="_blank" [href]="contributor.resume">
-                    <button mat-button>
-                      <mat-icon class="me-2">contact_page</mat-icon>
-                      <span>RESUM&Eacute;</span>
-                    </button>
-                  </a>
+              <mat-card-content>{{ contributor.personalSummary }}</mat-card-content>
 
-                  <!-- The Third Contributor Card Action Button Is A Link To The Respective Contributors' GitHub (Optional) -->
-                  <a *ngIf="contributor.gitHub" target="_blank" [href]="contributor.gitHub">
-                    <button mat-button>
-                      <img alt="GitHub Logo" class="me-2 pf-card-footer-logo" src="assets/images/other-logos/github.svg"/>
-                      <span>GITHUB</span>
-                    </button>
-                  </a>
+              <mat-card-actions>
+                <!-- The First Contributor Card Action Button Is An Email Link -->
+                <a mat-button href="mailto:{{ contributor.email }}?subject=Subject&body=Hi%20{{ contributor.firstName }}" [matTooltip]="contributor.email"
+                   [matTooltipShowDelay]="matTooltipShowDelay">
+                  <mat-icon class="me-2">email</mat-icon>
+                  <span>E-MAIL</span>
+                </a>
 
-                  <!-- The Fourth Contributor Card Action Button Is A Link To The Respective Contributors' LinkedIn (Optional) -->
-                  <a *ngIf="contributor.linkedIn" target="_blank" [href]="contributor.linkedIn">
-                    <button mat-button>
-                      <img alt="LinkedIn Logo" class="me-2 pf-card-footer-logo" src="assets/images/other-logos/linkedin.svg"/>
-                      <span>LINKEDIN</span>
-                    </button>
-                  </a>
-                </mat-card-actions>
-              </mat-card>
-            </div>
-          </ng-template>
-        </mat-expansion-panel>
-      </mat-accordion>
+                <!-- The Second Contributor Card Action Button Is A Link To The Respective Contributors' Resume (Optional) -->
+                <a *ngIf="contributor.resume" mat-button target="_blank" [href]="contributor.resume">
+                  <mat-icon class="me-2">contact_page</mat-icon>
+                  <span>RESUM&Eacute;</span>
+                </a>
 
-      <div *ngIf="contributorsFetchError" class="row">
-        <div class="col">
-          <h1 class="fs-4 row">
-            <strong>An Error Occurred Fetching the List of Contributors. Sorry About That!</strong>
-            <mat-hint class="fs-5">{{ contributorsFetchErrorInfo }}</mat-hint>
-          </h1>
+                <!-- The Third Contributor Card Action Button Is A Link To The Respective Contributors' GitHub (Optional) -->
+                <a *ngIf="contributor.gitHub" mat-button target="_blank" [href]="contributor.gitHub">
+                  <img alt="GitHub Logo" class="me-2 pf-card-footer-logo" src="assets/images/other-logos/github.svg"/>
+                  <span>GITHUB</span>
+                </a>
 
-          <div>
-            <button mat-raised-button (click)="fetchAllContributors()">
-              <mat-icon class="me-2">refresh</mat-icon>
-              <span>RETRY</span>
-            </button>
+                <!-- The Fourth Contributor Card Action Button Is A Link To The Respective Contributors' LinkedIn (Optional) -->
+                <a *ngIf="contributor.linkedIn" mat-button target="_blank" [href]="contributor.linkedIn">
+                  <img alt="LinkedIn Logo" class="me-2 pf-card-footer-logo" src="assets/images/other-logos/linkedin.svg"/>
+                  <span>LINKEDIN</span>
+                </a>
+              </mat-card-actions>
+            </mat-card>
           </div>
+        </ng-template>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <div *ngIf="contributorsFetchError" class="row">
+      <div class="col">
+        <h1 class="fs-4 row">
+          <strong>An Error Occurred Fetching The List Of Contributors. Sorry About That!</strong>
+          <mat-hint class="fs-5">{{ contributorsFetchError }}</mat-hint>
+        </h1>
+
+        <div>
+          <button mat-raised-button (click)="fetchAllContributors()">
+            <mat-icon class="me-2">refresh</mat-icon>
+            <span>RETRY</span>
+          </button>
         </div>
       </div>
     </div>
   </div>
-</main>
+</div>

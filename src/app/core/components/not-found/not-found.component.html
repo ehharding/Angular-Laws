@@ -1,52 +1,50 @@
-<main>
-  <div class="m-3">
-    <div class="mx-auto row text-center" [ngClass]="{ 'pf-w-70' : !mobileView, 'w-100' : mobileView }">
-      <div class="col w-50">
-        <div class="container">
-          <!-- The Following SVG Image Is Taken From "chris i" At https://codepen.io/christinei/pen/VxpxKm -->
-          <img alt="Freepik's 404 Not Found Image" src="assets/images/other-logos/not-found.svg"/>
-        </div>
-
-        <a href="https://www.freepik.com/free-vector/404-error-design-with-milk_1535244.htm" target="_blank">Designed by Freepik</a>
+<div class="m-3">
+  <div class="mx-auto row text-center" [ngClass]="{ 'pf-w-70' : !mobileView, 'w-100' : mobileView }">
+    <div class="col w-50">
+      <div class="container">
+        <!-- The Following SVG Image Is Taken From "chris i" At https://codepen.io/christinei/pen/VxpxKm -->
+        <img alt="Freepik's 404 Not Found Image" src="assets/images/other-logos/not-found.svg"/>
       </div>
 
-      <div class="col text-start w-50">
-        <h1 class="fs-1"><strong>Page Not Found (HTTP 404)</strong></h1>
-        <p class="fs-4">The route you are looking for was not found. Sorry about that!</p>
-
-        <mat-divider></mat-divider>
-
-        <div>
-          <a [routerLink]="AppRoute.Home">
-            <button mat-raised-button color="primary">GO HOME</button>
-          </a>
-        </div>
-      </div>
+      <a href="https://www.freepik.com/free-vector/404-error-design-with-milk_1535244.htm" target="_blank">Designed by Freepik</a>
     </div>
 
-    <div *ngIf="intendedRouteGuesses.length > 0" class="mt-3">
-      <mat-hint>Do you want any of these application routes instead? They are similar and are sorted in order of likely relevance to you.</mat-hint>
-      <mat-card *ngFor="let intendedRouteGuess of intendedRouteGuesses" class="d-flex justify-content-between my-2">
-        <!-- Left Group Of Card Items -->
-        <div>
-          <strong>{{ intendedRouteGuess === '/' ? 'Home Page' : intendedRouteGuess }}</strong>
-        </div>
+    <div class="col text-start w-50">
+      <h1 class="fs-1"><strong>Page Not Found (HTTP 404)</strong></h1>
+      <p class="fs-4">The route you are looking for was not found. Sorry about that!</p>
 
-        <!-- Right Group Of Card Items -->
-        <div>
-          <button mat-stroked-button (click)="copyRouteToClipboard(intendedRouteGuess)">
-            <mat-icon class="me-2">content_copy</mat-icon>
-            <span>COPY</span>
-          </button>
+      <mat-divider></mat-divider>
 
-          <a [routerLink]="intendedRouteGuess">
-            <button mat-stroked-button>
-              <mat-icon class="me-2">arrow_circle_right</mat-icon>
-              <span>GO</span>
-            </button>
-          </a>
-        </div>
-      </mat-card>
+      <div>
+        <a [href]="AppRoute.Home" [routerLink]="AppRoute.Home">
+          <button mat-raised-button color="primary">HOME</button>
+        </a>
+      </div>
     </div>
   </div>
-</main>
+
+  <div *ngIf="intendedRouteGuesses.length > 0" class="mt-3">
+    <mat-hint>Do you want any of these application routes instead? They are similar and are sorted in order of likely relevance to you.</mat-hint>
+    <mat-card *ngFor="let intendedRouteGuess of intendedRouteGuesses" class="d-flex justify-content-between my-2">
+      <!-- Left Group Of Card Items -->
+      <div>
+        <strong>{{ intendedRouteGuess === '/' ? 'Home Page' : intendedRouteGuess }}</strong>
+      </div>
+
+      <!-- Right Group Of Card Items -->
+      <div>
+        <button mat-stroked-button (click)="copyRouteToClipboard(intendedRouteGuess)">
+          <mat-icon class="me-2">content_copy</mat-icon>
+          <span>COPY</span>
+        </button>
+
+        <a [href]="intendedRouteGuess" [routerLink]="intendedRouteGuess">
+          <button mat-stroked-button>
+            <mat-icon class="me-2">arrow_circle_right</mat-icon>
+            <span>GO</span>
+          </button>
+        </a>
+      </div>
+    </mat-card>
+  </div>
+</div>

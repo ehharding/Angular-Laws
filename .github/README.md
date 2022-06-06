@@ -22,10 +22,8 @@
     </a>
   </p>
 
-  <img alt="Repository Image" src="https://i.guim.co.uk/img/media/70198efce20be3cb7933cffbf1d6be5e472eb113/1_0_1768_1061/master/1768.jpg?width=1020&quality=45&auto=format&fit=max&dpr=2&s=9596951b6339e070e0842f9b011238b1"/>
+  <img alt="Splash Image" src="src/assets/images/other-logos/splash.png"/>
 </div>
-
-#### Illustration: [Bill McConkey](https://billmcconkey.blogspot.com)
 
 ## Executive Summary
 A modern fan fiction website for the modern web… at least that's my goal! I don't see any super nice-looking or user-friendly fan fiction websites out there, and I honestly

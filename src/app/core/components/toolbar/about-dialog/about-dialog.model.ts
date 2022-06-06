@@ -16,9 +16,10 @@ interface PackageVersion {
 const OPEN_SOURCE_DEPENDENCIES : OpenSourceDependency[] = [
   { imgAltDescription : 'Angular.io', imgTitle : 'angular', tooltip : 'Angular — Web Application Framework', websiteLink : 'https://angular.io' },
   { imgAltDescription : 'Angular Material.io', imgTitle : 'angular-material', tooltip : 'Angular Material — Theming Library', websiteLink : 'https://material.angular.io' },
+  { imgAltDescription : 'Firebase', imgTitle : 'firebase', tooltip : 'Firebase — App Development Platform', websiteLink : 'https://firebase.google.com' },
   { imgAltDescription : 'Bootstrap', imgTitle : 'bootstrap', tooltip : 'Bootstrap — CSS Framework', websiteLink : 'https://getbootstrap.com' },
   { imgAltDescription : 'RxJS', imgTitle : 'rxjs', tooltip : 'RxJS — Reactive Programming Library', websiteLink : 'https://rxjs-dev.firebaseapp.com' },
-  { imgAltDescription : 'TypeScript', imgTitle : 'typescript', tooltip : 'TypeScript — Statically Typed JavaScript', websiteLink : 'https://www.typescriptlang.org' },
+  { imgAltDescription : 'TypeScript', imgTitle : 'typescript', tooltip : 'TypeScript — Better JavaScript', websiteLink : 'https://www.typescriptlang.org' },
   { imgAltDescription : 'ESLint', imgTitle : 'eslint', tooltip : 'ESLint — JavaScript/TypeScript Linter', websiteLink : 'https://eslint.org' },
   { imgAltDescription : 'Jasmine', imgTitle : 'jasmine', tooltip : 'Jasmine — Testing Framework', websiteLink : 'https://jasmine.github.io/' },
   { imgAltDescription : 'Karma', imgTitle : 'karma', tooltip : 'Karma — Test Runner', websiteLink : 'https://karma-runner.github.io/latest/index.html' },
@@ -29,6 +30,7 @@ const OPEN_SOURCE_DEPENDENCIES : OpenSourceDependency[] = [
 const PACKAGE_VERSIONS : PackageVersion[] = [
   { name : 'Angular', version : packageJSON.dependencies['@angular/core'] },
   { name : 'Angular Material', version : packageJSON.dependencies['@angular/material'] },
+  { name : 'Firebase', version : packageJSON.dependencies.firebase },
   { name : 'Bootstrap', version : packageJSON.dependencies.bootstrap },
   { name : 'RxJS', version : packageJSON.dependencies.rxjs },
   { name : 'TypeScript', version : packageJSON.devDependencies.typescript },

@@ -18,8 +18,6 @@ import { BehaviorSubject, Observable, distinctUntilChanged } from 'rxjs';
 
 import { ALL_THEMES, ThemeBundle } from '@core/services/theme/theme.model';
 
-import { ConfigService } from '@core/services/config/config.service';
-
 @Injectable({ providedIn : 'root' })
 class ThemeService {
   private readonly _activeThemeBundleName$ : BehaviorSubject<ThemeBundle> = new BehaviorSubject<ThemeBundle>(ALL_THEMES[0].bundleName);
@@ -65,7 +63,7 @@ class ThemeService {
   public loadClientTheme(themeBundleName : ThemeBundle) : void {
     const HTML_LINK_ELEMENT_ID : string = 'client-theme';
     const HTML_LINK_ELEMENT : HTMLElement | null = this._document.getElementById(HTML_LINK_ELEMENT_ID);
-    const THEME_STYLES : string = `${ ConfigService.appConfiguration.apiServer.themes }/${ themeBundleName }.css`;
+    const THEME_STYLES : string = `assets/themes/${ themeBundleName }.css`;
 
     // If The <link/> Element Already Exists, We Simply Modify Its "href" Attribute
     if (HTML_LINK_ELEMENT) {

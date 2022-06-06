@@ -1,7 +1,5 @@
 import { HttpErrorResponse, HttpResponse, HttpStatusCode } from '@angular/common/http';
 
-import { APP_CONSTANTS } from '@core/services/config/config.model';
-
 import { constructErrorResponse$, constructOkResponse$, constructUnauthorizedResponse$ } from '@shared/utilities/http-response/http-response.utility';
 
 describe('class HttpResponseUtility', () : void => {
@@ -33,12 +31,9 @@ describe('class HttpResponseUtility', () : void => {
 
   describe('function constructUnauthorizedResponse$', () : void => {
     it('should throw an Observable UNAUTHORIZED HttpErrorResponse (HTTP 401) stream with the emitted object having its statusText set to the provided parameter', () : void => {
-      const MOCK_HTTP_ERROR_RESPONSE : HttpErrorResponse = { statusText : 'You Are Unauthorized' } as any;
-
-      constructUnauthorizedResponse$(MOCK_HTTP_ERROR_RESPONSE.statusText).subscribe({
+      constructUnauthorizedResponse$().subscribe({
         error(errorResponse : HttpErrorResponse) : void {
           expect(errorResponse.status).toEqual(HttpStatusCode.Unauthorized);
-          expect(errorResponse.statusText).toEqual(MOCK_HTTP_ERROR_RESPONSE.statusText);
         }
       });
     });
@@ -47,7 +42,6 @@ describe('class HttpResponseUtility', () : void => {
       constructUnauthorizedResponse$().subscribe({
         error(errorResponse : HttpErrorResponse) : void {
           expect(errorResponse.status).toEqual(HttpStatusCode.Unauthorized);
-          expect(errorResponse.statusText).toEqual(APP_CONSTANTS.httpResponseCodes[HttpStatusCode.Unauthorized].httpStatusText);
         }
       });
     });

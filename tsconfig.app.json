@@ -86,7 +86,7 @@
     "skipLibCheck" : false,
     "stripInternal" : false,
     "suppressExcessPropertyErrors" : false,
-    "suppressImplicitAnyIndexErrors" : false,
+    "suppressImplicitAnyIndexErrors" : true,
     "traceResolution" : false,
     "useDefineForClassFields" : true,
     "useUnknownInCatchVariables" : true,

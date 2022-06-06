@@ -19,13 +19,12 @@ import { User } from '@core/services/user/user.model';
 import { ConfigService } from '@core/services/config/config.service';
 import { SpinnerService } from '@core/services/spinner/spinner.service';
 import { ThemeService } from '@core/services/theme/theme.service';
-import { UserService } from '@core/services/user/user.service';
 
 import { AboutDialogComponent } from '@core/components/toolbar/about-dialog/about-dialog.component';
 
 @Component({
-  changeDetection : ChangeDetectionStrategy.OnPush,
   selector : 'pf-root',
+  changeDetection : ChangeDetectionStrategy.OnPush,
   styleUrls : ['app.component.scss'],
   templateUrl : 'app.component.html'
 })
@@ -45,8 +44,7 @@ class AppComponent implements OnInit, OnDestroy {
     private readonly _changeDetectorRef : ChangeDetectorRef,
     private readonly _dialog : MatDialog,
     private readonly _spinnerService : SpinnerService,
-    private readonly _themeService : ThemeService,
-    private readonly _userService : UserService
+    private readonly _themeService : ThemeService
   ) {
     this._spinnerService.isLoading$.pipe(distinctUntilChanged()).subscribe({
       next : (isLoading : boolean) : void => {
@@ -61,13 +59,6 @@ class AppComponent implements OnInit, OnDestroy {
     this._themeService.getActiveThemeBundleName$().pipe(takeUntil(this._componentDestroyed$)).subscribe({
       next : (activeTheme : ThemeBundle) : void => {
         this.activeTheme = activeTheme;
-        this._changeDetectorRef.detectChanges();
-      }
-    });
-
-    this._userService.getCurrentUser$().pipe(takeUntil(this._componentDestroyed$)).subscribe({
-      next : (currentUser : User | null) : void => {
-        this.currentUser = currentUser;
         this._changeDetectorRef.detectChanges();
       }
     });

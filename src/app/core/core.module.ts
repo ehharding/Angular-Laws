@@ -8,11 +8,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgModule } from '@angular/core';
@@ -20,11 +20,9 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { SharedModule } from '@shared/shared.module';
 
-import { LoginGuard } from '@core/guards/login/login.guard';
 import { NotFoundGuard } from '@core/guards/not-found/not-found.guard';
 
 import { ConfigService } from '@core/services/config/config.service';
-import { CredentialService } from '@core/services/credential/credential.service';
 import { RouteResolverService } from '@core/services/route-resolver/route-resolver.service';
 import { SpinnerService } from '@core/services/spinner/spinner.service';
 import { ThemeService } from '@core/services/theme/theme.service';
@@ -44,17 +42,17 @@ import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
     MatCardModule,
     MatDialogModule,
     MatDividerModule,
+    MatExpansionModule,
     MatFormFieldModule,
     MatIconModule,
     MatMenuModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule,
     MatToolbarModule,
     MatTooltipModule,
     ScrollingModule,
     SharedModule
   ],
-  providers : [LoginGuard, NotFoundGuard, ConfigService, CredentialService, RouteResolverService, SpinnerService, ThemeService, UserService]
+  providers : [NotFoundGuard, ConfigService, RouteResolverService, SpinnerService, ThemeService, UserService]
 })
 class CoreModule { }
 

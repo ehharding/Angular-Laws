@@ -2,8 +2,9 @@
  * This service handles the retrieval of contributor-related data.
  */
 
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
+import { QueryDocumentSnapshot, QuerySnapshot, collection, getDocs } from 'firebase/firestore';
 
 import { BehaviorSubject, Observable, distinctUntilChanged } from 'rxjs';
 
@@ -14,9 +15,9 @@ import { ConfigService } from '@core/services/config/config.service';
 @Injectable({ providedIn : 'any' })
 class ContributorService {
   private readonly _allContributors$ : BehaviorSubject<Contributor[]> = new BehaviorSubject<Contributor[]>([] as Contributor[]);
-  private readonly _contributorsFetchError$ : BehaviorSubject<HttpErrorResponse | undefined> = new BehaviorSubject<HttpErrorResponse | undefined>(undefined);
+  private readonly _contributorsFetchError$ : BehaviorSubject<string | undefined> = new BehaviorSubject<string | undefined>(undefined);
 
-  public constructor(private readonly _httpClient : HttpClient) {
+  public constructor() {
     this.fetchAllContributors();
   }
 
@@ -24,15 +25,21 @@ class ContributorService {
    * Fetches all contributors from the database and updates the class's data with the new values, or error handles.
    */
   public fetchAllContributors() : void {
-    this._httpClient.get<Contributor[]>(ConfigService.appConfiguration.apiServer.paths.contributors.allContributors).pipe(distinctUntilChanged()).subscribe({
-      next : (allContributors : Contributor[]) : void => {
-        this._allContributors$.next(allContributors);
-        this._contributorsFetchError$.next(undefined);
-      },
-      error : (error : HttpErrorResponse) : void => {
-        this._contributorsFetchError$.next(error);
-      }
-    });
+    if (ConfigService.firestore) {
+      const ALL_CONTRIBUTORS : Contributor[] = [];
+
+      getDocs(collection(ConfigService.firestore, 'contributors')).then((allContributorsSnapshot : QuerySnapshot) : void => {
+        allContributorsSnapshot.forEach((contributorSnapshot : QueryDocumentSnapshot) : void => {
+          ALL_CONTRIBUTORS.push(contributorSnapshot.data() as Contributor);
+          this._allContributors$.next(ALL_CONTRIBUTORS);
+        });
+      }).catch((error : Error) : void => {
+        console.error(error.message);
+        this._contributorsFetchError$.next(error.message);
+      });
+    } else {
+      console.error('Firebase Firestore seems to be unavailable.');
+    }
   }
 
   /**
@@ -45,12 +52,12 @@ class ContributorService {
   }
 
   /**
-   * Provides a HttpErrorResponse | undefined-typed Observable stream for interested subscribers to receive the latest error, if any, when the HTTP request to retrieve all
-   * contributors from the database was made.
+   * Provides a string | undefined-typed Observable stream for interested subscribers to receive the latest error, if any, associated with a request to retrieve contributors
+   * from the database.
    *
-   * @returns a HttpErrorResponse | undefined-typed Observable stream. Subscribe to the stream to receive the object type specified asynchronously.
+   * @returns a string | undefined-typed Observable stream. Subscribe to the stream to receive the object type specified asynchronously.
    */
-  public getContributorsFetchError$() : Observable<HttpErrorResponse | undefined> {
+  public getContributorsFetchError$() : Observable<string | undefined> {
     return this._contributorsFetchError$.asObservable().pipe(distinctUntilChanged());
   }
 }

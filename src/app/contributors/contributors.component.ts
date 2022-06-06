@@ -1,30 +1,28 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { HttpErrorResponse } from '@angular/common/http';
 
 import { ReplaySubject, takeUntil } from 'rxjs';
 
 import { AppRoute } from 'app/app-routing.module';
 
-import { APP_CONSTANTS } from '@core/services/config/config.model';
 import { Contributor } from '@contributors/services/contributor/contributor.model';
 
 import { ConfigService } from '@core/services/config/config.service';
 import { ContributorService } from '@contributors/services/contributor/contributor.service';
 
 @Component({
-  changeDetection : ChangeDetectionStrategy.OnPush,
   selector : 'pf-contributors',
+  changeDetection : ChangeDetectionStrategy.OnPush,
   styleUrls : ['contributors.component.scss'],
   templateUrl : 'contributors.component.html'
 })
 class ContributorsComponent implements OnInit, OnDestroy {
   public allContributors : Contributor[] = [];
-  public contributorsFetchError : HttpErrorResponse | undefined = undefined;
-  public contributorsFetchErrorInfo : string | undefined = undefined;
+  public contributorsFetchError : string | undefined = undefined;
   public mobileView : boolean = false;
 
   public readonly AppRoute = AppRoute;
   public readonly contributorNamesKebab : string[] = [];
+  public readonly matTooltipShowDelay : number = ConfigService.appConfiguration.constants.tooltipShowDelayMS;
 
   private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
@@ -52,7 +50,6 @@ class ContributorsComponent implements OnInit, OnDestroy {
       next : (allContributors : Contributor[]) : void => {
         this.allContributors = allContributors;
         this.contributorsFetchError = undefined;
-        this.contributorsFetchErrorInfo = undefined;
 
         for (const CONTRIBUTOR of allContributors) {
           // We'll Convert The Contributors Name To Kebab-Case To Match The File Name (e.g., 'Evan Harding' -> evan-harding)
@@ -64,10 +61,9 @@ class ContributorsComponent implements OnInit, OnDestroy {
     });
 
     this._contributorService.getContributorsFetchError$().pipe(takeUntil(this._componentDestroyed$)).subscribe({
-      next : (contributorsFetchError : HttpErrorResponse | undefined) : void => {
+      next : (contributorsFetchError : string | undefined) : void => {
         if (contributorsFetchError) {
           this.contributorsFetchError = contributorsFetchError;
-          this.contributorsFetchErrorInfo = `HTTP ${ contributorsFetchError.status }: ${ APP_CONSTANTS.httpResponseCodes[contributorsFetchError.status].httpStatusText }`;
         }
 
         this._changeDetectorRef.detectChanges();
@@ -85,6 +81,10 @@ class ContributorsComponent implements OnInit, OnDestroy {
    */
   public fetchAllContributors() : void {
     this._contributorService.fetchAllContributors();
+  }
+
+  public getUserNameFromUserId(userId : number) : string {
+    return String(userId);
   }
 }
 

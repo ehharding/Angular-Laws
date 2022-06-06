@@ -21,17 +21,19 @@
       <div>
         <ng-container *ngTemplateOutlet="homeButtonTemplate"></ng-container>
 
-        <a mat-button routerLinkActive="pf-active-button" [routerLink]="AppRoute.Contributors">Contributors</a>
+        <a mat-button routerLinkActive="pf-route-button-active" [href]="AppRoute.Contributors" [routerLink]="AppRoute.Contributors">
+          <span>Contributors</span>
+        </a>
       </div>
 
       <!-- Right Group Of Desktop Toolbar Items -->
       <div>
-        <button mat-icon-button matTooltip="Select a Theme For Your Stay on Pocket Fic" [matMenuTriggerFor]="themeMenu">
+        <button mat-icon-button aria-label="Open Theme Switcher Icon Button" matTooltip="Select An Application Theme" [matMenuTriggerFor]="themeMenu">
           <mat-icon>palette</mat-icon>
         </button>
         <mat-menu #themeMenu="matMenu" xPosition="before">
           <ng-template matMenuContent>
-            <button mat-menu-item *ngFor="let theme of allThemes" [disabled]="theme.bundleName === activeTheme" (click)="setApplicationTheme.emit(theme.bundleName)">
+            <button *ngFor="let theme of allThemes" mat-menu-item [disabled]="theme.bundleName === activeTheme" (click)="setApplicationTheme.emit(theme.bundleName)">
               <!-- Display A Checkmark Next To The Active Theme -->
               <mat-icon *ngIf="theme.bundleName === activeTheme" class="me-2">check</mat-icon>
               <!-- Display An Empty Icon Which Acts Like A Spacer Next To All Of The Other Themes -->
@@ -55,7 +57,7 @@
           </ng-template>
         </mat-menu>
 
-        <button mat-icon-button class="me-2" matTooltip="Help Me" [matMenuTriggerFor]="helpMenu">
+        <button mat-icon-button aria-label="Open Help Menu Icon Button" class="me-2" matTooltip="Help Me" [matMenuTriggerFor]="helpMenu">
           <mat-icon>help</mat-icon>
         </button>
         <mat-menu #helpMenu="matMenu" xPosition="before">
@@ -67,7 +69,9 @@
           </ng-template>
         </mat-menu>
 
-        <a *ngIf="!currentUser?.jwtToken" mat-button routerLinkActive="pf-active-button" [routerLink]="AppRoute.Login">Log In</a>
+        <a *ngIf="!currentUser?.jwtToken" mat-button routerLinkActive="pf-route-button-active" [href]="AppRoute.Login" [routerLink]="AppRoute.Login">
+          <span>Log In</span>
+        </a>
 
         <button *ngIf="currentUser?.jwtToken" mat-button class="me-2">{{ currentUser?.userName }}</button>
 
@@ -81,7 +85,7 @@
 </nav>
 
 <ng-template #homeButtonTemplate>
-  <a mat-button [routerLink]="AppRoute.Home">
+  <a mat-button [href]="AppRoute.Home" [routerLink]="AppRoute.Home">
     <mat-icon class="me-2">import_contacts</mat-icon>
     <span>Pocket Fic</span>
   </a>

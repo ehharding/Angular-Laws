@@ -1,6 +1,7 @@
+/* EXTERNAL INTERFACE THAT MIMICS FIREBASE CLOUD FIRESTORE STRUCTURE - MODIFY BOTH SIMULTANEOUSLY */
 interface Contributor {
-  id : number;
-  pocketFicUserName : string | undefined;
+  contributorId : number;
+  pocketFicUserId : number | undefined;
   firstName : string;
   lastName : string;
   email : string;

@@ -10,8 +10,8 @@ import { User } from '@core/services/user/user.model';
 import { ConfigService } from '@core/services/config/config.service';
 
 @Component({
-  changeDetection : ChangeDetectionStrategy.OnPush,
   selector : 'pf-toolbar',
+  changeDetection : ChangeDetectionStrategy.OnPush,
   styleUrls : ['toolbar.component.scss'],
   templateUrl : 'toolbar.component.html'
 })

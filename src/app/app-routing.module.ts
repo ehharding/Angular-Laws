@@ -14,7 +14,6 @@
 import { ExtraOptions, NoPreloading, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { LoginGuard } from '@core/guards/login/login.guard';
 import { NotFoundGuard } from '@core/guards/not-found/not-found.guard';
 
 import { RouteResolverService } from '@core/services/route-resolver/route-resolver.service';
@@ -55,7 +54,6 @@ const APP_ROUTES : Routes = [
   },
   {
     path : AppRoute.Login,
-    canActivate : [LoginGuard],
     loadChildren : async() => (await import(/* webpackChunkName: "LoginModule" */ '@login/login.module')).LoginModule
   },
   {

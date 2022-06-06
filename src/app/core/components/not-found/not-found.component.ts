@@ -9,8 +9,8 @@ import { AppRoute } from 'app/app-routing.module';
 import { ConfigService } from '@core/services/config/config.service';
 
 @Component({
-  changeDetection : ChangeDetectionStrategy.OnPush,
   selector : 'pf-not-found',
+  changeDetection : ChangeDetectionStrategy.OnPush,
   styleUrls : ['not-found.component.scss'],
   templateUrl : 'not-found.component.html'
 })

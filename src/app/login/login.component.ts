@@ -1,20 +1,13 @@
 import { ChangeDetectionStrategy, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { HttpErrorResponse } from '@angular/common/http';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 
-import { ReplaySubject, takeUntil } from 'rxjs';
-
-import { DEFAULT_MAT_SNACKBAR_CONFIG } from '@core/services/config/config.model';
-import { User } from '@core/services/user/user.model';
+import { ReplaySubject } from 'rxjs';
 
 import { ConfigService } from '@core/services/config/config.service';
-import { UserService } from '@core/services/user/user.service';
 
 @Component({
-  changeDetection : ChangeDetectionStrategy.OnPush,
   selector : 'pf-login',
+  changeDetection : ChangeDetectionStrategy.OnPush,
   styleUrls : ['login.component.scss'],
   templateUrl : 'login.component.html'
 })
@@ -27,8 +20,6 @@ class LoginComponent implements OnInit, OnDestroy {
   });
 
   private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
-
-  public constructor(private readonly _router : Router, private readonly _snackBar : MatSnackBar, private readonly _userService : UserService) { }
 
   /**
    * Executes certain actions whenever the window changes size. In this case, we set a flag that indicates if we should show a mobile-centric view or not.
@@ -58,17 +49,7 @@ class LoginComponent implements OnInit, OnDestroy {
    * This function logs the user into the application but should only be callable when the status of the login FormGroup is valid. For now, beyond logging the user in, it
    * merely navigates the user back to the home page.
    */
-  public login() : void {
-    this._userService.login$(this.loginFormGroup.value.userName, this.loginFormGroup.value.password).pipe(takeUntil(this._componentDestroyed$)).subscribe({
-      next : async(_user : User) : Promise<void> => {
-        this._snackBar.open('Log In Successful', 'OK', DEFAULT_MAT_SNACKBAR_CONFIG);
-        await this._router.navigate(['']);
-      },
-      error : (_errorResponse : HttpErrorResponse) : void => {
-        this._snackBar.open('Failed to Log In. Please Try Again.', 'OK', { ...DEFAULT_MAT_SNACKBAR_CONFIG, politeness : 'assertive' });
-      }
-    });
-  }
+  public login() : void { }
 }
 
 export {

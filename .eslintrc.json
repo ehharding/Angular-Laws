@@ -313,7 +313,7 @@
     "no-this-before-super" : ["warn"],
     "no-throw-literal" : ["off"],
     "no-trailing-spaces" : ["warn", { "ignoreComments" : false, "skipBlankLines" : false }],
-    "no-undef-init" : ["warn"],
+    "no-undef-init" : ["off"],
     "no-undef" : ["warn", { "typeof" : true }],
     "no-undefined" : ["off"],
     "no-underscore-dangle" : ["warn", {
@@ -476,7 +476,7 @@
     "@typescript-eslint/consistent-type-exports" : ["warn"],
     "@typescript-eslint/consistent-type-imports" : ["warn", { "disallowTypeAnnotations" : true, "prefer" : "no-type-imports" }],
     "@typescript-eslint/default-param-last" : ["warn"],
-    "@typescript-eslint/dot-notation" : ["warn", { "allowKeywords" : true, "allowPrivateClassPropertyAccess" : false, "allowProtectedClassPropertyAccess" : false }],
+    "@typescript-eslint/dot-notation" : ["off", { "allowKeywords" : true, "allowPrivateClassPropertyAccess" : false, "allowProtectedClassPropertyAccess" : false }],
     "@typescript-eslint/explicit-function-return-type" : ["warn", {
       "allowConciseArrowFunctionExpressionsStartingWithVoid" : false,
       "allowDirectConstAssertionInArrowFunctions" : true,
@@ -803,7 +803,7 @@
     "import/first" : ["warn"],
     "import/group-exports" : ["warn"],
     "import/max-dependencies" : ["warn", { "ignoreTypeImports" : false, "max" : 15 }],
-    "import/named" : ["warn"],
+    "import/named" : ["off"],
     "import/namespace" : ["warn", { "allowComputed" : false }],
     "import/newline-after-import" : ["warn", { "count" : 1 }],
     "import/no-absolute-path" : ["warn", { "amd" : false, "commonjs" : true, "esmodule" : true }],
@@ -910,7 +910,6 @@
       "rules" : {
         "max-lines-per-function" : ["off"],
 
-        "@typescript-eslint/dot-notation" : ["off"],
         "@typescript-eslint/init-declarations" : ["off"],
         "@typescript-eslint/naming-convention" : ["off"],
         "@typescript-eslint/no-empty-function" : ["off"],
