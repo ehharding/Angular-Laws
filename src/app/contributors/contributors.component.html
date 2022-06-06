@@ -40,26 +40,22 @@
               <mat-card-content>{{ contributor.personalSummary }}</mat-card-content>
 
               <mat-card-actions>
-                <!-- The First Contributor Card Action Button Is An Email Link -->
                 <a mat-button href="mailto:{{ contributor.email }}?subject=Subject&body=Hi%20{{ contributor.firstName }}" [matTooltip]="contributor.email"
                    [matTooltipShowDelay]="matTooltipShowDelay">
                   <mat-icon class="me-2">email</mat-icon>
                   <span>E-MAIL</span>
                 </a>
 
-                <!-- The Second Contributor Card Action Button Is A Link To The Respective Contributors' Resume (Optional) -->
                 <a *ngIf="contributor.resume" mat-button target="_blank" [href]="contributor.resume">
                   <mat-icon class="me-2">contact_page</mat-icon>
                   <span>RESUM&Eacute;</span>
                 </a>
 
-                <!-- The Third Contributor Card Action Button Is A Link To The Respective Contributors' GitHub (Optional) -->
                 <a *ngIf="contributor.gitHub" mat-button target="_blank" [href]="contributor.gitHub">
                   <img alt="GitHub Logo" class="me-2 pf-card-footer-logo" src="assets/images/other-logos/github.svg"/>
                   <span>GITHUB</span>
                 </a>
 
-                <!-- The Fourth Contributor Card Action Button Is A Link To The Respective Contributors' LinkedIn (Optional) -->
                 <a *ngIf="contributor.linkedIn" mat-button target="_blank" [href]="contributor.linkedIn">
                   <img alt="LinkedIn Logo" class="me-2 pf-card-footer-logo" src="assets/images/other-logos/linkedin.svg"/>
                   <span>LINKEDIN</span>
