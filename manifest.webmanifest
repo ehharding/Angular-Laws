@@ -31,7 +31,7 @@
     { "src" : "assets/images/other-logos/github.svg", "sizes" : "439x439" },
     { "src" : "assets/images/other-logos/linkedin.svg", "sizes" : "382x382" },
     { "src" : "assets/images/other-logos/not-found.svg", "sizes" : "150x150" },
-    { "src" : "assets/images/other-logos/html5.png", "sizes" : "192x192" },
+    { "src" : "assets/images/other-logos/apple-touch-icon.png", "sizes" : "192x192" },
     { "src" : "assets/images/other-logos/splash.png", "sizes" : "512x512" }
   ]
 }
