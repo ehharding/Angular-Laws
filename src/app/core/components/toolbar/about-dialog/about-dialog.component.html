@@ -124,6 +124,24 @@
             </div>
           </ng-template>
         </mat-expansion-panel>
+
+        <!-- Google reCAPTCHA Security Information -->
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <strong>reCAPTCHA</strong>
+            </mat-panel-title>
+
+            <mat-panel-description>reCAPTCHA Security Information</mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <ng-template matExpansionPanelContent>
+            <div class="text-start w-100">
+              <h6><strong>reCAPTCHA Site Key (v3)</strong></h6>
+              <p>{{ reCAPTCHASiteKey }}</p>
+            </div>
+          </ng-template>
+        </mat-expansion-panel>
       </mat-accordion>
     </div>
   </div>

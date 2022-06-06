@@ -17,7 +17,7 @@ import { BehaviorSubject, Observable, distinctUntilChanged } from 'rxjs';
 
 import { ENVIRONMENT } from '@environment/environment.development';
 
-import { AppConfiguration } from '@core/services/config/config.model';
+import { AppConfiguration, DEFAULT_FIRESTORE_CONNECTION_INFO } from '@core/services/config/config.model';
 
 // This Is Needed For TypeScript... See https://firebase.google.com/docs/app-check/web/debug-provider#localhost
 declare global {
@@ -35,10 +35,11 @@ class ConfigService {
   private _firebaseApp : FirebaseApp | undefined = undefined;
 
   private readonly _firestoreConnected$ : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  private readonly _firestorePersistenceKey$ : BehaviorSubject<string> = new BehaviorSubject<string>('N/A');
-  private readonly _firestoreAppId$ : BehaviorSubject<string> = new BehaviorSubject<string>('N/A');
-  private readonly _firestoreClientId$ : BehaviorSubject<string> = new BehaviorSubject<string>('N/A');
+  private readonly _firestorePersistenceKey$ : BehaviorSubject<string> = new BehaviorSubject<string>(DEFAULT_FIRESTORE_CONNECTION_INFO);
+  private readonly _firestoreAppId$ : BehaviorSubject<string> = new BehaviorSubject<string>(DEFAULT_FIRESTORE_CONNECTION_INFO);
+  private readonly _firestoreClientId$ : BehaviorSubject<string> = new BehaviorSubject<string>(DEFAULT_FIRESTORE_CONNECTION_INFO);
 
+  private readonly _appConfigurationDocumentFirestorePath : string = 'configuration/appConfiguration';
   private readonly _reCAPTCHASiteKey : string = '6LfB60EgAAAAAL0uPo1nP0U9FYczf0e80ajcFXo3';
 
   /**
@@ -71,8 +72,8 @@ class ConfigService {
     // Sets The Session Firestore Instance To Be Used Throughout The Application For Database Transactions
     ConfigService.firestore = getFirestore(this._firebaseApp);
 
-    // Reaches Out To Firestore To Ask For Client Application Configuration Information... A Default Is Set Above But This Allows On-The-Fly External Configuration
-    await getDoc(doc(ConfigService.firestore, 'configuration/appConfiguration')).then((documentSnapshot : DocumentSnapshot) : void => {
+    // Reaches Out To Firestore For On-The-Fly External Client Application Configuration Information
+    await getDoc(doc(ConfigService.firestore, this._appConfigurationDocumentFirestorePath)).then((documentSnapshot : DocumentSnapshot) : void => {
       ConfigService.appConfiguration = documentSnapshot.data() as AppConfiguration;
 
       // If Firebase Firestore Is Truthy, We Are Said To Be "Connected"
@@ -84,9 +85,9 @@ class ConfigService {
       // Otherwise, We Are Said To Be "Disconnected", So We Set That State For The Rest Of The Application
       } else {
         this._firestoreConnected$.next(false);
-        this._firestorePersistenceKey$.next('N/A');
-        this._firestoreAppId$.next('N/A');
-        this._firestoreClientId$.next('N/A');
+        this._firestorePersistenceKey$.next(DEFAULT_FIRESTORE_CONNECTION_INFO);
+        this._firestoreAppId$.next(DEFAULT_FIRESTORE_CONNECTION_INFO);
+        this._firestoreClientId$.next(DEFAULT_FIRESTORE_CONNECTION_INFO);
       }
     }).catch((error : Error) : void => {
       console.error(error.message);

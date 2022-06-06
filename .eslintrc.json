@@ -895,17 +895,6 @@
   },
   "overrides" : [
     {
-      "files" : ["*.interceptor.ts"],
-      "rules" : {
-        "no-param-reassign" : ["off"],
-
-        "@typescript-eslint/naming-convention" : ["off"],
-        "@typescript-eslint/no-explicit-any" : ["off"],
-        "@typescript-eslint/no-unsafe-assignment" : ["off"],
-        "@typescript-eslint/typedef" : ["off"]
-      }
-    },
-    {
       "files" : ["*.spec.ts", "karma.conf.ts"],
       "rules" : {
         "max-lines-per-function" : ["off"],

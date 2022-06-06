@@ -88,7 +88,7 @@
             "outputPath" : "dist",
             "index" : "src/index.html",
             "main" : "src/main.ts",
-            "ngswConfigPath" : "ngsw-config.json",
+            "ngswConfigPath" : "",
             "polyfills" : "src/polyfills.ts",
             "tsConfig" : "tsconfig.app.json",
             "crossOrigin" : "anonymous",

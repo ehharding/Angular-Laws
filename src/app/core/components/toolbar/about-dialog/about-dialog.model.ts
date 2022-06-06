@@ -36,7 +36,9 @@ const PACKAGE_VERSIONS : PackageVersion[] = [
   { name : 'TypeScript', version : packageJSON.devDependencies.typescript },
   { name : 'ESLint', version : packageJSON.devDependencies.eslint },
   { name : 'Jasmine', version : packageJSON.devDependencies['jasmine-core'] },
-  { name : 'Karma', version : packageJSON.devDependencies.karma }
+  { name : 'Karma', version : packageJSON.devDependencies.karma },
+  { name : 'Node.js', version : packageJSON.engines.node },
+  { name : 'npm', version : packageJSON.engines.npm } // eslint-disable-line @typescript-eslint/no-unsafe-assignment
 ];
 
 export {

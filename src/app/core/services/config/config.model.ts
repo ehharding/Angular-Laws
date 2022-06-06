@@ -26,6 +26,8 @@ const APP_CONSTANTS : AppConstants = {
   }
 };
 
+const DEFAULT_FIRESTORE_CONNECTION_INFO : string = 'N/A';
+
 const DEFAULT_MAT_DIALOG_CONFIG : MatDialogConfig = {
   autoFocus : true,
   closeOnNavigation : false,
@@ -39,6 +41,7 @@ const DEFAULT_MAT_DIALOG_CONFIG : MatDialogConfig = {
 
 export {
   APP_CONSTANTS,
+  DEFAULT_FIRESTORE_CONNECTION_INFO,
   DEFAULT_MAT_DIALOG_CONFIG
 };
 

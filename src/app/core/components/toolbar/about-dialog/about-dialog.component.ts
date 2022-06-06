@@ -4,8 +4,8 @@ import { ReplaySubject, takeUntil } from 'rxjs';
 
 import { ENVIRONMENT } from '@environment/environment.development';
 
+import { APP_CONSTANTS, DEFAULT_FIRESTORE_CONNECTION_INFO } from '@core/services/config/config.model';
 import { OPEN_SOURCE_DEPENDENCIES, OpenSourceDependency, PACKAGE_VERSIONS, PackageVersion } from '@core/components/toolbar/about-dialog/about-dialog.model';
-import { APP_CONSTANTS } from '@core/services/config/config.model';
 
 import { ConfigService } from '@core/services/config/config.service';
 
@@ -23,9 +23,9 @@ class AboutDialogComponent implements OnInit, OnDestroy {
   public currentTime : Date = new Date();
 
   public firestoreConnected : boolean = false;
-  public firestorePersistenceKey : string = 'N/A';
-  public firestoreAppId : string = 'N/A';
-  public firestoreClientId : string = 'N/A';
+  public firestorePersistenceKey : string = DEFAULT_FIRESTORE_CONNECTION_INFO;
+  public firestoreAppId : string = DEFAULT_FIRESTORE_CONNECTION_INFO;
+  public firestoreClientId : string = DEFAULT_FIRESTORE_CONNECTION_INFO;
 
   public readonly firebaseApiKey : string = ENVIRONMENT.firebaseConfig.apiKey;
   public readonly firebaseAuthDomain : string = ENVIRONMENT.firebaseConfig.authDomain;
@@ -38,6 +38,7 @@ class AboutDialogComponent implements OnInit, OnDestroy {
   public readonly applicationVersion : string = packageJSON.version;
   public readonly openSourceDependencies : OpenSourceDependency[] = OPEN_SOURCE_DEPENDENCIES;
   public readonly packageVersions : PackageVersion[] = PACKAGE_VERSIONS;
+  public readonly reCAPTCHASiteKey : string = this._configService.getReCAPTCHASiteKey();
 
   private _currentTimeIntervalId : number | undefined = undefined;
 
@@ -78,6 +79,9 @@ class AboutDialogComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy() : void {
+    this._componentDestroyed$.next(true);
+    this._componentDestroyed$.complete();
+
     window.clearInterval(this._currentTimeIntervalId);
   }
 

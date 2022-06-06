@@ -1,4 +1,5 @@
 {
+  "engineStrict" : false,
   "private" : true,
   "name" : "pocket-fic",
   "description" : "A modern fan fiction website built with Angular Material",
@@ -13,7 +14,8 @@
   "author" : { "email" : "ehharding@gmail.com", "name" : "Evan Harding", "url" : "https://linkedin.com/in/ehharding" },
   "bugs" : { "email" : "ehharding@gmail.com", "url" : "" },
   "directories" : { "doc" : ".github/README.md", "lib" : "src", "man" : ".github/README.md", "test" : "src" },
-  "engines" : { "node" : "16.15.1" },
+  "engines" : { "node" : "16.15.1", "npm" : "8.1.4" },
+  "funding" : { "type" : "individual", "url" : "https://www.paypal.me/ehharding" },
   "repository" : { "type" : "git", "url" : "https://github.com/ehharding/Pocket-Fic.git" },
   "scripts" : {
     "build" : "ng build",
