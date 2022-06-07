@@ -36,9 +36,10 @@ class AboutDialogComponent implements OnInit, OnDestroy {
   public readonly firebaseProjectId : string = ENVIRONMENT.firebaseConfig.projectId;
 
   public readonly applicationVersion : string = packageJSON.version;
+  public readonly reCAPTCHASiteKey : string = this._configService.getReCAPTCHASiteKey();
+
   public readonly openSourceDependencies : OpenSourceDependency[] = OPEN_SOURCE_DEPENDENCIES;
   public readonly packageVersions : PackageVersion[] = PACKAGE_VERSIONS;
-  public readonly reCAPTCHASiteKey : string = this._configService.getReCAPTCHASiteKey();
 
   private _currentTimeIntervalId : number | undefined = undefined;
 

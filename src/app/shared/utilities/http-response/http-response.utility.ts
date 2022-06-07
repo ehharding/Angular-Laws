@@ -21,7 +21,7 @@ function constructOkResponse$(body ?: any) : Observable<HttpResponse<unknown>> {
  * code and status text.
  *
  * @param status - An HTTP status code to include in the error response (e.g., 401, 404, etc.)
- * @param statusText - A status text, or message, to include in the error response (e.g., "A Specific Error Just Occurred…")
+ * @param statusText - A status text, or message, to include in the error response (e.g., "A Specific Error Just Occurred...")
  * @returns a never-typed Observable stream. Subscribe to the stream to trigger the emission of an HttpErrorResponse object with the provided information.
  */
 function constructErrorResponse$(status : HttpStatusCode, statusText : string) : Observable<never> {

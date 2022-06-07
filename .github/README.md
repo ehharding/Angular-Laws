@@ -24,7 +24,7 @@
 </div>
 
 ## Executive Summary
-A modern fan fiction website for the modern web… at least that's my goal! I don't see any super nice-looking or user-friendly fan fiction websites out there, and I honestly
+A modern fan fiction website for the modern web... at least that's my goal! I don't see any super nice-looking or user-friendly fan fiction websites out there, and I honestly
 want one. So, I'm building one! starting with the frontend design and hopefully later with the backend. I'm doing this to gain some architecture and general full-stack
 experience along with knowledge in various modern toolkits and programming paradigms (outside my main job, of course, so time spent developing is limited).
 
