@@ -14,19 +14,6 @@ $pf-dark-theme-bg-color : #303030;
 
 /* Styling Applied To Entire Application */
 
-body {
-  display : block;
-  font-family : 'Roboto', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', 'Lucida Grande', sans-serif;
-  font-size : 1rem;
-  font-weight : 400;
-  line-height : 1.5;
-  margin : 0;
-}
-
-*:focus {
-  outline : none;
-}
-
 a {
   color : inherit !important;
   text-decoration : none !important;
@@ -38,21 +25,12 @@ footer, header {
   position : relative;
 }
 
-img {
-  border-radius : 5px;
-}
-
 mat-card {
   align-items : center;
 }
 
 mat-divider {
   margin-bottom : 1rem !important;
-}
-
-pf-toolbar a .mat-button {
-  color : white;
-  font-weight : bold;
 }
 
 /* Global Styles That Can Be Applied To Any Applicable Element */

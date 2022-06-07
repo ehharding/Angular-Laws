@@ -210,7 +210,7 @@
     "no-duplicate-imports" : ["warn", { "includeExports" : true }],
     "no-else-return" : ["warn", { "allowElseIf" : false }],
     "no-empty-character-class" : ["warn"],
-    "no-empty-function" : ["warn", { "allow" : ["arrowFunctions", "constructors"] }],
+    "no-empty-function" : ["off", { "allow" : ["arrowFunctions", "constructors"] }],
     "no-empty-pattern" : ["warn"],
     "no-empty" : ["warn", { "allowEmptyCatch" : false }],
     "no-eq-null" : ["warn"],

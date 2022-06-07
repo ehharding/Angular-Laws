@@ -22,7 +22,7 @@
         <ng-container *ngTemplateOutlet="homeButtonTemplate"></ng-container>
 
         <a mat-button routerLinkActive="pf-route-button-active" [href]="AppRoute.Contributors" [routerLink]="AppRoute.Contributors">
-          <span>Contributors</span>
+          <strong>Contributors</strong>
         </a>
       </div>
 
@@ -52,7 +52,7 @@
                 </svg>
               </mat-icon>
 
-              <span>{{ theme.labelName }}</span>
+              <strong>{{ theme.labelName }}</strong>
             </button>
           </ng-template>
         </mat-menu>
@@ -64,20 +64,20 @@
           <ng-template matMenuContent>
             <button mat-menu-item (click)="openAboutDialog.emit()">
               <mat-icon class="me-2">info</mat-icon>
-              <span>About&hellip;</span>
+              <strong>About&hellip;</strong>
             </button>
           </ng-template>
         </mat-menu>
 
         <a *ngIf="!currentUser?.jwtToken" mat-button routerLinkActive="pf-route-button-active" [href]="AppRoute.Login" [routerLink]="AppRoute.Login">
-          <span>Log In</span>
+          <strong>Log In</strong>
         </a>
 
         <button *ngIf="currentUser?.jwtToken" mat-button class="me-2">{{ currentUser?.userName }}</button>
 
         <a mat-button href="https://github.com/ehharding/Pocket-Fic" target="_blank">
           <img alt="GitHub Logo" class="me-2 pf-github-logo" src="assets/images/other-logos/github.svg"/>
-          <span>GitHub</span>
+          <strong>GitHub</strong>
         </a>
       </div>
     </ng-template>
@@ -87,6 +87,6 @@
 <ng-template #homeButtonTemplate>
   <a mat-button [href]="AppRoute.Home" [routerLink]="AppRoute.Home">
     <mat-icon class="me-2">import_contacts</mat-icon>
-    <span>Pocket Fic</span>
+    <strong>Pocket Fic</strong>
   </a>
 </ng-template>

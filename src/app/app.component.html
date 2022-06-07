@@ -15,16 +15,15 @@
 
           <a mat-list-item [href]="AppRoute.Home" [routerLink]="AppRoute.Home" (click)="drawer.close()">
             <mat-icon class="me-2" color="primary">import_contacts</mat-icon>
-            <span>Pocket Fic</span>
+            <strong>Pocket Fic</strong>
           </a>
 
-          <a mat-list-item [href]="AppRoute.Contributors" [routerLink]="AppRoute.Contributors"
-             (click)="drawer.close()">
-            <span>Contributors</span>
+          <a mat-list-item [href]="AppRoute.Contributors" [routerLink]="AppRoute.Contributors" (click)="drawer.close()">
+            <strong>Contributors</strong>
           </a>
 
           <a *ngIf="!currentUser?.jwtToken" mat-list-item [href]="AppRoute.Login" [routerLink]="AppRoute.Login" (click)="drawer.close()">
-            <span>Log In</span>
+            <strong>Log In</strong>
           </a>
 
           <button *ngIf="currentUser?.jwtToken" mat-list-item (click)="drawer.close()">
@@ -59,6 +58,7 @@
           <div mat-subheader>HELP ME</div>
 
           <button mat-list-item (click)="drawer.close(); openAboutDialog()">
+            <mat-icon class="me-2">info</mat-icon>
             <strong>About&hellip;</strong>
           </button>
 
@@ -67,7 +67,7 @@
 
           <a mat-list-item href="https://github.com/ehharding/Pocket-Fic" target="_blank">
             <img mat-list-icon alt="GitHub Logo" class="me-2 pf-github-logo" src="assets/images/other-logos/github.svg"/>
-            <span>GitHub</span>
+            <strong>GitHub</strong>
           </a>
         </mat-nav-list>
 
