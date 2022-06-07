@@ -24,9 +24,9 @@ import { AboutDialogComponent } from '@core/components/toolbar/about-dialog/abou
 
 @Component({
   selector : 'pf-root',
-  changeDetection : ChangeDetectionStrategy.OnPush,
   styleUrls : ['app.component.scss'],
-  templateUrl : 'app.component.html'
+  templateUrl : 'app.component.html',
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
 class AppComponent implements OnInit, OnDestroy {
   @ViewChild('drawer') public drawer : MatDrawer | undefined = undefined;

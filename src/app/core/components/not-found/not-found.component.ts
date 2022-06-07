@@ -10,9 +10,9 @@ import { ConfigService } from '@core/services/config/config.service';
 
 @Component({
   selector : 'pf-not-found',
-  changeDetection : ChangeDetectionStrategy.OnPush,
   styleUrls : ['not-found.component.scss'],
-  templateUrl : 'not-found.component.html'
+  templateUrl : 'not-found.component.html',
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
 class NotFoundComponent implements OnInit, OnDestroy {
   public intendedRouteGuesses : string[] = [];

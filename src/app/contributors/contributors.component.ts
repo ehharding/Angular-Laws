@@ -11,9 +11,9 @@ import { ContributorService } from '@contributors/services/contributor/contribut
 
 @Component({
   selector : 'pf-contributors',
-  changeDetection : ChangeDetectionStrategy.OnPush,
   styleUrls : ['contributors.component.scss'],
-  templateUrl : 'contributors.component.html'
+  templateUrl : 'contributors.component.html',
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
 class ContributorsComponent implements OnInit, OnDestroy {
   public allContributors : Contributor[] = [];

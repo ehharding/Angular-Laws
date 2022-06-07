@@ -7,6 +7,7 @@
 #
 #   * repository-checkout - Checks out the "main" branch for Pocket Fic and uploads the repository as an artifact
 #   * test                - Run unit tests and uploads "coverage-report" as an artifact
+#   * eslint-report       - Run ESLint on the project and uploads "eslint-report.html" as an artifact
 #   * build-production    - Run a production build and uploads "dist-production" as an artifact
 #   * copy-index-to-404   - Copy "index.html" to "404.html" as part of the requirements for most Angular deployments
 #   * deploy              - Deploy the production build distributable to the "gh-pages" branch which will then be used by GitHub Pages for hosting
@@ -127,9 +128,54 @@ jobs :
           path : "/home/runner/work/Pocket-Fic/Pocket-Fic/coverage-report"
           retention-days : 5
 
-  ########## JOB 3 - BUILD PRODUCTION ##########
+  ########## JOB 3 - ESLINT REPORT ##########
+  eslint-report :
+    needs : repository-checkout
+    runs-on : ubuntu-latest
+    strategy :
+      matrix :
+        node-version : [16.X]
+
+    steps :
+      - name : Setup Node.js LTS ${{ matrix.node-version }}
+        uses : actions/setup-node@v3
+        with :
+          node-version : ${{ matrix.node-version }}
+
+      - name : Commit Snapshot — SHA-224 ${{ github.sha }}
+        uses : actions/download-artifact@v3
+        with :
+          name : Pocket-Fic
+
+      - name : Determine If "node_modules" Cache Is Usable Based On Changes To "package.json" And "package-lock.json"...
+        id : node-modules-cache
+        uses : actions/cache@v3
+        with :
+          path : "/home/runner/work/Pocket-Fic/Pocket-Fic/node_modules"
+          key : ${{ matrix.node-version }}-node-modules-${{ hashFiles('**/package*.json') }}
+
+      - name : Install npm Dependencies If Required
+        # Caches Older Than Five Days (GitHub Setting) Are Evicted Based On Age Or If The 5 GB Cache Limit Exceeded
+        if : steps.node-modules-cache.outputs.cache-hit != 'true'
+        run : |
+          echo "Installing Dependencies Defined In "package-lock.json" Using npm... This May Take A While..."
+          npm install
+
+      - name : Run ESLint
+        run : |
+          echo "Running ESLint And Generating HTML Report…"
+          npm run lint:report
+
+      - name : Upload ESLint Linting Artifact — "eslint-report"
+        uses : actions/upload-artifact@v3
+        with :
+          name : eslint-report
+          path : "/home/runner/work/Pocket-Fic/Pocket-Fic/eslint-report.html"
+          retention-days : 5
+
+  ########## JOB 4 - BUILD PRODUCTION ##########
   build-production :
-    needs : test
+    needs : eslint-report
     runs-on : ubuntu-latest
     strategy :
       matrix :
@@ -172,7 +218,7 @@ jobs :
           path : "/home/runner/work/Pocket-Fic/Pocket-Fic/dist-production"
           retention-days : 5
 
-  ########## JOB 4 - COPY INDEX TO 404 ##########
+  ########## JOB 5 - COPY INDEX TO 404 ##########
   copy-index-to-404 :
     needs : build-production
     runs-on : ubuntu-latest
@@ -196,7 +242,7 @@ jobs :
           path : "dist-production"
           retention-days : 5
 
-  ########## JOB 5 - DEPLOY ##########
+  ########## JOB 6 - DEPLOY ##########
   deploy :
     needs : copy-index-to-404
     runs-on : ubuntu-latest

@@ -4,9 +4,9 @@ import { SPINNER_OVERLAY_TEXT } from '@core/components/spinner-overlay/spinner-o
 
 @Component({
   selector : 'pf-spinner-overlay',
-  changeDetection : ChangeDetectionStrategy.OnPush,
   styleUrls : ['spinner-overlay.component.scss'],
-  templateUrl : 'spinner-overlay.component.html'
+  templateUrl : 'spinner-overlay.component.html',
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
 class SpinnerOverlayComponent {
   public readonly spinnerOverlayText : string = SPINNER_OVERLAY_TEXT;

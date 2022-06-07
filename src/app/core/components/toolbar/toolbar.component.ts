@@ -11,9 +11,9 @@ import { ConfigService } from '@core/services/config/config.service';
 
 @Component({
   selector : 'pf-toolbar',
-  changeDetection : ChangeDetectionStrategy.OnPush,
   styleUrls : ['toolbar.component.scss'],
-  templateUrl : 'toolbar.component.html'
+  templateUrl : 'toolbar.component.html',
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
 class ToolbarComponent implements OnInit, OnDestroy {
   @Input() public activeTheme : ThemeBundle = ThemeBundle.IndigoPink;

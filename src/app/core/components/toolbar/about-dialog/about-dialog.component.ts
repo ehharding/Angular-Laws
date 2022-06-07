@@ -14,10 +14,10 @@ import packageJSON from 'app/../../package.json';
 
 @Component({
   selector : 'pf-about-dialog',
-  changeDetection : ChangeDetectionStrategy.OnPush,
-  encapsulation : ViewEncapsulation.None,
   styleUrls : ['about-dialog.component.scss'],
-  templateUrl : 'about-dialog.component.html'
+  templateUrl : 'about-dialog.component.html',
+  changeDetection : ChangeDetectionStrategy.OnPush,
+  encapsulation : ViewEncapsulation.None
 })
 class AboutDialogComponent implements OnInit, OnDestroy {
   public currentTime : Date = new Date();
