@@ -116,7 +116,7 @@ jobs:
         uses : sibiraj-s/action-eslint@v2
         with :
           annotations : true
-          eslint-args : "**/*.ts -f node_modules/eslint-html-reporter/reporter.js -o ./eslint-report.html"
+          eslint-args : "-f node_modules/eslint-html-reporter/reporter.js -o ./eslint-report.html"
           extensions : "ts"
 
       - name : Upload ESLint Linting Artifact — "eslint-report"
