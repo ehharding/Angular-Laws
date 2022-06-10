@@ -3,11 +3,15 @@
 </button>
 
 <mat-dialog-content>
-  <h3 class="text-center"><strong>About</strong></h3>
+  <h3 class="text-center">
+    <strong>About</strong>
+  </h3>
 
   <mat-divider class="pf-dialog-divider-title"></mat-divider>
 
-  <h5><strong>What Is Pocket Fic?</strong></h5>
+  <h5>
+    <strong>What Is Pocket Fic?</strong>
+  </h5>
 
   <p>
     Welcome to Pocket Fic, a modern and scalable fan fiction website. Built with Angular, Bootstrap, Firebase, and other modern technologies, I am hoping for Pocket Fic to
@@ -26,13 +30,16 @@
    -   Node.js          - https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg
    -   NPM              - https://upload.wikimedia.org/wikipedia/commons/d/db/Npm-logo.svg
    -->
-  <h5><strong>Built With Modern Tools (NOT Endorsed... Yet!)</strong></h5>
+  <h5>
+    <strong>Built With Open Source Tools (Not Endorsed)</strong>
+  </h5>
 
   <div class="mx-auto my-5 w-100">
     <cdk-virtual-scroll-viewport class="pf-horizontal-viewport" itemSize="100" orientation="horizontal">
       <div *cdkVirtualFor="let openSourceDependency of openSourceDependencies" class="mx-4" matTooltip="{{ openSourceDependency.tooltip }}">
         <a href="{{ openSourceDependency.websiteLink }}" target="_blank">
-          <img alt="{{ openSourceDependency.imgAltDescription }}" class="pf-dependency-image" src="assets/images/dependency-logos/{{ openSourceDependency.imgTitle }}.svg" role="img"/>
+          <img alt="{{ openSourceDependency.imgAltDescription }}" class="pf-dependency-image" src="assets/images/dependency-logos/{{ openSourceDependency.imgTitle }}.svg"
+               role="img"/>
         </a>
       </div>
     </cdk-virtual-scroll-viewport>
@@ -44,14 +51,19 @@
     <mat-card-header>
       <mat-icon mat-card-avatar>import_contacts</mat-icon>
       <mat-card-title>Pocket Fic</mat-card-title>
-      <mat-card-subtitle>{{ applicationVersion }} - Current Time: {{ currentTime.toTimeString() }}</mat-card-subtitle>
+      <mat-card-subtitle>
+        <span>{{ applicationVersion }} - Current Time: {{ currentTime.toTimeString() }}</span>
+      </mat-card-subtitle>
     </mat-card-header>
 
     <mat-card-content>
       <div class="mx-auto w-100">
         <cdk-virtual-scroll-viewport class="pf-horizontal-viewport" itemSize="50" orientation="horizontal">
           <div *cdkVirtualFor="let packageVersion of packageVersions" class="text-start w-100">
-            <h6><strong>{{ packageVersion.name }}</strong></h6>
+            <h6>
+              <strong>{{ packageVersion.name }}</strong>
+            </h6>
+
             <p>{{ packageVersion.version }}</p>
           </div>
         </cdk-virtual-scroll-viewport>
@@ -74,7 +86,7 @@
 
           <ng-template matExpansionPanelContent>
             <div class="text-start w-100">
-              <h6><strong>API Key</strong></h6>
+              <h6><strong>Web API Key</strong></h6>
               <p>{{ firebaseApiKey }}</p>
 
               <h6><strong>Auth Domain</strong></h6>
@@ -129,7 +141,7 @@
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <strong>reCAPTCHA</strong>
+              <strong>reCAPTCHA (v3)</strong>
             </mat-panel-title>
 
             <mat-panel-description>reCAPTCHA Security Information</mat-panel-description>
@@ -137,7 +149,7 @@
 
           <ng-template matExpansionPanelContent>
             <div class="text-start w-100">
-              <h6><strong>reCAPTCHA Site Key (v3)</strong></h6>
+              <h6><strong>Site Key</strong></h6>
               <p>{{ reCAPTCHASiteKey }}</p>
             </div>
           </ng-template>
