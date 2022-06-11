@@ -78,10 +78,10 @@
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <strong>Firebase Connection</strong>
+              <strong>Firebase</strong>
             </mat-panel-title>
 
-            <mat-panel-description>Firebase App Information</mat-panel-description>
+            <mat-panel-description>Firebase App Connection Information</mat-panel-description>
           </mat-expansion-panel-header>
 
           <ng-template matExpansionPanelContent>
@@ -114,13 +114,13 @@
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <strong>Firestore Connection&nbsp;</strong>
-              <mat-icon matTooltipPosition="after" [color]="firestoreConnected ? 'primary' : 'warn'" [matTooltip]="firestoreConnected ? 'Connected' : 'Disconnected'">
+              <strong>Firestore&nbsp;</strong>
+              <mat-icon matTooltipPosition="after" [color]="firestoreConnected ? 'primary' : 'warn'" [matTooltip]="firestoreConnected ? 'Online' : 'Offline'">
                 {{ firestoreConnected ? 'check_circle' : 'cancel' }}
               </mat-icon>
             </mat-panel-title>
 
-            <mat-panel-description>Firebase Database Information</mat-panel-description>
+            <mat-panel-description>Firebase Database Connection Information</mat-panel-description>
           </mat-expansion-panel-header>
 
           <ng-template matExpansionPanelContent>

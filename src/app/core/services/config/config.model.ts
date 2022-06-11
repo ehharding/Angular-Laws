@@ -26,6 +26,17 @@ const APP_CONSTANTS : AppConstants = {
   }
 };
 
+const DEFAULT_APP_CONFIGURATION : AppConfiguration = {
+  constants : {
+    genericAnimationDurationMS : 100,
+    mobileViewThresholdWidthPX : 750,
+    progressSpinnerDiameterPX : 80,
+    progressSpinnerStrokeWidthPX : 10,
+    tooltipHideDelayMS : 0,
+    tooltipShowDelayMS : 500
+  }
+};
+
 const DEFAULT_FIRESTORE_CONNECTION_INFO : string = 'N/A';
 
 const DEFAULT_MAT_DIALOG_CONFIG : MatDialogConfig = {
@@ -41,6 +52,7 @@ const DEFAULT_MAT_DIALOG_CONFIG : MatDialogConfig = {
 
 export {
   APP_CONSTANTS,
+  DEFAULT_APP_CONFIGURATION,
   DEFAULT_FIRESTORE_CONNECTION_INFO,
   DEFAULT_MAT_DIALOG_CONFIG
 };

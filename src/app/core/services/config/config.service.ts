@@ -17,7 +17,7 @@ import { BehaviorSubject, Observable, distinctUntilChanged } from 'rxjs';
 
 import { ENVIRONMENT } from '@environment/environment.development';
 
-import { AppConfiguration, DEFAULT_FIRESTORE_CONNECTION_INFO } from '@core/services/config/config.model';
+import { AppConfiguration, DEFAULT_APP_CONFIGURATION, DEFAULT_FIRESTORE_CONNECTION_INFO } from '@core/services/config/config.model';
 
 // This Is Needed For TypeScript... See https://firebase.google.com/docs/app-check/web/debug-provider#localhost
 declare global {
@@ -27,7 +27,7 @@ declare global {
 
 @Injectable({ providedIn : 'root' })
 class ConfigService {
-  public static appConfiguration : AppConfiguration;
+  public static appConfiguration : AppConfiguration = DEFAULT_APP_CONFIGURATION;
   public static firebaseAnalytics : Analytics | undefined = undefined;
   public static firebaseAppCheck : AppCheck | undefined = undefined;
   public static firestore : Firestore | undefined = undefined;
@@ -76,13 +76,13 @@ class ConfigService {
     await getDoc(doc(ConfigService.firestore, this._appConfigurationDocumentFirestorePath)).then((documentSnapshot : DocumentSnapshot) : void => {
       ConfigService.appConfiguration = documentSnapshot.data() as AppConfiguration;
 
-      // If Firebase Firestore Is Truthy, We Are Said To Be "Connected"
+      // If Firebase Firestore Is Truthy, We Are Said To Be "Online"
       if (ConfigService.firestore) {
         this._firestoreConnected$.next(true);
         this._firestorePersistenceKey$.next(ConfigService.firestore['_firestoreClient'].databaseInfo.persistenceKey as string);
         this._firestoreAppId$.next(ConfigService.firestore['_firestoreClient'].databaseInfo.appId as string);
         this._firestoreClientId$.next(ConfigService.firestore['_firestoreClient'].clientId as string);
-      // Otherwise, We Are Said To Be "Disconnected", So We Set That State For The Rest Of The Application
+      // Otherwise, We Are Said To Be "Offline", So We Set That State For The Rest Of The Application
       } else {
         this._firestoreConnected$.next(false);
         this._firestorePersistenceKey$.next(DEFAULT_FIRESTORE_CONNECTION_INFO);
