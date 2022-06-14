@@ -2,7 +2,7 @@
  * The Karma configuration file configures the Karma test runner to execute tests for the application. The tests themselves operate through the Jasmine JavaScript testing
  * framework.
  *
- * {@link https://karma-runner.github.io/6.3/config/configuration-file.html | Karma Configuration Guide}
+ * {@link https://karma-runner.github.io/6.4/config/configuration-file.html | Karma Configuration Guide}
  * {@link https://github.com/dfederm/karma-jasmine-html-reporter | Karma Jasmine HTML Reporter}
  * {@link https://github.com/litixsoft/karma-mocha-reporter | Karma Mocha Reporter}
  */

@@ -470,6 +470,7 @@
       "tuples" : "never"
     }],
     "@typescript-eslint/comma-spacing" : ["warn", { "before" : false, "after" : true }],
+    "@typescript-eslint/consistent-generic-constructors" : ["warn", "type-annotation"],
     "@typescript-eslint/consistent-indexed-object-style" : ["warn", "record"],
     "@typescript-eslint/consistent-type-assertions" : ["off"],
     "@typescript-eslint/consistent-type-definitions" : ["warn", "interface"],
