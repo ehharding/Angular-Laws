@@ -31,13 +31,17 @@ class ContributorService {
       getDocs(collection(ConfigService.firestore, 'contributors')).then((allContributorsSnapshot : QuerySnapshot) : void => {
         allContributorsSnapshot.forEach((contributorSnapshot : QueryDocumentSnapshot) : void => {
           ALL_CONTRIBUTORS.push(contributorSnapshot.data() as Contributor);
+
           this._allContributors$.next(ALL_CONTRIBUTORS);
         });
       }).catch((error : Error) : void => {
-        console.error(error.message);
         this._contributorsFetchError$.next(error.message);
+
+        console.error(error.message);
       });
     } else {
+      this._contributorsFetchError$.next('Firebase Firestore seems to be unavailable.');
+
       console.error('Firebase Firestore seems to be unavailable.');
     }
   }

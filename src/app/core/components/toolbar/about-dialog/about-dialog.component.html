@@ -49,7 +49,7 @@
 
   <mat-card class="mat-elevation-z0">
     <mat-card-header>
-      <mat-icon mat-card-avatar>import_contacts</mat-icon>
+      <mat-icon mat-card-avatar color="primary">import_contacts</mat-icon>
       <mat-card-title>Pocket Fic</mat-card-title>
       <mat-card-subtitle>
         <span>{{ applicationVersion }} - Current Time: {{ currentTime.toTimeString() }}</span>
@@ -111,7 +111,7 @@
         </mat-expansion-panel>
 
         <!-- Google Firebase Firestore Database Information -->
-        <mat-expansion-panel>
+        <mat-expansion-panel [disabled]="!firestoreConnected">
           <mat-expansion-panel-header>
             <mat-panel-title>
               <strong>Firestore&nbsp;</strong>

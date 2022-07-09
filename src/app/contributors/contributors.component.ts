@@ -51,9 +51,14 @@ class ContributorsComponent implements OnInit, OnDestroy {
         this.allContributors = allContributors;
         this.contributorsFetchError = undefined;
 
+        // We'll Convert Each Contributors Name To Kebab-Case To Match The File Name (e.g., 'Evan Harding' -> evan-harding)
         for (const CONTRIBUTOR of allContributors) {
-          // We'll Convert The Contributors Name To Kebab-Case To Match The File Name (e.g., 'Evan Harding' -> evan-harding)
           this.contributorNamesKebab.push(`${ CONTRIBUTOR.firstName } ${ CONTRIBUTOR.lastName }`.toLowerCase().replace(' ', '-'));
+        }
+
+        // If The List Of Contributors Is Empty, We'll Treat It As An Error
+        if (this.allContributors.length === 0) {
+          this.contributorsFetchError = 'The list of contributors seems to be empty. Please try again later.';
         }
 
         this._changeDetectorRef.detectChanges();
@@ -64,9 +69,9 @@ class ContributorsComponent implements OnInit, OnDestroy {
       next : (contributorsFetchError : string | undefined) : void => {
         if (contributorsFetchError) {
           this.contributorsFetchError = contributorsFetchError;
-        }
 
-        this._changeDetectorRef.detectChanges();
+          this._changeDetectorRef.detectChanges();
+        }
       }
     });
   }
