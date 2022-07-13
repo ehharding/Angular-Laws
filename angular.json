@@ -131,7 +131,7 @@
         },
         "lint" : {
           "builder" : "",
-          "options" : { "exclude" : ["**/node_modules/**"], "tsConfig" : ["tsconfig.app.json"] }
+          "options" : { "exclude" : ["**/node_modules/**"], "tsConfig" : ["tsconfig.eslint.json"] }
         }
       },
       "i18n" : { "sourceLocale" : "en" }
