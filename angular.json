@@ -11,7 +11,7 @@
   "projects" : {
     "pocket-fic" : {
       "schematics" : {
-        "@schematics/angular:class" : { "skipTests" : false },
+        "@schematics/angular:class" : { "skipTests" : false, "project" : "pocket-fic" },
         "@schematics/angular:component" : {
           "flat" : true,
           "inlineStyle" : false,
@@ -20,13 +20,14 @@
           "skipTests" : false,
           "changeDetection" : "OnPush",
           "prefix" : "pf",
+          "project" : "pocket-fic",
           "style" : "scss",
           "viewEncapsulation" : "Emulated"
         },
-        "@schematics/angular:directive" : { "flat" : true, "skipImport" : false, "skipTests" : false, "prefix" : "pf" },
+        "@schematics/angular:directive" : { "flat" : true, "skipImport" : false, "skipTests" : false, "standalone" : false, "prefix" : "pf", "project" : "pocket-fic" },
         "@schematics/angular:module" : { "commonModule" : true, "flat" : false, "routing" : false, "routingScope" : "Child" },
-        "@schematics/angular:pipe" : { "flat" : true, "skipImport" : false, "skipTests" : false },
-        "@schematics/angular:service" : { "flat" : true, "skipTests" : false }
+        "@schematics/angular:pipe" : { "flat" : true, "skipImport" : false, "skipTests" : false, "standalone" : false, "project": "pocket-fic" },
+        "@schematics/angular:service" : { "flat" : true, "skipTests" : false, "project" : "pocket-fic" }
       },
       "prefix" : "pf",
       "projectType" : "application",
