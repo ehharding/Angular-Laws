@@ -1,7 +1,7 @@
 <!--suppress HtmlDeprecatedAttribute -->
 <div align="center">
   <h1>
-    <a href="https://angular.io" target="_blank">
+    <a href="https://ehharding.github.io/Pocket-Fic/" target="_blank">
       <img alt="Pocket Fic Logo" src="https://ehharding.github.io/Pocket-Fic/assets/images/other-logos/apple-touch-icon.svg" width="100"/>
     </a>
     <br>

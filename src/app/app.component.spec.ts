@@ -51,7 +51,6 @@ describe('component AppComponent', () : void => {
       it('should be initialized', () : void => {
         expect(appComponentElement.querySelector('div')?.className).toEqual('pf-app');
         expect(appComponentElement.querySelector('pf-toolbar')?.className).toEqual('mat-elevation-z5 pf-toolbar');
-        expect(appComponentElement.querySelector('main')).not.toBeNull();
         expect(appComponentElement.querySelector('router-outlet')).not.toBeNull();
         expect(appComponentElement.querySelector('pf-spinner-overlay')).toBeNull();
       });
