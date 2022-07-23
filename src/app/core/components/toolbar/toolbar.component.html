@@ -85,8 +85,7 @@
 </nav>
 
 <ng-template #homeButtonTemplate>
-  <a mat-button [href]="AppRoute.Home" [routerLink]="AppRoute.Home">
-    <mat-icon class="me-2">import_contacts</mat-icon>
-    <strong>Pocket Fic</strong>
+  <a mat-button matTooltip="Pocket Fic Home" [href]="AppRoute.Home" [routerLink]="AppRoute.Home">
+    <img alt="Pocket Fic Logo" class="pf-svg-icon" src="assets/images/other-logos/apple-touch-icon.svg"/>
   </a>
 </ng-template>

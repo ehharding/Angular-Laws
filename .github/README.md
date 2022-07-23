@@ -1,7 +1,7 @@
 <!--suppress HtmlDeprecatedAttribute -->
 <div align="center">
   <h1>
-    <a href="https://ehharding.github.io/Pocket-Fic/" target="_blank">
+    <a href="https://ehharding.github.io/Pocket-Fic" target="_blank">
       <img alt="Pocket Fic Logo" src="https://ehharding.github.io/Pocket-Fic/assets/images/other-logos/apple-touch-icon.svg" width="100"/>
     </a>
     <br>
@@ -10,7 +10,7 @@
 
   <h4>
     <span>A Fan Fiction</span>
-    <a href="https://ehharding.github.io/Pocket-Fic/" target="_blank">Website</a>
+    <a href="https://ehharding.github.io/Pocket-Fic" target="_blank">Website</a>
     <span>Built With</span>
     <a href="https://material.angular.io" target="_blank">Angular Material</a>
   </h4>

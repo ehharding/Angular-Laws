@@ -32,8 +32,7 @@
                 <!-- If The Contributor Has A Pocket Fic Profile We Display A Button To Link To That User Profile -->
                 <mat-card-subtitle *ngIf="contributor.pocketFicUserId">
                   <a mat-stroked-button href="/{{ AppRoute.Users }}/{{ contributor.pocketFicUserId }}" routerLink="/{{ AppRoute.Users }}/{{ contributor.pocketFicUserId }}"
-                     matTooltipPosition="right" [matTooltip]="getUserNameFromUserId(contributor.pocketFicUserId)" [matTooltipShowDelay]="matTooltipShowDelay">
-                    <mat-icon class="me-2" color="primary">import_contacts</mat-icon>
+                     matTooltipPosition="right" matTooltip="Username: {{ getUserNameFromUserId(contributor.pocketFicUserId) }}" [matTooltipShowDelay]="matTooltipShowDelay">
                     <span>PROFILE</span>
                   </a>
                 </mat-card-subtitle>
@@ -56,12 +55,12 @@
                 </a>
 
                 <a *ngIf="contributor.gitHub" mat-button target="_blank" [href]="contributor.gitHub">
-                  <img alt="GitHub Logo" class="me-2 pf-card-footer-logo" src="assets/images/other-logos/github.svg"/>
+                  <img alt="GitHub Logo" class="me-2 pf-svg-icon" src="assets/images/other-logos/github.svg"/>
                   <span>GITHUB</span>
                 </a>
 
                 <a *ngIf="contributor.linkedIn" mat-button target="_blank" [href]="contributor.linkedIn">
-                  <img alt="LinkedIn Logo" class="me-2 pf-card-footer-logo" src="assets/images/other-logos/linkedin.svg"/>
+                  <img alt="LinkedIn Logo" class="me-2 pf-svg-icon" src="assets/images/other-logos/linkedin.svg"/>
                   <span>LINKEDIN</span>
                 </a>
               </mat-card-actions>

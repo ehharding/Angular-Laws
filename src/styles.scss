@@ -6,7 +6,7 @@
  * {@link https://getbootstrap.com | Bootstrap}
  */
 
-// Bootstrap v5.1 SCSS
+// Bootstrap SCSS
 @import 'node_modules/bootstrap/scss/bootstrap.scss';
 
 $pf-light-theme-bg-color : #FAFAFA;
@@ -114,7 +114,13 @@ mat-divider {
   background : $pf-dark-theme-bg-color;
 }
 
-.pf-card-footer-logo {
+.pf-github-logo {
+  filter : invert(100%);
+  height : 26px;
+  width : 26px;
+}
+
+.pf-svg-icon {
   height : 26px;
   width : 26px;
 }
