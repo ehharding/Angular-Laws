@@ -2,7 +2,7 @@
 <div align="center">
   <h1>
     <a href="https://ehharding.github.io/Pocket-Fic" target="_blank">
-      <img alt="Pocket Fic Logo" src="https://ehharding.github.io/Pocket-Fic/assets/images/other-logos/apple-touch-icon.svg" width="100"/>
+      <img alt="Pocket Fic Logo" src="https://ehharding.github.io/Pocket-Fic/assets/images/other-logos/apple-touch-icon.svg" width="100" style="background-color : #3F51B5"/>
     </a>
     <br>
     <span>Pocket Fic</span>
