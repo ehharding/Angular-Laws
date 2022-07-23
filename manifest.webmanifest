@@ -15,7 +15,7 @@
   "related_applications" : [],
   "shortcuts" : [],
   "icons" : [
-    { "src" : "favicon.ico", "sizes" : "28x30" },
+    { "src" : "favicon.ico", "sizes" : "32x32" },
     { "src" : "assets/avatars/evan-harding.jpg", "sizes" : "40x40" },
     { "src" : "assets/images/dependency-logos/angular.svg", "sizes" : "150x150" },
     { "src" : "assets/images/dependency-logos/angular-material.svg", "sizes" : "139x150" },
