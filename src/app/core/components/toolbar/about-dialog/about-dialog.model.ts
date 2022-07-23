@@ -38,7 +38,7 @@ const PACKAGE_VERSIONS : PackageVersion[] = [
   { name : 'Jasmine', version : packageJSON.devDependencies['jasmine-core'] },
   { name : 'Karma', version : packageJSON.devDependencies.karma },
   { name : 'Node.js', version : packageJSON.engines.node.substring(1) }, // Since Node.js Engine Is Formatted As "vX.X.X" In The Package JSON
-  { name : 'npm', version : packageJSON.engines.npm }                    // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+  { name : 'npm', version : packageJSON.engines.npm }
 ];
 
 export {

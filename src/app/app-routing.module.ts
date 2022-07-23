@@ -50,21 +50,25 @@ const APP_ROUTES : Routes = [
   },
   {
     path : AppRoute.Contributors,
-    loadChildren : async() => (await import(/* webpackChunkName: "ContributorsModule" */ '@contributors/contributors.module')).ContributorsModule
+    loadChildren : async() => (await import(/* webpackChunkName: "ContributorsModule" */ '@contributors/contributors.module')).ContributorsModule,
+    title : AppRoute.Contributors.charAt(0).toUpperCase() + AppRoute.Contributors.slice(1)
   },
   {
     path : AppRoute.Login,
-    loadChildren : async() => (await import(/* webpackChunkName: "LoginModule" */ '@login/login.module')).LoginModule
+    loadChildren : async() => (await import(/* webpackChunkName: "LoginModule" */ '@login/login.module')).LoginModule,
+    title : AppRoute.Login.charAt(0).toUpperCase() + AppRoute.Login.slice(1)
   },
   {
     path : AppRoute.NotFound,
     component : NotFoundComponent,
-    resolve : { intendedRouteGuesses : RouteResolverService } // NotFoundComponent Is Fed Intended Route Guesses
+    resolve : { intendedRouteGuesses : RouteResolverService }, // NotFoundComponent Is Fed Intended Route Guesses
+    title : AppRoute.NotFound.charAt(0).toUpperCase() + AppRoute.NotFound.slice(1)
   },
   {
     path : '**',
     canActivate : [NotFoundGuard],
-    component : NotFoundComponent
+    component : NotFoundComponent,
+    title : AppRoute.NotFound.charAt(0).toUpperCase() + AppRoute.NotFound.slice(1)
   }
 ];
 
