@@ -6,7 +6,7 @@
   "homepage" : "https://ehharding.github.io/Pocket-Fic",
   "license" : "Apache-2.0",
   "version" : "1.0.0",
-  "browserslist" : ["Chrome 103", "Edge 103", "Firefox 102", "Safari 15"],
+  "browserslist" : ["Chrome 103", "Edge 103", "Firefox 103", "Safari 15"],
   "contributors" : ["Evan Harding"],
   "files" : ["*"],
   "keywords" : ["Angular", "Creative Writing", "Fan Fiction", "SPAs", "Web Apps", "Writing"],
