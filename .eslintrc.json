@@ -746,7 +746,7 @@
     "@typescript-eslint/prefer-includes" : ["warn"],
     "@typescript-eslint/prefer-literal-enum-member" : ["warn", { "allowBitwiseExpressions" : false }],
     "@typescript-eslint/prefer-namespace-keyword" : ["warn"],
-    "@typescript-eslint/prefer-nullish-coalescing" : ["warn", { "ignoreConditionalTests" : true, "ignoreMixedLogicalExpressions" : true }],
+    "@typescript-eslint/prefer-nullish-coalescing" : ["warn", { "ignoreConditionalTests" : false, "ignoreMixedLogicalExpressions" : false, "ignoreTernaryTests" : false }],
     "@typescript-eslint/prefer-optional-chain" : ["warn"],
     "@typescript-eslint/prefer-readonly-parameter-types" : ["off"],
     "@typescript-eslint/prefer-readonly" : ["warn", { "onlyInlineLambdas" : false }],
