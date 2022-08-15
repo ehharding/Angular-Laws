@@ -364,7 +364,7 @@
     "object-curly-newline" : ["warn", { "consistent" : true, "multiline" : true, "minProperties" : 10 }],
     "object-curly-spacing" : ["off", "always", { "arraysInObjects" : true, "objectsInObjects" : true }],
     "object-property-newline" : ["warn", { "allowAllPropertiesOnSameLine" : true }],
-    "object-shorthand" : ["warn", "always", { "avoidExplicitReturnArrows" : true, "avoidQuotes" : false, "ignoreConstructors" : false }],
+    "object-shorthand" : ["warn", "always", { "avoidExplicitReturnArrows" : true, "avoidQuotes" : false, "ignoreConstructors" : false, "methodsIgnorePattern" : "" }],
     "one-var-declaration-per-line" : ["warn", "always"],
     "one-var" : ["warn", { "separateRequires" : true, "const" : "never", "let" : "never", "var" : "never" }],
     "operator-assignment" : ["warn", "never"],
