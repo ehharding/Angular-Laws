@@ -14,7 +14,7 @@
   "author" : { "email" : "ehharding@gmail.com", "name" : "Evan Harding", "url" : "https://linkedin.com/in/ehharding" },
   "bugs" : { "email" : "ehharding@gmail.com", "url" : "" },
   "directories" : { "doc" : ".github/README.md", "lib" : "src", "man" : ".github/README.md", "test" : "src" },
-  "engines" : { "node" : "v16.17.0", "npm" : "8.18.0" },
+  "engines" : { "node" : "v16.17.0", "npm" : "8.15.0" },
   "funding" : { "type" : "individual", "url" : "https://www.paypal.me/ehharding" },
   "repository" : { "type" : "git", "url" : "https://github.com/ehharding/Pocket-Fic.git" },
   "scripts" : {
@@ -44,7 +44,7 @@
     "@angular/material" : "14.1.2",
     "bootstrap" : "5.2.0",
     "fastest-levenshtein" : "1.0.16",
-    "firebase" : "9.9.2",
+    "firebase" : "9.9.3",
     "lodash" : "4.17.21",
     "rxjs" : "7.5.6",
     "tslib" : "2.4.0",
