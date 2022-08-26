@@ -5,6 +5,7 @@
   "description" : "A modern fan fiction website built with Angular Material",
   "lang" : "en",
   "dir" : "auto",
+  "id" : "/",
   "scope" : "/",
   "start_url" : "/",
   "display" : "fullscreen",
