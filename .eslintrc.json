@@ -230,7 +230,7 @@
       "ignoreJSX" : "none"
     }],
     "no-extra-semi" : ["off"],
-    "no-fallthrough" : ["warn", { "commentPattern" : "/^break[\\s\\w]*omitted$/i" }],
+    "no-fallthrough" : ["warn", { "allowEmptyCase" : false, "commentPattern" : "/^break[\\s\\w]*omitted$/i" }],
     "no-floating-decimal" : ["warn"],
     "no-func-assign" : ["warn"],
     "no-global-assign" : ["warn", { "exceptions" : [] }],
