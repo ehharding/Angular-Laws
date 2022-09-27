@@ -31,7 +31,7 @@
       "unicodeCodePointEscapes" : true
     },
     "allowReserved" : false,
-    "ecmaVersion" : 2021,
+    "ecmaVersion" : 2020,
     "project" : "tsconfig.eslint.json",
     "sourceType" : "module"
   },
@@ -148,6 +148,7 @@
     }],
     "lines-around-directive" : ["warn", { "before" : "never", "after" : "always" }],
     "lines-between-class-members" : ["off", "always", { "exceptAfterSingleLine" : true }],
+    "logical-assignment-operators" : ["warn", "always", { "enforceForIfStatements" : true }],
     "max-classes-per-file" : ["warn", { "ignoreExpressions" : false, "max" : 1 }],
     "max-depth" : ["warn", { "max" : 4 }],
     "max-len" : ["warn", {
