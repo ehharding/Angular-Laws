@@ -707,6 +707,7 @@
     "@typescript-eslint/no-unsafe-argument" : ["off"],
     "@typescript-eslint/no-unsafe-assignment" : ["warn"],
     "@typescript-eslint/no-unsafe-call" : ["off"],
+    "@typescript-eslint/no-unsafe-declaration-merging" : "warn",
     "@typescript-eslint/no-unsafe-member-access" : ["off"],
     "@typescript-eslint/no-unsafe-return" : ["warn"],
     "@typescript-eslint/no-unused-expressions" : ["warn", { "allowShortCircuit" : false, "allowTaggedTemplates" : false, "allowTernary" : false }],
