@@ -60,7 +60,7 @@
               "crossOrigin" : "anonymous",
               "inlineStyleLanguage" : "scss",
               "outputHashing" : "none",
-              "allowedCommonJsDependencies" : ["fastest-levenshtein", "lodash"],
+              "allowedCommonJsDependencies" : [],
               "assets" : ["src/assets", "src/favicon.ico", "src/manifest.webmanifest"],
               "styles" : ["src/styles.scss"],
               "budgets" : [
@@ -95,7 +95,7 @@
             "crossOrigin" : "anonymous",
             "inlineStyleLanguage" : "scss",
             "outputHashing" : "none",
-            "allowedCommonJsDependencies" : ["fastest-levenshtein", "lodash"],
+            "allowedCommonJsDependencies" : [],
             "assets" : ["src/assets", "src/favicon.ico", "src/manifest.webmanifest"],
             "styles" : ["src/styles.scss"],
             "budgets" : [

@@ -31,7 +31,7 @@
       "unicodeCodePointEscapes" : true
     },
     "allowReserved" : false,
-    "ecmaVersion" : 2020,
+    "ecmaVersion" : 2022,
     "project" : "tsconfig.eslint.json",
     "sourceType" : "module"
   },
@@ -212,6 +212,7 @@
     "no-empty-character-class" : ["warn"],
     "no-empty-function" : ["off", { "allow" : ["arrowFunctions", "constructors"] }],
     "no-empty-pattern" : ["warn"],
+    "no-empty-static-block" : ["warn"],
     "no-empty" : ["warn", { "allowEmptyCatch" : false }],
     "no-eq-null" : ["warn"],
     "no-eval" : ["warn", { "allowIndirect" : false }],
@@ -277,6 +278,7 @@
     "no-negated-condition" : ["warn"],
     "no-nested-ternary" : ["warn"],
     "no-new-func" : ["warn"],
+    "no-new-native-nonconstructor" : ["warn"],
     "no-new-object" : ["warn"],
     "no-new-symbol" : ["warn"],
     "no-new-wrappers" : ["warn"],
