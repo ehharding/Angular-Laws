@@ -2,14 +2,14 @@
 <div align="center">
   <h1>
     <a href="https://ehharding.github.io/Angular-Laws" target="_blank">
-      <img alt="Angular Laws" src="https://ehharding.github.io/Angular-Laws/assets/images/other-logos/apple-touch-icon.svg" width="100" style="background-color : #3F51B5"/>
+      <img alt="Angular Laws" src="https://ehharding.github.io/Angular-Laws/assets/icons/apple-touch-icon.png" width="100" style="background-color : #3F51B5"/>
     </a>
     <br>
     <span>Angular Laws</span>
   </h1>
 
   <h4>
-    <span>A Fan Fiction</span>
+    <span>An Angular Website</span>
     <a href="https://ehharding.github.io/Angular-Laws" target="_blank">Website</a>
     <span>Built With</span>
     <a href="https://material.angular.io" target="_blank">Angular Material</a>
@@ -26,9 +26,8 @@
 </div>
 
 ## Executive Summary
-A modern fan fiction website for the modern web... at least that's my goal! I don't see any super nice-looking or user-friendly fan fiction websites out there, and I honestly
-want one. So, I'm building one! starting with the frontend design and hopefully later with the backend. I'm doing this to gain some architecture and general full-stack
-experience along with knowledge in various modern toolkits and programming paradigms (outside my main job, of course, so time spent developing is limited).
+A modern law viewing website built with Angular and Angular Material. This project is a work in progress but its larger goal is to provide a modern law viewing experience
+while also serving as an educational tool for understanding law and legal concepts.
 
 ## Developer Environment Recommended Setup
 To build from source and to contribute to the project, you will need to do a couple of things to get going. It is my goal that every developer have the same development
