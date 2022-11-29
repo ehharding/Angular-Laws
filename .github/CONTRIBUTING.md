@@ -1,3 +1,3 @@
-# Contributing To Pocket Fic
+# Contributing To Angular Laws
 
-For information on contributing to Pocket Fic, please see [README](https://github.com/ehharding/Pocket-Fic/blob/main/.github/README.md).
+For information on contributing to Angular Laws, please see [README](https://github.com/ehharding/Angular-Laws/blob/main/.github/README.md).

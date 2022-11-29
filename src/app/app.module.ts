@@ -9,8 +9,8 @@
 
 import { APP_INITIALIZER, InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -22,10 +22,7 @@ import { ENVIRONMENT } from '@environment/environment.development';
 import { AppRoutingModule } from 'app/app-routing.module';
 import { CoreModule } from '@core/core.module';
 
-import { SpinnerInterceptor } from '@core/interceptors/spinner/spinner.interceptor';
-
 import { ConfigService } from '@core/services/config/config.service';
-import { SpinnerService } from '@core/services/spinner/spinner.service';
 
 import { AppComponent } from 'app/app.component';
 
@@ -62,8 +59,7 @@ const WINDOW_INJECTION_TOKEN : InjectionToken<Window> = new InjectionToken<Windo
   providers : [
     Title,
     { provide : WINDOW_INJECTION_TOKEN, useFactory : () : Window => window },
-    { multi : true, deps : [ConfigService], provide : APP_INITIALIZER, useFactory : initializeApplication },
-    { deps : [SpinnerService], provide : HTTP_INTERCEPTORS, useClass : SpinnerInterceptor }
+    { multi : true, deps : [ConfigService], provide : APP_INITIALIZER, useFactory : initializeApplication }
   ]
 })
 class AppModule { }

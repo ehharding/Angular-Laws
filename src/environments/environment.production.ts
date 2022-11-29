@@ -2,7 +2,7 @@
  * This file defines the production environment configuration variables.
  *
  * {@link https://angular.io/guide/build | Angular Build Guide}
- * {@link https://console.firebase.google.com/project/clean-composite-352104/overview | Pocket Fic Firebase}
+ * {@link https://console.firebase.google.com/project/clean-composite-352104/overview | Angular Laws Firebase}
  *
  * @remarks This file can be replaced during build by using the "fileReplacements" array. "ng build --configuration production" replaces "environment.development.ts" with
  *          "environment.production.ts". The list of file replacements can be found in "angular.json".

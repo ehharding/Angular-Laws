@@ -4,94 +4,72 @@
  * {@link https://angular.io/guide/architecture#components | Angular Component Guide}
  */
 
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 
-import { ReplaySubject, distinctUntilChanged, takeUntil } from 'rxjs';
-
-import { AppRoute } from 'app/app-routing.module';
-
-import { ALL_THEMES, Theme, ThemeBundle } from '@core/services/theme/theme.model';
-import { DEFAULT_MAT_DIALOG_CONFIG } from '@core/services/config/config.model';
-import { User } from '@core/services/user/user.model';
-
-import { ConfigService } from '@core/services/config/config.service';
-import { SpinnerService } from '@core/services/spinner/spinner.service';
-import { ThemeService } from '@core/services/theme/theme.service';
-
-import { AboutDialogComponent } from '@core/components/toolbar/about-dialog/about-dialog.component';
-
 @Component({
-  selector : 'pf-root',
-  styleUrls : ['app.component.scss'],
-  templateUrl : 'app.component.html',
-  changeDetection : ChangeDetectionStrategy.OnPush
+  selector : 'al-root',
+  changeDetection : ChangeDetectionStrategy.OnPush,
+  template : `
+    <div class="al-app">
+      <mat-drawer-container class="h-100 w-100 position-absolute">
+        <mat-drawer #drawer class="w-100">
+          <mat-nav-list class="fw-bold">
+            <div mat-subheader>PAGES</div>
+
+            <a mat-list-item href="/" routerLink="/" (click)="drawer.close()">
+              <mat-icon class="me-2" color="primary">balance</mat-icon>
+              <span>Angular Laws</span>
+            </a>
+
+            <div mat-subheader>EXTERNAL LINKS</div>
+
+            <a mat-list-item href="https://github.com/ehharding/Angular-Laws" target="_blank">
+              <img alt="GitHub Icon" class="al-github-icon me-2" src="../assets/icons/github.svg"/>
+              <span>GitHub</span>
+            </a>
+          </mat-nav-list>
+
+          <button mat-icon-button="al-fixed-close-button" tabindex="-1" (click)="drawer.close()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-drawer>
+
+        <mat-drawer-content class="al-app-content">
+          <al-toolbar class="al-toolbar mat-elevation-z5" (openSidenav)="drawer.open()"></al-toolbar>
+
+          <router-outlet></router-outlet>
+        </mat-drawer-content>
+      </mat-drawer-container>
+    </div>
+  `,
+  styles : [`
+    .al-app {
+      display : flex;
+      flex-direction : column;
+      position : absolute;
+      top : 0;
+      bottom : 0;
+      left : 0;
+      right : 0;
+    }
+
+    .al-app-content {
+      height : calc(100% - 48px);
+      top : 48px;
+    }
+
+    .al-toolbar {
+      position : fixed;
+      top : 0;
+      left : 0;
+      right : 0;
+      z-index : 2;
+    }
+  `]
 })
-class AppComponent implements OnInit, OnDestroy {
+class AppComponent {
   @ViewChild('drawer') public drawer : MatDrawer | undefined = undefined;
-
-  public activeTheme : ThemeBundle = ThemeBundle.IndigoPink;
-  public currentUser : User | null = null;
-  public isLoading : boolean = false;
-
-  public readonly allThemes : Theme[] = ALL_THEMES;
-  public readonly AppRoute = AppRoute;
-
-  private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
-
-  public constructor(
-    private readonly _changeDetectorRef : ChangeDetectorRef,
-    private readonly _dialog : MatDialog,
-    private readonly _spinnerService : SpinnerService,
-    private readonly _themeService : ThemeService
-  ) {
-    this._spinnerService.isLoading$.pipe(distinctUntilChanged()).subscribe({
-      next : (isLoading : boolean) : void => {
-        this.isLoading = isLoading;
-
-        this._changeDetectorRef.markForCheck();
-      }
-    });
-  }
-
-  public ngOnInit() : void {
-    this._themeService.getActiveThemeBundleName$().pipe(takeUntil(this._componentDestroyed$)).subscribe({
-      next : (activeTheme : ThemeBundle) : void => {
-        this.activeTheme = activeTheme;
-        this._changeDetectorRef.detectChanges();
-      }
-    });
-  }
-
-  public ngOnDestroy() : void {
-    this._componentDestroyed$.next(true);
-    this._componentDestroyed$.complete();
-  }
-
-  /**
-   * Opens the "About" dialog (modal) that contains information about the application.
-   */
-  public openAboutDialog() : void {
-    const DIALOG_REF : MatDialogRef<AboutDialogComponent> = this._dialog.open(AboutDialogComponent, DEFAULT_MAT_DIALOG_CONFIG);
-
-    DIALOG_REF.backdropClick().subscribe(() : void => {
-      DIALOG_REF.addPanelClass('pf-bounce-out');
-
-      window.setTimeout(() : MatDialogRef<AboutDialogComponent> => {
-        return DIALOG_REF.removePanelClass('pf-bounce-out');
-      }, ConfigService.appConfiguration.constants.genericAnimationDurationMS);
-    });
-  }
-
-  /**
-   * Sets the application theme using the ThemeService.
-   *
-   * @param themeBundleName - The themeBundleName of the theme to set from one of the available defined in the "ThemeBundle" enumeration
-   */
-  public setApplicationTheme(themeBundleName : ThemeBundle) : void {
-    this._themeService.loadClientTheme(themeBundleName);
-  }
 }
 
 export {

@@ -1,34 +1,51 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output } from '@angular/core';
-
-import { ReplaySubject } from 'rxjs';
-
-import { AppRoute } from 'app/app-routing.module';
-
-import { ALL_THEMES, Theme, ThemeBundle } from '@core/services/theme/theme.model';
-import { User } from '@core/services/user/user.model';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 
 import { ConfigService } from '@core/services/config/config.service';
 
 @Component({
-  selector : 'pf-toolbar',
-  styleUrls : ['toolbar.component.scss'],
-  templateUrl : 'toolbar.component.html',
-  changeDetection : ChangeDetectionStrategy.OnPush
-})
-class ToolbarComponent implements OnInit, OnDestroy {
-  @Input() public activeTheme : ThemeBundle = ThemeBundle.IndigoPink;
-  @Input() public currentUser : User | null = null;
+  selector : 'al-toolbar',
+  changeDetection : ChangeDetectionStrategy.OnPush,
+  template : `
+    <mat-toolbar class="justify-content-between" color="primary">
+      <ng-container *ngIf="mobileView else desktopView">
+        <div>
+          <button mat-icon-button (click)="openSidenav.emit()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
 
-  @Output() public openAboutDialog : EventEmitter<void> = new EventEmitter<void>();
+        <div class="text-center w-100">
+          <ng-container *ngTemplateOutlet="homeButtonTemplate"></ng-container>
+        </div>
+      </ng-container>
+      
+      <ng-template #desktopView>
+        <div>
+          <ng-container *ngTemplateOutlet="homeButtonTemplate"></ng-container>
+        </div>
+        
+        <div>
+          <a mat-button href="https://github.com/ehharding/Angular-Laws" target="_blank">
+            <img alt="GitHub Icon" class="al-github-icon me-2" src="../../../../assets/icons/github.svg"/>
+            <span>GitHub</span>
+          </a>
+        </div>
+      </ng-template>
+    </mat-toolbar>
+
+    <ng-template #homeButtonTemplate>
+      <a mat-button href="/" routerLink="/">
+        <mat-icon>balance</mat-icon>
+        <span>Angular Laws</span>
+      </a>
+    </ng-template>
+  `,
+  styles : [``]
+})
+class ToolbarComponent implements OnInit {
   @Output() public openSidenav : EventEmitter<void> = new EventEmitter<void>();
-  @Output() public setApplicationTheme : EventEmitter<ThemeBundle> = new EventEmitter<ThemeBundle>();
 
   public mobileView : boolean = false;
-
-  public readonly allThemes : Theme[] = ALL_THEMES;
-  public readonly AppRoute = AppRoute;
-
-  private readonly _componentDestroyed$ : ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
   /**
    * Executes certain actions whenever the window changes size. In this case, we set a flag that indicates if we should show a mobile-centric view or not.
@@ -47,11 +64,6 @@ class ToolbarComponent implements OnInit, OnDestroy {
 
   public ngOnInit() : void {
     this._onResize(window, true);
-  }
-
-  public ngOnDestroy() : void {
-    this._componentDestroyed$.next(true);
-    this._componentDestroyed$.complete();
   }
 }
 

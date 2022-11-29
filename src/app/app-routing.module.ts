@@ -14,11 +14,7 @@
 import { ExtraOptions, NoPreloading, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { NotFoundGuard } from '@core/guards/not-found/not-found.guard';
-
-import { RouteResolverService } from '@core/services/route-resolver/route-resolver.service';
-
-import { NotFoundComponent } from '@core/components/not-found/not-found.component';
+import { HomeComponent } from '@core/components/home/home.component';
 
 const EXTRA_OPTIONS : ExtraOptions = {
   enableTracing : false,
@@ -29,47 +25,12 @@ const EXTRA_OPTIONS : ExtraOptions = {
   onSameUrlNavigation : 'reload',
   paramsInheritanceStrategy : 'emptyOnly',
   preloadingStrategy : NoPreloading,
-  relativeLinkResolution : 'corrected',
   scrollPositionRestoration : 'enabled',
   urlUpdateStrategy : 'eager'
 };
 
-enum AppRoute {
-  Home = '',
-  Contributors = 'contributors',
-  Login = 'login',
-  Users = 'users',
-  NotFound = '404'
-}
-
 const APP_ROUTES : Routes = [
-  {
-    path : AppRoute.Home,
-    pathMatch : 'full',
-    redirectTo : AppRoute.Contributors
-  },
-  {
-    path : AppRoute.Contributors,
-    loadChildren : async() => (await import(/* webpackChunkName: "ContributorsModule" */ '@contributors/contributors.module')).ContributorsModule,
-    title : AppRoute.Contributors.charAt(0).toUpperCase() + AppRoute.Contributors.slice(1)
-  },
-  {
-    path : AppRoute.Login,
-    loadChildren : async() => (await import(/* webpackChunkName: "LoginModule" */ '@login/login.module')).LoginModule,
-    title : AppRoute.Login.charAt(0).toUpperCase() + AppRoute.Login.slice(1)
-  },
-  {
-    path : AppRoute.NotFound,
-    component : NotFoundComponent,
-    resolve : { intendedRouteGuesses : RouteResolverService }, // NotFoundComponent Is Fed Intended Route Guesses
-    title : AppRoute.NotFound.charAt(0).toUpperCase() + AppRoute.NotFound.slice(1)
-  },
-  {
-    path : '**',
-    canActivate : [NotFoundGuard],
-    component : NotFoundComponent,
-    title : AppRoute.NotFound.charAt(0).toUpperCase() + AppRoute.NotFound.slice(1)
-  }
+  { path : '', pathMatch : 'full', component : HomeComponent }
 ];
 
 @NgModule({
@@ -79,7 +40,6 @@ const APP_ROUTES : Routes = [
 class AppRoutingModule { }
 
 export {
-  AppRoute,
   AppRoutingModule,
   APP_ROUTES
 };

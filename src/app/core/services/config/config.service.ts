@@ -2,8 +2,8 @@
  * This service handles the configuration of Firebase cloud services for the client application and the loading of external JSON configuration files containing configuration
  * data for said application. This setup routine should be invoked once, on startup, which is done in "app.module.ts".
  *
- * {@link https://console.firebase.google.com/project/clean-composite-352104/appcheck/apps | Pocket Fic Firebase App Check Configuration}
- * {@link https://www.google.com/recaptcha/admin/site/541191105 | Pocket Fic reCAPTCHA}
+ * {@link https://console.firebase.google.com/project/clean-composite-352104/appcheck/apps | Angular Laws Firebase App Check Configuration}
+ * {@link https://www.google.com/recaptcha/admin/site/541191105 | Angular Laws reCAPTCHA}
  */
 
 import { Injectable } from '@angular/core';
@@ -21,8 +21,7 @@ import { AppConfiguration, DEFAULT_APP_CONFIGURATION, DEFAULT_FIRESTORE_CONNECTI
 
 // This Is Needed For TypeScript... See https://firebase.google.com/docs/app-check/web/debug-provider#localhost
 declare global {
-  // eslint-disable-next-line no-inner-declarations, no-var, vars-on-top, @typescript-eslint/naming-convention
-  var FIREBASE_APPCHECK_DEBUG_TOKEN : boolean | string | undefined;
+  var FIREBASE_APPCHECK_DEBUG_TOKEN : boolean | string | undefined; // eslint-disable-line no-inner-declarations, no-var, vars-on-top, @typescript-eslint/naming-convention
 }
 
 @Injectable({ providedIn : 'root' })
@@ -51,7 +50,7 @@ class ConfigService {
     /*
      * In the development environment, a Firebase-registered debug token is used for app verification in place of the production reCAPTCHA system. Each developer should
      * register the token that the debug console will print out to the debugger console when running in said environment. Use the link below to add the debug token generated
-     * by Firebase to the Pocket Fic Firebase application. This will tell Firebase to allow application requests coming from a particular developer in a local environment.
+     * by Firebase to the application. This will tell Firebase to allow application requests coming from a particular developer in a local environment.
      */
     if (ENVIRONMENT.name === 'development') {
       self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
@@ -73,7 +72,7 @@ class ConfigService {
     ConfigService.firestore = getFirestore(this._firebaseApp);
 
     // Reaches Out To Firestore For On-The-Fly External Client Application Configuration Information
-    await getDoc(doc(ConfigService.firestore, this._appConfigurationDocumentFirestorePath)).then((documentSnapshot : DocumentSnapshot) : void => {
+    await getDoc(doc(ConfigService.firestore, this._appConfigurationDocumentFirestorePath)).then((documentSnapshot : DocumentSnapshot) : PromiseLike<void> => {
       ConfigService.appConfiguration = documentSnapshot.data() as AppConfiguration;
 
       // If Firebase Firestore Is Truthy, We Are Said To Be "Online"
@@ -89,9 +88,15 @@ class ConfigService {
         this._firestoreAppId$.next(DEFAULT_FIRESTORE_CONNECTION_INFO);
         this._firestoreClientId$.next(DEFAULT_FIRESTORE_CONNECTION_INFO);
       }
-    }).catch((error : Error) : void => {
-      console.error(error.message);
+
+      return Promise.resolve();
     });
+
+    /*
+     * This should be able to be reduced to `await Promise.resolve()` but that causes an "(intermediate value)(intermediate value)(intermediate value).then is not a function"
+     * error to be thrown. This is a workaround.
+     */
+    return Promise.resolve(); // eslint-disable-line @typescript-eslint/return-await
   }
 
   /**
@@ -131,9 +136,9 @@ class ConfigService {
   }
 
   /**
-   * Returns the reCAPTCHA site key for the Pocket Fic application.
+   * Returns the reCAPTCHA site key for the application.
    *
-   * @returns the reCAPTCHA site key for the Pocket Fic application.
+   * @returns the reCAPTCHA site key for the application.
    */
   public getReCAPTCHASiteKey() : string {
     return this._reCAPTCHASiteKey;

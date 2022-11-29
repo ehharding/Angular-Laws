@@ -3,13 +3,25 @@ import { ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angul
 import { ConfigService } from '@core/services/config/config.service';
 
 @Component({
-  selector : 'pf-login',
-  styleUrls : ['login.component.scss'],
-  templateUrl : 'login.component.html',
-  changeDetection : ChangeDetectionStrategy.OnPush
+  selector : 'al-home',
+  changeDetection : ChangeDetectionStrategy.OnPush,
+  template : `
+    <header>
+      <div class="m-3 row">
+        <div class="mx-auto" [ngClass]="{ 'al-w-70' : !mobileView, 'w-100' : mobileView }">
+          <h1>Law</h1>
+
+          <p matTooltip="No Penalty Without Law" matTooltipPosition="right" [matTooltipShowDelay]="matTooltipShowDelay">Nulla Poena Sine Lege</p>
+        </div>
+      </div>
+    </header>
+  `,
+  styles : [``]
 })
-class LoginComponent implements OnInit {
+class HomeComponent implements OnInit {
   public mobileView : boolean = false;
+
+  public readonly matTooltipShowDelay : number = ConfigService.appConfiguration.constants.tooltipShowDelayMS;
 
   /**
    * Executes certain actions whenever the window changes size. In this case, we set a flag that indicates if we should show a mobile-centric view or not.
@@ -32,5 +44,5 @@ class LoginComponent implements OnInit {
 }
 
 export {
-  LoginComponent
+  HomeComponent
 };

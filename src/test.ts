@@ -13,16 +13,8 @@ import 'zone.js/dist/zone-testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 import { getTestBed } from '@angular/core/testing';
 
-declare const require : { context(path : string, deep ?: boolean, filter ?: RegExp) : { keys() : string[]; <T>(id : string) : T; }; };
-
 // Initialize The Angular Testing Environment
 getTestBed().initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting(), { teardown : { destroyAfterEach : true, rethrowErrors : true } });
-
-// Find All Tests In The Project
-const context : { <T>(id : string) : T; keys() : string[]; } = require.context('./', true, /\.spec\.ts$/);
-
-// Load Their Modules
-context.keys().map(context);
 
 // Load Material Icons From The Internet For Tests As Well
 const materialIcons : HTMLLinkElement = document.createElement('link');

@@ -1,284 +1,215 @@
 /**
- * This file holds global styles which can be used across the entire application. We use Bootstrap for easy and more flexible CSS and employ Angular Material theming to have a
- * fairly neat appearance.
+ * This file holds global styles which can be used across the entire application.
  *
  * {@link https://sass-lang.com | SASS Language Reference}
- * {@link https://getbootstrap.com | Bootstrap}
  */
 
-// Bootstrap SCSS
-@import 'node_modules/bootstrap/scss/bootstrap.scss';
+// Import And Configure Angular Material
+@use '@angular/material' as mat;
 
-$pf-light-theme-bg-color : #FAFAFA;
-$pf-dark-theme-bg-color : #303030;
+@include mat.core();
+
+$dark-theme : mat.define-dark-theme((
+  color : (
+    primary : mat.define-palette(mat.$pink-palette),
+    accent : mat.define-palette(mat.$blue-grey-palette),
+    warn : mat.define-palette(mat.$red-palette)
+  )
+));
+
+$light-theme : mat.define-light-theme((
+  color : (
+    primary : mat.define-palette(mat.$indigo-palette),
+    accent : mat.define-palette(mat.$pink-palette),
+    warn : mat.define-palette(mat.$red-palette)
+  ),
+  // Only Include `typography` And `density` In The Default Light Theme.
+  typography : mat.define-typography-config(),
+  density : 0
+));
+
+// Apply The Light Theme By Default.
+@include mat.all-component-themes($light-theme);
+
+// Apply The Dark Theme Only When The User Prefers Dark Themes.
+@media (prefers-color-scheme: dark) {
+  @include mat.all-component-colors($dark-theme);
+
+  body {
+    background-color : #303030 !important;
+    color : white !important;
+  }
+
+  header {
+    background : #E91E63 !important;
+  }
+}
 
 /* Styling Applied To Entire Application */
 
-a {
-  color : inherit !important;
-  text-decoration : none !important;
+body {
+  background-color : #FAFAFA;
+  color : white;
 }
 
 footer, header {
+  background : #3F51B5;
   color : white;
   overflow : hidden;
   position : relative;
-}
-
-mat-card {
-  align-items : center;
 }
 
 mat-divider {
   margin-bottom : 1rem !important;
 }
 
+p {
+  display : inline-block;
+}
+
+.mat-primary .mat-mdc-button {
+  color : white !important;
+}
+
 /* Global Styles That Can Be Applied To Any Applicable Element */
 
-.cdk-overlay-backdrop {
-  bottom : 0;
-  top : 0;
-  left : 0;
-  right : 0;
-  opacity : 0;
-  z-index : 1000;
-  pointer-events : auto;
-  position : absolute;
-  transition : opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
-  -webkit-tap-highlight-color : rgba(0, 0, 0, 0);
-}
-
-.cdk-visually-hidden {
-  border : 0;
-  left : 0;
-  outline : 0;
-  padding : 0;
-  height : 1px;
-  width : 1px;
-  margin : -1px;
-  clip : rect(0 0 0 0);
-  overflow : hidden;
-  position : absolute;
-  white-space : nowrap;
-  -moz-appearance : none;
-  -webkit-appearance : none;
-}
-
-.mat-badge-content {
-  border-radius : 50%;
-  display : inline-block;
-  overflow : hidden;
-  pointer-events : none;
-  position : absolute;
-  text-align : center;
-  text-overflow : ellipsis;
-  transform : scale(0.6);
-  transition : transform 200ms ease-in-out;
-  white-space : nowrap;
-}
-
-.pf-bounce-out {
-  animation : bounce-out 500ms;
-  animation-iteration-count : infinite;
-}
-
-@keyframes bounce-out {
-  0% { transform : scale(1.0000) }
-  5% { transform : scale(1.0025) }
-  10% { transform : scale(1.0050) }
-  15% { transform : scale(1.0075) }
-  20% { transform : scale(1.0100) }
-  25% { transform : scale(1.0125) }
-  30% { transform : scale(1.0150) }
-  35% { transform : scale(1.0175) }
-  40% { transform : scale(1.0200) }
-  45% { transform : scale(1.0225) }
-  50% { transform : scale(1.0250) }
-  55% { transform : scale(1.0225) }
-  60% { transform : scale(1.0200) }
-  65% { transform : scale(1.0175) }
-  70% { transform : scale(1.0150) }
-  75% { transform : scale(1.0125) }
-  80% { transform : scale(1.0100) }
-  85% { transform : scale(1.0075) }
-  90% { transform : scale(1.0050) }
-  95% { transform : scale(1.0025) }
-  100% { transform : scale(1.0000) }
-}
-
-.pf-bg-white {
-  background : $pf-light-theme-bg-color;
-}
-
-.pf-bg-grey {
-  background : $pf-dark-theme-bg-color;
-}
-
-.pf-github-logo {
-  filter : invert(100%);
-  height : 26px;
-  width : 26px;
-}
-
-.pf-svg-icon {
-  height : 26px;
-  width : 26px;
-}
-
-.cdk-overlay-pane.pf-dialog {
-  max-height : 80% !important;
-  max-width : 80% !important;
-  position : relative !important;
-}
-
-.pf-dialog-divider-title {
-  margin : $spacer ($spacer * 3) !important;
-}
-
-.pf-fixed-close-button.mat-icon-button {
+.al-fixed-close-button.mat-icon-button {
   margin : 10px;
   right : 0;
   top : 0;
   position : absolute;
 }
 
-.pf-headers-align .mat-expansion-panel-header-title, .pf-headers-align .mat-expansion-panel-header-description {
-  flex-basis : 0;
+.al-github-icon {
+  filter : invert(100%);
+  height : 25px;
+  width : 25px;
 }
 
-.pf-headers-align .mat-expansion-panel-header-description {
-  align-items : center;
-  justify-content : space-between;
-}
-
-.pf-headers-align .mat-form-field + .mat-form-field {
-  margin-left : 8px;
-}
-
-.pf-b-10 {
+.al-b-10 {
   bottom : 10% !important;
 }
 
-.pf-b-20 {
+.al-b-20 {
   bottom : 20% !important;
 }
 
-.pf-b-30 {
+.al-b-30 {
   bottom : 30% !important;
 }
 
-.pf-b-40 {
+.al-b-40 {
   bottom : 40% !important;
 }
 
-.pf-b-60 {
+.al-b-60 {
   bottom : 60% !important;
 }
 
-.pf-b-70 {
+.al-b-70 {
   bottom : 70% !important;
 }
 
-.pf-b-80 {
+.al-b-80 {
   bottom : 80% !important;
 }
 
-.pf-b-90 {
+.al-b-90 {
   bottom : 90% !important;
 }
 
-.pf-t-10 {
+.al-t-10 {
   top : 10% !important;
 }
 
-.pf-t-20 {
+.al-t-20 {
   top : 20% !important;
 }
 
-.pf-t-30 {
+.al-t-30 {
   top : 30% !important;
 }
 
-.pf-t-40 {
+.al-t-40 {
   top : 40% !important;
 }
 
-.pf-t-60 {
+.al-t-60 {
   top : 60% !important;
 }
 
-.pf-t-70 {
+.al-t-70 {
   top : 70% !important;
 }
 
-.pf-t-80 {
+.al-t-80 {
   top : 80% !important;
 }
 
-.pf-t-90 {
+.al-t-90 {
   top : 90% !important;
 }
 
-.pf-h-10 {
+.al-h-10 {
   height : 10% !important;
 }
 
-.pf-h-20 {
+.al-h-20 {
   height : 20% !important;
 }
 
-.pf-h-30 {
+.al-h-30 {
   height : 30% !important;
 }
 
-.pf-h-40 {
+.al-h-40 {
   height : 40% !important;
 }
 
-.pf-h-60 {
+.al-h-60 {
   height : 60% !important;
 }
 
-.pf-h-70 {
+.al-h-70 {
   height : 70% !important;
 }
 
-.pf-h-80 {
+.al-h-80 {
   height : 80% !important;
 }
 
-.pf-h-90 {
+.al-h-90 {
   height : 90% !important;
 }
 
-.pf-w-10 {
+.al-w-10 {
   width : 10% !important;
 }
 
-.pf-w-20 {
+.al-w-20 {
   width : 20% !important;
 }
 
-.pf-w-30 {
+.al-w-30 {
   width : 30% !important;
 }
 
-.pf-w-40 {
+.al-w-40 {
   width : 40% !important;
 }
 
-.pf-w-60 {
+.al-w-60 {
   width : 60% !important;
 }
 
-.pf-w-70 {
+.al-w-70 {
   width : 70% !important;
 }
 
-.pf-w-80 {
+.al-w-80 {
   width : 80% !important;
 }
 
-.pf-w-90 {
+.al-w-90 {
   width : 90% !important;
 }

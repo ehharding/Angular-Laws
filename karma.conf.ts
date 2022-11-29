@@ -93,18 +93,7 @@ module.exports = (config : any) : void => {
     middleware : [],
     browsers : ['Firefox'],
     exclude : [],
-    files : [
-      { pattern : 'node_modules/bootstrap/dist/css/bootstrap.css', watched : true, included : true, served : true },
-      { pattern : 'node_modules/bootstrap/dist/css/bootstrap.rtl.css', watched : true, included : true, served : true },
-      { pattern : 'node_modules/bootstrap/dist/css/bootstrap-grid.css', watched : true, included : true, served : true },
-      { pattern : 'node_modules/bootstrap/dist/css/bootstrap-grid.rtl.css', watched : true, included : true, served : true },
-      { pattern : 'node_modules/bootstrap/dist/css/bootstrap-reboot.css', watched : true, included : true, served : true },
-      { pattern : 'node_modules/bootstrap/dist/css/bootstrap-reboot.rtl.css', watched : true, included : true, served : true },
-      { pattern : 'node_modules/bootstrap/dist/css/bootstrap-utilities.css', watched : true, included : true, served : true },
-      { pattern : 'node_modules/bootstrap/dist/css/bootstrap-utilities.rtl.css', watched : true, included : true, served : true },
-      { pattern : 'src/assets/themes/indigo-pink.css', watched : true, included : true, served : true },
-      { pattern : 'src/assets/themes/pink-bluegrey.css', watched : true, included : true, served : true }
-    ],
+    files : [],
     frameworks : ['@angular-devkit/build-angular', 'jasmine'],
     loggers : [{ type : 'console' }],
     plugins : [

@@ -1,5 +1,5 @@
 {
-  "$schema": "node_modules/@angular/cli/lib/config/schema.json",
+  "$schema" : "node_modules/@angular/cli/lib/config/schema.json",
   "newProjectRoot" : "projects",
   "version" : 1,
   "cli" : {
@@ -9,9 +9,9 @@
     "warnings" : { "versionMismatch" : true }
   },
   "projects" : {
-    "pocket-fic" : {
+    "angular-laws" : {
       "schematics" : {
-        "@schematics/angular:class" : { "skipTests" : false, "project" : "pocket-fic" },
+        "@schematics/angular:class" : { "skipTests" : false, "project" : "angular-laws" },
         "@schematics/angular:component" : {
           "flat" : true,
           "inlineStyle" : false,
@@ -19,23 +19,23 @@
           "skipImport" : false,
           "skipTests" : false,
           "changeDetection" : "OnPush",
-          "prefix" : "pf",
-          "project" : "pocket-fic",
+          "prefix" : "al",
+          "project" : "angular-laws",
           "style" : "scss",
           "viewEncapsulation" : "Emulated"
         },
-        "@schematics/angular:directive" : { "flat" : true, "skipImport" : false, "skipTests" : false, "standalone" : false, "prefix" : "pf", "project" : "pocket-fic" },
+        "@schematics/angular:directive" : { "flat" : true, "skipImport" : false, "skipTests" : false, "standalone" : false, "prefix" : "al", "project" : "angular-laws" },
         "@schematics/angular:module" : { "commonModule" : true, "flat" : false, "routing" : false, "routingScope" : "Child" },
-        "@schematics/angular:pipe" : { "flat" : true, "skipImport" : false, "skipTests" : false, "standalone" : false, "project": "pocket-fic" },
-        "@schematics/angular:service" : { "flat" : true, "skipTests" : false, "project" : "pocket-fic" }
+        "@schematics/angular:pipe" : { "flat" : true, "skipImport" : false, "skipTests" : false, "standalone" : false, "project": "angular-laws" },
+        "@schematics/angular:service" : { "flat" : true, "skipTests" : false, "project" : "angular-laws" }
       },
-      "prefix" : "pf",
+      "prefix" : "al",
       "projectType" : "application",
       "root" : "",
       "sourceRoot" : "src",
       "architect" : {
         "build" : {
-          "builder" : "@angular-devkit/build-angular:browser",
+          "builder" : "@angular-devkit/build-angular:browser-esbuild",
           "configurations" : {
             "production" : {
               "aot" : true,
@@ -50,26 +50,29 @@
               "vendorChunk" : false,
               "verbose" : false,
               "watch" : false,
-              "baseHref" : "/Pocket-Fic/",
+              "baseHref" : "/Angular-Laws/",
               "outputPath" : "dist-production",
               "index" : "src/index.html",
               "main" : "src/main.ts",
               "ngswConfigPath" : "ngsw-config.json",
-              "polyfills" : "src/polyfills.ts",
               "tsConfig" : "tsconfig.app.json",
               "crossOrigin" : "anonymous",
               "inlineStyleLanguage" : "scss",
               "outputHashing" : "none",
               "allowedCommonJsDependencies" : [],
               "assets" : ["src/assets", "src/favicon.ico", "src/manifest.webmanifest"],
-              "styles" : ["src/styles.scss"],
+              "polyfills" : ["zone.js"],
+              "scripts" : ["node_modules/bootstrap/dist/js/bootstrap.js"],
+              "styles" : ["node_modules/bootstrap/dist/css/bootstrap.css", "src/styles.scss"],
               "budgets" : [
                 { "type" : "initial", "maximumWarning" : "2MB", "maximumError" : "5MB" },
                 { "type" : "anyComponentStyle", "maximumWarning" : "6kB", "maximumError" : "10kB" }
               ],
-              "fileReplacements" : [{ "replace" : "src/environments/environment.development.ts", "with" : "src/environments/environment.production.ts" }],
+              "fileReplacements" : [
+                { "replace" : "src/environments/environment.development.ts", "with" : "src/environments/environment.production.ts" }
+              ],
               "optimization" : { "scripts" : true, "fonts" : { "inline" : true }, "styles" : { "inlineCritical" : true, "minify" : true } },
-              "sourceMap" : { "hidden" : false, "scripts" : true, "styles" : true, "vendor" : true }
+              "sourceMap" : { "hidden" : false, "scripts" : true, "styles" : false, "vendor" : true }
             }
           },
           "options" : {
@@ -90,43 +93,45 @@
             "index" : "src/index.html",
             "main" : "src/main.ts",
             "ngswConfigPath" : "",
-            "polyfills" : "src/polyfills.ts",
             "tsConfig" : "tsconfig.app.json",
             "crossOrigin" : "anonymous",
             "inlineStyleLanguage" : "scss",
             "outputHashing" : "none",
             "allowedCommonJsDependencies" : [],
             "assets" : ["src/assets", "src/favicon.ico", "src/manifest.webmanifest"],
-            "styles" : ["src/styles.scss"],
+            "polyfills" : ["zone.js"],
+            "scripts" : ["node_modules/bootstrap/dist/js/bootstrap.js"],
+            "styles" : ["node_modules/bootstrap/dist/css/bootstrap.css", "src/styles.scss"],
             "budgets" : [
               { "type" : "initial", "maximumWarning" : "2MB", "maximumError" : "5MB" },
               { "type" : "anyComponentStyle", "maximumWarning" : "6kB", "maximumError" : "10kB" }
             ],
             "optimization" : { "scripts" : true, "fonts" : { "inline" : true }, "styles" : { "inlineCritical" : true, "minify" : true } },
-            "sourceMap" : { "hidden" : false, "scripts" : true, "styles" : true, "vendor" : true },
+            "sourceMap" : { "hidden" : false, "scripts" : true, "styles" : false, "vendor" : true },
             "stylePreprocessorOptions" : { "includePaths" : ["node_modules/bootstrap/scss/bootstrap.scss"] }
           }
         },
         "serve" : {
           "builder" : "@angular-devkit/build-angular:dev-server",
-          "configurations" : { "production" : { "browserTarget" : "pocket-fic:build" } },
-          "options" : { "browserTarget" : "pocket-fic:build" }
+          "configurations" : { "production" : { "browserTarget" : "angular-laws:build" } },
+          "options" : { "browserTarget" : "angular-laws:build" }
         },
         "extract-i18n" : {
           "builder" : "@angular-devkit/build-angular:extract-i18n",
-          "options" : { "browserTarget" : "pocket-fic:build" }
+          "options" : { "browserTarget" : "angular-laws:build" }
         },
         "test" : {
           "builder" : "@angular-devkit/build-angular:karma",
           "options" : {
             "codeCoverage" : true,
-            "sourceMap" : { "scripts" : true, "styles" : true, "vendor" : true },
+            "sourceMap" : { "scripts" : true, "styles" : false, "vendor" : true },
             "karmaConfig" : "karma.conf.ts",
             "main" : "src/test.ts",
-            "polyfills" : "src/polyfills.ts",
             "tsConfig" : "tsconfig.spec.json",
             "assets" : ["src/assets", "src/favicon.ico", "src/manifest.webmanifest"],
-            "styles" : ["src/styles.scss"],
+            "polyfills" : ["zone.js"],
+            "scripts" : ["node_modules/bootstrap/dist/js/bootstrap.js"],
+            "styles" : ["node_modules/bootstrap/dist/css/bootstrap.css", "src/styles.scss"],
             "stylePreprocessorOptions" : { "includePaths" : ["node_modules/bootstrap/scss/bootstrap.scss"] }
           }
         },

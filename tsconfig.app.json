@@ -104,15 +104,13 @@
     "typeRoots" : [],
     "types" : ["node"],
     "paths" : {
-      "@assets/*" : ["assets/*"],
-      "@environment/*" : ["environments/*"],
       "@core/*" : ["app/core/*"],
       "@shared/*" :["app/shared/*"],
-      "@contributors/*" :  ["app/contributors/*"],
-      "@login/*" : ["app/login/*"]
+      "@assets/*" : ["assets/*"],
+      "@environment/*" : ["environments/*"]
     }
   },
-  "files" : ["src/main.ts", "src/polyfills.ts"],
+  "files" : ["src/main.ts"],
   "exclude" : ["**.spec.ts", "src/environments/environment.production.ts", "src/test.ts", "karma.conf.ts"],
   "include" : ["**.ts"]
 }

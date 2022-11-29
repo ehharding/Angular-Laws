@@ -1,23 +1,23 @@
 <!--suppress HtmlDeprecatedAttribute -->
 <div align="center">
   <h1>
-    <a href="https://ehharding.github.io/Pocket-Fic" target="_blank">
-      <img alt="Pocket Fic Logo" src="https://ehharding.github.io/Pocket-Fic/assets/images/other-logos/apple-touch-icon.svg" width="100" style="background-color : #3F51B5"/>
+    <a href="https://ehharding.github.io/Angular-Laws" target="_blank">
+      <img alt="Angular Laws" src="https://ehharding.github.io/Angular-Laws/assets/images/other-logos/apple-touch-icon.svg" width="100" style="background-color : #3F51B5"/>
     </a>
     <br>
-    <span>Pocket Fic</span>
+    <span>Angular Laws</span>
   </h1>
 
   <h4>
     <span>A Fan Fiction</span>
-    <a href="https://ehharding.github.io/Pocket-Fic" target="_blank">Website</a>
+    <a href="https://ehharding.github.io/Angular-Laws" target="_blank">Website</a>
     <span>Built With</span>
     <a href="https://material.angular.io" target="_blank">Angular Material</a>
   </h4>
 
   <p>
-    <a href="https://github.com/ehharding/Pocket-Fic/actions" target="_blank">
-      <img alt="CI/CD Pipeline Status" src="https://github.com/ehharding/Pocket-Fic/actions/workflows/main.yml/badge.svg"/>
+    <a href="https://github.com/ehharding/Angular-Laws/actions" target="_blank">
+      <img alt="CI/CD Pipeline Status" src="https://github.com/ehharding/Angular-Laws/actions/workflows/main.yml/badge.svg"/>
     </a>
     <a href="https://opensource.org/licenses/Apache-2.0" target="_blank">
       <img alt="Apache 2.0 License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/>
@@ -47,7 +47,7 @@ cd /
 mkdir Scratch && cd Scratch
 
 # Clone The Repository
-git clone https://github.com/ehharding/Pocket-Fic.git
+git clone https://github.com/ehharding/Angular-Laws.git
 ```
 
 Then, you should download JetBrains' [Webstorm IDE](https://www.jetbrains.com/webstorm/) for your platform (Windows, macOS, or Linux). WebStorm includes a free 30-day trial,
@@ -64,7 +64,7 @@ You must now install the necessary dependencies for the project via npm. From We
 
 ```bash
 # Go To Repository Directory If Terminal Does Not Automatically Put You Here
-cd /Scratch/Pocket-Fic
+cd /Scratch/Angular-Laws
 
 # Install Dependencies Via npm
 npm install
@@ -105,10 +105,10 @@ npm run lint:report
 ```
 
 ## Getting Your Changes Integrated Into The Project
-For now, all contributors are simply pushing their changes to the [main](https://github.com/ehharding/Pocket-Fic/tree/main) GitHub branch. Of course, in the future, this could
-conceivably be more of a pull-commits-into-main situation.
+For now, all contributors are simply pushing their changes to the [main](https://github.com/ehharding/Angular-Laws/tree/main) GitHub branch. Of course, in the future, this
+could conceivably be more of a pull-commits-into-main situation.
 
-To be allowed to push to the `main` branch, you must first have the "Direct Access" permission in the Pocket Fic repository. After this is given, you will then need to
+To be allowed to push to the `main` branch, you must first have the "Direct Access" permission in the Angular Laws repository. After this is given, you will then need to
 configure your local Git client to use a GPG key to communicate securely with the GitHub server. The first step in this process (after being given access) is to generate a
 4,096 bit RSA key. To do this, from a CLI:
 
@@ -148,7 +148,7 @@ your GitHub user account:
 gpg --armor --export xxxxxxxxxxxxxxxx
 ```
 
-The GitHub Pocket Fic repository will then need to be modified to include a contributor with the public GPG key block output above. Finally, configure your Git client to use
+The GitHub Angular Laws repository will then need to be modified to include a contributor with the public GPG key block output above. Finally, configure your Git client to use
 your newly generated public key:
 
 ```bash

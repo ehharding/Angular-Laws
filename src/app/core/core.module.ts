@@ -3,16 +3,10 @@
  * application, in other words.
  */
 
-import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgModule } from '@angular/core';
@@ -20,39 +14,25 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { SharedModule } from '@shared/shared.module';
 
-import { NotFoundGuard } from '@core/guards/not-found/not-found.guard';
-
 import { ConfigService } from '@core/services/config/config.service';
-import { RouteResolverService } from '@core/services/route-resolver/route-resolver.service';
-import { SpinnerService } from '@core/services/spinner/spinner.service';
-import { ThemeService } from '@core/services/theme/theme.service';
-import { UserService } from '@core/services/user/user.service';
 
-import { AboutDialogComponent } from '@core/components/toolbar/about-dialog/about-dialog.component';
-import { NotFoundComponent } from '@core/components/not-found/not-found.component';
-import { SpinnerOverlayComponent } from '@core/components/spinner-overlay/spinner-overlay.component';
+import { HomeComponent } from '@core/components/home/home.component';
 import { ToolbarComponent } from '@core/components/toolbar/toolbar.component';
 
 @NgModule({
-  declarations : [AboutDialogComponent, NotFoundComponent, SpinnerOverlayComponent, ToolbarComponent],
-  exports : [SpinnerOverlayComponent, ToolbarComponent],
+  declarations : [HomeComponent, ToolbarComponent],
+  exports : [ToolbarComponent],
   imports : [
-    ClipboardModule,
     MatButtonModule,
-    MatCardModule,
-    MatDialogModule,
     MatDividerModule,
-    MatExpansionModule,
     MatFormFieldModule,
     MatIconModule,
-    MatMenuModule,
-    MatProgressSpinnerModule,
     MatToolbarModule,
     MatTooltipModule,
     ScrollingModule,
     SharedModule
   ],
-  providers : [NotFoundGuard, ConfigService, RouteResolverService, SpinnerService, ThemeService, UserService]
+  providers : [ConfigService]
 })
 class CoreModule { }
 

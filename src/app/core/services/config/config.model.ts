@@ -46,7 +46,7 @@ const DEFAULT_MAT_DIALOG_CONFIG : MatDialogConfig = {
   hasBackdrop : true,
   restoreFocus : true,
   direction : 'ltr',
-  panelClass : 'pf-dialog',
+  panelClass : 'al-dialog',
   role : 'dialog'
 };
 
