@@ -1,0 +1,30 @@
+<mat-toolbar class="justify-content-between" color="primary">
+  <ng-container *ngIf="mobileView else desktopView">
+    <div>
+      <button mat-icon-button (click)="openSidenav.emit()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+
+    <div class="text-center w-100">
+      <ng-container *ngTemplateOutlet="homeButtonTemplate"></ng-container>
+    </div>
+  </ng-container>
+
+  <ng-template #desktopView>
+    <div>
+      <ng-container *ngTemplateOutlet="homeButtonTemplate"></ng-container>
+    </div>
+
+    <div>
+      <a mat-button href="https://github.com/ehharding/Angular-Laws" target="_blank">GitHub</a>
+    </div>
+  </ng-template>
+</mat-toolbar>
+
+<ng-template #homeButtonTemplate>
+  <a mat-button href="/" routerLink="/">
+    <mat-icon>balance</mat-icon>
+    <span>Angular Laws</span>
+  </a>
+</ng-template>

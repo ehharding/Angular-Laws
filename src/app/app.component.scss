@@ -1,0 +1,22 @@
+.al-app {
+  display : flex;
+  flex-direction : column;
+  position : absolute;
+  top : 0;
+  bottom : 0;
+  left : 0;
+  right : 0;
+}
+
+.al-app-content {
+  height : calc(100% - 48px);
+  top : 48px;
+}
+
+.al-toolbar {
+  position : fixed;
+  top : 0;
+  left : 0;
+  right : 0;
+  z-index : 2;
+}

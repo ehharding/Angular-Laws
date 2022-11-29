@@ -5,42 +5,8 @@ import { ConfigService } from '@core/services/config/config.service';
 @Component({
   selector : 'al-toolbar',
   changeDetection : ChangeDetectionStrategy.OnPush,
-  template : `
-    <mat-toolbar class="justify-content-between" color="primary">
-      <ng-container *ngIf="mobileView else desktopView">
-        <div>
-          <button mat-icon-button (click)="openSidenav.emit()">
-            <mat-icon>menu</mat-icon>
-          </button>
-        </div>
-
-        <div class="text-center w-100">
-          <ng-container *ngTemplateOutlet="homeButtonTemplate"></ng-container>
-        </div>
-      </ng-container>
-      
-      <ng-template #desktopView>
-        <div>
-          <ng-container *ngTemplateOutlet="homeButtonTemplate"></ng-container>
-        </div>
-        
-        <div>
-          <a mat-button href="https://github.com/ehharding/Angular-Laws" target="_blank">
-            <img alt="GitHub Icon" class="al-github-icon me-2" src="../../../../assets/icons/github.svg"/>
-            <span>GitHub</span>
-          </a>
-        </div>
-      </ng-template>
-    </mat-toolbar>
-
-    <ng-template #homeButtonTemplate>
-      <a mat-button href="/" routerLink="/">
-        <mat-icon>balance</mat-icon>
-        <span>Angular Laws</span>
-      </a>
-    </ng-template>
-  `,
-  styles : [``]
+  templateUrl : 'toolbar.component.html',
+  styleUrls : ['toolbar.component.scss']
 })
 class ToolbarComponent implements OnInit {
   @Output() public openSidenav : EventEmitter<void> = new EventEmitter<void>();

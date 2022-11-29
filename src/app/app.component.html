@@ -1,0 +1,28 @@
+<div class="al-app">
+  <mat-drawer-container class="h-100 w-100 position-absolute">
+    <mat-drawer #drawer class="w-100">
+      <mat-nav-list class="fw-bold">
+        <div mat-subheader>PAGES</div>
+
+        <a mat-list-item href="/" routerLink="/" (click)="drawer.close()">
+          <mat-icon class="me-2" color="primary">balance</mat-icon>
+          <span>Angular Laws</span>
+        </a>
+
+        <div mat-subheader>EXTERNAL LINKS</div>
+
+        <a mat-list-item href="https://github.com/ehharding/Angular-Laws" target="_blank">GitHub</a>
+      </mat-nav-list>
+
+      <button mat-icon-button="al-fixed-close-button" tabindex="-1" (click)="drawer.close()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-drawer>
+
+    <mat-drawer-content class="al-app-content">
+      <al-toolbar class="al-toolbar mat-elevation-z5" (openSidenav)="drawer.open()"></al-toolbar>
+
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

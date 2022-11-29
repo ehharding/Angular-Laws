@@ -5,18 +5,8 @@ import { ConfigService } from '@core/services/config/config.service';
 @Component({
   selector : 'al-home',
   changeDetection : ChangeDetectionStrategy.OnPush,
-  template : `
-    <header>
-      <div class="m-3 row">
-        <div class="mx-auto" [ngClass]="{ 'al-w-70' : !mobileView, 'w-100' : mobileView }">
-          <h1>Law</h1>
-
-          <p matTooltip="No Penalty Without Law" matTooltipPosition="right" [matTooltipShowDelay]="matTooltipShowDelay">Nulla Poena Sine Lege</p>
-        </div>
-      </div>
-    </header>
-  `,
-  styles : [``]
+  templateUrl : 'home.component.html',
+  styleUrls : ['home.component.scss']
 })
 class HomeComponent implements OnInit {
   public mobileView : boolean = false;
