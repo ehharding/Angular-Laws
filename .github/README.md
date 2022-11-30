@@ -1,7 +1,7 @@
 <!--suppress HtmlDeprecatedAttribute -->
 <div align="center">
   <h1>
-    <a href="https://ehharding.github.io/Angular-Laws" target="_blank">
+    <a href="https://ehharding.github.io/Angular-Laws/" target="_blank">
       <img alt="Angular Laws" src="https://ehharding.github.io/Angular-Laws/assets/icons/apple-touch-icon.png" width="100" style="background-color : #3F51B5"/>
     </a>
     <br>
@@ -9,8 +9,8 @@
   </h1>
 
   <h4>
-    <span>An Angular Website</span>
-    <a href="https://ehharding.github.io/Angular-Laws" target="_blank">Website</a>
+    <span>An Angular</span>
+    <a href="https://ehharding.github.io/Angular-Laws/" target="_blank">Website</a>
     <span>Built With</span>
     <a href="https://material.angular.io" target="_blank">Angular Material</a>
   </h4>

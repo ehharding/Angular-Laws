@@ -59,12 +59,16 @@ footer, header {
   position : relative;
 }
 
-mat-divider {
-  margin-bottom : 1rem !important;
+p {
+  display : inline-block !important;
 }
 
-p {
-  display : inline-block;
+mat-card {
+  align-items : center !important;
+}
+
+mat-divider {
+  margin-bottom : 1rem !important;
 }
 
 .mat-primary .mat-mdc-button {
@@ -73,17 +77,30 @@ p {
 
 /* Global Styles That Can Be Applied To Any Applicable Element */
 
-.al-fixed-close-button.mat-icon-button {
-  margin : 10px;
-  right : 0;
-  top : 0;
-  position : absolute;
+.cdk-overlay-pane .al-dialog {
+  max-height : 80% !important;
+  max-width : 80% !important;
+  position : relative !important;
 }
 
-.al-github-icon {
-  filter : invert(100%);
-  height : 25px;
-  width : 25px;
+.al-fixed-close-button {
+  margin : 10px !important;
+  right : 0 !important;
+  top : 0 !important;
+  position : absolute !important;
+}
+
+.al-headers-align .mat-expansion-panel-header-title, .al-headers-align .mat-expansion-panel-header-description {
+  flex-basis : 0 !important;
+}
+
+.al-headers-align .mat-expansion-panel-header-description {
+  align-items : center !important;
+  justify-content : space-between !important;
+}
+
+.al-headers-align .mat-form-field + .mat-form-field {
+  margin-left : 8px !important;
 }
 
 .al-b-10 {

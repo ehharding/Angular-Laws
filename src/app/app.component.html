@@ -2,19 +2,25 @@
   <mat-drawer-container class="h-100 w-100 position-absolute">
     <mat-drawer #drawer class="w-100">
       <mat-nav-list class="fw-bold">
-        <div mat-subheader>PAGES</div>
+        <div mat-subheader>
+          <strong>PAGES</strong>
+        </div>
 
         <a mat-list-item href="/" routerLink="/" (click)="drawer.close()">
-          <mat-icon class="me-2" color="primary">balance</mat-icon>
+          <mat-icon class="align-middle me-2">balance</mat-icon>
           <span>Angular Laws</span>
         </a>
 
-        <div mat-subheader>EXTERNAL LINKS</div>
+        <div mat-subheader>
+          <strong>EXTERNAL LINKS</strong>
+        </div>
 
-        <a mat-list-item href="https://github.com/ehharding/Angular-Laws" target="_blank">GitHub</a>
+        <a mat-list-item href="https://github.com/ehharding/Angular-Laws" target="_blank">
+          <span>GitHub</span>
+        </a>
       </mat-nav-list>
 
-      <button mat-icon-button="al-fixed-close-button" tabindex="-1" (click)="drawer.close()">
+      <button mat-icon-button class="al-fixed-close-button" tabindex="-1" (click)="drawer.close()">
         <mat-icon>close</mat-icon>
       </button>
     </mat-drawer>

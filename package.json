@@ -3,7 +3,7 @@
   "private" : true,
   "name" : "angular-laws",
   "description" : "An Angular Application To Discover Laws",
-  "homepage" : "https://ehharding.github.io/Angular-Laws",
+  "homepage" : "https://ehharding.github.io/Angular-Laws/",
   "license" : "Apache-2.0",
   "version" : "1.0.0",
   "browserslist" : ["Chrome 107", "Edge 107", "Firefox 107", "Safari 16"],
