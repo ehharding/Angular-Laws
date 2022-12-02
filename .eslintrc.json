@@ -229,6 +229,7 @@
       "enforceForNewInMemberExpressions" : true,
       "enforceForSequenceExpressions" : true,
       "nestedBinaryExpressions" : false,
+      "allowParensAfterCommentPattern" : "",
       "ignoreJSX" : "none"
     }],
     "no-extra-semi" : ["off"],
@@ -697,6 +698,7 @@
       "enforceForNewInMemberExpressions" : true,
       "enforceForSequenceExpressions" : true,
       "nestedBinaryExpressions" : false,
+      "allowParensAfterCommentPattern" : "",
       "ignoreJSX" : "none"
     }],
     "@typescript-eslint/no-extra-semi" : ["warn"],

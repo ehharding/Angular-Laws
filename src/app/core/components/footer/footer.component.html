@@ -1,11 +1,11 @@
 <footer>
   <div class="align-items-center border-top d-flex flex-wrap justify-content-between mx-auto mt-4 py-3" [ngClass]="{ 'al-w-70' : !mobileView, 'w-100' : mobileView }">
-    <div class="align-items-center col-md-4 d-flex">
+    <div class="align-items-center col-md-4 d-flex" [ngClass]="{ '' : !mobileView, 'ms-2' : mobileView }">
       <mat-icon class="al-footer-icon me-2">balance</mat-icon>
       <a href="https://opensource.org/licenses/Apache-2.0" target="_blank">Apache-2.0</a>
     </div>
 
-    <div class="align-items-center col-md-4 d-flex justify-content-end">
+    <div class="align-items-center col-md-4 d-flex justify-content-end me-2" [ngClass]="{ '' : !mobileView, 'me-2' : mobileView }">
       <div class="d-flex flex-column text-end">
         <span>Angular v{{ angularVersion }}</span>
         <span>v{{ version }}</span>
