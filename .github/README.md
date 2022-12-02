@@ -2,7 +2,7 @@
 <div align="center">
   <h1>
     <a href="https://ehharding.github.io/Angular-Laws/" target="_blank">
-      <img alt="Angular Laws" src="https://ehharding.github.io/Angular-Laws/assets/icons/apple-touch-icon.png" width="100" style="background-color : #3F51B5"/>
+      <img src="https://ehharding.github.io/Angular-Laws/assets/icons/apple-touch-icon.png" width="100" style="background-color : #3F51B5" alt="Angular Laws"/>
     </a>
     <br>
     <span>Angular Laws</span>
@@ -17,10 +17,10 @@
 
   <p>
     <a href="https://github.com/ehharding/Angular-Laws/actions" target="_blank">
-      <img alt="CI/CD Pipeline Status" src="https://github.com/ehharding/Angular-Laws/actions/workflows/main.yml/badge.svg"/>
+      <img src="https://github.com/ehharding/Angular-Laws/actions/workflows/main.yml/badge.svg" alt="CI/CD Pipeline Status"/>
     </a>
     <a href="https://opensource.org/licenses/Apache-2.0" target="_blank">
-      <img alt="Apache 2.0 License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/>
+      <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="Apache 2.0 License"/>
     </a>
   </p>
 </div>

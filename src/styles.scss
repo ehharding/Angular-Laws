@@ -40,12 +40,17 @@ $light-theme : mat.define-light-theme((
     color : white !important;
   }
 
-  header {
+  footer, header {
     background : #E91E63 !important;
   }
 }
 
 /* Styling Applied To Entire Application */
+
+a {
+  color : inherit !important;
+  text-decoration : none !important;
+}
 
 body {
   background-color : #FAFAFA;
