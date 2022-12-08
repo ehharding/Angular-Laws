@@ -6,7 +6,7 @@
   "homepage" : "https://ehharding.github.io/Angular-Laws/",
   "license" : "Apache-2.0",
   "version" : "1.0.0",
-  "browserslist" : ["Chrome 108", "Edge 108", "Firefox 107", "Safari 16"],
+  "browserslist" : ["Chrome 108", "Edge 107", "Firefox 107", "Safari 16"],
   "contributors" : ["Evan Harding"],
   "files" : ["*"],
   "keywords" : ["education", "government", "politics", "utilities"],
