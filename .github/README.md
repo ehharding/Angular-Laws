@@ -1,12 +1,6 @@
 <!--suppress HtmlDeprecatedAttribute -->
 <div align="center">
-  <h1>
-    <a href="https://ehharding.github.io/Angular-Laws/" target="_blank">
-      <img src="https://ehharding.github.io/Angular-Laws/assets/icons/apple-touch-icon.png" width="100" style="background-color : #3F51B5" alt="Angular Laws"/>
-    </a>
-    <br>
-    <span>Angular Laws</span>
-  </h1>
+  <h1>Angular Laws</h1>
 
   <h4>
     <span>An Angular</span>
