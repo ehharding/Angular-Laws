@@ -325,6 +325,8 @@
       "allowAfterThis" : true,
       "allowAfterThisConstructor" : false,
       "allowFunctionParams" : true,
+      "allowInArrayDestructuring" : true,
+      "allowInObjectDestructuring" : true,
       "enforceInClassFields" : false,
       "enforceInMethodNames" : false,
       "allow" : []
