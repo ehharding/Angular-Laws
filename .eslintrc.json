@@ -123,7 +123,7 @@
     }],
     "init-declarations" : ["off", "always"],
     "jsx-quotes" : ["warn", "prefer-double"],
-    "key-spacing" : ["warn", {
+    "key-spacing" : ["off", {
       "multiLine" : { "beforeColon" : true, "afterColon" : true, "mode" : "strict" },
       "singleLine" : { "beforeColon" : true, "afterColon" : true, "mode" : "strict" }
     }],
@@ -529,6 +529,10 @@
       "ignoredNodes" : []
     }],
     "@typescript-eslint/init-declarations" : ["warn", "always"],
+    "@typescript-eslint/key-spacing" : ["warn", {
+      "multiLine" : { "beforeColon" : true, "afterColon" : true, "mode" : "strict" },
+      "singleLine" : { "beforeColon" : true, "afterColon" : true, "mode" : "strict" }
+    }],
     "@typescript-eslint/keyword-spacing" : ["warn", { "before" : true, "after" : true }],
     "@typescript-eslint/lines-between-class-members" : ["warn", "always", { "exceptAfterOverload" : true, "exceptAfterSingleLine" : true }],
     "@typescript-eslint/member-delimiter-style" : ["warn", {
